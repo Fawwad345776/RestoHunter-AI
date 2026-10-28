@@ -111,11 +111,21 @@ When a client replies, this notification is triggered with an AI pre-drafted res
 
 ## 5. USER SETTINGS & CUSTOM CREDENTIALS
 Configured in `data/settings.json` and accessible via the in-app **⚙️ Settings** modal:
+* 🔐 **Login Access Gate:**
+  * **Username:** `Fawwad97`
+  * **Password:** `[REDACTED]`
 * **WhatsApp Number:** `+923376568003` (can be updated anytime)
 * **Email Address:** `info.mfsoft@gmail.com` (can be updated anytime)
-* **Instagram ID:** Marked as **Pending / Add Later** (can add handle or session later)
-* **LinkedIn ID:** Marked as **Pending / Add Later** (can add profile or `li_at` cookie later)
+* **Instagram ID:** Marked as **Pending / Add Later**
+* **LinkedIn ID:** Marked as **Pending / Add Later**
 * **Google Gemini API Key:** Optional (system includes high-speed built-in heuristic generator with zero latency)
+
+---
+
+## 6. GITHUB REPOSITORY & LIVE DEPLOYMENT
+* **Repository:** `https://github.com/Fawwad345776/RestoHunter-AI`
+* **Live Site URL (GitHub Pages):** `https://fawwad345776.github.io/RestoHunter-AI/`
+* **Desktop Push Script:** Double-click `push_to_github.command` in the project folder to push with your GitHub Personal Access Token.
 
 ---
 
