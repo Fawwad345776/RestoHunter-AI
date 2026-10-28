@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RestoHunter AI — Universal Multi-Niche B2B Client Acquisition Engine</title>
+  <meta name="description" content="Autonomous B2B client acquisition system prospecting local businesses with Google 4.0+ reviews, diagnosing financial digital leaks, and executing ban-proof multi-channel pitches.">
+  <meta name="theme-color" content="#0a0e17">
+  
+  <!-- PWA Manifest & App Icon -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/jpeg" href="assets/icon.jpg">
+  <link rel="apple-touch-icon" href="assets/icon.jpg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <!-- AUTHENTICATION ACCESS GATE (Fawwad97 / [REDACTED]) -->
+  <div id="auth-gate-overlay" class="auth-gate-overlay">
+    <div class="auth-card" id="auth-card">
+      <img src="assets/icon.jpg" alt="RestoHunter AI Logo" class="auth-logo">
+      <h2 class="auth-title">
+        <span>RestoHunter AI</span>
+      </h2>
+      <p class="auth-subtitle">
+        🔒 <strong>Restricted SDR Access</strong><br>
+        Please enter your authorized username and password to initialize the acquisition pipeline.
+      </p>
+
+      <div id="auth-error-msg" class="auth-error-msg">
+        ⚠️ Invalid username or password. Access denied.
+      </div>
+
+      <form id="auth-form" class="auth-form" onsubmit="event.preventDefault(); AuthSystem.handleLogin();">
+        <div class="auth-input-wrapper">
+          <span class="auth-input-icon">👤</span>
+          <input type="text" id="auth-username" class="auth-input" placeholder="Username" autocomplete="username" autofocus required>
+        </div>
+
+        <div class="auth-input-wrapper">
+          <span class="auth-input-icon">🔑</span>
+          <input type="password" id="auth-password" class="auth-input" placeholder="Password" autocomplete="current-password" required>
+          <button type="button" class="auth-toggle-pwd" id="auth-toggle-pwd" title="Show/Hide Password">👁️</button>
+        </div>
+
+        <button type="submit" id="auth-submit-btn" class="auth-btn-unlock">
+          <span>🔓</span> UNLOCK SYSTEM
+        </button>
+      </form>
+
+      <div style="margin-top: 18px; font-size: 0.72rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+        <span class="status-dot-pulse"></span> Protected by 256-Bit Acquisition Engine Security
+      </div>
+    </div>
+  </div>
+
+  <div class="app-container">
+    <!-- Top Navigation -->
+    <header class="top-nav glass-panel">
+      <div class="brand-wrapper">
+        <img src="assets/icon.jpg" alt="RestoHunter AI Logo" class="brand-logo-img">
+        <div class="brand-info">
+          <h1>
+            RestoHunter AI
+            <span class="badge-version">v2.5 AUTONOMOUS SDR</span>
+          </h1>
+          <p class="brand-tagline">
+            <span class="status-dot-pulse"></span>
+            Cloud Autopilot Active • Multi-Niche B2B Client Acquisition Engine
+          </p>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Authorized User Badge & Logout -->
+        <div class="auth-user-badge" id="nav-user-badge">
+          <span>👤</span>
+          <span id="nav-username-display">Fawwad97</span>
+          <button class="btn-auth-logout" id="btn-auth-logout" title="Lock System / Log Out">🔒</button>
+        </div>
+
+        <!-- Quick WhatsApp Pill -->
+        <a href="https://api.whatsapp.com/send?phone=923376568003" target="_blank" class="nav-pill whatsapp-active" title="Connected WhatsApp Alerts">
+          <span>📱</span>
+          <span id="nav-wa-number">+923376568003</span>
+        </a>
+
+        <!-- Quick Email Pill -->
+        <div class="nav-pill" title="Outreach Sender Email">
+          <span>📧</span>
+          <span id="nav-email-address">info.mfsoft@gmail.com</span>
+        </div>
+
+        <!-- Social Authority Posts -->
+        <button id="btn-open-social-autopilot" class="btn-secondary" title="View Daily Social Authority Posts">
+          <span>📢</span> Social Authority
+        </button>
+
+        <!-- Settings Gear -->
+        <button id="btn-open-settings" class="btn-secondary" title="System Settings">
+          <span>⚙️</span> Settings
+        </button>
+      </div>
+    </header>
+
+    <!-- SECTION 5: LIVE REPLY CENTER STATUS BAR -->
+    <section class="reply-center-container glass-panel">
+      <div class="reply-center-header">
+        <div class="reply-center-title">
+          <div class="radar-icon-box">
+            <div class="radar-sweep-anim"></div>
+            <span>📊</span>
+          </div>
+          <span>LIVE REPLY CENTER</span>
+        </div>
+        <div class="reply-alert-note">
+          <span>⚡ Real-time alerts configured to personal WhatsApp:</span>
+          <strong>+923376568003</strong>
+        </div>
+      </div>
+
+      <!-- 3 Channels Grid (Facebook cancelled as per instruction) -->
+      <div class="reply-channels-grid">
+        <!-- Gmail -->
+        <div class="reply-channel-card channel-gmail" data-channel="gmail">
+          <div class="card-top-row">
+            <div class="channel-name-badge">
+              <span>📧</span>
+              <span>Gmail / Direct Inbox</span>
+            </div>
+            <span id="gmail-unread-badge" class="badge-unread-red">🔴 7 NEW</span>
+          </div>
+          <div class="card-stats-row">
+            <span class="stat-total">Total Outreaches / Replies</span>
+            <span id="gmail-total-count" class="stat-number">28</span>
+          </div>
+          <div class="card-action-row">
+            <a href="https://mail.google.com" target="_blank" class="open-inbox-link" onclick="event.stopPropagation()">
+              Open Gmail ↗
+            </a>
+            <span class="filter-tab-label">Click card to filter table</span>
+          </div>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="reply-channel-card channel-linkedin" data-channel="linkedin">
+          <div class="card-top-row">
+            <div class="channel-name-badge">
+              <span>👔</span>
+              <span>LinkedIn Messaging</span>
+            </div>
+            <span id="linkedin-unread-badge" class="badge-unread-red">🔴 2 NEW</span>
+          </div>
+          <div class="card-stats-row">
+            <span class="stat-total">Total Connections / Replies</span>
+            <span id="linkedin-total-count" class="stat-number">11</span>
+          </div>
+          <div class="card-action-row">
+            <a href="https://www.linkedin.com/messaging" target="_blank" class="open-inbox-link" onclick="event.stopPropagation()">
+              Open LinkedIn ↗
+            </a>
+            <span class="filter-tab-label">Click card to filter table</span>
+          </div>
+        </div>
+
+        <!-- Instagram -->
+        <div class="reply-channel-card channel-instagram" data-channel="instagram">
+          <div class="card-top-row">
+            <div class="channel-name-badge">
+              <span>📸</span>
+              <span>Instagram Direct</span>
+            </div>
+            <span id="instagram-unread-badge" class="badge-unread-red">🔴 5 NEW</span>
+          </div>
+          <div class="card-stats-row">
+            <span class="stat-total">Total Stories / Replies</span>
+            <span id="instagram-total-count" class="stat-number">19</span>
+          </div>
+          <div class="card-action-row">
+            <a href="https://www.instagram.com/direct/inbox" target="_blank" class="open-inbox-link" onclick="event.stopPropagation()">
+              Open Instagram ↗
+            </a>
+            <span class="filter-tab-label">Click card to filter table</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HUNT CONTROL CONSOLE & CITY INPUT -->
+    <section class="hunt-console-panel glass-panel">
+      <div class="hunt-inputs-grid">
+        <!-- Target Country -->
+        <div class="input-group">
+          <label class="input-label" for="target-country-select">
+            <span>🌍</span> Target Market
+          </label>
+          <select id="target-country-select" class="custom-select">
+            <option value="USA" selected>USA 🇺🇸</option>
+            <option value="UK">United Kingdom 🇬🇧</option>
+            <option value="Canada">Canada 🇨🇦</option>
+            <option value="Australia">Australia 🇦🇺</option>
+          </select>
+        </div>
+
+        <!-- Target City -->
+        <div class="input-group">
+          <label class="input-label" for="target-city-input">
+            <span>🏙️</span> Target City / Metro
+          </label>
+          <input type="text" id="target-city-input" class="custom-input" placeholder="e.g. Austin, Texas" value="Austin, Texas">
+        </div>
+
+        <!-- Multi-Niche Selector -->
+        <div class="input-group">
+          <label class="input-label" for="target-niche-select">
+            <span>🎯</span> Niche Category
+          </label>
+          <select id="target-niche-select" class="custom-select">
+            <option value="all" selected>All 5 Niches (Balanced 100 Hunt)</option>
+            <option value="restaurants">🍽️ Restaurants, Cafes & Pizzerias</option>
+            <option value="dental_medical">🩺 Dental & Medical Clinics</option>
+            <option value="salons_spas">✂️ Barber Shops, Salons & Spas</option>
+            <option value="home_services">🔨 Home Services (Roofing, HVAC)</option>
+            <option value="boutique_hotels">🏨 Boutique Hotels & Resorts</option>
+          </select>
+        </div>
+
+        <!-- Launch Button -->
+        <button id="btn-start-hunt" class="btn-primary" style="height: 48px; min-width: 220px;">
+          <span>🚀</span> START 100-LEAD HUNT
+        </button>
+      </div>
+
+      <!-- Quick City Chips -->
+      <div class="quick-cities-bar">
+        <span class="quick-cities-label">Popular Markets:</span>
+        <button class="city-chip active" data-city="Austin, Texas" data-country="USA">Austin, TX</button>
+        <button class="city-chip" data-city="Miami, Florida" data-country="USA">Miami, FL</button>
+        <button class="city-chip" data-city="London, UK" data-country="UK">London, UK</button>
+        <button class="city-chip" data-city="Toronto, Ontario" data-country="Canada">Toronto, CA</button>
+        <button class="city-chip" data-city="Sydney, NSW" data-country="Australia">Sydney, AU</button>
+        <button class="city-chip" data-city="New York, NY" data-country="USA">New York, NY</button>
+        <button class="city-chip" data-city="Dallas, Texas" data-country="USA">Dallas, TX</button>
+        <button class="city-chip" data-city="Los Angeles, CA" data-country="USA">Los Angeles, CA</button>
+      </div>
+
+      <!-- Live Scan Progress Banner -->
+      <div id="hunt-status-banner" class="hunt-status-banner">
+        <div>
+          <span style="font-weight: 700; color: var(--emerald-light);">🔍 CRAWLING GOOGLE LOCAL PACK:</span>
+          <span id="hunt-status-text" style="font-size: 0.88rem; margin-left: 8px;">Scanning businesses...</span>
+          <div class="scan-progress-bar-container">
+            <div id="scan-progress-bar-fill" class="scan-progress-bar-fill"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METRICS STRIP -->
+    <section class="metrics-grid">
+      <div class="metric-card glass-panel">
+        <div class="metric-icon-box emerald">🎯</div>
+        <div class="metric-details">
+          <span id="metric-total-leads" class="metric-value">100</span>
+          <span class="metric-label">Prospected Leads (4.0+ Stars, 30+ Reviews)</span>
+        </div>
+      </div>
+
+      <div class="metric-card glass-panel">
+        <div class="metric-icon-box cyan">⚡</div>
+        <div class="metric-details">
+          <span id="metric-dispatched-count" class="metric-value">0 / 100</span>
+          <span class="metric-label">Dispatched (Safe Human Delay Queue)</span>
+        </div>
+      </div>
+
+      <div class="metric-card glass-panel">
+        <div class="metric-icon-box rose">💸</div>
+        <div class="metric-details">
+          <span id="metric-estimated-recovered" class="metric-value">$380.0k/mo</span>
+          <span class="metric-label">Digital Financial Leaks Diagnosed</span>
+        </div>
+      </div>
+
+      <div class="metric-card glass-panel">
+        <div class="metric-icon-box amber">💰</div>
+        <div class="metric-details">
+          <span id="metric-pipeline-value" class="metric-value">$9,750 – $30,000</span>
+          <span class="metric-label">Projected Pipeline (15–25 Closed at $650+)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: HUMAN-IN-THE-LOOP REVIEW DASHBOARD -->
+    <section class="glass-panel" style="padding: 24px;">
+      <!-- Table Controls & Channel Tabs -->
+      <div class="leads-section-header">
+        <div class="channel-tabs-group">
+          <button class="channel-tab-btn active" data-filter="all">All Leads (100)</button>
+          <button class="channel-tab-btn" data-filter="gmail">📧 Gmail (34)</button>
+          <button class="channel-tab-btn" data-filter="linkedin">👔 LinkedIn (33)</button>
+          <button class="channel-tab-btn" data-filter="instagram">📸 Instagram (33)</button>
+          <button class="channel-tab-btn" data-filter="replied">🔴 With Replies</button>
+          <button class="channel-tab-btn" data-filter="followup">⏰ Day-3 Due</button>
+        </div>
+
+        <!-- Search Bar -->
+        <div style="flex: 1; max-width: 320px;">
+          <input type="text" id="table-search-input" class="custom-input" style="height: 38px; font-size: 0.85rem;" placeholder="Search business, owner, flaw...">
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="leads-actions-group">
+          <button id="btn-approve-all" class="btn-primary" style="padding: 8px 16px; font-size: 0.84rem;">
+            <span>⚡</span> APPROVE & DISPATCH ALL 100
+          </button>
+          <button id="btn-load-next-100" class="btn-secondary" style="padding: 8px 14px; font-size: 0.84rem;">
+            <span>🔄</span> Load Next 100 Leads
+          </button>
+          <button id="btn-test-whatsapp" class="btn-secondary" style="padding: 8px 14px; font-size: 0.84rem; color: #25d366;" title="Simulate Client Reply & Alert WhatsApp">
+            <span>💬</span> Test WhatsApp Alert
+          </button>
+          <button id="btn-export-csv" class="btn-secondary" style="padding: 8px 12px; font-size: 0.84rem;" title="Download CSV">
+            <span>📥</span> CSV
+          </button>
+          <button id="btn-export-json" class="btn-secondary" style="padding: 8px 12px; font-size: 0.84rem;" title="Download JSON">
+            <span>📤</span> JSON
+          </button>
+        </div>
+      </div>
+
+      <!-- Batch Dispatch Live Countdown Widget -->
+      <div id="batch-dispatch-widget" class="batch-dispatch-widget">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span class="status-dot-pulse"></span>
+          <span id="batch-timer-text" style="font-weight: 600; font-size: 0.88rem; color: var(--cyan-light);">
+            ⚡ Anti-Ban Safe Delay: Next lead dispatches in 3m 45s...
+          </span>
+        </div>
+        <button id="btn-stop-batch" class="btn-secondary" style="padding: 4px 12px; font-size: 0.78rem;">
+          Pause Dispatcher
+        </button>
+      </div>
+
+      <!-- Leads Review Table -->
+      <div class="table-container">
+        <table class="leads-table">
+          <thead>
+            <tr>
+              <th>Business & Decision Maker</th>
+              <th>Niche</th>
+              <th>Flaw Audit & Monthly Leak</th>
+              <th>Channel</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="leads-table-body">
+            <!-- Dynamically populated via App.renderTable() -->
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; font-size: 0.8rem; color: var(--text-muted);">
+        <span id="leads-count-label">Showing 100 of 100 Leads</span>
+        <span>Ban-Proof Safety Guard: 3 to 7 min human intervals between dispatches</span>
+      </div>
+    </section>
+  </div>
+
+  <!-- PITCH PREVIEW & EDIT MODAL -->
+  <div id="pitch-preview-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-pitch-title">Business Name — Pitch Preview</h3>
+        <button id="modal-pitch-close" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div id="modal-pitch-channel-badge"></div>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Personalized Value-First Concept</span>
+        </div>
+
+        <div class="pitch-flaw-summary-card">
+          <div>
+            <div style="font-size: 0.76rem; color: var(--text-secondary); text-transform: uppercase;">Diagnosed Digital Flaw</div>
+            <strong id="modal-pitch-flaw-title" style="color: #fca5a5; font-size: 0.92rem;">Pinch-to-zoom PDF Menu on Mobile</strong>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.76rem; color: var(--text-secondary); text-transform: uppercase;">Estimated Loss</div>
+            <strong id="modal-pitch-flaw-leak" class="leak-badge">$2,800 – $5,200/mo</strong>
+          </div>
+        </div>
+
+        <!-- Subject row (for Gmail) -->
+        <div id="modal-pitch-subject-row" class="input-group" style="display: none;">
+          <label class="input-label" for="modal-pitch-subject">Lowercase Subject Line</label>
+          <input type="text" id="modal-pitch-subject" class="custom-input" style="height: 40px; font-size: 0.88rem;">
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="modal-pitch-textarea">Pitch Body</label>
+          <textarea id="modal-pitch-textarea" class="pitch-textarea"></textarea>
+          <div id="modal-pitch-counter" class="char-counter">0 characters</div>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.03); padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); font-size: 0.82rem; display: flex; align-items: center; justify-content: space-between;">
+          <span style="color: var(--text-secondary);">Interactive Demo Preview:</span>
+          <a id="modal-pitch-demo-link" href="#" target="_blank" style="color: var(--cyan-light); text-decoration: underline; font-family: 'JetBrains Mono', monospace;">https://restohunter.ai/preview</a>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="modal-btn-copy" class="btn-secondary">📋 Copy Pitch</button>
+        <button id="modal-btn-test-wa" class="btn-secondary" style="color: #25d366;">📲 Test WhatsApp Alert</button>
+        <button id="modal-btn-bhejdo" class="btn-primary">🚀 Bhej Do (Send)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- REAL-TIME WHATSAPP NOTIFICATION MODAL -->
+  <div id="whatsapp-alert-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 600px;">
+      <div class="modal-header" style="background: linear-gradient(90deg, #075e54, #128c7e); color: #fff;">
+        <h3 style="color: #fff;">🚨 NAYA CLIENT REPLY AAYA HAI!</h3>
+        <button id="modal-wa-alert-close" class="modal-close-btn" style="color: #fff;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="whatsapp-chat-bubble">
+          <div class="whatsapp-bubble-header">
+            <span>📱 Real-Time Alert to: <strong>+923376568003</strong></span>
+          </div>
+          <div style="font-size: 0.85rem; margin-bottom: 6px;">
+            🏢 <strong id="wa-modal-biz">Dr. Elena Dental (Miami)</strong> • Platform: <span id="wa-modal-platform">LinkedIn</span>
+          </div>
+          <div style="background: rgba(0,0,0,0.25); padding: 10px; border-radius: 8px; margin: 8px 0;">
+            <div style="font-size: 0.78rem; color: #a7f3d0;">💬 Gora Ka Message:</div>
+            <div id="wa-modal-msg" style="font-weight: 600; margin-top: 2px;">"Hey! Sounds interesting. How much do you charge for this?"</div>
+          </div>
+          <div style="background: rgba(0,0,0,0.25); padding: 10px; border-radius: 8px; margin-top: 8px;">
+            <div style="font-size: 0.78rem; color: #fde047;">👉 AI Suggested Reply:</div>
+            <div id="wa-modal-ai-reply" style="color: #fef08a; font-weight: 500; margin-top: 2px;">"Hi Dr. Elena! It's $650 one-time, ready in 48 hours. Can I share a quick 1-min preview video?"</div>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label">Raw Formatted WhatsApp Message</label>
+          <pre id="wa-modal-full-text" class="whatsapp-code-block"></pre>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="wa-modal-copy-btn" class="btn-secondary">📋 Copy AI Reply</button>
+        <button id="wa-modal-send-btn" class="btn-primary" style="background: #25d366; color: #000; font-weight: 700;">
+          📲 Send to My WhatsApp (+923376568003)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div id="settings-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 640px;">
+      <div class="modal-header">
+        <h3>⚙️ RestoHunter AI — System Settings & Credentials</h3>
+        <button id="modal-settings-close" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- WhatsApp Phone -->
+        <div class="input-group">
+          <label class="input-label" for="setting-wa-number">
+            <span>📱</span> WhatsApp Alert Number (With Country Code)
+          </label>
+          <input type="text" id="setting-wa-number" class="custom-input" value="+923376568003">
+          <span style="font-size: 0.74rem; color: var(--text-muted);">Incoming replies trigger real-time WhatsApp alerts to this number.</span>
+        </div>
+
+        <!-- Sender Email -->
+        <div class="input-group">
+          <label class="input-label" for="setting-email-address">
+            <span>📧</span> Outreach Sender Email Address
+          </label>
+          <input type="email" id="setting-email-address" class="custom-input" value="info.mfsoft@gmail.com">
+          <span style="font-size: 0.74rem; color: var(--text-muted);">Configured default address for Gmail client outreach.</span>
+        </div>
+
+        <!-- Instagram Status -->
+        <div class="input-group">
+          <label class="input-label">
+            <span>📸</span> Instagram Profile Status
+          </label>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+            <span>Status: <strong id="setting-insta-status" style="color: var(--amber-light);">Pending / Add Later</strong></span>
+            <span style="font-size: 0.78rem; color: var(--text-muted);">You can add your Instagram handle or session anytime</span>
+          </div>
+        </div>
+
+        <!-- LinkedIn Status -->
+        <div class="input-group">
+          <label class="input-label">
+            <span>👔</span> LinkedIn Profile Status
+          </label>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+            <span>Status: <strong id="setting-linkedin-status" style="color: var(--amber-light);">Pending / Add Later</strong></span>
+            <span style="font-size: 0.78rem; color: var(--text-muted);">You can add your LinkedIn profile or li_at token anytime</span>
+          </div>
+        </div>
+
+        <!-- Google Gemini API Key -->
+        <div class="input-group">
+          <label class="input-label" for="setting-gemini-key">
+            <span>✨</span> Google Gemini API Key (Optional)
+          </label>
+          <input type="password" id="setting-gemini-key" class="custom-input" placeholder="AIzaSy... (leave empty for built-in high-speed smart generator)">
+          <span style="font-size: 0.74rem; color: var(--text-muted);">Get free API key from Google AI Studio. System works with 0 latency using built-in generator.</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-save-settings" class="btn-primary">💾 Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL AUTHORITY & CLOUD AUTOPILOT MODAL -->
+  <div id="social-autopilot-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 760px;">
+      <div class="modal-header">
+        <h3>📢 Daily Social Authority Posts & Autopilot Engine</h3>
+        <button id="modal-social-close" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">
+          Cloud Autopilot generates daily authority-building content to build inbound credibility on LinkedIn and Instagram while you prospect:
+        </p>
+        <div id="social-templates-container"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="document.getElementById('social-autopilot-modal').classList.remove('open')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Core JavaScript Modules -->
+  <script src="js/auth.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/leadGenerator.js"></script>
+  <script src="js/pitchEngine.js"></script>
+  <script src="js/whatsappService.js"></script>
+  <script src="js/replyCenter.js"></script>
+  <script src="js/autopilot.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Service Worker Registration for PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.log('SW registration note:', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

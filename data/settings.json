@@ -1,0 +1,25 @@
+{
+  "whatsapp_number": "+923376568003",
+  "email_address": "info.mfsoft@gmail.com",
+  "linkedin_status": "add_later",
+  "linkedin_username": "",
+  "linkedin_cookie_li_at": "",
+  "instagram_status": "add_later",
+  "instagram_username": "",
+  "gemini_api_key": "",
+  "daily_target": 100,
+  "channels": {
+    "gmail": { "enabled": true, "daily_quota": 34 },
+    "linkedin": { "enabled": true, "daily_quota": 33 },
+    "instagram": { "enabled": true, "daily_quota": 33 }
+  },
+  "min_delay_sec": 180,
+  "max_delay_sec": 420,
+  "auto_followup_days": 3,
+  "default_country": "USA",
+  "default_city": "Austin, Texas",
+  "twilio_sid": "",
+  "twilio_auth_token": "",
+  "ultramsg_instance": "",
+  "ultramsg_token": ""
+}

@@ -1,0 +1,17 @@
+{
+  "name": "RestoHunter AI — B2B Acquisition Engine",
+  "short_name": "RestoHunter",
+  "description": "Universal Multi-Niche B2B Client Acquisition Engine & Autonomous SDR",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0a0e17",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "assets/icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

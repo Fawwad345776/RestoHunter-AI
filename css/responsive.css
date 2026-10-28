@@ -1,0 +1,105 @@
+/* ==========================================================================
+   RESTOHUNTER AI — RESPONSIVE & MOBILE PWA STYLES
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .hunt-inputs-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .reply-channels-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 12px 14px 80px 14px;
+  }
+
+  .top-nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 14px 16px;
+  }
+
+  .brand-wrapper {
+    justify-content: space-between;
+  }
+
+  .nav-actions {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .reply-channels-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hunt-inputs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .leads-section-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .channel-tabs-group {
+    overflow-x: auto;
+    width: 100%;
+    padding: 6px;
+  }
+
+  .channel-tab-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .leads-actions-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .leads-actions-group button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Responsive Table to Cards on small screens */
+  .leads-table, .leads-table thead, .leads-table tbody, .leads-table th, .leads-table td, .leads-table tr {
+    display: block;
+  }
+
+  .leads-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .leads-table tr {
+    border-bottom: 2px solid var(--border-medium);
+    padding: 14px;
+    margin-bottom: 12px;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+  }
+
+  .leads-table td {
+    border: none;
+    padding: 6px 0;
+    position: relative;
+  }
+
+  .table-row-actions {
+    margin-top: 10px;
+    justify-content: flex-end;
+  }
+}
