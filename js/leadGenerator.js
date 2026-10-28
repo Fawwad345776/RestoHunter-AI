@@ -567,7 +567,7 @@ const LeadGenerator = {
         createdAt: new Date().toISOString(),
         dispatchedAt: null,
         followupDueAt: null,
-        demoLink: `https://restohunter.ai/preview/${slug.slice(0, 16)}`
+        demoLink: 'https://fawwad345776.github.io/RestoHunter-AI/?v=3.1'
       });
 
       count++;

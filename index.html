@@ -53,6 +53,21 @@
         </button>
       </form>
 
+      <!-- PROSPECTIVE CLIENT PREVIEW OPTION -->
+      <div class="auth-preview-divider">
+        <span>OR</span>
+      </div>
+
+      <div class="auth-client-preview-box">
+        <div class="preview-badge">✨ PROSPECTIVE CLIENT PREVIEW</div>
+        <p class="preview-desc">
+          Received a pitch from our team? Experience our 0% commission direct ordering & 24/7 automated booking prototype:
+        </p>
+        <button type="button" id="btn-open-client-demo" class="auth-btn-preview">
+          <span>📱</span> LAUNCH INTERACTIVE LIVE PREVIEW
+        </button>
+      </div>
+
       <div style="margin-top: 18px; font-size: 0.72rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
         <span class="status-dot-pulse"></span> Protected by 256-Bit Acquisition Engine Security
       </div>
@@ -95,6 +110,11 @@
           <span>📧</span>
           <span id="nav-email-address">info.mfsoft@gmail.com</span>
         </div>
+
+        <!-- Client Demo Preview Showcase -->
+        <button id="btn-open-client-preview-nav" class="btn-secondary" title="View Prospective Client Interactive Prototype" style="color: var(--cyan-light); border-color: rgba(6, 182, 212, 0.4);">
+          <span>👀</span> Client Demo
+        </button>
 
         <!-- Social Authority Posts -->
         <button id="btn-open-social-autopilot" class="btn-secondary" title="View Daily Social Authority Posts">
@@ -459,7 +479,7 @@
 
         <div style="background: rgba(255, 255, 255, 0.03); padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); font-size: 0.82rem; display: flex; align-items: center; justify-content: space-between;">
           <span style="color: var(--text-secondary);">Interactive Demo Preview:</span>
-          <a id="modal-pitch-demo-link" href="#" target="_blank" style="color: var(--cyan-light); text-decoration: underline; font-family: 'JetBrains Mono', monospace;">https://restohunter.ai/preview</a>
+          <a id="modal-pitch-demo-link" href="https://fawwad345776.github.io/RestoHunter-AI/?v=3.1" target="_blank" style="color: var(--cyan-light); text-decoration: underline; font-family: 'JetBrains Mono', monospace;">https://fawwad345776.github.io/RestoHunter-AI/?v=3.1</a>
         </div>
       </div>
       <div class="modal-footer">
@@ -587,6 +607,99 @@
       </div>
       <div class="modal-footer">
         <button class="btn-secondary" onclick="document.getElementById('social-autopilot-modal').classList.remove('open')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE CLIENT PROTOTYPE PREVIEW MODAL -->
+  <div id="client-prototype-modal" class="modal-overlay">
+    <div class="modal-card prototype-modal-card">
+      <div class="modal-header" style="background: linear-gradient(90deg, #0f172a, #1e293b); border-bottom: 1px solid rgba(6, 182, 212, 0.3);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 1.3rem;">📱</span>
+          <div>
+            <h3 style="margin: 0; font-size: 1.05rem; color: #fff;">Interactive Client Prototype Preview</h3>
+            <p style="margin: 0; font-size: 0.75rem; color: var(--cyan-light);">Simulated 0% Commission Direct Ordering & 24/7 Automated Booking Flow</p>
+          </div>
+        </div>
+        <button id="modal-prototype-close" class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="modal-body" style="padding: 18px 24px;">
+        <!-- Niche Selector Tabs -->
+        <div class="prototype-tabs" id="prototype-niche-tabs">
+          <button class="prototype-tab-btn active" data-niche="restaurant">
+            <span>🍕</span> Restaurant (0% Commission)
+          </button>
+          <button class="prototype-tab-btn" data-niche="dental">
+            <span>🦷</span> Dental & Medical (24/7 Intake)
+          </button>
+          <button class="prototype-tab-btn" data-niche="salon">
+            <span>💇</span> Salon & Spa (Zero No-Show)
+          </button>
+          <button class="prototype-tab-btn" data-niche="home">
+            <span>⚡</span> Home Services (60s Quote)
+          </button>
+          <button class="prototype-tab-btn" data-niche="hotel">
+            <span>🏨</span> Boutique Hotel (Direct VIP)
+          </button>
+        </div>
+
+        <div class="prototype-showcase-layout">
+          <!-- LEFT: Simulated Smartphone Device -->
+          <div class="smartphone-mockup">
+            <div class="smartphone-screen" id="prototype-screen-content">
+              <!-- Rendered Dynamically by AuthSystem.renderPrototypeScreen() -->
+            </div>
+          </div>
+
+          <!-- RIGHT: Audit Breakdown & WhatsApp CTA -->
+          <div class="prototype-info-col">
+            <div class="prototype-feature-box">
+              <h3 id="proto-breakdown-title">
+                <span>🛡️</span> Zero-Commission Direct Ordering Engine
+              </h3>
+              <p id="proto-breakdown-desc">
+                Third-party delivery apps (DoorDash, UberEats, Talabat, Deliveroo) deduct 28% to 35% commission on every order. Our direct mobile ordering system connects diners straight to your kitchen via 1-tap mobile checkout, recovering $3,200 – $6,500/month in pure profit.
+              </p>
+
+              <div class="prototype-metrics-mini">
+                <div class="proto-metric">
+                  <span class="val" id="proto-metric-savings">0% Fee</span>
+                  <span class="lbl">Third-Party Commission</span>
+                </div>
+                <div class="proto-metric">
+                  <span class="val" id="proto-metric-speed">&lt; 45 Sec</span>
+                  <span class="lbl">1-Tap Direct Checkout</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA Box Connecting Directly to Fawwad -->
+            <div class="prototype-cta-banner">
+              <h4>Ready to Deploy This For Your Business?</h4>
+              <p>Customized with your logo, menu/services, and ready to take orders in 48 hours.</p>
+
+              <div class="prototype-cta-actions">
+                <a href="https://api.whatsapp.com/send?phone=923376568003&text=Hi%20Fawwad!%20I%20reviewed%20the%20live%20prototype%20demo%20and%20want%20to%20set%20this%20up%20for%20my%20business." target="_blank" class="btn-whatsapp-prototype">
+                  <span>📱</span> Chat on WhatsApp with Fawwad (+923376568003)
+                </a>
+                <a href="mailto:info.mfsoft@gmail.com?subject=RestoHunter%20Client%20Inquiry%20regarding%20Live%20Prototype" class="btn-email-prototype">
+                  <span>📧</span> Email: info.mfsoft@gmail.com
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 0.75rem; color: var(--text-muted);">
+          🔗 Live Demo URL: <strong style="color: var(--cyan-light);">https://fawwad345776.github.io/RestoHunter-AI/?v=3.1</strong>
+        </span>
+        <button class="btn-secondary" onclick="document.getElementById('client-prototype-modal').classList.remove('open')">
+          Close Preview
+        </button>
       </div>
     </div>
   </div>

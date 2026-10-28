@@ -41,7 +41,7 @@ const SAMPLE_CLIENT_REPLIES = [
     businessName: 'The Rosemary Boutique Inn',
     city: 'Toronto',
     clientMessage: "We give Expedia over $6,000 every single month. Would love to see your direct booking concept.",
-    aiSuggestedReply: "Hi Amanda! That's exactly what our direct VIP engine eliminates. I made a 1-min personalized preview for Rosemary Inn here: restohunter.ai/preview/rosemary. Let me know what you think!"
+    aiSuggestedReply: "Hi Amanda! That's exactly what our direct VIP engine eliminates. I made a 1-min personalized preview for Rosemary Inn here: https://fawwad345776.github.io/RestoHunter-AI/?v=3.1. Let me know what you think!"
   }
 ];
 
