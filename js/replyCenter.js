@@ -255,6 +255,39 @@ const ReplyCenter = {
     if (reply) {
       this.showWhatsAppAlertModal(reply);
     }
+  },
+
+  /**
+   * Receives a real inquiry submitted by a prospect on the live showcase
+   */
+  receiveRealClientInquiry({ name, business, contact, message, niche }) {
+    const replyObj = {
+      id: 'rep_real_' + Date.now(),
+      platform: 'Direct On-Page Inquiry',
+      channelKey: 'whatsapp', // Maps to priority WhatsApp inbox
+      businessName: business || `${name}'s Business`,
+      city: 'Live Demo Prospect',
+      clientMessage: `${message} (Contact Info: ${contact})`,
+      aiSuggestedReply: `Hi ${name.split(' ')[0]}! Thanks for checking our live demo. Yes, we can deploy this 0% commission system on ${business || 'your business'} within 48 hours for $650 one-time. Can I send the setup details to ${contact}?`,
+      receivedAt: new Date().toISOString(),
+      isRead: false
+    };
+
+    const currentReplies = this.getRepliesData();
+    currentReplies.unshift(replyObj);
+    StorageService.saveReplies(currentReplies);
+    this.renderStats();
+
+    // Play chime sound
+    if (window.WhatsAppService && WhatsAppService.playChime) {
+      WhatsAppService.playChime();
+    }
+
+    if (window.App && window.App.showToast) {
+      window.App.showToast(`🚨 NAYA CLIENT INQUIRY AAYA HAI! (${name} - ${business})`, 'success');
+    }
+
+    return replyObj;
   }
 };
 

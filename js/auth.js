@@ -1,11 +1,14 @@
 /**
- * RestoHunter AI — Authentication Access Gate & Client Demo Prototype Engine
- * Authorized Operator Credentials:
- * Name: Fawwad97
- * Password: [REDACTED]
+ * RestoHunter AI — Client Prototype Engine & Operator Authentication Gate
  *
- * Prospective Client Preview URL:
- * https://fawwad345776.github.io/RestoHunter-AI/?v=3.1
+ * Public Visitors (Clients / Goras):
+ * - Land directly on the Interactive Client Prototype Showcase (NO PASSWORD REQUIRED).
+ * - Silent background alert dispatched instantly to Fawwad (+923376568003 & ntfy).
+ * - On-page direct inquiry box so clients can type their question and reply right on the page!
+ *
+ * Authorized SDR Operator:
+ * - Credentials: Fawwad97 / [REDACTED]
+ * - Accessed via discreet "Operator Login" button or "?admin=1" in URL.
  */
 
 const AUTH_CONFIG = {
@@ -94,22 +97,85 @@ const AuthSystem = {
     this.renderPrototypeScreen('restaurant');
   },
 
+  /**
+   * Session check:
+   * - If logged in as Fawwad97: Reveal SDR Hub.
+   * - If not logged in: Reveal Public Client Showcase directly (NO password prompt).
+   */
   checkSession() {
-    const overlay = document.getElementById('auth-gate-overlay');
     const saved = sessionStorage.getItem(AUTH_CONFIG.SESSION_KEY);
+    const clientView = document.getElementById('client-showcase-view');
+    const sdrHub = document.getElementById('app-container');
+    const authOverlay = document.getElementById('auth-gate-overlay');
+    const operatorBanner = document.getElementById('operator-banner-switch');
+    const operatorLoginBtn = document.getElementById('btn-show-operator-login');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const forceAdmin = urlParams.has('admin') || urlParams.has('login');
 
     if (saved === 'authorized_' + AUTH_CONFIG.USERNAME) {
       this.isAuthenticated = true;
-      if (overlay) overlay.classList.add('hidden');
+      if (sdrHub) sdrHub.classList.remove('hidden');
+      if (clientView) clientView.classList.add('hidden');
+      if (authOverlay) authOverlay.classList.add('hidden');
+      if (operatorBanner) operatorBanner.classList.remove('hidden');
+      if (operatorLoginBtn) operatorLoginBtn.classList.add('hidden');
       this.updateUserBadge(AUTH_CONFIG.USERNAME);
     } else {
       this.isAuthenticated = false;
-      if (overlay) {
-        overlay.classList.remove('hidden');
+      // Show Public Client Showcase as primary view
+      if (clientView) clientView.classList.remove('hidden');
+      if (sdrHub) sdrHub.classList.add('hidden');
+      if (operatorBanner) operatorBanner.classList.add('hidden');
+      if (operatorLoginBtn) operatorLoginBtn.classList.remove('hidden');
+
+      if (forceAdmin && authOverlay) {
+        authOverlay.classList.remove('hidden');
         const userInput = document.getElementById('auth-username');
         if (userInput) userInput.focus();
+      } else if (authOverlay) {
+        authOverlay.classList.add('hidden');
       }
+
+      // Trigger silent background visitor alert to Fawwad
+      this.sendSilentVisitorAlert();
     }
+  },
+
+  /**
+   * Dispatches a silent background notification to Fawwad when a client opens the link.
+   * Client experiences ZERO disruption (no popup, no WhatsApp redirect).
+   */
+  sendSilentVisitorAlert() {
+    // Avoid firing multiple times on same session reload
+    if (sessionStorage.getItem('resto_client_visit_alerted')) return;
+    sessionStorage.setItem('resto_client_visit_alerted', 'true');
+
+    const timestamp = new Date().toLocaleTimeString();
+    const alertBody = `🚨 NAYA CLIENT AAYA HAI!\nEk prospective client ne live prototype link open kiya hai.\nTime: ${timestamp}\nURL: ${window.location.href}`;
+
+    // 1. Instant Push via ntfy.sh (Free, instant phone notification)
+    fetch('https://ntfy.sh/restohunter_fawwad_alert', {
+      method: 'POST',
+      body: alertBody,
+      headers: {
+        'Title': '🚨 RestoHunter: New Client Visited Demo!',
+        'Priority': 'high',
+        'Tags': 'eyes,bell'
+      }
+    }).catch(() => {});
+
+    // 2. Local backend server alert (if running)
+    fetch('/api/whatsapp-alert', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        phone: '923376568003',
+        message: alertBody,
+        businessName: 'Live Prospect Visitor',
+        platform: 'Web Link Visit'
+      })
+    }).catch(() => {});
   },
 
   setupListeners() {
@@ -124,6 +190,36 @@ const AuthSystem = {
       });
     }
 
+    // Operator modal open/close
+    const showLoginBtn = document.getElementById('btn-show-operator-login');
+    if (showLoginBtn) {
+      showLoginBtn.addEventListener('click', () => {
+        this.showLoginModal();
+      });
+    }
+
+    const closeLoginBtn = document.getElementById('btn-close-auth-modal');
+    if (closeLoginBtn) {
+      closeLoginBtn.addEventListener('click', () => {
+        this.hideLoginModal();
+      });
+    }
+
+    // Toggle views for logged-in operator
+    const backToSdrBtn = document.getElementById('btn-back-to-sdr-hub');
+    if (backToSdrBtn) {
+      backToSdrBtn.addEventListener('click', () => {
+        this.showOperatorView();
+      });
+    }
+
+    const openClientDemoNavBtn = document.getElementById('btn-open-client-preview-nav');
+    if (openClientDemoNavBtn) {
+      openClientDemoNavBtn.addEventListener('click', () => {
+        this.showClientView();
+      });
+    }
+
     // Logout button
     const logoutBtn = document.getElementById('btn-auth-logout');
     if (logoutBtn) {
@@ -132,35 +228,13 @@ const AuthSystem = {
       });
     }
 
-    // Client Prototype Modal Buttons
-    const openDemoBtn = document.getElementById('btn-open-client-demo');
-    if (openDemoBtn) {
-      openDemoBtn.addEventListener('click', () => {
-        this.openClientPrototype();
-      });
-    }
-
-    const openNavDemoBtn = document.getElementById('btn-open-client-preview-nav');
-    if (openNavDemoBtn) {
-      openNavDemoBtn.addEventListener('click', () => {
-        this.openClientPrototype();
-      });
-    }
-
-    const closeDemoBtn = document.getElementById('modal-prototype-close');
-    if (closeDemoBtn) {
-      closeDemoBtn.addEventListener('click', () => {
-        this.closeClientPrototype();
-      });
-    }
-
-    // Niche tabs inside prototype modal
-    const tabsContainer = document.getElementById('prototype-niche-tabs');
-    if (tabsContainer) {
-      tabsContainer.addEventListener('click', (e) => {
+    // Niche tabs on Client Showcase View
+    const clientTabsContainer = document.getElementById('client-niche-tabs');
+    if (clientTabsContainer) {
+      clientTabsContainer.addEventListener('click', (e) => {
         const btn = e.target.closest('.prototype-tab-btn');
         if (!btn) return;
-        tabsContainer.querySelectorAll('.prototype-tab-btn').forEach(b => b.classList.remove('active'));
+        clientTabsContainer.querySelectorAll('.prototype-tab-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const niche = btn.getAttribute('data-niche');
         this.activeNiche = niche;
@@ -170,58 +244,169 @@ const AuthSystem = {
       });
     }
 
-    // Auto-launch prototype if URL has preview or demo query param
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('preview') || urlParams.has('demo')) {
-      setTimeout(() => {
-        this.openClientPrototype();
-      }, 400);
+    // Niche tabs inside prototype modal (if used from SDR hub)
+    const modalTabsContainer = document.getElementById('prototype-niche-tabs');
+    if (modalTabsContainer) {
+      modalTabsContainer.addEventListener('click', (e) => {
+        const btn = e.target.closest('.prototype-tab-btn');
+        if (!btn) return;
+        modalTabsContainer.querySelectorAll('.prototype-tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const niche = btn.getAttribute('data-niche');
+        this.activeNiche = niche;
+        this.cartItems = [];
+        this.orderConfirmed = false;
+        this.renderPrototypeScreen(niche);
+      });
+    }
+
+    const closeDemoBtn = document.getElementById('modal-prototype-close');
+    if (closeDemoBtn) {
+      closeDemoBtn.addEventListener('click', () => {
+        const modal = document.getElementById('client-prototype-modal');
+        if (modal) modal.classList.remove('open');
+      });
     }
   },
 
-  openClientPrototype() {
-    const modal = document.getElementById('client-prototype-modal');
-    if (modal) {
-      modal.classList.add('open');
-      this.cartItems = [];
-      this.orderConfirmed = false;
-      this.renderPrototypeScreen(this.activeNiche);
+  showLoginModal() {
+    const overlay = document.getElementById('auth-gate-overlay');
+    if (overlay) {
+      overlay.classList.remove('hidden');
+      const userInput = document.getElementById('auth-username');
+      if (userInput) userInput.focus();
     }
   },
 
-  closeClientPrototype() {
-    const modal = document.getElementById('client-prototype-modal');
-    if (modal) {
-      modal.classList.remove('open');
+  hideLoginModal() {
+    const overlay = document.getElementById('auth-gate-overlay');
+    if (overlay) overlay.classList.add('hidden');
+  },
+
+  showClientView() {
+    const clientView = document.getElementById('client-showcase-view');
+    const sdrHub = document.getElementById('app-container');
+    const operatorBanner = document.getElementById('operator-banner-switch');
+    if (clientView) clientView.classList.remove('hidden');
+    if (sdrHub) sdrHub.classList.add('hidden');
+    if (operatorBanner && this.isAuthenticated) operatorBanner.classList.remove('hidden');
+    this.renderPrototypeScreen(this.activeNiche);
+  },
+
+  showOperatorView() {
+    const clientView = document.getElementById('client-showcase-view');
+    const sdrHub = document.getElementById('app-container');
+    if (this.isAuthenticated) {
+      if (sdrHub) sdrHub.classList.remove('hidden');
+      if (clientView) clientView.classList.add('hidden');
+    } else {
+      this.showLoginModal();
     }
+  },
+
+  /**
+   * Handles on-page inquiry submission ("wo udhr he reply kardey ga")
+   */
+  handleClientInquirySubmit() {
+    const nameInput = document.getElementById('inq-client-name');
+    const bizInput = document.getElementById('inq-client-biz');
+    const contactInput = document.getElementById('inq-client-contact');
+    const msgInput = document.getElementById('inq-client-msg');
+    const successBanner = document.getElementById('inquiry-success-banner');
+    const successMsg = document.getElementById('inquiry-success-msg');
+    const submitBtn = document.getElementById('btn-submit-inquiry');
+
+    const name = nameInput ? nameInput.value.trim() : '';
+    const business = bizInput ? bizInput.value.trim() : '';
+    const contact = contactInput ? contactInput.value.trim() : '';
+    const message = msgInput ? msgInput.value.trim() : '';
+
+    if (!name || !contact || !message) {
+      alert('Please fill in your name, contact info, and message.');
+      return;
+    }
+
+    // 1. Instant Push Alert to Fawwad via ntfy.sh
+    const ntfyBody = `🏢 Business: ${business || 'N/A'}\n👤 Name: ${name}\n💬 Message: "${message}"\n📞 Contact: ${contact}\nIndustry: ${this.activeNiche}`;
+    fetch('https://ntfy.sh/restohunter_fawwad_alert', {
+      method: 'POST',
+      body: ntfyBody,
+      headers: {
+        'Title': `🚨 NAYA CLIENT MESSAGE (${name})`,
+        'Priority': 'urgent',
+        'Tags': 'incoming_envelope,speech_balloon'
+      }
+    }).catch(() => {});
+
+    // 2. Save directly into Live Reply Center in SDR Dashboard
+    if (window.ReplyCenter && ReplyCenter.receiveRealClientInquiry) {
+      ReplyCenter.receiveRealClientInquiry({
+        name,
+        business,
+        contact,
+        message,
+        niche: this.activeNiche
+      });
+    }
+
+    // 3. Local backend webhook alert (if active)
+    fetch('/api/whatsapp-alert', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        phone: '923376568003',
+        message: ntfyBody,
+        businessName: business,
+        platform: 'Direct On-Page Inquiry'
+      })
+    }).catch(() => {});
+
+    // 4. Update UI - NO WhatsApp opened, stays on page!
+    if (submitBtn) {
+      submitBtn.innerHTML = '<span>✅</span> MESSAGE DELIVERED!';
+      submitBtn.style.background = 'linear-gradient(135deg, #059669, #047857)';
+      submitBtn.disabled = true;
+    }
+
+    if (successBanner) {
+      successBanner.classList.remove('hidden');
+      if (successMsg) {
+        successMsg.textContent = `Thank you, ${name}! Your inquiry regarding ${business || 'your business'} has been delivered directly to Fawwad. He will review your setup and reply to ${contact} shortly.`;
+      }
+    }
+
+    // Reset inputs
+    if (nameInput) nameInput.value = '';
+    if (bizInput) bizInput.value = '';
+    if (contactInput) contactInput.value = '';
+    if (msgInput) msgInput.value = '';
   },
 
   renderPrototypeScreen(nicheKey) {
     const data = PROTOTYPE_NICHE_DATA[nicheKey] || PROTOTYPE_NICHE_DATA.restaurant;
-    const screen = document.getElementById('prototype-screen-content');
-    if (!screen) return;
+    const clientScreen = document.getElementById('client-prototype-screen-content');
+    const modalScreen = document.getElementById('prototype-screen-content');
 
-    // Update breakdown texts on right column
-    const titleEl = document.getElementById('proto-breakdown-title');
-    const descEl = document.getElementById('proto-breakdown-desc');
-    const savingsEl = document.getElementById('proto-metric-savings');
-    const speedEl = document.getElementById('proto-metric-speed');
+    // Update breakdown texts across both views
+    const titles = [document.getElementById('client-breakdown-title'), document.getElementById('proto-breakdown-title')];
+    const descs = [document.getElementById('client-breakdown-desc'), document.getElementById('proto-breakdown-desc')];
+    const savings = [document.getElementById('client-metric-savings'), document.getElementById('proto-metric-savings')];
+    const speeds = [document.getElementById('client-metric-speed'), document.getElementById('proto-metric-speed')];
 
-    if (titleEl) titleEl.innerHTML = data.title;
-    if (descEl) descEl.textContent = data.desc;
-    if (savingsEl) savingsEl.textContent = data.savingsVal;
-    if (speedEl) speedEl.textContent = data.speedVal;
+    titles.forEach(el => { if (el) el.innerHTML = data.title; });
+    descs.forEach(el => { if (el) el.textContent = data.desc; });
+    savings.forEach(el => { if (el) el.textContent = data.savingsVal; });
+    speeds.forEach(el => { if (el) el.textContent = data.speedVal; });
 
     // Calculate subtotal
     const subtotal = this.cartItems.reduce((acc, item) => acc + item.price, 0);
     const commissionAvoided = (subtotal * 0.30).toFixed(2);
 
+    let htmlContent = '';
+
     // If order was simulated and confirmed
     if (this.orderConfirmed) {
-      const waMsg = encodeURIComponent(
-        `Hi Fawwad! I tested your 0% commission direct ordering prototype for ${data.brand} and saved $${commissionAvoided} in third-party fees. I want to deploy this setup for my business in 48 hours!`
-      );
-      screen.innerHTML = `
+      htmlContent = `
         <div class="phone-status-bar">
           <span>9:41</span>
           <span>5G 📶 100% 🔋</span>
@@ -240,72 +425,74 @@ const AuthSystem = {
             ✅ Customer saved directly to your VIP SMS list.
           </div>
 
-          <a href="https://api.whatsapp.com/send?phone=923376568003&text=${waMsg}" target="_blank" class="btn-checkout-sim" style="background: linear-gradient(135deg, #10b981, #059669); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 800; font-size: 0.82rem; margin-bottom: 10px; height: 42px; border-radius: 10px; box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);">
-            <span>📲</span> Deploy For My Business (WhatsApp Fawwad)
-          </a>
+          <button class="btn-checkout-sim" style="background: linear-gradient(135deg, #10b981, #059669); font-weight: 800; font-size: 0.82rem; margin-bottom: 10px; height: 42px; border-radius: 10px; box-shadow: 0 0 20px rgba(16, 185, 129, 0.5); cursor: pointer;" onclick="document.getElementById('client-direct-reply-box').scrollIntoView({ behavior: 'smooth' });">
+            💬 Leave Note for Fawwad to Deploy This
+          </button>
 
           <button class="btn-add-item" style="width: 100%; border-radius: 8px; padding: 8px; background: rgba(255,255,255,0.08); color: #94a3b8; font-size: 0.72rem; cursor: pointer;" onclick="AuthSystem.resetOrder()">
             🔄 Test Another Order Demo
           </button>
         </div>
       `;
-      return;
+    } else {
+      let itemsHtml = data.items.map((item, idx) => `
+        <div class="phone-item-card">
+          <div class="phone-item-info">
+            <h4>${item.name}</h4>
+            <p>${item.desc}</p>
+            <span class="item-price">$${item.price.toFixed(2)}</span>
+          </div>
+          <button class="btn-add-item" onclick="AuthSystem.addItemToCart(${idx})">
+            + Add
+          </button>
+        </div>
+      `).join('');
+
+      htmlContent = `
+        <div class="phone-status-bar">
+          <span>9:41</span>
+          <span>5G 📶 100% 🔋</span>
+        </div>
+
+        <div class="phone-app-header">
+          <div>
+            <div class="phone-app-brand">${data.brand}</div>
+            <div style="font-size: 0.65rem; color: #94a3b8;">Direct Mobile Checkout</div>
+          </div>
+          <span class="phone-pill-commission">${data.badge}</span>
+        </div>
+
+        <div class="phone-menu-list">
+          ${itemsHtml}
+        </div>
+
+        <div class="phone-cart-summary">
+          <div class="cart-calc-row">
+            <span>Items Added:</span>
+            <span>${this.cartItems.length} items</span>
+          </div>
+          <div class="cart-calc-row">
+            <span>Subtotal:</span>
+            <span>$${subtotal.toFixed(2)}</span>
+          </div>
+          <div class="cart-calc-row saving">
+            <span>DoorDash 30% Fee:</span>
+            <span>$0.00 (Saved $${commissionAvoided}!)</span>
+          </div>
+          <div class="cart-calc-row total">
+            <span>You Keep 100%:</span>
+            <span style="color: #34d399;">$${subtotal.toFixed(2)}</span>
+          </div>
+
+          <button class="btn-checkout-sim" onclick="AuthSystem.handleSimulatedCheckout()">
+            ${subtotal > 0 ? `🚀 1-Tap Checkout ($${subtotal.toFixed(2)})` : 'Tap "+ Add" Above to Test Order'}
+          </button>
+        </div>
+      `;
     }
 
-    let itemsHtml = data.items.map((item, idx) => `
-      <div class="phone-item-card">
-        <div class="phone-item-info">
-          <h4>${item.name}</h4>
-          <p>${item.desc}</p>
-          <span class="item-price">$${item.price.toFixed(2)}</span>
-        </div>
-        <button class="btn-add-item" onclick="AuthSystem.addItemToCart(${idx})">
-          + Add
-        </button>
-      </div>
-    `).join('');
-
-    screen.innerHTML = `
-      <div class="phone-status-bar">
-        <span>9:41</span>
-        <span>5G 📶 100% 🔋</span>
-      </div>
-
-      <div class="phone-app-header">
-        <div>
-          <div class="phone-app-brand">${data.brand}</div>
-          <div style="font-size: 0.65rem; color: #94a3b8;">Direct Mobile Checkout</div>
-        </div>
-        <span class="phone-pill-commission">${data.badge}</span>
-      </div>
-
-      <div class="phone-menu-list">
-        ${itemsHtml}
-      </div>
-
-      <div class="phone-cart-summary">
-        <div class="cart-calc-row">
-          <span>Items Added:</span>
-          <span>${this.cartItems.length} items</span>
-        </div>
-        <div class="cart-calc-row">
-          <span>Subtotal:</span>
-          <span>$${subtotal.toFixed(2)}</span>
-        </div>
-        <div class="cart-calc-row saving">
-          <span>DoorDash 30% Fee:</span>
-          <span>$0.00 (Saved $${commissionAvoided}!)</span>
-        </div>
-        <div class="cart-calc-row total">
-          <span>You Keep 100%:</span>
-          <span style="color: #34d399;">$${subtotal.toFixed(2)}</span>
-        </div>
-
-        <button class="btn-checkout-sim" onclick="AuthSystem.handleSimulatedCheckout()">
-          ${subtotal > 0 ? `🚀 1-Tap Checkout ($${subtotal.toFixed(2)})` : 'Tap "+ Add" Above to Test Order'}
-        </button>
-      </div>
-    `;
+    if (clientScreen) clientScreen.innerHTML = htmlContent;
+    if (modalScreen) modalScreen.innerHTML = htmlContent;
   },
 
   addItemToCart(index) {
@@ -319,7 +506,7 @@ const AuthSystem = {
   handleSimulatedCheckout() {
     const subtotal = this.cartItems.reduce((acc, item) => acc + item.price, 0);
     if (subtotal === 0) {
-      alert('Please click "+ Add" on any menu or service item above to test the 1-tap checkout!');
+      alert('Please click "+ Add" on any menu or service item above first to test the 1-tap checkout!');
       return;
     }
     this.orderConfirmed = true;
@@ -343,14 +530,12 @@ const AuthSystem = {
     const password = pwdInput ? pwdInput.value : '';
 
     if (username === AUTH_CONFIG.USERNAME && password === AUTH_CONFIG.PASSWORD) {
-      // Success
       this.isAuthenticated = true;
       sessionStorage.setItem(AUTH_CONFIG.SESSION_KEY, 'authorized_' + AUTH_CONFIG.USERNAME);
 
       if (errorMsg) errorMsg.style.display = 'none';
       if (authCard) authCard.classList.remove('shake');
 
-      // Visual feedback
       const submitBtn = document.getElementById('auth-submit-btn');
       if (submitBtn) {
         submitBtn.innerHTML = '<span>✅</span> ACCESS GRANTED!';
@@ -359,21 +544,20 @@ const AuthSystem = {
 
       setTimeout(() => {
         if (overlay) overlay.classList.add('hidden');
-        this.updateUserBadge(username);
+        this.checkSession();
         if (window.App && window.App.showToast) {
-          window.App.showToast(`Welcome back, ${username}! System unlocked.`, 'success');
+          window.App.showToast(`Welcome back, ${username}! SDR Hub unlocked.`, 'success');
         }
       }, 500);
 
     } else {
-      // Denied
       if (errorMsg) {
         errorMsg.style.display = 'block';
         errorMsg.textContent = '⚠️ Invalid username or password. Access denied.';
       }
       if (authCard) {
         authCard.classList.remove('shake');
-        void authCard.offsetWidth; // Trigger reflow
+        void authCard.offsetWidth;
         authCard.classList.add('shake');
       }
       if (pwdInput) {
@@ -386,18 +570,10 @@ const AuthSystem = {
   logout() {
     sessionStorage.removeItem(AUTH_CONFIG.SESSION_KEY);
     this.isAuthenticated = false;
-    const overlay = document.getElementById('auth-gate-overlay');
-    const submitBtn = document.getElementById('auth-submit-btn');
-    const userInput = document.getElementById('auth-username');
-    const pwdInput = document.getElementById('auth-password');
-
-    if (submitBtn) submitBtn.innerHTML = '<span>🔓</span> UNLOCK SYSTEM';
-    if (pwdInput) pwdInput.value = '';
-    if (overlay) overlay.classList.remove('hidden');
-    if (userInput) userInput.focus();
+    this.checkSession();
 
     if (window.App && window.App.showToast) {
-      window.App.showToast('System locked. Please log in again.', 'info');
+      window.App.showToast('Logged out. Switched back to Client Prototype Showcase.', 'info');
     }
   },
 

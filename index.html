@@ -20,16 +20,17 @@
 <body>
   <div class="bg-grid"></div>
 
-  <!-- AUTHENTICATION ACCESS GATE (Fawwad97 / [REDACTED]) -->
-  <div id="auth-gate-overlay" class="auth-gate-overlay">
+  <!-- OPERATOR AUTHENTICATION MODAL (Discreet for Fawwad97 / [REDACTED]) -->
+  <div id="auth-gate-overlay" class="auth-gate-overlay hidden">
     <div class="auth-card" id="auth-card">
+      <button type="button" class="modal-close-btn" id="btn-close-auth-modal" style="position: absolute; top: 16px; right: 16px; font-size: 1.5rem; background: none; border: none; color: #94a3b8; cursor: pointer;">&times;</button>
       <img src="assets/icon.jpg" alt="RestoHunter AI Logo" class="auth-logo">
       <h2 class="auth-title">
         <span>RestoHunter AI</span>
       </h2>
       <p class="auth-subtitle">
-        🔒 <strong>Restricted SDR Access</strong><br>
-        Please enter your authorized username and password to initialize the acquisition pipeline.
+        🔒 <strong>Authorized SDR Operator Login</strong><br>
+        Enter operator credentials to access the autonomous client acquisition engine.
       </p>
 
       <div id="auth-error-msg" class="auth-error-msg">
@@ -39,42 +40,184 @@
       <form id="auth-form" class="auth-form" onsubmit="event.preventDefault(); AuthSystem.handleLogin();">
         <div class="auth-input-wrapper">
           <span class="auth-input-icon">👤</span>
-          <input type="text" id="auth-username" class="auth-input" placeholder="Username" autocomplete="username" autofocus required>
+          <input type="text" id="auth-username" class="auth-input" placeholder="Username (Fawwad97)" autocomplete="username" required>
         </div>
 
         <div class="auth-input-wrapper">
           <span class="auth-input-icon">🔑</span>
-          <input type="password" id="auth-password" class="auth-input" placeholder="Password" autocomplete="current-password" required>
+          <input type="password" id="auth-password" class="auth-input" placeholder="Password ([REDACTED])" autocomplete="current-password" required>
           <button type="button" class="auth-toggle-pwd" id="auth-toggle-pwd" title="Show/Hide Password">👁️</button>
         </div>
 
         <button type="submit" id="auth-submit-btn" class="auth-btn-unlock">
-          <span>🔓</span> UNLOCK SYSTEM
+          <span>🔓</span> UNLOCK SDR HUB
         </button>
       </form>
 
-      <!-- PROSPECTIVE CLIENT PREVIEW OPTION -->
-      <div class="auth-preview-divider">
-        <span>OR</span>
-      </div>
-
-      <div class="auth-client-preview-box">
-        <div class="preview-badge">✨ PROSPECTIVE CLIENT PREVIEW</div>
-        <p class="preview-desc">
-          Received a pitch from our team? Experience our 0% commission direct ordering & 24/7 automated booking prototype:
-        </p>
-        <button type="button" id="btn-open-client-demo" class="auth-btn-preview">
-          <span>📱</span> LAUNCH INTERACTIVE LIVE PREVIEW
-        </button>
-      </div>
-
       <div style="margin-top: 18px; font-size: 0.72rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
-        <span class="status-dot-pulse"></span> Protected by 256-Bit Acquisition Engine Security
+        <span class="status-dot-pulse"></span> 256-Bit Acquisition Engine Security
       </div>
     </div>
   </div>
 
-  <div class="app-container">
+  <!-- =========================================================================
+       CLIENT SHOWCASE VIEW (PUBLIC LANDING PAGE - NO PASSWORD REQUIRED)
+       ========================================================================= -->
+  <div id="client-showcase-view" class="client-showcase-container">
+    <!-- Client Top Nav -->
+    <header class="client-nav glass-panel">
+      <div class="brand-wrapper">
+        <img src="assets/icon.jpg" alt="RestoHunter AI Logo" class="brand-logo-img">
+        <div class="brand-info">
+          <h1 style="font-size: 1.15rem; display: flex; align-items: center; gap: 8px; margin: 0; color: #fff;">
+            RestoHunter AI
+            <span class="badge-version" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4);">LIVE PROTOTYPE</span>
+          </h1>
+          <p class="brand-tagline" style="margin: 2px 0 0 0;">
+            <span class="status-dot-pulse"></span>
+            Zero-Commission Direct Mobile Ordering & 24/7 Automated Intake Engine
+          </p>
+        </div>
+      </div>
+
+      <div class="client-nav-actions">
+        <!-- Floating Operator Banner if logged in -->
+        <div id="operator-banner-switch" class="operator-switch-pill hidden">
+          <span>👤 Operator: Fawwad97</span>
+          <button id="btn-back-to-sdr-hub" class="btn-back-sdr">🔙 Return to SDR Hub</button>
+        </div>
+
+        <!-- Operator Login Button (Discreet for Fawwad only) -->
+        <button id="btn-show-operator-login" class="btn-operator-login" title="Authorized Operator Login">
+          <span>🔐</span> Operator Login
+        </button>
+      </div>
+    </header>
+
+    <!-- Client Showcase Hero -->
+    <section class="client-hero">
+      <div class="client-hero-badge">✨ INTERACTIVE CLIENT DEMO</div>
+      <h2 class="client-hero-title">
+        Eliminate 30% Delivery Fees & Missed Phone Bookings
+      </h2>
+      <p class="client-hero-subtitle">
+        Third-party delivery apps deduct 28% to 35% commission on every order. Test our 1-tap direct mobile ordering engine live below, see your exact profit savings, and leave an inquiry to launch on your business in 48 hours.
+      </p>
+
+      <!-- Niche Selector Tabs -->
+      <div class="prototype-tabs" id="client-niche-tabs">
+        <button class="prototype-tab-btn active" data-niche="restaurant">
+          <span>🍕</span> Restaurant (0% Commission)
+        </button>
+        <button class="prototype-tab-btn" data-niche="dental">
+          <span>🦷</span> Dental & Medical (24/7 Intake)
+        </button>
+        <button class="prototype-tab-btn" data-niche="salon">
+          <span>💇</span> Salon & Spa (Zero No-Show)
+        </button>
+        <button class="prototype-tab-btn" data-niche="home">
+          <span>⚡</span> Home Services (60s Quote)
+        </button>
+        <button class="prototype-tab-btn" data-niche="hotel">
+          <span>🏨</span> Boutique Hotel (Direct VIP)
+        </button>
+      </div>
+    </section>
+
+    <!-- Main Showcase Layout: Phone Mockup + Diagnostic Breakdown + On-Page Reply Form -->
+    <section class="client-showcase-grid">
+      <!-- LEFT: Simulated Smartphone Frame -->
+      <div class="smartphone-mockup-wrapper">
+        <div class="smartphone-mockup">
+          <div class="smartphone-screen" id="client-prototype-screen-content">
+            <!-- Dynamically rendered by AuthSystem.renderPrototypeScreen() -->
+          </div>
+        </div>
+        <p class="mockup-hint">👆 Tap "+ Add" above to test live order calculation and 0% commission savings</p>
+      </div>
+
+      <!-- RIGHT: Feature Breakdown + ON-PAGE DIRECT INQUIRY BOX -->
+      <div class="client-info-column">
+        <!-- Feature Breakdown Box -->
+        <div class="prototype-feature-box">
+          <h3 id="client-breakdown-title">
+            <span>🛡️</span> Zero-Commission Direct Ordering Engine
+          </h3>
+          <p id="client-breakdown-desc">
+            Third-party delivery apps (DoorDash, UberEats, Talabat, Deliveroo) deduct 28% to 35% commission on every order. Our direct mobile ordering system connects diners straight to your kitchen via 1-tap mobile checkout, recovering $3,200 – $6,500/month in pure profit.
+          </p>
+
+          <div class="prototype-metrics-mini">
+            <div class="proto-metric">
+              <span class="val" id="client-metric-savings">0% Fee</span>
+              <span class="lbl">Third-Party Commission</span>
+            </div>
+            <div class="proto-metric">
+              <span class="val" id="client-metric-speed">&lt; 45 Sec</span>
+              <span class="lbl">1-Tap Direct Checkout</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ON-PAGE DIRECT INQUIRY & REPLY BOX ("wo udhr he reply kardey ga agr karna hoga") -->
+        <div class="client-direct-reply-box" id="client-direct-reply-box">
+          <div class="reply-box-header">
+            <div class="reply-box-icon">💬</div>
+            <div>
+              <h4>Have a Question or Want This for Your Business?</h4>
+              <p>Type your message below. No external app needed — Fawwad receives your note instantly.</p>
+            </div>
+          </div>
+
+          <form id="client-inquiry-form" class="client-inquiry-form" onsubmit="event.preventDefault(); AuthSystem.handleClientInquirySubmit();">
+            <div class="inquiry-form-row">
+              <div class="inquiry-field">
+                <label for="inq-client-name">Your Name</label>
+                <input type="text" id="inq-client-name" placeholder="e.g. Chef Marcus / Dr. Elena" required>
+              </div>
+              <div class="inquiry-field">
+                <label for="inq-client-biz">Business / Clinic Name</label>
+                <input type="text" id="inq-client-biz" placeholder="e.g. Artisan Trattoria" required>
+              </div>
+            </div>
+
+            <div class="inquiry-field">
+              <label for="inq-client-contact">Your Phone or Email (Where should Fawwad reply?)</label>
+              <input type="text" id="inq-client-contact" placeholder="e.g. +1 512-555-0192 or owner@restaurant.com" required>
+            </div>
+
+            <div class="inquiry-field">
+              <label for="inq-client-msg">Your Message</label>
+              <textarea id="inq-client-msg" rows="3" placeholder="e.g. Can this integrate with our current Clover POS? What would setup take?" required></textarea>
+            </div>
+
+            <button type="submit" id="btn-submit-inquiry" class="btn-submit-inquiry">
+              <span>📨</span> Send Direct Message to Fawwad
+            </button>
+          </form>
+
+          <div id="inquiry-success-banner" class="inquiry-success-banner hidden">
+            <div class="success-icon">✅</div>
+            <div>
+              <h5>Message Received!</h5>
+              <p id="inquiry-success-msg">Thank you! Your message was dispatched directly to Fawwad. He will review your business setup and respond shortly.</p>
+            </div>
+          </div>
+
+          <div class="inquiry-footer-note">
+            <span>⚡ Typical response time: Under 15 minutes</span>
+            <span>•</span>
+            <a href="https://api.whatsapp.com/send?phone=923376568003" target="_blank" style="color: #34d399; text-decoration: none;">
+              WhatsApp: +923376568003
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SDR OPERATOR HUB CONTAINER -->
+  <div class="app-container hidden" id="app-container">
     <!-- Top Navigation -->
     <header class="top-nav glass-panel">
       <div class="brand-wrapper">
