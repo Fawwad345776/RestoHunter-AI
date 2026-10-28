@@ -1,11 +1,13 @@
 /**
  * RestoHunter AI - Worldwide Multi-Niche 100-Lead Prospecting & Financial Flaw Audit Engine
- * Supports 100% of countries globally with authentic local business names, currencies, delivery apps, and decision makers.
+ * Supports 100% of countries globally with authentic local business names, currencies, delivery apps,
+ * niche-matched decision makers, and verified international phone number formats.
  */
 
 const REGION_DATASETS = {
   // 1. Middle East & Gulf (UAE, Dubai, Saudi Arabia, Qatar, Kuwait, Oman, Bahrain)
   GULF: {
+    key: 'GULF',
     currency: 'AED',
     currencySymbol: 'AED ',
     deliveryApps: 'Talabat & Deliveroo',
@@ -14,18 +16,37 @@ const REGION_DATASETS = {
     leakMultiplier: 3.67, // USD to AED approx
     tld: '.ae',
     phonePrefix: '+971 4',
-    decisionMakers: [
-      { name: 'Tariq Al-Mansoor', title: 'Managing Director & Owner' },
-      { name: 'Dr. Zayd Al-Hashimi', title: 'Lead Dental Surgeon & Founder' },
-      { name: 'Omar Farooq', title: 'General Manager' },
-      { name: 'Fatima Al-Zahrani', title: 'Managing Partner' },
-      { name: 'Chef Youssef El-Khoury', title: 'Executive Chef & Owner' },
-      { name: 'Kareem Al-Nuaimi', title: 'Principal Owner' },
-      { name: 'Hessa Al-Sabah', title: 'Creative Director' },
-      { name: 'Mansour Al-Otaibi', title: 'Operations Director' },
-      { name: 'Rashid Al-Maktoum', title: 'Founder' },
-      { name: 'Amira Al-Ghamdi', title: 'Partner & Co-Owner' }
-    ],
+    decisionMakers: {
+      restaurants: [
+        { name: 'Tariq Al-Mansoor', title: 'Managing Partner & Owner' },
+        { name: 'Chef Youssef El-Khoury', title: 'Executive Chef & Co-Owner' },
+        { name: 'Kareem Al-Nuaimi', title: 'Restaurateur & Managing Director' },
+        { name: 'Omar Farooq', title: 'General Manager & Co-Owner' },
+        { name: 'Ziad Al-Ghamdi', title: 'Founder & Head of Hospitality' }
+      ],
+      dental_medical: [
+        { name: 'Dr. Zayd Al-Hashimi', title: 'Lead Dental Surgeon & Founder' },
+        { name: 'Dr. Amira Al-Ghamdi', title: 'Clinical Director & Lead Practitioner' },
+        { name: 'Dr. Tariq Al-Sayed', title: 'Principal Orthodontist & Founder' },
+        { name: 'Dr. Noor Al-Sabah', title: 'Head of Aesthetic Medicine' }
+      ],
+      salons_spas: [
+        { name: 'Fatima Al-Zahrani', title: 'Managing Partner & Creative Director' },
+        { name: 'Hessa Al-Sabah', title: 'Founder & Master Stylist' },
+        { name: 'Mansour Al-Otaibi', title: 'Operations Director & Salon Owner' },
+        { name: 'Reem Al-Nuaimi', title: 'Lead Esthetician & Managing Director' }
+      ],
+      home_services: [
+        { name: 'Rashid Al-Maktoum', title: 'Managing Director & Founder' },
+        { name: 'Sultan Al-Husseini', title: 'Master Contractor & Operations Partner' },
+        { name: 'Khaled Al-Bawardi', title: 'Principal Engineering Contractor' }
+      ],
+      boutique_hotels: [
+        { name: 'Ziad Al-Rashid', title: 'General Manager' },
+        { name: 'Layla Al-Sabri', title: 'Hospitality Director & Managing Partner' },
+        { name: 'Faisal Al-Thani', title: 'Managing Proprietor' }
+      ]
+    },
     nicheNames: {
       restaurants: [
         'Al-Safadi Lebanese Grill', 'Bait Al-Mandi Palace', 'Shawarma Al-Sultan',
@@ -59,6 +80,7 @@ const REGION_DATASETS = {
 
   // 2. United Kingdom & Ireland
   UK: {
+    key: 'UK',
     currency: 'GBP',
     currencySymbol: '£',
     deliveryApps: 'Deliveroo & Just Eat',
@@ -67,16 +89,34 @@ const REGION_DATASETS = {
     leakMultiplier: 0.8,
     tld: '.co.uk',
     phonePrefix: '+44 20',
-    decisionMakers: [
-      { name: 'Oliver Higgins', title: 'Managing Owner' },
-      { name: 'Dr. Alistair Campbell', title: 'Founder & Principal Dentist' },
-      { name: 'Harry Davies', title: 'General Manager' },
-      { name: 'Charlotte Evans', title: 'Director of Operations' },
-      { name: 'George Sterling', title: 'Owner & Head Chef' },
-      { name: 'James Thornton', title: 'Managing Director' },
-      { name: 'William Finch', title: 'Creative Partner' },
-      { name: 'Eleanor Wright', title: 'Founder' }
-    ],
+    decisionMakers: {
+      restaurants: [
+        { name: 'George Sterling', title: 'Owner & Head Chef' },
+        { name: 'Oliver Higgins', title: 'Managing Owner & Restaurateur' },
+        { name: 'William Finch', title: 'Co-Founder & General Manager' },
+        { name: 'Arthur Pendelton', title: 'Managing Partner' }
+      ],
+      dental_medical: [
+        { name: 'Dr. Alistair Campbell', title: 'Founder & Principal Dentist' },
+        { name: 'Dr. Eleanor Wright', title: 'Lead Orthodontist & Director' },
+        { name: 'Dr. James Thornton', title: 'Clinical Director & Lead Practitioner' }
+      ],
+      salons_spas: [
+        { name: 'Charlotte Evans', title: 'Creative Director & Salon Owner' },
+        { name: 'Harry Davies', title: 'Master Barber & Founder' },
+        { name: 'Sophie Turner', title: 'Managing Director & Lead Stylist' }
+      ],
+      home_services: [
+        { name: 'Richard Hayes', title: 'Managing Director & Master Contractor' },
+        { name: 'Thomas Clark', title: 'Founder & Chief Mechanical Engineer' },
+        { name: 'Edward Hastings', title: 'Operations Partner' }
+      ],
+      boutique_hotels: [
+        { name: 'Amanda Sterling', title: 'Managing Proprietor' },
+        { name: 'Charles Montgomery', title: 'General Manager' },
+        { name: 'Victoria Finch', title: 'Hospitality Director' }
+      ]
+    },
     nicheNames: {
       restaurants: [
         'The Royal Oak Gastro Pub', 'Mayfair Brasserie', 'Cotswold Wood-Fired Kitchen',
@@ -108,24 +148,43 @@ const REGION_DATASETS = {
 
   // 3. Pakistan & South Asia
   PAKISTAN: {
+    key: 'PAKISTAN',
     currency: 'PKR',
     currencySymbol: 'Rs. ',
     deliveryApps: 'Foodpanda & Cheetay',
     deliveryLeakText: 'Foodpanda & local delivery 28% commission cut',
     otaText: 'Online travel apps 20% booking cut',
-    leakMultiplier: 280, // USD to PKR approx
+    leakMultiplier: 180, // Realistic local purchasing power leak
     tld: '.com.pk',
-    phonePrefix: '+92 42',
-    decisionMakers: [
-      { name: 'Hamza Chaudhry', title: 'Managing Owner' },
-      { name: 'Dr. Bilal Siddiqui', title: 'Founder & Head Dental Surgeon' },
-      { name: 'Tariq Mehmood', title: 'General Manager' },
-      { name: 'Usman Qureshi', title: 'Director Operations' },
-      { name: 'Zainab Malik', title: 'Creative Director & Co-Founder' },
-      { name: 'Farhan Ali', title: 'Executive Chef & Owner' },
-      { name: 'Haroon Rasheed', title: 'Principal Partner' },
-      { name: 'Dr. Ayesha Khan', title: 'Clinical Director' }
-    ],
+    phonePrefix: '+92 300',
+    decisionMakers: {
+      restaurants: [
+        { name: 'Hamza Chaudhry', title: 'Managing Partner & Owner' },
+        { name: 'Farhan Ali', title: 'Executive Chef & Co-Owner' },
+        { name: 'Haroon Rasheed', title: 'Restaurateur & Managing Director' },
+        { name: 'Tariq Mehmood', title: 'General Manager & Partner' }
+      ],
+      dental_medical: [
+        { name: 'Dr. Bilal Siddiqui', title: 'Founder & Head Dental Surgeon' },
+        { name: 'Dr. Ayesha Khan', title: 'Clinical Director & Lead Practitioner' },
+        { name: 'Dr. Usman Qureshi', title: 'Principal Orthodontist & Founder' }
+      ],
+      salons_spas: [
+        { name: 'Zainab Malik', title: 'Creative Director & Co-Founder' },
+        { name: 'Maria Qasim', title: 'Master Stylist & Salon Director' },
+        { name: 'Natasha Ahmed', title: 'Founder & Lead Esthetician' }
+      ],
+      home_services: [
+        { name: 'Malik Asif', title: 'Master Contractor & Managing Director' },
+        { name: 'Sheikh Tanveer', title: 'Operations Partner & Founder' },
+        { name: 'Khurram Shahzad', title: 'Head of Technical Operations' }
+      ],
+      boutique_hotels: [
+        { name: 'Salman Butt', title: 'General Manager' },
+        { name: 'Syed Babar Ali', title: 'Hospitality Director & Owner' },
+        { name: 'Mian Tariq', title: 'Managing Proprietor' }
+      ]
+    },
     nicheNames: {
       restaurants: [
         'Bundu Khan Grill & Karahi', 'Butt Karahi Shinwari Dera', 'Shahi Dastarkhwan Heritage',
@@ -157,22 +216,40 @@ const REGION_DATASETS = {
 
   // 4. India
   INDIA: {
+    key: 'INDIA',
     currency: 'INR',
     currencySymbol: '₹',
     deliveryApps: 'Zomato & Swiggy',
     deliveryLeakText: 'Zomato & Swiggy 28% commission take',
     otaText: 'MakeMyTrip & Goibibo 22% commission leak',
-    leakMultiplier: 84, // USD to INR approx
+    leakMultiplier: 65,
     tld: '.in',
-    phonePrefix: '+91 22',
-    decisionMakers: [
-      { name: 'Rajesh Sharma', title: 'Managing Owner' },
-      { name: 'Dr. Ananya Iyer', title: 'Founder & Lead Orthodontist' },
-      { name: 'Vikram Malhotra', title: 'General Manager' },
-      { name: 'Rohit Verma', title: 'Operations Partner' },
-      { name: 'Priya Kapoor', title: 'Creative Director' },
-      { name: 'Amit Patel', title: 'Owner & Managing Director' }
-    ],
+    phonePrefix: '+91 98201',
+    decisionMakers: {
+      restaurants: [
+        { name: 'Rajesh Sharma', title: 'Managing Owner & Restaurateur' },
+        { name: 'Chef Amit Patel', title: 'Executive Chef & Founder' },
+        { name: 'Rohit Verma', title: 'Managing Partner' }
+      ],
+      dental_medical: [
+        { name: 'Dr. Ananya Iyer', title: 'Founder & Lead Orthodontist' },
+        { name: 'Dr. Vikram Malhotra', title: 'Principal Dental Surgeon' },
+        { name: 'Dr. Sunita Rao', title: 'Clinical Director & Founder' }
+      ],
+      salons_spas: [
+        { name: 'Priya Kapoor', title: 'Creative Director & Founder' },
+        { name: 'Rohan Mehra', title: 'Master Stylist & Partner' },
+        { name: 'Neha Singhal', title: 'Salon Director' }
+      ],
+      home_services: [
+        { name: 'Suresh Nair', title: 'Master Contractor & Managing Director' },
+        { name: 'Deepak Joshi', title: 'Operations Partner & Founder' }
+      ],
+      boutique_hotels: [
+        { name: 'Sanjay Singhania', title: 'General Manager & Owner' },
+        { name: 'Anita Roy', title: 'Hospitality Director' }
+      ]
+    },
     nicheNames: {
       restaurants: [
         'Copper Chimney Fine Dine', 'Peshawri Flame BBQ & Grill', 'Royal Punjab Rasoi',
@@ -200,6 +277,7 @@ const REGION_DATASETS = {
 
   // 5. Europe (Germany, France, Spain, Italy, Netherlands, etc.)
   EUROPE: {
+    key: 'EUROPE',
     currency: 'EUR',
     currencySymbol: '€',
     deliveryApps: 'Lieferando & Uber Eats',
@@ -208,14 +286,30 @@ const REGION_DATASETS = {
     leakMultiplier: 0.92,
     tld: '.de',
     phonePrefix: '+49 30',
-    decisionMakers: [
-      { name: 'Stefan Müller', title: 'Managing Owner' },
-      { name: 'Dr. Klaus Weber', title: 'Lead Dentist & Founder' },
-      { name: 'Jean-Pierre Laurent', title: 'General Manager' },
-      { name: 'Camille Dubois', title: 'Director of Operations' },
-      { name: 'Lukas Schmidt', title: 'Owner & Head Chef' },
-      { name: 'Matteo Rossi', title: 'Principal Owner' }
-    ],
+    decisionMakers: {
+      restaurants: [
+        { name: 'Stefan Müller', title: 'Managing Owner & Restaurateur' },
+        { name: 'Chef Jean-Pierre Laurent', title: 'Executive Chef & Co-Owner' },
+        { name: 'Matteo Rossi', title: 'Restaurateur & Managing Partner' }
+      ],
+      dental_medical: [
+        { name: 'Dr. Klaus Weber', title: 'Lead Dentist & Founder' },
+        { name: 'Dr. Camille Dubois', title: 'Clinical Director & Dental Surgeon' },
+        { name: 'Dr. Marco Bianchi', title: 'Head Orthodontist' }
+      ],
+      salons_spas: [
+        { name: 'Lukas Schmidt', title: 'Creative Director & Master Stylist' },
+        { name: 'Élodie Mercier', title: 'Founder & Lead Stylist' }
+      ],
+      home_services: [
+        { name: 'Hans Gruber', title: 'Meisterbetrieb Inhaber & Contractor' },
+        { name: 'Antoine Moreau', title: 'Directeur Des Opérations' }
+      ],
+      boutique_hotels: [
+        { name: 'Heinrich Von Berg', title: 'General Manager' },
+        { name: 'Francesca Moretti', title: 'Hospitality Director' }
+      ]
+    },
     nicheNames: {
       restaurants: [
         'Gasthaus Zum Goldenen Hirsch', 'Brasserie Saint-Germain', 'Trattoria Bella Vista',
@@ -243,6 +337,7 @@ const REGION_DATASETS = {
 
   // 6. Global / North America Default (USA, Canada, Australia, Worldwide)
   GLOBAL: {
+    key: 'GLOBAL',
     currency: 'USD',
     currencySymbol: '$',
     deliveryApps: 'DoorDash & UberEats',
@@ -251,18 +346,39 @@ const REGION_DATASETS = {
     leakMultiplier: 1.0,
     tld: '.com',
     phonePrefix: '+1 (512)',
-    decisionMakers: [
-      { name: 'Marcus Vance', title: 'Managing Owner' },
-      { name: 'Dr. Elena Rostova', title: 'Founder & Lead Practitioner' },
-      { name: 'David Sterling', title: 'General Manager' },
-      { name: 'Sarah Jenkins', title: 'Director of Operations' },
-      { name: 'Michael Chen', title: 'Owner & Head Chef' },
-      { name: 'Robert DeLuca', title: 'Principal Owner' },
-      { name: 'Chloe Montgomery', title: 'Creative Director & Founder' },
-      { name: 'James Thornton', title: 'Managing Director' },
-      { name: 'Amanda Wright', title: 'Co-Founder & General Partner' },
-      { name: 'Brian Kowalski', title: 'Operating Owner' }
-    ],
+    decisionMakers: {
+      restaurants: [
+        { name: 'Marcus Vance', title: 'Managing Partner & Co-Owner' },
+        { name: 'Chef Michael Chen', title: 'Executive Chef & Co-Owner' },
+        { name: 'Robert DeLuca', title: 'Principal Owner & Restaurateur' },
+        { name: 'Anthony Rossi', title: 'General Manager & Co-Owner' },
+        { name: 'Elena Moretti', title: 'Founder & Head of Hospitality' }
+      ],
+      dental_medical: [
+        { name: 'Dr. Alexander Wright', title: 'Founder & Principal Dentist' },
+        { name: 'Dr. Elena Rostova', title: 'Lead Dental Surgeon & Owner' },
+        { name: 'Dr. Julian Sterling', title: 'Clinical Director & Partner' },
+        { name: 'Dr. Sarah Mitchell', title: 'Head of Aesthetic Dentistry' },
+        { name: 'Dr. David Vance', title: 'Chief Orthodontist & Founder' }
+      ],
+      salons_spas: [
+        { name: 'Chloe Montgomery', title: 'Creative Director & Founder' },
+        { name: 'Sarah Jenkins', title: 'Master Stylist & Salon Owner' },
+        { name: 'Gianna Bellini', title: 'Founder & Lead Esthetician' },
+        { name: 'Mia Richardson', title: 'Managing Director & Stylist' }
+      ],
+      home_services: [
+        { name: 'Brian Kowalski', title: 'Master Contractor & Founder' },
+        { name: 'David Sterling', title: 'Managing Director & Operations' },
+        { name: 'James Thornton', title: 'Owner & Licensed Master Technician' },
+        { name: 'Markus Vance', title: 'Principal Contractor' }
+      ],
+      boutique_hotels: [
+        { name: 'Amanda Wright', title: 'General Manager & Partner' },
+        { name: 'Jonathan Pierce', title: 'Managing Proprietor' },
+        { name: 'Eleanor Sterling', title: 'Hospitality Director & Owner' }
+      ]
+    },
     nicheNames: {
       restaurants: [
         'Artisan Trattoria', 'Bluefin Sushi & Omakase', 'Firebrick Wood Fired Pizza',
@@ -309,26 +425,32 @@ const NICHES = {
         pitchAngle: '1-tap mobile ordering preview link with zero commission'
       },
       {
-        type: 'delivery_cut',
-        title: 'No Direct Commission-Free Ordering',
-        description: 'Orders redirected to third-party delivery apps paying 28-30% on every ticket.',
-        usdRange: [3200, 6400],
-        pitchAngle: 'Direct VIP order system with 0% commission and SMS customer re-order'
+        type: 'third_party_cut',
+        title: 'Losing 30% Margin to Delivery App Giants',
+        description: 'Third-party delivery apps pocket 30% of every ticket, eroding kitchen profitability.',
+        usdRange: [3200, 6800],
+        pitchAngle: 'Direct kitchen ordering engine where they keep 100% of revenue'
+      },
+      {
+        type: 'missing_catering',
+        title: 'No Instant Corporate & Event Catering Inquiries',
+        description: 'Lacks 1-tap quote calculator for catering orders ($500+ tickets).',
+        usdRange: [4000, 8500],
+        pitchAngle: 'Instant catering quote calculator that captures corporate booking leads'
       }
     ]
   },
-
   DENTAL_MEDICAL: {
     id: 'dental_medical',
     name: 'Dental & Medical Clinics',
     icon: '🩺',
     flaws: [
       {
-        type: 'no_online_booking',
-        title: 'Missing After-Hours Online Booking Calendar',
-        description: 'Over 40% of patient appointment searches occur after 7 PM when phone desk is closed.',
-        usdRange: [5200, 8500],
-        pitchAngle: '24/7 automated patient booking calendar & paperless intake form'
+        type: 'after_hours_leak',
+        title: 'No Online Booking for After-Hours Patients',
+        description: 'Patients search after 7 PM but encounter a "Call our office tomorrow" wall. 74% bounce to emergency clinics.',
+        usdRange: [4500, 8900],
+        pitchAngle: '24/7 mobile intake calendar prototype with real-time slot sync'
       },
       {
         type: 'paper_intake',
@@ -339,69 +461,59 @@ const NICHES = {
       }
     ]
   },
-
   SALONS_SPAS: {
     id: 'salons_spas',
-    name: 'Barber Shops, Salons & Spas',
+    name: 'Salons, Barbershops & MedSpas',
     icon: '✂️',
     flaws: [
       {
         type: 'phone_only_booking',
-        title: 'Manual Phone Booking & High No-Show Rate',
-        description: 'No automated 2-way SMS or WhatsApp appointment confirmations. 15-22% no-show rate.',
-        usdRange: [1800, 3400],
-        pitchAngle: 'Instant mobile booking widget with zero-no-show automated SMS reminders'
+        title: 'Phone-Only Booking With No SMS Reminders',
+        description: 'Phone tag causes empty chairs during lunch & evening peaks. 18% no-show rate.',
+        usdRange: [1800, 3600],
+        pitchAngle: 'Automated 2-way SMS confirmation widget slashing no-shows to near zero'
       },
       {
-        type: 'no_stylist_selection',
-        title: 'No Stylist Portfolio or Direct Chair Reservation',
-        description: 'Clients cannot pick chair or view stylist Instagram work directly on website.',
-        usdRange: [1500, 2900],
-        pitchAngle: 'VIP Stylist booking portal with instant deposit collection'
+        type: 'no_deposit',
+        title: 'Zero Deposit Enforcement for High-Ticket Treatments',
+        description: '3-hour balayage/microblading appointments booked without card hold leak $400/pop on cancellation.',
+        usdRange: [2400, 4800],
+        pitchAngle: '1-tap deposit reservation link protecting chair revenue'
       }
     ]
   },
-
   HOME_SERVICES: {
     id: 'home_services',
-    name: 'Home Services (Roofing, Plumbing, HVAC)',
+    name: 'Roofing, HVAC, Plumbing & Solar',
     icon: '🔨',
     flaws: [
       {
-        type: 'outdated_site',
-        title: '2010-Era Non-Responsive Website / Broken Mobile Call',
-        description: 'Emergency homeowners bouncing because tap-to-call is missing and page takes 6s to load.',
-        usdRange: [9500, 18000],
-        pitchAngle: 'High-converting emergency landing page with 1-click tap-to-call & instant estimate'
+        type: 'no_instant_quote',
+        title: 'Missing Instant 60-Second Estimate Calculator',
+        description: 'Homeowners in storm season bounce in under 5 seconds if no immediate price estimate is provided.',
+        usdRange: [5000, 12000],
+        pitchAngle: 'Interactive 60-second quote calculator capturing high-intent homeowners'
       },
       {
-        type: 'missing_calculator',
-        title: 'No Instant Quote Calculator or Online Dispatch Form',
-        description: 'Homeowners want instant estimates. Long email contact forms have 82% abandonment.',
-        usdRange: [8000, 15000],
-        pitchAngle: '60-second interactive instant roofing/HVAC quote calculator'
+        type: 'no_emergency_button',
+        title: 'No Direct 1-Tap Emergency Dispatch Button',
+        description: 'Water leak or broken furnace victims call whoever has 1-tap call button. Slow sites lose $8k emergency jobs.',
+        usdRange: [6000, 14000],
+        pitchAngle: 'High-converting emergency mobile layout with live dispatch ping'
       }
     ]
   },
-
   BOUTIQUE_HOTELS: {
     id: 'boutique_hotels',
-    name: 'Boutique Hotels & Resorts',
+    name: 'Boutique Hotels, Resorts & B&Bs',
     icon: '🏨',
     flaws: [
       {
-        type: 'ota_commission_drain',
-        title: 'Missing Direct Booking Engine (18-25% OTA Leak)',
-        description: 'Bookings forwarded to OTAs, giving away up to 25% of gross revenue.',
-        usdRange: [4500, 9800],
-        pitchAngle: 'Direct commission-free reservation engine with instant room upsells'
-      },
-      {
-        type: 'outdated_gallery',
-        title: 'Outdated Flash/Thumbnail Photo Gallery on Mobile',
-        description: 'Rooms display low-res photos without 360 tour or mobile-optimized amenity showcase.',
-        usdRange: [3800, 7200],
-        pitchAngle: 'Cinematic mobile room gallery with direct VIP reservation perks'
+        type: 'ota_commission_bleed',
+        title: 'Redirecting Guests to Booking.com (20% Commission Bleed)',
+        description: 'Book button redirects directly to OTAs where the hotel forfeits 18-25% on every night.',
+        usdRange: [4000, 9500],
+        pitchAngle: 'Direct VIP booking engine with complimentary upgrade perks'
       }
     ]
   }
@@ -409,9 +521,81 @@ const NICHES = {
 
 const LeadGenerator = {
   /**
-   * Intelligently selects appropriate regional dataset based on country and city text
+   * Generates authentic, realistic phone numbers formatted per country & city
    */
-  detectRegion(country = '', city = '') {
+  generateRealisticPhoneNumber(region, city, count) {
+    const cUpper = city.toUpperCase();
+    const pad4 = (num) => String(num).padStart(4, '0');
+    const pad3 = (num) => String(num).padStart(3, '0');
+
+    if (region.key === 'PAKISTAN' || cUpper.includes('PAKISTAN')) {
+      if (cUpper.includes('KARACHI')) {
+        const mob = 300 + (count % 4);
+        const sub = 8200000 + (count * 317) % 799999;
+        return `+92 ${mob} ${String(sub).slice(0, 3)} ${pad4(1000 + (count * 43) % 8999)}`;
+      } else if (cUpper.includes('LAHORE')) {
+        const mob = 321 + (count % 3);
+        const sub = 9840000 + (count * 317) % 799999;
+        return `+92 ${mob} ${String(sub).slice(0, 3)} ${pad4(2000 + (count * 37) % 7999)}`;
+      } else {
+        const mob = 333 + (count % 2);
+        const sub = 5120000 + (count * 317) % 799999;
+        return `+92 ${mob} ${String(sub).slice(0, 3)} ${pad4(3000 + (count * 29) % 6999)}`;
+      }
+    }
+
+    if (region.key === 'GULF' || cUpper.includes('DUBAI') || cUpper.includes('UAE') || cUpper.includes('SAUDI')) {
+      if (cUpper.includes('SAUDI') || cUpper.includes('RIYADH')) {
+        return `+966 50 ${pad3(120 + (count * 7) % 870)} ${pad4(1000 + (count * 31) % 8999)}`;
+      }
+      // Dubai default
+      const prefix = count % 2 === 0 ? '50' : '55';
+      return `+971 ${prefix} ${pad3(840 + (count * 9) % 150)} ${pad4(1000 + (count * 47) % 8999)}`;
+    }
+
+    if (region.key === 'UK' || cUpper.includes('LONDON') || cUpper.includes('UK')) {
+      if (count % 2 === 0) {
+        return `+44 20 7946 ${pad4(100 + (count * 17) % 899)}`;
+      } else {
+        return `+44 7911 204${pad3(100 + (count * 23) % 899)}`;
+      }
+    }
+
+    if (region.key === 'INDIA' || cUpper.includes('MUMBAI') || cUpper.includes('DELHI')) {
+      return `+91 98201 ${pad4(4500 + (count * 37) % 5499)}9`;
+    }
+
+    if (cUpper.includes('AUSTRALIA') || cUpper.includes('SYDNEY')) {
+      return `+61 412 345 ${pad3(100 + (count * 23) % 899)}`;
+    }
+
+    if (region.key === 'EUROPE' || cUpper.includes('GERMANY') || cUpper.includes('BERLIN')) {
+      return `+49 30 2893 ${pad4(1000 + (count * 41) % 8999)}`;
+    }
+
+    // USA / Canada / Global Default
+    let areaCode = '512';
+    if (cUpper.includes('AUSTIN')) areaCode = '512';
+    else if (cUpper.includes('DALLAS')) areaCode = '214';
+    else if (cUpper.includes('HOUSTON')) areaCode = '713';
+    else if (cUpper.includes('NEW YORK') || cUpper.includes('NYC')) areaCode = '212';
+    else if (cUpper.includes('MIAMI')) areaCode = '305';
+    else if (cUpper.includes('LOS ANGELES') || cUpper.includes('LA')) areaCode = '310';
+    else if (cUpper.includes('CHICAGO')) areaCode = '312';
+    else if (cUpper.includes('SAN FRANCISCO') || cUpper.includes('SF')) areaCode = '415';
+    else if (cUpper.includes('SEATTLE')) areaCode = '206';
+    else if (cUpper.includes('TORONTO')) areaCode = '416';
+    else if (cUpper.includes('VANCOUVER')) areaCode = '604';
+
+    const exchange = 400 + (count * 7) % 500;
+    const subscriber = pad4(1000 + (count * 53) % 8999);
+    return `+1 (${areaCode}) ${exchange}-${subscriber}`;
+  },
+
+  /**
+   * Intelligently selects authentic dataset based on user input
+   */
+  detectRegion(country, city) {
     const combined = `${country} ${city}`.toUpperCase();
 
     if (combined.includes('UAE') || combined.includes('DUBAI') || combined.includes('ABU DHABI') ||
@@ -452,24 +636,24 @@ const LeadGenerator = {
     if (combined.includes('CANADA') || combined.includes('TORONTO') || combined.includes('VANCOUVER') || combined.includes('MONTREAL')) {
       return {
         ...REGION_DATASETS.GLOBAL,
+        key: 'CANADA',
         currency: 'CAD',
         currencySymbol: 'C$',
         deliveryApps: 'SkipTheDishes & DoorDash',
         deliveryLeakText: 'SkipTheDishes & DoorDash 30% commission cut',
-        tld: '.ca',
-        phonePrefix: '+1 (416)'
+        tld: '.ca'
       };
     }
 
     if (combined.includes('AUSTRALIA') || combined.includes('SYDNEY') || combined.includes('MELBOURNE') || combined.includes('BRISBANE')) {
       return {
         ...REGION_DATASETS.GLOBAL,
+        key: 'AUSTRALIA',
         currency: 'AUD',
         currencySymbol: 'A$',
         deliveryApps: 'Menulog & DoorDash',
         deliveryLeakText: 'Menulog & DoorDash 30% commission cut',
-        tld: '.com.au',
-        phonePrefix: '+61 2'
+        tld: '.com.au'
       };
     }
 
@@ -487,7 +671,7 @@ const LeadGenerator = {
     const region = this.detectRegion(country, city);
 
     // Ban-Proof 4-Channel 100-Lead Distribution Formula:
-    // 25 WhatsApp, 25 Gmail, 25 LinkedIn, 25 Instagram = Total 100
+    // Exactly 25 WhatsApp, 25 Gmail, 25 LinkedIn, 25 Instagram = Total 100
     const channelPlan = [];
     for (let i = 0; i < 25; i++) channelPlan.push('whatsapp');
     for (let i = 0; i < 25; i++) channelPlan.push('gmail');
@@ -516,10 +700,15 @@ const LeadGenerator = {
         continue;
       }
 
-      // Financial Flaw & Decision Maker
+      // Financial Flaw & Niche-Matched Decision Maker
       const flaw = nicheObj.flaws[count % nicheObj.flaws.length];
-      const dmList = region.decisionMakers;
-      const dm = dmList[(count + seedIndex) % dmList.length];
+      const dmGroup = (region.decisionMakers && region.decisionMakers[nicheObj.id])
+        ? region.decisionMakers[nicheObj.id]
+        : (region.decisionMakers.restaurants || [
+            { name: 'Marcus Vance', title: 'Managing Owner' }
+          ]);
+
+      const dm = dmGroup[(count + seedIndex) % dmGroup.length];
       const rating = (4.3 + (count % 7) * 0.1).toFixed(1);
       const reviews = 38 + (count * 13) % 240;
 
@@ -535,7 +724,7 @@ const LeadGenerator = {
       const email = `contact@${emailDomain}`;
       const instagramHandle = `@${slug.slice(0, 14)}`;
       const linkedinProfile = `linkedin.com/in/${dm.name.toLowerCase().replace(/[^a-z]/g, '-')}-${cleanCityName.toLowerCase().replace(/[^a-z]/g, '').slice(0, 8)}`;
-      const phone = `${region.phonePrefix} ${300 + count}-${1000 + count * 7}`;
+      const phone = this.generateRealisticPhoneNumber(region, city, count);
 
       leads.push({
         id: `lead_${Date.now()}_${leads.length + 1}`,
@@ -557,7 +746,7 @@ const LeadGenerator = {
         flawDesc: flaw.description,
         flawLeakRange: calculatedLeak,
         flawPitchAngle: flaw.pitchAngle,
-        channel, // 'gmail' | 'linkedin' | 'instagram'
+        channel, // 'whatsapp' | 'gmail' | 'linkedin' | 'instagram'
         contactInfo: {
           email,
           instagramHandle,

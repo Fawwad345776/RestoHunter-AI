@@ -295,7 +295,7 @@ const App = {
       if (step >= 35 && step < 65) {
         if (progressText) progressText.textContent = `Diagnosing digital flaws & calculating DoorDash/commission leaks in ${city}...`;
       } else if (step >= 65 && step < 90) {
-        if (progressText) progressText.textContent = `Allocating 34 Gmail, 33 LinkedIn, 33 Instagram tailored pitches for ${country}...`;
+        if (progressText) progressText.textContent = `Allocating 25 WhatsApp, 25 Gmail, 25 LinkedIn, 25 Instagram tailored pitches for ${country}...`;
       }
 
       if (step >= 100) {
@@ -504,6 +504,13 @@ const App = {
     document.getElementById('modal-pitch-flaw-leak').textContent = lead.flawLeakRange;
     document.getElementById('modal-pitch-demo-link').textContent = lead.demoLink;
     document.getElementById('modal-pitch-demo-link').href = lead.demoLink;
+
+    const dmNameEl = document.getElementById('modal-pitch-dm-name');
+    const dmTitleEl = document.getElementById('modal-pitch-dm-title');
+    const dmPhoneEl = document.getElementById('modal-pitch-dm-phone');
+    if (dmNameEl) dmNameEl.textContent = lead.decisionMaker;
+    if (dmTitleEl) dmTitleEl.textContent = ` (${lead.decisionMakerTitle})`;
+    if (dmPhoneEl) dmPhoneEl.textContent = lead.contactInfo.phone;
 
     const subjectInput = document.getElementById('modal-pitch-subject');
     const subjectRow = document.getElementById('modal-pitch-subject-row');
