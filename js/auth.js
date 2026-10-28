@@ -86,6 +86,7 @@ const AuthSystem = {
   isAuthenticated: false,
   activeNiche: 'restaurant',
   cartItems: [],
+  orderConfirmed: false,
 
   init() {
     this.checkSession();
@@ -164,6 +165,7 @@ const AuthSystem = {
         const niche = btn.getAttribute('data-niche');
         this.activeNiche = niche;
         this.cartItems = [];
+        this.orderConfirmed = false;
         this.renderPrototypeScreen(niche);
       });
     }
@@ -182,6 +184,7 @@ const AuthSystem = {
     if (modal) {
       modal.classList.add('open');
       this.cartItems = [];
+      this.orderConfirmed = false;
       this.renderPrototypeScreen(this.activeNiche);
     }
   },
@@ -212,6 +215,42 @@ const AuthSystem = {
     // Calculate subtotal
     const subtotal = this.cartItems.reduce((acc, item) => acc + item.price, 0);
     const commissionAvoided = (subtotal * 0.30).toFixed(2);
+
+    // If order was simulated and confirmed
+    if (this.orderConfirmed) {
+      const waMsg = encodeURIComponent(
+        `Hi Fawwad! I tested your 0% commission direct ordering prototype for ${data.brand} and saved $${commissionAvoided} in third-party fees. I want to deploy this setup for my business in 48 hours!`
+      );
+      screen.innerHTML = `
+        <div class="phone-status-bar">
+          <span>9:41</span>
+          <span>5G 📶 100% 🔋</span>
+        </div>
+        <div class="phone-order-confirmed">
+          <div style="font-size: 2.6rem; margin: 12px 0 4px 0; text-align: center;">🎉</div>
+          <h3 style="color: #34d399; margin: 0 0 6px 0; font-size: 1.05rem; text-align: center; font-weight: 800;">TEST ORDER CONFIRMED!</h3>
+          <p style="font-size: 0.75rem; color: #cbd5e1; text-align: center; margin-bottom: 12px; line-height: 1.35;">
+            Total: <strong>$${subtotal.toFixed(2)}</strong><br>
+            <span style="color: #34d399; font-weight: 700;">Commission Saved: $${commissionAvoided} (0% App Fee)</span>
+          </p>
+
+          <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 10px; padding: 10px; margin-bottom: 14px; font-size: 0.70rem; color: #a7f3d0; line-height: 1.45;">
+            ✅ 100% payout straight to your bank account.<br>
+            ✅ Direct kitchen ticket printed instantly.<br>
+            ✅ Customer saved directly to your VIP SMS list.
+          </div>
+
+          <a href="https://api.whatsapp.com/send?phone=923376568003&text=${waMsg}" target="_blank" class="btn-checkout-sim" style="background: linear-gradient(135deg, #10b981, #059669); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 800; font-size: 0.82rem; margin-bottom: 10px; height: 42px; border-radius: 10px; box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);">
+            <span>📲</span> Deploy For My Business (WhatsApp Fawwad)
+          </a>
+
+          <button class="btn-add-item" style="width: 100%; border-radius: 8px; padding: 8px; background: rgba(255,255,255,0.08); color: #94a3b8; font-size: 0.72rem; cursor: pointer;" onclick="AuthSystem.resetOrder()">
+            🔄 Test Another Order Demo
+          </button>
+        </div>
+      `;
+      return;
+    }
 
     let itemsHtml = data.items.map((item, idx) => `
       <div class="phone-item-card">
@@ -283,15 +322,14 @@ const AuthSystem = {
       alert('Please click "+ Add" on any menu or service item above to test the 1-tap checkout!');
       return;
     }
+    this.orderConfirmed = true;
+    this.renderPrototypeScreen(this.activeNiche);
+  },
 
-    const commissionSaved = (subtotal * 0.30).toFixed(2);
-    alert(
-      `🎉 1-TAP DIRECT ORDER CONFIRMED!\n\n` +
-      `Total: $${subtotal.toFixed(2)}\n` +
-      `Third-Party App Cut: $0.00\n` +
-      `Pure Profit Saved on This Order: $${commissionSaved}\n\n` +
-      `Order receipt dispatched directly to kitchen with zero commission deducted.`
-    );
+  resetOrder() {
+    this.orderConfirmed = false;
+    this.cartItems = [];
+    this.renderPrototypeScreen(this.activeNiche);
   },
 
   handleLogin() {
