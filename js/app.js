@@ -63,8 +63,8 @@ const App = {
         chip.classList.add('active');
         const cityInput = document.getElementById('target-city-input');
         if (cityInput) cityInput.value = chip.dataset.city;
-        const countrySelect = document.getElementById('target-country-select');
-        if (countrySelect && chip.dataset.country) countrySelect.value = chip.dataset.country;
+        const countryInput = document.getElementById('target-country-input') || document.getElementById('target-country-select');
+        if (countryInput && chip.dataset.country) countryInput.value = chip.dataset.country;
       });
     });
 
@@ -170,21 +170,28 @@ const App = {
     }
   },
 
+  getCountryValue() {
+    const input = document.getElementById('target-country-input');
+    const select = document.getElementById('target-country-select');
+    if (input && input.value.trim()) return input.value.trim();
+    if (select && select.value.trim()) return select.value.trim();
+    return 'Worldwide (All Over World 🌐)';
+  },
+
   handleStartHunt() {
     const cityInput = document.getElementById('target-city-input');
-    const countrySelect = document.getElementById('target-country-select');
     const nicheSelect = document.getElementById('target-niche-select');
     const banner = document.getElementById('hunt-status-banner');
     const progressBar = document.getElementById('scan-progress-bar-fill');
     const progressText = document.getElementById('hunt-status-text');
 
     const city = cityInput && cityInput.value.trim() ? cityInput.value.trim() : 'Austin, Texas';
-    const country = countrySelect ? countrySelect.value : 'USA';
+    const country = this.getCountryValue();
     const niche = nicheSelect ? nicheSelect.value : 'all';
 
     if (banner) banner.classList.add('active');
     if (progressBar) progressBar.style.width = '10%';
-    if (progressText) progressText.textContent = `Scanning Google Local Pack in ${city} (4.0+ Stars, 30+ Reviews)...`;
+    if (progressText) progressText.textContent = `Scanning Google Local Pack in ${city} [${country}] (4.0+ Stars, 30+ Reviews)...`;
 
     let step = 10;
     const interval = setInterval(() => {
@@ -192,9 +199,9 @@ const App = {
       if (progressBar) progressBar.style.width = `${Math.min(step, 95)}%`;
 
       if (step >= 35 && step < 65) {
-        if (progressText) progressText.textContent = `Diagnosing digital flaws & calculating DoorDash/commission leaks...`;
+        if (progressText) progressText.textContent = `Diagnosing digital flaws & calculating DoorDash/commission leaks in ${city}...`;
       } else if (step >= 65 && step < 90) {
-        if (progressText) progressText.textContent = `Allocating 34 Gmail, 33 LinkedIn, 33 Instagram tailored pitches...`;
+        if (progressText) progressText.textContent = `Allocating 34 Gmail, 33 LinkedIn, 33 Instagram tailored pitches for ${country}...`;
       }
 
       if (step >= 100) {
@@ -207,7 +214,7 @@ const App = {
           StorageService.saveLeads(this.leads);
           this.applyFilter('all');
           this.updateMetrics();
-          this.showToast(`100 Verified Leads Loaded for ${city}!`, 'success');
+          this.showToast(`100 Verified Leads Loaded for ${city} (${country})!`, 'success');
           if (banner) banner.classList.remove('active');
         }, 600);
       }
@@ -216,10 +223,9 @@ const App = {
 
   handleLoadNext100() {
     const cityInput = document.getElementById('target-city-input');
-    const countrySelect = document.getElementById('target-country-select');
     const nicheSelect = document.getElementById('target-niche-select');
     const city = cityInput && cityInput.value.trim() ? cityInput.value.trim() : 'Austin, Texas';
-    const country = countrySelect ? countrySelect.value : 'USA';
+    const country = this.getCountryValue();
     const niche = nicheSelect ? nicheSelect.value : 'all';
 
     const next100 = LeadGenerator.generate100Leads(city, country, niche);

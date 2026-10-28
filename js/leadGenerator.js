@@ -228,12 +228,79 @@ const LeadGenerator = {
       const calculatedLeak = flaw.range;
       const channel = channelPlan[leads.length];
 
-      // Realistic contact handles
+      // Realistic contact handles for any country worldwide
       const slug = businessName.toLowerCase().replace(/[^a-z0-9]/g, '');
-      const emailDomain = slug.slice(0, 15) + (country === 'UK' ? '.co.uk' : country === 'Canada' ? '.ca' : country === 'Australia' ? '.com.au' : '.com');
+      let tld = '.com';
+      let phonePrefix = '+1 (512)';
+      const cUpper = (country || '').toUpperCase();
+
+      if (cUpper.includes('UK') || cUpper.includes('BRITAIN') || cUpper.includes('ENGLAND') || cUpper.includes('LONDON')) {
+        tld = '.co.uk';
+        phonePrefix = '+44 20';
+      } else if (cUpper.includes('CANADA') || cUpper.includes('TORONTO') || cUpper.includes('VANCOUVER')) {
+        tld = '.ca';
+        phonePrefix = '+1 (416)';
+      } else if (cUpper.includes('AUSTRALIA') || cUpper.includes('SYDNEY') || cUpper.includes('MELBOURNE')) {
+        tld = '.com.au';
+        phonePrefix = '+61 2';
+      } else if (cUpper.includes('UAE') || cUpper.includes('DUBAI') || cUpper.includes('EMIRATES') || cUpper.includes('ABU DHABI')) {
+        tld = '.ae';
+        phonePrefix = '+971 4';
+      } else if (cUpper.includes('SAUDI') || cUpper.includes('RIYADH') || cUpper.includes('JEDDAH')) {
+        tld = '.sa';
+        phonePrefix = '+966 11';
+      } else if (cUpper.includes('GERMANY') || cUpper.includes('BERLIN') || cUpper.includes('MUNICH') || cUpper.includes('DEUTSCHLAND')) {
+        tld = '.de';
+        phonePrefix = '+49 30';
+      } else if (cUpper.includes('FRANCE') || cUpper.includes('PARIS')) {
+        tld = '.fr';
+        phonePrefix = '+33 1';
+      } else if (cUpper.includes('NETHERLANDS') || cUpper.includes('AMSTERDAM') || cUpper.includes('HOLLAND')) {
+        tld = '.nl';
+        phonePrefix = '+31 20';
+      } else if (cUpper.includes('SINGAPORE')) {
+        tld = '.sg';
+        phonePrefix = '+65 6';
+      } else if (cUpper.includes('PAKISTAN') || cUpper.includes('LAHORE') || cUpper.includes('KARACHI') || cUpper.includes('ISLAMABAD')) {
+        tld = '.com.pk';
+        phonePrefix = '+92 42';
+      } else if (cUpper.includes('INDIA') || cUpper.includes('MUMBAI') || cUpper.includes('DELHI') || cUpper.includes('BANGALORE')) {
+        tld = '.in';
+        phonePrefix = '+91 22';
+      } else if (cUpper.includes('NEW ZEALAND') || cUpper.includes('AUCKLAND')) {
+        tld = '.co.nz';
+        phonePrefix = '+64 9';
+      } else if (cUpper.includes('IRELAND') || cUpper.includes('DUBLIN')) {
+        tld = '.ie';
+        phonePrefix = '+353 1';
+      } else if (cUpper.includes('SPAIN') || cUpper.includes('MADRID') || cUpper.includes('BARCELONA')) {
+        tld = '.es';
+        phonePrefix = '+34 91';
+      } else if (cUpper.includes('ITALY') || cUpper.includes('ROME') || cUpper.includes('MILAN')) {
+        tld = '.it';
+        phonePrefix = '+39 06';
+      } else if (cUpper.includes('JAPAN') || cUpper.includes('TOKYO')) {
+        tld = '.jp';
+        phonePrefix = '+81 3';
+      } else if (cUpper.includes('BRAZIL') || cUpper.includes('SAO PAULO')) {
+        tld = '.com.br';
+        phonePrefix = '+55 11';
+      } else if (cUpper.includes('MEXICO')) {
+        tld = '.com.mx';
+        phonePrefix = '+52 55';
+      } else if (cUpper.includes('SOUTH AFRICA') || cUpper.includes('JOHANNESBURG')) {
+        tld = '.co.za';
+        phonePrefix = '+27 11';
+      } else {
+        tld = '.com';
+        phonePrefix = '+1 (512)';
+      }
+
+      const emailDomain = slug.slice(0, 15) + tld;
       const email = `contact@${emailDomain}`;
       const instagramHandle = `@${slug.slice(0, 14)}`;
       const linkedinProfile = `linkedin.com/in/${dm.name.toLowerCase().replace(/\s+/g, '-')}-${city.toLowerCase().replace(/[^a-z]/g, '').slice(0, 6)}`;
+      const phone = `${phonePrefix} ${300 + count}-${1000 + count * 7}`;
 
       leads.push({
         id: `lead_${Date.now()}_${leads.length + 1}`,
@@ -257,7 +324,7 @@ const LeadGenerator = {
           email,
           instagramHandle,
           linkedinProfile,
-          phone: `+1 (512) ${300 + count}-${1000 + count * 7}`
+          phone
         },
         status: 'ready', // 'ready', 'queued', 'dispatched', 'replied', 'followup_due'
         createdAt: new Date().toISOString(),

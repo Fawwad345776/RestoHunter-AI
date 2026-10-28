@@ -194,17 +194,51 @@
     <!-- HUNT CONTROL CONSOLE & CITY INPUT -->
     <section class="hunt-console-panel glass-panel">
       <div class="hunt-inputs-grid">
-        <!-- Target Country -->
+        <!-- Target Market (Editable Input + Worldwide Dropdown Datalist) -->
         <div class="input-group">
-          <label class="input-label" for="target-country-select">
-            <span>🌍</span> Target Market
+          <label class="input-label" for="target-country-input">
+            <span>🌍</span> Target Market (Worldwide / Type Any Place)
           </label>
-          <select id="target-country-select" class="custom-select">
-            <option value="USA" selected>USA 🇺🇸</option>
-            <option value="UK">United Kingdom 🇬🇧</option>
-            <option value="Canada">Canada 🇨🇦</option>
-            <option value="Australia">Australia 🇦🇺</option>
-          </select>
+          <div style="position: relative;">
+            <input type="text" id="target-country-input" list="worldwide-countries" class="custom-input" placeholder="Type or select any market (e.g. USA, Dubai, UK, Germany...)" value="Worldwide (All Over World 🌐)" autocomplete="off">
+            <datalist id="worldwide-countries">
+              <option value="Worldwide (All Over World 🌐)">Worldwide / Global Markets</option>
+              <option value="USA 🇺🇸">United States</option>
+              <option value="United Kingdom 🇬🇧">United Kingdom</option>
+              <option value="Canada 🇨🇦">Canada</option>
+              <option value="Australia 🇦🇺">Australia</option>
+              <option value="United Arab Emirates (Dubai) 🇦🇪">UAE / Dubai</option>
+              <option value="Saudi Arabia 🇸🇦">Saudi Arabia</option>
+              <option value="Germany 🇩🇪">Germany</option>
+              <option value="France 🇫🇷">France</option>
+              <option value="Netherlands 🇳🇱">Netherlands</option>
+              <option value="Ireland 🇮🇪">Ireland</option>
+              <option value="Switzerland 🇨🇭">Switzerland</option>
+              <option value="Singapore 🇸🇬">Singapore</option>
+              <option value="New Zealand 🇳🇿">New Zealand</option>
+              <option value="Spain 🇪🇸">Spain</option>
+              <option value="Italy 🇮🇹">Italy</option>
+              <option value="Sweden 🇸🇪">Sweden</option>
+              <option value="Norway 🇳🇴">Norway</option>
+              <option value="Denmark 🇩🇰">Denmark</option>
+              <option value="Belgium 🇧🇪">Belgium</option>
+              <option value="Austria 🇦🇹">Austria</option>
+              <option value="Qatar 🇶🇦">Qatar</option>
+              <option value="Kuwait 🇰🇼">Kuwait</option>
+              <option value="Bahrain 🇧🇭">Bahrain</option>
+              <option value="Oman 🇴🇲">Oman</option>
+              <option value="Pakistan 🇵🇰">Pakistan</option>
+              <option value="India 🇮🇳">India</option>
+              <option value="Turkey 🇹🇷">Turkey</option>
+              <option value="Japan 🇯🇵">Japan</option>
+              <option value="South Korea 🇰🇷">South Korea</option>
+              <option value="Malaysia 🇲🇾">Malaysia</option>
+              <option value="South Africa 🇿🇦">South Africa</option>
+              <option value="Brazil 🇧🇷">Brazil</option>
+              <option value="Mexico 🇲🇽">Mexico</option>
+              <option value="Argentina 🇦🇷">Argentina</option>
+            </datalist>
+          </div>
         </div>
 
         <!-- Target City -->
@@ -212,7 +246,7 @@
           <label class="input-label" for="target-city-input">
             <span>🏙️</span> Target City / Metro
           </label>
-          <input type="text" id="target-city-input" class="custom-input" placeholder="e.g. Austin, Texas" value="Austin, Texas">
+          <input type="text" id="target-city-input" class="custom-input" placeholder="e.g. Austin, Dubai, London, Toronto..." value="Austin, Texas">
         </div>
 
         <!-- Multi-Niche Selector -->
@@ -239,14 +273,16 @@
       <!-- Quick City Chips -->
       <div class="quick-cities-bar">
         <span class="quick-cities-label">Popular Markets:</span>
-        <button class="city-chip active" data-city="Austin, Texas" data-country="USA">Austin, TX</button>
-        <button class="city-chip" data-city="Miami, Florida" data-country="USA">Miami, FL</button>
-        <button class="city-chip" data-city="London, UK" data-country="UK">London, UK</button>
-        <button class="city-chip" data-city="Toronto, Ontario" data-country="Canada">Toronto, CA</button>
-        <button class="city-chip" data-city="Sydney, NSW" data-country="Australia">Sydney, AU</button>
-        <button class="city-chip" data-city="New York, NY" data-country="USA">New York, NY</button>
-        <button class="city-chip" data-city="Dallas, Texas" data-country="USA">Dallas, TX</button>
-        <button class="city-chip" data-city="Los Angeles, CA" data-country="USA">Los Angeles, CA</button>
+        <button class="city-chip" data-city="Austin, Texas" data-country="USA 🇺🇸">Austin, TX 🇺🇸</button>
+        <button class="city-chip" data-city="Miami, Florida" data-country="USA 🇺🇸">Miami, FL 🇺🇸</button>
+        <button class="city-chip" data-city="London, UK" data-country="United Kingdom 🇬🇧">London 🇬🇧</button>
+        <button class="city-chip" data-city="Dubai, UAE" data-country="United Arab Emirates (Dubai) 🇦🇪">Dubai 🇦🇪</button>
+        <button class="city-chip" data-city="Toronto, Ontario" data-country="Canada 🇨🇦">Toronto 🇨🇦</button>
+        <button class="city-chip" data-city="Sydney, NSW" data-country="Australia 🇦🇺">Sydney 🇦🇺</button>
+        <button class="city-chip" data-city="Riyadh, Saudi Arabia" data-country="Saudi Arabia 🇸🇦">Riyadh 🇸🇦</button>
+        <button class="city-chip" data-city="Berlin, Germany" data-country="Germany 🇩🇪">Berlin 🇩🇪</button>
+        <button class="city-chip" data-city="Singapore" data-country="Singapore 🇸🇬">Singapore 🇸🇬</button>
+        <button class="city-chip" data-city="New York, NY" data-country="USA 🇺🇸">New York 🇺🇸</button>
       </div>
 
       <!-- Live Scan Progress Banner -->
