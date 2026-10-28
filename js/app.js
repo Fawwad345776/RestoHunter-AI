@@ -507,10 +507,20 @@ const App = {
 
     const dmNameEl = document.getElementById('modal-pitch-dm-name');
     const dmTitleEl = document.getElementById('modal-pitch-dm-title');
-    const dmPhoneEl = document.getElementById('modal-pitch-dm-phone');
+    const dmPhoneInput = document.getElementById('modal-pitch-dm-phone-input');
     if (dmNameEl) dmNameEl.textContent = lead.decisionMaker;
     if (dmTitleEl) dmTitleEl.textContent = ` (${lead.decisionMakerTitle})`;
-    if (dmPhoneEl) dmPhoneEl.textContent = lead.contactInfo.phone;
+    if (dmPhoneInput) dmPhoneInput.value = lead.contactInfo.phone;
+
+    const testWaBtn = document.getElementById('btn-set-my-wa-test');
+    if (testWaBtn) {
+      testWaBtn.onclick = () => {
+        if (dmPhoneInput) {
+          dmPhoneInput.value = '+923376568003';
+          this.showToast('Number set to +923376568003 for personal testing!', 'info');
+        }
+      };
+    }
 
     const subjectInput = document.getElementById('modal-pitch-subject');
     const subjectRow = document.getElementById('modal-pitch-subject-row');
@@ -583,7 +593,8 @@ const App = {
     const body = customBody || pitch.body;
 
     if (activeChannel === 'whatsapp') {
-      const rawPhone = lead.contactInfo.phone || '+923376568003';
+      const phoneInput = document.getElementById('modal-pitch-dm-phone-input');
+      const rawPhone = (phoneInput && phoneInput.value && phoneInput.value.trim()) ? phoneInput.value.trim() : (lead.contactInfo.phone || '+923376568003');
       const cleanPhone = rawPhone.replace(/[^0-9]/g, '');
       const waText = encodeURIComponent(body);
       const waUrl = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${waText}`;

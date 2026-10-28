@@ -467,17 +467,23 @@
           </div>
         </div>
 
-        <!-- Verified Lead Decision Maker & Phone Strip -->
-        <div class="pitch-lead-contact-strip" style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 8px 12px; margin: 10px 0; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+        <!-- Verified Lead Decision Maker & Phone Strip (Editable Phone for WhatsApp) -->
+        <div class="pitch-lead-contact-strip" style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 10px 14px; margin: 10px 0; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
           <div>
             <span style="color: var(--text-muted);">👤 Decision Maker: </span>
             <strong id="modal-pitch-dm-name" style="color: var(--text-main);">Marcus Vance</strong>
             <span id="modal-pitch-dm-title" style="color: var(--text-secondary); font-size: 0.74rem;"> (Managing Partner & Co-Owner)</span>
           </div>
-          <div>
+          <div style="display: flex; align-items: center; gap: 8px;">
             <span style="color: var(--text-muted);">📞 Phone / WhatsApp: </span>
-            <strong id="modal-pitch-dm-phone" style="color: #4ade80; font-family: 'JetBrains Mono', monospace;">+1 (512) 400-1000</strong>
+            <input type="text" id="modal-pitch-dm-phone-input" style="height: 30px; font-size: 0.82rem; width: 175px; color: #4ade80; background: rgba(0,0,0,0.5); border: 1px solid rgba(74,222,128,0.4); padding: 3px 8px; border-radius: 6px; font-family: 'JetBrains Mono', monospace;" title="Enter or edit phone number before sending">
+            <button type="button" id="btn-set-my-wa-test" style="background: rgba(74,222,128,0.15); border: 1px solid rgba(74,222,128,0.3); color: #4ade80; font-size: 0.7rem; padding: 4px 8px; border-radius: 4px; cursor: pointer;" title="Set to +923376568003 to test on your own WhatsApp">
+              🧪 Test on My WA
+            </button>
           </div>
+        </div>
+        <div style="font-size: 0.72rem; color: #94a3b8; margin: -4px 0 10px 4px; display: flex; align-items: center; gap: 6px;">
+          <span>💡</span> <span>Tip: Pakistan (+92) & UAE (+971) are direct mobile WhatsApp. You can also edit the number above to send to any real contact.</span>
         </div>
 
         <!-- Subject row (for Gmail) -->
@@ -490,11 +496,6 @@
           <label class="input-label" for="modal-pitch-textarea">Pitch Body</label>
           <textarea id="modal-pitch-textarea" class="pitch-textarea"></textarea>
           <div id="modal-pitch-counter" class="char-counter">0 characters</div>
-        </div>
-
-        <div style="background: rgba(255, 255, 255, 0.03); padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); font-size: 0.82rem; display: flex; align-items: center; justify-content: space-between;">
-          <span style="color: var(--text-secondary);">Interactive Demo Preview:</span>
-          <a id="modal-pitch-demo-link" href="https://fawwad345776.github.io/RestoHunter-AI/?v=3.1" target="_blank" style="color: var(--cyan-light); text-decoration: underline; font-family: 'JetBrains Mono', monospace;">https://fawwad345776.github.io/RestoHunter-AI/?v=3.1</a>
         </div>
       </div>
       <div class="modal-footer">
