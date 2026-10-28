@@ -229,8 +229,20 @@
 /* Channel Cards Grid in Reply Center (3 Channels: Gmail, LinkedIn, Instagram) */
 .reply-channels-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+}
+
+@media (max-width: 1100px) {
+  .reply-channels-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .reply-channels-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .reply-channel-card {
@@ -257,6 +269,9 @@
   opacity: 0.8;
 }
 
+.reply-channel-card.channel-whatsapp::before {
+  background: linear-gradient(90deg, #25d366, #128c7e);
+}
 .reply-channel-card.channel-gmail::before {
   background: linear-gradient(90deg, #ea4335, #ff6b6b);
 }
@@ -748,6 +763,12 @@
   font-weight: 600;
 }
 
+.badge-channel.whatsapp {
+  background: rgba(37, 211, 102, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(37, 211, 102, 0.4);
+}
+
 .badge-channel.gmail {
   background: rgba(234, 67, 53, 0.14);
   color: #f87171;
@@ -764,6 +785,20 @@
   background: rgba(225, 48, 108, 0.15);
   color: #f472b6;
   border: 1px solid rgba(225, 48, 108, 0.35);
+}
+
+.btn-table-action.btn-table-wa {
+  background: rgba(37, 211, 102, 0.16);
+  border: 1px solid rgba(37, 211, 102, 0.45);
+  color: #4ade80;
+  font-weight: 700;
+}
+
+.btn-table-action.btn-table-wa:hover {
+  background: #25d366;
+  color: #000;
+  box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);
+  transform: translateY(-1px);
 }
 
 /* Status Badges */

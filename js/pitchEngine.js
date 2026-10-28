@@ -1,5 +1,5 @@
 /**
- * RestoHunter AI - Pitch Generation Engine (LinkedIn <300 chars, Instagram Story Reply, Gmail 4-sentence body)
+ * RestoHunter AI - Pitch Generation Engine (LinkedIn <300 chars, Instagram Story Reply, Gmail 4-sentence body, WhatsApp Direct Outreach)
  * Dynamically tailored with authentic local delivery apps, native currencies, and localized financial leaks.
  * Live Client Preview URL: https://fawwad345776.github.io/RestoHunter-AI/?v=3.1
  */
@@ -14,13 +14,44 @@ const PitchEngine = {
     const firstName = lead.decisionMaker ? lead.decisionMaker.split(' ')[0] : 'there';
     const bizShort = lead.businessName.split('(')[0].trim();
 
-    if (lead.channel === 'linkedin') {
+    if (lead.channel === 'whatsapp') {
+      return this.generateWhatsAppPitch(lead, firstName, bizShort);
+    } else if (lead.channel === 'linkedin') {
       return this.generateLinkedInPitch(lead, firstName, bizShort);
     } else if (lead.channel === 'instagram') {
       return this.generateInstagramPitch(lead, firstName, bizShort);
     } else {
       return this.generateGmailPitch(lead, firstName, bizShort);
     }
+  },
+
+  /**
+   * WhatsApp: Direct conversational format with authentic formatting, diagnosed flaw, and live preview URL
+   */
+  generateWhatsAppPitch(lead, firstName, bizShort) {
+    const deliveryApp = lead.regionDeliveryApps || 'DoorDash/UberEats';
+    const previewUrl = this.PREVIEW_URL;
+    let text = '';
+
+    if (lead.niche === 'restaurants') {
+      text = `Hi ${firstName}! Hope you're having a great week at *${bizShort}* 🍽️\n\nQuick heads up: noticed your mobile website currently opens a pinch-to-zoom PDF menu and directs delivery customers to ${deliveryApp}.\n\nBased on restaurants in ${lead.city.split(',')[0]}, that 30% commission cut usually costs around *${lead.flawLeakRange}* in lost margin every month.\n\nI built a 1-tap direct mobile ordering concept for you with *0% commission* where you keep 100% of your ticket revenue:\n👉 ${previewUrl}\n\nWould you be open to taking a quick 2-minute look?`;
+    } else if (lead.niche === 'dental_medical') {
+      text = `Hi ${firstName}! Hope all is well at *${bizShort}* 🦷\n\nQuick observation regarding patient intake: noticed after 7 PM emergency patients have no online booking calendar, leaking an estimated *${lead.flawLeakRange}* in missed appointments.\n\nI put together a clean 24/7 automated mobile booking prototype specifically for ${bizShort}.\n\nLive Prototype Preview:\n👉 ${previewUrl}\n\nCan I share a 45-second screen recording of how it works?`;
+    } else if (lead.niche === 'salons_spas') {
+      text = `Hey ${firstName}! Love the work your team is doing at *${bizShort}* ✨\n\nSaw that appointments are still handled by phone or DM, which in our audit data usually risks ~*${lead.flawLeakRange}* in empty chair no-shows every month.\n\nWe built an instant mobile booking widget with automated 2-way SMS reminders designed to drop no-shows to near zero:\n👉 ${previewUrl}\n\nMind if I send a quick 30-second preview?`;
+    } else if (lead.niche === 'home_services') {
+      text = `Hi ${firstName}! Great reviews on *${bizShort}* in ${lead.city.split(',')[0]} 🔨\n\nNoticed your mobile website currently lacks a 60-second emergency quote calculator. When homeowners have an emergency, 70% bounce without that, leaking ~*${lead.flawLeakRange}* in top-tier jobs.\n\nI designed a high-converting instant estimate flow for ${bizShort}:\n👉 ${previewUrl}\n\nOpen to checking out a quick walkthrough?`;
+    } else {
+      text = `Hi ${firstName}! Incredible property at *${bizShort}* 🌟\n\nNoticed your mobile reservation button redirects guests directly to OTAs where you give away 18-25% in commissions (*${lead.flawLeakRange}*).\n\nWe mocked up a direct commission-free reservation engine with VIP perks for ${bizShort}:\n👉 ${previewUrl}\n\nWould you be open to seeing a 45-second preview?`;
+    }
+
+    return {
+      channel: 'whatsapp',
+      subject: `WhatsApp Direct Outreach for ${lead.decisionMaker}`,
+      body: text,
+      charCount: text.length,
+      limitNote: 'WhatsApp Direct Outreach (Direct to owner mobile, high conversion)'
+    };
   },
 
   /**
@@ -45,7 +76,6 @@ const PitchEngine = {
 
     // Strict safety cap to ensure < 300 characters
     if (text.length > 298) {
-      // If needed, preserve preview link at end
       const maxLeadText = 295 - previewUrl.length - 12;
       text = text.substring(0, maxLeadText) + `... Preview: ${previewUrl}`;
     }
@@ -131,7 +161,9 @@ const PitchEngine = {
     const bizShort = lead.businessName.split('(')[0].trim();
     const previewUrl = this.PREVIEW_URL;
 
-    if (lead.channel === 'linkedin') {
+    if (lead.channel === 'whatsapp') {
+      return `Hi ${firstName}! Quick bump on my WhatsApp note regarding *${bizShort}* and the *${lead.flawLeakRange}* leak. Here is that live interactive preview link: ${previewUrl} - Let me know if you want to walk through it! 🙌`;
+    } else if (lead.channel === 'linkedin') {
       return `Hey ${firstName}, quick follow-up on my note regarding ${bizShort}'s mobile flow and the ${lead.flawLeakRange} leak. Here is the 45s live preview: ${previewUrl} - Would you like me to walk you through it?`;
     } else if (lead.channel === 'instagram') {
       return `Hey guys! Just wanted to make sure you got the interactive preview link for ${bizShort} before we wrap up this week's audits: ${previewUrl} - Let me know your thoughts! 🙌`;

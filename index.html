@@ -144,8 +144,29 @@
         </div>
       </div>
 
-      <!-- 3 Channels Grid (Facebook cancelled as per instruction) -->
+      <!-- 4 Channels Grid: WhatsApp, Gmail, LinkedIn, Instagram -->
       <div class="reply-channels-grid">
+        <!-- WhatsApp Direct -->
+        <div class="reply-channel-card channel-whatsapp" data-channel="whatsapp">
+          <div class="card-top-row">
+            <div class="channel-name-badge">
+              <span>📲</span>
+              <span>WhatsApp Direct</span>
+            </div>
+            <span id="whatsapp-unread-badge" class="badge-unread-red" style="background: rgba(37, 211, 102, 0.2); color: #4ade80; border-color: rgba(37, 211, 102, 0.4);">🟢 6 NEW</span>
+          </div>
+          <div class="card-stats-row">
+            <span class="stat-total">Total Pitches / Direct Replies</span>
+            <span id="whatsapp-total-count" class="stat-number">25</span>
+          </div>
+          <div class="card-action-row">
+            <a href="https://web.whatsapp.com" target="_blank" class="open-inbox-link" onclick="event.stopPropagation()">
+              Open WhatsApp Web ↗
+            </a>
+            <span class="filter-tab-label">Click card to filter table</span>
+          </div>
+        </div>
+
         <!-- Gmail -->
         <div class="reply-channel-card channel-gmail" data-channel="gmail">
           <div class="card-top-row">
@@ -370,9 +391,10 @@
       <div class="leads-section-header">
         <div class="channel-tabs-group">
           <button class="channel-tab-btn active" data-filter="all">All Leads (100)</button>
-          <button class="channel-tab-btn" data-filter="gmail">📧 Gmail (34)</button>
-          <button class="channel-tab-btn" data-filter="linkedin">👔 LinkedIn (33)</button>
-          <button class="channel-tab-btn" data-filter="instagram">📸 Instagram (33)</button>
+          <button class="channel-tab-btn" data-filter="whatsapp">📲 WhatsApp (25)</button>
+          <button class="channel-tab-btn" data-filter="gmail">📧 Gmail (25)</button>
+          <button class="channel-tab-btn" data-filter="linkedin">👔 LinkedIn (25)</button>
+          <button class="channel-tab-btn" data-filter="instagram">📸 Instagram (25)</button>
           <button class="channel-tab-btn" data-filter="replied">🔴 With Replies</button>
           <button class="channel-tab-btn" data-filter="followup">⏰ Day-3 Due</button>
         </div>
@@ -484,8 +506,11 @@
       </div>
       <div class="modal-footer">
         <button id="modal-btn-copy" class="btn-secondary">📋 Copy Pitch</button>
-        <button id="modal-btn-test-wa" class="btn-secondary" style="color: #25d366;">📲 Test WhatsApp Alert</button>
-        <button id="modal-btn-bhejdo" class="btn-primary">🚀 Bhej Do (Send)</button>
+        <button id="modal-btn-send-wa" class="btn-primary" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);">
+          <span>📲</span> Bhej Do (WhatsApp)
+        </button>
+        <button id="modal-btn-test-wa" class="btn-secondary" style="color: #25d366;">📲 Test WA Alert</button>
+        <button id="modal-btn-bhejdo" class="btn-primary">🚀 Bhej Do (Channel)</button>
       </div>
     </div>
   </div>

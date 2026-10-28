@@ -1,8 +1,17 @@
 /**
  * RestoHunter AI - Live Reply Center & Real-Time Inbox Coordinator
+ * Channels: WhatsApp Direct, Gmail, LinkedIn, Instagram
  */
 
 const SAMPLE_CLIENT_REPLIES = [
+  {
+    platform: 'WhatsApp',
+    channelKey: 'whatsapp',
+    businessName: 'Copper Pot Bistro',
+    city: 'London',
+    clientMessage: "Hi Fawwad, saw your WhatsApp note! Does this 0% commission direct menu work on both iPhones and Androids without downloading an app?",
+    aiSuggestedReply: "Hi Oliver! Yes, 100% works on any mobile browser instantly. Diners don't need to download anything. Ready to preview the London setup?"
+  },
   {
     platform: 'LinkedIn',
     channelKey: 'linkedin',
@@ -18,6 +27,14 @@ const SAMPLE_CLIENT_REPLIES = [
     city: 'Austin',
     clientMessage: "We've been getting killed by DoorDash fees. Does this integrate with our current Clover POS?",
     aiSuggestedReply: "Hi Chef Marcus! Yes, 100% integrates directly with Clover & Toast. You save roughly $3,200/mo in commissions right away. Mind if I send the 45s setup video?"
+  },
+  {
+    platform: 'WhatsApp',
+    channelKey: 'whatsapp',
+    businessName: 'Beacon Physical Therapy',
+    city: 'Sydney',
+    clientMessage: "Our front desk is overwhelmed with phone bookings. Can this patient calendar sync with Cliniko?",
+    aiSuggestedReply: "Hi Sarah! Yes, it integrates directly with Cliniko & Google Calendar. Patients can book in 30 seconds 24/7. Mind if I send the 1-min screen recording?"
   },
   {
     platform: 'Instagram',
@@ -65,6 +82,7 @@ const ReplyCenter = {
   renderStats() {
     const replies = this.getRepliesData();
     const stats = {
+      whatsapp: { total: 0, unread: 0 },
       gmail: { total: 0, unread: 0 },
       linkedin: { total: 0, unread: 0 },
       instagram: { total: 0, unread: 0 }
@@ -79,13 +97,16 @@ const ReplyCenter = {
     });
 
     // Provide lively defaults if fresh
-    if (stats.gmail.total === 0) {
-      stats.gmail = { total: 28, unread: 7 };
-      stats.linkedin = { total: 11, unread: 2 };
-      stats.instagram = { total: 19, unread: 5 };
+    if (stats.whatsapp.total === 0) {
+      stats.whatsapp = { total: 25, unread: 6 };
+      stats.gmail = { total: 25, unread: 7 };
+      stats.linkedin = { total: 25, unread: 2 };
+      stats.instagram = { total: 25, unread: 5 };
     }
 
     // Update DOM badges
+    const waBadge = document.getElementById('whatsapp-unread-badge');
+    const waTotal = document.getElementById('whatsapp-total-count');
     const gmailBadge = document.getElementById('gmail-unread-badge');
     const gmailTotal = document.getElementById('gmail-total-count');
     const linkedinBadge = document.getElementById('linkedin-unread-badge');
@@ -93,6 +114,8 @@ const ReplyCenter = {
     const instaBadge = document.getElementById('instagram-unread-badge');
     const instaTotal = document.getElementById('instagram-total-count');
 
+    if (waBadge) waBadge.textContent = `🟢 ${stats.whatsapp.unread} NEW`;
+    if (waTotal) waTotal.textContent = stats.whatsapp.total;
     if (gmailBadge) gmailBadge.textContent = `🔴 ${stats.gmail.unread} NEW`;
     if (gmailTotal) gmailTotal.textContent = stats.gmail.total;
     if (linkedinBadge) linkedinBadge.textContent = `🔴 ${stats.linkedin.unread} NEW`;
@@ -131,8 +154,13 @@ const ReplyCenter = {
   simulateIncomingReply(customLead = null) {
     let replyObj;
     if (customLead) {
+      const platformName = customLead.channel === 'whatsapp' ? 'WhatsApp'
+        : customLead.channel === 'linkedin' ? 'LinkedIn'
+        : customLead.channel === 'instagram' ? 'Instagram'
+        : 'Gmail';
+
       replyObj = {
-        platform: customLead.channel === 'linkedin' ? 'LinkedIn' : customLead.channel === 'instagram' ? 'Instagram' : 'Gmail',
+        platform: platformName,
         channelKey: customLead.channel,
         businessName: customLead.businessName,
         city: customLead.city.split(',')[0],
@@ -144,40 +172,89 @@ const ReplyCenter = {
       replyObj = samples[Math.floor(Math.random() * samples.length)];
     }
 
-    // Trigger WhatsApp notification & audio alert
-    const alertResult = WhatsAppService.sendWhatsAppAlert(replyObj);
+    // Mark as unread
+    replyObj.id = 'rep_' + Date.now();
+    replyObj.receivedAt = new Date().toISOString();
+    replyObj.isRead = false;
 
-    // Show modal
-    this.showReplyModal(replyObj, alertResult);
+    // Save to storage
+    const currentReplies = this.getRepliesData();
+    currentReplies.unshift(replyObj);
+    StorageService.saveReplies(currentReplies);
+
+    // Re-render metrics
     this.renderStats();
+
+    // Trigger Hindi/Urdu WhatsApp Alert format
+    WhatsAppService.notifyIncomingReply(replyObj);
+
+    // Open WhatsApp Alert Modal
+    this.showWhatsAppAlertModal(replyObj);
+
+    if (window.App) {
+      window.App.showToast(`🚨 NAYA CLIENT REPLY AAYA HAI! (${replyObj.businessName} via ${replyObj.platform})`, 'success');
+    }
   },
 
-  showReplyModal(replyData, alertResult) {
+  showWhatsAppAlertModal(reply) {
     const modal = document.getElementById('whatsapp-alert-modal');
     if (!modal) return;
 
-    document.getElementById('wa-modal-biz').textContent = `${replyData.businessName} (${replyData.city})`;
-    document.getElementById('wa-modal-platform').textContent = replyData.platform;
-    document.getElementById('wa-modal-msg').textContent = `"${replyData.clientMessage}"`;
-    document.getElementById('wa-modal-ai-reply').textContent = `"${replyData.aiSuggestedReply}"`;
-    document.getElementById('wa-modal-full-text').textContent = alertResult.message;
+    document.getElementById('wa-modal-biz').textContent = `${reply.businessName} (${reply.city})`;
+    document.getElementById('wa-modal-platform').textContent = reply.platform;
+    document.getElementById('wa-modal-msg').textContent = `"${reply.clientMessage}"`;
+    document.getElementById('wa-modal-ai-reply').textContent = `"${reply.aiSuggestedReply}"`;
+
+    const fullWaText =
+      `🚨 *NAYA CLIENT REPLY AAYA HAI!*\n` +
+      `-----------------------------------\n` +
+      `🏢 *Business:* ${reply.businessName} (${reply.city})\n` +
+      `📡 *Platform:* ${reply.platform}\n` +
+      `💬 *Gora Ka Message:*\n` +
+      `"${reply.clientMessage}"\n` +
+      `-----------------------------------\n` +
+      `👉 *AI Suggested Reply (Copy & Paste):*\n` +
+      `"${reply.aiSuggestedReply}"\n` +
+      `-----------------------------------\n` +
+      `⚡ *Action:* Jald az jald reply dein taake deal $650 par close ho sakay!`;
+
+    const preEl = document.getElementById('wa-modal-full-text');
+    if (preEl) preEl.textContent = fullWaText;
+
+    // Actions
+    const copyBtn = document.getElementById('wa-modal-copy-btn');
+    if (copyBtn) {
+      copyBtn.onclick = () => {
+        navigator.clipboard.writeText(reply.aiSuggestedReply);
+        if (window.App) window.App.showToast('AI Suggested Reply copied to clipboard!', 'success');
+      };
+    }
 
     const sendBtn = document.getElementById('wa-modal-send-btn');
     if (sendBtn) {
       sendBtn.onclick = () => {
-        window.open(alertResult.whatsappUrl, '_blank');
+        const text = encodeURIComponent(fullWaText);
+        window.open(`https://api.whatsapp.com/send?phone=923376568003&text=${text}`, '_blank');
       };
     }
 
-    const copyBtn = document.getElementById('wa-modal-copy-btn');
-    if (copyBtn) {
-      copyBtn.onclick = () => {
-        navigator.clipboard.writeText(replyData.aiSuggestedReply);
-        if (window.App) window.App.showToast('Copied AI Suggested Reply to clipboard!', 'success');
+    const closeBtn = document.getElementById('modal-wa-alert-close');
+    if (closeBtn) {
+      closeBtn.onclick = () => {
+        modal.classList.remove('open');
       };
     }
 
     modal.classList.add('open');
+  },
+
+  openReplyThread(leadId) {
+    const replies = this.getRepliesData();
+    const lead = window.App ? window.App.leads.find(l => l.id === leadId) : null;
+    const reply = replies.find(r => lead && r.businessName.includes(lead.businessName.split('(')[0].trim())) || replies[0];
+    if (reply) {
+      this.showWhatsAppAlertModal(reply);
+    }
   }
 };
 

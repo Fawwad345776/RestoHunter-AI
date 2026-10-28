@@ -486,12 +486,13 @@ const LeadGenerator = {
     const nicheKeys = Object.keys(NICHES);
     const region = this.detectRegion(country, city);
 
-    // Distribution formula (FB cancelled as per user instruction):
-    // 34 Gmail, 33 LinkedIn, 33 Instagram = Total 100
+    // Ban-Proof 4-Channel 100-Lead Distribution Formula:
+    // 25 WhatsApp, 25 Gmail, 25 LinkedIn, 25 Instagram = Total 100
     const channelPlan = [];
-    for (let i = 0; i < 34; i++) channelPlan.push('gmail');
-    for (let i = 0; i < 33; i++) channelPlan.push('linkedin');
-    for (let i = 0; i < 33; i++) channelPlan.push('instagram');
+    for (let i = 0; i < 25; i++) channelPlan.push('whatsapp');
+    for (let i = 0; i < 25; i++) channelPlan.push('gmail');
+    for (let i = 0; i < 25; i++) channelPlan.push('linkedin');
+    for (let i = 0; i < 25; i++) channelPlan.push('instagram');
 
     channelPlan.sort(() => Math.random() - 0.5);
 

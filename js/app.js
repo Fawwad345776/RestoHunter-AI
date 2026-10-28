@@ -334,7 +334,7 @@ const App = {
     this.currentChannelFilter = filter;
     if (filter === 'all') {
       this.filteredLeads = [...this.leads];
-    } else if (filter === 'gmail' || filter === 'linkedin' || filter === 'instagram') {
+    } else if (filter === 'whatsapp' || filter === 'gmail' || filter === 'linkedin' || filter === 'instagram') {
       this.filteredLeads = this.leads.filter(l => l.channel === filter);
     } else if (filter === 'replied') {
       this.filteredLeads = this.leads.filter(l => l.status === 'replied');
@@ -391,7 +391,9 @@ const App = {
     }
 
     tbody.innerHTML = this.filteredLeads.map((lead, idx) => {
-      const channelBadge = lead.channel === 'gmail'
+      const channelBadge = lead.channel === 'whatsapp'
+        ? `<span class="badge-channel whatsapp">📲 WhatsApp</span>`
+        : lead.channel === 'gmail'
         ? `<span class="badge-channel gmail">📧 Gmail</span>`
         : lead.channel === 'linkedin'
         ? `<span class="badge-channel linkedin">👔 LinkedIn</span>`
@@ -405,12 +407,17 @@ const App = {
         ? `<span class="status-pill followup">⏰ Follow-Up Due</span>`
         : `<span class="status-pill ready">Ready to Pitch</span>`;
 
+      const cleanPhone = (lead.contactInfo.phone || '').replace(/[^0-9]/g, '');
+
       return `
         <tr data-lead-id="${lead.id}">
           <td>
             <div class="biz-name-cell">
               <span class="biz-title">${lead.businessName}</span>
-              <span class="biz-location">📍 ${lead.city} • <span class="google-rating-chip">⭐ ${lead.rating} (${lead.reviews})</span></span>
+              <span class="biz-location">
+                📍 ${lead.city} • <span class="google-rating-chip">⭐ ${lead.rating} (${lead.reviews})</span>
+                • <a href="https://api.whatsapp.com/send?phone=${cleanPhone}" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 500;" title="Click to open WhatsApp directly">📲 ${lead.contactInfo.phone}</a>
+              </span>
               <span style="font-size: 0.74rem; color: var(--text-muted); margin-top: 2px;">👤 ${lead.decisionMaker} (${lead.decisionMakerTitle})</span>
             </div>
           </td>
@@ -430,9 +437,10 @@ const App = {
               <button class="btn-table-action" onclick="App.openPitchModal('${lead.id}')">
                 👁️ View Pitch
               </button>
-              <button class="btn-table-action btn-table-bhejdo" onclick="App.dispatchSingleLead('${lead.id}')">
-                🚀 Bhej Do
-              </button>
+              ${lead.channel === 'whatsapp'
+                ? `<button class="btn-table-action btn-table-wa" onclick="App.dispatchSingleLead('${lead.id}')">📲 WhatsApp</button>`
+                : `<button class="btn-table-action btn-table-bhejdo" onclick="App.dispatchSingleLead('${lead.id}')">🚀 Bhej Do</button>`
+              }
             </div>
           </td>
         </tr>
@@ -454,6 +462,24 @@ const App = {
     if (elDispatched) elDispatched.textContent = `${dispatchedCount} / ${totalLeads}`;
     if (elRecovered) elRecovered.textContent = `$${(totalLeads * 3.8).toFixed(1)}k/mo`;
     if (elPipeline) elPipeline.textContent = `$${(15 * 650).toLocaleString()} – $${(25 * 1200).toLocaleString()}`;
+
+    // Update channel tabs count
+    const waCount = this.leads.filter(l => l.channel === 'whatsapp').length;
+    const gmailCount = this.leads.filter(l => l.channel === 'gmail').length;
+    const liCount = this.leads.filter(l => l.channel === 'linkedin').length;
+    const igCount = this.leads.filter(l => l.channel === 'instagram').length;
+
+    const tabAll = document.querySelector('.channel-tab-btn[data-filter="all"]');
+    const tabWa = document.querySelector('.channel-tab-btn[data-filter="whatsapp"]');
+    const tabGmail = document.querySelector('.channel-tab-btn[data-filter="gmail"]');
+    const tabLi = document.querySelector('.channel-tab-btn[data-filter="linkedin"]');
+    const tabIg = document.querySelector('.channel-tab-btn[data-filter="instagram"]');
+
+    if (tabAll) tabAll.textContent = `All Leads (${totalLeads})`;
+    if (tabWa) tabWa.textContent = `📲 WhatsApp (${waCount})`;
+    if (tabGmail) tabGmail.textContent = `📧 Gmail (${gmailCount})`;
+    if (tabLi) tabLi.textContent = `👔 LinkedIn (${liCount})`;
+    if (tabIg) tabIg.textContent = `📸 Instagram (${igCount})`;
   },
 
   openPitchModal(leadId) {
@@ -466,7 +492,9 @@ const App = {
     if (!modal) return;
 
     document.getElementById('modal-pitch-title').textContent = `${lead.businessName} — Pitch Preview`;
-    document.getElementById('modal-pitch-channel-badge').innerHTML = lead.channel === 'gmail'
+    document.getElementById('modal-pitch-channel-badge').innerHTML = lead.channel === 'whatsapp'
+      ? `<span class="badge-channel whatsapp">📲 WhatsApp Direct Outreach</span>`
+      : lead.channel === 'gmail'
       ? `<span class="badge-channel gmail">📧 Gmail Pitch</span>`
       : lead.channel === 'linkedin'
       ? `<span class="badge-channel linkedin">👔 LinkedIn Connection Note</span>`
@@ -502,6 +530,15 @@ const App = {
       this.showToast('Pitch copied to clipboard!', 'success');
     };
 
+    // Dedicated WhatsApp Dispatch button in modal
+    const sendWaBtn = document.getElementById('modal-btn-send-wa');
+    if (sendWaBtn) {
+      sendWaBtn.onclick = () => {
+        this.dispatchSingleLead(lead.id, textarea.value, 'whatsapp');
+        modal.classList.remove('open');
+      };
+    }
+
     document.getElementById('modal-btn-bhejdo').onclick = () => {
       this.dispatchSingleLead(lead.id, textarea.value);
       modal.classList.remove('open');
@@ -514,9 +551,11 @@ const App = {
     modal.classList.add('open');
   },
 
-  dispatchSingleLead(leadId, customBody = null) {
+  dispatchSingleLead(leadId, customBody = null, channelOverride = null) {
     const lead = this.leads.find(l => l.id === leadId);
     if (!lead) return;
+
+    const activeChannel = channelOverride || lead.channel;
 
     lead.status = 'dispatched';
     lead.dispatchedAt = new Date().toISOString();
@@ -530,23 +569,30 @@ const App = {
     this.updateMetrics();
 
     // Launch direct action based on channel
-    const pitch = PitchEngine.generatePitch(lead);
+    let pitch = PitchEngine.generatePitch(lead);
+    if (activeChannel === 'whatsapp' && lead.channel !== 'whatsapp') {
+      pitch = PitchEngine.generateWhatsAppPitch(lead, lead.decisionMaker ? lead.decisionMaker.split(' ')[0] : 'there', lead.businessName.split('(')[0].trim());
+    }
     const body = customBody || pitch.body;
 
-    if (lead.channel === 'gmail') {
+    if (activeChannel === 'whatsapp') {
+      const rawPhone = lead.contactInfo.phone || '+923376568003';
+      const cleanPhone = rawPhone.replace(/[^0-9]/g, '');
+      const waText = encodeURIComponent(body);
+      const waUrl = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${waText}`;
+      window.open(waUrl, '_blank');
+    } else if (activeChannel === 'gmail') {
       const subject = encodeURIComponent(pitch.subject);
       const emailBody = encodeURIComponent(body);
       const mailtoUrl = `mailto:${lead.contactInfo.email}?subject=${subject}&body=${emailBody}`;
       window.open(mailtoUrl, '_blank');
-    } else if (lead.channel === 'linkedin') {
-      // Direct LinkedIn messaging URL
+    } else if (activeChannel === 'linkedin') {
       window.open(`https://www.linkedin.com/messaging`, '_blank');
-    } else if (lead.channel === 'instagram') {
-      // Direct Instagram inbox URL
+    } else if (activeChannel === 'instagram') {
       window.open(`https://www.instagram.com/direct/inbox`, '_blank');
     }
 
-    this.showToast(`🚀 Bhej Diya! Dispatched to ${lead.businessName} via ${lead.channel.toUpperCase()}`, 'success');
+    this.showToast(`🚀 Bhej Diya! Dispatched to ${lead.businessName} via ${activeChannel.toUpperCase()}`, 'success');
   },
 
   handleApproveAll() {
