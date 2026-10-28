@@ -56,6 +56,76 @@ const App = {
       startHuntBtn.addEventListener('click', () => this.handleStartHunt());
     }
 
+    // Target Market Toggle (Dropdown vs Custom EditText)
+    const toggleCountryBtn = document.getElementById('btn-toggle-custom-country');
+    const countrySelect = document.getElementById('target-country-select');
+    const wrapperSelect = document.getElementById('wrapper-country-select');
+    const wrapperCustom = document.getElementById('wrapper-country-custom');
+    const customInput = document.getElementById('target-country-custom-input');
+    const toggleIcon = document.getElementById('toggle-country-icon');
+    const toggleLabel = document.getElementById('toggle-country-label');
+
+    const switchToCustom = () => {
+      if (wrapperSelect) wrapperSelect.style.display = 'none';
+      if (wrapperCustom) wrapperCustom.style.display = 'block';
+      if (toggleIcon) toggleIcon.textContent = '🌐';
+      if (toggleLabel) toggleLabel.textContent = 'Worldwide List';
+      if (customInput) customInput.focus();
+    };
+
+    const switchToSelect = () => {
+      if (wrapperCustom) wrapperCustom.style.display = 'none';
+      if (wrapperSelect) wrapperSelect.style.display = 'block';
+      if (toggleIcon) toggleIcon.textContent = '✏️';
+      if (toggleLabel) toggleLabel.textContent = 'Type Custom';
+    };
+
+    if (toggleCountryBtn) {
+      toggleCountryBtn.addEventListener('click', () => {
+        if (wrapperCustom && wrapperCustom.style.display !== 'none') {
+          switchToSelect();
+        } else {
+          switchToCustom();
+        }
+      });
+    }
+
+    if (countrySelect) {
+      const defaultCities = {
+        'UAE': 'Dubai, UAE',
+        'Saudi Arabia': 'Riyadh, Saudi Arabia',
+        'UK': 'London, UK',
+        'Pakistan': 'Lahore, Pakistan',
+        'India': 'Mumbai, India',
+        'Germany': 'Berlin, Germany',
+        'France': 'Paris, France',
+        'Canada': 'Toronto, Ontario',
+        'Australia': 'Sydney, NSW',
+        'Singapore': 'Singapore',
+        'Spain': 'Madrid, Spain',
+        'Italy': 'Rome, Italy',
+        'Netherlands': 'Amsterdam, Netherlands',
+        'Ireland': 'Dublin, Ireland',
+        'Qatar': 'Doha, Qatar',
+        'Turkey': 'Istanbul, Turkey',
+        'Japan': 'Tokyo, Japan',
+        'USA': 'Austin, Texas',
+        'Worldwide': 'Global Markets'
+      };
+
+      countrySelect.addEventListener('change', () => {
+        if (countrySelect.value === 'CUSTOM') {
+          switchToCustom();
+        } else {
+          const cityInput = document.getElementById('target-city-input');
+          const suggested = defaultCities[countrySelect.value];
+          if (cityInput && suggested) {
+            cityInput.value = suggested;
+          }
+        }
+      });
+    }
+
     // Quick City Chips
     document.querySelectorAll('.city-chip').forEach(chip => {
       chip.addEventListener('click', (e) => {
@@ -63,8 +133,23 @@ const App = {
         chip.classList.add('active');
         const cityInput = document.getElementById('target-city-input');
         if (cityInput) cityInput.value = chip.dataset.city;
-        const countryInput = document.getElementById('target-country-input') || document.getElementById('target-country-select');
-        if (countryInput && chip.dataset.country) countryInput.value = chip.dataset.country;
+
+        const cVal = chip.dataset.country;
+        if (cVal && countrySelect) {
+          switchToSelect();
+          let matched = false;
+          for (let opt of countrySelect.options) {
+            if (opt.value.toUpperCase() === cVal.toUpperCase() || cVal.toUpperCase().includes(opt.value.toUpperCase())) {
+              countrySelect.value = opt.value;
+              matched = true;
+              break;
+            }
+          }
+          if (!matched) {
+            switchToCustom();
+            if (customInput) customInput.value = cVal;
+          }
+        }
       });
     });
 
@@ -171,11 +256,20 @@ const App = {
   },
 
   getCountryValue() {
-    const input = document.getElementById('target-country-input');
+    const customWrap = document.getElementById('wrapper-country-custom');
+    const customInput = document.getElementById('target-country-custom-input');
     const select = document.getElementById('target-country-select');
-    if (input && input.value.trim()) return input.value.trim();
-    if (select && select.value.trim()) return select.value.trim();
-    return 'Worldwide (All Over World 🌐)';
+
+    if (customWrap && customWrap.style.display !== 'none' && customInput && customInput.value.trim()) {
+      return customInput.value.trim();
+    }
+    if (select && select.value && select.value !== 'CUSTOM') {
+      return select.value;
+    }
+    if (customInput && customInput.value.trim()) {
+      return customInput.value.trim();
+    }
+    return 'Worldwide';
   },
 
   handleStartHunt() {

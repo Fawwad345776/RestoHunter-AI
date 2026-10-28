@@ -1,10 +1,11 @@
 /**
  * RestoHunter AI - Pitch Generation Engine (LinkedIn <300 chars, Instagram Story Reply, Gmail 4-sentence body)
+ * Dynamically tailored with authentic local delivery apps, native currencies, and localized financial leaks.
  */
 
 const PitchEngine = {
   /**
-   * Generates tailored pitch based on channel constraints
+   * Generates tailored pitch based on channel constraints and local market context
    */
   generatePitch(lead) {
     const firstName = lead.decisionMaker ? lead.decisionMaker.split(' ')[0] : 'there';
@@ -23,20 +24,21 @@ const PitchEngine = {
    * LinkedIn: Strict < 300 characters connection note + value preview
    */
   generateLinkedInPitch(lead, firstName, bizShort) {
+    const deliveryApp = lead.regionDeliveryApps || 'DoorDash/UberEats';
     let text = '';
+
     if (lead.niche === 'restaurants') {
-      text = `Hi ${firstName}, love what you've built at ${bizShort}! Noticed your mobile menu is PDF based, sending $3k+/mo to DoorDash 30% cuts. Made a quick 45s preview of a 1-tap direct ordering flow for you. Mind if I send the link?`;
+      text = `Hi ${firstName}, love what you've built at ${bizShort}! Noticed your mobile menu is PDF based, losing ~${lead.flawLeakRange} to ${deliveryApp} cuts. Made a quick 45s preview of a 1-tap direct mobile ordering flow with zero commission. Mind if I send the link?`;
     } else if (lead.niche === 'dental_medical') {
-      text = `Hi ${firstName}, great reviews on ${bizShort}! Noticed after-hours patients have no direct calendar to book, costing ~$5k/mo in emergency drop-offs. Put together a 1-tap mobile booking concept for your clinic. Worth a quick look?`;
+      text = `Hi ${firstName}, great reviews on ${bizShort}! Noticed after-hours patients have no direct calendar to book, costing ~${lead.flawLeakRange} in emergency drop-offs. Put together a 1-tap mobile booking concept for your clinic. Worth a quick look?`;
     } else if (lead.niche === 'salons_spas') {
-      text = `Hey ${firstName}! Big fan of ${bizShort}. Saw bookings are still phone-only, which usually leads to 15-20% no-shows. Built a 30s zero-no-show automated SMS reminder prototype for your chairs. Mind if I share it?`;
+      text = `Hey ${firstName}! Big fan of ${bizShort}. Saw bookings are still phone-only, which usually leads to ~${lead.flawLeakRange} in no-shows. Built a 30s zero-no-show automated SMS reminder prototype for your chairs. Mind if I share it?`;
     } else if (lead.niche === 'home_services') {
-      text = `Hi ${firstName}, your team's work at ${bizShort} looks top tier. Noticed your site lacks a 60s emergency quote calculator, leaking $10k+ roofing/repair jobs to competitors. Mocked up a high-converting version. Can I send?`;
+      text = `Hi ${firstName}, your team's work at ${bizShort} looks top tier. Noticed your site lacks a 60s emergency quote calculator, leaking ~${lead.flawLeakRange} in top-tier jobs. Mocked up a high-converting version. Can I send?`;
     } else {
-      text = `Hi ${firstName}! Noticed ${bizShort}'s bookings redirect to Booking.com, losing 20%+ in commissions (${lead.flawLeakRange}). Mocked up a direct commission-free reservation engine for you. Open to a 1-min video link?`;
+      text = `Hi ${firstName}! Noticed ${bizShort}'s bookings redirect to OTAs, losing 20%+ in commissions (${lead.flawLeakRange}). Mocked up a direct commission-free reservation engine for you. Open to a 1-min video link?`;
     }
 
-    // Ensure under 300 chars limit
     if (text.length > 298) {
       text = text.substring(0, 295) + '...?';
     }
@@ -54,17 +56,19 @@ const PitchEngine = {
    * Instagram: Story Reply format to bypass hidden spam requests folder
    */
   generateInstagramPitch(lead, firstName, bizShort) {
+    const deliveryApp = lead.regionDeliveryApps || 'delivery apps';
     let text = '';
+
     if (lead.niche === 'restaurants') {
-      text = `Yo team ${bizShort}! Just saw your story — food looks incredible 🔥 Quick observation: checked your bio link on mobile and noticed it pulls up a pinch-to-zoom PDF menu. You're probably losing $3k+/mo to DoorDash's 30% take. Built a clean 1-tap mobile ordering concept for you guys with zero commission. Mind if I drop a 45-second preview link here?`;
+      text = `Yo team ${bizShort}! Just saw your story — food looks incredible 🔥 Quick observation: checked your bio link on mobile and noticed it pulls up a pinch-to-zoom PDF menu. You're probably losing ~${lead.flawLeakRange} to ${deliveryApp} commissions. Built a clean 1-tap mobile ordering concept for you guys with zero commission. Mind if I drop a 45-second preview link here?`;
     } else if (lead.niche === 'dental_medical') {
-      text = `Hey guys! Loved your recent post about the clinic 🙌 Quick heads up from a local tech consultant: noticed after-hours emergency patients have no online calendar to book directly from Instagram, costing an estimated $5k+/mo in missed appointments. Put together a clean 24/7 mobile booking prototype for ${bizShort}. Can I send the preview over?`;
+      text = `Hey guys! Loved your recent post about the clinic 🙌 Quick heads up from a local tech consultant: noticed after-hours emergency patients have no online calendar to book directly from Instagram, costing an estimated ${lead.flawLeakRange} in missed appointments. Put together a clean 24/7 mobile booking prototype for ${bizShort}. Can I send the preview over?`;
     } else if (lead.niche === 'salons_spas') {
       text = `That transformation cut on your story is clean 🔥 Quick question: saw you guys still take all chair appointments manually by phone or DM. We helped another local shop slash no-shows by 85% with an automated SMS reminder widget. Built a free mobile concept for ${bizShort}. Mind if I send a quick preview?`;
     } else if (lead.niche === 'home_services') {
-      text = `Solid project showcase on your story guys! 🔨 Quick tip: checked your bio link on mobile and noticed there's no 1-tap emergency call or instant quote calculator. Homeowners in ${lead.city.split(',')[0]} bounce in under 5s without that. Mocked up a high-converting emergency mobile layout for ${bizShort}. Can I share the demo link?`;
+      text = `Solid project showcase on your story guys! 🔨 Quick tip: checked your bio link on mobile and noticed there's no 1-tap emergency call or instant quote calculator. Homeowners in ${lead.city.split(',')[0]} bounce in under 5s without that, leaking ~${lead.flawLeakRange}. Mocked up a high-converting emergency layout for ${bizShort}. Can I share the demo link?`;
     } else {
-      text = `Incredible property views on your story! 🌟 Quick heads up: noticed your mobile bio link redirects guests to Expedia/Booking.com where you lose 20% commission on every room. Mocked up a direct commission-free reservation widget for ${bizShort}. Mind if I send a 30s screen recording?`;
+      text = `Incredible property views on your story! 🌟 Quick heads up: noticed your mobile bio link redirects guests to OTAs where you lose 20% commission on every room (${lead.flawLeakRange}). Mocked up a direct commission-free reservation widget for ${bizShort}. Mind if I send a 30s screen recording?`;
     }
 
     return {
@@ -80,12 +84,13 @@ const PitchEngine = {
    * Gmail: Curiosity lowercase subject line + 4-sentence body + financial leak calculation
    */
   generateGmailPitch(lead, firstName, bizShort) {
+    const deliveryApp = lead.regionDeliveryApps || 'DoorDash/UberEats';
     let subject = '';
     let body = '';
 
     if (lead.niche === 'restaurants') {
       subject = `quick question regarding ${bizShort.toLowerCase()} mobile menu`;
-      body = `hi ${firstName.toLowerCase()},\n\nnoticed your mobile website currently opens a pinch-to-zoom pdf menu and sends delivery customers to doordash.\n\nbased on restaurants in ${lead.city.split(',')[0]}, that 30% third-party commission cut is typically costing you around ${lead.flawLeakRange} in lost margin every month.\n\ni put together a quick 45-second interactive concept of a 1-tap direct mobile ordering flow for ${bizShort} that lets you keep 100% of your ticket revenue.\n\nwould you be opposed to checking out a quick 1-minute video preview?`;
+      body = `hi ${firstName.toLowerCase()},\n\nnoticed your mobile website currently opens a pinch-to-zoom pdf menu and sends delivery customers to ${deliveryApp.toLowerCase()}.\n\nbased on restaurants in ${lead.city.split(',')[0]}, that 30% third-party commission cut is typically costing you around ${lead.flawLeakRange} in lost margin every month.\n\ni put together a quick 45-second interactive concept of a 1-tap direct mobile ordering flow for ${bizShort} that lets you keep 100% of your ticket revenue.\n\nwould you be opposed to checking out a quick 1-minute video preview?`;
     } else if (lead.niche === 'dental_medical') {
       subject = `after-hours patient booking for ${bizShort.toLowerCase()}`;
       body = `hi ${firstName.toLowerCase()},\n\nwas looking at ${bizShort}'s patient intake workflow and noticed there's no online booking calendar for patients searching after 7 pm.\n\nfor private practices in ${lead.city.split(',')[0]}, this after-hours drop-off typically leaks ${lead.flawLeakRange} in missed high-ticket consultations and emergency walk-ins.\n\ni put together a clean 24/7 automated mobile booking prototype specifically for ${bizShort} with paperless intake.\n\nmind if i send over a 45-second screen recording of how it works?`;
