@@ -386,6 +386,9 @@
 
         <!-- Action Buttons -->
         <div class="leads-actions-group">
+          <button id="btn-open-add-lead" class="btn-primary" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; padding: 8px 14px; font-size: 0.84rem; box-shadow: 0 0 12px rgba(37, 211, 102, 0.35);" title="Paste any real business & WhatsApp number from Google Maps / Instagram">
+            <span>➕</span> Add Real Lead / Number
+          </button>
           <button id="btn-approve-all" class="btn-primary" style="padding: 8px 16px; font-size: 0.84rem;">
             <span>⚡</span> APPROVE & DISPATCH ALL 100
           </button>
@@ -498,13 +501,89 @@
           <div id="modal-pitch-counter" class="char-counter">0 characters</div>
         </div>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" style="flex-wrap: wrap; gap: 8px;">
         <button id="modal-btn-copy" class="btn-secondary">📋 Copy Pitch</button>
         <button id="modal-btn-send-wa" class="btn-primary" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);">
           <span>📲</span> Bhej Do (WhatsApp)
         </button>
+        <button id="modal-btn-send-gmail" class="btn-secondary" style="color: #f87171; border-color: rgba(248, 113, 113, 0.4);" title="US/UK clients landline par hain, isko click kar ke direct Gmail bhein">
+          <span>📧</span> Bhej Do (Gmail Instead)
+        </button>
         <button id="modal-btn-test-wa" class="btn-secondary" style="color: #25d366;">📲 Test WA Alert</button>
         <button id="modal-btn-bhejdo" class="btn-primary">🚀 Bhej Do (Channel)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD REAL LEAD / CUSTOM NUMBER MODAL -->
+  <div id="add-lead-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 580px;">
+      <div class="modal-header" style="background: linear-gradient(90deg, #128c7e, #075e54); color: #fff;">
+        <h3 style="color: #fff; display: flex; align-items: center; gap: 8px;">
+          <span>➕</span> Add Real Lead / Custom WhatsApp Number
+        </h3>
+        <button id="modal-add-lead-close" class="modal-close-btn" style="color: #fff;">&times;</button>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px;">
+        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5; margin: 0;">
+          Google Maps, Instagram, ya Foodpanda se real business ka name aur WhatsApp number paste karen. RestoHunter AI foran tailored pitch generate kare ga aur 1-click WhatsApp message tayyar kar de ga.
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="input-group">
+            <label class="input-label" for="new-lead-business-name">Business Name *</label>
+            <input type="text" id="new-lead-business-name" class="custom-input" placeholder="e.g. Kolachi Restaurant" required>
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="new-lead-owner-name">Owner / Decision Maker</label>
+            <input type="text" id="new-lead-owner-name" class="custom-input" placeholder="e.g. Tariq Mehmood (Owner)">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 12px;">
+          <div class="input-group">
+            <label class="input-label" for="new-lead-phone" style="color: #4ade80;">Real WhatsApp / Mobile Number *</label>
+            <input type="text" id="new-lead-phone" class="custom-input" placeholder="+92 300 1234567 or +971 50..." style="border-color: rgba(74, 222, 128, 0.4); font-family: 'JetBrains Mono', monospace;" required>
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="new-lead-email">Business Email (Optional)</label>
+            <input type="email" id="new-lead-email" class="custom-input" placeholder="info@kolachi.com">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="input-group">
+            <label class="input-label" for="new-lead-city">City & Country</label>
+            <input type="text" id="new-lead-city" class="custom-input" placeholder="Karachi, Pakistan">
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="new-lead-niche">Niche</label>
+            <select id="new-lead-niche" class="custom-select">
+              <option value="restaurants">🍽️ Restaurants & Cafes</option>
+              <option value="dental_medical">🦷 Dental & Medical Clinics</option>
+              <option value="salons_spas">💈 Salons & Barbershops</option>
+              <option value="home_services">🔧 Home Contractors / Roofers</option>
+              <option value="boutique_hotels">🏨 Boutique Hotels</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="new-lead-flaw">Detected Problem / Flaw</label>
+          <select id="new-lead-flaw" class="custom-select">
+            <option value="Pinch-to-zoom PDF Menu on Mobile">Pinch-to-zoom PDF Menu on Mobile ($2,800/mo loss)</option>
+            <option value="Delivery Apps Eating 30% Margin">Paying 30% Commissions to Foodpanda / Talabat / DoorDash</option>
+            <option value="No Direct WhatsApp Reservation / Order Engine">No Direct WhatsApp / Online Reservation System</option>
+            <option value="Slow Mobile Site (7.4s Load Time)">Slow Mobile Page Load (7.4s - losing 53% clicks)</option>
+            <option value="Zero Automated Follow-ups for Past Diners">Zero Automated Customer Retention / VIP Rewards</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="modal-btn-cancel-add-lead" class="btn-secondary">Cancel</button>
+        <button id="modal-btn-save-real-lead" class="btn-primary" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);">
+          <span>🚀</span> Save & Open WhatsApp Pitch
+        </button>
       </div>
     </div>
   </div>

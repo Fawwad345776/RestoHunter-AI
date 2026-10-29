@@ -253,6 +253,112 @@ const App = {
     if (closeSocialBtn && socialModal) {
       closeSocialBtn.addEventListener('click', () => socialModal.classList.remove('open'));
     }
+
+    // Add Real Lead Modal Open/Close & Save
+    const openAddLeadBtn = document.getElementById('btn-open-add-lead');
+    const closeAddLeadBtn = document.getElementById('modal-add-lead-close');
+    const cancelAddLeadBtn = document.getElementById('modal-btn-cancel-add-lead');
+    const addLeadModal = document.getElementById('add-lead-modal');
+    const saveRealLeadBtn = document.getElementById('modal-btn-save-real-lead');
+
+    if (openAddLeadBtn && addLeadModal) {
+      openAddLeadBtn.addEventListener('click', () => {
+        addLeadModal.classList.add('open');
+      });
+    }
+
+    const closeAddModal = () => {
+      if (addLeadModal) addLeadModal.classList.remove('open');
+    };
+
+    if (closeAddLeadBtn) closeAddLeadBtn.addEventListener('click', closeAddModal);
+    if (cancelAddLeadBtn) cancelAddLeadBtn.addEventListener('click', closeAddModal);
+
+    if (saveRealLeadBtn) {
+      saveRealLeadBtn.addEventListener('click', () => this.handleSaveRealLead());
+    }
+  },
+
+  handleSaveRealLead() {
+    const bizInput = document.getElementById('new-lead-business-name');
+    const ownerInput = document.getElementById('new-lead-owner-name');
+    const phoneInput = document.getElementById('new-lead-phone');
+    const emailInput = document.getElementById('new-lead-email');
+    const cityInput = document.getElementById('new-lead-city');
+    const nicheSelect = document.getElementById('new-lead-niche');
+    const flawSelect = document.getElementById('new-lead-flaw');
+
+    const bizName = bizInput ? bizInput.value.trim() : '';
+    const phone = phoneInput ? phoneInput.value.trim() : '';
+
+    if (!bizName || !phone) {
+      this.showToast('Please enter both Business Name and a real WhatsApp Number!', 'error');
+      return;
+    }
+
+    const city = cityInput && cityInput.value.trim() ? cityInput.value.trim() : 'Karachi, Pakistan';
+    const owner = ownerInput && ownerInput.value.trim() ? ownerInput.value.trim() : 'Owner / Manager';
+    const email = emailInput && emailInput.value.trim() ? emailInput.value.trim() : `contact@${bizName.toLowerCase().replace(/[^a-z0-9]/g, '')}.com`;
+    const niche = nicheSelect ? nicheSelect.value : 'restaurants';
+    const flaw = flawSelect ? flawSelect.value : 'Pinch-to-zoom PDF Menu on Mobile';
+
+    const nicheMeta = {
+      restaurants: { name: 'Casual & Fine Dining Restaurant', icon: '🍽️' },
+      dental_medical: { name: 'Dental & Specialized Medical Care', icon: '🦷' },
+      salons_spas: { name: 'Premium Salon, Barber & Wellness Spa', icon: '💈' },
+      home_services: { name: 'Emergency HVAC, Roofing & Contractor', icon: '🔧' },
+      boutique_hotels: { name: 'Boutique Hotel & Luxury Suites', icon: '🏨' }
+    }[niche] || { name: 'Local Business', icon: '🏢' };
+
+    const newLead = {
+      id: `real_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
+      businessName: bizName,
+      city: city,
+      country: city.includes(',') ? city.split(',')[1].trim() : 'Worldwide',
+      niche: niche,
+      nicheName: nicheMeta.name,
+      nicheIcon: nicheMeta.icon,
+      channel: 'whatsapp',
+      rating: 4.8,
+      reviews: 95,
+      website: `https://${bizName.toLowerCase().replace(/[^a-z0-9]/g, '')}.com`,
+      decisionMaker: owner.split('(')[0].trim(),
+      decisionMakerTitle: owner.includes('(') ? owner.split('(')[1].replace(')', '').trim() : 'Owner & Managing Director',
+      flawTitle: flaw,
+      flawLeakRange: '$2,500 – $4,800/mo',
+      contactInfo: {
+        phone: phone,
+        email: email,
+        linkedin: `https://www.linkedin.com/search/results/all/?keywords=${encodeURIComponent(bizName)}`,
+        instagram: `https://www.instagram.com/explore/tags/${bizName.toLowerCase().replace(/[^a-z0-9]/g, '')}/`
+      },
+      status: 'ready',
+      auditScore: 88,
+      notes: 'Real Verified Lead added by operator'
+    };
+
+    // Prepend to leads list
+    this.leads.unshift(newLead);
+    StorageService.saveLeads(this.leads);
+    this.applyFilter('all');
+    this.updateMetrics();
+
+    // Close add modal
+    const addLeadModal = document.getElementById('add-lead-modal');
+    if (addLeadModal) addLeadModal.classList.remove('open');
+
+    // Reset inputs
+    if (bizInput) bizInput.value = '';
+    if (ownerInput) ownerInput.value = '';
+    if (phoneInput) phoneInput.value = '';
+    if (emailInput) emailInput.value = '';
+
+    this.showToast(`✅ Added real lead "${bizName}"! Opening Pitch...`, 'success');
+
+    // Automatically open the pitch modal for this new real lead!
+    setTimeout(() => {
+      this.openPitchModal(newLead.id);
+    }, 300);
   },
 
   getCountryValue() {
@@ -556,6 +662,15 @@ const App = {
       };
     }
 
+    // Dedicated Gmail Dispatch fallback button in modal
+    const sendGmailBtn = document.getElementById('modal-btn-send-gmail');
+    if (sendGmailBtn) {
+      sendGmailBtn.onclick = () => {
+        this.dispatchSingleLead(lead.id, textarea.value, 'gmail');
+        modal.classList.remove('open');
+      };
+    }
+
     document.getElementById('modal-btn-bhejdo').onclick = () => {
       this.dispatchSingleLead(lead.id, textarea.value);
       modal.classList.remove('open');
@@ -587,22 +702,29 @@ const App = {
 
     // Launch direct action based on channel
     let pitch = PitchEngine.generatePitch(lead);
+    const dmFirstName = lead.decisionMaker ? lead.decisionMaker.split(' ')[0] : 'there';
+    const cleanBiz = lead.businessName ? lead.businessName.split('(')[0].trim() : 'your business';
+
     if (activeChannel === 'whatsapp' && lead.channel !== 'whatsapp') {
-      pitch = PitchEngine.generateWhatsAppPitch(lead, lead.decisionMaker ? lead.decisionMaker.split(' ')[0] : 'there', lead.businessName.split('(')[0].trim());
+      pitch = PitchEngine.generateWhatsAppPitch(lead, dmFirstName, cleanBiz);
+    } else if (activeChannel === 'gmail' && lead.channel !== 'gmail') {
+      pitch = PitchEngine.generateGmailPitch(lead, dmFirstName, cleanBiz);
     }
     const body = customBody || pitch.body;
 
     if (activeChannel === 'whatsapp') {
       const phoneInput = document.getElementById('modal-pitch-dm-phone-input');
       const rawPhone = (phoneInput && phoneInput.value && phoneInput.value.trim()) ? phoneInput.value.trim() : (lead.contactInfo.phone || '+923376568003');
+      lead.contactInfo.phone = rawPhone;
       const cleanPhone = rawPhone.replace(/[^0-9]/g, '');
       const waText = encodeURIComponent(body);
       const waUrl = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${waText}`;
       window.open(waUrl, '_blank');
     } else if (activeChannel === 'gmail') {
-      const subject = encodeURIComponent(pitch.subject);
+      const subject = encodeURIComponent(pitch.subject || `quick question re ${cleanBiz}`);
       const emailBody = encodeURIComponent(body);
-      const mailtoUrl = `mailto:${lead.contactInfo.email}?subject=${subject}&body=${emailBody}`;
+      const targetEmail = lead.contactInfo.email || `contact@${lead.website.replace('https://', '').replace('/', '')}`;
+      const mailtoUrl = `mailto:${targetEmail}?subject=${subject}&body=${emailBody}`;
       window.open(mailtoUrl, '_blank');
     } else if (activeChannel === 'linkedin') {
       window.open(`https://www.linkedin.com/messaging`, '_blank');
