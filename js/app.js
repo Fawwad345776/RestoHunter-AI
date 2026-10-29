@@ -17,7 +17,7 @@ const App = {
 
     // Check if we have saved leads, else generate initial 100
     const savedLeads = StorageService.getLeads();
-    if (savedLeads && savedLeads.length > 0 && savedLeads[0].id && String(savedLeads[0].id).startsWith('lead_real_')) {
+    if (savedLeads && savedLeads.length > 0 && savedLeads[0].id && String(savedLeads[0].id).startsWith('lead_real_wa_')) {
       this.leads = savedLeads;
       this.applyFilter('all');
       this.updateMetrics();
