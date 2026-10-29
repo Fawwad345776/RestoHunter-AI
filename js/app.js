@@ -601,6 +601,23 @@ const App = {
       const fullAddress = lead.address || `${lead.city}, ${lead.country}`;
       const mapsPinUrl = this.getExactMapsUrl(lead);
 
+      const isPakMobile = lead.contactInfo.phone && /^\+92\s*3\d{2}/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''));
+      const isUaeMobile = lead.contactInfo.phone && /^\+971\s*5/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''));
+      const isMobileWA = isPakMobile || isUaeMobile;
+      const igHandle = (lead.contactInfo.instagramHandle || '').replace('@', '').trim();
+
+      const phoneDisplay = isMobileWA
+        ? `<a href="https://api.whatsapp.com/send?phone=${cleanPhone}" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 600;" title="Verified GSM Mobile WhatsApp — 1-Tap to Chat">📲 ${lead.contactInfo.phone} <span style="font-size:0.68rem; background: rgba(74,222,128,0.18); padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(74,222,128,0.4);">WA Active ✅</span></a>`
+        : `<span style="color: #94a3b8;" title="US/UK Business Landline (Not on WhatsApp — use Gmail or Instagram DM)">📞 ${lead.contactInfo.phone} <span style="font-size:0.68rem; background: rgba(239,68,68,0.15); color: #fca5a5; padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(239,68,68,0.3);">Landline • Use Email/IG ⚡</span></span>`;
+
+      const igDisplay = igHandle
+        ? `• <a href="https://www.instagram.com/${igHandle}/" target="_blank" style="color: #f472b6; text-decoration: none; font-weight: 600;" title="Open Instagram Profile / DM">📸 @${igHandle}</a>`
+        : '';
+
+      const emailDisplay = lead.contactInfo.email
+        ? `• <a href="mailto:${lead.contactInfo.email}" style="color: #93c5fd; text-decoration: none; font-weight: 500;" title="Send Direct Email">📧 ${lead.contactInfo.email}</a>`
+        : '';
+
       return `
         <tr data-lead-id="${lead.id}">
           <td>
@@ -618,7 +635,9 @@ const App = {
                 <span style="font-size: 0.74rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                   <span>📍 ${lead.city}</span>
                   • <span class="google-rating-chip">⭐ ${lead.rating} (${(Number(lead.reviews) || 50).toLocaleString()} reviews)</span>
-                  • <a href="https://api.whatsapp.com/send?phone=${cleanPhone}" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 500;" title="Click to open WhatsApp directly">📲 ${lead.contactInfo.phone}</a>
+                  • ${phoneDisplay}
+                  ${igDisplay}
+                  ${emailDisplay}
                 </span>
               </span>
               <span style="font-size: 0.74rem; color: var(--text-muted); margin-top: 2px;">👤 ${lead.decisionMaker} (${lead.decisionMakerTitle})</span>
@@ -636,15 +655,19 @@ const App = {
           <td>${channelBadge}</td>
           <td>${statusBadge}</td>
           <td>
-            <div class="table-row-actions">
-              <button class="btn-table-action" onclick="App.openPitchModal('${lead.id}')">
-                👁️ View Pitch
+            <div class="table-row-actions" style="display: flex; gap: 5px; flex-wrap: wrap; align-items: center;">
+              <button class="btn-table-action" onclick="App.openPitchModal('${lead.id}')" title="Preview Pitch & Details">
+                👁️ Pitch
               </button>
-              ${lead.channel === 'whatsapp'
-                ? `<button class="btn-table-action btn-table-wa" onclick="App.dispatchSingleLead('${lead.id}')">📲 WhatsApp</button>`
-                : lead.channel === 'instagram'
-                ? `<button class="btn-table-action" style="background: linear-gradient(135deg, #e1306c 0%, #833ab4 100%); color: #fff; font-weight: 700; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; box-shadow: 0 0 10px rgba(225, 48, 108, 0.35); transition: transform 0.15s ease;" title="1-Tap to Copy Pitch and Open Instagram DM" onclick="App.dispatchSingleLead('${lead.id}')">📸 Instagram DM</button>`
-                : `<button class="btn-table-action btn-table-bhejdo" onclick="App.dispatchSingleLead('${lead.id}')">🚀 Bhej Do</button>`
+              <button class="btn-table-action" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(37, 99, 235, 0.35)); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.5); padding: 5px 9px; font-size: 0.74rem; font-weight: 700; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'gmail')" title="1-Tap Open Gmail with Tailored Pitch">
+                📧 Gmail
+              </button>
+              <button class="btn-table-action" style="background: linear-gradient(135deg, rgba(225, 48, 108, 0.25), rgba(131, 58, 180, 0.35)); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.5); padding: 5px 9px; font-size: 0.74rem; font-weight: 700; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'instagram')" title="1-Tap Auto-Copy Pitch & Open Instagram DM">
+                📸 Insta
+              </button>
+              ${isMobileWA
+                ? `<button class="btn-table-action btn-table-wa" style="padding: 5px 9px; font-size: 0.74rem;" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')" title="1-Tap Direct WhatsApp Chat">📲 WA</button>`
+                : `<button class="btn-table-action" style="background: rgba(255,255,255,0.04); color: #94a3b8; border: 1px dashed rgba(255,255,255,0.2); padding: 5px 8px; font-size: 0.72rem; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')" title="US/UK Landline: Will open WhatsApp with personal test number">📲 WA</button>`
               }
             </div>
           </td>
