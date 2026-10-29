@@ -18,9 +18,14 @@ const App = {
     // Check if we have saved leads, else generate initial 100
     const savedLeads = StorageService.getLeads();
     if (savedLeads && savedLeads.length > 0 && savedLeads[0].id && String(savedLeads[0].id).startsWith('lead_real_wa_')) {
-      // Ensure all saved leads have the 100% exact single-pin mapsUrl with physical street address
+      // Ensure all saved leads have the 100% exact single-pin mapsUrl with physical street address and phone source
       savedLeads.forEach(l => {
         l.mapsUrl = this.getExactMapsUrl(l);
+        if (!l.contactInfo) l.contactInfo = {};
+        if (!l.contactInfo.phoneSource) {
+          const isMobile = l.contactInfo.phone && (/^\+92\s*3/.test(l.contactInfo.phone.replace(/[^0-9+]/g, '')) || /^\+971\s*5/.test(l.contactInfo.phone.replace(/[^0-9+]/g, '')));
+          l.contactInfo.phoneSource = isMobile ? 'Google Maps Profile & WhatsApp Bio' : 'Google Business Profile (Google Local Pack)';
+        }
       });
       StorageService.saveLeads(savedLeads);
       this.leads = savedLeads;
@@ -605,10 +610,13 @@ const App = {
       const isUaeMobile = lead.contactInfo.phone && /^\+971\s*5/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''));
       const isMobileWA = isPakMobile || isUaeMobile;
       const igHandle = (lead.contactInfo.instagramHandle || '').replace('@', '').trim();
+      const phoneSource = (lead.contactInfo && lead.contactInfo.phoneSource)
+        ? lead.contactInfo.phoneSource
+        : (isMobileWA ? 'Google Maps Profile & WA Bio' : 'Google Business Profile (Maps)');
 
       const phoneDisplay = isMobileWA
-        ? `<a href="https://api.whatsapp.com/send?phone=${cleanPhone}" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 600;" title="Verified GSM Mobile WhatsApp — 1-Tap to Chat">📲 ${lead.contactInfo.phone} <span style="font-size:0.68rem; background: rgba(74,222,128,0.18); padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(74,222,128,0.4);">WA Active ✅</span></a>`
-        : `<span style="color: #94a3b8;" title="US/UK Business Landline (Not on WhatsApp — use Gmail or Instagram DM)">📞 ${lead.contactInfo.phone} <span style="font-size:0.68rem; background: rgba(239,68,68,0.15); color: #fca5a5; padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(239,68,68,0.3);">Landline • Use Email/IG ⚡</span></span>`;
+        ? `<a href="https://api.whatsapp.com/send?phone=${cleanPhone}" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 600;" title="Verified GSM Mobile WhatsApp — 1-Tap to Chat">📲 ${lead.contactInfo.phone} <span style="font-size:0.68rem; background: rgba(74,222,128,0.18); padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(74,222,128,0.4);">WA Active ✅</span></a> <span style="font-size:0.68rem; color: #94a3b8; background: rgba(255,255,255,0.05); padding: 1px 5px; border-radius: 4px;" title="Public Source of Phone Number">📍 Src: ${phoneSource}</span>`
+        : `<span style="color: #94a3b8;" title="US/UK Business Landline (Not on WhatsApp — use Gmail or Instagram DM)">📞 ${lead.contactInfo.phone} <span style="font-size:0.68rem; background: rgba(239,68,68,0.15); color: #fca5a5; padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(239,68,68,0.3);">Landline • Use Email/IG ⚡</span></span> <span style="font-size:0.68rem; color: #94a3b8; background: rgba(255,255,255,0.05); padding: 1px 5px; border-radius: 4px;" title="Public Source of Phone Number">📍 Src: ${phoneSource}</span>`;
 
       const igDisplay = igHandle
         ? `• <a href="https://www.instagram.com/${igHandle}/" target="_blank" style="color: #f472b6; text-decoration: none; font-weight: 600;" title="Open Instagram Profile / DM">📸 @${igHandle}</a>`
@@ -763,9 +771,23 @@ const App = {
     const dmNameEl = document.getElementById('modal-pitch-dm-name');
     const dmTitleEl = document.getElementById('modal-pitch-dm-title');
     const dmPhoneInput = document.getElementById('modal-pitch-dm-phone-input');
+    const phoneSourceEl = document.getElementById('modal-pitch-phone-source');
+    const phoneVerifyLink = document.getElementById('modal-pitch-source-verify-link');
+
     if (dmNameEl) dmNameEl.textContent = lead.decisionMaker;
     if (dmTitleEl) dmTitleEl.textContent = ` (${lead.decisionMakerTitle})`;
     if (dmPhoneInput) dmPhoneInput.value = lead.contactInfo.phone;
+
+    const modalIsMobile = lead.contactInfo.phone && (/^\+92\s*3/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, '')) || /^\+971\s*5/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, '')));
+    const modalPhoneSource = (lead.contactInfo && lead.contactInfo.phoneSource)
+      ? lead.contactInfo.phoneSource
+      : (modalIsMobile ? 'Google Maps Profile & WhatsApp Bio' : 'Google Business Profile (Google Local Pack)');
+
+    if (phoneSourceEl) phoneSourceEl.textContent = modalPhoneSource;
+    if (phoneVerifyLink) {
+      phoneVerifyLink.href = mapsLink;
+      phoneVerifyLink.textContent = `Verify on Google Maps for ${lead.businessName.split('(')[0].trim()} ↗`;
+    }
 
     const testWaBtn = document.getElementById('btn-set-my-wa-test');
     if (testWaBtn) {
