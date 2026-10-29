@@ -176,6 +176,21 @@ const App = {
       });
     });
 
+    // Dispatched Metric Card Click -> auto filter
+    const dispatchedCard = document.getElementById('card-metric-dispatched');
+    if (dispatchedCard) {
+      dispatchedCard.addEventListener('click', () => {
+        const tab = document.querySelector('.channel-tab-btn[data-filter="dispatched"]');
+        if (tab) {
+          document.querySelectorAll('.channel-tab-btn').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+        }
+        this.applyFilter('dispatched');
+        const tableHeader = document.querySelector('.leads-section-header');
+        if (tableHeader) tableHeader.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
     // Search Input
     const searchInput = document.getElementById('table-search-input');
     if (searchInput) {
@@ -462,6 +477,8 @@ const App = {
     this.currentChannelFilter = filter;
     if (filter === 'all') {
       this.filteredLeads = [...this.leads];
+    } else if (filter === 'dispatched') {
+      this.filteredLeads = this.leads.filter(l => l.status === 'dispatched' || l.status === 'replied');
     } else if (filter === 'whatsapp' || filter === 'gmail' || filter === 'linkedin' || filter === 'instagram') {
       this.filteredLeads = this.leads.filter(l => l.channel === filter);
     } else if (filter === 'replied') {
@@ -527,8 +544,9 @@ const App = {
         ? `<span class="badge-channel linkedin">👔 LinkedIn</span>`
         : `<span class="badge-channel instagram">📸 Instagram</span>`;
 
+      const dispatchTimeStr = lead.dispatchedAt ? new Date(lead.dispatchedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
       const statusBadge = lead.status === 'dispatched'
-        ? `<span class="status-pill dispatched">🚀 Dispatched</span>`
+        ? `<span class="status-pill dispatched" title="Dispatched: ${dispatchTimeStr || 'Recorded'}">🚀 Dispatched ${dispatchTimeStr ? `(${dispatchTimeStr})` : ''}</span>`
         : lead.status === 'replied'
         ? `<span class="status-pill replied">🔴 Replied</span>`
         : lead.status === 'followup_due'
@@ -612,12 +630,14 @@ const App = {
     const igCount = this.leads.filter(l => l.channel === 'instagram').length;
 
     const tabAll = document.querySelector('.channel-tab-btn[data-filter="all"]');
+    const tabDispatched = document.querySelector('.channel-tab-btn[data-filter="dispatched"]');
     const tabWa = document.querySelector('.channel-tab-btn[data-filter="whatsapp"]');
     const tabGmail = document.querySelector('.channel-tab-btn[data-filter="gmail"]');
     const tabLi = document.querySelector('.channel-tab-btn[data-filter="linkedin"]');
     const tabIg = document.querySelector('.channel-tab-btn[data-filter="instagram"]');
 
     if (tabAll) tabAll.textContent = `All Leads (${totalLeads})`;
+    if (tabDispatched) tabDispatched.innerHTML = `🚀 Dispatched (${dispatchedCount})`;
     if (tabWa) tabWa.textContent = `📲 WhatsApp (${waCount})`;
     if (tabGmail) tabGmail.textContent = `📧 Gmail (${gmailCount})`;
     if (tabLi) tabLi.textContent = `👔 LinkedIn (${liCount})`;
@@ -633,7 +653,13 @@ const App = {
     const modal = document.getElementById('pitch-preview-modal');
     if (!modal) return;
 
-    document.getElementById('modal-pitch-title').textContent = `${lead.businessName} — Pitch Preview`;
+    const modalTitle = document.getElementById('modal-pitch-title');
+    if (lead.status === 'dispatched' && lead.dispatchedAt) {
+      const sentTime = new Date(lead.dispatchedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      modalTitle.textContent = `${lead.businessName} — Pitch (🚀 Dispatched at ${sentTime})`;
+    } else {
+      modalTitle.textContent = `${lead.businessName} — Pitch Preview`;
+    }
     document.getElementById('modal-pitch-channel-badge').innerHTML = lead.channel === 'whatsapp'
       ? `<span class="badge-channel whatsapp">📲 WhatsApp Direct Outreach</span>`
       : lead.channel === 'gmail'
@@ -694,7 +720,7 @@ const App = {
     }
 
     const textarea = document.getElementById('modal-pitch-textarea');
-    textarea.value = pitch.body;
+    textarea.value = lead.dispatchedMessage || pitch.body;
 
     const counter = document.getElementById('modal-pitch-counter');
     counter.textContent = `${pitch.charCount} characters | ${pitch.limitNote}`;
@@ -745,17 +771,6 @@ const App = {
 
     const activeChannel = channelOverride || lead.channel;
 
-    lead.status = 'dispatched';
-    lead.dispatchedAt = new Date().toISOString();
-    const due = new Date();
-    due.setHours(due.getHours() + 72);
-    lead.followupDueAt = due.toISOString();
-
-    StorageService.markAsPitched(lead.id, lead.businessName);
-    StorageService.saveLeads(this.leads);
-    this.renderTable();
-    this.updateMetrics();
-
     // Launch direct action based on channel
     let pitch = PitchEngine.generatePitch(lead);
     const dmFirstName = lead.decisionMaker ? lead.decisionMaker.split(' ')[0] : 'there';
@@ -767,6 +782,18 @@ const App = {
       pitch = PitchEngine.generateGmailPitch(lead, dmFirstName, cleanBiz);
     }
     const body = customBody || pitch.body;
+
+    lead.status = 'dispatched';
+    lead.dispatchedAt = new Date().toISOString();
+    lead.dispatchedMessage = body;
+    const due = new Date();
+    due.setHours(due.getHours() + 72);
+    lead.followupDueAt = due.toISOString();
+
+    StorageService.markAsPitched(lead.id, lead.businessName);
+    StorageService.saveLeads(this.leads);
+    this.renderTable();
+    this.updateMetrics();
 
     if (activeChannel === 'whatsapp') {
       const phoneInput = document.getElementById('modal-pitch-dm-phone-input');
@@ -864,20 +891,30 @@ const App = {
 
   exportCSV() {
     if (this.leads.length === 0) return;
-    const headers = ['Business Name', 'City', 'Country', 'Niche', 'Rating', 'Reviews', 'Decision Maker', 'Flaw Title', 'Monthly Leak', 'Channel', 'Contact', 'Status'];
+    const headers = [
+      'Business Name', 'City', 'Country', 'Address', 'Niche', 'Rating', 'Reviews',
+      'Decision Maker', 'Decision Maker Title', 'Flaw Title', 'Monthly Leak', 'Channel',
+      'Contact Phone', 'Contact Email/Handle', 'Status', 'Dispatched At', 'Dispatched Message', 'Google Maps Pin'
+    ];
     const rows = this.leads.map(l => [
-      `"${l.businessName}"`,
-      `"${l.city}"`,
-      `"${l.country}"`,
-      `"${l.nicheName}"`,
+      `"${(l.businessName || '').replace(/"/g, '""')}"`,
+      `"${(l.city || '').replace(/"/g, '""')}"`,
+      `"${(l.country || '').replace(/"/g, '""')}"`,
+      `"${(l.address || '').replace(/"/g, '""')}"`,
+      `"${(l.nicheName || '').replace(/"/g, '""')}"`,
       l.rating,
       l.reviews,
-      `"${l.decisionMaker} (${l.decisionMakerTitle})"`,
-      `"${l.flawTitle}"`,
-      `"${l.flawLeakRange}"`,
+      `"${(l.decisionMaker || '').replace(/"/g, '""')}"`,
+      `"${(l.decisionMakerTitle || '').replace(/"/g, '""')}"`,
+      `"${(l.flawTitle || '').replace(/"/g, '""')}"`,
+      `"${(l.flawLeakRange || '').replace(/"/g, '""')}"`,
       l.channel,
-      `"${l.contactInfo.email || l.contactInfo.instagramHandle || l.contactInfo.linkedinProfile}"`,
-      l.status
+      `"${(l.contactInfo && l.contactInfo.phone) ? l.contactInfo.phone : ''}"`,
+      `"${(l.contactInfo && (l.contactInfo.email || l.contactInfo.instagramHandle || l.contactInfo.linkedinProfile)) || ''}"`,
+      l.status,
+      `"${l.dispatchedAt || 'Not yet dispatched'}"`,
+      `"${(l.dispatchedMessage || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
+      `"${l.mapsUrl || ''}"`
     ]);
 
     const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
@@ -888,7 +925,7 @@ const App = {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    this.showToast('📥 Exported leads as CSV file!', 'success');
+    this.showToast('📥 Exported leads as CSV file with dispatched logs!', 'success');
   },
 
   exportJSON() {

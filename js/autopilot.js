@@ -71,6 +71,12 @@ const AutopilotEngine = {
     // Mark as dispatched
     lead.status = 'dispatched';
     lead.dispatchedAt = new Date().toISOString();
+    try {
+      const pitch = PitchEngine.generatePitch(lead);
+      lead.dispatchedMessage = pitch.body;
+    } catch (e) {
+      lead.dispatchedMessage = '';
+    }
     // Day-3 follow up due date (72 hours)
     const due = new Date();
     due.setHours(due.getHours() + 72);
