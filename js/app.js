@@ -599,6 +599,8 @@ const App = {
               </button>
               ${lead.channel === 'whatsapp'
                 ? `<button class="btn-table-action btn-table-wa" onclick="App.dispatchSingleLead('${lead.id}')">📲 WhatsApp</button>`
+                : lead.channel === 'instagram'
+                ? `<button class="btn-table-action" style="background: linear-gradient(135deg, #e1306c 0%, #833ab4 100%); color: #fff; font-weight: 700; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; box-shadow: 0 0 10px rgba(225, 48, 108, 0.35); transition: transform 0.15s ease;" title="1-Tap to Copy Pitch and Open Instagram DM" onclick="App.dispatchSingleLead('${lead.id}')">📸 Instagram DM</button>`
                 : `<button class="btn-table-action btn-table-bhejdo" onclick="App.dispatchSingleLead('${lead.id}')">🚀 Bhej Do</button>`
               }
             </div>
@@ -744,6 +746,15 @@ const App = {
       };
     }
 
+    // Dedicated Instagram Dispatch button in modal
+    const sendInstaBtn = document.getElementById('modal-btn-send-insta');
+    if (sendInstaBtn) {
+      sendInstaBtn.onclick = () => {
+        this.dispatchSingleLead(lead.id, textarea.value, 'instagram');
+        modal.classList.remove('open');
+      };
+    }
+
     // Dedicated Gmail Dispatch fallback button in modal
     const sendGmailBtn = document.getElementById('modal-btn-send-gmail');
     if (sendGmailBtn) {
@@ -778,6 +789,8 @@ const App = {
 
     if (activeChannel === 'whatsapp' && lead.channel !== 'whatsapp') {
       pitch = PitchEngine.generateWhatsAppPitch(lead, dmFirstName, cleanBiz);
+    } else if (activeChannel === 'instagram' && lead.channel !== 'instagram') {
+      pitch = PitchEngine.generateInstagramPitch(lead, dmFirstName, cleanBiz);
     } else if (activeChannel === 'gmail' && lead.channel !== 'gmail') {
       pitch = PitchEngine.generateGmailPitch(lead, dmFirstName, cleanBiz);
     }
@@ -812,7 +825,20 @@ const App = {
     } else if (activeChannel === 'linkedin') {
       window.open(`https://www.linkedin.com/messaging`, '_blank');
     } else if (activeChannel === 'instagram') {
-      window.open(`https://www.instagram.com/direct/inbox`, '_blank');
+      const rawHandle = lead.contactInfo.instagramHandle || '';
+      const cleanHandle = rawHandle.replace(/[@/]/g, '').trim();
+      try {
+        navigator.clipboard.writeText(body);
+      } catch (e) {
+        console.warn('Clipboard write failed:', e);
+      }
+      if (cleanHandle) {
+        window.open(`https://www.instagram.com/${cleanHandle}/`, '_blank');
+        this.showToast(`📋 Pitch copied! Instagram opened for @${cleanHandle}. Just paste (Ctrl+V) in DM!`, 'success');
+      } else {
+        window.open(`https://www.instagram.com/direct/inbox/`, '_blank');
+        this.showToast(`📋 Pitch copied to clipboard! Opening Instagram Inbox. Just paste (Ctrl+V)!`, 'success');
+      }
     }
 
     this.showToast(`🚀 Bhej Diya! Dispatched to ${lead.businessName} via ${activeChannel.toUpperCase()}`, 'success');
