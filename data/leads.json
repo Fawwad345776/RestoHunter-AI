@@ -29,7 +29,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Plot 14-C, Zamzama Commercial Lane 6, DHA Phase 5, Karachi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Artisan%20Trattoria%2C%20Plot%2014-C%2C%20Zamzama%20Commercial%20Lane%206%2C%20DHA%20Phase%205%2C%20Karachi"
   },
   {
     "id": "lead_1793211266186_2",
@@ -61,7 +63,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Sector C Commercial, Main Boulevard, DHA Phase 5, Lahore",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Summit%20Smiles%20Dental%20Care%2C%20Sector%20C%20Commercial%2C%20Main%20Boulevard%2C%20DHA%20Phase%205%2C%20Lahore"
   },
   {
     "id": "lead_1793211266186_3",
@@ -93,7 +97,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Marina Promenade, Dubai Marina, UAE",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Gentleman%27s%20Blade%20Barbershop%2C%20Marina%20Promenade%2C%20Dubai%20Marina%2C%20UAE"
   },
   {
     "id": "lead_1793211266186_4",
@@ -125,7 +131,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Kohsar Market, Street 1, Sector F-6/3, Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ProGuard%20Roofing%20%26%20Restoration%2C%20Kohsar%20Market%2C%20Street%201%2C%20Sector%20F-6/3%2C%20Islamabad"
   },
   {
     "id": "lead_1793211266186_5",
@@ -157,7 +165,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "The Galleria, Al Maryah Island, Abu Dhabi, UAE",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Rosemary%20Boutique%20Inn%2C%20The%20Galleria%2C%20Al%20Maryah%20Island%2C%20Abu%20Dhabi%2C%20UAE"
   },
   {
     "id": "lead_1793211266186_6",
@@ -189,7 +199,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "LuckyOne Mall Blvd, Main Rashid Minhas Rd, Karachi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bluefin%20Sushi%20%26%20Omakase%2C%20LuckyOne%20Mall%20Blvd%2C%20Main%20Rashid%20Minhas%20Rd%2C%20Karachi"
   },
   {
     "id": "lead_1793211266186_7",
@@ -221,7 +233,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Emporium Commercial Zone, Abdul Haque Rd, Johar Town, Lahore",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dr.%20Elena%20Aesthetic%20Dentistry%2C%20Emporium%20Commercial%20Zone%2C%20Abdul%20Haque%20Rd%2C%20Johar%20Town%2C%20Lahore"
   },
   {
     "id": "lead_1793211266186_8",
@@ -253,7 +267,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Al Rigga Road, Deira, Dubai, UAE",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velvet%20Lounge%20Hair%20Studio%2C%20Al%20Rigga%20Road%2C%20Deira%2C%20Dubai%2C%20UAE"
   },
   {
     "id": "lead_1793211266186_9",
@@ -285,7 +301,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Shop 4, Block 12-B, F-7 Markaz (Jinnah Super), Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=RapidFlow%2024/7%20Emergency%20Plumbing%2C%20Shop%204%2C%20Block%2012-B%2C%20F-7%20Markaz%20%28Jinnah%20Super%29%2C%20Islamabad"
   },
   {
     "id": "lead_1793211266186_10",
@@ -317,7 +335,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Corniche Rd, Al Danah, Abu Dhabi, UAE",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Harbor%20View%20Luxury%20Suites%2C%20Corniche%20Rd%2C%20Al%20Danah%2C%20Abu%20Dhabi%2C%20UAE"
   },
   {
     "id": "lead_1793211266186_11",
@@ -349,7 +369,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Plot 14-C, Zamzama Commercial Lane 6, DHA Phase 5, Karachi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Firebrick%20Wood%20Fired%20Pizza%2C%20Plot%2014-C%2C%20Zamzama%20Commercial%20Lane%206%2C%20DHA%20Phase%205%2C%20Karachi"
   },
   {
     "id": "lead_1793211266186_12",
@@ -381,7 +403,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Sector C Commercial, Main Boulevard, DHA Phase 5, Lahore",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Radiant%20Health%20Family%20Clinic%2C%20Sector%20C%20Commercial%2C%20Main%20Boulevard%2C%20DHA%20Phase%205%2C%20Lahore"
   },
   {
     "id": "lead_1793211266186_13",
@@ -413,7 +437,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Bay Square Building 3, Business Bay, Dubai, UAE",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Luxe%20Lash%20%26%20Brow%20Bar%2C%20Bay%20Square%20Building%203%2C%20Business%20Bay%2C%20Dubai%2C%20UAE"
   },
   {
     "id": "lead_1793211266186_14",
@@ -445,7 +471,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Sector F-11 Markaz, Commercial Center, Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=AirMaster%20HVAC%20Solutions%2C%20Sector%20F-11%20Markaz%2C%20Commercial%20Center%2C%20Islamabad"
   },
   {
     "id": "lead_1793211266186_15",
@@ -477,7 +505,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Yas Marina, Yas Island, Abu Dhabi, UAE",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Highland%20Manor%20Hotel%2C%20Yas%20Marina%2C%20Yas%20Island%2C%20Abu%20Dhabi%2C%20UAE"
   },
   {
     "id": "lead_1793211266186_16",
@@ -509,7 +539,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "LuckyOne Mall Blvd, Main Rashid Minhas Rd, Karachi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Rusty%20Anchor%20Seafood%2C%20LuckyOne%20Mall%20Blvd%2C%20Main%20Rashid%20Minhas%20Rd%2C%20Karachi"
   },
   {
     "id": "lead_1793211266186_17",
@@ -541,7 +573,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Emporium Commercial Zone, Abdul Haque Rd, Johar Town, Lahore",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Apex%20Orthodontics%20%26%20Implants%2C%20Emporium%20Commercial%20Zone%2C%20Abdul%20Haque%20Rd%2C%20Johar%20Town%2C%20Lahore"
   },
   {
     "id": "lead_1793211266186_18",
@@ -573,7 +607,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Sheikh Mohammed Bin Rashid Blvd, Downtown Dubai, UAE",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gilded%20Mane%20Salon%2C%20Sheikh%20Mohammed%20Bin%20Rashid%20Blvd%2C%20Downtown%20Dubai%2C%20UAE"
   },
   {
     "id": "lead_1793211266186_19",
@@ -605,7 +641,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Beverly Centre, Blue Area, Jinnah Avenue, Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=TrueNorth%20Foundation%20Repair%2C%20Beverly%20Centre%2C%20Blue%20Area%2C%20Jinnah%20Avenue%2C%20Islamabad"
   },
   {
     "id": "lead_1793211266186_20",
@@ -637,7 +675,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "The Galleria, Al Maryah Island, Abu Dhabi, UAE",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pinecrest%20Mountain%20Lodge%2C%20The%20Galleria%2C%20Al%20Maryah%20Island%2C%20Abu%20Dhabi%2C%20UAE"
   },
   {
     "id": "lead_1793211266186_21",
@@ -669,7 +709,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Plot 14-C, Zamzama Commercial Lane 6, DHA Phase 5, Karachi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velvet%20Ember%20Steakhouse%2C%20Plot%2014-C%2C%20Zamzama%20Commercial%20Lane%206%2C%20DHA%20Phase%205%2C%20Karachi"
   },
   {
     "id": "lead_1793211266186_22",
@@ -701,7 +743,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Sector C Commercial, Main Boulevard, DHA Phase 5, Lahore",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ClearView%20Optometry%20%26%20Eye%20Care%2C%20Sector%20C%20Commercial%2C%20Main%20Boulevard%2C%20DHA%20Phase%205%2C%20Lahore"
   },
   {
     "id": "lead_1793211266186_23",
@@ -733,7 +777,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "The Beach Walk, JBR, Dubai, UAE",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Iron%20%26%20Crown%20Barbers%2C%20The%20Beach%20Walk%2C%20JBR%2C%20Dubai%2C%20UAE"
   },
   {
     "id": "lead_1793211266186_24",
@@ -765,7 +811,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Civic Centre, Bahria Town Phase 4, Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Titan%20Electric%20%26%20Lighting%2C%20Civic%20Centre%2C%20Bahria%20Town%20Phase%204%2C%20Islamabad"
   },
   {
     "id": "lead_1793211266186_25",
@@ -797,7 +845,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "Corniche Rd, Al Danah, Abu Dhabi, UAE",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sundance%20Desert%20Resort%2C%20Corniche%20Rd%2C%20Al%20Danah%2C%20Abu%20Dhabi%2C%20UAE"
   },
   {
     "id": "lead_1793211266186_26",
@@ -829,7 +879,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "412 E 6th Street, Downtown Austin, TX 78701",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Copper%20Pot%20Bistro%2C%20412%20E%206th%20Street%2C%20Downtown%20Austin%2C%20TX%2078701"
   },
   {
     "id": "lead_1793211266186_27",
@@ -861,7 +913,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1111 Lincoln Rd, Miami Beach, FL 33139",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Evergreen%20Pediatrics%20Clinic%2C%201111%20Lincoln%20Rd%2C%20Miami%20Beach%2C%20FL%2033139"
   },
   {
     "id": "lead_1793211266186_28",
@@ -893,7 +947,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "2500 Cedar Springs Rd, Uptown Dallas, TX 75201",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Serenity%20Sanctuary%20Day%20Spa%2C%202500%20Cedar%20Springs%20Rd%2C%20Uptown%20Dallas%2C%20TX%2075201"
   },
   {
     "id": "lead_1793211266186_29",
@@ -925,7 +981,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "3120 Palm Way, Domain Northside, Austin, TX 78758",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Eagle%20Eye%20Gutter%20%26%20Siding%2C%203120%20Palm%20Way%2C%20Domain%20Northside%2C%20Austin%2C%20TX%2078758"
   },
   {
     "id": "lead_1793211266186_30",
@@ -957,7 +1015,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "3400 Main Hwy, Coconut Grove, Miami, FL 33133",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Ivy%20Heritage%20House%2C%203400%20Main%20Hwy%2C%20Coconut%20Grove%2C%20Miami%2C%20FL%2033133"
   },
   {
     "id": "lead_1793211266186_31",
@@ -989,7 +1049,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1700 Pacific Ave, Downtown Dallas, TX 75201",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mama%20Rosa%20Family%20Kitchen%2C%201700%20Pacific%20Ave%2C%20Downtown%20Dallas%2C%20TX%2075201"
   },
   {
     "id": "lead_1793211266186_32",
@@ -1021,7 +1083,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "4400 N Lamar Blvd, Austin, TX 78756",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Horizon%20Wellness%20%26%20Medical%20Spa%2C%204400%20N%20Lamar%20Blvd%2C%20Austin%2C%20TX%2078756"
   },
   {
     "id": "lead_1793211266186_33",
@@ -1053,7 +1117,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "2500 NW 2nd Ave, Wynwood, Miami, FL 33127",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Urban%20Cut%20%26%20Shave%20Parlor%2C%202500%20NW%202nd%20Ave%2C%20Wynwood%2C%20Miami%2C%20FL%2033127"
   },
   {
     "id": "lead_1793211266186_34",
@@ -1085,7 +1151,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "3000 Turtle Creek Blvd, Uptown Dallas, TX 75219",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=AllState%20Water%20Damage%20Restoration%2C%203000%20Turtle%20Creek%20Blvd%2C%20Uptown%20Dallas%2C%20TX%2075219"
   },
   {
     "id": "lead_1793211266186_35",
@@ -1117,7 +1185,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "201 W 2nd St, 2nd Street District, Austin, TX 78701",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Canyon%20Vista%20Boutique%20Villas%2C%20201%20W%202nd%20St%2C%202nd%20Street%20District%2C%20Austin%2C%20TX%2078701"
   },
   {
     "id": "lead_1793211266186_36",
@@ -1149,7 +1219,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1000 Ocean Dr, South Beach, Miami Beach, FL 33139",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cilantro%20Craft%20Taqueria%2C%201000%20Ocean%20Dr%2C%20South%20Beach%2C%20Miami%20Beach%2C%20FL%2033139"
   },
   {
     "id": "lead_1793211266186_37",
@@ -1181,7 +1253,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "2800 Main St, Deep Ellum, Dallas, TX 75226",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Metro%20Spine%20%26%20Chiropractic%2C%202800%20Main%20St%2C%20Deep%20Ellum%2C%20Dallas%2C%20TX%2075226"
   },
   {
     "id": "lead_1793211266186_38",
@@ -1213,7 +1287,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1600 S 1st Street, Bouldin Creek, Austin, TX 78704",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bella%20Vista%20Aesthetics%2C%201600%20S%201st%20Street%2C%20Bouldin%20Creek%2C%20Austin%2C%20TX%2078704"
   },
   {
     "id": "lead_1793211266186_39",
@@ -1245,7 +1321,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "801 Brickell Ave, Brickell Financial District, Miami, FL 33131",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=BlueStar%20Heating%20%26%20Cooling%2C%20801%20Brickell%20Ave%2C%20Brickell%20Financial%20District%2C%20Miami%2C%20FL%2033131"
   },
   {
     "id": "lead_1793211266186_40",
@@ -1277,7 +1355,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "2500 Cedar Springs Rd, Uptown Dallas, TX 75201",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Wharfside%20Waterfront%20Inn%2C%202500%20Cedar%20Springs%20Rd%2C%20Uptown%20Dallas%2C%20TX%2075201"
   },
   {
     "id": "lead_1793211266186_41",
@@ -1309,7 +1389,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1104 S Congress Ave, Austin, TX 78704",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Le%20Petit%20Baguette%20Bakery%2C%201104%20S%20Congress%20Ave%2C%20Austin%2C%20TX%2078704"
   },
   {
     "id": "lead_1793211266186_42",
@@ -1341,7 +1423,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1111 Lincoln Rd, Miami Beach, FL 33139",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pearl%20River%20Dental%20Group%2C%201111%20Lincoln%20Rd%2C%20Miami%20Beach%2C%20FL%2033139"
   },
   {
     "id": "lead_1793211266186_43",
@@ -1373,7 +1457,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1700 Pacific Ave, Downtown Dallas, TX 75201",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Roots%20%26%20Radiance%20Hair%20Loft%2C%201700%20Pacific%20Ave%2C%20Downtown%20Dallas%2C%20TX%2075201"
   },
   {
     "id": "lead_1793211266186_44",
@@ -1405,7 +1491,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "78 Rainey Street, Historic District, Austin, TX 78701",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ProGuard%20Roofing%20%26%20Restoration%2C%2078%20Rainey%20Street%2C%20Historic%20District%2C%20Austin%2C%20TX%2078701"
   },
   {
     "id": "lead_1793211266186_45",
@@ -1437,7 +1525,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "3400 Main Hwy, Coconut Grove, Miami, FL 33133",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Rosemary%20Boutique%20Inn%2C%203400%20Main%20Hwy%2C%20Coconut%20Grove%2C%20Miami%2C%20FL%2033133"
   },
   {
     "id": "lead_1793211266186_46",
@@ -1469,7 +1559,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "3000 Turtle Creek Blvd, Uptown Dallas, TX 75219",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Urban%20Harvest%20Bowl%20Co.%2C%203000%20Turtle%20Creek%20Blvd%2C%20Uptown%20Dallas%2C%20TX%2075219"
   },
   {
     "id": "lead_1793211266186_47",
@@ -1501,7 +1593,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "2200 Barton Springs Rd, Austin, TX 78704",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Summit%20Smiles%20Dental%20Care%2C%202200%20Barton%20Springs%20Rd%2C%20Austin%2C%20TX%2078704"
   },
   {
     "id": "lead_1793211266186_48",
@@ -1533,7 +1627,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "2500 NW 2nd Ave, Wynwood, Miami, FL 33127",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Gentleman%27s%20Blade%20Barbershop%2C%202500%20NW%202nd%20Ave%2C%20Wynwood%2C%20Miami%2C%20FL%2033127"
   },
   {
     "id": "lead_1793211266186_49",
@@ -1565,7 +1661,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "2800 Main St, Deep Ellum, Dallas, TX 75226",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=RapidFlow%2024/7%20Emergency%20Plumbing%2C%202800%20Main%20St%2C%20Deep%20Ellum%2C%20Dallas%2C%20TX%2075226"
   },
   {
     "id": "lead_1793211266186_50",
@@ -1597,7 +1695,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "412 E 6th Street, Downtown Austin, TX 78701",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Harbor%20View%20Luxury%20Suites%2C%20412%20E%206th%20Street%2C%20Downtown%20Austin%2C%20TX%2078701"
   },
   {
     "id": "lead_1793211266186_51",
@@ -1629,7 +1729,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "400 N Clark St, River North, Chicago, IL 60654",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Golden%20Dragon%20Dumpling%20House%2C%20400%20N%20Clark%20St%2C%20River%20North%2C%20Chicago%2C%20IL%2060654"
   },
   {
     "id": "lead_1793211266186_52",
@@ -1661,7 +1763,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1120 Madison Avenue, Upper East Side, New York, NY 10028",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dr.%20Elena%20Aesthetic%20Dentistry%2C%201120%20Madison%20Avenue%2C%20Upper%20East%20Side%2C%20New%20York%2C%20NY%2010028"
   },
   {
     "id": "lead_1793211266186_53",
@@ -1693,7 +1797,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1100 Westheimer Rd, Montrose, Houston, TX 77006",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velvet%20Lounge%20Hair%20Studio%2C%201100%20Westheimer%20Rd%2C%20Montrose%2C%20Houston%2C%20TX%2077006"
   },
   {
     "id": "lead_1793211266186_54",
@@ -1725,7 +1831,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1000 W Randolph St, Fulton Market, Chicago, IL 60607",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=AirMaster%20HVAC%20Solutions%2C%201000%20W%20Randolph%20St%2C%20Fulton%20Market%2C%20Chicago%2C%20IL%2060607"
   },
   {
     "id": "lead_1793211266186_55",
@@ -1757,7 +1865,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "340 Bedford Ave, Williamsburg, Brooklyn, NY 11249",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Highland%20Manor%20Hotel%2C%20340%20Bedford%20Ave%2C%20Williamsburg%2C%20Brooklyn%2C%20NY%2011249"
   },
   {
     "id": "lead_1793211266186_56",
@@ -1789,7 +1899,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1600 Post Oak Blvd, Uptown Houston, TX 77056",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Basilico%20Authentic%20Italian%2C%201600%20Post%20Oak%20Blvd%2C%20Uptown%20Houston%2C%20TX%2077056"
   },
   {
     "id": "lead_1793211266186_57",
@@ -1821,7 +1933,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "800 N Michigan Ave, Magnificent Mile, Chicago, IL 60611",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Radiant%20Health%20Family%20Clinic%2C%20800%20N%20Michigan%20Ave%2C%20Magnificent%20Mile%2C%20Chicago%2C%20IL%2060611"
   },
   {
     "id": "lead_1793211266186_58",
@@ -1853,7 +1967,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1120 Madison Avenue, Upper East Side, New York, NY 10028",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Luxe%20Lash%20%26%20Brow%20Bar%2C%201120%20Madison%20Avenue%2C%20Upper%20East%20Side%2C%20New%20York%2C%20NY%2010028"
   },
   {
     "id": "lead_1793211266186_59",
@@ -1885,7 +2001,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "900 Louisiana St, Downtown Houston, TX 77002",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=TrueNorth%20Foundation%20Repair%2C%20900%20Louisiana%20St%2C%20Downtown%20Houston%2C%20TX%2077002"
   },
   {
     "id": "lead_1793211266186_60",
@@ -1917,7 +2035,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "200 S Michigan Ave, Loop District, Chicago, IL 60604",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pinecrest%20Mountain%20Lodge%2C%20200%20S%20Michigan%20Ave%2C%20Loop%20District%2C%20Chicago%2C%20IL%2060604"
   },
   {
     "id": "lead_1793211266186_61",
@@ -1949,7 +2069,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "340 Bedford Ave, Williamsburg, Brooklyn, NY 11249",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Prime%20Oak%20Smokehouse%2C%20340%20Bedford%20Ave%2C%20Williamsburg%2C%20Brooklyn%2C%20NY%2011249"
   },
   {
     "id": "lead_1793211266186_62",
@@ -1981,7 +2103,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "5000 Westheimer Rd, The Galleria, Houston, TX 77056",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Apex%20Orthodontics%20%26%20Implants%2C%205000%20Westheimer%20Rd%2C%20The%20Galleria%2C%20Houston%2C%20TX%2077056"
   },
   {
     "id": "lead_1793211266186_63",
@@ -2013,7 +2137,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "400 N Clark St, River North, Chicago, IL 60654",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gilded%20Mane%20Salon%2C%20400%20N%20Clark%20St%2C%20River%20North%2C%20Chicago%2C%20IL%2060654"
   },
   {
     "id": "lead_1793211266186_64",
@@ -2045,7 +2171,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1120 Madison Avenue, Upper East Side, New York, NY 10028",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Titan%20Electric%20%26%20Lighting%2C%201120%20Madison%20Avenue%2C%20Upper%20East%20Side%2C%20New%20York%2C%20NY%2010028"
   },
   {
     "id": "lead_1793211266186_65",
@@ -2077,7 +2205,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1100 Westheimer Rd, Montrose, Houston, TX 77006",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sundance%20Desert%20Resort%2C%201100%20Westheimer%20Rd%2C%20Montrose%2C%20Houston%2C%20TX%2077006"
   },
   {
     "id": "lead_1793211266186_66",
@@ -2109,7 +2239,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1000 W Randolph St, Fulton Market, Chicago, IL 60607",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Solstice%20Modern%20Kitchen%2C%201000%20W%20Randolph%20St%2C%20Fulton%20Market%2C%20Chicago%2C%20IL%2060607"
   },
   {
     "id": "lead_1793211266186_67",
@@ -2141,7 +2273,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "340 Bedford Ave, Williamsburg, Brooklyn, NY 11249",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ClearView%20Optometry%20%26%20Eye%20Care%2C%20340%20Bedford%20Ave%2C%20Williamsburg%2C%20Brooklyn%2C%20NY%2011249"
   },
   {
     "id": "lead_1793211266186_68",
@@ -2173,7 +2307,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1600 Post Oak Blvd, Uptown Houston, TX 77056",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Iron%20%26%20Crown%20Barbers%2C%201600%20Post%20Oak%20Blvd%2C%20Uptown%20Houston%2C%20TX%2077056"
   },
   {
     "id": "lead_1793211266186_69",
@@ -2205,7 +2341,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "800 N Michigan Ave, Magnificent Mile, Chicago, IL 60611",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Eagle%20Eye%20Gutter%20%26%20Siding%2C%20800%20N%20Michigan%20Ave%2C%20Magnificent%20Mile%2C%20Chicago%2C%20IL%2060611"
   },
   {
     "id": "lead_1793211266186_70",
@@ -2237,7 +2375,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "1120 Madison Avenue, Upper East Side, New York, NY 10028",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Ivy%20Heritage%20House%2C%201120%20Madison%20Avenue%2C%20Upper%20East%20Side%2C%20New%20York%2C%20NY%2010028"
   },
   {
     "id": "lead_1793211266186_71",
@@ -2269,7 +2409,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "900 Louisiana St, Downtown Houston, TX 77002",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Noche%20Tapas%20%26%20Grill%2C%20900%20Louisiana%20St%2C%20Downtown%20Houston%2C%20TX%2077002"
   },
   {
     "id": "lead_1793211266186_72",
@@ -2301,7 +2443,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "200 S Michigan Ave, Loop District, Chicago, IL 60604",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Evergreen%20Pediatrics%20Clinic%2C%20200%20S%20Michigan%20Ave%2C%20Loop%20District%2C%20Chicago%2C%20IL%2060604"
   },
   {
     "id": "lead_1793211266186_73",
@@ -2333,7 +2477,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "340 Bedford Ave, Williamsburg, Brooklyn, NY 11249",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Serenity%20Sanctuary%20Day%20Spa%2C%20340%20Bedford%20Ave%2C%20Williamsburg%2C%20Brooklyn%2C%20NY%2011249"
   },
   {
     "id": "lead_1793211266186_74",
@@ -2365,7 +2511,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "5000 Westheimer Rd, The Galleria, Houston, TX 77056",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=AllState%20Water%20Damage%20Restoration%2C%205000%20Westheimer%20Rd%2C%20The%20Galleria%2C%20Houston%2C%20TX%2077056"
   },
   {
     "id": "lead_1793211266186_75",
@@ -2397,7 +2545,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "400 N Clark St, River North, Chicago, IL 60654",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Canyon%20Vista%20Boutique%20Villas%2C%20400%20N%20Clark%20St%2C%20River%20North%2C%20Chicago%2C%20IL%2060654"
   },
   {
     "id": "lead_1793211266186_76",
@@ -2429,7 +2579,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "88 Regent Street, Soho, London W1B 5RS, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Artisan%20Trattoria%2C%2088%20Regent%20Street%2C%20Soho%2C%20London%20W1B%205RS%2C%20UK"
   },
   {
     "id": "lead_1793211266186_77",
@@ -2461,7 +2613,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "180 Bloor St W, Yorkville, Toronto, ON M5S 2V6, Canada",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Horizon%20Wellness%20%26%20Medical%20Spa%2C%20180%20Bloor%20St%20W%2C%20Yorkville%2C%20Toronto%2C%20ON%20M5S%202V6%2C%20Canada"
   },
   {
     "id": "lead_1793211266186_78",
@@ -2493,7 +2647,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "32 King St, Manchester M2 6AZ, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Urban%20Cut%20%26%20Shave%20Parlor%2C%2032%20King%20St%2C%20Manchester%20M2%206AZ%2C%20UK"
   },
   {
     "id": "lead_1793211266186_79",
@@ -2525,7 +2681,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "18-20 Charlotte Street, Fitzrovia, London W1T 2LZ, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=BlueStar%20Heating%20%26%20Cooling%2C%2018-20%20Charlotte%20Street%2C%20Fitzrovia%2C%20London%20W1T%202LZ%2C%20UK"
   },
   {
     "id": "lead_1793211266186_80",
@@ -2557,7 +2715,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "180 Bloor St W, Yorkville, Toronto, ON M5S 2V6, Canada",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Wharfside%20Waterfront%20Inn%2C%20180%20Bloor%20St%20W%2C%20Yorkville%2C%20Toronto%2C%20ON%20M5S%202V6%2C%20Canada"
   },
   {
     "id": "lead_1793211266186_81",
@@ -2589,7 +2749,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "32 King St, Manchester M2 6AZ, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bluefin%20Sushi%20%26%20Omakase%2C%2032%20King%20St%2C%20Manchester%20M2%206AZ%2C%20UK"
   },
   {
     "id": "lead_1793211266186_82",
@@ -2621,7 +2783,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "88 Regent Street, Soho, London W1B 5RS, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Metro%20Spine%20%26%20Chiropractic%2C%2088%20Regent%20Street%2C%20Soho%2C%20London%20W1B%205RS%2C%20UK"
   },
   {
     "id": "lead_1793211266186_83",
@@ -2653,7 +2817,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "180 Bloor St W, Yorkville, Toronto, ON M5S 2V6, Canada",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bella%20Vista%20Aesthetics%2C%20180%20Bloor%20St%20W%2C%20Yorkville%2C%20Toronto%2C%20ON%20M5S%202V6%2C%20Canada"
   },
   {
     "id": "lead_1793211266186_84",
@@ -2685,7 +2851,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "32 King St, Manchester M2 6AZ, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ProGuard%20Roofing%20%26%20Restoration%2C%2032%20King%20St%2C%20Manchester%20M2%206AZ%2C%20UK"
   },
   {
     "id": "lead_1793211266186_85",
@@ -2717,7 +2885,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "18-20 Charlotte Street, Fitzrovia, London W1T 2LZ, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Rosemary%20Boutique%20Inn%2C%2018-20%20Charlotte%20Street%2C%20Fitzrovia%2C%20London%20W1T%202LZ%2C%20UK"
   },
   {
     "id": "lead_1793211266186_86",
@@ -2749,7 +2919,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "180 Bloor St W, Yorkville, Toronto, ON M5S 2V6, Canada",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Firebrick%20Wood%20Fired%20Pizza%2C%20180%20Bloor%20St%20W%2C%20Yorkville%2C%20Toronto%2C%20ON%20M5S%202V6%2C%20Canada"
   },
   {
     "id": "lead_1793211266186_87",
@@ -2781,7 +2953,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "32 King St, Manchester M2 6AZ, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pearl%20River%20Dental%20Group%2C%2032%20King%20St%2C%20Manchester%20M2%206AZ%2C%20UK"
   },
   {
     "id": "lead_1793211266186_88",
@@ -2813,7 +2987,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "88 Regent Street, Soho, London W1B 5RS, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Roots%20%26%20Radiance%20Hair%20Loft%2C%2088%20Regent%20Street%2C%20Soho%2C%20London%20W1B%205RS%2C%20UK"
   },
   {
     "id": "lead_1793211266186_89",
@@ -2845,7 +3021,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "180 Bloor St W, Yorkville, Toronto, ON M5S 2V6, Canada",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=RapidFlow%2024/7%20Emergency%20Plumbing%2C%20180%20Bloor%20St%20W%2C%20Yorkville%2C%20Toronto%2C%20ON%20M5S%202V6%2C%20Canada"
   },
   {
     "id": "lead_1793211266186_90",
@@ -2877,7 +3055,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "32 King St, Manchester M2 6AZ, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Harbor%20View%20Luxury%20Suites%2C%2032%20King%20St%2C%20Manchester%20M2%206AZ%2C%20UK"
   },
   {
     "id": "lead_1793211266186_91",
@@ -2909,7 +3089,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "18-20 Charlotte Street, Fitzrovia, London W1T 2LZ, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Rusty%20Anchor%20Seafood%2C%2018-20%20Charlotte%20Street%2C%20Fitzrovia%2C%20London%20W1T%202LZ%2C%20UK"
   },
   {
     "id": "lead_1793211266186_92",
@@ -2941,7 +3123,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "180 Bloor St W, Yorkville, Toronto, ON M5S 2V6, Canada",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Summit%20Smiles%20Dental%20Care%2C%20180%20Bloor%20St%20W%2C%20Yorkville%2C%20Toronto%2C%20ON%20M5S%202V6%2C%20Canada"
   },
   {
     "id": "lead_1793211266186_93",
@@ -2973,7 +3157,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "32 King St, Manchester M2 6AZ, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Gentleman%27s%20Blade%20Barbershop%2C%2032%20King%20St%2C%20Manchester%20M2%206AZ%2C%20UK"
   },
   {
     "id": "lead_1793211266186_94",
@@ -3005,7 +3191,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "88 Regent Street, Soho, London W1B 5RS, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=AirMaster%20HVAC%20Solutions%2C%2088%20Regent%20Street%2C%20Soho%2C%20London%20W1B%205RS%2C%20UK"
   },
   {
     "id": "lead_1793211266186_95",
@@ -3037,7 +3225,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "180 Bloor St W, Yorkville, Toronto, ON M5S 2V6, Canada",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Highland%20Manor%20Hotel%2C%20180%20Bloor%20St%20W%2C%20Yorkville%2C%20Toronto%2C%20ON%20M5S%202V6%2C%20Canada"
   },
   {
     "id": "lead_1793211266186_96",
@@ -3069,7 +3259,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "32 King St, Manchester M2 6AZ, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velvet%20Ember%20Steakhouse%2C%2032%20King%20St%2C%20Manchester%20M2%206AZ%2C%20UK"
   },
   {
     "id": "lead_1793211266186_97",
@@ -3101,7 +3293,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "18-20 Charlotte Street, Fitzrovia, London W1T 2LZ, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dr.%20Elena%20Aesthetic%20Dentistry%2C%2018-20%20Charlotte%20Street%2C%20Fitzrovia%2C%20London%20W1T%202LZ%2C%20UK"
   },
   {
     "id": "lead_1793211266186_98",
@@ -3133,7 +3327,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "180 Bloor St W, Yorkville, Toronto, ON M5S 2V6, Canada",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velvet%20Lounge%20Hair%20Studio%2C%20180%20Bloor%20St%20W%2C%20Yorkville%2C%20Toronto%2C%20ON%20M5S%202V6%2C%20Canada"
   },
   {
     "id": "lead_1793211266186_99",
@@ -3165,7 +3361,9 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "32 King St, Manchester M2 6AZ, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=TrueNorth%20Foundation%20Repair%2C%2032%20King%20St%2C%20Manchester%20M2%206AZ%2C%20UK"
   },
   {
     "id": "lead_1793211266186_100",
@@ -3197,6 +3395,8 @@
     "status": "ready",
     "createdAt": "2026-10-28T17:30:00.000Z",
     "dispatchedAt": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "address": "88 Regent Street, Soho, London W1B 5RS, UK",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pinecrest%20Mountain%20Lodge%2C%2088%20Regent%20Street%2C%20Soho%2C%20London%20W1B%205RS%2C%20UK"
   }
 ]

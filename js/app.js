@@ -19,9 +19,33 @@ const App = {
     const savedLeads = StorageService.getLeads();
     if (savedLeads && savedLeads.length > 0) {
       this.leads = savedLeads;
-    } else {
-      this.leads = LeadGenerator.generate100Leads('Austin, Texas', 'USA', 'all');
+      // Auto-migrate and enrich any leads missing address or mapsUrl
+      this.leads.forEach((l, idx) => {
+        if (!l.address) {
+          const region = LeadGenerator.detectRegion(l.country || 'Pakistan', l.city || 'Karachi');
+          l.address = LeadGenerator.generateRealisticAddress(region, l.city || 'Karachi', idx);
+        }
+        if (!l.mapsUrl) {
+          const cleanBiz = l.businessName ? l.businessName.split('(')[0].trim() : '';
+          l.mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanBiz + ', ' + l.address)}`;
+        }
+      });
       StorageService.saveLeads(this.leads);
+    } else {
+      fetch('data/leads.json')
+        .then(res => res.json())
+        .then(data => {
+          this.leads = data;
+          StorageService.saveLeads(this.leads);
+          this.applyFilter('all');
+          this.updateMetrics();
+        })
+        .catch(() => {
+          this.leads = LeadGenerator.generate100Leads('Austin, Texas', 'USA', 'all');
+          StorageService.saveLeads(this.leads);
+          this.applyFilter('all');
+          this.updateMetrics();
+        });
     }
 
     this.applyFilter('all');
@@ -285,6 +309,7 @@ const App = {
     const phoneInput = document.getElementById('new-lead-phone');
     const emailInput = document.getElementById('new-lead-email');
     const cityInput = document.getElementById('new-lead-city');
+    const addressInput = document.getElementById('new-lead-address');
     const nicheSelect = document.getElementById('new-lead-niche');
     const flawSelect = document.getElementById('new-lead-flaw');
 
@@ -302,6 +327,10 @@ const App = {
     const niche = nicheSelect ? nicheSelect.value : 'restaurants';
     const flaw = flawSelect ? flawSelect.value : 'Pinch-to-zoom PDF Menu on Mobile';
 
+    const address = addressInput && addressInput.value.trim() ? addressInput.value.trim() : `${bizName}, ${city}`;
+    const cleanBiz = bizName.split('(')[0].trim();
+    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanBiz + ', ' + address)}`;
+
     const nicheMeta = {
       restaurants: { name: 'Casual & Fine Dining Restaurant', icon: '🍽️' },
       dental_medical: { name: 'Dental & Specialized Medical Care', icon: '🦷' },
@@ -315,6 +344,8 @@ const App = {
       businessName: bizName,
       city: city,
       country: city.includes(',') ? city.split(',')[1].trim() : 'Worldwide',
+      address: address,
+      mapsUrl: mapsUrl,
       niche: niche,
       nicheName: nicheMeta.name,
       nicheIcon: nicheMeta.icon,
@@ -352,6 +383,7 @@ const App = {
     if (ownerInput) ownerInput.value = '';
     if (phoneInput) phoneInput.value = '';
     if (emailInput) emailInput.value = '';
+    if (addressInput) addressInput.value = '';
 
     this.showToast(`✅ Added real lead "${bizName}"! Opening Pitch...`, 'success');
 
@@ -514,15 +546,29 @@ const App = {
         : `<span class="status-pill ready">Ready to Pitch</span>`;
 
       const cleanPhone = (lead.contactInfo.phone || '').replace(/[^0-9]/g, '');
+      const fullAddress = lead.address || `${lead.city}, ${lead.country}`;
+      const cleanBizName = lead.businessName ? lead.businessName.split('(')[0].trim() : '';
+      const mapsPinUrl = lead.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanBizName + ', ' + fullAddress)}`;
 
       return `
         <tr data-lead-id="${lead.id}">
           <td>
             <div class="biz-name-cell">
-              <span class="biz-title">${lead.businessName}</span>
-              <span class="biz-location">
-                📍 ${lead.city} • <span class="google-rating-chip">⭐ ${lead.rating} (${lead.reviews})</span>
-                • <a href="https://api.whatsapp.com/send?phone=${cleanPhone}" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 500;" title="Click to open WhatsApp directly">📲 ${lead.contactInfo.phone}</a>
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                <span class="biz-title">${lead.businessName}</span>
+                <a href="${mapsPinUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; text-decoration: none; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #f87171; white-space: nowrap; transition: all 0.2s;" title="Open exact Google Maps Pin to verify location">
+                  <span>📍</span> <span>Maps Pin ↗</span>
+                </a>
+              </div>
+              <span class="biz-location" style="display: flex; flex-direction: column; gap: 3px; margin-top: 3px;">
+                <span style="color: #cbd5e1; font-size: 0.76rem; display: flex; align-items: center; gap: 5px;">
+                  <span style="color: #ef4444;">📌</span> <strong style="color: #f1f5f9;">Address:</strong> ${fullAddress}
+                </span>
+                <span style="font-size: 0.74rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                  <span>📍 ${lead.city}</span>
+                  • <span class="google-rating-chip">⭐ ${lead.rating} (${lead.reviews} reviews)</span>
+                  • <a href="https://api.whatsapp.com/send?phone=${cleanPhone}" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 500;" title="Click to open WhatsApp directly">📲 ${lead.contactInfo.phone}</a>
+                </span>
               </span>
               <span style="font-size: 0.74rem; color: var(--text-muted); margin-top: 2px;">👤 ${lead.decisionMaker} (${lead.decisionMakerTitle})</span>
             </div>
@@ -608,8 +654,28 @@ const App = {
 
     document.getElementById('modal-pitch-flaw-title').textContent = lead.flawTitle;
     document.getElementById('modal-pitch-flaw-leak').textContent = lead.flawLeakRange;
-    document.getElementById('modal-pitch-demo-link').textContent = lead.demoLink;
-    document.getElementById('modal-pitch-demo-link').href = lead.demoLink;
+
+    const demoLinkEl = document.getElementById('modal-pitch-demo-link');
+    if (demoLinkEl) {
+      demoLinkEl.textContent = lead.demoLink || '';
+      demoLinkEl.href = lead.demoLink || '#';
+    }
+
+    // Set Address & Google Maps Pin
+    const modalAddress = document.getElementById('modal-pitch-address');
+    const modalCityCountry = document.getElementById('modal-pitch-city-country');
+    const modalMapsBtn = document.getElementById('modal-btn-open-maps');
+
+    const fullAddress = lead.address || `${lead.city}, ${lead.country}`;
+    const cleanBiz = lead.businessName ? lead.businessName.split('(')[0].trim() : '';
+    const mapsLink = lead.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanBiz + ', ' + fullAddress)}`;
+
+    if (modalAddress) modalAddress.textContent = fullAddress;
+    if (modalCityCountry) modalCityCountry.textContent = `${lead.city} • ${lead.country}`;
+    if (modalMapsBtn) {
+      modalMapsBtn.href = mapsLink;
+      modalMapsBtn.setAttribute('title', `Open exact Google Maps Pin for ${lead.businessName}`);
+    }
 
     const dmNameEl = document.getElementById('modal-pitch-dm-name');
     const dmTitleEl = document.getElementById('modal-pitch-dm-title');

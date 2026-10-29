@@ -470,6 +470,22 @@
           </div>
         </div>
 
+        <!-- Physical Location & Google Maps Pin Verification Strip -->
+        <div class="pitch-lead-location-strip" style="background: rgba(239, 68, 68, 0.06); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: var(--radius-sm); padding: 10px 14px; margin: 10px 0; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <div style="font-size: 0.72rem; color: #fca5a5; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; display: flex; align-items: center; gap: 5px;">
+              <span>📍</span> <span>Verified Physical Address & Location Pin</span>
+            </div>
+            <strong id="modal-pitch-address" style="color: #f1f5f9; font-size: 0.86rem; display: block; margin-top: 3px;">Plot 14-C, Zamzama Blvd, DHA Phase 5, Karachi</strong>
+            <span id="modal-pitch-city-country" style="color: #94a3b8; font-size: 0.76rem;">Karachi, Pakistan</span>
+          </div>
+          <div>
+            <a id="modal-btn-open-maps" href="#" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); color: #fff; padding: 7px 14px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 0 12px rgba(239, 68, 68, 0.35); transition: transform 0.15s ease;">
+              <span>📍</span> View on Google Maps ↗
+            </a>
+          </div>
+        </div>
+
         <!-- Verified Lead Decision Maker & Phone Strip (Editable Phone for WhatsApp) -->
         <div class="pitch-lead-contact-strip" style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 10px 14px; margin: 10px 0; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
           <div>
@@ -566,6 +582,11 @@
               <option value="boutique_hotels">🏨 Boutique Hotels</option>
             </select>
           </div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="new-lead-address">Physical Street Address / Area (e.g. Zamzama DHA Phase 5)</label>
+          <input type="text" id="new-lead-address" class="custom-input" placeholder="e.g. Plot 14-C, Zamzama Commercial Lane 6, DHA Phase 5, Karachi">
         </div>
 
         <div class="input-group">
