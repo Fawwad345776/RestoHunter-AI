@@ -18,6 +18,11 @@ const App = {
     // Check if we have saved leads, else generate initial 100
     const savedLeads = StorageService.getLeads();
     if (savedLeads && savedLeads.length > 0 && savedLeads[0].id && String(savedLeads[0].id).startsWith('lead_real_wa_')) {
+      // Ensure all saved leads have the 100% exact single-pin mapsUrl with physical street address
+      savedLeads.forEach(l => {
+        l.mapsUrl = this.getExactMapsUrl(l);
+      });
+      StorageService.saveLeads(savedLeads);
       this.leads = savedLeads;
       this.applyFilter('all');
       this.updateMetrics();
@@ -25,7 +30,10 @@ const App = {
       fetch('data/leads.json')
         .then(res => res.json())
         .then(data => {
-          this.leads = data;
+          this.leads = data.map(l => {
+            l.mapsUrl = this.getExactMapsUrl(l);
+            return l;
+          });
           StorageService.saveLeads(this.leads);
           this.applyFilter('all');
           this.updateMetrics();
@@ -40,6 +48,19 @@ const App = {
 
     this.applyFilter('all');
     this.updateMetrics();
+  },
+
+  getExactMapsUrl(lead) {
+    if (!lead) return 'https://www.google.com/maps';
+    const cleanBiz = (lead.businessName || '').split('(')[0].trim();
+    const address = (lead.address || `${lead.city || ''}, ${lead.country || ''}`).trim();
+    let fullQuery = '';
+    if (address.toLowerCase().includes(cleanBiz.toLowerCase())) {
+      fullQuery = address;
+    } else {
+      fullQuery = `${cleanBiz}, ${address}`;
+    }
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullQuery)}`;
   },
 
   setupUI() {
@@ -578,8 +599,7 @@ const App = {
 
       const cleanPhone = (lead.contactInfo.phone || '').replace(/[^0-9]/g, '');
       const fullAddress = lead.address || `${lead.city}, ${lead.country}`;
-      const cleanBizName = lead.businessName ? lead.businessName.split('(')[0].trim() : '';
-      const mapsPinUrl = lead.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanBizName + ', ' + lead.city)}`;
+      const mapsPinUrl = this.getExactMapsUrl(lead);
 
       return `
         <tr data-lead-id="${lead.id}">
@@ -708,8 +728,7 @@ const App = {
     const modalMapsBtn = document.getElementById('modal-btn-open-maps');
 
     const fullAddress = lead.address || `${lead.city}, ${lead.country}`;
-    const cleanBiz = lead.businessName ? lead.businessName.split('(')[0].trim() : '';
-    const mapsLink = lead.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanBiz + ', ' + lead.city)}`;
+    const mapsLink = this.getExactMapsUrl(lead);
 
     if (modalAddress) modalAddress.textContent = fullAddress;
     if (modalCityCountry) modalCityCountry.textContent = `${lead.city} • ${lead.country}`;
@@ -963,7 +982,7 @@ const App = {
       l.status,
       `"${l.dispatchedAt || 'Not yet dispatched'}"`,
       `"${(l.dispatchedMessage || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`,
-      `"${l.mapsUrl || ''}"`
+      `"${this.getExactMapsUrl(l)}"`
     ]);
 
     const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
