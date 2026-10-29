@@ -220,6 +220,29 @@ const App = {
       loadNextBtn.addEventListener('click', () => this.handleLoadNext100());
     }
 
+    // Reset Leads to Ready Status
+    const resetLeadsBtn = document.getElementById('btn-reset-leads-status');
+    if (resetLeadsBtn) {
+      resetLeadsBtn.addEventListener('click', () => {
+        if (confirm('Kya aap sab dispatched leads ko wapis "Ready to Pitch" karna chahte hain taake WhatsApp se 1-by-1 bhej sakein?')) {
+          AutopilotEngine.stopBatchDispatch();
+          this.leads.forEach(l => {
+            l.status = 'ready';
+            l.dispatchedAt = null;
+            l.dispatchedMessage = null;
+            l.followupDueAt = null;
+          });
+          StorageService.saveLeads(this.leads);
+          try {
+            localStorage.removeItem('restohunter_history');
+          } catch (e) {}
+          this.updateMetrics();
+          this.renderTable();
+          this.showToast('✅ All leads reset to "Ready to Pitch"! Ab aap WhatsApp se 1-by-1 bhej sakte hain.', 'success');
+        }
+      });
+    }
+
     // Export Buttons
     const exportCsvBtn = document.getElementById('btn-export-csv');
     if (exportCsvBtn) {
@@ -852,7 +875,7 @@ const App = {
     }
 
     const confirmFast = confirm(
-      `Ready to launch automated ban-safe batch dispatch for ${readyLeads.length} leads?\n\n- Safe human intervals: 3 to 7 minutes between sends.\n- Click OK to start safe dispatch.\n- Or Cancel to run in test mode (fast interval).`
+      `⚡ BATCH AUTOPILOT QUEUE DISPATCH:\n\nYeh feature tamam ${readyLeads.length} leads ke liye tailored AI pitches generate karke queue me save karega.\n\n⚠️ Note: Agar aapko directly client ke phone par real WhatsApp message deliver karna hai, to table me har business ke aage green "📲 WhatsApp" button dabayein taake WhatsApp Web khul jaye.\n\nClick OK to run safe batch queue, or Cancel to run in fast simulation mode.`
     );
 
     AutopilotEngine.startBatchDispatch(
