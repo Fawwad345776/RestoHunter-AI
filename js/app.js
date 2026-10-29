@@ -17,20 +17,10 @@ const App = {
 
     // Check if we have saved leads, else generate initial 100
     const savedLeads = StorageService.getLeads();
-    if (savedLeads && savedLeads.length > 0) {
+    if (savedLeads && savedLeads.length > 0 && savedLeads[0].id && String(savedLeads[0].id).startsWith('lead_real_')) {
       this.leads = savedLeads;
-      // Auto-migrate and enrich any leads missing address or mapsUrl
-      this.leads.forEach((l, idx) => {
-        if (!l.address) {
-          const region = LeadGenerator.detectRegion(l.country || 'Pakistan', l.city || 'Karachi');
-          l.address = LeadGenerator.generateRealisticAddress(region, l.city || 'Karachi', idx);
-        }
-        if (!l.mapsUrl) {
-          const cleanBiz = l.businessName ? l.businessName.split('(')[0].trim() : '';
-          l.mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanBiz + ', ' + l.address)}`;
-        }
-      });
-      StorageService.saveLeads(this.leads);
+      this.applyFilter('all');
+      this.updateMetrics();
     } else {
       fetch('data/leads.json')
         .then(res => res.json())
@@ -548,7 +538,7 @@ const App = {
       const cleanPhone = (lead.contactInfo.phone || '').replace(/[^0-9]/g, '');
       const fullAddress = lead.address || `${lead.city}, ${lead.country}`;
       const cleanBizName = lead.businessName ? lead.businessName.split('(')[0].trim() : '';
-      const mapsPinUrl = lead.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanBizName + ', ' + fullAddress)}`;
+      const mapsPinUrl = lead.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanBizName + ', ' + lead.city)}`;
 
       return `
         <tr data-lead-id="${lead.id}">
@@ -556,8 +546,8 @@ const App = {
             <div class="biz-name-cell">
               <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
                 <span class="biz-title">${lead.businessName}</span>
-                <a href="${mapsPinUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; text-decoration: none; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #f87171; white-space: nowrap; transition: all 0.2s;" title="Open exact Google Maps Pin to verify location">
-                  <span>📍</span> <span>Maps Pin ↗</span>
+                <a href="${mapsPinUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 6px; font-size: 0.74rem; font-weight: 700; text-decoration: none; background: linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(220, 38, 38, 0.35) 100%); border: 1px solid rgba(239, 68, 68, 0.6); color: #fca5a5; white-space: nowrap; box-shadow: 0 0 10px rgba(239, 68, 68, 0.25); transition: all 0.2s;" title="1-Tap to Open Real Location Pin & Details on Google Maps">
+                  <span>🗺️</span> <span>Maps Pin ↗</span>
                 </a>
               </div>
               <span class="biz-location" style="display: flex; flex-direction: column; gap: 3px; margin-top: 3px;">
@@ -566,7 +556,7 @@ const App = {
                 </span>
                 <span style="font-size: 0.74rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                   <span>📍 ${lead.city}</span>
-                  • <span class="google-rating-chip">⭐ ${lead.rating} (${lead.reviews} reviews)</span>
+                  • <span class="google-rating-chip">⭐ ${lead.rating} (${(Number(lead.reviews) || 50).toLocaleString()} reviews)</span>
                   • <a href="https://api.whatsapp.com/send?phone=${cleanPhone}" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 500;" title="Click to open WhatsApp directly">📲 ${lead.contactInfo.phone}</a>
                 </span>
               </span>
@@ -668,13 +658,13 @@ const App = {
 
     const fullAddress = lead.address || `${lead.city}, ${lead.country}`;
     const cleanBiz = lead.businessName ? lead.businessName.split('(')[0].trim() : '';
-    const mapsLink = lead.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanBiz + ', ' + fullAddress)}`;
+    const mapsLink = lead.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanBiz + ', ' + lead.city)}`;
 
     if (modalAddress) modalAddress.textContent = fullAddress;
     if (modalCityCountry) modalCityCountry.textContent = `${lead.city} • ${lead.country}`;
     if (modalMapsBtn) {
       modalMapsBtn.href = mapsLink;
-      modalMapsBtn.setAttribute('title', `Open exact Google Maps Pin for ${lead.businessName}`);
+      modalMapsBtn.setAttribute('title', `1-Tap to Open Real Location Pin on Google Maps for ${lead.businessName}`);
     }
 
     const dmNameEl = document.getElementById('modal-pitch-dm-name');
