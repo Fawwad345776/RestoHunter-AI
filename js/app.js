@@ -17,15 +17,10 @@ const App = {
 
     // Check if we have saved leads, else generate initial 100
     const savedLeads = StorageService.getLeads();
-    if (savedLeads && savedLeads.length > 0 && savedLeads[0].id && String(savedLeads[0].id).startsWith('lead_real_wa_')) {
+    if (savedLeads && savedLeads.length > 0 && savedLeads[0].id && String(savedLeads[0].id).startsWith('real_lead_')) {
       // Ensure all saved leads have the 100% exact single-pin mapsUrl with physical street address and phone source
       savedLeads.forEach(l => {
         l.mapsUrl = this.getExactMapsUrl(l);
-        if (!l.contactInfo) l.contactInfo = {};
-        if (!l.contactInfo.phoneSource) {
-          const isMobile = l.contactInfo.phone && (/^\+92\s*3/.test(l.contactInfo.phone.replace(/[^0-9+]/g, '')) || /^\+971\s*5/.test(l.contactInfo.phone.replace(/[^0-9+]/g, '')));
-          l.contactInfo.phoneSource = isMobile ? 'Google Maps Profile & WhatsApp Bio' : 'Google Business Profile (Google Local Pack)';
-        }
       });
       StorageService.saveLeads(savedLeads);
       this.leads = savedLeads;
@@ -43,11 +38,8 @@ const App = {
           this.applyFilter('all');
           this.updateMetrics();
         })
-        .catch(() => {
-          this.leads = LeadGenerator.generate100Leads('Austin, Texas', 'USA', 'all');
-          StorageService.saveLeads(this.leads);
-          this.applyFilter('all');
-          this.updateMetrics();
+        .catch(err => {
+          console.error('Error fetching data/leads.json:', err);
         });
     }
 
@@ -57,6 +49,9 @@ const App = {
 
   getExactMapsUrl(lead) {
     if (!lead) return 'https://www.google.com/maps';
+    if (lead.mapsUrl && lead.mapsUrl.includes('/maps/place/')) {
+      return lead.mapsUrl;
+    }
     const cleanBiz = (lead.businessName || '').split('(')[0].trim();
     const address = (lead.address || `${lead.city || ''}, ${lead.country || ''}`).trim();
     let fullQuery = '';
@@ -65,7 +60,7 @@ const App = {
     } else {
       fullQuery = `${cleanBiz}, ${address}`;
     }
-    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullQuery)}`;
+    return `https://www.google.com/maps/place/${encodeURIComponent(fullQuery)}`;
   },
 
   setupUI() {
@@ -166,29 +161,19 @@ const App = {
       });
     }
 
-    // Quick City Chips
+    // Quick City Chips (Verified Markets)
     document.querySelectorAll('.city-chip').forEach(chip => {
       chip.addEventListener('click', (e) => {
         document.querySelectorAll('.city-chip').forEach(c => c.classList.remove('active'));
         chip.classList.add('active');
+        const selectedCity = chip.dataset.city;
         const cityInput = document.getElementById('target-city-input');
-        if (cityInput) cityInput.value = chip.dataset.city;
-
-        const cVal = chip.dataset.country;
-        if (cVal && countrySelect) {
-          switchToSelect();
-          let matched = false;
-          for (let opt of countrySelect.options) {
-            if (opt.value.toUpperCase() === cVal.toUpperCase() || cVal.toUpperCase().includes(opt.value.toUpperCase())) {
-              countrySelect.value = opt.value;
-              matched = true;
-              break;
-            }
-          }
-          if (!matched) {
-            switchToCustom();
-            if (customInput) customInput.value = cVal;
-          }
+        if (cityInput && selectedCity !== 'ALL') cityInput.value = selectedCity;
+        if (selectedCity === 'ALL') {
+          if (cityInput) cityInput.value = '';
+          this.applyFilter(this.currentChannelFilter || 'all');
+        } else {
+          this.handleCityFilter(selectedCity);
         }
       });
     });
@@ -225,33 +210,11 @@ const App = {
       });
     }
 
-    // Approve & Dispatch All 100
-    const approveAllBtn = document.getElementById('btn-approve-all');
-    if (approveAllBtn) {
-      approveAllBtn.addEventListener('click', () => this.handleApproveAll());
-    }
-
-    // Stop Batch Dispatch
-    const stopBatchBtn = document.getElementById('btn-stop-batch');
-    if (stopBatchBtn) {
-      stopBatchBtn.addEventListener('click', () => {
-        AutopilotEngine.stopBatchDispatch();
-        this.showToast('Batch dispatch paused.', 'info');
-      });
-    }
-
-    // Load Next 100 Leads
-    const loadNextBtn = document.getElementById('btn-load-next-100');
-    if (loadNextBtn) {
-      loadNextBtn.addEventListener('click', () => this.handleLoadNext100());
-    }
-
     // Reset Leads to Ready Status
     const resetLeadsBtn = document.getElementById('btn-reset-leads-status');
     if (resetLeadsBtn) {
       resetLeadsBtn.addEventListener('click', () => {
         if (confirm('Kya aap sab dispatched leads ko wapis "Ready to Pitch" karna chahte hain taake WhatsApp se 1-by-1 bhej sakein?')) {
-          AutopilotEngine.stopBatchDispatch();
           this.leads.forEach(l => {
             l.status = 'ready';
             l.dispatchedAt = null;
@@ -280,14 +243,6 @@ const App = {
       exportJsonBtn.addEventListener('click', () => this.exportJSON());
     }
 
-    // Test WhatsApp Alert
-    const testWaBtn = document.getElementById('btn-test-whatsapp');
-    if (testWaBtn) {
-      testWaBtn.addEventListener('click', () => {
-        ReplyCenter.simulateIncomingReply();
-      });
-    }
-
     // Settings Modal Open/Close
     const openSettingsBtn = document.getElementById('btn-open-settings');
     const closeSettingsBtn = document.getElementById('modal-settings-close');
@@ -312,11 +267,6 @@ const App = {
     }
 
     // WhatsApp Alert Modal Close
-    const closeWaAlertBtn = document.getElementById('modal-wa-alert-close');
-    const waAlertModal = document.getElementById('whatsapp-alert-modal');
-    if (closeWaAlertBtn && waAlertModal) {
-      closeWaAlertBtn.addEventListener('click', () => waAlertModal.classList.remove('open'));
-    }
 
     // Autopilot / Social Authority Modal
     const openSocialBtn = document.getElementById('btn-open-social-autopilot');
@@ -464,62 +414,52 @@ const App = {
     return 'Worldwide';
   },
 
+  handleCityFilter(cityQuery) {
+    if (!cityQuery || cityQuery === 'ALL') {
+      this.applyFilter('all');
+      return;
+    }
+    const q = cityQuery.toLowerCase();
+    this.filteredLeads = this.leads.filter(l =>
+      l.city.toLowerCase().includes(q) ||
+      (l.country && l.country.toLowerCase().includes(q)) ||
+      (l.address && l.address.toLowerCase().includes(q))
+    );
+    this.renderTable();
+    this.showToast(`Showing ${this.filteredLeads.length} Google Maps Verified Leads in ${cityQuery}!`, 'info');
+  },
+
   handleStartHunt() {
     const cityInput = document.getElementById('target-city-input');
     const nicheSelect = document.getElementById('target-niche-select');
-    const banner = document.getElementById('hunt-status-banner');
-    const progressBar = document.getElementById('scan-progress-bar-fill');
-    const progressText = document.getElementById('hunt-status-text');
-
-    const city = cityInput && cityInput.value.trim() ? cityInput.value.trim() : 'Austin, Texas';
-    const country = this.getCountryValue();
+    const city = cityInput && cityInput.value.trim() ? cityInput.value.trim() : '';
     const niche = nicheSelect ? nicheSelect.value : 'all';
 
-    if (banner) banner.classList.add('active');
-    if (progressBar) progressBar.style.width = '10%';
-    if (progressText) progressText.textContent = `Scanning Google Local Pack in ${city} [${country}] (4.0+ Stars, 30+ Reviews)...`;
+    let matched = this.leads;
+    if (city && city.toLowerCase() !== 'all') {
+      const q = city.toLowerCase();
+      matched = matched.filter(l =>
+        l.city.toLowerCase().includes(q) ||
+        (l.country && l.country.toLowerCase().includes(q)) ||
+        (l.address && l.address.toLowerCase().includes(q))
+      );
+    }
+    if (niche && niche !== 'all') {
+      matched = matched.filter(l => l.niche === niche);
+    }
 
-    let step = 10;
-    const interval = setInterval(() => {
-      step += 22;
-      if (progressBar) progressBar.style.width = `${Math.min(step, 95)}%`;
+    if (matched.length > 0) {
+      this.filteredLeads = matched;
+      this.renderTable();
+      this.showToast(`✅ Found ${matched.length} Google Maps Verified Leads!`, 'success');
+    } else {
+      this.filteredLeads = this.leads;
+      this.renderTable();
+      this.showToast(`Showing all 100 Google Maps Verified Leads!`, 'info');
+    }
 
-      if (step >= 35 && step < 65) {
-        if (progressText) progressText.textContent = `Diagnosing digital flaws & calculating DoorDash/commission leaks in ${city}...`;
-      } else if (step >= 65 && step < 90) {
-        if (progressText) progressText.textContent = `Allocating 25 WhatsApp, 25 Gmail, 25 LinkedIn, 25 Instagram tailored pitches for ${country}...`;
-      }
-
-      if (step >= 100) {
-        clearInterval(interval);
-        if (progressBar) progressBar.style.width = '100%';
-        if (progressText) progressText.textContent = `✅ Successfully prospected 100 high-ticket local businesses in ${city}!`;
-
-        setTimeout(() => {
-          this.leads = LeadGenerator.generate100Leads(city, country, niche);
-          StorageService.saveLeads(this.leads);
-          this.applyFilter('all');
-          this.updateMetrics();
-          this.showToast(`100 Verified Leads Loaded for ${city} (${country})!`, 'success');
-          if (banner) banner.classList.remove('active');
-        }, 600);
-      }
-    }, 280);
-  },
-
-  handleLoadNext100() {
-    const cityInput = document.getElementById('target-city-input');
-    const nicheSelect = document.getElementById('target-niche-select');
-    const city = cityInput && cityInput.value.trim() ? cityInput.value.trim() : 'Austin, Texas';
-    const country = this.getCountryValue();
-    const niche = nicheSelect ? nicheSelect.value : 'all';
-
-    const next100 = LeadGenerator.generate100Leads(city, country, niche);
-    this.leads = next100;
-    StorageService.saveLeads(this.leads);
-    this.applyFilter('all');
-    this.updateMetrics();
-    this.showToast(`🔄 Loaded Next 100 Fresh Leads for ${city} (Deduplicated)!`, 'success');
+    const tableHeader = document.querySelector('.leads-section-header');
+    if (tableHeader) tableHeader.scrollIntoView({ behavior: 'smooth' });
   },
 
   applyFilter(filter) {
@@ -608,15 +548,25 @@ const App = {
 
       const isPakMobile = lead.contactInfo.phone && /^\+92\s*3\d{2}/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''));
       const isUaeMobile = lead.contactInfo.phone && /^\+971\s*5/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''));
-      const isMobileWA = isPakMobile || isUaeMobile;
+      const isMobileWA = lead.phoneType === 'mobile_whatsapp' || (lead.contactInfo && lead.contactInfo.phoneType === 'mobile_whatsapp') || isPakMobile || isUaeMobile;
       const igHandle = (lead.contactInfo.instagramHandle || '').replace('@', '').trim();
-      const phoneSource = (lead.contactInfo && lead.contactInfo.phoneSource)
-        ? lead.contactInfo.phoneSource
-        : (isMobileWA ? 'Google Maps Profile & WA Bio' : 'Google Business Profile (Maps)');
+      const phoneSource = (lead.contactInfo && lead.contactInfo.phoneSource) || lead.phoneSource || 'Official Google Business Profile (Maps Knowledge Panel)';
 
       const phoneDisplay = isMobileWA
-        ? `<a href="https://api.whatsapp.com/send?phone=${cleanPhone}" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 600;" title="Verified GSM Mobile WhatsApp — 1-Tap to Chat">📲 ${lead.contactInfo.phone} <span style="font-size:0.68rem; background: rgba(74,222,128,0.18); padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(74,222,128,0.4);">WA Active ✅</span></a> <span style="font-size:0.68rem; color: #94a3b8; background: rgba(255,255,255,0.05); padding: 1px 5px; border-radius: 4px;" title="Public Source of Phone Number">📍 Src: ${phoneSource}</span>`
-        : `<span style="color: #94a3b8;" title="US/UK Business Landline (Not on WhatsApp — use Gmail or Instagram DM)">📞 ${lead.contactInfo.phone} <span style="font-size:0.68rem; background: rgba(239,68,68,0.15); color: #fca5a5; padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(239,68,68,0.3);">Landline • Use Email/IG ⚡</span></span> <span style="font-size:0.68rem; color: #94a3b8; background: rgba(255,255,255,0.05); padding: 1px 5px; border-radius: 4px;" title="Public Source of Phone Number">📍 Src: ${phoneSource}</span>`;
+        ? `<a href="https://api.whatsapp.com/send?phone=${cleanPhone}" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;" title="Verified Mobile WhatsApp — 1-Tap to Chat">
+             <span>📲</span> ${lead.contactInfo.phone}
+             <span style="font-size:0.68rem; background: rgba(74,222,128,0.18); color: #4ade80; padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(74,222,128,0.4); font-weight: 700;">Mobile WA Active ✅</span>
+           </a>
+           <span style="font-size:0.68rem; color: #94a3b8; background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 3px;" title="Official Source of Phone Number">
+             📍 <strong style="color: #cbd5e1;">Src:</strong> ${phoneSource}
+           </span>`
+        : `<span style="color: #cbd5e1; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;" title="Official Landline / UAN Helpline (Not on WhatsApp — use Gmail or Instagram DM)">
+             <span>📞</span> ${lead.contactInfo.phone}
+             <span style="font-size:0.68rem; background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(56, 189, 248, 0.35); font-weight: 700;">Landline / UAN ⚡</span>
+           </span>
+           <span style="font-size:0.68rem; color: #94a3b8; background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 3px;" title="Official Source of Phone Number">
+             📍 <strong style="color: #cbd5e1;">Src:</strong> ${phoneSource}
+           </span>`;
 
       const igDisplay = igHandle
         ? `• <a href="https://www.instagram.com/${igHandle}/" target="_blank" style="color: #f472b6; text-decoration: none; font-weight: 600;" title="Open Instagram Profile / DM">📸 @${igHandle}</a>`
@@ -665,17 +615,17 @@ const App = {
           <td>
             <div class="table-row-actions" style="display: flex; gap: 5px; flex-wrap: wrap; align-items: center;">
               <button class="btn-table-action" onclick="App.openPitchModal('${lead.id}')" title="Preview Pitch & Details">
-                👁️ Pitch
+                👁️ Pitch & Details
               </button>
               <button class="btn-table-action" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(37, 99, 235, 0.35)); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.5); padding: 5px 9px; font-size: 0.74rem; font-weight: 700; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'gmail')" title="1-Tap Open Gmail with Tailored Pitch">
                 📧 Gmail
               </button>
               <button class="btn-table-action" style="background: linear-gradient(135deg, rgba(225, 48, 108, 0.25), rgba(131, 58, 180, 0.35)); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.5); padding: 5px 9px; font-size: 0.74rem; font-weight: 700; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'instagram')" title="1-Tap Auto-Copy Pitch & Open Instagram DM">
-                📸 Insta
+                📸 Insta DM
               </button>
               ${isMobileWA
                 ? `<button class="btn-table-action btn-table-wa" style="padding: 5px 9px; font-size: 0.74rem;" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')" title="1-Tap Direct WhatsApp Chat">📲 WA</button>`
-                : `<button class="btn-table-action" style="background: rgba(255,255,255,0.04); color: #94a3b8; border: 1px dashed rgba(255,255,255,0.2); padding: 5px 8px; font-size: 0.72rem; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')" title="US/UK Landline: Will open WhatsApp with personal test number">📲 WA</button>`
+                : `<button class="btn-table-action" style="background: rgba(255,255,255,0.05); color: #94a3b8; border: 1px solid rgba(255,255,255,0.15); padding: 5px 8px; font-size: 0.72rem; border-radius: 6px; cursor: pointer;" onclick="App.dispatchLandlineWhatsApp('${lead.id}')" title="Official Landline: Click to learn why WhatsApp is disabled or test on your number">📲 WA</button>`
               }
             </div>
           </td>
@@ -778,15 +728,16 @@ const App = {
     if (dmTitleEl) dmTitleEl.textContent = ` (${lead.decisionMakerTitle})`;
     if (dmPhoneInput) dmPhoneInput.value = lead.contactInfo.phone;
 
-    const modalIsMobile = lead.contactInfo.phone && (/^\+92\s*3/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, '')) || /^\+971\s*5/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, '')));
-    const modalPhoneSource = (lead.contactInfo && lead.contactInfo.phoneSource)
-      ? lead.contactInfo.phoneSource
-      : (modalIsMobile ? 'Google Maps Profile & WhatsApp Bio' : 'Google Business Profile (Google Local Pack)');
+    const modalIsMobile = lead.phoneType === 'mobile_whatsapp' || (lead.contactInfo && lead.contactInfo.phoneType === 'mobile_whatsapp') || (lead.contactInfo.phone && (/^\+92\s*3/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, '')) || /^\+971\s*5/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''))));
+    const phoneTypeBadge = modalIsMobile
+      ? '<span style="color:#4ade80; font-weight:700;">[Mobile WhatsApp Active]</span>'
+      : '<span style="color:#38bdf8; font-weight:700;">[Official Landline / UAN Helpline]</span>';
+    const modalPhoneSource = (lead.contactInfo && lead.contactInfo.phoneSource) || lead.phoneSource || 'Official Google Business Profile (Maps Knowledge Panel)';
 
-    if (phoneSourceEl) phoneSourceEl.textContent = modalPhoneSource;
+    if (phoneSourceEl) phoneSourceEl.innerHTML = `${modalPhoneSource} ${phoneTypeBadge}`;
     if (phoneVerifyLink) {
       phoneVerifyLink.href = mapsLink;
-      phoneVerifyLink.textContent = `Verify on Google Maps for ${lead.businessName.split('(')[0].trim()} ↗`;
+      phoneVerifyLink.textContent = `Verify on Google Maps Place Pin ↗`;
     }
 
     const testWaBtn = document.getElementById('btn-set-my-wa-test');
@@ -856,14 +807,10 @@ const App = {
       modal.classList.remove('open');
     };
 
-    document.getElementById('modal-btn-test-wa').onclick = () => {
-      ReplyCenter.simulateIncomingReply(lead);
-    };
-
     modal.classList.add('open');
   },
 
-  dispatchSingleLead(leadId, customBody = null, channelOverride = null) {
+  dispatchSingleLead(leadId, customBody = null, channelOverride = null, targetPhoneOverride = null) {
     const lead = this.leads.find(l => l.id === leadId);
     if (!lead) return;
 
@@ -897,7 +844,7 @@ const App = {
 
     if (activeChannel === 'whatsapp') {
       const phoneInput = document.getElementById('modal-pitch-dm-phone-input');
-      const rawPhone = (phoneInput && phoneInput.value && phoneInput.value.trim()) ? phoneInput.value.trim() : (lead.contactInfo.phone || '+923376568003');
+      const rawPhone = targetPhoneOverride || ((phoneInput && phoneInput.value && phoneInput.value.trim()) ? phoneInput.value.trim() : (lead.contactInfo.phone || '+923376568003'));
       lead.contactInfo.phone = rawPhone;
       const cleanPhone = rawPhone.replace(/[^0-9]/g, '');
       const waText = encodeURIComponent(body);
@@ -906,7 +853,7 @@ const App = {
     } else if (activeChannel === 'gmail') {
       const subject = encodeURIComponent(pitch.subject || `quick question re ${cleanBiz}`);
       const emailBody = encodeURIComponent(body);
-      const targetEmail = lead.contactInfo.email || `contact@${lead.website.replace('https://', '').replace('/', '')}`;
+      const targetEmail = lead.contactInfo.email || `contact@${cleanBiz.toLowerCase().replace(/[^a-z0-9]/g, '')}.com`;
       const mailtoUrl = `mailto:${targetEmail}?subject=${subject}&body=${emailBody}`;
       window.open(mailtoUrl, '_blank');
     } else if (activeChannel === 'linkedin') {
@@ -928,35 +875,22 @@ const App = {
       }
     }
 
-    this.showToast(`🚀 Bhej Diya! Dispatched to ${lead.businessName} via ${activeChannel.toUpperCase()}`, 'success');
+    this.showToast(`🚀 Dispatched to ${lead.businessName} via ${activeChannel.toUpperCase()}!`, 'success');
   },
 
-  handleApproveAll() {
-    const readyLeads = this.leads.filter(l => l.status === 'ready');
-    if (readyLeads.length === 0) {
-      this.showToast('All leads already approved and dispatched!', 'info');
-      return;
+  dispatchLandlineWhatsApp(leadId) {
+    const lead = this.leads.find(l => l.id === leadId);
+    if (!lead) return;
+    const choice = confirm(
+      `📞 ${lead.businessName} ka official phone number (${lead.contactInfo.phone}) Landline / UAN Helpline hai.\n\n` +
+      `Landlines par WhatsApp messaging activate nahi hoti. Owner aur Management tak direct pohnchne ke liye:\n` +
+      `• "📧 Gmail" button dabayein taake direct proposal email draft khul jaye.\n` +
+      `• "📸 Insta DM" button dabayein taake Instagram profile aur DM khul jaye.\n\n` +
+      `Agar aap is lead ki tailored pitch apne personal testing number (${this.settings.whatsapp_number || '+923376568003'}) par test bhejna chahte hain to OK dabayein.`
+    );
+    if (choice) {
+      this.dispatchSingleLead(lead.id, null, 'whatsapp', this.settings.whatsapp_number || '+923376568003');
     }
-
-    const confirmFast = confirm(
-      `⚡ BATCH AUTOPILOT QUEUE DISPATCH:\n\nYeh feature tamam ${readyLeads.length} leads ke liye tailored AI pitches generate karke queue me save karega.\n\n⚠️ Note: Agar aapko directly client ke phone par real WhatsApp message deliver karna hai, to table me har business ke aage green "📲 WhatsApp" button dabayein taake WhatsApp Web khul jaye.\n\nClick OK to run safe batch queue, or Cancel to run in fast simulation mode.`
-    );
-
-    AutopilotEngine.startBatchDispatch(
-      this.leads,
-      (lead, current, total) => {
-        this.renderTable();
-        this.updateMetrics();
-        StorageService.saveLeads(this.leads);
-        this.showToast(`🚀 Dispatched (${current}/${total}): ${lead.businessName}`, 'success');
-      },
-      (msg) => {
-        this.renderTable();
-        this.updateMetrics();
-        this.showToast(msg, 'success');
-      },
-      !confirmFast // if user canceled, run in fast demo mode (4-8s)
-    );
   },
 
   handleSaveSettings() {

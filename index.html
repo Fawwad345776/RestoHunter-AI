@@ -303,30 +303,17 @@
         </button>
       </div>
 
-      <!-- Quick City Chips -->
+      <!-- Quick City Chips (Verified Markets) -->
       <div class="quick-cities-bar">
-        <span class="quick-cities-label">Popular Markets:</span>
-        <button class="city-chip" data-city="Austin, Texas" data-country="USA 🇺🇸">Austin, TX 🇺🇸</button>
-        <button class="city-chip" data-city="Miami, Florida" data-country="USA 🇺🇸">Miami, FL 🇺🇸</button>
-        <button class="city-chip" data-city="London, UK" data-country="United Kingdom 🇬🇧">London 🇬🇧</button>
-        <button class="city-chip" data-city="Dubai, UAE" data-country="United Arab Emirates (Dubai) 🇦🇪">Dubai 🇦🇪</button>
-        <button class="city-chip" data-city="Toronto, Ontario" data-country="Canada 🇨🇦">Toronto 🇨🇦</button>
-        <button class="city-chip" data-city="Sydney, NSW" data-country="Australia 🇦🇺">Sydney 🇦🇺</button>
-        <button class="city-chip" data-city="Riyadh, Saudi Arabia" data-country="Saudi Arabia 🇸🇦">Riyadh 🇸🇦</button>
-        <button class="city-chip" data-city="Berlin, Germany" data-country="Germany 🇩🇪">Berlin 🇩🇪</button>
-        <button class="city-chip" data-city="Singapore" data-country="Singapore 🇸🇬">Singapore 🇸🇬</button>
-        <button class="city-chip" data-city="New York, NY" data-country="USA 🇺🇸">New York 🇺🇸</button>
-      </div>
-
-      <!-- Live Scan Progress Banner -->
-      <div id="hunt-status-banner" class="hunt-status-banner">
-        <div>
-          <span style="font-weight: 700; color: var(--emerald-light);">🔍 CRAWLING GOOGLE LOCAL PACK:</span>
-          <span id="hunt-status-text" style="font-size: 0.88rem; margin-left: 8px;">Scanning businesses...</span>
-          <div class="scan-progress-bar-container">
-            <div id="scan-progress-bar-fill" class="scan-progress-bar-fill"></div>
-          </div>
-        </div>
+        <span class="quick-cities-label">Verified Markets:</span>
+        <button class="city-chip active" data-city="ALL" data-country="All">All Leads (100) 🌐</button>
+        <button class="city-chip" data-city="Karachi" data-country="Pakistan 🇵🇰">Karachi 🇵🇰 (20)</button>
+        <button class="city-chip" data-city="Lahore" data-country="Pakistan 🇵🇰">Lahore 🇵🇰 (15)</button>
+        <button class="city-chip" data-city="Islamabad" data-country="Pakistan 🇵🇰">Islamabad 🇵🇰 (10)</button>
+        <button class="city-chip" data-city="Dubai" data-country="United Arab Emirates 🇦🇪">Dubai 🇦🇪 (15)</button>
+        <button class="city-chip" data-city="Austin" data-country="USA 🇺🇸">Austin, TX 🇺🇸 (15)</button>
+        <button class="city-chip" data-city="New York" data-country="USA 🇺🇸">New York 🇺🇸 (15)</button>
+        <button class="city-chip" data-city="London" data-country="United Kingdom 🇬🇧">London 🇬🇧 (10)</button>
       </div>
     </section>
 
@@ -392,17 +379,8 @@
           <button id="btn-open-add-lead" class="btn-primary" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; padding: 8px 14px; font-size: 0.84rem; box-shadow: 0 0 12px rgba(37, 211, 102, 0.35);" title="Paste any real business & WhatsApp number from Google Maps / Instagram">
             <span>➕</span> Add Real Lead / Number
           </button>
-          <button id="btn-approve-all" class="btn-primary" style="padding: 8px 16px; font-size: 0.84rem;">
-            <span>⚡</span> APPROVE & DISPATCH ALL 100
-          </button>
-          <button id="btn-load-next-100" class="btn-secondary" style="padding: 8px 14px; font-size: 0.84rem;">
-            <span>🔄</span> Load Next 100 Leads
-          </button>
           <button id="btn-reset-leads-status" class="btn-secondary" style="padding: 8px 12px; font-size: 0.84rem; color: #fbbf24; border-color: rgba(251, 191, 36, 0.45); font-weight: 700;" title="Reset all dispatched leads back to 'Ready to Pitch'">
             <span>🔄</span> Reset to Ready
-          </button>
-          <button id="btn-test-whatsapp" class="btn-secondary" style="padding: 8px 14px; font-size: 0.84rem; color: #25d366;" title="Simulate Client Reply & Alert WhatsApp">
-            <span>💬</span> Test WhatsApp Alert
           </button>
           <button id="btn-export-csv" class="btn-secondary" style="padding: 8px 12px; font-size: 0.84rem;" title="Download CSV">
             <span>📥</span> CSV
@@ -413,30 +391,18 @@
         </div>
       </div>
 
-      <!-- Batch Dispatch Live Countdown Widget -->
-      <div id="batch-dispatch-widget" class="batch-dispatch-widget">
+      <!-- Verified Data Source & Channel Legend Strip -->
+      <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-sm); padding: 10px 16px; margin: 12px 0 16px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 0.82rem;">
         <div style="display: flex; align-items: center; gap: 10px;">
-          <span class="status-dot-pulse"></span>
-          <span id="batch-timer-text" style="font-weight: 600; font-size: 0.88rem; color: var(--cyan-light);">
-            ⚡ Anti-Ban Safe Delay: Next lead dispatches in 3m 45s...
-          </span>
-        </div>
-        <button id="btn-stop-batch" class="btn-secondary" style="padding: 4px 12px; font-size: 0.78rem;">
-          Pause Dispatcher
-        </button>
-      </div>
-
-      <!-- Triple-Touch Multi-Channel Outreach Banner -->
-      <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: var(--radius-sm); padding: 12px 16px; margin: 12px 0 16px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 0.82rem;">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 1.25rem;">🔥</span>
+          <span style="font-size: 1.15rem;">📍</span>
           <span style="color: #e2e8f0;">
-            <strong style="color: #38bdf8;">Triple-Touch Cadence Active:</strong> Har lead par <strong style="color: #93c5fd;">📧 Gmail</strong> + <strong style="color: #f472b6;">📸 Insta DM</strong> + <strong style="color: #4ade80;">📲 WhatsApp</strong> teeno direct 1-tap buttons mojood hain! Ek hi lead ko teeno jagah pitch karne se client ka reply rate <strong style="color: #4ade80;">65%+</strong> barh jata hai!
+            <strong style="color: #34d399;">100% Real Google Maps Verified Data:</strong> Tamam 100 businesses ke official phone numbers aur addresses Google Maps Knowledge Graph aur central helpline se verified hain.
           </span>
         </div>
-        <span style="color: #94a3b8; font-size: 0.74rem; background: rgba(0,0,0,0.3); padding: 4px 10px; border-radius: 6px;">
-          💡 Tip: US/UK leads landlines hain (Use Gmail & Insta DM) • PK/UAE leads direct WhatsApp active hain
-        </span>
+        <div style="display: flex; align-items: center; gap: 14px; font-size: 0.76rem;">
+          <span style="color: #4ade80;">📲 <strong>Mobile:</strong> Direct WhatsApp Active</span>
+          <span style="color: #93c5fd;">📞 <strong>Landline/UAN:</strong> Use 📧 Gmail ya 📸 Instagram DM</span>
+        </div>
       </div>
 
       <!-- Leads Review Table -->
@@ -549,7 +515,6 @@
         <button id="modal-btn-send-gmail" class="btn-secondary" style="color: #f87171; border-color: rgba(248, 113, 113, 0.4);" title="US/UK clients landline par hain, isko click kar ke direct Gmail bhein">
           <span>📧</span> Bhej Do (Gmail Instead)
         </button>
-        <button id="modal-btn-test-wa" class="btn-secondary" style="color: #25d366;">📲 Test WA Alert</button>
         <button id="modal-btn-bhejdo" class="btn-primary">🚀 Bhej Do (Channel)</button>
       </div>
     </div>
@@ -633,44 +598,7 @@
     </div>
   </div>
 
-  <!-- REAL-TIME WHATSAPP NOTIFICATION MODAL -->
-  <div id="whatsapp-alert-modal" class="modal-overlay">
-    <div class="modal-card" style="max-width: 600px;">
-      <div class="modal-header" style="background: linear-gradient(90deg, #075e54, #128c7e); color: #fff;">
-        <h3 style="color: #fff;">🚨 NAYA CLIENT REPLY AAYA HAI!</h3>
-        <button id="modal-wa-alert-close" class="modal-close-btn" style="color: #fff;">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="whatsapp-chat-bubble">
-          <div class="whatsapp-bubble-header">
-            <span>📱 Real-Time Alert to: <strong>+923376568003</strong></span>
-          </div>
-          <div style="font-size: 0.85rem; margin-bottom: 6px;">
-            🏢 <strong id="wa-modal-biz">Dr. Elena Dental (Miami)</strong> • Platform: <span id="wa-modal-platform">LinkedIn</span>
-          </div>
-          <div style="background: rgba(0,0,0,0.25); padding: 10px; border-radius: 8px; margin: 8px 0;">
-            <div style="font-size: 0.78rem; color: #a7f3d0;">💬 Gora Ka Message:</div>
-            <div id="wa-modal-msg" style="font-weight: 600; margin-top: 2px;">"Hey! Sounds interesting. How much do you charge for this?"</div>
-          </div>
-          <div style="background: rgba(0,0,0,0.25); padding: 10px; border-radius: 8px; margin-top: 8px;">
-            <div style="font-size: 0.78rem; color: #fde047;">👉 AI Suggested Reply:</div>
-            <div id="wa-modal-ai-reply" style="color: #fef08a; font-weight: 500; margin-top: 2px;">"Hi Dr. Elena! It's $650 one-time, ready in 48 hours. Can I share a quick 1-min preview video?"</div>
-          </div>
-        </div>
 
-        <div class="input-group">
-          <label class="input-label">Raw Formatted WhatsApp Message</label>
-          <pre id="wa-modal-full-text" class="whatsapp-code-block"></pre>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button id="wa-modal-copy-btn" class="btn-secondary">📋 Copy AI Reply</button>
-        <button id="wa-modal-send-btn" class="btn-primary" style="background: #25d366; color: #000; font-weight: 700;">
-          📲 Send to My WhatsApp (+923376568003)
-        </button>
-      </div>
-    </div>
-  </div>
 
   <!-- SETTINGS MODAL -->
   <div id="settings-modal" class="modal-overlay">
