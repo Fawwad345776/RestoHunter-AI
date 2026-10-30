@@ -83,9 +83,6 @@ const App = {
 
   getExactMapsUrl(lead) {
     if (!lead) return 'https://www.google.com/maps';
-    if (lead.mapsUrl && lead.mapsUrl.includes('/maps/place/')) {
-      return lead.mapsUrl;
-    }
     const cleanBiz = (lead.businessName || '').split('(')[0].trim();
     const address = (lead.address || `${lead.city || ''}, ${lead.country || ''}`).trim();
     let fullQuery = '';
@@ -94,7 +91,21 @@ const App = {
     } else {
       fullQuery = `${cleanBiz}, ${address}`;
     }
-    return `https://www.google.com/maps/place/${encodeURIComponent(fullQuery)}`;
+    // Universal Google Maps search URL (works on mobile app and desktop web)
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullQuery)}`;
+  },
+
+  getEmbedMapsUrl(lead) {
+    if (!lead) return 'about:blank';
+    const cleanBiz = (lead.businessName || '').split('(')[0].trim();
+    const address = (lead.address || `${lead.city || ''}, ${lead.country || ''}`).trim();
+    let fullQuery = '';
+    if (address.toLowerCase().includes(cleanBiz.toLowerCase())) {
+      fullQuery = address;
+    } else {
+      fullQuery = `${cleanBiz}, ${address}`;
+    }
+    return `https://maps.google.com/maps?q=${encodeURIComponent(fullQuery)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
   },
 
   setupUI() {
@@ -783,19 +794,59 @@ const App = {
       demoLinkEl.href = lead.demoLink || '#';
     }
 
-    // Set Address & Google Maps Pin
+    // Set Address & Live Interactive Google Map
     const modalAddress = document.getElementById('modal-pitch-address');
     const modalCityCountry = document.getElementById('modal-pitch-city-country');
     const modalMapsBtn = document.getElementById('modal-btn-open-maps');
+    const modalMapIframe = document.getElementById('modal-map-iframe');
+    const modalMapWrapper = document.getElementById('modal-map-embed-wrapper');
+    const copyAddressBtn = document.getElementById('modal-btn-copy-address');
+    const labelCopyAddress = document.getElementById('label-copy-address');
+    const toggleMapBtn = document.getElementById('modal-btn-toggle-map');
+    const labelToggleMap = document.getElementById('label-toggle-map');
 
     const fullAddress = lead.address || `${lead.city}, ${lead.country}`;
     const mapsLink = this.getExactMapsUrl(lead);
+    const embedMapLink = this.getEmbedMapsUrl(lead);
 
     if (modalAddress) modalAddress.textContent = fullAddress;
     if (modalCityCountry) modalCityCountry.textContent = `${lead.city} • ${lead.country}`;
     if (modalMapsBtn) {
       modalMapsBtn.href = mapsLink;
       modalMapsBtn.setAttribute('title', `1-Tap to Open Real Location Pin on Google Maps for ${lead.businessName}`);
+    }
+
+    if (modalMapIframe) {
+      modalMapIframe.src = embedMapLink;
+    }
+    if (modalMapWrapper) {
+      modalMapWrapper.style.display = 'block';
+    }
+    if (labelToggleMap) {
+      labelToggleMap.textContent = 'Hide Map ▴';
+    }
+
+    if (copyAddressBtn) {
+      copyAddressBtn.onclick = () => {
+        navigator.clipboard.writeText(fullAddress);
+        if (labelCopyAddress) labelCopyAddress.textContent = '✅ Copied!';
+        this.showToast(`📍 Address copied: ${fullAddress}`, 'success');
+        setTimeout(() => {
+          if (labelCopyAddress) labelCopyAddress.textContent = 'Copy Address';
+        }, 2000);
+      };
+    }
+
+    if (toggleMapBtn && modalMapWrapper) {
+      toggleMapBtn.onclick = () => {
+        if (modalMapWrapper.style.display === 'none') {
+          modalMapWrapper.style.display = 'block';
+          if (labelToggleMap) labelToggleMap.textContent = 'Hide Map ▴';
+        } else {
+          modalMapWrapper.style.display = 'none';
+          if (labelToggleMap) labelToggleMap.textContent = 'Show Map ▾';
+        }
+      };
     }
 
     const dmNameEl = document.getElementById('modal-pitch-dm-name');

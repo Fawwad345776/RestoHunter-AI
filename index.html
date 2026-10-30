@@ -427,20 +427,37 @@
           </span>
         </div>
 
-        <!-- Physical Location & Google Maps Pin Verification Strip -->
-        <div class="pitch-lead-location-strip" style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: var(--radius-sm); padding: 12px 16px; margin: 12px 0; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-          <div>
-            <div style="font-size: 0.72rem; color: #f87171; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; display: flex; align-items: center; gap: 5px;">
-              <span class="status-dot-pulse" style="background: #ef4444; box-shadow: 0 0 8px #ef4444;"></span>
-              <span>LIVE GOOGLE MAPS PIN VERIFIED</span>
+        <!-- Physical Location & Interactive Google Map Verification Strip -->
+        <div class="pitch-lead-location-strip" style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: var(--radius-sm); padding: 12px 16px; margin: 12px 0; font-size: 0.8rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+            <div style="flex: 1; min-width: 240px;">
+              <div style="font-size: 0.72rem; color: #f87171; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; display: flex; align-items: center; gap: 5px;">
+                <span class="status-dot-pulse" style="background: #ef4444; box-shadow: 0 0 8px #ef4444;"></span>
+                <span>LIVE GOOGLE MAPS PIN VERIFIED</span>
+              </div>
+              <strong id="modal-pitch-address" style="color: #ffffff; font-size: 0.92rem; display: block; margin-top: 4px; font-weight: 700;">Plot 14-C, Zamzama Blvd, DHA Phase 5, Karachi</strong>
+              <span id="modal-pitch-city-country" style="color: #94a3b8; font-size: 0.76rem;">Karachi, Pakistan</span>
             </div>
-            <strong id="modal-pitch-address" style="color: #ffffff; font-size: 0.92rem; display: block; margin-top: 4px; font-weight: 700;">Plot 14-C, Zamzama Blvd, DHA Phase 5, Karachi</strong>
-            <span id="modal-pitch-city-country" style="color: #94a3b8; font-size: 0.76rem;">Karachi, Pakistan</span>
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <button type="button" id="modal-btn-copy-address" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); color: #f1f5f9; padding: 7px 12px; border-radius: 6px; font-size: 0.76rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s;" title="1-Click to Copy Full Business Address">
+                <span>📋</span> <span id="label-copy-address">Copy Address</span>
+              </button>
+              <button type="button" id="modal-btn-toggle-map" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.45); color: #fca5a5; padding: 7px 12px; border-radius: 6px; font-size: 0.76rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s;" title="Toggle Interactive Google Map preview inside modal">
+                <span>🗺️</span> <span id="label-toggle-map">Hide Map ▴</span>
+              </button>
+              <a id="modal-btn-open-maps" href="#" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #ffffff; padding: 7px 13px; border-radius: 6px; font-size: 0.76rem; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 0 14px rgba(239, 68, 68, 0.4); transition: transform 0.15s ease;" title="Launch native Google Maps App / Navigation">
+                <span>↗</span> Open App
+              </a>
+            </div>
           </div>
-          <div>
-            <a id="modal-btn-open-maps" href="#" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #ffffff; padding: 9px 16px; border-radius: 8px; font-size: 0.82rem; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 0 16px rgba(239, 68, 68, 0.45); transition: transform 0.15s ease;">
-              <span>🗺️</span> 1-Tap Google Maps Pin ↗
-            </a>
+
+          <!-- Embedded Live Interactive Google Map Frame -->
+          <div id="modal-map-embed-wrapper" style="margin-top: 10px; width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid rgba(239, 68, 68, 0.3); background: #070a13; transition: all 0.3s ease;">
+            <div style="background: rgba(15, 23, 42, 0.85); padding: 5px 12px; display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; color: #94a3b8; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+              <span>📍 Live Interactive Map • Zoom & Pan Enabled</span>
+              <span style="color: #4ade80; font-weight: 600;">● Active GPS Pin</span>
+            </div>
+            <iframe id="modal-map-iframe" src="about:blank" width="100%" height="220" style="border: 0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
 
