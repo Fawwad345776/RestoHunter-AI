@@ -140,14 +140,18 @@ const PitchEngine = {
     const deliveryApp = this.detectDeliveryPlatform(lead);
     let text = '';
 
-    if (lead.niche === 'restaurants') {
-      text = `Hi ${firstName}! Hope you're having a great week at *${bizShort}* 🍽️\n\nQuick heads up: noticed your mobile website currently directs delivery customers to ${deliveryApp}.\n\nBased on restaurants in ${lead.city.split(',')[0]}, that 30% commission cut usually costs around *${lead.flawLeakRange}* in lost margin every month.\n\nWe help local restaurants set up a direct 1-tap mobile ordering system with *0% commission* where you keep 100% of your ticket revenue, ready in 48 hours.\n\nWould you be open to a quick 2-minute chat this week?`;
-    } else if (lead.niche === 'dental_medical') {
-      text = `Hi ${firstName}! Hope all is well at *${bizShort}* 🦷\n\nQuick observation regarding patient intake: noticed after 7 PM emergency patients have no online booking calendar, leaking an estimated *${lead.flawLeakRange}* in missed appointments.\n\nWe set up 24/7 automated mobile booking calendars for clinics with paperless intake, ready in 48 hours.\n\nCan I share a quick 45-second breakdown of how it works for ${bizShort}?`;
-    } else if (lead.niche === 'salons_spas') {
+    if (lead.niche === 'restaurants' || lead.niche === 'bakeries_sweets') {
+      text = `Hi ${firstName}! Hope you're having a great week at *${bizShort}* 🍽️\n\nQuick heads up: noticed your mobile website currently directs delivery customers to ${deliveryApp}.\n\nBased on food businesses in ${lead.city.split(',')[0]}, that 30% commission cut usually costs around *${lead.flawLeakRange}* in lost margin every month.\n\nWe help local food & bakery brands set up a direct 1-tap mobile ordering system with *0% commission* where you keep 100% of your ticket revenue, ready in 48 hours.\n\nWould you be open to a quick 2-minute chat this week?`;
+    } else if (lead.niche === 'dental_medical' || lead.niche === 'law_firms') {
+      text = `Hi ${firstName}! Hope all is well at *${bizShort}* 🩺\n\nQuick observation regarding client intake: noticed after 7 PM emergency clients have no online booking calendar, leaking an estimated *${lead.flawLeakRange}* in missed appointments.\n\nWe set up 24/7 automated mobile booking calendars with paperless intake, ready in 48 hours.\n\nCan I share a quick 45-second breakdown of how it works for ${bizShort}?`;
+    } else if (lead.niche === 'salons_spas' || lead.niche === 'pet_care') {
       text = `Hey ${firstName}! Love the work your team is doing at *${bizShort}* ✨\n\nSaw that appointments are still handled by phone or DM, which in our audit data usually risks ~*${lead.flawLeakRange}* in empty chair no-shows every month.\n\nWe set up an instant mobile booking widget with automated 2-way SMS reminders that slashes no-shows by 85%, ready in 48 hours.\n\nWould you be open to a quick 2-minute chat?`;
-    } else if (lead.niche === 'home_services') {
-      text = `Hi ${firstName}! Great reviews on *${bizShort}* in ${lead.city.split(',')[0]} 🔨\n\nNoticed your mobile website currently lacks a 60-second emergency quote calculator. When homeowners have an emergency, 70% bounce without that, leaking ~*${lead.flawLeakRange}* in top-tier jobs.\n\nWe build high-converting instant estimate calculators that capture emergency jobs immediately, ready in 48 hours.\n\nOpen to checking out a quick breakdown?`;
+    } else if (lead.niche === 'gyms_fitness') {
+      text = `Hey ${firstName}! Great facility at *${bizShort}* 🏋️\n\nNoticed your page lacks a 1-tap Free Day Pass trial generator, leaking ~*${lead.flawLeakRange}* in new member walk-ins every month.\n\nWe set up high-converting 1-tap mobile pass funnels that capture member WhatsApp contacts automatically, ready in 48 hours.\n\nOpen to checking out a quick breakdown?`;
+    } else if (lead.niche === 'real_estate' || lead.niche === 'event_planners') {
+      text = `Hi ${firstName}! Top tier showcase at *${bizShort}* 🏡\n\nNoticed serious mobile visitors currently have no instant WhatsApp brochure downloader or date availability checker, leaking ~*${lead.flawLeakRange}* in warm inbound buyer leads.\n\nWe build instant 1-tap mobile inquiry & brochure widgets that capture verified buyer phone numbers instantly, ready in 48 hours.\n\nOpen to a quick 2-minute walkthrough?`;
+    } else if (lead.niche === 'home_services' || lead.niche === 'auto_repair') {
+      text = `Hi ${firstName}! Great reviews on *${bizShort}* in ${lead.city.split(',')[0]} 🔨\n\nNoticed your mobile website currently lacks a 60-second emergency quote calculator. When customers have an urgent job, 70% bounce without that, leaking ~*${lead.flawLeakRange}* in top-tier jobs.\n\nWe build high-converting instant estimate calculators that capture repair jobs immediately, ready in 48 hours.\n\nOpen to checking out a quick breakdown?`;
     } else {
       text = `Hi ${firstName}! Incredible property at *${bizShort}* 🌟\n\nNoticed your mobile reservation button redirects guests directly to OTAs where you give away 18-25% in commissions (*${lead.flawLeakRange}*).\n\nWe set up direct commission-free reservation engines with VIP perks so you keep 100% room revenue, ready in 48 hours.\n\nWould you be open to a quick 2-minute chat?`;
     }
@@ -168,13 +172,17 @@ const PitchEngine = {
     const deliveryApp = this.detectDeliveryPlatform(lead);
     let text = '';
 
-    if (lead.niche === 'restaurants') {
+    if (lead.niche === 'restaurants' || lead.niche === 'bakeries_sweets') {
       text = `Hi ${firstName}, love ${bizShort}! Noticed ${deliveryApp} takes ~30% (${lead.flawLeakRange}) of orders. We build 0% commission direct ordering systems so you keep 100% ticket revenue, ready in 48h. Open to a quick chat?`;
-    } else if (lead.niche === 'dental_medical') {
-      text = `Hi ${firstName}, great reviews on ${bizShort}! Noticed after-hours patients have no direct booking, losing ~${lead.flawLeakRange}. We build 24/7 mobile intake calendars for clinics in 48h. Worth a quick chat?`;
-    } else if (lead.niche === 'salons_spas') {
+    } else if (lead.niche === 'dental_medical' || lead.niche === 'law_firms') {
+      text = `Hi ${firstName}, great reviews on ${bizShort}! Noticed after-hours clients have no direct booking, losing ~${lead.flawLeakRange}. We build 24/7 mobile intake calendars for practices in 48h. Worth a quick chat?`;
+    } else if (lead.niche === 'salons_spas' || lead.niche === 'pet_care') {
       text = `Hey ${firstName}! Big fan of ${bizShort}. Saw bookings are phone-only, risking ~${lead.flawLeakRange} in no-shows. We set up 1-tap booking with auto-SMS reminders that cuts no-shows by 85%. Open to a chat?`;
-    } else if (lead.niche === 'home_services') {
+    } else if (lead.niche === 'gyms_fitness') {
+      text = `Hey ${firstName}! Love ${bizShort}. Saw your site lacks a 1-tap VIP day pass funnel, leaking ~${lead.flawLeakRange} in walk-ins. We build instant trial capture funnels in 48h. Open to a chat?`;
+    } else if (lead.niche === 'real_estate' || lead.niche === 'event_planners') {
+      text = `Hi ${firstName}, great listings at ${bizShort}! Noticed you lack instant WhatsApp brochure downloads, losing ~${lead.flawLeakRange} in warm buyer leads. We build instant lead capture tools in 48h. Open to a chat?`;
+    } else if (lead.niche === 'home_services' || lead.niche === 'auto_repair') {
       text = `Hi ${firstName}, your work at ${bizShort} is top tier. Noticed your site lacks a 60s emergency quote tool, leaking ~${lead.flawLeakRange}. We build instant quote engines in 48h. Open to a quick look?`;
     } else {
       text = `Hi ${firstName}! Noticed ${bizShort} redirects guests to OTAs, losing ~${lead.flawLeakRange} in fees. We build direct commission-free reservation engines in 48h. Mind taking a quick look?`;
@@ -201,14 +209,18 @@ const PitchEngine = {
     const deliveryApp = this.detectDeliveryPlatform(lead);
     let text = '';
 
-    if (lead.niche === 'restaurants') {
-      text = `Hey ${firstName}! Just saw your story at ${bizShort} — food looks incredible 🔥 Quick question: saw you're on ${deliveryApp} — did you know a direct 1-tap ordering setup with 0% commission saves ~${lead.flawLeakRange} in app cuts? We set this up for local restaurants in 48 hours. Open to a quick 2-min chat?`;
-    } else if (lead.niche === 'dental_medical') {
-      text = `Hey guys! Loved your recent post about the clinic 🙌 Quick heads up: noticed after-hours emergency patients have no online calendar to book directly from Instagram, costing an estimated ${lead.flawLeakRange} in missed appointments. We set up 24/7 automated booking in 48 hours. Can I send a quick breakdown?`;
-    } else if (lead.niche === 'salons_spas') {
-      text = `That transformation cut on your story is clean 🔥 Quick question: saw you guys still take all chair appointments manually by phone or DM. We help local shops slash no-shows by 85% with an automated SMS reminder widget in 48 hours. Mind if I send a quick 30s breakdown?`;
-    } else if (lead.niche === 'home_services') {
-      text = `Solid project showcase on your story guys! 🔨 Quick tip: checked your bio link on mobile and noticed there's no 1-tap instant quote calculator. Homeowners in ${lead.city.split(',')[0]} bounce without that, leaking ~${lead.flawLeakRange}. We build 60s quote engines in 48h. Can I share a quick breakdown?`;
+    if (lead.niche === 'restaurants' || lead.niche === 'bakeries_sweets') {
+      text = `Hey ${firstName}! Just saw your story at ${bizShort} — looks incredible 🔥 Quick question: saw you're on ${deliveryApp} — did you know a direct 1-tap ordering setup with 0% commission saves ~${lead.flawLeakRange} in app cuts? We set this up for local brands in 48 hours. Open to a quick 2-min chat?`;
+    } else if (lead.niche === 'dental_medical' || lead.niche === 'law_firms') {
+      text = `Hey guys! Loved your recent post about ${bizShort} 🙌 Quick heads up: noticed after-hours emergency clients have no online calendar to book directly from Instagram, costing an estimated ${lead.flawLeakRange} in missed consultations. We set up 24/7 automated booking in 48 hours. Can I send a quick breakdown?`;
+    } else if (lead.niche === 'salons_spas' || lead.niche === 'pet_care') {
+      text = `That transformation on your story is clean 🔥 Quick question: saw you guys still take all chair appointments manually by phone or DM. We help local shops slash no-shows by 85% with an automated SMS reminder widget in 48 hours. Mind if I send a quick 30s breakdown?`;
+    } else if (lead.niche === 'gyms_fitness') {
+      text = `Clean training workout on your story! 🔥 Quick tip: saw your bio link lacks a 1-tap Free VIP Day Pass generator. Gyms in ${lead.city.split(',')[0]} bounce 60% of followers without that (~${lead.flawLeakRange}). We build 1-tap pass funnels in 48h. Mind if I share a quick look?`;
+    } else if (lead.niche === 'real_estate' || lead.niche === 'event_planners') {
+      text = `Incredible property showcase on your story! 🏡 Quick question: noticed serious buyers have no 1-tap WhatsApp brochure download link, leaking ~${lead.flawLeakRange} in warm buyer leads. We build instant 1-tap brochure engines in 48h. Mind if I share a quick breakdown?`;
+    } else if (lead.niche === 'home_services' || lead.niche === 'auto_repair') {
+      text = `Solid project showcase on your story guys! 🔨 Quick tip: checked your bio link on mobile and noticed there's no 1-tap instant quote calculator. Clients in ${lead.city.split(',')[0]} bounce without that, leaking ~${lead.flawLeakRange}. We build 60s quote engines in 48h. Can I share a quick breakdown?`;
     } else {
       text = `Incredible property views on your story! 🌟 Quick heads up: noticed your mobile bio link redirects guests to OTAs where you lose 20% commission on every room (${lead.flawLeakRange}). We build direct commission-free reservation engines in 48 hours. Mind if I share a quick breakdown?`;
     }
@@ -230,18 +242,24 @@ const PitchEngine = {
     let subject = '';
     let body = '';
 
-    if (lead.niche === 'restaurants') {
+    if (lead.niche === 'restaurants' || lead.niche === 'bakeries_sweets') {
       subject = `quick question regarding ${bizShort.toLowerCase()} mobile orders`;
-      body = `hi ${firstName.toLowerCase()},\n\nnoticed your mobile website currently directs delivery customers to ${deliveryApp.toLowerCase()}.\n\nbased on restaurants in ${lead.city.split(',')[0]}, that 30% third-party commission cut is typically costing you around ${lead.flawLeakRange} in lost margin every month.\n\nwe help local restaurants set up a direct 1-tap mobile ordering system with 0% commission so you keep 100% of your ticket revenue, ready in 48 hours.\n\nwould you be opposed to a quick 2-minute chat or brief walkthrough this week?\n\nbest,\nfawwad`;
-    } else if (lead.niche === 'dental_medical') {
-      subject = `after-hours patient booking for ${bizShort.toLowerCase()}`;
-      body = `hi ${firstName.toLowerCase()},\n\nwas looking at ${bizShort}'s patient intake workflow and noticed there's no online booking calendar for patients searching after 7 pm.\n\nfor private practices in ${lead.city.split(',')[0]}, this after-hours drop-off typically leaks ${lead.flawLeakRange} in missed consultations and emergency walk-ins.\n\nwe set up clean 24/7 automated mobile booking calendars specifically for clinics with paperless intake, ready in 48 hours.\n\nmind if i send over a brief 45-second breakdown of how it works?\n\nbest,\nfawwad`;
-    } else if (lead.niche === 'salons_spas') {
+      body = `hi ${firstName.toLowerCase()},\n\nnoticed your mobile website currently directs delivery customers to ${deliveryApp.toLowerCase()}.\n\nbased on food businesses in ${lead.city.split(',')[0]}, that 30% third-party commission cut is typically costing you around ${lead.flawLeakRange} in lost margin every month.\n\nwe help local food brands set up a direct 1-tap mobile ordering system with 0% commission so you keep 100% of your ticket revenue, ready in 48 hours.\n\nwould you be opposed to a quick 2-minute chat or brief walkthrough this week?\n\nbest,\nfawwad`;
+    } else if (lead.niche === 'dental_medical' || lead.niche === 'law_firms') {
+      subject = `after-hours intake for ${bizShort.toLowerCase()}`;
+      body = `hi ${firstName.toLowerCase()},\n\nwas looking at ${bizShort}'s client intake workflow and noticed there's no online booking calendar for clients searching after 7 pm.\n\nfor private practices in ${lead.city.split(',')[0]}, this after-hours drop-off typically leaks ${lead.flawLeakRange} in missed consultations and urgent appointments.\n\nwe set up clean 24/7 automated mobile booking calendars with paperless intake, ready in 48 hours.\n\nmind if i send over a brief 45-second breakdown of how it works?\n\nbest,\nfawwad`;
+    } else if (lead.niche === 'salons_spas' || lead.niche === 'pet_care') {
       subject = `quick idea on no-shows for ${bizShort.toLowerCase()}`;
       body = `hi ${firstName.toLowerCase()},\n\nlove the work your team is doing at ${bizShort}.\n\nsaw that clients can only book by phone, which in our audit data usually correlates to a 15-20% no-show rate and roughly ${lead.flawLeakRange} in empty chair hours every month.\n\nwe build instant mobile booking widgets with automated 2-way sms reminders designed to drop no-shows by 85%, ready in 48 hours.\n\ncan i share a brief 30-second breakdown of what it looks like for ${bizShort}?\n\nbest,\nfawwad`;
-    } else if (lead.niche === 'home_services') {
+    } else if (lead.niche === 'gyms_fitness') {
+      subject = `free pass lead leak on ${bizShort.toLowerCase()}`;
+      body = `hi ${firstName.toLowerCase()},\n\nnoticed ${bizShort}'s mobile page currently lacks a 1-tap free day pass generator for new gym seekers.\n\nfor premium fitness clubs in ${lead.city.split(',')[0]}, that missing funnel leaks an estimated ${lead.flawLeakRange} in monthly membership signups.\n\nwe build 1-tap VIP pass capture funnels that send verified member numbers directly to your sales desk, ready in 48 hours.\n\nopen to a quick 1-minute walkthrough?\n\nbest,\nfawwad`;
+    } else if (lead.niche === 'real_estate' || lead.niche === 'event_planners') {
+      subject = `mobile inquiry leak for ${bizShort.toLowerCase()}`;
+      body = `hi ${firstName.toLowerCase()},\n\nnoticed serious mobile visitors looking at ${bizShort} currently have no 1-tap instant WhatsApp brochure or date availability tool.\n\nthis friction typically costs ~${lead.flawLeakRange} in warm buyer leads every month.\n\nwe build instant 1-tap mobile inquiry engines tailored for ${bizShort}, ready in 48 hours.\n\nmind taking a quick look?\n\nbest,\nfawwad`;
+    } else if (lead.niche === 'home_services' || lead.niche === 'auto_repair') {
       subject = `website quote leak on ${bizShort.toLowerCase()}`;
-      body = `hi ${firstName.toLowerCase()},\n\nnoticed your emergency services in ${lead.city.split(',')[0]} are getting great reviews, but your mobile page currently lacks a 1-tap quote calculator.\n\nwhen homeowners have an emergency, 70% bounce to whichever company offers 60-second instant pricing, leaking an estimated ${lead.flawLeakRange} in top-tier jobs.\n\nwe build modern high-converting estimate calculators tailored for ${bizShort}, ready in 48 hours.\n\nopen to a quick 1-minute walkthrough?\n\nbest,\nfawwad`;
+      body = `hi ${firstName.toLowerCase()},\n\nnoticed your services in ${lead.city.split(',')[0]} are getting great reviews, but your mobile page currently lacks a 1-tap quote calculator.\n\nwhen customers have an urgent job, 70% bounce to whichever company offers 60-second instant pricing, leaking an estimated ${lead.flawLeakRange} in top-tier jobs.\n\nwe build modern high-converting estimate calculators tailored for ${bizShort}, ready in 48 hours.\n\nopen to a quick 1-minute walkthrough?\n\nbest,\nfawwad`;
     } else {
       subject = `commission leak audit for ${bizShort.toLowerCase()}`;
       body = `hi ${firstName.toLowerCase()},\n\nnoticed ${bizShort}'s mobile reservation button redirects guests directly to otas like booking.com, giving away 18-25% in commissions.\n\nfor a boutique property of your caliber, that's roughly ${lead.flawLeakRange} in commission fees going out the door each month.\n\nwe build direct commission-free reservation engines with VIP perks so you keep 100% room revenue, ready in 48 hours.\n\nwould you be against a quick 2-minute chat?\n\nbest,\nfawwad`;
