@@ -635,6 +635,12 @@ const App = {
         ? `• <a href="mailto:${lead.contactInfo.email}" style="color: #93c5fd; text-decoration: none; font-weight: 500;" title="Send Direct Email">📧 ${lead.contactInfo.email}</a>`
         : '';
 
+      const websiteUrl = lead.website || (lead.contactInfo && lead.contactInfo.website) || '';
+      const cleanWebDomain = websiteUrl ? websiteUrl.replace('https://', '').replace('http://', '').replace(/\/$/, '') : '';
+      const webDisplay = websiteUrl
+        ? `• <a href="${websiteUrl}" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 3px;" title="Open Official Website (${cleanWebDomain})">🌐 ${cleanWebDomain} ↗</a>`
+        : '';
+
       const isWaBest = bestChannel === 'whatsapp';
       const isIgBest = bestChannel === 'instagram';
       const isGmailBest = bestChannel === 'gmail';
@@ -659,6 +665,7 @@ const App = {
                   • ${phoneDisplay}
                   ${igDisplay}
                   ${emailDisplay}
+                  ${webDisplay}
                 </span>
               </span>
               <div style="font-size: 0.74rem; color: #cbd5e1; margin-top: 4px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
@@ -1229,6 +1236,16 @@ const App = {
     const igHandle = (lead.contactInfo && lead.contactInfo.instagramHandle) ? lead.contactInfo.instagramHandle.replace('@', '').trim() : '';
     const igLink = igHandle ? `https://www.instagram.com/${igHandle}/` : null;
 
+    const websiteLink = lead.website || (lead.contactInfo && lead.contactInfo.website) || '';
+    const websiteDomain = websiteLink ? websiteLink.replace('https://', '').replace('http://', '').replace(/\/$/, '') : '';
+
+    let websiteInsight = '';
+    if (websiteLink) {
+      websiteInsight = `Inki official website (<a href="${websiteLink}" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: underline; font-weight: 700;">${websiteDomain} ↗</a>) pehle se bani hui hai. <strong>Agency inhein "website banane" ki pitch nahi karegi!</strong> Agency inhein batati hai ke inki mojooda website par customer friction aur drop-off kahan hai (jaise: PDF menus/price lists download karna parti hain, ya booking button third-party aggregator par bhej deta hai). Hum inhein <strong>"Conversion Optimization & Revenue Recovery"</strong> pitch karte hain jis se inka munafa barhta hai.`;
+    } else {
+      websiteInsight = `Inki koi official direct booking/order website nahi hai — yeh 100% third-party aggregators ya direct phone calls par munhasir hain. Inhe 0% commission direct automated mobile funnel pitch karein.`;
+    }
+
     let whatIsWrong = '';
     let whereToCheck = '';
     let whyMoneyLeaks = '';
@@ -1264,18 +1281,19 @@ const App = {
       ];
       deliverableSolution = `24/7 Automated Mobile Patient Intake & Booking System (Paperless forms + 2-way SMS reminder widget, 48 hours)`;
     } else if (lead.niche === 'salons_spas' || lead.niche === 'pet_care') {
-      whatIsWrong = `Tamam chair bookings manual phone call ya Instagram DM ke zariye hoti hain. Koi automated 2-way SMS reminder ya confirmation system nahi hai, jiski wajah se 15% se 20% appointments "No-Show" (empty chair) mein tabdeel ho jaati hain.`;
-      whereToCheck = `Instagram profile aur Google Maps check karein: Book karne ke liye ya to "Call Now" likha hota hai ya "DM for appointments". Koi instant booking slot picker nahi hai.`;
-      whyMoneyLeaks = `Empty chair ka matlab hai pure paise ka nuksan kyun ke staff aur rent ka kharcha wahi rehta hai. Is no-show rate se salon ko har mahine lagbhag ${lead.flawLeakRange} ka direct loss hota hai.`;
+      whatIsWrong = `Inki official website par ya to static PDF price list lagi hui hai jise mobile par zoom-in karna parta hai, ya booking button third-party webstore (jaise Zenoti) ya contact helpline par bhej deta hai. Koi automated 2-way WhatsApp slot reminder/confirmation system nahi hai, jiski wajah se 15% se 20% appointments "No-Show" (empty chair) mein tabdeel ho jaati hain.`;
+      whereToCheck = `1. Website (${websiteDomain || 'Official Site'}) par "Book Now" click karein: wo external portal ya contact page par bhejta hai.\n2. Price List check karein: static PDF download hoti hai jo mobile par zoom karni parti hai.\n3. Instagram bio (@${igHandle || 'business'}) mein check karein: direct automated 1-tap WhatsApp slot booking nahi hai.`;
+      whyMoneyLeaks = `Luxury salon mein ek senior stylist ka haircut/treatment Rs 8,000 se Rs 25,000+ hota hai. Jab client booking ke baad nahi aata (No-Show) to chair khali rehti hai aur salon ko mahine mein lagbhag ${lead.flawLeakRange} ka direct revenue loss hota hai.`;
       talkingPoints = [
-        `"Saw that you still handle appointments manually via phone/DM. Our audit data shows phone-only bookings average a 15-20% no-show rate."`,
-        `"Jab client nahi aata to chair khali rehti hai aur staff ka time zaya hota hai."`,
-        `"Hum 1-tap mobile booking widget lagatay hain jo automated WhatsApp/SMS reminder bhejta hai aur no-shows 85% kam kar deta hai."`
+        `"Saw your stunning website and Instagram, but noticed booking redirects through contact forms/external portals and price lists are PDFs."`,
+        `"High-end salons lose 15-20% of billings purely to empty chairs (no-shows) when there's no automated 2-way WhatsApp confirmation."`,
+        `"Hum 1-tap mobile VIP booking widget lagatay hain jo automated 2-way WhatsApp reminder bhej kar no-shows 85% khatam karta hai."`
       ];
       clientQuestions = [
-        { q: "Client puche: 'Hamari staff DM par reply to karti hai?'", a: "Jawab: 'DM par reply aane mein 2 se 4 ghante lagtay hain, tab tak customer kisi aur salon mein chali jaati hai. 1-tap instant booking se customer foran slot lock kar leti hai.'" }
+        { q: "Client puche: 'Hamari website to pehle se bani hui hai?'", a: "Jawab: 'Bilkul ma\\'am/sir! Aapki branding zabardast hai. Hum nayi website nahi bech rahay, balkay aapki mojooda site par automated WhatsApp booking widget aur PDF menu ko interactive banatay hain taake empty chairs aur no-shows khatam hon.'" },
+        { q: "Client puche: 'Hamari reception phone par appointments manage karti hai?'", a: "Jawab: 'Reception call to kar leti hai, lekin 70% clients phone uthanay ke bajaye WhatsApp par 1-tap \\'Confirm\\' button press karna prefer karte hain, jisse booking slot guaranteed lock ho jata hai.'" }
       ];
-      deliverableSolution = `1-Tap Mobile Appointment Booking Widget with Automated 2-Way WhatsApp / SMS Reminders (48 hours)`;
+      deliverableSolution = `1-Tap Mobile VIP Salon Booking Funnel + Automated 2-Way WhatsApp Confirmation & No-Show Shield (48 hours)`;
     } else if (lead.niche === 'gyms_fitness') {
       whatIsWrong = `Mobile page aur Instagram par koi 1-tap Free VIP Day Pass generator nahi hai. Log page dekh kar chhor detay hain aur gym unka contact number capture nahi kar paata.`;
       whereToCheck = `Instagram bio link aur Google Maps check karein: Sirf phone number ya general photos hain, koi trial pass lead funnel nahi hai.`;
@@ -1313,6 +1331,9 @@ const App = {
       mapsLink,
       igLink,
       igHandle,
+      websiteLink,
+      websiteDomain,
+      websiteInsight,
       whatIsWrong,
       whereToCheck,
       whyMoneyLeaks,
@@ -1338,6 +1359,8 @@ const App = {
     const whereEl = document.getElementById('flaw-modal-where');
     const btnInspectMaps = document.getElementById('flaw-btn-inspect-maps');
     const btnInspectIg = document.getElementById('flaw-btn-inspect-ig');
+    const btnInspectWeb = document.getElementById('flaw-btn-inspect-web');
+    const websiteExplanationEl = document.getElementById('flaw-modal-website-explanation');
     const whyEl = document.getElementById('flaw-modal-why');
     const talkingPointsEl = document.getElementById('flaw-modal-talking-points');
     const qaContainerEl = document.getElementById('flaw-modal-qa-container');
@@ -1362,6 +1385,20 @@ const App = {
       } else {
         btnInspectIg.style.display = 'none';
       }
+    }
+
+    if (btnInspectWeb) {
+      if (audit.websiteLink) {
+        btnInspectWeb.href = audit.websiteLink;
+        btnInspectWeb.style.display = 'inline-flex';
+        btnInspectWeb.textContent = `🌐 Open Website (${audit.websiteDomain}) ↗`;
+      } else {
+        btnInspectWeb.style.display = 'none';
+      }
+    }
+
+    if (websiteExplanationEl) {
+      websiteExplanationEl.innerHTML = audit.websiteInsight;
     }
 
     if (whyEl) whyEl.textContent = audit.whyMoneyLeaks;
@@ -1400,7 +1437,8 @@ const App = {
       copySummaryBtn.onclick = () => {
         const summaryText = `AUDIT BREAKDOWN FOR ${lead.businessName.toUpperCase()}:\n\n` +
           `⚠️ Flaw: ${lead.flawTitle}\n` +
-          `💸 Estimated Loss: ${lead.flawLeakRange}\n\n` +
+          `💸 Estimated Loss: ${lead.flawLeakRange}\n` +
+          `🌐 Website: ${audit.websiteDomain || 'None (Direct Funnel Needed)'}\n\n` +
           `1. Asal Masla:\n${audit.whatIsWrong}\n\n` +
           `2. Kahan Dekhein:\n${audit.whereToCheck}\n\n` +
           `3. Financial Leak:\n${audit.whyMoneyLeaks}\n\n` +

@@ -4,7 +4,7 @@ window.DEFAULT_LEADS = [
     "id": "real_lead_1",
     "businessName": "Kolachi Restaurant (Do Darya)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Do Darya, Captain Farhan Ali Shaheed Park, Phase 8 DHA, Karachi",
     "phone": "(021) 111-111-001",
     "phoneType": "landline_uan",
@@ -18,9 +18,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Co-Founders & Operations Directors",
     "niche": "restaurants",
     "nicheName": "Fine Dining & Seaside Barbecue",
-    "nicheIcon": "🍽️",
+    "nicheIcon": "\ud83c\udf7d\ufe0f",
     "flawTitle": "Pinch-to-zoom PDF Menu on Mobile",
-    "flawLeakRange": "Rs 500k – 900k/mo",
+    "flawLeakRange": "Rs 500k \u2013 900k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Kolachi%20Restaurant%2C%20Do%20Darya%2C%20Captain%20Farhan%20Ali%20Shaheed%20Park%2C%20Phase%208%20DHA%2C%20Karachi",
     "channel": "instagram",
     "contactInfo": {
@@ -30,7 +30,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03032766571",
       "email": "contact@kolachirestaurant.com",
       "instagramHandle": "@kolachirestaurant",
-      "linkedinProfile": "linkedin.com/company/kolachirestaurant"
+      "linkedinProfile": "linkedin.com/company/kolachirestaurant",
+      "website": "https://kolachirestaurant.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -43,13 +44,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Kolachi ki in-house marketing team Instagram DM (@kolachirestaurant) rozana check karti hai. Second option contact@kolachirestaurant.com formal corporate proposal ke liye best hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Kolachi",
-    "founderGreeting": "Haider & Atif"
+    "founderGreeting": "Haider & Atif",
+    "website": "https://kolachirestaurant.com"
   },
   {
     "id": "real_lead_2",
     "businessName": "Kababjees Restaurant (Do Darya)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Do Darya, Beach Avenue, Phase 8 DHA, Karachi",
     "phone": "(021) 111-666-111",
     "phoneType": "landline_uan",
@@ -63,9 +65,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Group CEO, Kababjees",
     "niche": "restaurants",
     "nicheName": "Casual Dining & Traditional BBQ",
-    "nicheIcon": "🍽️",
+    "nicheIcon": "\ud83c\udf7d\ufe0f",
     "flawTitle": "Delivery App Commission Drain (30%)",
-    "flawLeakRange": "Rs 650k – 1.2M/mo",
+    "flawLeakRange": "Rs 650k \u2013 1.2M/mo",
     "mapsUrl": "https://www.google.com/maps/place/Kababjees%20Restaurant%2C%20Do%20Darya%2C%20Beach%20Avenue%2C%20Phase%208%20DHA%2C%20Karachi",
     "channel": "instagram",
     "contactInfo": {
@@ -75,7 +77,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03111116661",
       "email": "info@kababjees.com",
       "instagramHandle": "@kababjees",
-      "linkedinProfile": "linkedin.com/company/kababjeesrestaurant"
+      "linkedinProfile": "linkedin.com/company/kababjeesrestaurant",
+      "website": "https://kababjees.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -88,13 +91,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Kababjees social media team story replies aur DMs foran check karti hai. High-profile food brand ke liye Instagram DM 80%+ open rate deta hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Kababjees",
-    "founderGreeting": "Imran"
+    "founderGreeting": "Imran",
+    "website": "https://kababjees.com"
   },
   {
     "id": "real_lead_3",
     "businessName": "Al-Haaj Bundoo Khan (SMCHS)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Captain Fareed Bukhari Shaheed Road, Block A, SMCHS, Karachi",
     "phone": "(021) 111-444-411",
     "phoneType": "landline_uan",
@@ -108,9 +112,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Managing Partners & 3rd-Gen Heirs",
     "niche": "restaurants",
     "nicheName": "Traditional Mughlai Barbecue",
-    "nicheIcon": "🍽️",
+    "nicheIcon": "\ud83c\udf7d\ufe0f",
     "flawTitle": "Slow Mobile Site (6.5s Load Time)",
-    "flawLeakRange": "Rs 400k – 750k/mo",
+    "flawLeakRange": "Rs 400k \u2013 750k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Al-Haaj%20Bundoo%20Khan%2C%20Captain%20Fareed%20Bukhari%20Shaheed%20Road%2C%20Block%20A%2C%20SMCHS%2C%20Karachi",
     "channel": "gmail",
     "contactInfo": {
@@ -120,7 +124,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03002478420",
       "email": "info@bundookhan.com",
       "instagramHandle": "@bundookhanpk",
-      "linkedinProfile": "linkedin.com/company/al-haajbundookhan"
+      "linkedinProfile": "linkedin.com/company/al-haajbundookhan",
+      "website": "https://bundookhan.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -133,13 +138,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Bundoo Khan family heritage brand hai jinka formal corporate office hai; Gmail par direct financial proposal bhejte hi central management review karti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Bundoo Khan",
-    "founderGreeting": "Tariq & Tahir"
+    "founderGreeting": "Tariq & Tahir",
+    "website": "https://bundookhan.com"
   },
   {
     "id": "real_lead_4",
     "businessName": "Cafe Aylanto (Clifton)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "D-141, Block 4, Clifton, Karachi",
     "phone": "(021) 35293653",
     "phoneType": "landline_uan",
@@ -153,9 +159,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founders & Directors, OB Hospitality",
     "niche": "restaurants",
     "nicheName": "Mediterranean & Italian Fine Dining",
-    "nicheIcon": "🍽️",
+    "nicheIcon": "\ud83c\udf7d\ufe0f",
     "flawTitle": "No Online Table Reservation Engine",
-    "flawLeakRange": "Rs 350k – 600k/mo",
+    "flawLeakRange": "Rs 350k \u2013 600k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Cafe%20Aylanto%2C%20D-141%2C%20Block%204%2C%20Clifton%2C%20Karachi",
     "channel": "instagram",
     "contactInfo": {
@@ -165,7 +171,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03018261899",
       "email": "info@cafeaylanto.com",
       "instagramHandle": "@cafeaylanto",
-      "linkedinProfile": "linkedin.com/company/cafeaylanto"
+      "linkedinProfile": "linkedin.com/company/cafeaylanto",
+      "website": "https://cafeaylanto.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -178,13 +185,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Boutique fine dining restaurant hai; management aur PR team Instagram (@cafeaylanto) DMs par collaborations aur vendor tools actively evaluate karti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Aylanto",
-    "founderGreeting": "Obaid & Yousuf"
+    "founderGreeting": "Obaid & Yousuf",
+    "website": "https://cafeaylanto.com"
   },
   {
     "id": "real_lead_5",
     "businessName": "Xander's Cafe (Clifton)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "C-32, E Street, Block 4, Clifton, Karachi",
     "phone": "(021) 111-926-337",
     "phoneType": "landline_uan",
@@ -198,9 +206,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Chef-Patron",
     "niche": "restaurants",
     "nicheName": "Modern European Cafe & Bakery",
-    "nicheIcon": "☕",
+    "nicheIcon": "\u2615",
     "flawTitle": "Mobile Dine-In PDF Menu Friction",
-    "flawLeakRange": "Rs 320k – 580k/mo",
+    "flawLeakRange": "Rs 320k \u2013 580k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Xander%27s%20Cafe%2C%20C-32%2C%20E%20Street%2C%20Block%204%2C%20Clifton%2C%20Karachi",
     "channel": "instagram",
     "contactInfo": {
@@ -210,7 +218,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03222224090",
       "email": "info@xanders.pk",
       "instagramHandle": "@xanderscafe",
-      "linkedinProfile": "linkedin.com/company/xander'scafe"
+      "linkedinProfile": "linkedin.com/company/xander'scafe",
+      "website": "https://xanders.pk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -223,13 +232,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Sikander Rizvi aur unki digital creative team Instagram (@xanderscafe) par bohot active hain. Story reply format direct primary inbox me land hota hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Xander's",
-    "founderGreeting": "Sikander"
+    "founderGreeting": "Sikander",
+    "website": "https://xanders.pk"
   },
   {
     "id": "real_lead_6",
     "businessName": "LalQila Restaurant (Shahrah-e-Faisal)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "10/A, MACHS, Main Shahrah-e-Faisal, Karachi",
     "phone": "(021) 111-525-745",
     "phoneType": "landline_uan",
@@ -243,9 +253,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Group CEO, LalQila",
     "niche": "restaurants",
     "nicheName": "Royal Mughlai & Continental Buffet",
-    "nicheIcon": "🍽️",
+    "nicheIcon": "\ud83c\udf7d\ufe0f",
     "flawTitle": "Zero Post-Dining Automated Re-engagement",
-    "flawLeakRange": "Rs 550k – 950k/mo",
+    "flawLeakRange": "Rs 550k \u2013 950k/mo",
     "mapsUrl": "https://www.google.com/maps/place/LalQila%20Restaurant%2C%2010/A%2C%20MACHS%2C%20Main%20Shahrah-e-Faisal%2C%20Karachi",
     "channel": "gmail",
     "contactInfo": {
@@ -255,7 +265,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+923305251025",
       "email": "info@lalqila.com",
       "instagramHandle": "@lalqilarestaurant",
-      "linkedinProfile": "linkedin.com/company/lalqilarestaurant"
+      "linkedinProfile": "linkedin.com/company/lalqilarestaurant",
+      "website": "https://lalqila.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -268,13 +279,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Theme buffet chain ka formal procurement department hai; landline UAN hai isliye ROI aur 0% commission ki formal email proposal GM ko forward hoti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team LalQila",
-    "founderGreeting": "Shaukat"
+    "founderGreeting": "Shaukat",
+    "website": "https://lalqila.com"
   },
   {
     "id": "real_lead_7",
     "businessName": "Ginsoy Extreme Chinese (Clifton)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Block 4, Clifton, Karachi",
     "phone": "(021) 111-446-769",
     "phoneType": "landline_uan",
@@ -288,9 +300,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & CEO, Foocha Holdings",
     "niche": "restaurants",
     "nicheName": "Contemporary Chinese Cuisine",
-    "nicheIcon": "🥢",
+    "nicheIcon": "\ud83e\udd62",
     "flawTitle": "Foodpanda 30% Commission Leak on Repeat Diners",
-    "flawLeakRange": "Rs 450k – 800k/mo",
+    "flawLeakRange": "Rs 450k \u2013 800k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Ginsoy%20Extreme%20Chinese%2C%20Block%204%2C%20Clifton%2C%20Karachi",
     "channel": "instagram",
     "contactInfo": {
@@ -300,7 +312,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03000446769",
       "email": "contact@ginsoy.com",
       "instagramHandle": "@ginsoy_pk",
-      "linkedinProfile": "linkedin.com/company/ginsoyextremechinese"
+      "linkedinProfile": "linkedin.com/company/ginsoyextremechinese",
+      "website": "https://ginsoy.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -313,13 +326,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Casual dining chain me brand manager Instagram DM rozana review karta hai. Quick DM bhej kar marketing team se demo schedule karein.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Ginsoy Extreme Chinese",
-    "founderGreeting": "Zaheer"
+    "founderGreeting": "Zaheer",
+    "website": "https://ginsoy.com"
   },
   {
     "id": "real_lead_8",
     "businessName": "Javed Nihari (Federal B Area)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Dastagir Road, Block 15, Federal B Area, Gulberg Town, Karachi",
     "phone": "0311-4422786",
     "phoneType": "mobile_whatsapp",
@@ -333,9 +347,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Master Craftsman & Managing Partner",
     "niche": "restaurants",
     "nicheName": "Authentic Heritage Nihari",
-    "nicheIcon": "🍲",
+    "nicheIcon": "\ud83c\udf72",
     "flawTitle": "No Online Pre-Order System for Peak Rush",
-    "flawLeakRange": "Rs 600k – 1.1M/mo",
+    "flawLeakRange": "Rs 600k \u2013 1.1M/mo",
     "mapsUrl": "https://www.google.com/maps/place/Javed%20Nihari%2C%20Dastagir%20Road%2C%20Block%2015%2C%20Federal%20B%20Area%2C%20Gulberg%20Town%2C%20Karachi",
     "channel": "whatsapp",
     "contactInfo": {
@@ -345,7 +359,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+923114422786",
       "email": "javednihari@gmail.com",
       "instagramHandle": "@javednihariofficial",
-      "linkedinProfile": "linkedin.com/company/javednihari"
+      "linkedinProfile": "linkedin.com/company/javednihari",
+      "website": ""
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -358,13 +373,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Verified mobile WhatsApp number (+92-300) listing par mojood hai jo counter manager/owner ke pas rehta hai. 1-tap direct chat par foran response milta hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Javed Nihari",
-    "founderGreeting": "Khawaja Javed"
+    "founderGreeting": "Khawaja Javed",
+    "website": ""
   },
   {
     "id": "real_lead_9",
     "businessName": "Student Biryani (Saddar)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Katrak Road, Near Empress Market, Saddar, Karachi",
     "phone": "(021) 111-111-778",
     "phoneType": "landline_uan",
@@ -378,9 +394,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Group Managing Director, Student Biryani",
     "niche": "restaurants",
     "nicheName": "Iconic Karachi Biryani & Fast Casual",
-    "nicheIcon": "🍛",
+    "nicheIcon": "\ud83c\udf5b",
     "flawTitle": "Heavy Delivery Aggregator Commissions",
-    "flawLeakRange": "Rs 500k – 900k/mo",
+    "flawLeakRange": "Rs 500k \u2013 900k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Student%20Biryani%2C%20Katrak%20Road%2C%20Near%20Empress%20Market%2C%20Saddar%2C%20Karachi",
     "channel": "gmail",
     "contactInfo": {
@@ -390,7 +406,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03008264353",
       "email": "feedback@studentbiryani.com",
       "instagramHandle": "@studentbiryanipakistan",
-      "linkedinProfile": "linkedin.com/company/studentbiryani"
+      "linkedinProfile": "linkedin.com/company/studentbiryani",
+      "website": "https://studentbiryani.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -403,13 +420,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "International franchise operation hai; email pitch head office franchise desk par jati hai jahan digital ordering systems evaluate hote hain.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Student Biryani",
-    "founderGreeting": "Javaid"
+    "founderGreeting": "Javaid",
+    "website": "https://studentbiryani.com"
   },
   {
     "id": "real_lead_10",
     "businessName": "The Deli (Clifton)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "House C-29/1, Street 33-A, Block 4, Clifton, Karachi",
     "phone": "0345-0605587",
     "phoneType": "mobile_whatsapp",
@@ -423,9 +441,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Managing Partner",
     "niche": "restaurants",
     "nicheName": "Gourmet Mediterranean & Comfort Bistro",
-    "nicheIcon": "🥗",
+    "nicheIcon": "\ud83e\udd57",
     "flawTitle": "No Direct WhatsApp Table Booking Link in Bio",
-    "flawLeakRange": "Rs 280k – 480k/mo",
+    "flawLeakRange": "Rs 280k \u2013 480k/mo",
     "mapsUrl": "https://www.google.com/maps/place/The%20Deli%2C%20House%20C-29/1%2C%20Street%2033-A%2C%20Block%204%2C%20Clifton%2C%20Karachi",
     "channel": "whatsapp",
     "contactInfo": {
@@ -435,7 +453,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+923450605587",
       "email": "thedeli.karachi@gmail.com",
       "instagramHandle": "@thedelikarachi",
-      "linkedinProfile": "linkedin.com/company/thedeli"
+      "linkedinProfile": "linkedin.com/company/thedeli",
+      "website": ""
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -448,13 +467,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Boutique Clifton cafe hai jahan direct mobile WhatsApp active hai. Farida Fancy aur floor manager WhatsApp par fast reply dete hain.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team The Deli",
-    "founderGreeting": "Farida"
+    "founderGreeting": "Farida",
+    "website": ""
   },
   {
     "id": "real_lead_11",
     "businessName": "Chotu Chaiwala (Bukhari DHA)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Plot 13-C, Street 16, Bukhari Commercial, DHA Phase 6, Karachi",
     "phone": "0333-3227378",
     "phoneType": "mobile_whatsapp",
@@ -468,9 +488,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Managing Partner",
     "niche": "restaurants",
     "nicheName": "Artisanal Chai & Street Gourmet",
-    "nicheIcon": "☕",
+    "nicheIcon": "\u2615",
     "flawTitle": "No 1-Tap QR Ordering for Open-Air Car Service",
-    "flawLeakRange": "Rs 300k – 520k/mo",
+    "flawLeakRange": "Rs 300k \u2013 520k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Chotu%20Chaiwala%2C%20Plot%2013-C%2C%20Street%2016%2C%20Bukhari%20Commercial%2C%20DHA%20Phase%206%2C%20Karachi",
     "channel": "whatsapp",
     "contactInfo": {
@@ -480,7 +500,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+923333227378",
       "email": "chotuchaiwala@gmail.com",
       "instagramHandle": "@chotuchaiwala",
-      "linkedinProfile": "linkedin.com/company/chotuchaiwala"
+      "linkedinProfile": "linkedin.com/company/chotuchaiwala",
+      "website": ""
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -493,13 +514,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Bukhari Commercial ka outdoor cafe hai jiska mobile WhatsApp direct cash desk par live rehta hai. Instant chat se owner direct connect hota hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Chotu Chaiwala",
-    "founderGreeting": "Atif"
+    "founderGreeting": "Atif",
+    "website": ""
   },
   {
     "id": "real_lead_12",
     "businessName": "Kaybees Restaurant (MACHS)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "8-F, Fatima Jinnah Road, MACHS, Karachi",
     "phone": "(021) 111-529-233",
     "phoneType": "landline_uan",
@@ -513,9 +535,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Managing Director, Kaybees Group",
     "niche": "restaurants",
     "nicheName": "Family Multi-Cuisine & Desserts",
-    "nicheIcon": "🍔",
+    "nicheIcon": "\ud83c\udf54",
     "flawTitle": "Slow Mobile Site (7.1s Mobile Load)",
-    "flawLeakRange": "Rs 380k – 650k/mo",
+    "flawLeakRange": "Rs 380k \u2013 650k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Kaybees%20Restaurant%2C%208-F%2C%20Fatima%20Jinnah%20Road%2C%20MACHS%2C%20Karachi",
     "channel": "gmail",
     "contactInfo": {
@@ -525,7 +547,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03332269233",
       "email": "info@kaybees.com.pk",
       "instagramHandle": "@kaybees.pk",
-      "linkedinProfile": "linkedin.com/company/kaybeesrestaurant"
+      "linkedinProfile": "linkedin.com/company/kaybeesrestaurant",
+      "website": "https://kaybees.com.pk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -538,13 +561,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Multi-branch fast food brand hai; official management email proposal director ke table par directly deliver hoti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Kaybees",
-    "founderGreeting": "Irfan"
+    "founderGreeting": "Irfan",
+    "website": "https://kaybees.com.pk"
   },
   {
     "id": "real_lead_13",
     "businessName": "Bar.B.Q Tonight (Clifton)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Comm. 5/1, Boating Basin, Block 5, Clifton, Karachi",
     "phone": "(021) 111-227-111",
     "phoneType": "landline_uan",
@@ -558,9 +582,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founding Director & Chairman",
     "niche": "restaurants",
     "nicheName": "Signature Traditional BBQ & Grill",
-    "nicheIcon": "🍖",
+    "nicheIcon": "\ud83c\udf56",
     "flawTitle": "Zero Commission Direct Ordering Leak to Delivery Portals",
-    "flawLeakRange": "Rs 700k – 1.3M/mo",
+    "flawLeakRange": "Rs 700k \u2013 1.3M/mo",
     "mapsUrl": "https://www.google.com/maps/place/Bar.B.Q%20Tonight%2C%20Comm.%205/1%2C%20Boating%20Basin%2C%20Block%205%2C%20Clifton%2C%20Karachi",
     "channel": "gmail",
     "contactInfo": {
@@ -570,7 +594,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03008227111",
       "email": "info@bbqtonight.com",
       "instagramHandle": "@bbqtonight",
-      "linkedinProfile": "linkedin.com/company/bar.b.qtonight"
+      "linkedinProfile": "linkedin.com/company/bar.b.qtonight",
+      "website": "https://bbqtonight.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -583,13 +608,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Historic high-volume chain hai; central procurement team contact@bbqtonight.com par tech solutions review karti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Bar.B.Q Tonight",
-    "founderGreeting": "Sardar Abdul Rahim"
+    "founderGreeting": "Sardar Abdul Rahim",
+    "website": "https://bbqtonight.com"
   },
   {
     "id": "real_lead_14",
     "businessName": "Okra Restaurant (Zamzama)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Plot 12-C, 10th Commercial Lane, Zamzama, Phase 5 DHA, Karachi",
     "phone": "0300-8207539",
     "phoneType": "mobile_whatsapp",
@@ -603,9 +629,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Chef-Patron",
     "niche": "restaurants",
     "nicheName": "Boutique Fine Dining & Artisan Bakery",
-    "nicheIcon": "🍷",
+    "nicheIcon": "\ud83c\udf77",
     "flawTitle": "Manual Phone-Only Reservation Bottleneck",
-    "flawLeakRange": "Rs 350k – 600k/mo",
+    "flawLeakRange": "Rs 350k \u2013 600k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Okra%20Restaurant%2C%20Plot%2012-C%2C%2010th%20Commercial%20Lane%2C%20Zamzama%2C%20Phase%205%20DHA%2C%20Karachi",
     "channel": "whatsapp",
     "contactInfo": {
@@ -615,7 +641,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+923008207539",
       "email": "okra@cyber.net.pk",
       "instagramHandle": "@okra_restaurant",
-      "linkedinProfile": "linkedin.com/company/okrarestaurant"
+      "linkedinProfile": "linkedin.com/company/okrarestaurant",
+      "website": "https://cyber.net.pk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -628,13 +655,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Zamzama ka intimate fine dining boutique hai; direct verified mobile WhatsApp number mojood hai jo management direct dekhti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Okra",
-    "founderGreeting": "Ayaz"
+    "founderGreeting": "Ayaz",
+    "website": "https://cyber.net.pk"
   },
   {
     "id": "real_lead_15",
     "businessName": "Smile On Dental Clinic (DHA)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Plot 22-C, Saba Commercial, DHA Phase 5, Karachi",
     "phone": "(021) 35848888",
     "phoneType": "landline_uan",
@@ -648,9 +676,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "BDS, Lead Dental Surgeon & Clinical Director",
     "niche": "dental_medical",
     "nicheName": "Aesthetic Dentistry & Orthodontics",
-    "nicheIcon": "🦷",
+    "nicheIcon": "\ud83e\uddb7",
     "flawTitle": "Zero 24/7 Automated Emergency Patient Booking",
-    "flawLeakRange": "Rs 450k – 850k/mo",
+    "flawLeakRange": "Rs 450k \u2013 850k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Smile%20On%20Dental%20Clinic%2C%20Plot%2022-C%2C%20Saba%20Commercial%2C%20DHA%20Phase%205%2C%20Karachi",
     "channel": "whatsapp",
     "contactInfo": {
@@ -660,7 +688,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+923002442211",
       "email": "contact@smileondental.pk",
       "instagramHandle": "@smileondentalpk",
-      "linkedinProfile": "linkedin.com/company/smileondentalclinic"
+      "linkedinProfile": "linkedin.com/company/smileondentalclinic",
+      "website": "https://smileondental.pk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -673,13 +702,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Dental clinics me appointments 90% WhatsApp par handle hoti hain; 24/7 emergency intake pitch WhatsApp par doctor ko foran appeal karti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Smile On Dental",
-    "founderGreeting": "Dr. Sameer"
+    "founderGreeting": "Dr. Sameer",
+    "website": "https://smileondental.pk"
   },
   {
     "id": "real_lead_16",
     "businessName": "Toni & Guy South Pakistan (Clifton)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "C-30, Block 4, Clifton, Karachi",
     "phone": "(021) 35860905",
     "phoneType": "landline_uan",
@@ -693,9 +723,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Creative Director, Toni & Guy South Pakistan",
     "niche": "salons_spas",
     "nicheName": "Luxury Hair Dressing & Styling Spa",
-    "nicheIcon": "✂️",
+    "nicheIcon": "\u2702\ufe0f",
     "flawTitle": "High No-Show Rate Due to Lack of 2-Way SMS Confirmations",
-    "flawLeakRange": "Rs 300k – 550k/mo",
+    "flawLeakRange": "Rs 300k \u2013 550k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Toni%20%26%20Guy%20South%20Pakistan%2C%20C-30%2C%20Block%204%2C%20Clifton%2C%20Karachi",
     "channel": "instagram",
     "contactInfo": {
@@ -705,7 +735,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+923008282110",
       "email": "info@toniandguykarachi.com",
       "instagramHandle": "@toniandguykarachi",
-      "linkedinProfile": "linkedin.com/company/toni&guysouthpakistan"
+      "linkedinProfile": "linkedin.com/company/toni&guysouthpakistan",
+      "website": "https://toniandguy.pk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -718,13 +749,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Fashion salon ka pura client pipeline Instagram se chalta hai; DM me automated no-show reduction pitch par response guaranteed hota hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Toni & Guy South Pakistan",
-    "founderGreeting": "Saqib"
+    "founderGreeting": "Saqib",
+    "website": "https://toniandguy.pk"
   },
   {
     "id": "real_lead_17",
     "businessName": "Kashee's Beauty Parlour (Tariq Road)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Main Tariq Road, PECHS Block 2, Karachi",
     "phone": "(021) 111-527-433",
     "phoneType": "landline_uan",
@@ -738,9 +770,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Celebrity Stylist, Kashee's Group",
     "niche": "salons_spas",
     "nicheName": "Bridal Makeup Studio & Salon",
-    "nicheIcon": "💄",
+    "nicheIcon": "\ud83d\udc84",
     "flawTitle": "Overwhelmed Phone Lines on Bridal Inquiries",
-    "flawLeakRange": "Rs 800k – 1.5M/mo",
+    "flawLeakRange": "Rs 800k \u2013 1.5M/mo",
     "mapsUrl": "https://www.google.com/maps/place/Kashee%27s%20Beauty%20Parlour%2C%20Main%20Tariq%20Road%2C%20PECHS%20Block%202%2C%20Karachi",
     "channel": "instagram",
     "contactInfo": {
@@ -750,7 +782,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03452888610",
       "email": "info@kashees.com",
       "instagramHandle": "@kashees_official",
-      "linkedinProfile": "linkedin.com/company/kashee'sbeautyparlour"
+      "linkedinProfile": "linkedin.com/company/kashee'sbeautyparlour",
+      "website": "https://kashees.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -763,13 +796,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Millions of followers wala high-profile salon hai; brand PR aur social desk Instagram DM handle karti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Kashee's Beauty Parlour",
-    "founderGreeting": "Kashif"
+    "founderGreeting": "Kashif",
+    "website": "https://kashees.com"
   },
   {
     "id": "real_lead_18",
     "businessName": "Chop Chop Wok (Bader DHA)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Khayaban-e-Bader, Phase 5 DHA, Karachi",
     "phone": "(021) 111-965-965",
     "phoneType": "landline_uan",
@@ -783,9 +817,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Co-Founders & Managing Partners",
     "niche": "restaurants",
     "nicheName": "Asian Wok & Noodle Bar",
-    "nicheIcon": "🍜",
+    "nicheIcon": "\ud83c\udf5c",
     "flawTitle": "Third-Party Aggregator Cut Eating Profitability",
-    "flawLeakRange": "Rs 400k – 700k/mo",
+    "flawLeakRange": "Rs 400k \u2013 700k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Chop%20Chop%20Wok%2C%20Khayaban-e-Bader%2C%20Phase%205%20DHA%2C%20Karachi",
     "channel": "instagram",
     "contactInfo": {
@@ -795,7 +829,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03008252525",
       "email": "info@chopchopwok.com",
       "instagramHandle": "@chopchopwok",
-      "linkedinProfile": "linkedin.com/company/chopchopwok"
+      "linkedinProfile": "linkedin.com/company/chopchopwok",
+      "website": "https://chopchopwok.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -808,13 +843,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Modern Asian bowl concept hai jo youth audience ko target karta hai; brand team Instagram DMs din me 3 dafa monitor karti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Chop Chop Wok",
-    "founderGreeting": "Mustafa & Qamber"
+    "founderGreeting": "Mustafa & Qamber",
+    "website": "https://chopchopwok.com"
   },
   {
     "id": "real_lead_19",
     "businessName": "Tooso Restaurant (Bahadurabad)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Main Bahadurabad Chowrangi, Karachi",
     "phone": "(021) 34938722",
     "phoneType": "landline_uan",
@@ -828,9 +864,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Managing Partner & Proprietor",
     "niche": "restaurants",
     "nicheName": "Halwa Puri, Chaat & Continental Fast Food",
-    "nicheIcon": "🥪",
+    "nicheIcon": "\ud83e\udd6a",
     "flawTitle": "Slow Weekend Breakfast Mobile Queue",
-    "flawLeakRange": "Rs 350k – 600k/mo",
+    "flawLeakRange": "Rs 350k \u2013 600k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Tooso%20Restaurant%2C%20Main%20Bahadurabad%20Chowrangi%2C%20Karachi",
     "channel": "gmail",
     "contactInfo": {
@@ -840,7 +876,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03332211440",
       "email": "contact@tooso.com.pk",
       "instagramHandle": "@tooso_restaurant",
-      "linkedinProfile": "linkedin.com/company/toosorestaurant"
+      "linkedinProfile": "linkedin.com/company/toosorestaurant",
+      "website": "https://tooso.com.pk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -853,13 +890,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "1976 se qaim family enterprise hai; formal email proposal owners ki weekly operational meeting me present hoti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Tooso",
-    "founderGreeting": "Tariq"
+    "founderGreeting": "Tariq",
+    "website": "https://tooso.com.pk"
   },
   {
     "id": "real_lead_20",
     "businessName": "Zahid Nihari (Tariq Road)",
     "city": "Karachi",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Main Tariq Road, PECHS, Karachi",
     "phone": "(021) 34551717",
     "phoneType": "landline_uan",
@@ -873,9 +911,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Proprietor & Master Nihari Chef",
     "niche": "restaurants",
     "nicheName": "Heritage Karachi Nihari",
-    "nicheIcon": "🍲",
+    "nicheIcon": "\ud83c\udf72",
     "flawTitle": "No Digital Takeaway Pre-Ordering",
-    "flawLeakRange": "Rs 450k – 800k/mo",
+    "flawLeakRange": "Rs 450k \u2013 800k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Zahid%20Nihari%2C%20Main%20Tariq%20Road%2C%20PECHS%2C%20Karachi",
     "channel": "gmail",
     "contactInfo": {
@@ -885,7 +923,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03002235072",
       "email": "zahidnihari@gmail.com",
       "instagramHandle": "@zahidniharipakistan",
-      "linkedinProfile": "linkedin.com/company/zahidnihari"
+      "linkedinProfile": "linkedin.com/company/zahidnihari",
+      "website": ""
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -898,13 +937,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Tariq Road ka mashhoor traditional food center hai; formal email par commission leak breakdown bhejna best route hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Zahid Nihari",
-    "founderGreeting": "Haji Zahid"
+    "founderGreeting": "Haji Zahid",
+    "website": ""
   },
   {
     "id": "real_lead_21",
     "businessName": "Haveli Restaurant (Fort Road Food Street)",
     "city": "Lahore",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Badshahi Mosque View, Fort Road Food Street, Lahore",
     "phone": "+92 321 4651051",
     "phoneType": "mobile_whatsapp",
@@ -918,9 +958,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Managing Director & Owner",
     "niche": "restaurants",
     "nicheName": "Rooftop Heritage BBQ & Mughlai",
-    "nicheIcon": "🕌",
+    "nicheIcon": "\ud83d\udd4c",
     "flawTitle": "Manual Phone Booking Queue During Sunset Peak",
-    "flawLeakRange": "Rs 550k – 950k/mo",
+    "flawLeakRange": "Rs 550k \u2013 950k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Haveli%20Restaurant%2C%20Badshahi%20Mosque%20View%2C%20Fort%20Road%20Food%20Street%2C%20Lahore",
     "channel": "whatsapp",
     "contactInfo": {
@@ -930,7 +970,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+923214651051",
       "email": "info@haveli.com.pk",
       "instagramHandle": "@haveli_restaurant",
-      "linkedinProfile": "linkedin.com/company/havelirestaurant"
+      "linkedinProfile": "linkedin.com/company/havelirestaurant",
+      "website": "https://haveli.com.pk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -943,13 +984,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Fort Road Food Street rooftop restaurant hai; direct mobile WhatsApp active hai jahan VIP table booking desk foran reply karta hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Haveli",
-    "founderGreeting": "Farooq"
+    "founderGreeting": "Farooq",
+    "website": "https://haveli.com.pk"
   },
   {
     "id": "real_lead_22",
     "businessName": "Cooco's Den (Food Street)",
     "city": "Lahore",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Roshnai Gate, 2168/A, Fort Road Food Street, Lahore",
     "phone": "0300-9472407",
     "phoneType": "mobile_whatsapp",
@@ -963,9 +1005,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder, Renowned Painter & Owner",
     "niche": "restaurants",
     "nicheName": "Art Gallery & Heritage Rooftop Dining",
-    "nicheIcon": "🎨",
+    "nicheIcon": "\ud83c\udfa8",
     "flawTitle": "Tourist Walk-Ins Bouncing Due to Missing Mobile Booking",
-    "flawLeakRange": "Rs 380k – 650k/mo",
+    "flawLeakRange": "Rs 380k \u2013 650k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Cooco%27s%20Den%2C%20Roshnai%20Gate%2C%202168/A%2C%20Fort%20Road%20Food%20Street%2C%20Lahore",
     "channel": "whatsapp",
     "contactInfo": {
@@ -975,7 +1017,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+923009472407",
       "email": "coocosden@gmail.com",
       "instagramHandle": "@coocosden",
-      "linkedinProfile": "linkedin.com/company/cooco'sden"
+      "linkedinProfile": "linkedin.com/company/cooco'sden",
+      "website": ""
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -988,13 +1031,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Boutique heritage den hai jahan direct mobile WhatsApp manager ke pas rehta hai. Respectful direct note direct attention leta hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Cooco's Den",
-    "founderGreeting": "Iqbal"
+    "founderGreeting": "Iqbal",
+    "website": ""
   },
   {
     "id": "real_lead_23",
     "businessName": "The Monal Lahore (Gulberg III)",
     "city": "Lahore",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Plaza Commercial, Liberty Roundabout, Gulberg III, Lahore",
     "phone": "(042) 35789944",
     "phoneType": "landline_uan",
@@ -1008,9 +1052,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Chairman, Monal Group",
     "niche": "restaurants",
     "nicheName": "Rooftop Luxury Buffet & Fine Dining",
-    "nicheIcon": "🍽️",
+    "nicheIcon": "\ud83c\udf7d\ufe0f",
     "flawTitle": "Delivery App Margin Squeeze on Corporate Lunches",
-    "flawLeakRange": "Rs 600k – 1.1M/mo",
+    "flawLeakRange": "Rs 600k \u2013 1.1M/mo",
     "mapsUrl": "https://www.google.com/maps/place/The%20Monal%20Lahore%2C%20Plaza%20Commercial%2C%20Liberty%20Roundabout%2C%20Gulberg%20III%2C%20Lahore",
     "channel": "gmail",
     "contactInfo": {
@@ -1020,7 +1064,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03008455112",
       "email": "info@themonal.com",
       "instagramHandle": "@themonallahore",
-      "linkedinProfile": "linkedin.com/company/themonallahore"
+      "linkedinProfile": "linkedin.com/company/themonallahore",
+      "website": "https://themonal.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1033,13 +1078,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Tamgha-e-Imtiaz holder Luqman Ali Afzal ka corporate hospitality group hai; formal corporate RFP email central GM desk evaluate karta hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team The Monal Lahore",
-    "founderGreeting": "Luqman"
+    "founderGreeting": "Luqman",
+    "website": "https://themonal.com"
   },
   {
     "id": "real_lead_24",
     "businessName": "Bundu Khan Restaurant (Gulberg)",
     "city": "Lahore",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Qaddafi Stadium, Gulberg III, Lahore",
     "phone": "(042) 111-444-411",
     "phoneType": "landline_uan",
@@ -1053,9 +1099,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Director of Operations (Lahore)",
     "niche": "restaurants",
     "nicheName": "Traditional Barbecue & Family Diners",
-    "nicheIcon": "🍖",
+    "nicheIcon": "\ud83c\udf56",
     "flawTitle": "Pinch-to-zoom PDF Menu on Mobile",
-    "flawLeakRange": "Rs 400k – 750k/mo",
+    "flawLeakRange": "Rs 400k \u2013 750k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Bundu%20Khan%20Restaurant%2C%20Qaddafi%20Stadium%2C%20Gulberg%20III%2C%20Lahore",
     "channel": "gmail",
     "contactInfo": {
@@ -1065,7 +1111,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03214444111",
       "email": "lahore@bundukhan.pk",
       "instagramHandle": "@bundukhanlahore",
-      "linkedinProfile": "linkedin.com/company/bundukhanrestaurant"
+      "linkedinProfile": "linkedin.com/company/bundukhanrestaurant",
+      "website": "https://bundukhan.pk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1078,13 +1125,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Gulberg multi-branch setup hai jiska centralized email system hai. Gmail pitch operations director tak safely deliver hoti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Bundu Khan",
-    "founderGreeting": "Hamza"
+    "founderGreeting": "Hamza",
+    "website": "https://bundukhan.pk"
   },
   {
     "id": "real_lead_25",
     "businessName": "Cafe Aylanto (M.M. Alam Road)",
     "city": "Lahore",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "12 C-1, M.M. Alam Road, Gulberg III, Lahore",
     "phone": "(042) 35751886",
     "phoneType": "landline_uan",
@@ -1098,9 +1146,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founders & Directors, OB Hospitality",
     "niche": "restaurants",
     "nicheName": "Upscale Mediterranean & Steakhouse",
-    "nicheIcon": "🥩",
+    "nicheIcon": "\ud83e\udd69",
     "flawTitle": "No Online Table Booking System",
-    "flawLeakRange": "Rs 380k – 650k/mo",
+    "flawLeakRange": "Rs 380k \u2013 650k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Cafe%20Aylanto%2C%2012%20C-1%2C%20M.M.%20Alam%20Road%2C%20Gulberg%20III%2C%20Lahore",
     "channel": "instagram",
     "contactInfo": {
@@ -1110,7 +1158,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03008477212",
       "email": "lahore@cafeaylanto.com",
       "instagramHandle": "@cafeaylantolahore",
-      "linkedinProfile": "linkedin.com/company/cafeaylanto"
+      "linkedinProfile": "linkedin.com/company/cafeaylanto",
+      "website": "https://cafeaylanto.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1123,13 +1172,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "M.M. Alam Road ka upscale destination hai; marketing team Instagram DM (@cafeaylantolahore) ko VIP booking and business inquiry desk banaye hue hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Aylanto",
-    "founderGreeting": "Obaid & Ali"
+    "founderGreeting": "Obaid & Ali",
+    "website": "https://cafeaylanto.com"
   },
   {
     "id": "real_lead_26",
     "businessName": "Spice Bazaar (M.M. Alam Road)",
     "city": "Lahore",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "T-01, Tipu Road, off M.M. Alam Road, Gulberg II, Lahore",
     "phone": "0311-1122103",
     "phoneType": "mobile_whatsapp",
@@ -1143,9 +1193,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Director of Operations, Arcadian Group",
     "niche": "restaurants",
     "nicheName": "Premium Pakistani Desi Cuisine",
-    "nicheIcon": "🥘",
+    "nicheIcon": "\ud83e\udd58",
     "flawTitle": "Sunday Brunch Mobile Abandonment",
-    "flawLeakRange": "Rs 450k – 800k/mo",
+    "flawLeakRange": "Rs 450k \u2013 800k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Spice%20Bazaar%2C%20T-01%2C%20Tipu%20Road%2C%20off%20M.M.%20Alam%20Road%2C%20Gulberg%20II%2C%20Lahore",
     "channel": "whatsapp",
     "contactInfo": {
@@ -1155,7 +1205,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+923111122103",
       "email": "info@spicebazaar.pk",
       "instagramHandle": "@spicebazaarpk",
-      "linkedinProfile": "linkedin.com/company/spicebazaar"
+      "linkedinProfile": "linkedin.com/company/spicebazaar",
+      "website": "https://spicebazaar.pk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1168,13 +1219,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Direct mobile WhatsApp listing par active hai; floor supervisor aur management 10 minutes ke andar chat par respond karte hain.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Spice Bazaar",
-    "founderGreeting": "Kamran"
+    "founderGreeting": "Kamran",
+    "website": "https://spicebazaar.pk"
   },
   {
     "id": "real_lead_27",
     "businessName": "HOWDY Gourmet Burgers (Gulberg II)",
     "city": "Lahore",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "9-C, M.M. Alam Road, Gulberg II, Lahore",
     "phone": "0317-1778383",
     "phoneType": "mobile_whatsapp",
@@ -1188,9 +1240,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Group CEO, Howdy",
     "niche": "restaurants",
     "nicheName": "Western Cowboy Gourmet Burgers",
-    "nicheIcon": "🍔",
+    "nicheIcon": "\ud83c\udf54",
     "flawTitle": "High Foodpanda Commissions on Repeat Diners",
-    "flawLeakRange": "Rs 420k – 750k/mo",
+    "flawLeakRange": "Rs 420k \u2013 750k/mo",
     "mapsUrl": "https://www.google.com/maps/place/HOWDY%20Gourmet%20Burgers%2C%209-C%2C%20M.M.%20Alam%20Road%2C%20Gulberg%20II%2C%20Lahore",
     "channel": "whatsapp",
     "contactInfo": {
@@ -1200,7 +1252,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+923171778383",
       "email": "info@howdy.pk",
       "instagramHandle": "@howdy_pakistan",
-      "linkedinProfile": "linkedin.com/company/howdygourmetburgers"
+      "linkedinProfile": "linkedin.com/company/howdygourmetburgers",
+      "website": "https://howdy.pk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1213,13 +1266,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Direct customer care mobile WhatsApp active hai; burger delivery par direct ordering system offer dekh kar foran meeting milti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team HOWDY",
-    "founderGreeting": "Zahid"
+    "founderGreeting": "Zahid",
+    "website": "https://howdy.pk"
   },
   {
     "id": "real_lead_28",
     "businessName": "Arcadian Cafe (Gulberg II)",
     "city": "Lahore",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "28 K, Sir Syed Road, Gulberg II, Lahore",
     "phone": "(042) 35755512",
     "phoneType": "landline_uan",
@@ -1233,9 +1287,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Managing Partner, Arcadian Cafe",
     "niche": "restaurants",
     "nicheName": "Asian Fusion & Continental Dining",
-    "nicheIcon": "🍽️",
+    "nicheIcon": "\ud83c\udf7d\ufe0f",
     "flawTitle": "Slow Mobile Load Speed on Lunch Rush",
-    "flawLeakRange": "Rs 350k – 600k/mo",
+    "flawLeakRange": "Rs 350k \u2013 600k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Arcadian%20Cafe%2C%2028%20K%2C%20Sir%20Syed%20Road%2C%20Gulberg%20II%2C%20Lahore",
     "channel": "instagram",
     "contactInfo": {
@@ -1245,7 +1299,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03008451122",
       "email": "info@arcadiancafe.com",
       "instagramHandle": "@arcadiancafe",
-      "linkedinProfile": "linkedin.com/company/arcadiancafe"
+      "linkedinProfile": "linkedin.com/company/arcadiancafe",
+      "website": "https://arcadiancafe.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1258,13 +1313,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Aesthetic cafe chain hai; unka social media team Instagram DMs ko high priority par attend karta hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Arcadian",
-    "founderGreeting": "Usman"
+    "founderGreeting": "Usman",
+    "website": "https://arcadiancafe.com"
   },
   {
     "id": "real_lead_29",
     "businessName": "Salt'n Pepper Village (Ferozepur Road)",
     "city": "Lahore",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "103/B-II, Ferozepur Road, Lahore",
     "phone": "(042) 35850931",
     "phoneType": "landline_uan",
@@ -1278,9 +1334,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Managing Director, Salt'n Pepper Group",
     "niche": "restaurants",
     "nicheName": "Traditional Village Live Buffet",
-    "nicheIcon": "🍲",
+    "nicheIcon": "\ud83c\udf72",
     "flawTitle": "No Online Pre-Payment for Large Family Buffets",
-    "flawLeakRange": "Rs 500k – 900k/mo",
+    "flawLeakRange": "Rs 500k \u2013 900k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Salt%27n%20Pepper%20Village%2C%20103/B-II%2C%20Ferozepur%20Road%2C%20Lahore",
     "channel": "gmail",
     "contactInfo": {
@@ -1290,7 +1346,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03008411223",
       "email": "snpvillage@snpfood.com",
       "instagramHandle": "@saltnpepperpk",
-      "linkedinProfile": "linkedin.com/company/salt'npeppervillage"
+      "linkedinProfile": "linkedin.com/company/salt'npeppervillage",
+      "website": "https://snpfood.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1303,13 +1360,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Pakistan ke restaurant industry ke pioneer Mahmood Akbar ka group hai; corporate email marketing & operations director ko direct jaati hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Salt'n Pepper Village",
-    "founderGreeting": "Mahmood"
+    "founderGreeting": "Mahmood",
+    "website": "https://snpfood.com"
   },
   {
     "id": "real_lead_30",
     "businessName": "Butt Karahi (Lakshmi Chowk)",
     "city": "Lahore",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Lakshmi Chowk, Nisbat Road, Lahore",
     "phone": "0300-4221199",
     "phoneType": "mobile_whatsapp",
@@ -1323,9 +1381,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Master Karahi Craftsman & Proprietor",
     "niche": "restaurants",
     "nicheName": "Legendary Desi Ghee Mutton Karahi",
-    "nicheIcon": "🥘",
+    "nicheIcon": "\ud83e\udd58",
     "flawTitle": "45-Minute Waiting Queue with No Mobile Tracker",
-    "flawLeakRange": "Rs 700k – 1.3M/mo",
+    "flawLeakRange": "Rs 700k \u2013 1.3M/mo",
     "mapsUrl": "https://www.google.com/maps/place/Butt%20Karahi%2C%20Lakshmi%20Chowk%2C%20Nisbat%20Road%2C%20Lahore",
     "channel": "whatsapp",
     "contactInfo": {
@@ -1335,7 +1393,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+923004221199",
       "email": "buttkarahi.lahore@gmail.com",
       "instagramHandle": "@buttkarahiofficial",
-      "linkedinProfile": "linkedin.com/company/buttkarahi"
+      "linkedinProfile": "linkedin.com/company/buttkarahi",
+      "website": ""
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1348,13 +1407,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Lakshmi Chowk ka mashhoor karahi spot hai; direct mobile WhatsApp counter par active rehta hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Butt Karahi",
-    "founderGreeting": "Haji Aslam"
+    "founderGreeting": "Haji Aslam",
+    "website": ""
   },
   {
     "id": "real_lead_31",
     "businessName": "Daily Deli Co. (Johar Town)",
     "city": "Lahore",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "G-1 Market, Johar Town, Lahore",
     "phone": "(042) 111-332-626",
     "phoneType": "landline_uan",
@@ -1368,9 +1428,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Co-Founders & Managing Directors",
     "niche": "restaurants",
     "nicheName": "Craft Smash Burgers & Shakes",
-    "nicheIcon": "🍔",
+    "nicheIcon": "\ud83c\udf54",
     "flawTitle": "Delivery Aggregator Commission Drain",
-    "flawLeakRange": "Rs 450k – 800k/mo",
+    "flawLeakRange": "Rs 450k \u2013 800k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Daily%20Deli%20Co.%2C%20G-1%20Market%2C%20Johar%20Town%2C%20Lahore",
     "channel": "instagram",
     "contactInfo": {
@@ -1380,7 +1440,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03008477112",
       "email": "orders@dailydeli.pk",
       "instagramHandle": "@dailydelico",
-      "linkedinProfile": "linkedin.com/company/dailydelico."
+      "linkedinProfile": "linkedin.com/company/dailydelico.",
+      "website": "https://dailydeli.pk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1393,13 +1454,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Lahore ka top smash burger sensation hai; founders khud Instagram DMs aur viral story interactions monitor karte hain.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Daily Deli Co.",
-    "founderGreeting": "Adnan & Arslan"
+    "founderGreeting": "Adnan & Arslan",
+    "website": "https://dailydeli.pk"
   },
   {
     "id": "real_lead_32",
     "businessName": "Rina's Kitchenette (Gulberg III)",
     "city": "Lahore",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Street 1, Fashion Avenue, Gulberg III, Lahore",
     "phone": "(042) 35789911",
     "phoneType": "landline_uan",
@@ -1413,9 +1475,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founders & Chef-Owners",
     "niche": "restaurants",
     "nicheName": "Artisanal Bakery & Gourmet Kitchen",
-    "nicheIcon": "🍰",
+    "nicheIcon": "\ud83c\udf70",
     "flawTitle": "No Direct Custom Cake Pre-Order Booking on Mobile",
-    "flawLeakRange": "Rs 300k – 520k/mo",
+    "flawLeakRange": "Rs 300k \u2013 520k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Rina%27s%20Kitchenette%2C%20Street%201%2C%20Fashion%20Avenue%2C%20Gulberg%20III%2C%20Lahore",
     "channel": "instagram",
     "contactInfo": {
@@ -1425,7 +1487,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03008455512",
       "email": "orders@rinaskitchenette.com",
       "instagramHandle": "@rinaskitchenette",
-      "linkedinProfile": "linkedin.com/company/rina'skitchenette"
+      "linkedinProfile": "linkedin.com/company/rina'skitchenette",
+      "website": "https://rinaskitchenette.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1438,13 +1501,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Family boutique cafe hai; Ammar aur Rina Instagram (@rinaskitchenette) par direct feedback and business offers check karte hain.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Rina's Kitchenette",
-    "founderGreeting": "Rina & Ammar"
+    "founderGreeting": "Rina & Ammar",
+    "website": "https://rinaskitchenette.com"
   },
   {
     "id": "real_lead_33",
     "businessName": "Cafe Zouk (M.M. Alam Road)",
     "city": "Lahore",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "43 L, M.M. Alam Road, Gulberg II, Lahore",
     "phone": "(042) 35753040",
     "phoneType": "landline_uan",
@@ -1458,9 +1522,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Partner & Managing Director, Cafe Zouk",
     "niche": "restaurants",
     "nicheName": "Continental, Thai & Specialty Steaks",
-    "nicheIcon": "🥩",
+    "nicheIcon": "\ud83e\udd69",
     "flawTitle": "PDF Menu Mobile Friction",
-    "flawLeakRange": "Rs 350k – 600k/mo",
+    "flawLeakRange": "Rs 350k \u2013 600k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Cafe%20Zouk%2C%2043%20L%2C%20M.M.%20Alam%20Road%2C%20Gulberg%20II%2C%20Lahore",
     "channel": "instagram",
     "contactInfo": {
@@ -1470,7 +1534,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03008422119",
       "email": "info@cafezouk.com",
       "instagramHandle": "@cafezoukofficial",
-      "linkedinProfile": "linkedin.com/company/cafezouk"
+      "linkedinProfile": "linkedin.com/company/cafezouk",
+      "website": "https://cafezouk.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1483,13 +1548,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Established landmark hai; Instagram DM brand marketing team ko connects karta hai jahan direct proposal review hoti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Zouk",
-    "founderGreeting": "Shahid"
+    "founderGreeting": "Shahid",
+    "website": "https://cafezouk.com"
   },
   {
     "id": "real_lead_34",
     "businessName": "Arif Chatkhara House (Taxali Gate)",
     "city": "Lahore",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Taxali Gate, Walled City, Lahore",
     "phone": "0300-9422818",
     "phoneType": "mobile_whatsapp",
@@ -1503,9 +1569,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Proprietor & Master Tawwa Chef",
     "niche": "restaurants",
     "nicheName": "Tawa Chicken & Desi Delicacies",
-    "nicheIcon": "🍗",
+    "nicheIcon": "\ud83c\udf57",
     "flawTitle": "Cash Only Without Digital Pre-Order Pickup",
-    "flawLeakRange": "Rs 400k – 750k/mo",
+    "flawLeakRange": "Rs 400k \u2013 750k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Arif%20Chatkhara%20House%2C%20Taxali%20Gate%2C%20Walled%20City%2C%20Lahore",
     "channel": "whatsapp",
     "contactInfo": {
@@ -1515,7 +1581,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+923009422818",
       "email": "arifchatkhara@gmail.com",
       "instagramHandle": "@arifchatkhara",
-      "linkedinProfile": "linkedin.com/company/arifchatkharahouse"
+      "linkedinProfile": "linkedin.com/company/arifchatkharahouse",
+      "website": ""
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1528,13 +1595,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Taxali Gate ka legendary spot hai; mobile number listing par active WhatsApp par connected hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Arif Chatkhara House",
-    "founderGreeting": "Arif"
+    "founderGreeting": "Arif",
+    "website": ""
   },
   {
     "id": "real_lead_35",
     "businessName": "Phika Jalebi & Sweets (Gawalmandi)",
     "city": "Lahore",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Gawalmandi Food Street, Lahore",
     "phone": "0321-4455881",
     "phoneType": "mobile_whatsapp",
@@ -1548,9 +1616,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Master Halwai & Proprietor",
     "niche": "restaurants",
     "nicheName": "Heritage Desi Ghee Jalebi & Halwa",
-    "nicheIcon": "🍯",
+    "nicheIcon": "\ud83c\udf6f",
     "flawTitle": "No Online Festive Gifting Order System",
-    "flawLeakRange": "Rs 320k – 580k/mo",
+    "flawLeakRange": "Rs 320k \u2013 580k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Phika%20Jalebi%20%26%20Sweets%2C%20Gawalmandi%20Food%20Street%2C%20Lahore",
     "channel": "whatsapp",
     "contactInfo": {
@@ -1560,7 +1628,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+923214455881",
       "email": "phikajalebi@gmail.com",
       "instagramHandle": "@phikajalebi",
-      "linkedinProfile": "linkedin.com/company/phikajalebi&sweets"
+      "linkedinProfile": "linkedin.com/company/phikajalebi&sweets",
+      "website": ""
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1573,13 +1642,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Traditional sweet shop hai; direct WhatsApp se family manager se direct conversation start hoti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Phika Jalebi",
-    "founderGreeting": "Tariq"
+    "founderGreeting": "Tariq",
+    "website": ""
   },
   {
     "id": "real_lead_36",
     "businessName": "The Monal Restaurant (Margalla Hills)",
     "city": "Islamabad",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Pir Sohawa Road, Margalla Hills, Islamabad",
     "phone": "(051) 111-777-778",
     "phoneType": "landline_uan",
@@ -1593,9 +1663,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Group Chairman, Monal Group",
     "niche": "restaurants",
     "nicheName": "Mountain View Iconic Buffet & Grill",
-    "nicheIcon": "⛰️",
+    "nicheIcon": "\u26f0\ufe0f",
     "flawTitle": "Overcrowded Phone Reservations on Weekends",
-    "flawLeakRange": "Rs 800k – 1.6M/mo",
+    "flawLeakRange": "Rs 800k \u2013 1.6M/mo",
     "mapsUrl": "https://www.google.com/maps/place/The%20Monal%20Restaurant%2C%20Pir%20Sohawa%20Road%2C%20Margalla%20Hills%2C%20Islamabad",
     "channel": "gmail",
     "contactInfo": {
@@ -1605,7 +1675,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03008551122",
       "email": "info@themonal.com",
       "instagramHandle": "@themonalrestaurant",
-      "linkedinProfile": "linkedin.com/company/themonalrestaurant"
+      "linkedinProfile": "linkedin.com/company/themonalrestaurant",
+      "website": "https://themonal.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1618,13 +1689,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Islamabad ka sab se bada hilltop brand hai; corporate email (info@monal.pk) par operations GM tech integrations evaluate karta hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team The Monal",
-    "founderGreeting": "Luqman"
+    "founderGreeting": "Luqman",
+    "website": "https://themonal.com"
   },
   {
     "id": "real_lead_37",
     "businessName": "La Montana Restaurant (Margalla Hills)",
     "city": "Islamabad",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Pir Sohawa Road, Margalla Hills, Islamabad",
     "phone": "(051) 2898022",
     "phoneType": "landline_uan",
@@ -1638,9 +1710,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "General Management, La Montana",
     "niche": "restaurants",
     "nicheName": "Panoramic Valley View Continental & Desi",
-    "nicheIcon": "🌄",
+    "nicheIcon": "\ud83c\udf04",
     "flawTitle": "Mobile Dine-In PDF Menu Friction",
-    "flawLeakRange": "Rs 450k – 800k/mo",
+    "flawLeakRange": "Rs 450k \u2013 800k/mo",
     "mapsUrl": "https://www.google.com/maps/place/La%20Montana%20Restaurant%2C%20Pir%20Sohawa%20Road%2C%20Margalla%20Hills%2C%20Islamabad",
     "channel": "gmail",
     "contactInfo": {
@@ -1650,7 +1722,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03008555234",
       "email": "info@lamontana.com.pk",
       "instagramHandle": "@lamontanarestaurant",
-      "linkedinProfile": "linkedin.com/company/lamontanarestaurant"
+      "linkedinProfile": "linkedin.com/company/lamontanarestaurant",
+      "website": "https://lamontana.com.pk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1663,13 +1736,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Margalla Hills scenic restaurant hai; central office email par official cost-saving pitch review hoti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team La Montana",
-    "founderGreeting": "Malik & Operations"
+    "founderGreeting": "Malik & Operations",
+    "website": "https://lamontana.com.pk"
   },
   {
     "id": "real_lead_38",
     "businessName": "Savour Foods (Blue Area)",
     "city": "Islamabad",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Fortune Center, Blue Area, Jinnah Avenue, Islamabad",
     "phone": "(051) 111-728-687",
     "phoneType": "landline_uan",
@@ -1683,9 +1757,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Chief Executive & Founder, Savour Foods",
     "niche": "restaurants",
     "nicheName": "Iconic Pulao Kabab & Roast",
-    "nicheIcon": "🍚",
+    "nicheIcon": "\ud83c\udf5a",
     "flawTitle": "Delivery Partner Cut on Huge Lunch Rush",
-    "flawLeakRange": "Rs 600k – 1.2M/mo",
+    "flawLeakRange": "Rs 600k \u2013 1.2M/mo",
     "mapsUrl": "https://www.google.com/maps/place/Savour%20Foods%2C%20Fortune%20Center%2C%20Blue%20Area%2C%20Jinnah%20Avenue%2C%20Islamabad",
     "channel": "gmail",
     "contactInfo": {
@@ -1695,7 +1769,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03005001122",
       "email": "info@savourfoods.com",
       "instagramHandle": "@savourfoodsofficial",
-      "linkedinProfile": "linkedin.com/company/savourfoods"
+      "linkedinProfile": "linkedin.com/company/savourfoods",
+      "website": "https://savourfoods.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1708,13 +1783,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "High-volume corporate pulao institution hai; administrative head office email proposal forward karti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Savour Foods",
-    "founderGreeting": "Mohammad"
+    "founderGreeting": "Mohammad",
+    "website": "https://savourfoods.com"
   },
   {
     "id": "real_lead_39",
     "businessName": "Kabul Restaurant (F-7 Markaz)",
     "city": "Islamabad",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Plot 17, College Road, F-7 Markaz, Islamabad",
     "phone": "(051) 2650953",
     "phoneType": "landline_uan",
@@ -1728,9 +1804,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Proprietor & Managing Partner",
     "niche": "restaurants",
     "nicheName": "Authentic Afghan Kabab & Dum Pukht",
-    "nicheIcon": "🍢",
+    "nicheIcon": "\ud83c\udf62",
     "flawTitle": "No Online VIP Reservation System",
-    "flawLeakRange": "Rs 380k – 700k/mo",
+    "flawLeakRange": "Rs 380k \u2013 700k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Kabul%20Restaurant%2C%20Plot%2017%2C%20College%20Road%2C%20F-7%20Markaz%2C%20Islamabad",
     "channel": "instagram",
     "contactInfo": {
@@ -1740,7 +1816,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03005511229",
       "email": "kabulrestaurant@gmail.com",
       "instagramHandle": "@kabulrestaurantisb",
-      "linkedinProfile": "linkedin.com/company/kabulrestaurant"
+      "linkedinProfile": "linkedin.com/company/kabulrestaurant",
+      "website": ""
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1753,13 +1830,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "F-7 Markaz ka authentic Afghan institution hai; Instagram page PR desk manage karti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Kabul Restaurant",
-    "founderGreeting": "Agha Jan"
+    "founderGreeting": "Agha Jan",
+    "website": ""
   },
   {
     "id": "real_lead_40",
     "businessName": "Street 1 Cafe (Kohsar Market)",
     "city": "Islamabad",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Street 1, Kohsar Market, Sector F-6/3, Islamabad",
     "phone": "(051) 2823431",
     "phoneType": "landline_uan",
@@ -1773,9 +1851,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founding Partner & Operations Lead",
     "niche": "restaurants",
     "nicheName": "Gourmet Artisan Bakery & Bistro",
-    "nicheIcon": "🥐",
+    "nicheIcon": "\ud83e\udd50",
     "flawTitle": "Slow Mobile Load Time on Weekend Brunch",
-    "flawLeakRange": "Rs 300k – 550k/mo",
+    "flawLeakRange": "Rs 300k \u2013 550k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Street%201%20Cafe%2C%20Street%201%2C%20Kohsar%20Market%2C%20Sector%20F-6/3%2C%20Islamabad",
     "channel": "instagram",
     "contactInfo": {
@@ -1785,7 +1863,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03008544112",
       "email": "info@street1cafe.com",
       "instagramHandle": "@street1cafe",
-      "linkedinProfile": "linkedin.com/company/street1cafe"
+      "linkedinProfile": "linkedin.com/company/street1cafe",
+      "website": "https://street1cafe.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1798,13 +1877,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Kohsar Market upscale elite cafe hai; Instagram DM par boutique digital menu aur reservation engine pitch best convert karti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Street 1 Cafe",
-    "founderGreeting": "Taimur"
+    "founderGreeting": "Taimur",
+    "website": "https://street1cafe.com"
   },
   {
     "id": "real_lead_41",
     "businessName": "Chaaye Khana (F-6 Markaz)",
     "city": "Islamabad",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Shop 11, Block B, United Bakery Plaza, F-6 Markaz, Islamabad",
     "phone": "(051) 8312192",
     "phoneType": "landline_uan",
@@ -1818,9 +1898,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Group CEO, Chaaye Khana",
     "niche": "restaurants",
     "nicheName": "Specialty Tea House & Breakfast",
-    "nicheIcon": "☕",
+    "nicheIcon": "\u2615",
     "flawTitle": "No Direct Table Ordering Link on Instagram",
-    "flawLeakRange": "Rs 350k – 600k/mo",
+    "flawLeakRange": "Rs 350k \u2013 600k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Chaaye%20Khana%2C%20Shop%2011%2C%20Block%20B%2C%20United%20Bakery%20Plaza%2C%20F-6%20Markaz%2C%20Islamabad",
     "channel": "instagram",
     "contactInfo": {
@@ -1830,7 +1910,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03005011223",
       "email": "info@chaayekhana.com",
       "instagramHandle": "@chaayekhana_official",
-      "linkedinProfile": "linkedin.com/company/chaayekhana"
+      "linkedinProfile": "linkedin.com/company/chaayekhana",
+      "website": "https://chaayekhana.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1843,13 +1924,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Nationwide tea lounge chain hai; brand marketing manager Instagram DMs par quick response deta hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Chaaye Khana",
-    "founderGreeting": "Babar"
+    "founderGreeting": "Babar",
+    "website": "https://chaayekhana.com"
   },
   {
     "id": "real_lead_42",
     "businessName": "Howdy Islamabad (F-7 Markaz)",
     "city": "Islamabad",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Shop 6, Gol Market, F-7 Markaz, Islamabad",
     "phone": "(051) 2652150",
     "phoneType": "landline_uan",
@@ -1863,9 +1945,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founders & Regional Directors",
     "niche": "restaurants",
     "nicheName": "Gourmet Cowboy Charcoal Burgers",
-    "nicheIcon": "🍔",
+    "nicheIcon": "\ud83c\udf54",
     "flawTitle": "Delivery App Margin Drain on Student Orders",
-    "flawLeakRange": "Rs 380k – 650k/mo",
+    "flawLeakRange": "Rs 380k \u2013 650k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Howdy%20Islamabad%2C%20Shop%206%2C%20Gol%20Market%2C%20F-7%20Markaz%2C%20Islamabad",
     "channel": "instagram",
     "contactInfo": {
@@ -1875,7 +1957,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+923171778383",
       "email": "isb@howdy.pk",
       "instagramHandle": "@howdy_pakistan",
-      "linkedinProfile": "linkedin.com/company/howdyislamabad"
+      "linkedinProfile": "linkedin.com/company/howdyislamabad",
+      "website": "https://howdy.pk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1888,13 +1971,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Western dining spot hai; unki digital creative team Instagram DM aur story replies par highly responsive hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Howdy Islamabad",
-    "founderGreeting": "Zahid & Suleman"
+    "founderGreeting": "Zahid & Suleman",
+    "website": "https://howdy.pk"
   },
   {
     "id": "real_lead_43",
     "businessName": "Tuscany Courtyard (Kohsar Market)",
     "city": "Islamabad",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Kohsar Market, Sector F-6/3, Islamabad",
     "phone": "(051) 8445544",
     "phoneType": "landline_uan",
@@ -1908,9 +1992,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Managing Partner & CEO, Tuscany Courtyard",
     "niche": "restaurants",
     "nicheName": "Italian Fine Dining & Steaks",
-    "nicheIcon": "🍝",
+    "nicheIcon": "\ud83c\udf5d",
     "flawTitle": "No Integrated WhatsApp Concierge for Diplomatic Diners",
-    "flawLeakRange": "Rs 400k – 750k/mo",
+    "flawLeakRange": "Rs 400k \u2013 750k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Tuscany%20Courtyard%2C%20Kohsar%20Market%2C%20Sector%20F-6/3%2C%20Islamabad",
     "channel": "instagram",
     "contactInfo": {
@@ -1920,7 +2004,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03008544990",
       "email": "info@tuscanycourtyard.com",
       "instagramHandle": "@tuscanycourtyard",
-      "linkedinProfile": "linkedin.com/company/tuscanycourtyard"
+      "linkedinProfile": "linkedin.com/company/tuscanycourtyard",
+      "website": "https://tuscanycourtyard.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1933,13 +2018,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Italian fine dining destination hai; Khurram Khan aur unka marketing manager Instagram par inquiries direct check karte hain.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Tuscany Courtyard",
-    "founderGreeting": "Khurram"
+    "founderGreeting": "Khurram",
+    "website": "https://tuscanycourtyard.com"
   },
   {
     "id": "real_lead_44",
     "businessName": "1969 Restaurant (Shakarparian)",
     "city": "Islamabad",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Garden Avenue, Shakarparian National Park, Islamabad",
     "phone": "(051) 2607263",
     "phoneType": "landline_uan",
@@ -1953,9 +2039,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Managing Director, 1969 Group",
     "niche": "restaurants",
     "nicheName": "Heritage Retro Dining & Lawn Events",
-    "nicheIcon": "📻",
+    "nicheIcon": "\ud83d\udcfb",
     "flawTitle": "Zero Automated Follow-ups for Corporate Event Leads",
-    "flawLeakRange": "Rs 600k – 1.1M/mo",
+    "flawLeakRange": "Rs 600k \u2013 1.1M/mo",
     "mapsUrl": "https://www.google.com/maps/place/1969%20Restaurant%2C%20Garden%20Avenue%2C%20Shakarparian%20National%20Park%2C%20Islamabad",
     "channel": "instagram",
     "contactInfo": {
@@ -1965,7 +2051,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03005551969",
       "email": "info@1969.com.pk",
       "instagramHandle": "@1969restaurant",
-      "linkedinProfile": "linkedin.com/company/1969restaurant"
+      "linkedinProfile": "linkedin.com/company/1969restaurant",
+      "website": "https://1969.com.pk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -1978,13 +2065,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Retro 1960s destination restaurant hai; social media desk Instagram inquiries ko priority par answer karti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team 1969",
-    "founderGreeting": "Raza"
+    "founderGreeting": "Raza",
+    "website": "https://1969.com.pk"
   },
   {
     "id": "real_lead_45",
     "businessName": "Habibi Restaurant (I-8 Markaz)",
     "city": "Islamabad",
-    "country": "Pakistan 🇵🇰",
+    "country": "Pakistan \ud83c\uddf5\ud83c\uddf0",
     "address": "Executive Center, I-8 Markaz, Islamabad",
     "phone": "(051) 4862551",
     "phoneType": "landline_uan",
@@ -1998,9 +2086,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Managing Partners, Habibi Group",
     "niche": "restaurants",
     "nicheName": "Traditional Shinwari, Karahi & BBQ Thali",
-    "nicheIcon": "🍖",
+    "nicheIcon": "\ud83c\udf56",
     "flawTitle": "Manual Phone Queue for Large Family Platter Orders",
-    "flawLeakRange": "Rs 450k – 800k/mo",
+    "flawLeakRange": "Rs 450k \u2013 800k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Habibi%20Restaurant%2C%20Executive%20Center%2C%20I-8%20Markaz%2C%20Islamabad",
     "channel": "gmail",
     "contactInfo": {
@@ -2010,7 +2098,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "03005112288",
       "email": "info@habibirestaurant.com",
       "instagramHandle": "@habibi_restaurant",
-      "linkedinProfile": "linkedin.com/company/habibirestaurant"
+      "linkedinProfile": "linkedin.com/company/habibirestaurant",
+      "website": "https://habibirestaurant.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2023,13 +2112,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "I-8 multi-branch traditional dining group hai; formal proposal email se regional director tak direct deliver hoti hai.",
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Habibi",
-    "founderGreeting": "Naveed & Hameed"
+    "founderGreeting": "Naveed & Hameed",
+    "website": "https://habibirestaurant.com"
   },
   {
     "id": "real_lead_46",
     "businessName": "Al Safadi Restaurant (Sheikh Zayed Rd)",
     "city": "Dubai",
-    "country": "United Arab Emirates 🇦🇪",
+    "country": "United Arab Emirates \ud83c\udde6\ud83c\uddea",
     "address": "127 Sheikh Zayed Road, Trade Centre 1, Dubai",
     "phone": "+971 4 227 9922",
     "phoneType": "landline_uan",
@@ -2043,9 +2133,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Chairman, Al Safadi Restaurants",
     "niche": "restaurants",
     "nicheName": "Authentic Lebanese Charcoal Grill & Mezze",
-    "nicheIcon": "🥙",
+    "nicheIcon": "\ud83e\udd59",
     "flawTitle": "Talabat & Deliveroo 30% Commission Drain",
-    "flawLeakRange": "AED 25k – 48k/mo",
+    "flawLeakRange": "AED 25k \u2013 48k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Al%20Safadi%20Restaurant%2C%20127%20Sheikh%20Zayed%20Road%2C%20Trade%20Centre%201%2C%20Dubai",
     "channel": "instagram",
     "contactInfo": {
@@ -2055,7 +2145,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+971508821234",
       "email": "info@alsafadi.ae",
       "instagramHandle": "@alsafadirestaurants",
-      "linkedinProfile": "linkedin.com/company/alsafadirestaurant"
+      "linkedinProfile": "linkedin.com/company/alsafadirestaurant",
+      "website": "https://alsafadi.ae"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2068,13 +2159,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Al Safadi ka social team Instagram DM (@alsafadirestaurants) par Dubai me marketing & tech pitches actively entertain karti hai.",
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Al Safadi",
-    "founderGreeting": "Fadi"
+    "founderGreeting": "Fadi",
+    "website": "https://alsafadi.ae"
   },
   {
     "id": "real_lead_47",
     "businessName": "Ravi Restaurant (Satwa)",
     "city": "Dubai",
-    "country": "United Arab Emirates 🇦🇪",
+    "country": "United Arab Emirates \ud83c\udde6\ud83c\uddea",
     "address": "Al Dhiyafa Road, Al Satwa, Dubai",
     "phone": "+971 4 331 5353",
     "phoneType": "landline_uan",
@@ -2088,9 +2180,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Managing Director, Ravi Group",
     "niche": "restaurants",
     "nicheName": "Legendary Heritage Pakistani Curry & Karahi",
-    "nicheIcon": "🥘",
+    "nicheIcon": "\ud83e\udd58",
     "flawTitle": "No Online Pre-Order Pickup System for Rush Hours",
-    "flawLeakRange": "AED 30k – 60k/mo",
+    "flawLeakRange": "AED 30k \u2013 60k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Ravi%20Restaurant%2C%20Al%20Dhiyafa%20Road%2C%20Al%20Satwa%2C%20Dubai",
     "channel": "instagram",
     "contactInfo": {
@@ -2100,7 +2192,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+971506541122",
       "email": "contact@ravirestaurant.ae",
       "instagramHandle": "@ravirestaurantdubai",
-      "linkedinProfile": "linkedin.com/company/ravirestaurant"
+      "linkedinProfile": "linkedin.com/company/ravirestaurant",
+      "website": "https://ravirestaurant.ae"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2113,13 +2206,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Chaudhary Abdul Hameed ke betay ab operations chala rahe hain aur Instagram DM inquiries foran monitor karte hain.",
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Ravi",
-    "founderGreeting": "Waheed"
+    "founderGreeting": "Waheed",
+    "website": "https://ravirestaurant.ae"
   },
   {
     "id": "real_lead_48",
     "businessName": "Operation: Falafel (JBR The Beach)",
     "city": "Dubai",
-    "country": "United Arab Emirates 🇦🇪",
+    "country": "United Arab Emirates \ud83c\udde6\ud83c\uddea",
     "address": "The Beach, Jumeirah Beach Residence (JBR), Dubai",
     "phone": "+971 4 424 3000",
     "phoneType": "landline_uan",
@@ -2133,9 +2227,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Group CEO & Co-Founder, AWJ Investments",
     "niche": "restaurants",
     "nicheName": "Contemporary Middle Eastern Street Food",
-    "nicheIcon": "🧆",
+    "nicheIcon": "\ud83e\uddc6",
     "flawTitle": "Delivery Portals Taking 28% Margin on Beach Walkers",
-    "flawLeakRange": "AED 22k – 42k/mo",
+    "flawLeakRange": "AED 22k \u2013 42k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Operation%3A%20Falafel%2C%20The%20Beach%2C%20Jumeirah%20Beach%20Residence%20%28JBR%29%2C%20Dubai",
     "channel": "gmail",
     "contactInfo": {
@@ -2145,7 +2239,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+971565047799",
       "email": "info@operationfalafel.com",
       "instagramHandle": "@operationfalafel",
-      "linkedinProfile": "linkedin.com/company/operation:falafel"
+      "linkedinProfile": "linkedin.com/company/operation:falafel",
+      "website": "https://operationfalafel.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2158,13 +2253,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "AWJ Investments ek large corporate group hai; formal tech evaluation unke central procurement email se approve hoti hai.",
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Operation: Falafel",
-    "founderGreeting": "Manhal"
+    "founderGreeting": "Manhal",
+    "website": "https://operationfalafel.com"
   },
   {
     "id": "real_lead_49",
     "businessName": "Arabian Tea House (Al Fahidi)",
     "city": "Dubai",
-    "country": "United Arab Emirates 🇦🇪",
+    "country": "United Arab Emirates \ud83c\udde6\ud83c\uddea",
     "address": "Al Fahidi Street, Bur Dubai, Bastakiya, Dubai",
     "phone": "+971 4 353 5071",
     "phoneType": "landline_uan",
@@ -2178,9 +2274,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Managing Director",
     "niche": "restaurants",
     "nicheName": "Emirati Heritage Cafe & Breakfast",
-    "nicheIcon": "🫖",
+    "nicheIcon": "\ud83e\uded6",
     "flawTitle": "Manual Table Queue for International Tourists",
-    "flawLeakRange": "AED 20k – 38k/mo",
+    "flawLeakRange": "AED 20k \u2013 38k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Arabian%20Tea%20House%2C%20Al%20Fahidi%20Street%2C%20Bur%20Dubai%2C%20Bastakiya%2C%20Dubai",
     "channel": "instagram",
     "contactInfo": {
@@ -2190,7 +2286,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+971506383000",
       "email": "info@arabianteahouse.com",
       "instagramHandle": "@arabianteahouse",
-      "linkedinProfile": "linkedin.com/company/arabianteahouse"
+      "linkedinProfile": "linkedin.com/company/arabianteahouse",
+      "website": "https://arabianteahouse.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2203,13 +2300,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Al Fahidi heritage cafe hai; social desk Instagram DM par daily corporate & vendor inquiries attend karti hai.",
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Arabian Tea House",
-    "founderGreeting": "Ali"
+    "founderGreeting": "Ali",
+    "website": "https://arabianteahouse.com"
   },
   {
     "id": "real_lead_50",
     "businessName": "SALT (Kite Beach, Jumeirah)",
     "city": "Dubai",
-    "country": "United Arab Emirates 🇦🇪",
+    "country": "United Arab Emirates \ud83c\udde6\ud83c\uddea",
     "address": "Street 2 C, Kite Beach, Jumeirah 3, Dubai",
     "phone": "+971 55 996 5802",
     "phoneType": "mobile_whatsapp",
@@ -2223,9 +2321,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Co-Founders, Independent Food Company",
     "niche": "restaurants",
     "nicheName": "Beachfront Gourmet Sliders & Soft Serve",
-    "nicheIcon": "🏖️",
+    "nicheIcon": "\ud83c\udfd6\ufe0f",
     "flawTitle": "Long In-Person Waiting Line Without QR Table Ordering",
-    "flawLeakRange": "AED 35k – 65k/mo",
+    "flawLeakRange": "AED 35k \u2013 65k/mo",
     "mapsUrl": "https://www.google.com/maps/place/SALT%2C%20Street%202%20C%2C%20Kite%20Beach%2C%20Jumeirah%203%2C%20Dubai",
     "channel": "instagram",
     "contactInfo": {
@@ -2235,7 +2333,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+971559965802",
       "email": "hello@find-salt.com",
       "instagramHandle": "@findsalt",
-      "linkedinProfile": "linkedin.com/company/salt"
+      "linkedinProfile": "linkedin.com/company/salt",
+      "website": "https://find-salt.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2248,13 +2347,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "UAE ka iconic viral food brand (@findsalt) hai; direct Instagram story reply founders aur brand director tak reach banata hai.",
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team SALT",
-    "founderGreeting": "Amal & Deem"
+    "founderGreeting": "Amal & Deem",
+    "website": "https://find-salt.com"
   },
   {
     "id": "real_lead_51",
     "businessName": "Bu Qtair (Umm Suqeim Fishing Harbour)",
     "city": "Dubai",
-    "country": "United Arab Emirates 🇦🇪",
+    "country": "United Arab Emirates \ud83c\udde6\ud83c\uddea",
     "address": "Old 32B Street, Fishing Harbour 2, Umm Suqeim 2, Dubai",
     "phone": "+971 55 705 2130",
     "phoneType": "mobile_whatsapp",
@@ -2268,9 +2368,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Proprietor",
     "niche": "restaurants",
     "nicheName": "Fresh Catch Fried Fish & Prawn Curry",
-    "nicheIcon": "🐟",
+    "nicheIcon": "\ud83d\udc1f",
     "flawTitle": "Cash/Counter Queuing Friction for High Volume Diners",
-    "flawLeakRange": "AED 28k – 52k/mo",
+    "flawLeakRange": "AED 28k \u2013 52k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Bu%20Qtair%2C%20Old%2032B%20Street%2C%20Fishing%20Harbour%202%2C%20Umm%20Suqeim%202%2C%20Dubai",
     "channel": "whatsapp",
     "contactInfo": {
@@ -2280,7 +2380,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+971557052130",
       "email": "buqtair.dubai@gmail.com",
       "instagramHandle": "@buqtair",
-      "linkedinProfile": "linkedin.com/company/buqtair"
+      "linkedinProfile": "linkedin.com/company/buqtair",
+      "website": ""
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2293,13 +2394,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Direct UAE mobile WhatsApp (+971-55) active hai jo counter manager handle karta hai; 1-tap direct chat quick conversion deti hai.",
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Bu Qtair",
-    "founderGreeting": "Mousa"
+    "founderGreeting": "Mousa",
+    "website": ""
   },
   {
     "id": "real_lead_52",
     "businessName": "Al Ustad Special Kabab (Al Mankhool)",
     "city": "Dubai",
-    "country": "United Arab Emirates 🇦🇪",
+    "country": "United Arab Emirates \ud83c\udde6\ud83c\uddea",
     "address": "Near Al Fahidi Metro Station, Al Mankhool Road, Dubai",
     "phone": "+971 4 397 1933",
     "phoneType": "landline_uan",
@@ -2313,9 +2415,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Co-Owners & Operators, Al Ustad Special Kabab",
     "niche": "restaurants",
     "nicheName": "Famous Persian Yogurt Beef & Chicken Kababs",
-    "nicheIcon": "🍢",
+    "nicheIcon": "\ud83c\udf62",
     "flawTitle": "No Online Pre-Order Takeaway System",
-    "flawLeakRange": "AED 24k – 45k/mo",
+    "flawLeakRange": "AED 24k \u2013 45k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Al%20Ustad%20Special%20Kabab%2C%20Near%20Al%20Fahidi%20Metro%20Station%2C%20Al%20Mankhool%20Road%2C%20Dubai",
     "channel": "instagram",
     "contactInfo": {
@@ -2325,7 +2427,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+971506551122",
       "email": "info@alustadkabab.com",
       "instagramHandle": "@alustadspecialkabab",
-      "linkedinProfile": "linkedin.com/company/alustadspecialkabab"
+      "linkedinProfile": "linkedin.com/company/alustadspecialkabab",
+      "website": "https://alustadkabab.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2338,13 +2441,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Majid Al-Ustad rozana Instagram par stories aur DMs khud dekhte hain; unhe story reply bhejte hi foran warm response milta hai.",
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Al Ustad Special Kabab",
-    "founderGreeting": "Majid & Abbas"
+    "founderGreeting": "Majid & Abbas",
+    "website": "https://alustadkabab.com"
   },
   {
     "id": "real_lead_53",
     "businessName": "Reif Japanese Kushiyaki (Dar Wasl)",
     "city": "Dubai",
-    "country": "United Arab Emirates 🇦🇪",
+    "country": "United Arab Emirates \ud83c\udde6\ud83c\uddea",
     "address": "Dar Wasl Mall, Al Wasl Road, Jumeirah, Dubai",
     "phone": "+971 4 345 0761",
     "phoneType": "landline_uan",
@@ -2358,9 +2462,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Chef-Patron & Founder, Reif Kushiyaki",
     "niche": "restaurants",
     "nicheName": "Michelin Selected Japanese Street Gastronomy",
-    "nicheIcon": "🍣",
+    "nicheIcon": "\ud83c\udf63",
     "flawTitle": "No Automated Waiting List for Weekend Omakese",
-    "flawLeakRange": "AED 18k – 35k/mo",
+    "flawLeakRange": "AED 18k \u2013 35k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Reif%20Japanese%20Kushiyaki%2C%20Dar%20Wasl%20Mall%2C%20Al%20Wasl%20Road%2C%20Jumeirah%2C%20Dubai",
     "channel": "instagram",
     "contactInfo": {
@@ -2370,7 +2474,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+971502357071",
       "email": "reservations@reifkushiyaki.com",
       "instagramHandle": "@reifkushiyaki",
-      "linkedinProfile": "linkedin.com/company/reifjapanesekushiyaki"
+      "linkedinProfile": "linkedin.com/company/reifjapanesekushiyaki",
+      "website": "https://reifkushiyaki.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2383,13 +2488,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Chef-driven boutique brand hai; Chef Reif aur unka operations lead Instagram DM par active rehte hain.",
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Reif Japanese Kushiyaki",
-    "founderGreeting": "Chef Reif"
+    "founderGreeting": "Chef Reif",
+    "website": "https://reifkushiyaki.com"
   },
   {
     "id": "real_lead_54",
     "businessName": "3Fils Restaurant (Jumeirah Fishing Harbour)",
     "city": "Dubai",
-    "country": "United Arab Emirates 🇦🇪",
+    "country": "United Arab Emirates \ud83c\udde6\ud83c\uddea",
     "address": "Shop 02, Jumeirah Fishing Harbour, 1 Al Urouba St, Dubai",
     "phone": "+971 4 333 4003",
     "phoneType": "landline_uan",
@@ -2403,9 +2509,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Co-Founders & Managing Partners, 3Fils",
     "niche": "restaurants",
     "nicheName": "Award-Winning Asian Harbourside Dining",
-    "nicheIcon": "🦐",
+    "nicheIcon": "\ud83e\udd90",
     "flawTitle": "Strict No-Reservation Walk-In Abandonment",
-    "flawLeakRange": "AED 25k – 48k/mo",
+    "flawLeakRange": "AED 25k \u2013 48k/mo",
     "mapsUrl": "https://www.google.com/maps/place/3Fils%20Restaurant%2C%20Shop%2002%2C%20Jumeirah%20Fishing%20Harbour%2C%201%20Al%20Urouba%20St%2C%20Dubai",
     "channel": "instagram",
     "contactInfo": {
@@ -2415,7 +2521,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+971562730030",
       "email": "info@3fils.com",
       "instagramHandle": "@3.fils",
-      "linkedinProfile": "linkedin.com/company/3filsrestaurant"
+      "linkedinProfile": "linkedin.com/company/3filsrestaurant",
+      "website": "https://3fils.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2428,13 +2535,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "MENA 50 Best winner brand hai; creative team Instagram DM ko actively manage karti hai.",
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team 3Fils",
-    "founderGreeting": "Ahmed & Adnan"
+    "founderGreeting": "Ahmed & Adnan",
+    "website": "https://3fils.com"
   },
   {
     "id": "real_lead_55",
     "businessName": "Bait Al Mandi (Al Barsha)",
     "city": "Dubai",
-    "country": "United Arab Emirates 🇦🇪",
+    "country": "United Arab Emirates \ud83c\udde6\ud83c\uddea",
     "address": "Near Mall of the Emirates, Al Barsha 1, Dubai",
     "phone": "+971 4 395 7774",
     "phoneType": "landline_uan",
@@ -2448,9 +2556,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Operations Director, Bait Al Mandi",
     "niche": "restaurants",
     "nicheName": "Authentic Yemeni Mutton & Chicken Mandi",
-    "nicheIcon": "🍗",
+    "nicheIcon": "\ud83c\udf57",
     "flawTitle": "Delivery App Commissions Squeezing Family Feast Margin",
-    "flawLeakRange": "AED 20k – 38k/mo",
+    "flawLeakRange": "AED 20k \u2013 38k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Bait%20Al%20Mandi%2C%20Near%20Mall%20of%20the%20Emirates%2C%20Al%20Barsha%201%2C%20Dubai",
     "channel": "gmail",
     "contactInfo": {
@@ -2460,7 +2568,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+971506543322",
       "email": "info@baitalmandi.ae",
       "instagramHandle": "@baitalmandiofficial",
-      "linkedinProfile": "linkedin.com/company/baitalmandi"
+      "linkedinProfile": "linkedin.com/company/baitalmandi",
+      "website": "https://baitalmandi.ae"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2473,13 +2582,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Traditional multi-branch Mandi chain hai; central procurement email proposal GM desk evaluate karta hai.",
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Bait Al Mandi",
-    "founderGreeting": "Abdullah"
+    "founderGreeting": "Abdullah",
+    "website": "https://baitalmandi.ae"
   },
   {
     "id": "real_lead_56",
     "businessName": "Zaroob (Sheikh Zayed Road)",
     "city": "Dubai",
-    "country": "United Arab Emirates 🇦🇪",
+    "country": "United Arab Emirates \ud83c\udde6\ud83c\uddea",
     "address": "Jumeirah Tower, Sheikh Zayed Road, Trade Centre 1, Dubai",
     "phone": "+971 4 385 3592",
     "phoneType": "landline_uan",
@@ -2493,9 +2603,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Brand Creator, Zaroob",
     "niche": "restaurants",
     "nicheName": "Levantine Street Food & Fresh Juices",
-    "nicheIcon": "🌯",
+    "nicheIcon": "\ud83c\udf2f",
     "flawTitle": "Late Night Delivery Portal Commissions",
-    "flawLeakRange": "AED 22k – 40k/mo",
+    "flawLeakRange": "AED 22k \u2013 40k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Zaroob%2C%20Jumeirah%20Tower%2C%20Sheikh%20Zayed%20Road%2C%20Trade%20Centre%201%2C%20Dubai",
     "channel": "instagram",
     "contactInfo": {
@@ -2505,7 +2615,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+971508899221",
       "email": "contact@zaroob.com",
       "instagramHandle": "@zaroob",
-      "linkedinProfile": "linkedin.com/company/zaroob"
+      "linkedinProfile": "linkedin.com/company/zaroob",
+      "website": "https://zaroob.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2518,13 +2629,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Levant street-eats concept hai; unka social desk Instagram DMs ko rapid speed se respond karta hai.",
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Zaroob",
-    "founderGreeting": "Nasser"
+    "founderGreeting": "Nasser",
+    "website": "https://zaroob.com"
   },
   {
     "id": "real_lead_57",
     "businessName": "Aroos Damascus (Deira)",
     "city": "Dubai",
-    "country": "United Arab Emirates 🇦🇪",
+    "country": "United Arab Emirates \ud83c\udde6\ud83c\uddea",
     "address": "Al Muraqqabat Road, Deira, Dubai",
     "phone": "+971 4 221 9825",
     "phoneType": "landline_uan",
@@ -2538,9 +2650,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Proprietor & General Manager",
     "niche": "restaurants",
     "nicheName": "Traditional Syrian Charcoal Grill & Shawarma",
-    "nicheIcon": "🥩",
+    "nicheIcon": "\ud83e\udd69",
     "flawTitle": "Overcrowded Outdoor Dining Cashier Bottleneck",
-    "flawLeakRange": "AED 28k – 50k/mo",
+    "flawLeakRange": "AED 28k \u2013 50k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Aroos%20Damascus%2C%20Al%20Muraqqabat%20Road%2C%20Deira%2C%20Dubai",
     "channel": "gmail",
     "contactInfo": {
@@ -2550,7 +2662,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+971506544411",
       "email": "aroosdamascus@gmail.com",
       "instagramHandle": "@aroosdamascus",
-      "linkedinProfile": "linkedin.com/company/aroosdamascus"
+      "linkedinProfile": "linkedin.com/company/aroosdamascus",
+      "website": ""
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2563,13 +2676,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Deira ka massive institution hai jahan email par delivery apps commission cut audit proposal attention leti hai.",
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Aroos Damascus",
-    "founderGreeting": "Abu Firas"
+    "founderGreeting": "Abu Firas",
+    "website": ""
   },
   {
     "id": "real_lead_58",
     "businessName": "Mama'esh (Al Manara)",
     "city": "Dubai",
-    "country": "United Arab Emirates 🇦🇪",
+    "country": "United Arab Emirates \ud83c\udde6\ud83c\uddea",
     "address": "Villa 1081, Al Wasl Road, Al Manara, Dubai",
     "phone": "+971 4 453 8166",
     "phoneType": "landline_uan",
@@ -2583,9 +2697,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Managing Director, Mama'esh",
     "niche": "restaurants",
     "nicheName": "Authentic Palestinian Bakery & Mana'eesh",
-    "nicheIcon": "🫓",
+    "nicheIcon": "\ud83e\uded3",
     "flawTitle": "No Direct Mobile Loyalty Program for Regular Breakfast Diners",
-    "flawLeakRange": "AED 16k – 30k/mo",
+    "flawLeakRange": "AED 16k \u2013 30k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Mama%27esh%2C%20Villa%201081%2C%20Al%20Wasl%20Road%2C%20Al%20Manara%2C%20Dubai",
     "channel": "instagram",
     "contactInfo": {
@@ -2595,7 +2709,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+971505544112",
       "email": "info@mamaesh.com",
       "instagramHandle": "@mamaeshdubai",
-      "linkedinProfile": "linkedin.com/company/mama'esh"
+      "linkedinProfile": "linkedin.com/company/mama'esh",
+      "website": "https://mamaesh.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2608,13 +2723,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Palestinian artisan bakery hai jahan founder Humam Al-Azem community DMs aur vendor ideas personally review karte hain.",
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Mama'esh",
-    "founderGreeting": "Humam"
+    "founderGreeting": "Humam",
+    "website": "https://mamaesh.com"
   },
   {
     "id": "real_lead_59",
     "businessName": "Al Fanar Restaurant (Festival City)",
     "city": "Dubai",
-    "country": "United Arab Emirates 🇦🇪",
+    "country": "United Arab Emirates \ud83c\udde6\ud83c\uddea",
     "address": "Ground Floor, Canal Walk, Dubai Festival City Mall, Dubai",
     "phone": "+971 4 232 9966",
     "phoneType": "landline_uan",
@@ -2628,9 +2744,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Group CEO, Al Fanar",
     "niche": "restaurants",
     "nicheName": "1960s Traditional Emirati Theme Restaurant",
-    "nicheIcon": "🏺",
+    "nicheIcon": "\ud83c\udffa",
     "flawTitle": "Pinch-to-zoom PDF Menu on Mobile",
-    "flawLeakRange": "AED 18k – 34k/mo",
+    "flawLeakRange": "AED 18k \u2013 34k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Al%20Fanar%20Restaurant%2C%20Ground%20Floor%2C%20Canal%20Walk%2C%20Dubai%20Festival%20City%20Mall%2C%20Dubai",
     "channel": "gmail",
     "contactInfo": {
@@ -2640,7 +2756,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+971506588212",
       "email": "info@alfanarrestaurant.com",
       "instagramHandle": "@alfanarrestaurant",
-      "linkedinProfile": "linkedin.com/company/alfanarrestaurant"
+      "linkedinProfile": "linkedin.com/company/alfanarrestaurant",
+      "website": "https://alfanarrestaurant.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2653,13 +2770,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Emirati cultural heritage chain hai; corporate proposal email unke central management office jati hai.",
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Al Fanar",
-    "founderGreeting": "Hashem"
+    "founderGreeting": "Hashem",
+    "website": "https://alfanarrestaurant.com"
   },
   {
     "id": "real_lead_60",
     "businessName": "Il Borro Tuscan Bistro (Jumeirah)",
     "city": "Dubai",
-    "country": "United Arab Emirates 🇦🇪",
+    "country": "United Arab Emirates \ud83c\udde6\ud83c\uddea",
     "address": "Jumeirah Al Naseem Hotel, Turtle Lagoon, Dubai",
     "phone": "+971 4 275 2555",
     "phoneType": "landline_uan",
@@ -2673,9 +2791,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Managing Director, Orange Hospitality",
     "niche": "restaurants",
     "nicheName": "Michelin Guide Tuscan Luxury Fine Dining",
-    "nicheIcon": "🍷",
+    "nicheIcon": "\ud83c\udf77",
     "flawTitle": "VIP Table Waitlist Management Friction",
-    "flawLeakRange": "AED 30k – 55k/mo",
+    "flawLeakRange": "AED 30k \u2013 55k/mo",
     "mapsUrl": "https://www.google.com/maps/place/Il%20Borro%20Tuscan%20Bistro%2C%20Jumeirah%20Al%20Naseem%20Hotel%2C%20Turtle%20Lagoon%2C%20Dubai",
     "channel": "gmail",
     "contactInfo": {
@@ -2685,7 +2803,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": "+971502441199",
       "email": "reservations@ilborrotuscanbistro.ae",
       "instagramHandle": "@ilborrodubai",
-      "linkedinProfile": "linkedin.com/company/ilborrotuscanbistro"
+      "linkedinProfile": "linkedin.com/company/ilborrotuscanbistro",
+      "website": "https://ilborrotuscanbistro.ae"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2698,13 +2817,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Luxury Tuscan fine dining hai; Orange Hospitality head office email par formal proposal forward karna mandatory protocol hai.",
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Il Borro",
-    "founderGreeting": "Piero"
+    "founderGreeting": "Piero",
+    "website": "https://ilborrotuscanbistro.ae"
   },
   {
     "id": "real_lead_61",
     "businessName": "Franklin Barbecue (Austin)",
     "city": "Austin, Texas",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "900 E 11th St, Austin, TX 78702",
     "phone": "(512) 653-1187",
     "phoneType": "landline_uan",
@@ -2718,9 +2838,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founders & Owners, Franklin Barbecue",
     "niche": "restaurants",
     "nicheName": "World Famous Texas Craft Brisket",
-    "nicheIcon": "🥩",
+    "nicheIcon": "\ud83e\udd69",
     "flawTitle": "4-Hour In-Person Waiting Line With No VIP Pre-Pay Pickup",
-    "flawLeakRange": "$4,200 – $7,500/mo",
+    "flawLeakRange": "$4,200 \u2013 $7,500/mo",
     "mapsUrl": "https://www.google.com/maps/place/Franklin%20Barbecue%2C%20900%20E%2011th%20St%2C%20Austin%2C%20TX%2078702",
     "channel": "gmail",
     "contactInfo": {
@@ -2730,7 +2850,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "eat@franklinbbq.com",
       "instagramHandle": "@franklinbbq",
-      "linkedinProfile": "linkedin.com/company/franklinbarbecue"
+      "linkedinProfile": "linkedin.com/company/franklinbarbecue",
+      "website": "https://franklinbbq.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2743,13 +2864,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "James Beard Award winner Aaron Franklin ki operations manager unki orders/press email handle karti hai; clean email pitch gets read.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Franklin",
-    "founderGreeting": "Aaron & Stacy"
+    "founderGreeting": "Aaron & Stacy",
+    "website": "https://franklinbbq.com"
   },
   {
     "id": "real_lead_62",
     "businessName": "Terry Black's Barbecue (Barton Springs)",
     "city": "Austin, Texas",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "1003 Barton Springs Rd, Austin, TX 78704",
     "phone": "(512) 394-5899",
     "phoneType": "landline_uan",
@@ -2763,9 +2885,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Owners & Pitmasters, Terry Black's BBQ",
     "niche": "restaurants",
     "nicheName": "Authentic Central Texas Smoked Meats",
-    "nicheIcon": "🍖",
+    "nicheIcon": "\ud83c\udf56",
     "flawTitle": "Third-Party Catering Platform Margin Cuts (25%)",
-    "flawLeakRange": "$5,000 – $9,000/mo",
+    "flawLeakRange": "$5,000 \u2013 $9,000/mo",
     "mapsUrl": "https://www.google.com/maps/place/Terry%20Black%27s%20Barbecue%2C%201003%20Barton%20Springs%20Rd%2C%20Austin%2C%20TX%2078704",
     "channel": "gmail",
     "contactInfo": {
@@ -2775,7 +2897,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "catering@terryblacksbbq.com",
       "instagramHandle": "@terryblacksbarbecue",
-      "linkedinProfile": "linkedin.com/company/terryblack'sbarbecue"
+      "linkedinProfile": "linkedin.com/company/terryblack'sbarbecue",
+      "website": "https://terryblacksbbq.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2788,13 +2911,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Texas BBQ royalty hai; catering aur management email direct ownership oversight me hoti hai.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Terry Black's",
-    "founderGreeting": "Mike & Mark"
+    "founderGreeting": "Mike & Mark",
+    "website": "https://terryblacksbbq.com"
   },
   {
     "id": "real_lead_63",
     "businessName": "Uchi (South Lamar, Austin)",
     "city": "Austin, Texas",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "801 S Lamar Blvd, Austin, TX 78704",
     "phone": "(512) 916-4808",
     "phoneType": "landline_uan",
@@ -2808,9 +2932,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founding Chef & Partner, Hai Hospitality",
     "niche": "restaurants",
     "nicheName": "James Beard Award-Winning Contemporary Sushi",
-    "nicheIcon": "🍣",
+    "nicheIcon": "\ud83c\udf63",
     "flawTitle": "High Reservation Abandonment on Third-Party Resy App",
-    "flawLeakRange": "$3,800 – $6,500/mo",
+    "flawLeakRange": "$3,800 \u2013 $6,500/mo",
     "mapsUrl": "https://www.google.com/maps/place/Uchi%2C%20801%20S%20Lamar%20Blvd%2C%20Austin%2C%20TX%2078704",
     "channel": "gmail",
     "contactInfo": {
@@ -2820,7 +2944,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@uchiaustin.com",
       "instagramHandle": "@uchiaustin",
-      "linkedinProfile": "linkedin.com/company/uchi"
+      "linkedinProfile": "linkedin.com/company/uchi",
+      "website": "https://uchiaustin.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2833,13 +2958,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Hai Hospitality group operate karta hai; tech proposal central operations director ko email par route hoti hai.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Uchi",
-    "founderGreeting": "Tyson"
+    "founderGreeting": "Tyson",
+    "website": "https://uchiaustin.com"
   },
   {
     "id": "real_lead_64",
     "businessName": "Torchy's Tacos (South Congress)",
     "city": "Austin, Texas",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "1822 S Congress Ave, Austin, TX 78704",
     "phone": "(512) 441-2401",
     "phoneType": "landline_uan",
@@ -2853,9 +2979,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Executive Chef, Torchy's Tacos",
     "niche": "restaurants",
     "nicheName": "Damn Good Craft Tacos & Queso",
-    "nicheIcon": "🌮",
+    "nicheIcon": "\ud83c\udf2e",
     "flawTitle": "DoorDash 30% Delivery Fee Eating Repeat Diners",
-    "flawLeakRange": "$3,500 – $6,200/mo",
+    "flawLeakRange": "$3,500 \u2013 $6,200/mo",
     "mapsUrl": "https://www.google.com/maps/place/Torchy%27s%20Tacos%2C%201822%20S%20Congress%20Ave%2C%20Austin%2C%20TX%2078704",
     "channel": "gmail",
     "contactInfo": {
@@ -2865,7 +2991,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "feedback@torchystacos.com",
       "instagramHandle": "@torchystacos",
-      "linkedinProfile": "linkedin.com/company/torchy'stacos"
+      "linkedinProfile": "linkedin.com/company/torchy'stacos",
+      "website": "https://torchystacos.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2878,13 +3005,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Multi-state taco group hai; formal corporate inquiry email evaluated by restaurant tech VP.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Torchy's Tacos",
-    "founderGreeting": "Mike"
+    "founderGreeting": "Mike",
+    "website": "https://torchystacos.com"
   },
   {
     "id": "real_lead_65",
     "businessName": "Home Slice Pizza (South Congress)",
     "city": "Austin, Texas",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "1415 S Congress Ave, Austin, TX 78704",
     "phone": "(512) 444-7437",
     "phoneType": "landline_uan",
@@ -2898,9 +3026,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Co-Founders & Managing Partners",
     "niche": "restaurants",
     "nicheName": "Authentic NY Style Pizza by the Slice",
-    "nicheIcon": "🍕",
+    "nicheIcon": "\ud83c\udf55",
     "flawTitle": "Takeout Window Phone Busy Signals During Dinner Rush",
-    "flawLeakRange": "$3,200 – $5,800/mo",
+    "flawLeakRange": "$3,200 \u2013 $5,800/mo",
     "mapsUrl": "https://www.google.com/maps/place/Home%20Slice%20Pizza%2C%201415%20S%20Congress%20Ave%2C%20Austin%2C%20TX%2078704",
     "channel": "instagram",
     "contactInfo": {
@@ -2910,7 +3038,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@homeslicepizza.com",
       "instagramHandle": "@homeslicepizza",
-      "linkedinProfile": "linkedin.com/company/homeslicepizza"
+      "linkedinProfile": "linkedin.com/company/homeslicepizza",
+      "website": "https://homeslicepizza.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2923,13 +3052,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "South Congress community staple hai; unka social media team Instagram DM (@homeslicepizza) par bohot active rehta hai.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Home Slice Pizza",
-    "founderGreeting": "Jen & Jeff"
+    "founderGreeting": "Jen & Jeff",
+    "website": "https://homeslicepizza.com"
   },
   {
     "id": "real_lead_66",
     "businessName": "Hopdoddy Burger Bar (South Congress)",
     "city": "Austin, Texas",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "1400 S Congress Ave, Austin, TX 78704",
     "phone": "(512) 243-7505",
     "phoneType": "landline_uan",
@@ -2943,9 +3073,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Co-Founders, Hopdoddy Burger Bar",
     "niche": "restaurants",
     "nicheName": "Fresh-Ground Craft Burgers & Shakes",
-    "nicheIcon": "🍔",
+    "nicheIcon": "\ud83c\udf54",
     "flawTitle": "Third-Party Delivery Commission Drain on Local Orders",
-    "flawLeakRange": "$3,400 – $6,000/mo",
+    "flawLeakRange": "$3,400 \u2013 $6,000/mo",
     "mapsUrl": "https://www.google.com/maps/place/Hopdoddy%20Burger%20Bar%2C%201400%20S%20Congress%20Ave%2C%20Austin%2C%20TX%2078704",
     "channel": "gmail",
     "contactInfo": {
@@ -2955,7 +3085,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@hopdoddy.com",
       "instagramHandle": "@hopdoddy",
-      "linkedinProfile": "linkedin.com/company/hopdoddyburgerbar"
+      "linkedinProfile": "linkedin.com/company/hopdoddyburgerbar",
+      "website": "https://hopdoddy.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -2968,13 +3099,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Corporate brand hai; marketing and tech partnerships central email se process hoti hain.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Hopdoddy Burger Bar",
-    "founderGreeting": "Guy & Larry"
+    "founderGreeting": "Guy & Larry",
+    "website": "https://hopdoddy.com"
   },
   {
     "id": "real_lead_67",
     "businessName": "Austin Dental Co. (Austin, TX)",
     "city": "Austin, Texas",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "3810 N Quinlan Park Rd, Suite 140, Austin, TX 78732",
     "phone": "(512) 710-4783",
     "phoneType": "landline_uan",
@@ -2988,9 +3120,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Lead Doctor of Dental Surgery & Practice Owner",
     "niche": "dental_medical",
     "nicheName": "Modern Family & Cosmetic Dentistry",
-    "nicheIcon": "🦷",
+    "nicheIcon": "\ud83e\uddb7",
     "flawTitle": "Zero After-Hours Mobile Emergency Booking Calendar",
-    "flawLeakRange": "$4,500 – $8,200/mo",
+    "flawLeakRange": "$4,500 \u2013 $8,200/mo",
     "mapsUrl": "https://www.google.com/maps/place/Austin%20Dental%20Co.%2C%203810%20N%20Quinlan%20Park%20Rd%2C%20Suite%20140%2C%20Austin%2C%20TX%2078732",
     "channel": "gmail",
     "contactInfo": {
@@ -3000,7 +3132,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "contact@austindentalco.com",
       "instagramHandle": "@austindentalco",
-      "linkedinProfile": "linkedin.com/company/austindentalco."
+      "linkedinProfile": "linkedin.com/company/austindentalco.",
+      "website": "https://austindentalco.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3013,13 +3146,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "US private dental clinics me office manager email ko patient bookings aur tech tools ke liye primary channel manta hai.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Austin Dental Co.",
-    "founderGreeting": "Dr. Ryan"
+    "founderGreeting": "Dr. Ryan",
+    "website": "https://austindentalco.com"
   },
   {
     "id": "real_lead_68",
     "businessName": "Birds Barbershop (South Congress)",
     "city": "Austin, Texas",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "2110 S Congress Ave, Austin, TX 78704",
     "phone": "(512) 445-0500",
     "phoneType": "landline_uan",
@@ -3033,9 +3167,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Co-Founders & General Partners, Birds Barbershop",
     "niche": "salons_spas",
     "nicheName": "Iconic Rock 'n' Roll Barber & Hair Salon",
-    "nicheIcon": "💈",
+    "nicheIcon": "\ud83d\udc88",
     "flawTitle": "Chair Downtime Due to No Automated SMS Re-booking Widget",
-    "flawLeakRange": "$2,800 – $5,200/mo",
+    "flawLeakRange": "$2,800 \u2013 $5,200/mo",
     "mapsUrl": "https://www.google.com/maps/place/Birds%20Barbershop%2C%202110%20S%20Congress%20Ave%2C%20Austin%2C%20TX%2078704",
     "channel": "instagram",
     "contactInfo": {
@@ -3045,7 +3179,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@birdsbarbershop.com",
       "instagramHandle": "@birdsbarbershop",
-      "linkedinProfile": "linkedin.com/company/birdsbarbershop"
+      "linkedinProfile": "linkedin.com/company/birdsbarbershop",
+      "website": "https://birdsbarbershop.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3058,13 +3193,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Austin ka iconic lifestyle barbershop hai; Instagram DM (@birdsbarbershop) marketing lead monitor karta hai.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Birds Barbershop",
-    "founderGreeting": "Jayson & Michael"
+    "founderGreeting": "Jayson & Michael",
+    "website": "https://birdsbarbershop.com"
   },
   {
     "id": "real_lead_69",
     "businessName": "The Driskill Hotel (Downtown Austin)",
     "city": "Austin, Texas",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "604 Brazos St, Austin, TX 78701",
     "phone": "(512) 439-1234",
     "phoneType": "landline_uan",
@@ -3078,9 +3214,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "General Manager, The Driskill (Hyatt Unbound Collection)",
     "niche": "boutique_hotels",
     "nicheName": "Historic 1886 Romanesque Luxury Hotel & Grill",
-    "nicheIcon": "🏨",
+    "nicheIcon": "\ud83c\udfe8",
     "flawTitle": "Expedia & Booking.com 20% Commission Drain on Rooms",
-    "flawLeakRange": "$8,500 – $16,000/mo",
+    "flawLeakRange": "$8,500 \u2013 $16,000/mo",
     "mapsUrl": "https://www.google.com/maps/place/The%20Driskill%20Hotel%2C%20604%20Brazos%20St%2C%20Austin%2C%20TX%2078701",
     "channel": "gmail",
     "contactInfo": {
@@ -3090,7 +3226,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "reservations@driskillhotel.com",
       "instagramHandle": "@thedriskill",
-      "linkedinProfile": "linkedin.com/company/thedriskillhotel"
+      "linkedinProfile": "linkedin.com/company/thedriskillhotel",
+      "website": "https://driskillhotel.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3103,13 +3240,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Historic luxury hotel hai; GM Mark Sherwin aur food & beverage director formal email pitches review karte hain.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team The Driskill",
-    "founderGreeting": "Mark & Hyatt"
+    "founderGreeting": "Mark & Hyatt",
+    "website": "https://driskillhotel.com"
   },
   {
     "id": "real_lead_70",
     "businessName": "Micklethwait Craft Meats (East Austin)",
     "city": "Austin, Texas",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "1309 Rosewood Ave, Austin, TX 78702",
     "phone": "(512) 791-5961",
     "phoneType": "landline_uan",
@@ -3123,9 +3261,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Owner & Pitmaster, Micklethwait Craft Meats",
     "niche": "restaurants",
     "nicheName": "Artisanal Smoked Meats & Homemade Sausages",
-    "nicheIcon": "🌭",
+    "nicheIcon": "\ud83c\udf2d",
     "flawTitle": "Catering Quote Lead Form Friction on Mobile",
-    "flawLeakRange": "$2,900 – $5,400/mo",
+    "flawLeakRange": "$2,900 \u2013 $5,400/mo",
     "mapsUrl": "https://www.google.com/maps/place/Micklethwait%20Craft%20Meats%2C%201309%20Rosewood%20Ave%2C%20Austin%2C%20TX%2078702",
     "channel": "instagram",
     "contactInfo": {
@@ -3135,7 +3273,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@craftmeatsaustin.com",
       "instagramHandle": "@craftmeats",
-      "linkedinProfile": "linkedin.com/company/micklethwaitcraftmeats"
+      "linkedinProfile": "linkedin.com/company/micklethwaitcraftmeats",
+      "website": "https://craftmeatsaustin.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3148,13 +3287,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Craft smokehouse trailer hai; Tom Micklethwait khud Instagram (@craftmeats) handle karta hai aur DMs padhta hai.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Micklethwait Craft Meats",
-    "founderGreeting": "Tom"
+    "founderGreeting": "Tom",
+    "website": "https://craftmeatsaustin.com"
   },
   {
     "id": "real_lead_71",
     "businessName": "Loro Asian Smokehouse & Bar (South Lamar)",
     "city": "Austin, Texas",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "2115 S Lamar Blvd, Austin, TX 78704",
     "phone": "(512) 916-4858",
     "phoneType": "landline_uan",
@@ -3168,9 +3308,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founding Partners, Loro Asian Smokehouse",
     "niche": "restaurants",
     "nicheName": "Asian Smokehouse & Craft Brewpub",
-    "nicheIcon": "🥩",
+    "nicheIcon": "\ud83e\udd69",
     "flawTitle": "Peak Hour Patio Drink Ordering Delays",
-    "flawLeakRange": "$3,200 – $5,900/mo",
+    "flawLeakRange": "$3,200 \u2013 $5,900/mo",
     "mapsUrl": "https://www.google.com/maps/place/Loro%20Asian%20Smokehouse%20%26%20Bar%2C%202115%20S%20Lamar%20Blvd%2C%20Austin%2C%20TX%2078704",
     "channel": "gmail",
     "contactInfo": {
@@ -3180,7 +3320,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@loroeats.com",
       "instagramHandle": "@loroeats",
-      "linkedinProfile": "linkedin.com/company/loroasiansmokehouse&bar"
+      "linkedinProfile": "linkedin.com/company/loroasiansmokehouse&bar",
+      "website": "https://loroeats.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3193,13 +3334,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Joint venture between two James Beard winners operated by Hai Hospitality; email proposal is standard procedure.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Loro Asian Smokehouse & Bar",
-    "founderGreeting": "Tyson & Aaron"
+    "founderGreeting": "Tyson & Aaron",
+    "website": "https://loroeats.com"
   },
   {
     "id": "real_lead_72",
     "businessName": "Banger's Sausage House (Rainey Street)",
     "city": "Austin, Texas",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "79 Rainey St, Austin, TX 78701",
     "phone": "(512) 386-1656",
     "phoneType": "landline_uan",
@@ -3213,9 +3355,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Chief Sausage Enthusiast",
     "niche": "restaurants",
     "nicheName": "Rustic Craft Beer Garden & Smokehouse",
-    "nicheIcon": "🍺",
+    "nicheIcon": "\ud83c\udf7a",
     "flawTitle": "Long Bar Queues on Sunday Brunch",
-    "flawLeakRange": "$3,500 – $6,400/mo",
+    "flawLeakRange": "$3,500 \u2013 $6,400/mo",
     "mapsUrl": "https://www.google.com/maps/place/Banger%27s%20Sausage%20House%2C%2079%20Rainey%20St%2C%20Austin%2C%20TX%2078701",
     "channel": "instagram",
     "contactInfo": {
@@ -3225,7 +3367,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@bangersaustin.com",
       "instagramHandle": "@bangersaustin",
-      "linkedinProfile": "linkedin.com/company/banger'ssausagehouse"
+      "linkedinProfile": "linkedin.com/company/banger'ssausagehouse",
+      "website": "https://bangersaustin.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3238,13 +3381,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Rainey Street craft beer hall hai; Ben Siegel aur social lead Instagram DMs regularly scan karte hain.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Banger's Sausage House",
-    "founderGreeting": "Ben"
+    "founderGreeting": "Ben",
+    "website": "https://bangersaustin.com"
   },
   {
     "id": "real_lead_73",
     "businessName": "Veracruz All Natural (Menchaca Rd)",
     "city": "Austin, Texas",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "4208 Menchaca Rd, Austin, TX 78704",
     "phone": "(512) 665-9860",
     "phoneType": "landline_uan",
@@ -3258,9 +3402,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founders & Owners, Veracruz All Natural",
     "niche": "restaurants",
     "nicheName": "Authentic Migas Tacos & Fresh Juices",
-    "nicheIcon": "🌮",
+    "nicheIcon": "\ud83c\udf2e",
     "flawTitle": "Morning Rush Takeout Line Phone Congestion",
-    "flawLeakRange": "$3,000 – $5,500/mo",
+    "flawLeakRange": "$3,000 \u2013 $5,500/mo",
     "mapsUrl": "https://www.google.com/maps/place/Veracruz%20All%20Natural%2C%204208%20Menchaca%20Rd%2C%20Austin%2C%20TX%2078704",
     "channel": "instagram",
     "contactInfo": {
@@ -3270,7 +3414,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "hola@veracruzallnatural.com",
       "instagramHandle": "@veracruztacos",
-      "linkedinProfile": "linkedin.com/company/veracruzallnatural"
+      "linkedinProfile": "linkedin.com/company/veracruzallnatural",
+      "website": "https://veracruzallnatural.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3283,13 +3428,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Sisters Reyna and Maritza social channels (@veracruztacos) ko apna primary public communication hub rakhti hain.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Veracruz All Natural",
-    "founderGreeting": "Reyna & Maritza"
+    "founderGreeting": "Reyna & Maritza",
+    "website": "https://veracruzallnatural.com"
   },
   {
     "id": "real_lead_74",
     "businessName": "Perla's Seafood & Oyster Bar (South Congress)",
     "city": "Austin, Texas",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "1400 S Congress Ave, Austin, TX 78704",
     "phone": "(512) 291-7300",
     "phoneType": "landline_uan",
@@ -3303,9 +3449,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founders & Partners, MML Hospitality",
     "niche": "restaurants",
     "nicheName": "Fresh Coastal Seafood & Patio Oyster Bar",
-    "nicheIcon": "🦪",
+    "nicheIcon": "\ud83e\uddaa",
     "flawTitle": "High OpenTable Booking Fees on Regulars",
-    "flawLeakRange": "$3,600 – $6,200/mo",
+    "flawLeakRange": "$3,600 \u2013 $6,200/mo",
     "mapsUrl": "https://www.google.com/maps/place/Perla%27s%20Seafood%20%26%20Oyster%20Bar%2C%201400%20S%20Congress%20Ave%2C%20Austin%2C%20TX%2078704",
     "channel": "gmail",
     "contactInfo": {
@@ -3315,7 +3461,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@perlasaustin.com",
       "instagramHandle": "@perlasaustin",
-      "linkedinProfile": "linkedin.com/company/perla'sseafood&oysterbar"
+      "linkedinProfile": "linkedin.com/company/perla'sseafood&oysterbar",
+      "website": "https://perlasaustin.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3328,13 +3475,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "MML Hospitality corporate umbrella ke under aata hai; proposal info@mmlhospitality.com par route hoti hai.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Perla's Seafood & Oyster Bar",
-    "founderGreeting": "Larry & Tom"
+    "founderGreeting": "Larry & Tom",
+    "website": "https://perlasaustin.com"
   },
   {
     "id": "real_lead_75",
     "businessName": "Matt's El Rancho (South Lamar)",
     "city": "Austin, Texas",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "2613 S Lamar Blvd, Austin, TX 78704",
     "phone": "(512) 462-9333",
     "phoneType": "landline_uan",
@@ -3348,9 +3496,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Managing Partner, Matt's El Rancho",
     "niche": "restaurants",
     "nicheName": "Legendary Austin Tex-Mex Since 1952",
-    "nicheIcon": "🧀",
+    "nicheIcon": "\ud83e\uddc0",
     "flawTitle": "Peak Hours 1-Hour Waitlist Phone Abandonment",
-    "flawLeakRange": "$4,000 – $7,200/mo",
+    "flawLeakRange": "$4,000 \u2013 $7,200/mo",
     "mapsUrl": "https://www.google.com/maps/place/Matt%27s%20El%20Rancho%2C%202613%20S%20Lamar%20Blvd%2C%20Austin%2C%20TX%2078704",
     "channel": "gmail",
     "contactInfo": {
@@ -3360,7 +3508,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@mattselrancho.com",
       "instagramHandle": "@mattselrancho",
-      "linkedinProfile": "linkedin.com/company/matt'selrancho"
+      "linkedinProfile": "linkedin.com/company/matt'selrancho",
+      "website": "https://mattselrancho.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3373,13 +3522,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "1952 se qaim giant establishment hai; management desk email inquiries par official feedback deti hai.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Matt's El Rancho",
-    "founderGreeting": "Matt"
+    "founderGreeting": "Matt",
+    "website": "https://mattselrancho.com"
   },
   {
     "id": "real_lead_76",
     "businessName": "Katz's Delicatessen (Lower East Side)",
     "city": "New York, NY",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "205 E Houston St, New York, NY 10002",
     "phone": "(212) 254-2246",
     "phoneType": "landline_uan",
@@ -3393,9 +3543,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "5th Generation Owner & Operator, Katz's Delicatessen",
     "niche": "restaurants",
     "nicheName": "Legendary Pastrami on Rye & Jewish Deli",
-    "nicheIcon": "🥪",
+    "nicheIcon": "\ud83e\udd6a",
     "flawTitle": "Nationwide Shipping Order Abandonment on Mobile Site",
-    "flawLeakRange": "$7,500 – $14,000/mo",
+    "flawLeakRange": "$7,500 \u2013 $14,000/mo",
     "mapsUrl": "https://www.google.com/maps/place/Katz%27s%20Delicatessen%2C%20205%20E%20Houston%20St%2C%20New%20York%2C%20NY%2010002",
     "channel": "gmail",
     "contactInfo": {
@@ -3405,7 +3555,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@katzsdelicatessen.com",
       "instagramHandle": "@katzsdeli",
-      "linkedinProfile": "linkedin.com/company/katz'sdelicatessen"
+      "linkedinProfile": "linkedin.com/company/katz'sdelicatessen",
+      "website": "https://katzsdelicatessen.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3418,13 +3569,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Historic 1888 institution hai; Jake Dell aur unka operations team official business email (info@katzsdelicatessen.com) daily review karte hain.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Katz's Delicatessen",
-    "founderGreeting": "Jake"
+    "founderGreeting": "Jake",
+    "website": "https://katzsdelicatessen.com"
   },
   {
     "id": "real_lead_77",
     "businessName": "Peter Luger Steak House (Brooklyn)",
     "city": "New York, NY",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "178 Broadway, Brooklyn, NY 11211",
     "phone": "(718) 387-7400",
     "phoneType": "landline_uan",
@@ -3438,9 +3590,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Co-Owners & Vice Presidents, Peter Luger",
     "niche": "restaurants",
     "nicheName": "Iconic Dry-Aged Porterhouse Steakhouse Since 1887",
-    "nicheIcon": "🥩",
+    "nicheIcon": "\ud83e\udd69",
     "flawTitle": "Phone-Only Reservation Desk Congestion",
-    "flawLeakRange": "$6,000 – $11,000/mo",
+    "flawLeakRange": "$6,000 \u2013 $11,000/mo",
     "mapsUrl": "https://www.google.com/maps/place/Peter%20Luger%20Steak%20House%2C%20178%20Broadway%2C%20Brooklyn%2C%20NY%2011211",
     "channel": "gmail",
     "contactInfo": {
@@ -3450,7 +3602,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "reservations@peterluger.com",
       "instagramHandle": "@peterlugersteakhouse",
-      "linkedinProfile": "linkedin.com/company/peterlugersteakhouse"
+      "linkedinProfile": "linkedin.com/company/peterlugersteakhouse",
+      "website": "https://peterluger.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3463,13 +3616,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Old-school Brooklyn landmark hai jahan formal email proposal family ownership desk tak pohnchti hai.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Peter Luger",
-    "founderGreeting": "Jody & Amy"
+    "founderGreeting": "Jody & Amy",
+    "website": "https://peterluger.com"
   },
   {
     "id": "real_lead_78",
     "businessName": "Joe's Pizza (Greenwich Village)",
     "city": "New York, NY",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "7 Carmine St, New York, NY 10014",
     "phone": "(212) 366-1182",
     "phoneType": "landline_uan",
@@ -3483,9 +3637,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Owner, Joe's Pizza NYC",
     "niche": "restaurants",
     "nicheName": "Greenwich Village NY Slice Institution",
-    "nicheIcon": "🍕",
+    "nicheIcon": "\ud83c\udf55",
     "flawTitle": "Delivery App Commissions on High-Volume Night Slices",
-    "flawLeakRange": "$4,500 – $8,000/mo",
+    "flawLeakRange": "$4,500 \u2013 $8,000/mo",
     "mapsUrl": "https://www.google.com/maps/place/Joe%27s%20Pizza%2C%207%20Carmine%20St%2C%20New%20York%2C%20NY%2010014",
     "channel": "instagram",
     "contactInfo": {
@@ -3495,7 +3649,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "joespizzanyc@gmail.com",
       "instagramHandle": "@joespizzanyc",
-      "linkedinProfile": "linkedin.com/company/joe'spizza"
+      "linkedinProfile": "linkedin.com/company/joe'spizza",
+      "website": ""
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3508,13 +3663,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Bleecker Street institution hai; younger family members Instagram (@joespizzanyc) handle karte hain aur DMs check karte hain.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Joe's Pizza",
-    "founderGreeting": "Joe"
+    "founderGreeting": "Joe",
+    "website": ""
   },
   {
     "id": "real_lead_79",
     "businessName": "Gramercy Tavern (Flatiron)",
     "city": "New York, NY",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "42 E 20th St, New York, NY 10003",
     "phone": "(212) 477-0777",
     "phoneType": "landline_uan",
@@ -3528,9 +3684,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Chairman, Union Square Hospitality Group",
     "niche": "restaurants",
     "nicheName": "Michelin Star Contemporary Farm-to-Table American",
-    "nicheIcon": "🍷",
+    "nicheIcon": "\ud83c\udf77",
     "flawTitle": "High Resy / OpenTable Commissions on Regulars",
-    "flawLeakRange": "$5,200 – $9,800/mo",
+    "flawLeakRange": "$5,200 \u2013 $9,800/mo",
     "mapsUrl": "https://www.google.com/maps/place/Gramercy%20Tavern%2C%2042%20E%2020th%20St%2C%20New%20York%2C%20NY%2010003",
     "channel": "gmail",
     "contactInfo": {
@@ -3540,7 +3696,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@gramercytavern.com",
       "instagramHandle": "@gramercytavern",
-      "linkedinProfile": "linkedin.com/company/gramercytavern"
+      "linkedinProfile": "linkedin.com/company/gramercytavern",
+      "website": "https://gramercytavern.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3553,13 +3710,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "USHG corporate enterprise hai; direct ordering proposals digital innovation team ko email se evaluate hoti hain.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Gramercy Tavern",
-    "founderGreeting": "Danny"
+    "founderGreeting": "Danny",
+    "website": "https://gramercytavern.com"
   },
   {
     "id": "real_lead_80",
     "businessName": "Balthazar (SoHo, Manhattan)",
     "city": "New York, NY",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "80 Spring St, New York, NY 10012",
     "phone": "(212) 965-1414",
     "phoneType": "landline_uan",
@@ -3573,9 +3731,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Restaurateur & Founder, Balthazar SoHo",
     "niche": "restaurants",
     "nicheName": "Classic French Brasserie & Artisan Bakery",
-    "nicheIcon": "🥐",
+    "nicheIcon": "\ud83e\udd50",
     "flawTitle": "Breakfast Walk-In Waiting List Abandonment",
-    "flawLeakRange": "$4,800 – $8,500/mo",
+    "flawLeakRange": "$4,800 \u2013 $8,500/mo",
     "mapsUrl": "https://www.google.com/maps/place/Balthazar%2C%2080%20Spring%20St%2C%20New%20York%2C%20NY%2010012",
     "channel": "instagram",
     "contactInfo": {
@@ -3585,7 +3743,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@balthazarny.com",
       "instagramHandle": "@balthazarny",
-      "linkedinProfile": "linkedin.com/company/balthazar"
+      "linkedinProfile": "linkedin.com/company/balthazar",
+      "website": "https://balthazarny.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3598,13 +3757,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Keith McNally khud Instagram par active rehte hain (@keithmcnally); story replies aur direct messages direct un tak pohnchte hain.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Balthazar",
-    "founderGreeting": "Keith"
+    "founderGreeting": "Keith",
+    "website": "https://balthazarny.com"
   },
   {
     "id": "real_lead_81",
     "businessName": "Russ & Daughters (Lower East Side)",
     "city": "New York, NY",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "179 E Houston St, New York, NY 10002",
     "phone": "(212) 475-4880",
     "phoneType": "landline_uan",
@@ -3618,9 +3778,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "4th Generation Co-Owners, Russ & Daughters",
     "niche": "restaurants",
     "nicheName": "Historic Smoked Fish, Bagels & Caviar Appetizing",
-    "nicheIcon": "🥯",
+    "nicheIcon": "\ud83e\udd6f",
     "flawTitle": "Catering Inquiry Form Drop-off on Mobile",
-    "flawLeakRange": "$3,600 – $6,800/mo",
+    "flawLeakRange": "$3,600 \u2013 $6,800/mo",
     "mapsUrl": "https://www.google.com/maps/place/Russ%20%26%20Daughters%2C%20179%20E%20Houston%20St%2C%20New%20York%2C%20NY%2010002",
     "channel": "gmail",
     "contactInfo": {
@@ -3630,7 +3790,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@russanddaughters.com",
       "instagramHandle": "@russanddaughters",
-      "linkedinProfile": "linkedin.com/company/russ&daughters"
+      "linkedinProfile": "linkedin.com/company/russ&daughters",
+      "website": "https://russanddaughters.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3643,13 +3804,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "1914 se qaim appetizing landmark hai; Niki aur Josh partnership inquiries email aur @russanddaughters DM par check karte hain.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Russ & Daughters",
-    "founderGreeting": "Niki & Josh"
+    "founderGreeting": "Niki & Josh",
+    "website": "https://russanddaughters.com"
   },
   {
     "id": "real_lead_82",
     "businessName": "Lombardi's Pizza (Little Italy)",
     "city": "New York, NY",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "32 Spring St, New York, NY 10012",
     "phone": "(212) 941-7994",
     "phoneType": "landline_uan",
@@ -3663,9 +3825,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Managing Partner & Owner, Lombardi's Pizza",
     "niche": "restaurants",
     "nicheName": "America's First Pizzeria Since 1905",
-    "nicheIcon": "🍕",
+    "nicheIcon": "\ud83c\udf55",
     "flawTitle": "Cash Only Notice Causing Tourist Walk-Away",
-    "flawLeakRange": "$4,000 – $7,200/mo",
+    "flawLeakRange": "$4,000 \u2013 $7,200/mo",
     "mapsUrl": "https://www.google.com/maps/place/Lombardi%27s%20Pizza%2C%2032%20Spring%20St%2C%20New%20York%2C%20NY%2010012",
     "channel": "gmail",
     "contactInfo": {
@@ -3675,7 +3837,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@firstpizza.com",
       "instagramHandle": "@lombardispizza",
-      "linkedinProfile": "linkedin.com/company/lombardi'spizza"
+      "linkedinProfile": "linkedin.com/company/lombardi'spizza",
+      "website": "https://firstpizza.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3688,13 +3851,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "America's first pizzeria hai; general manager business inquiries official email par handle karta hai.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Lombardi's Pizza",
-    "founderGreeting": "John"
+    "founderGreeting": "John",
+    "website": "https://firstpizza.com"
   },
   {
     "id": "real_lead_83",
     "businessName": "Carbone (Greenwich Village)",
     "city": "New York, NY",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "181 Thompson St, New York, NY 10012",
     "phone": "(212) 254-3000",
     "phoneType": "landline_uan",
@@ -3708,9 +3872,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founding Chefs & Partners, Major Food Group",
     "niche": "restaurants",
     "nicheName": "Celebrity Italian-American Luxury Dining",
-    "nicheIcon": "🍝",
+    "nicheIcon": "\ud83c\udf5d",
     "flawTitle": "Resy Bot Black Market Snagging All Prime Tables",
-    "flawLeakRange": "$6,500 – $12,000/mo",
+    "flawLeakRange": "$6,500 \u2013 $12,000/mo",
     "mapsUrl": "https://www.google.com/maps/place/Carbone%2C%20181%20Thompson%20St%2C%20New%20York%2C%20NY%2010012",
     "channel": "gmail",
     "contactInfo": {
@@ -3720,7 +3884,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "hospitality@carbonenewyork.com",
       "instagramHandle": "@majorfoodgroup",
-      "linkedinProfile": "linkedin.com/company/carbone"
+      "linkedinProfile": "linkedin.com/company/carbone",
+      "website": "https://carbonenewyork.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3733,13 +3898,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Major Food Group luxury hospitality conglomerate hai; email RFP procurement process ke through process hoti hai.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Carbone",
-    "founderGreeting": "Mario & Rich"
+    "founderGreeting": "Mario & Rich",
+    "website": "https://carbonenewyork.com"
   },
   {
     "id": "real_lead_84",
     "businessName": "Keens Steakhouse (Midtown Manhattan)",
     "city": "New York, NY",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "72 W 36th St, New York, NY 10018",
     "phone": "(212) 947-3636",
     "phoneType": "landline_uan",
@@ -3753,9 +3919,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "General Manager, Keens Steakhouse",
     "niche": "restaurants",
     "nicheName": "Historic 1885 Mutton Chops & Prime Steaks",
-    "nicheIcon": "🥩",
+    "nicheIcon": "\ud83e\udd69",
     "flawTitle": "Corporate Private Event Lead Friction on Mobile",
-    "flawLeakRange": "$5,000 – $9,200/mo",
+    "flawLeakRange": "$5,000 \u2013 $9,200/mo",
     "mapsUrl": "https://www.google.com/maps/place/Keens%20Steakhouse%2C%2072%20W%2036th%20St%2C%20New%20York%2C%20NY%2010018",
     "channel": "gmail",
     "contactInfo": {
@@ -3765,7 +3931,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "keens@keens.com",
       "instagramHandle": "@keenssteakhouse",
-      "linkedinProfile": "linkedin.com/company/keenssteakhouse"
+      "linkedinProfile": "linkedin.com/company/keenssteakhouse",
+      "website": "https://keens.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3778,13 +3945,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Midtown Manhattan corporate icon hai; GM Bonnie Jenkins formal email proposals par reply karte hain.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Keens",
-    "founderGreeting": "Bonnie"
+    "founderGreeting": "Bonnie",
+    "website": "https://keens.com"
   },
   {
     "id": "real_lead_85",
     "businessName": "Levain Bakery (Upper West Side)",
     "city": "New York, NY",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "167 W 74th St, New York, NY 10023",
     "phone": "(917) 464-3769",
     "phoneType": "landline_uan",
@@ -3798,9 +3966,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Co-Founders & Owners, Levain Bakery",
     "niche": "restaurants",
     "nicheName": "World Renowned 6-Ounce Giant Cookies & Bakery",
-    "nicheIcon": "🍪",
+    "nicheIcon": "\ud83c\udf6a",
     "flawTitle": "Long Sidewalk Lines Without Mobile Pre-Order Pickup",
-    "flawLeakRange": "$4,200 – $7,800/mo",
+    "flawLeakRange": "$4,200 \u2013 $7,800/mo",
     "mapsUrl": "https://www.google.com/maps/place/Levain%20Bakery%2C%20167%20W%2074th%20St%2C%20New%20York%2C%20NY%2010023",
     "channel": "instagram",
     "contactInfo": {
@@ -3810,7 +3978,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@levainbakery.com",
       "instagramHandle": "@levainbakery",
-      "linkedinProfile": "linkedin.com/company/levainbakery"
+      "linkedinProfile": "linkedin.com/company/levainbakery",
+      "website": "https://levainbakery.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3823,13 +3992,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Viral cookie bakery hai; unka creative social media department Instagram DMs (@levainbakery) par fast response deta hai.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Levain",
-    "founderGreeting": "Pam & Connie"
+    "founderGreeting": "Pam & Connie",
+    "website": "https://levainbakery.com"
   },
   {
     "id": "real_lead_86",
     "businessName": "Prince Street Pizza (SoHo)",
     "city": "New York, NY",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "27 Prince St, New York, NY 10012",
     "phone": "(212) 966-4100",
     "phoneType": "landline_uan",
@@ -3843,9 +4013,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Partners & Operations Leads, Prince Street Pizza",
     "niche": "restaurants",
     "nicheName": "Crispy Pepperoni Square Sicilian Slices",
-    "nicheIcon": "🍕",
+    "nicheIcon": "\ud83c\udf55",
     "flawTitle": "Third-Party Aggregator Cut on High-Volume Orders",
-    "flawLeakRange": "$3,800 – $7,000/mo",
+    "flawLeakRange": "$3,800 \u2013 $7,000/mo",
     "mapsUrl": "https://www.google.com/maps/place/Prince%20Street%20Pizza%2C%2027%20Prince%20St%2C%20New%20York%2C%20NY%2010012",
     "channel": "instagram",
     "contactInfo": {
@@ -3855,7 +4025,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "contact@princestreetpizza.com",
       "instagramHandle": "@princestreetpizza",
-      "linkedinProfile": "linkedin.com/company/princestreetpizza"
+      "linkedinProfile": "linkedin.com/company/princestreetpizza",
+      "website": "https://princestreetpizza.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3868,13 +4039,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Spicy pepperoni slice destination hai; Lawrence Longo aur brand team Instagram DM se direct new tech onboard karti hai.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Prince Street Pizza",
-    "founderGreeting": "Frank & Lawrence"
+    "founderGreeting": "Frank & Lawrence",
+    "website": "https://princestreetpizza.com"
   },
   {
     "id": "real_lead_87",
     "businessName": "Lucali (Carroll Gardens, Brooklyn)",
     "city": "New York, NY",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "575 Henry St, Brooklyn, NY 11231",
     "phone": "(718) 858-4086",
     "phoneType": "landline_uan",
@@ -3888,9 +4060,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Master Pizzaiolo, Lucali Brooklyn",
     "niche": "restaurants",
     "nicheName": "Cult Brick-Oven Pizza & Calzones",
-    "nicheIcon": "🍕",
+    "nicheIcon": "\ud83c\udf55",
     "flawTitle": "Paper-Only Waiting List Resulting in 3-Hour Walkouts",
-    "flawLeakRange": "$4,500 – $8,500/mo",
+    "flawLeakRange": "$4,500 \u2013 $8,500/mo",
     "mapsUrl": "https://www.google.com/maps/place/Lucali%2C%20575%20Henry%20St%2C%20Brooklyn%2C%20NY%2011231",
     "channel": "instagram",
     "contactInfo": {
@@ -3900,7 +4072,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@lucalibrooklyn.com",
       "instagramHandle": "@lucalibrooklyn",
-      "linkedinProfile": "linkedin.com/company/lucali"
+      "linkedinProfile": "linkedin.com/company/lucali",
+      "website": "https://lucalibrooklyn.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3913,13 +4086,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Cult pizza sensation hai jahan telephone nahi hota; Mark Iacono aur unki team Instagram (@lucalibrooklyn) se inquiries screen karti hai.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Lucali",
-    "founderGreeting": "Mark"
+    "founderGreeting": "Mark",
+    "website": "https://lucalibrooklyn.com"
   },
   {
     "id": "real_lead_88",
     "businessName": "Don Angie (West Village)",
     "city": "New York, NY",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "103 Greenwich Ave, New York, NY 10014",
     "phone": "(212) 889-8884",
     "phoneType": "landline_uan",
@@ -3933,9 +4107,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Chef-Owners & Partners, Don Angie",
     "niche": "restaurants",
     "nicheName": "Michelin Star Pinwheel Lasagna & Italian",
-    "nicheIcon": "🍝",
+    "nicheIcon": "\ud83c\udf5d",
     "flawTitle": "High Table Resy Bot Cancellations",
-    "flawLeakRange": "$3,900 – $7,100/mo",
+    "flawLeakRange": "$3,900 \u2013 $7,100/mo",
     "mapsUrl": "https://www.google.com/maps/place/Don%20Angie%2C%20103%20Greenwich%20Ave%2C%20New%20York%2C%20NY%2010014",
     "channel": "instagram",
     "contactInfo": {
@@ -3945,7 +4119,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@donangie.com",
       "instagramHandle": "@donangienyc",
-      "linkedinProfile": "linkedin.com/company/donangie"
+      "linkedinProfile": "linkedin.com/company/donangie",
+      "website": "https://donangie.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -3958,13 +4133,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "One-star Michelin boutique restaurant hai; Scott aur Angie Instagram DM ko creative pitches ke liye monitor karte hain.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Don Angie",
-    "founderGreeting": "Angie & Scott"
+    "founderGreeting": "Angie & Scott",
+    "website": "https://donangie.com"
   },
   {
     "id": "real_lead_89",
     "businessName": "Xi'an Famous Foods (Chinatown, NY)",
     "city": "New York, NY",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "45 Bayard St, New York, NY 10013",
     "phone": "(212) 786-2068",
     "phoneType": "landline_uan",
@@ -3978,9 +4154,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "CEO & Co-Founder, Xi'an Famous Foods",
     "niche": "restaurants",
     "nicheName": "Hand-Pulled Biang Biang Noodles & Spicy Lamb",
-    "nicheIcon": "🍜",
+    "nicheIcon": "\ud83c\udf5c",
     "flawTitle": "Delivery App Commission Squeeze on Fast Casual",
-    "flawLeakRange": "$3,200 – $5,800/mo",
+    "flawLeakRange": "$3,200 \u2013 $5,800/mo",
     "mapsUrl": "https://www.google.com/maps/place/Xi%27an%20Famous%20Foods%2C%2045%20Bayard%20St%2C%20New%20York%2C%20NY%2010013",
     "channel": "instagram",
     "contactInfo": {
@@ -3990,7 +4166,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "contact@xianfoods.com",
       "instagramHandle": "@xianfoods",
-      "linkedinProfile": "linkedin.com/company/xi'anfamousfoods"
+      "linkedinProfile": "linkedin.com/company/xi'anfamousfoods",
+      "website": "https://xianfoods.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -4003,13 +4180,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Jason Wang online tech-savvy CEO hain; Instagram DM aur direct email par honest business propositions ka khud jawab dete hain.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Xi'an Famous Foods",
-    "founderGreeting": "Jason"
+    "founderGreeting": "Jason",
+    "website": "https://xianfoods.com"
   },
   {
     "id": "real_lead_90",
     "businessName": "Momofuku Noodle Bar (East Village)",
     "city": "New York, NY",
-    "country": "USA 🇺🇸",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
     "address": "171 1st Ave, New York, NY 10003",
     "phone": "(212) 777-7773",
     "phoneType": "landline_uan",
@@ -4023,9 +4201,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder, Momofuku Group",
     "niche": "restaurants",
     "nicheName": "Celebrity Ramen, Pork Buns & Asian Fusion",
-    "nicheIcon": "🍜",
+    "nicheIcon": "\ud83c\udf5c",
     "flawTitle": "Takeout Margin Erosion Due to Delivery Aggregators",
-    "flawLeakRange": "$4,000 – $7,500/mo",
+    "flawLeakRange": "$4,000 \u2013 $7,500/mo",
     "mapsUrl": "https://www.google.com/maps/place/Momofuku%20Noodle%20Bar%2C%20171%201st%20Ave%2C%20New%20York%2C%20NY%2010003",
     "channel": "gmail",
     "contactInfo": {
@@ -4035,7 +4213,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@momofuku.com",
       "instagramHandle": "@momolongplay",
-      "linkedinProfile": "linkedin.com/company/momofukunoodlebar"
+      "linkedinProfile": "linkedin.com/company/momofukunoodlebar",
+      "website": "https://momofuku.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -4048,13 +4227,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Global dining group hai; digital partnerships team email proposals ko standard SLA me review karti hai.",
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Momofuku Noodle Bar",
-    "founderGreeting": "David & Momofuku"
+    "founderGreeting": "David & Momofuku",
+    "website": "https://momofuku.com"
   },
   {
     "id": "real_lead_91",
     "businessName": "Dishoom (Covent Garden)",
     "city": "London",
-    "country": "United Kingdom 🇬🇧",
+    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
     "address": "12 Upper St Martin's Ln, London WC2H 9FB, United Kingdom",
     "phone": "+44 20 7420 9320",
     "phoneType": "landline_uan",
@@ -4068,9 +4248,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Co-Founders, Dishoom",
     "niche": "restaurants",
     "nicheName": "Bombay Cafe, Black Daal & Bacon Naan Rolls",
-    "nicheIcon": "🍛",
+    "nicheIcon": "\ud83c\udf5b",
     "flawTitle": "2-Hour Physical Sidewalk Queue Without Virtual Booking",
-    "flawLeakRange": "£4,500 – £8,500/mo",
+    "flawLeakRange": "\u00a34,500 \u2013 \u00a38,500/mo",
     "mapsUrl": "https://www.google.com/maps/place/Dishoom%2C%2012%20Upper%20St%20Martin%27s%20Ln%2C%20London%20WC2H%209FB%2C%20United%20Kingdom",
     "channel": "gmail",
     "contactInfo": {
@@ -4080,7 +4260,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@dishoom.com",
       "instagramHandle": "@dishoom",
-      "linkedinProfile": "linkedin.com/company/dishoom"
+      "linkedinProfile": "linkedin.com/company/dishoom",
+      "website": "https://dishoom.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -4093,13 +4274,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Dishoom UK corporate registered entity hai; head office (help@dishoom.com) aur digital desk commission-free direct ordering proposal evaluate karta hai.",
     "regionDeliveryApps": "Deliveroo & Just Eat",
     "teamGreeting": "Team Dishoom",
-    "founderGreeting": "Shamil & Kavi"
+    "founderGreeting": "Shamil & Kavi",
+    "website": "https://dishoom.com"
   },
   {
     "id": "real_lead_92",
     "businessName": "Duck & Waffle (City of London)",
     "city": "London",
-    "country": "United Kingdom 🇬🇧",
+    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
     "address": "110 Bishopsgate, London EC2N 4AY, United Kingdom",
     "phone": "+44 20 3640 7310",
     "phoneType": "landline_uan",
@@ -4113,9 +4295,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Managing Partner, Duck & Waffle (Orange Hospitality)",
     "niche": "restaurants",
     "nicheName": "40th-Floor 24/7 Panoramic Sky Dining",
-    "nicheIcon": "🧇",
+    "nicheIcon": "\ud83e\uddc7",
     "flawTitle": "Third-Party Booking Commission Drain on Regular Breakfasts",
-    "flawLeakRange": "£5,000 – £9,500/mo",
+    "flawLeakRange": "\u00a35,000 \u2013 \u00a39,500/mo",
     "mapsUrl": "https://www.google.com/maps/place/Duck%20%26%20Waffle%2C%20110%20Bishopsgate%2C%20London%20EC2N%204AY%2C%20United%20Kingdom",
     "channel": "gmail",
     "contactInfo": {
@@ -4125,7 +4307,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "reservations@duckandwaffle.com",
       "instagramHandle": "@duckandwaffle",
-      "linkedinProfile": "linkedin.com/company/duck&waffle"
+      "linkedinProfile": "linkedin.com/company/duck&waffle",
+      "website": "https://duckandwaffle.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -4138,13 +4321,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "40th-floor corporate dining landmark hai; corporate marketing email GM office review karta hai.",
     "regionDeliveryApps": "Deliveroo & Just Eat",
     "teamGreeting": "Team Duck & Waffle",
-    "founderGreeting": "Shimon"
+    "founderGreeting": "Shimon",
+    "website": "https://duckandwaffle.com"
   },
   {
     "id": "real_lead_93",
     "businessName": "Hawksmoor Seven Dials (Covent Garden)",
     "city": "London",
-    "country": "United Kingdom 🇬🇧",
+    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
     "address": "11 Langley St, London WC2H 9JG, United Kingdom",
     "phone": "+44 20 7420 9390",
     "phoneType": "landline_uan",
@@ -4158,9 +4342,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Co-Founders, Hawksmoor (Underdog Restaurants Ltd)",
     "niche": "restaurants",
     "nicheName": "Grass-Fed British Steaks & Classic Cocktails",
-    "nicheIcon": "🥩",
+    "nicheIcon": "\ud83e\udd69",
     "flawTitle": "Sunday Roast Resy Cancellations Without Pre-Auth Fee",
-    "flawLeakRange": "£4,000 – £7,500/mo",
+    "flawLeakRange": "\u00a34,000 \u2013 \u00a37,500/mo",
     "mapsUrl": "https://www.google.com/maps/place/Hawksmoor%20Seven%20Dials%2C%2011%20Langley%20St%2C%20London%20WC2H%209JG%2C%20United%20Kingdom",
     "channel": "gmail",
     "contactInfo": {
@@ -4170,7 +4354,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "sevendials@thehawksmoor.com",
       "instagramHandle": "@hawksmoorrestaurants",
-      "linkedinProfile": "linkedin.com/company/hawksmoorsevendials"
+      "linkedinProfile": "linkedin.com/company/hawksmoorsevendials",
+      "website": "https://thehawksmoor.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -4183,13 +4368,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "B-Corp certified British steakhouse group hai; Will & Huw ki executive team official email par structured B2B pitches welcome karti hai.",
     "regionDeliveryApps": "Deliveroo & Just Eat",
     "teamGreeting": "Team Hawksmoor Seven Dials",
-    "founderGreeting": "Will & Huw"
+    "founderGreeting": "Will & Huw",
+    "website": "https://thehawksmoor.com"
   },
   {
     "id": "real_lead_94",
     "businessName": "Flat Iron (Soho, London)",
     "city": "London",
-    "country": "United Kingdom 🇬🇧",
+    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
     "address": "17 Beak St, Soho, London W1F 9RW, United Kingdom",
     "phone": "+44 20 7734 6886",
     "phoneType": "landline_uan",
@@ -4203,9 +4389,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founder & Managing Director, Flat Iron Steak",
     "niche": "restaurants",
     "nicheName": "Affordable Cult Featherblade Steak",
-    "nicheIcon": "🥩",
+    "nicheIcon": "\ud83e\udd69",
     "flawTitle": "Walk-In Only Virtual Queue SMS Drop-off",
-    "flawLeakRange": "£3,500 – £6,500/mo",
+    "flawLeakRange": "\u00a33,500 \u2013 \u00a36,500/mo",
     "mapsUrl": "https://www.google.com/maps/place/Flat%20Iron%2C%2017%20Beak%20St%2C%20Soho%2C%20London%20W1F%209RW%2C%20United%20Kingdom",
     "channel": "instagram",
     "contactInfo": {
@@ -4215,7 +4401,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@flatironsteak.co.uk",
       "instagramHandle": "@flatironsteak",
-      "linkedinProfile": "linkedin.com/company/flatiron"
+      "linkedinProfile": "linkedin.com/company/flatiron",
+      "website": "https://flatironsteak.co.uk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -4228,13 +4415,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Youthful London steak brand hai; unki in-house digital team Instagram (@flatironsteak) DM regular monitor karti hai.",
     "regionDeliveryApps": "Deliveroo & Just Eat",
     "teamGreeting": "Team Flat Iron",
-    "founderGreeting": "Charlie"
+    "founderGreeting": "Charlie",
+    "website": "https://flatironsteak.co.uk"
   },
   {
     "id": "real_lead_95",
     "businessName": "Padella (Borough Market)",
     "city": "London",
-    "country": "United Kingdom 🇬🇧",
+    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
     "address": "6 Southwark St, London SE1 1TQ, United Kingdom",
     "phone": "+44 20 7407 5131",
     "phoneType": "landline_uan",
@@ -4248,9 +4436,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founding Chefs & Partners, Padella",
     "niche": "restaurants",
     "nicheName": "Hand-Rolled Fresh Italian Pasta Bar",
-    "nicheIcon": "🍝",
+    "nicheIcon": "\ud83c\udf5d",
     "flawTitle": "Queue Outside Borough Market Resulting in Lunch Walk-Offs",
-    "flawLeakRange": "£3,800 – £6,800/mo",
+    "flawLeakRange": "\u00a33,800 \u2013 \u00a36,800/mo",
     "mapsUrl": "https://www.google.com/maps/place/Padella%2C%206%20Southwark%20St%2C%20London%20SE1%201TQ%2C%20United%20Kingdom",
     "channel": "instagram",
     "contactInfo": {
@@ -4260,7 +4448,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "borough@padella.co",
       "instagramHandle": "@padella_pasta",
-      "linkedinProfile": "linkedin.com/company/padella"
+      "linkedinProfile": "linkedin.com/company/padella",
+      "website": "https://padella.co"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -4273,13 +4462,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Borough Market fresh pasta phenomenon hai; Instagram DM (@padella_pasta) marketing lead daily check karta hai.",
     "regionDeliveryApps": "Deliveroo & Just Eat",
     "teamGreeting": "Team Padella",
-    "founderGreeting": "Tim & Jordan"
+    "founderGreeting": "Tim & Jordan",
+    "website": "https://padella.co"
   },
   {
     "id": "real_lead_96",
     "businessName": "The Ledbury (Notting Hill)",
     "city": "London",
-    "country": "United Kingdom 🇬🇧",
+    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
     "address": "127 Ledbury Rd, London W11 2AQ, United Kingdom",
     "phone": "+44 20 7792 9090",
     "phoneType": "landline_uan",
@@ -4293,9 +4483,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Chef-Patron & Owner, The Ledbury",
     "niche": "restaurants",
     "nicheName": "3 Michelin Star British Fine Gastronomy",
-    "nicheIcon": "🌟",
+    "nicheIcon": "\ud83c\udf1f",
     "flawTitle": "Tasting Menu Resy Bot Black Market Snagging Tables",
-    "flawLeakRange": "£6,500 – £12,000/mo",
+    "flawLeakRange": "\u00a36,500 \u2013 \u00a312,000/mo",
     "mapsUrl": "https://www.google.com/maps/place/The%20Ledbury%2C%20127%20Ledbury%20Rd%2C%20London%20W11%202AQ%2C%20United%20Kingdom",
     "channel": "gmail",
     "contactInfo": {
@@ -4305,7 +4495,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@theledbury.com",
       "instagramHandle": "@the_ledbury",
-      "linkedinProfile": "linkedin.com/company/theledbury"
+      "linkedinProfile": "linkedin.com/company/theledbury",
+      "website": "https://theledbury.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -4318,13 +4509,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Three-Michelin-star ultra-fine dining hai; formal email proposal GM and Brett Graham's desk par land karti hai.",
     "regionDeliveryApps": "Deliveroo & Just Eat",
     "teamGreeting": "Team The Ledbury",
-    "founderGreeting": "Brett"
+    "founderGreeting": "Brett",
+    "website": "https://theledbury.com"
   },
   {
     "id": "real_lead_97",
     "businessName": "St. JOHN Restaurant (Clerkenwell)",
     "city": "London",
-    "country": "United Kingdom 🇬🇧",
+    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
     "address": "26 St John St, Barbican, London EC1M 4AY, United Kingdom",
     "phone": "+44 20 7251 0848",
     "phoneType": "landline_uan",
@@ -4338,9 +4530,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founders & Partners, St. JOHN Restaurant",
     "niche": "restaurants",
     "nicheName": "Iconic Nose-to-Tail British Institution",
-    "nicheIcon": "🍖",
+    "nicheIcon": "\ud83c\udf56",
     "flawTitle": "Bakery Pre-Order Pickup Form Friction on Mobile",
-    "flawLeakRange": "£3,200 – £5,900/mo",
+    "flawLeakRange": "\u00a33,200 \u2013 \u00a35,900/mo",
     "mapsUrl": "https://www.google.com/maps/place/St.%20JOHN%20Restaurant%2C%2026%20St%20John%20St%2C%20Barbican%2C%20London%20EC1M%204AY%2C%20United%20Kingdom",
     "channel": "gmail",
     "contactInfo": {
@@ -4350,7 +4542,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@stjohnrestaurant.com",
       "instagramHandle": "@st.john.restaurant",
-      "linkedinProfile": "linkedin.com/company/st.johnrestaurant"
+      "linkedinProfile": "linkedin.com/company/st.johnrestaurant",
+      "website": "https://stjohnrestaurant.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -4363,13 +4556,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Legendary nose-to-tail British dining institution hai; central office email par technology proposals review hoti hain.",
     "regionDeliveryApps": "Deliveroo & Just Eat",
     "teamGreeting": "Team St. JOHN",
-    "founderGreeting": "Fergus & Trevor"
+    "founderGreeting": "Fergus & Trevor",
+    "website": "https://stjohnrestaurant.com"
   },
   {
     "id": "real_lead_98",
     "businessName": "Gymkhana (Mayfair, London)",
     "city": "London",
-    "country": "United Kingdom 🇬🇧",
+    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
     "address": "42 Albemarle St, London W1S 4PD, United Kingdom",
     "phone": "+44 20 3011 5900",
     "phoneType": "landline_uan",
@@ -4383,9 +4577,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founders & Directors, JKS Restaurants (Gymkhana)",
     "niche": "restaurants",
     "nicheName": "2 Michelin Star Colonial Indian Gymkhana Club",
-    "nicheIcon": "🍛",
+    "nicheIcon": "\ud83c\udf5b",
     "flawTitle": "High Resy Fee Overhead on International Diners",
-    "flawLeakRange": "£5,500 – £10,000/mo",
+    "flawLeakRange": "\u00a35,500 \u2013 \u00a310,000/mo",
     "mapsUrl": "https://www.google.com/maps/place/Gymkhana%2C%2042%20Albemarle%20St%2C%20London%20W1S%204PD%2C%20United%20Kingdom",
     "channel": "gmail",
     "contactInfo": {
@@ -4395,7 +4589,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@gymkhanalondon.com",
       "instagramHandle": "@gymkhanalondon",
-      "linkedinProfile": "linkedin.com/company/gymkhana"
+      "linkedinProfile": "linkedin.com/company/gymkhana",
+      "website": "https://gymkhanalondon.com"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -4408,13 +4603,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "JKS luxury hospitality group manage karta hai; corporate procurement email direct group digital head ko forward hoti hai.",
     "regionDeliveryApps": "Deliveroo & Just Eat",
     "teamGreeting": "Team Gymkhana",
-    "founderGreeting": "Karam & Sunaina"
+    "founderGreeting": "Karam & Sunaina",
+    "website": "https://gymkhanalondon.com"
   },
   {
     "id": "real_lead_99",
     "businessName": "Rules Restaurant (Covent Garden)",
     "city": "London",
-    "country": "United Kingdom 🇬🇧",
+    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
     "address": "34-35 Maiden Ln, London WC2E 7LB, United Kingdom",
     "phone": "+44 20 7836 5314",
     "phoneType": "landline_uan",
@@ -4428,9 +4624,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Managing Director & Proprietor, Rules Restaurant",
     "niche": "restaurants",
     "nicheName": "London's Oldest Restaurant (Established 1798)",
-    "nicheIcon": "🥧",
+    "nicheIcon": "\ud83e\udd67",
     "flawTitle": "Phone-Only Reservation Desk Congestion During Theatre Hours",
-    "flawLeakRange": "£4,200 – £7,900/mo",
+    "flawLeakRange": "\u00a34,200 \u2013 \u00a37,900/mo",
     "mapsUrl": "https://www.google.com/maps/place/Rules%20Restaurant%2C%2034-35%20Maiden%20Ln%2C%20London%20WC2E%207LB%2C%20United%20Kingdom",
     "channel": "gmail",
     "contactInfo": {
@@ -4440,7 +4636,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "info@rules.co.uk",
       "instagramHandle": "@rules_restaurant",
-      "linkedinProfile": "linkedin.com/company/rulesrestaurant"
+      "linkedinProfile": "linkedin.com/company/rulesrestaurant",
+      "website": "https://rules.co.uk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -4453,13 +4650,14 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "London's oldest restaurant (1798) hai; Managing Director Ricky McMenemy formal email proposal review karte hain.",
     "regionDeliveryApps": "Deliveroo & Just Eat",
     "teamGreeting": "Team Rules",
-    "founderGreeting": "Ricky & John"
+    "founderGreeting": "Ricky & John",
+    "website": "https://rules.co.uk"
   },
   {
     "id": "real_lead_100",
     "businessName": "Barrafina (Dean Street, Soho)",
     "city": "London",
-    "country": "United Kingdom 🇬🇧",
+    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
     "address": "26-27 Dean St, London W1D 3LL, United Kingdom",
     "phone": "+44 20 7813 8016",
     "phoneType": "landline_uan",
@@ -4473,9 +4671,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerTitle": "Founders & Directors, Harts Group (Barrafina)",
     "niche": "restaurants",
     "nicheName": "Michelin Star Spanish Tapas Bar & Open Kitchen",
-    "nicheIcon": "🦐",
+    "nicheIcon": "\ud83e\udd90",
     "flawTitle": "Strict Counter Seating Walk-In Bottleneck",
-    "flawLeakRange": "£3,800 – £7,000/mo",
+    "flawLeakRange": "\u00a33,800 \u2013 \u00a37,000/mo",
     "mapsUrl": "https://www.google.com/maps/place/Barrafina%2C%2026-27%20Dean%20St%2C%20London%20W1D%203LL%2C%20United%20Kingdom",
     "channel": "gmail",
     "contactInfo": {
@@ -4485,7 +4683,8 @@ window.DEFAULT_LEADS = [
       "whatsappNumber": null,
       "email": "deanstreet@barrafina.co.uk",
       "instagramHandle": "@barrafinalondon",
-      "linkedinProfile": "linkedin.com/company/barrafina"
+      "linkedinProfile": "linkedin.com/company/barrafina",
+      "website": "https://barrafina.co.uk"
     },
     "status": "ready",
     "createdAt": "2026-10-30T00:00:00.000Z",
@@ -4498,6 +4697,7 @@ window.DEFAULT_LEADS = [
     "pitchChannelReason": "Harts Group centralized office operates Barrafina; email proposal for direct online reservation goes to group operations manager.",
     "regionDeliveryApps": "Deliveroo & Just Eat",
     "teamGreeting": "Team Barrafina",
-    "founderGreeting": "Sam & Eddie"
+    "founderGreeting": "Sam & Eddie",
+    "website": "https://barrafina.co.uk"
   }
 ];
