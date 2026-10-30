@@ -6,37 +6,41 @@
 
 const PitchEngine = {
   /**
-   * Smart greeting parser for verified founders, chef-patrons, partnerships and teams
+   * Smart greeting parser supporting dual modes:
+   * 1. 'team' (default for WhatsApp/Instagram): 100% natural and courteous for floor managers & social media staff.
+   * 2. 'founder': Addresses the registered founder or partner directly for executive proposals and LinkedIn.
    */
-  getGreetingName(lead) {
-    if (!lead || !lead.decisionMaker) return 'there';
-    const dm = lead.decisionMaker.trim();
-    const bizClean = (lead.businessName || '').split('(')[0].trim();
+  getGreetingName(lead, mode = 'team') {
+    if (!lead) return 'there';
 
-    if (/family/i.test(dm)) return dm;
-    if (/directorate|leadership|team|board/i.test(dm)) return `Team ${bizClean}`;
-    if (/group$/i.test(dm.trim())) return `${dm.replace(/\s+group$/i, '')} Team`;
-
-    if (/&\s*(directors|partners|sons|brothers)/i.test(dm)) {
-      const leadName = dm.replace(/\s*&\s*(directors|partners|sons|brothers).*/i, '').trim();
-      const tokens = leadName.split(/\s+/);
-      let first = tokens[0];
-      if (/^(haji|syed|sardar|ch)/i.test(first) && tokens.length > 1) {
-        first = tokens[1];
+    // Team mode (Safe, natural, zero doubt)
+    if (mode === 'team') {
+      if (lead.teamGreeting && lead.teamGreeting.trim()) {
+        return lead.teamGreeting.trim();
       }
-      return `${first} & Team`;
+      let rawBiz = (lead.businessName || '').split('(')[0].trim();
+      let bizClean = rawBiz.replace(/Restaurant|Cafe|Bistro|Lounge|Bakery|Dhaba|Hotel|Saloon|Salon|Spa|Clinic|Grill|Karahi|Barbecue|BBQ|Steakhouse/gi, '').trim();
+      return `Team ${bizClean || rawBiz}`;
     }
+
+    // Founder mode
+    if (lead.founderGreeting && lead.founderGreeting.trim()) {
+      return lead.founderGreeting.trim();
+    }
+
+    if (!lead.decisionMaker) return this.getGreetingName(lead, 'team');
+    let dm = lead.decisionMaker.trim();
+
+    // Strip corporate or family suffixes
+    dm = dm.replace(/&\s*(family|directors|partners|sons|brothers|group|board).*/i, '').trim();
+    dm = dm.replace(/\s+(family|group|directors|partners|board|heirs)$/i, '').trim();
 
     if (dm.includes(' & ')) {
       const parts = dm.split(' & ').map(p => {
-        return p.trim().split(/\s+/)[0];
+        let seg = p.trim().replace(/^(haji|syed|sardar|ch|dr\.|chef)\s+/i, '').split(/\s+/)[0];
+        return seg;
       });
-      return parts.join(' & ');
-    }
-
-    if (/^(muhammad|mohammad)\s+/i.test(dm)) {
-      const tokens = dm.split(/\s+/);
-      return tokens[1] || tokens[0];
+      return parts.filter(Boolean).join(' & ') || this.getGreetingName(lead, 'team');
     }
 
     if (/^(dr\.|chef)\s+/i.test(dm)) {
@@ -44,13 +48,9 @@ const PitchEngine = {
       return `${tokens[0]} ${tokens[1] || ''}`.trim();
     }
 
-    let base = dm;
-    if (base.includes('(')) base = base.split('(')[0].trim();
-    const tokens = base.split(/\s+/);
-    if (/^(haji|syed|sardar|ch)/i.test(tokens[0]) && tokens.length > 1) {
-      return tokens[1];
-    }
-    return tokens[0];
+    let clean = dm.replace(/^(haji|syed|sardar|ch|muhammad|mohammad)\s+/i, '').trim();
+    let first = clean.split(/\s+/)[0];
+    return first || dm.split(/\s+/)[0] || this.getGreetingName(lead, 'team');
   },
 
   /**
@@ -118,8 +118,8 @@ const PitchEngine = {
   /**
    * Generates tailored pitch based on channel constraints and local market context
    */
-  generatePitch(lead) {
-    const greeting = this.getGreetingName(lead);
+  generatePitch(lead, mode = 'team') {
+    const greeting = this.getGreetingName(lead, mode);
     const bizShort = lead.businessName.split('(')[0].trim();
 
     if (lead.channel === 'whatsapp') {
@@ -259,8 +259,8 @@ const PitchEngine = {
   /**
    * Day-3 Follow-Up Message Generator
    */
-  generateDay3FollowUp(lead) {
-    const greeting = this.getGreetingName(lead);
+  generateDay3FollowUp(lead, mode = 'team') {
+    const greeting = this.getGreetingName(lead, mode);
     const bizShort = lead.businessName.split('(')[0].trim();
     const deliveryApp = this.detectDeliveryPlatform(lead);
 

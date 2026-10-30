@@ -496,6 +496,31 @@
           <input type="text" id="modal-pitch-subject" class="custom-input" style="height: 40px; font-size: 0.88rem;">
         </div>
 
+        <!-- 1-TAP GREETING TONE SWITCHER (ZERO DOUBT) -->
+        <div class="pitch-greeting-selector-strip" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: var(--radius-sm); padding: 10px 14px; margin: 10px 0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
+            <span style="font-size: 0.74rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px;">
+              🎯 Outreach Greeting Tone:
+            </span>
+            <span id="greeting-mode-hint" style="font-size: 0.72rem; color: #38bdf8; font-weight: 600;">
+              🛡️ Safe & Natural for WhatsApp / Instagram Floor Staff
+            </span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <button type="button" id="btn-greeting-team" class="btn-greeting-mode active" title="Addresses the restaurant team naturally (100% safe for staff answering WhatsApp/DM)">
+              <span>🛡️</span>
+              <span id="label-greeting-team">Team Greeting ("Hi Team Kolachi,")</span>
+            </button>
+            <button type="button" id="btn-greeting-founder" class="btn-greeting-mode" title="Addresses the verified founder directly (Best for LinkedIn or Executive Email)">
+              <span>👤</span>
+              <span id="label-greeting-founder">Founder Name ("Hi Haider & Atif,")</span>
+            </button>
+          </div>
+          <div style="font-size: 0.71rem; color: #64748b; margin-top: 6px; line-height: 1.4;">
+            💡 <em>Pro Agency Tip:</em> Public WhatsApp aur Instagram helpline par 90% floor managers ya reservation desk hota hai. <strong>"Team"</strong> greeting se message hamesha genuine aur courteous lagta hai. Founder name executive email ke liye best hai.
+          </div>
+        </div>
+
         <div class="input-group">
           <label class="input-label" for="modal-pitch-textarea">Pitch Body</label>
           <textarea id="modal-pitch-textarea" class="pitch-textarea"></textarea>

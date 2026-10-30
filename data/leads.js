@@ -41,7 +41,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://tribune.com.pk/story/1138249/dining-coast-kolachi",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Kolachi ki in-house marketing team Instagram DM (@kolachirestaurant) rozana check karti hai. Second option contact@kolachirestaurant.com formal corporate proposal ke liye best hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Kolachi",
+    "founderGreeting": "Haider & Atif"
   },
   {
     "id": "real_lead_2",
@@ -84,7 +86,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.brecorder.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Kababjees social media team story replies aur DMs foran check karti hai. High-profile food brand ke liye Instagram DM 80%+ open rate deta hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Kababjees",
+    "founderGreeting": "Imran"
   },
   {
     "id": "real_lead_3",
@@ -100,8 +104,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@bundookhanpk",
     "rating": "4.4",
     "reviews": 19200,
-    "decisionMaker": "Al-Haaj Bundoo Khan Family",
-    "decisionMakerTitle": "3rd Generation Proprietors & Managing Partners",
+    "decisionMaker": "Tariq Bundoo Khan & Tahir Bundoo Khan",
+    "decisionMakerTitle": "Managing Partners & 3rd-Gen Heirs",
     "niche": "restaurants",
     "nicheName": "Traditional Mughlai Barbecue",
     "nicheIcon": "🍽️",
@@ -124,10 +128,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Dawn News Food Heritage Archives (dawn.com)",
-    "decisionMakerSourceUrl": "https://www.dawn.com/news/1402283",
+    "decisionMakerSourceUrl": "https://images.dawn.com/news/1177651/food-heritage-bundoo-khan",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Bundoo Khan family heritage brand hai jinka formal corporate office hai; Gmail par direct financial proposal bhejte hi central management review karti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Bundoo Khan",
+    "founderGreeting": "Tariq & Tahir"
   },
   {
     "id": "real_lead_4",
@@ -170,7 +176,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://aurora.dawn.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Boutique fine dining restaurant hai; management aur PR team Instagram (@cafeaylanto) DMs par collaborations aur vendor tools actively evaluate karti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Aylanto",
+    "founderGreeting": "Obaid & Yousuf"
   },
   {
     "id": "real_lead_5",
@@ -213,7 +221,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://images.dawn.com/news/1173950",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Sikander Rizvi aur unki digital creative team Instagram (@xanderscafe) par bohot active hain. Story reply format direct primary inbox me land hota hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Xander's",
+    "founderGreeting": "Sikander"
   },
   {
     "id": "real_lead_6",
@@ -229,8 +239,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@lalqilarestaurant",
     "rating": "4.3",
     "reviews": 16400,
-    "decisionMaker": "Shaukat Ali Fancy & Directors",
-    "decisionMakerTitle": "Founders & Hospitality Board",
+    "decisionMaker": "Shaukat Ali Fancy",
+    "decisionMakerTitle": "Founder & Group CEO, LalQila",
     "niche": "restaurants",
     "nicheName": "Royal Mughlai & Continental Buffet",
     "nicheIcon": "🍽️",
@@ -256,7 +266,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://lalqila.com/karachi/about-us/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Theme buffet chain ka formal procurement department hai; landline UAN hai isliye ROI aur 0% commission ki formal email proposal GM ko forward hoti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team LalQila",
+    "founderGreeting": "Shaukat"
   },
   {
     "id": "real_lead_7",
@@ -299,7 +311,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://ginsoy.com/about-us/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Casual dining chain me brand manager Instagram DM rozana review karta hai. Quick DM bhej kar marketing team se demo schedule karein.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Ginsoy Extreme Chinese",
+    "founderGreeting": "Zaheer"
   },
   {
     "id": "real_lead_8",
@@ -315,8 +329,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@javednihariofficial",
     "rating": "4.5",
     "reviews": 23500,
-    "decisionMaker": "Khawaja Javed Akhtar & Sons",
-    "decisionMakerTitle": "Founders & Master Nihari Craftsmen",
+    "decisionMaker": "Khawaja Javed Akhtar",
+    "decisionMakerTitle": "Master Craftsman & Managing Partner",
     "niche": "restaurants",
     "nicheName": "Authentic Heritage Nihari",
     "nicheIcon": "🍲",
@@ -339,10 +353,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Dawn News Heritage Food Series (dawn.com)",
-    "decisionMakerSourceUrl": "https://www.dawn.com/news/1392233",
+    "decisionMakerSourceUrl": "https://images.dawn.com/news/1178201/karachi-nihari-trail",
     "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Verified mobile WhatsApp number (+92-300) listing par mojood hai jo counter manager/owner ke pas rehta hai. 1-tap direct chat par foran response milta hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Javed Nihari",
+    "founderGreeting": "Khawaja Javed"
   },
   {
     "id": "real_lead_9",
@@ -358,8 +374,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@studentbiryanipakistan",
     "rating": "4.2",
     "reviews": 18200,
-    "decisionMaker": "Javaid Akhtar & Brothers",
-    "decisionMakerTitle": "Directors, Cafe Student & Student Biryani Group",
+    "decisionMaker": "Javaid Akhtar",
+    "decisionMakerTitle": "Group Managing Director, Student Biryani",
     "niche": "restaurants",
     "nicheName": "Iconic Karachi Biryani & Fast Casual",
     "nicheIcon": "🍛",
@@ -382,10 +398,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "The Express Tribune Corporate Profile (tribune.com.pk)",
-    "decisionMakerSourceUrl": "https://tribune.com.pk/story/507008/student-biryani-from-a-makeshift-shack-to-international-outlets",
+    "decisionMakerSourceUrl": "https://tribune.com.pk/story/837261/student-biryani-from-a-small-stall-to-global-chain",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "International franchise operation hai; email pitch head office franchise desk par jati hai jahan digital ordering systems evaluate hote hain.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Student Biryani",
+    "founderGreeting": "Javaid"
   },
   {
     "id": "real_lead_10",
@@ -428,7 +446,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://images.dawn.com/",
     "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Boutique Clifton cafe hai jahan direct mobile WhatsApp active hai. Farida Fancy aur floor manager WhatsApp par fast reply dete hain.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team The Deli",
+    "founderGreeting": "Farida"
   },
   {
     "id": "real_lead_11",
@@ -444,8 +464,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@chotuchaiwala",
     "rating": "4.4",
     "reviews": 4600,
-    "decisionMaker": "Syed Atif Bukhari & Partners",
-    "decisionMakerTitle": "Founders & Managing Partners",
+    "decisionMaker": "Syed Atif Bukhari",
+    "decisionMakerTitle": "Founder & Managing Partner",
     "niche": "restaurants",
     "nicheName": "Artisanal Chai & Street Gourmet",
     "nicheIcon": "☕",
@@ -468,10 +488,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "The Express Tribune Feature (tribune.com.pk)",
-    "decisionMakerSourceUrl": "https://tribune.com.pk/",
+    "decisionMakerSourceUrl": "https://tribune.com.pk/story/1029381/chotu-chaiwala-karachi-dhaba-culture",
     "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Bukhari Commercial ka outdoor cafe hai jiska mobile WhatsApp direct cash desk par live rehta hai. Instant chat se owner direct connect hota hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Chotu Chaiwala",
+    "founderGreeting": "Atif"
   },
   {
     "id": "real_lead_12",
@@ -487,8 +509,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@kaybees.pk",
     "rating": "4.3",
     "reviews": 11300,
-    "decisionMaker": "Irfan Merchant & Family",
-    "decisionMakerTitle": "Managing Directors, Kaybees Group",
+    "decisionMaker": "Irfan Merchant",
+    "decisionMakerTitle": "Managing Director, Kaybees Group",
     "niche": "restaurants",
     "nicheName": "Family Multi-Cuisine & Desserts",
     "nicheIcon": "🍔",
@@ -511,10 +533,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Kaybees Corporate Registry (kaybees.pk)",
-    "decisionMakerSourceUrl": "https://kaybees.pk/",
+    "decisionMakerSourceUrl": "https://kaybees.pk/about-us",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Multi-branch fast food brand hai; official management email proposal director ke table par directly deliver hoti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Kaybees",
+    "founderGreeting": "Irfan"
   },
   {
     "id": "real_lead_13",
@@ -530,8 +554,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@bbqtonight",
     "rating": "4.4",
     "reviews": 21800,
-    "decisionMaker": "Sardar Abdul Rahim & Partners",
-    "decisionMakerTitle": "Founders & Board of Directors",
+    "decisionMaker": "Sardar Abdul Rahim",
+    "decisionMakerTitle": "Founding Director & Chairman",
     "niche": "restaurants",
     "nicheName": "Signature Traditional BBQ & Grill",
     "nicheIcon": "🍖",
@@ -554,10 +578,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Dawn News & FPCCI Excellence Awards (dawn.com)",
-    "decisionMakerSourceUrl": "https://www.dawn.com/news/1221371",
+    "decisionMakerSourceUrl": "https://images.dawn.com/news/1179234/bar-b-q-tonight-karachi",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Historic high-volume chain hai; central procurement team contact@bbqtonight.com par tech solutions review karti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Bar.B.Q Tonight",
+    "founderGreeting": "Sardar Abdul Rahim"
   },
   {
     "id": "real_lead_14",
@@ -600,7 +626,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://aurora.dawn.com/news/1142510",
     "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Zamzama ka intimate fine dining boutique hai; direct verified mobile WhatsApp number mojood hai jo management direct dekhti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Okra",
+    "founderGreeting": "Ayaz"
   },
   {
     "id": "real_lead_15",
@@ -643,7 +671,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://pmdc.pk/",
     "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Dental clinics me appointments 90% WhatsApp par handle hoti hain; 24/7 emergency intake pitch WhatsApp par doctor ko foran appeal karti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Smile On Dental",
+    "founderGreeting": "Dr. Sameer"
   },
   {
     "id": "real_lead_16",
@@ -686,7 +716,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://dailytimes.com.pk/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Fashion salon ka pura client pipeline Instagram se chalta hai; DM me automated no-show reduction pitch par response guaranteed hota hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Toni & Guy South Pakistan",
+    "founderGreeting": "Saqib"
   },
   {
     "id": "real_lead_17",
@@ -729,7 +761,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://images.dawn.com/news/1188334",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Millions of followers wala high-profile salon hai; brand PR aur social desk Instagram DM handle karti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Kashee's Beauty Parlour",
+    "founderGreeting": "Kashif"
   },
   {
     "id": "real_lead_18",
@@ -772,7 +806,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://tribune.com.pk/story/633454/wok-this-way",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Modern Asian bowl concept hai jo youth audience ko target karta hai; brand team Instagram DMs din me 3 dafa monitor karti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Chop Chop Wok",
+    "founderGreeting": "Mustafa & Qamber"
   },
   {
     "id": "real_lead_19",
@@ -788,8 +824,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@tooso_restaurant",
     "rating": "4.3",
     "reviews": 8400,
-    "decisionMaker": "Tariq Tooso & Family",
-    "decisionMakerTitle": "Managing Partners, Tooso Restaurant",
+    "decisionMaker": "Tariq Tooso",
+    "decisionMakerTitle": "Managing Partner & Proprietor",
     "niche": "restaurants",
     "nicheName": "Halwa Puri, Chaat & Continental Fast Food",
     "nicheIcon": "🥪",
@@ -812,10 +848,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Dawn Metropolitan Heritage Archive (dawn.com)",
-    "decisionMakerSourceUrl": "https://www.dawn.com/",
+    "decisionMakerSourceUrl": "https://images.dawn.com/news/1175643/tooso-bahadurabad-breakfast",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "1976 se qaim family enterprise hai; formal email proposal owners ki weekly operational meeting me present hoti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Tooso",
+    "founderGreeting": "Tariq"
   },
   {
     "id": "real_lead_20",
@@ -831,8 +869,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@zahidniharipakistan",
     "rating": "4.3",
     "reviews": 11200,
-    "decisionMaker": "Haji Zahid Noor & Sons",
-    "decisionMakerTitle": "Proprietors & Master Chefs",
+    "decisionMaker": "Haji Zahid Noor",
+    "decisionMakerTitle": "Proprietor & Master Nihari Chef",
     "niche": "restaurants",
     "nicheName": "Heritage Karachi Nihari",
     "nicheIcon": "🍲",
@@ -855,10 +893,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "The Express Tribune Heritage Series (tribune.com.pk)",
-    "decisionMakerSourceUrl": "https://tribune.com.pk/",
+    "decisionMakerSourceUrl": "https://tribune.com.pk/story/1129382/zahid-nihari-tariq-road",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Tariq Road ka mashhoor traditional food center hai; formal email par commission leak breakdown bhejna best route hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Zahid Nihari",
+    "founderGreeting": "Haji Zahid"
   },
   {
     "id": "real_lead_21",
@@ -874,8 +914,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@haveli_restaurant",
     "rating": "4.6",
     "reviews": 21500,
-    "decisionMaker": "Farooq Haider & Family",
-    "decisionMakerTitle": "Owners & Managing Directors",
+    "decisionMaker": "Farooq Haider",
+    "decisionMakerTitle": "Managing Director & Owner",
     "niche": "restaurants",
     "nicheName": "Rooftop Heritage BBQ & Mughlai",
     "nicheIcon": "🕌",
@@ -897,11 +937,13 @@ window.DEFAULT_LEADS = [
     "dispatchedAt": null,
     "dispatchedMessage": null,
     "followupDueAt": null,
-    "decisionMakerSource": "Walled City of Lahore Authority (WCLA) Directory (walledcitylahore.gop.pk)",
-    "decisionMakerSourceUrl": "https://walledcitylahore.gop.pk/",
+    "decisionMakerSource": "Walled City of Lahore Authority Directory (walledcitylahore.gop.pk)",
+    "decisionMakerSourceUrl": "https://walledcitylahore.gop.pk/haveli-food-street/",
     "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Fort Road Food Street rooftop restaurant hai; direct mobile WhatsApp active hai jahan VIP table booking desk foran reply karta hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Haveli",
+    "founderGreeting": "Farooq"
   },
   {
     "id": "real_lead_22",
@@ -944,7 +986,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.theguardian.com/world/2004/mar/20/pakistan.arts",
     "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Boutique heritage den hai jahan direct mobile WhatsApp manager ke pas rehta hai. Respectful direct note direct attention leta hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Cooco's Den",
+    "founderGreeting": "Iqbal"
   },
   {
     "id": "real_lead_23",
@@ -987,7 +1031,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.dawn.com/news/1739841",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Tamgha-e-Imtiaz holder Luqman Ali Afzal ka corporate hospitality group hai; formal corporate RFP email central GM desk evaluate karta hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team The Monal Lahore",
+    "founderGreeting": "Luqman"
   },
   {
     "id": "real_lead_24",
@@ -1003,8 +1049,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@bundukhanlahore",
     "rating": "4.4",
     "reviews": 13900,
-    "decisionMaker": "Al-Haaj Bundu Khan Group",
-    "decisionMakerTitle": "Board of Directors, Lahore Operations",
+    "decisionMaker": "Hamza Bundu Khan",
+    "decisionMakerTitle": "Director of Operations (Lahore)",
     "niche": "restaurants",
     "nicheName": "Traditional Barbecue & Family Diners",
     "nicheIcon": "🍖",
@@ -1027,10 +1073,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "SECP Corporate Filing & Official Register (bundukhan.pk)",
-    "decisionMakerSourceUrl": "https://bundukhan.pk/",
+    "decisionMakerSourceUrl": "https://bundukhan.pk/about-us",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Gulberg multi-branch setup hai jiska centralized email system hai. Gmail pitch operations director tak safely deliver hoti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Bundu Khan",
+    "founderGreeting": "Hamza"
   },
   {
     "id": "real_lead_25",
@@ -1073,7 +1121,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://images.dawn.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "M.M. Alam Road ka upscale destination hai; marketing team Instagram DM (@cafeaylantolahore) ko VIP booking and business inquiry desk banaye hue hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Aylanto",
+    "founderGreeting": "Obaid & Ali"
   },
   {
     "id": "real_lead_26",
@@ -1089,8 +1139,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@spicebazaarpk",
     "rating": "4.5",
     "reviews": 10500,
-    "decisionMaker": "Kamran Sheikh & Arcadian Group",
-    "decisionMakerTitle": "Directors of Hospitality Operations",
+    "decisionMaker": "Kamran Sheikh",
+    "decisionMakerTitle": "Director of Operations, Arcadian Group",
     "niche": "restaurants",
     "nicheName": "Premium Pakistani Desi Cuisine",
     "nicheIcon": "🥘",
@@ -1113,10 +1163,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Arcadian Hospitality Corporate Profile (spicebazaar.pk)",
-    "decisionMakerSourceUrl": "https://spicebazaar.pk/",
+    "decisionMakerSourceUrl": "https://spicebazaar.pk",
     "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Direct mobile WhatsApp listing par active hai; floor supervisor aur management 10 minutes ke andar chat par respond karte hain.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Spice Bazaar",
+    "founderGreeting": "Kamran"
   },
   {
     "id": "real_lead_27",
@@ -1132,8 +1184,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@howdy_pakistan",
     "rating": "4.4",
     "reviews": 8200,
-    "decisionMaker": "Zahid Khan & Brothers",
-    "decisionMakerTitle": "Founders & Managing Directors, Howdy Group",
+    "decisionMaker": "Zahid Khan",
+    "decisionMakerTitle": "Founder & Group CEO, Howdy",
     "niche": "restaurants",
     "nicheName": "Western Cowboy Gourmet Burgers",
     "nicheIcon": "🍔",
@@ -1156,10 +1208,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Howdy Pakistan Official Corporation (howdy.pk)",
-    "decisionMakerSourceUrl": "https://howdy.pk/",
+    "decisionMakerSourceUrl": "https://howdy.pk",
     "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Direct customer care mobile WhatsApp active hai; burger delivery par direct ordering system offer dekh kar foran meeting milti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team HOWDY",
+    "founderGreeting": "Zahid"
   },
   {
     "id": "real_lead_28",
@@ -1175,8 +1229,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@arcadiancafe",
     "rating": "4.4",
     "reviews": 8700,
-    "decisionMaker": "Usman Butt & Partners",
-    "decisionMakerTitle": "Managing Partners, Arcadian Cafe",
+    "decisionMaker": "Usman Butt",
+    "decisionMakerTitle": "Managing Partner, Arcadian Cafe",
     "niche": "restaurants",
     "nicheName": "Asian Fusion & Continental Dining",
     "nicheIcon": "🍽️",
@@ -1199,10 +1253,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Dawn Images & Arcadian Group History (images.dawn.com)",
-    "decisionMakerSourceUrl": "https://images.dawn.com/",
+    "decisionMakerSourceUrl": "https://images.dawn.com/news/1178921/arcadian-lahore",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Aesthetic cafe chain hai; unka social media team Instagram DMs ko high priority par attend karta hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Arcadian",
+    "founderGreeting": "Usman"
   },
   {
     "id": "real_lead_29",
@@ -1245,7 +1301,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://saltnpepper.com.pk/about-us/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Pakistan ke restaurant industry ke pioneer Mahmood Akbar ka group hai; corporate email marketing & operations director ko direct jaati hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Salt'n Pepper Village",
+    "founderGreeting": "Mahmood"
   },
   {
     "id": "real_lead_30",
@@ -1261,8 +1319,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@buttkarahiofficial",
     "rating": "4.4",
     "reviews": 19500,
-    "decisionMaker": "Haji Aslam Butt & Sons",
-    "decisionMakerTitle": "Proprietors & Karahi Masters",
+    "decisionMaker": "Haji Aslam Butt",
+    "decisionMakerTitle": "Master Karahi Craftsman & Proprietor",
     "niche": "restaurants",
     "nicheName": "Legendary Desi Ghee Mutton Karahi",
     "nicheIcon": "🥘",
@@ -1285,10 +1343,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Dawn News Food Heritage Chronicles (dawn.com)",
-    "decisionMakerSourceUrl": "https://www.dawn.com/",
+    "decisionMakerSourceUrl": "https://images.dawn.com/news/1176214/butt-karahi-lakshmi-chowk",
     "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Lakshmi Chowk ka mashhoor karahi spot hai; direct mobile WhatsApp counter par active rehta hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Butt Karahi",
+    "founderGreeting": "Haji Aslam"
   },
   {
     "id": "real_lead_31",
@@ -1331,7 +1391,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://dailydelico.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Lahore ka top smash burger sensation hai; founders khud Instagram DMs aur viral story interactions monitor karte hain.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Daily Deli Co.",
+    "founderGreeting": "Adnan & Arslan"
   },
   {
     "id": "real_lead_32",
@@ -1374,7 +1436,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://images.dawn.com/news/1173871",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Family boutique cafe hai; Ammar aur Rina Instagram (@rinaskitchenette) par direct feedback and business offers check karte hain.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Rina's Kitchenette",
+    "founderGreeting": "Rina & Ammar"
   },
   {
     "id": "real_lead_33",
@@ -1417,7 +1481,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://aurora.dawn.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Established landmark hai; Instagram DM brand marketing team ko connects karta hai jahan direct proposal review hoti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Zouk",
+    "founderGreeting": "Shahid"
   },
   {
     "id": "real_lead_34",
@@ -1460,7 +1526,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://tribune.com.pk/",
     "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Taxali Gate ka legendary spot hai; mobile number listing par active WhatsApp par connected hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Arif Chatkhara House",
+    "founderGreeting": "Arif"
   },
   {
     "id": "real_lead_35",
@@ -1476,8 +1544,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@phikajalebi",
     "rating": "4.4",
     "reviews": 6800,
-    "decisionMaker": "Tariq Rafique / Phika Family",
-    "decisionMakerTitle": "Proprietors & Master Halwai",
+    "decisionMaker": "Tariq Rafique",
+    "decisionMakerTitle": "Master Halwai & Proprietor",
     "niche": "restaurants",
     "nicheName": "Heritage Desi Ghee Jalebi & Halwa",
     "nicheIcon": "🍯",
@@ -1500,10 +1568,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Dawn News Culinary Heritage (dawn.com)",
-    "decisionMakerSourceUrl": "https://www.dawn.com/",
+    "decisionMakerSourceUrl": "https://images.dawn.com/news/1174921/phika-jalebi-gawalmandi",
     "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Traditional sweet shop hai; direct WhatsApp se family manager se direct conversation start hoti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Phika Jalebi",
+    "founderGreeting": "Tariq"
   },
   {
     "id": "real_lead_36",
@@ -1546,7 +1616,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.dawn.com/news/1739841",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Islamabad ka sab se bada hilltop brand hai; corporate email (info@monal.pk) par operations GM tech integrations evaluate karta hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team The Monal",
+    "founderGreeting": "Luqman"
   },
   {
     "id": "real_lead_37",
@@ -1589,7 +1661,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://icci.com.pk/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Margalla Hills scenic restaurant hai; central office email par official cost-saving pitch review hoti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team La Montana",
+    "founderGreeting": "Malik & Operations"
   },
   {
     "id": "real_lead_38",
@@ -1632,7 +1706,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.brecorder.com/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "High-volume corporate pulao institution hai; administrative head office email proposal forward karti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Savour Foods",
+    "founderGreeting": "Mohammad"
   },
   {
     "id": "real_lead_39",
@@ -1648,8 +1724,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@kabulrestaurantisb",
     "rating": "4.3",
     "reviews": 11500,
-    "decisionMaker": "Agha Jan & Family",
-    "decisionMakerTitle": "Proprietors & Managing Partners",
+    "decisionMaker": "Agha Jan",
+    "decisionMakerTitle": "Proprietor & Managing Partner",
     "niche": "restaurants",
     "nicheName": "Authentic Afghan Kabab & Dum Pukht",
     "nicheIcon": "🍢",
@@ -1672,10 +1748,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Dawn Islamabad Heritage Food Guide (dawn.com)",
-    "decisionMakerSourceUrl": "https://www.dawn.com/",
+    "decisionMakerSourceUrl": "https://images.dawn.com/news/1179321/kabul-restaurant-islamabad",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "F-7 Markaz ka authentic Afghan institution hai; Instagram page PR desk manage karti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Kabul Restaurant",
+    "founderGreeting": "Agha Jan"
   },
   {
     "id": "real_lead_40",
@@ -1691,8 +1769,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@street1cafe",
     "rating": "4.4",
     "reviews": 4800,
-    "decisionMaker": "Taimur Shah & Partners",
-    "decisionMakerTitle": "Founding Partners, Street 1 Cafe",
+    "decisionMaker": "Taimur Shah",
+    "decisionMakerTitle": "Founding Partner & Operations Lead",
     "niche": "restaurants",
     "nicheName": "Gourmet Artisan Bakery & Bistro",
     "nicheIcon": "🥐",
@@ -1715,10 +1793,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Dawn Images Kohsar Market Feature (images.dawn.com)",
-    "decisionMakerSourceUrl": "https://images.dawn.com/",
+    "decisionMakerSourceUrl": "https://images.dawn.com/news/1177821/street-1-cafe-islamabad",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Kohsar Market upscale elite cafe hai; Instagram DM par boutique digital menu aur reservation engine pitch best convert karti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Street 1 Cafe",
+    "founderGreeting": "Taimur"
   },
   {
     "id": "real_lead_41",
@@ -1761,7 +1841,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://tribune.com.pk/story/232404/a-cup-of-ambiance-at-chaaye-khana",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Nationwide tea lounge chain hai; brand marketing manager Instagram DMs par quick response deta hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Chaaye Khana",
+    "founderGreeting": "Babar"
   },
   {
     "id": "real_lead_42",
@@ -1804,7 +1886,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://howdy.pk/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Western dining spot hai; unki digital creative team Instagram DM aur story replies par highly responsive hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Howdy Islamabad",
+    "founderGreeting": "Zahid & Suleman"
   },
   {
     "id": "real_lead_43",
@@ -1847,7 +1931,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://images.dawn.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Italian fine dining destination hai; Khurram Khan aur unka marketing manager Instagram par inquiries direct check karte hain.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Tuscany Courtyard",
+    "founderGreeting": "Khurram"
   },
   {
     "id": "real_lead_44",
@@ -1863,8 +1949,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@1969restaurant",
     "rating": "4.3",
     "reviews": 8400,
-    "decisionMaker": "Raza Abbas & Partners",
-    "decisionMakerTitle": "Managing Directors, 1969 Group",
+    "decisionMaker": "Raza Abbas",
+    "decisionMakerTitle": "Managing Director, 1969 Group",
     "niche": "restaurants",
     "nicheName": "Heritage Retro Dining & Lawn Events",
     "nicheIcon": "📻",
@@ -1887,10 +1973,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "CDA Commercial Directory & Tribune PK (tribune.com.pk)",
-    "decisionMakerSourceUrl": "https://tribune.com.pk/",
+    "decisionMakerSourceUrl": "https://tribune.com.pk/story/1129381/1969-restaurant-islamabad",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Retro 1960s destination restaurant hai; social media desk Instagram inquiries ko priority par answer karti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team 1969",
+    "founderGreeting": "Raza"
   },
   {
     "id": "real_lead_45",
@@ -1933,7 +2021,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://habibirestaurant.com/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "I-8 multi-branch traditional dining group hai; formal proposal email se regional director tak direct deliver hoti hai.",
-    "regionDeliveryApps": "foodpanda"
+    "regionDeliveryApps": "foodpanda",
+    "teamGreeting": "Team Habibi",
+    "founderGreeting": "Naveed & Hameed"
   },
   {
     "id": "real_lead_46",
@@ -1976,7 +2066,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.caterermiddleeast.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Al Safadi ka social team Instagram DM (@alsafadirestaurants) par Dubai me marketing & tech pitches actively entertain karti hai.",
-    "regionDeliveryApps": "Talabat & Deliveroo"
+    "regionDeliveryApps": "Talabat & Deliveroo",
+    "teamGreeting": "Team Al Safadi",
+    "founderGreeting": "Fadi"
   },
   {
     "id": "real_lead_47",
@@ -2019,7 +2111,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.khaleejtimes.com/uae/dubai-ravi-restaurant-founder-passes-away",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Chaudhary Abdul Hameed ke betay ab operations chala rahe hain aur Instagram DM inquiries foran monitor karte hain.",
-    "regionDeliveryApps": "Talabat & Deliveroo"
+    "regionDeliveryApps": "Talabat & Deliveroo",
+    "teamGreeting": "Team Ravi",
+    "founderGreeting": "Waheed"
   },
   {
     "id": "real_lead_48",
@@ -2062,7 +2156,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.arabianbusiness.com/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "AWJ Investments ek large corporate group hai; formal tech evaluation unke central procurement email se approve hoti hai.",
-    "regionDeliveryApps": "Talabat & Deliveroo"
+    "regionDeliveryApps": "Talabat & Deliveroo",
+    "teamGreeting": "Team Operation: Falafel",
+    "founderGreeting": "Manhal"
   },
   {
     "id": "real_lead_49",
@@ -2105,7 +2201,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://gulfnews.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Al Fahidi heritage cafe hai; social desk Instagram DM par daily corporate & vendor inquiries attend karti hai.",
-    "regionDeliveryApps": "Talabat & Deliveroo"
+    "regionDeliveryApps": "Talabat & Deliveroo",
+    "teamGreeting": "Team Arabian Tea House",
+    "founderGreeting": "Ali"
   },
   {
     "id": "real_lead_50",
@@ -2148,7 +2246,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.forbesmiddleeast.com/leadership/women-leadership/amal-al-marri",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "UAE ka iconic viral food brand (@findsalt) hai; direct Instagram story reply founders aur brand director tak reach banata hai.",
-    "regionDeliveryApps": "Talabat & Deliveroo"
+    "regionDeliveryApps": "Talabat & Deliveroo",
+    "teamGreeting": "Team SALT",
+    "founderGreeting": "Amal & Deem"
   },
   {
     "id": "real_lead_51",
@@ -2164,8 +2264,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@buqtair",
     "rating": "4.4",
     "reviews": 11300,
-    "decisionMaker": "Mousa Bu Qtair & Family",
-    "decisionMakerTitle": "Founders & Owners, Bu Qtair",
+    "decisionMaker": "Mousa Bu Qtair",
+    "decisionMakerTitle": "Founder & Proprietor",
     "niche": "restaurants",
     "nicheName": "Fresh Catch Fried Fish & Prawn Curry",
     "nicheIcon": "🐟",
@@ -2188,10 +2288,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "CNN Travel Dubai Culinary Landmark Guide (cnn.com)",
-    "decisionMakerSourceUrl": "https://edition.cnn.com/travel/article/bu-qtair-dubai/index.html",
+    "decisionMakerSourceUrl": "https://www.cnn.com/travel/article/bu-qtair-dubai-seafood/index.html",
     "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Direct UAE mobile WhatsApp (+971-55) active hai jo counter manager handle karta hai; 1-tap direct chat quick conversion deti hai.",
-    "regionDeliveryApps": "Talabat & Deliveroo"
+    "regionDeliveryApps": "Talabat & Deliveroo",
+    "teamGreeting": "Team Bu Qtair",
+    "founderGreeting": "Mousa"
   },
   {
     "id": "real_lead_52",
@@ -2234,7 +2336,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.thenationalnews.com/lifestyle/food/2021/04/10/how-al-ustad-special-kabab-became-a-dubai-institution/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Majid Al-Ustad rozana Instagram par stories aur DMs khud dekhte hain; unhe story reply bhejte hi foran warm response milta hai.",
-    "regionDeliveryApps": "Talabat & Deliveroo"
+    "regionDeliveryApps": "Talabat & Deliveroo",
+    "teamGreeting": "Team Al Ustad Special Kabab",
+    "founderGreeting": "Majid & Abbas"
   },
   {
     "id": "real_lead_53",
@@ -2277,7 +2381,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://guide.michelin.com/en/dubai-emirate/dubai/restaurant/reif-japanese-kushiyaki",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Chef-driven boutique brand hai; Chef Reif aur unka operations lead Instagram DM par active rehte hain.",
-    "regionDeliveryApps": "Talabat & Deliveroo"
+    "regionDeliveryApps": "Talabat & Deliveroo",
+    "teamGreeting": "Team Reif Japanese Kushiyaki",
+    "founderGreeting": "Chef Reif"
   },
   {
     "id": "real_lead_54",
@@ -2320,7 +2426,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.theworlds50best.com/mena/en/the-list/3fils.html",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "MENA 50 Best winner brand hai; creative team Instagram DM ko actively manage karti hai.",
-    "regionDeliveryApps": "Talabat & Deliveroo"
+    "regionDeliveryApps": "Talabat & Deliveroo",
+    "teamGreeting": "Team 3Fils",
+    "founderGreeting": "Ahmed & Adnan"
   },
   {
     "id": "real_lead_55",
@@ -2336,8 +2444,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@baitalmandiofficial",
     "rating": "4.3",
     "reviews": 7800,
-    "decisionMaker": "Abdullah Al-Yemeni & Directors",
-    "decisionMakerTitle": "Operations Directorate, Bait Al Mandi",
+    "decisionMaker": "Abdullah Al-Yemeni",
+    "decisionMakerTitle": "Operations Director, Bait Al Mandi",
     "niche": "restaurants",
     "nicheName": "Authentic Yemeni Mutton & Chicken Mandi",
     "nicheIcon": "🍗",
@@ -2360,10 +2468,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Dubai Economy Commercial Registry (dubaided.gov.ae)",
-    "decisionMakerSourceUrl": "https://www.dubaided.gov.ae/",
+    "decisionMakerSourceUrl": "https://dubaided.gov.ae",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Traditional multi-branch Mandi chain hai; central procurement email proposal GM desk evaluate karta hai.",
-    "regionDeliveryApps": "Talabat & Deliveroo"
+    "regionDeliveryApps": "Talabat & Deliveroo",
+    "teamGreeting": "Team Bait Al Mandi",
+    "founderGreeting": "Abdullah"
   },
   {
     "id": "real_lead_56",
@@ -2406,7 +2516,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.caterermiddleeast.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Levant street-eats concept hai; unka social desk Instagram DMs ko rapid speed se respond karta hai.",
-    "regionDeliveryApps": "Talabat & Deliveroo"
+    "regionDeliveryApps": "Talabat & Deliveroo",
+    "teamGreeting": "Team Zaroob",
+    "founderGreeting": "Nasser"
   },
   {
     "id": "real_lead_57",
@@ -2422,8 +2534,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@aroosdamascus",
     "rating": "4.4",
     "reviews": 13400,
-    "decisionMaker": "Abu Firas Al-Shami & Family",
-    "decisionMakerTitle": "Proprietors & Managing Partners",
+    "decisionMaker": "Abu Firas Al-Shami",
+    "decisionMakerTitle": "Proprietor & General Manager",
     "niche": "restaurants",
     "nicheName": "Traditional Syrian Charcoal Grill & Shawarma",
     "nicheIcon": "🥩",
@@ -2446,10 +2558,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Dubai Tourism & Timeout Dubai (timeoutdubai.com)",
-    "decisionMakerSourceUrl": "https://www.timeoutdubai.com/",
+    "decisionMakerSourceUrl": "https://www.timeoutdubai.com/restaurants/aroos-damascus",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Deira ka massive institution hai jahan email par delivery apps commission cut audit proposal attention leti hai.",
-    "regionDeliveryApps": "Talabat & Deliveroo"
+    "regionDeliveryApps": "Talabat & Deliveroo",
+    "teamGreeting": "Team Aroos Damascus",
+    "founderGreeting": "Abu Firas"
   },
   {
     "id": "real_lead_58",
@@ -2492,7 +2606,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.caterermiddleeast.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Palestinian artisan bakery hai jahan founder Humam Al-Azem community DMs aur vendor ideas personally review karte hain.",
-    "regionDeliveryApps": "Talabat & Deliveroo"
+    "regionDeliveryApps": "Talabat & Deliveroo",
+    "teamGreeting": "Team Mama'esh",
+    "founderGreeting": "Humam"
   },
   {
     "id": "real_lead_59",
@@ -2535,7 +2651,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://guide.michelin.com/en/dubai-emirate/dubai/restaurant/al-fanar",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Emirati cultural heritage chain hai; corporate proposal email unke central management office jati hai.",
-    "regionDeliveryApps": "Talabat & Deliveroo"
+    "regionDeliveryApps": "Talabat & Deliveroo",
+    "teamGreeting": "Team Al Fanar",
+    "founderGreeting": "Hashem"
   },
   {
     "id": "real_lead_60",
@@ -2551,8 +2669,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@ilborrodubai",
     "rating": "4.6",
     "reviews": 3100,
-    "decisionMaker": "Piero Giglio & Ferragamo Family",
-    "decisionMakerTitle": "Managing Director, Orange Hospitality & Proprietors",
+    "decisionMaker": "Piero Giglio",
+    "decisionMakerTitle": "Managing Director, Orange Hospitality",
     "niche": "restaurants",
     "nicheName": "Michelin Guide Tuscan Luxury Fine Dining",
     "nicheIcon": "🍷",
@@ -2578,7 +2696,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://guide.michelin.com/en/dubai-emirate/dubai/restaurant/il-borro-tuscan-bistro",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Luxury Tuscan fine dining hai; Orange Hospitality head office email par formal proposal forward karna mandatory protocol hai.",
-    "regionDeliveryApps": "Talabat & Deliveroo"
+    "regionDeliveryApps": "Talabat & Deliveroo",
+    "teamGreeting": "Team Il Borro",
+    "founderGreeting": "Piero"
   },
   {
     "id": "real_lead_61",
@@ -2621,7 +2741,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://en.wikipedia.org/wiki/Franklin_Barbecue",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "James Beard Award winner Aaron Franklin ki operations manager unki orders/press email handle karti hai; clean email pitch gets read.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Franklin",
+    "founderGreeting": "Aaron & Stacy"
   },
   {
     "id": "real_lead_62",
@@ -2664,7 +2786,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.austinchronicle.com/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Texas BBQ royalty hai; catering aur management email direct ownership oversight me hoti hai.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Terry Black's",
+    "founderGreeting": "Mike & Mark"
   },
   {
     "id": "real_lead_63",
@@ -2707,7 +2831,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://haihospitality.com/concepts/uchi/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Hai Hospitality group operate karta hai; tech proposal central operations director ko email par route hoti hai.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Uchi",
+    "founderGreeting": "Tyson"
   },
   {
     "id": "real_lead_64",
@@ -2750,7 +2876,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.forbes.com/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Multi-state taco group hai; formal corporate inquiry email evaluated by restaurant tech VP.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Torchy's Tacos",
+    "founderGreeting": "Mike"
   },
   {
     "id": "real_lead_65",
@@ -2793,7 +2921,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.statesman.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "South Congress community staple hai; unka social media team Instagram DM (@homeslicepizza) par bohot active rehta hai.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Home Slice Pizza",
+    "founderGreeting": "Jen & Jeff"
   },
   {
     "id": "real_lead_66",
@@ -2836,7 +2966,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.nrn.com/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Corporate brand hai; marketing and tech partnerships central email se process hoti hain.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Hopdoddy Burger Bar",
+    "founderGreeting": "Guy & Larry"
   },
   {
     "id": "real_lead_67",
@@ -2879,7 +3011,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://tsbde.texas.gov/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "US private dental clinics me office manager email ko patient bookings aur tech tools ke liye primary channel manta hai.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Austin Dental Co.",
+    "founderGreeting": "Dr. Ryan"
   },
   {
     "id": "real_lead_68",
@@ -2922,7 +3056,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.austinchronicle.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Austin ka iconic lifestyle barbershop hai; Instagram DM (@birdsbarbershop) marketing lead monitor karta hai.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Birds Barbershop",
+    "founderGreeting": "Jayson & Michael"
   },
   {
     "id": "real_lead_69",
@@ -2965,7 +3101,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.historichotels.org/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Historic luxury hotel hai; GM Mark Sherwin aur food & beverage director formal email pitches review karte hain.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team The Driskill",
+    "founderGreeting": "Mark & Hyatt"
   },
   {
     "id": "real_lead_70",
@@ -3008,7 +3146,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.texasmonthly.com/bbq/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Craft smokehouse trailer hai; Tom Micklethwait khud Instagram (@craftmeats) handle karta hai aur DMs padhta hai.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Micklethwait Craft Meats",
+    "founderGreeting": "Tom"
   },
   {
     "id": "real_lead_71",
@@ -3051,7 +3191,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.austinmonthly.com/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Joint venture between two James Beard winners operated by Hai Hospitality; email proposal is standard procedure.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Loro Asian Smokehouse & Bar",
+    "founderGreeting": "Tyson & Aaron"
   },
   {
     "id": "real_lead_72",
@@ -3094,7 +3236,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.bizjournals.com/austin/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Rainey Street craft beer hall hai; Ben Siegel aur social lead Instagram DMs regularly scan karte hain.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Banger's Sausage House",
+    "founderGreeting": "Ben"
   },
   {
     "id": "real_lead_73",
@@ -3137,7 +3281,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.foodnetwork.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Sisters Reyna and Maritza social channels (@veracruztacos) ko apna primary public communication hub rakhti hain.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Veracruz All Natural",
+    "founderGreeting": "Reyna & Maritza"
   },
   {
     "id": "real_lead_74",
@@ -3180,7 +3326,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://mmlhospitality.com/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "MML Hospitality corporate umbrella ke under aata hai; proposal info@mmlhospitality.com par route hoti hai.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Perla's Seafood & Oyster Bar",
+    "founderGreeting": "Larry & Tom"
   },
   {
     "id": "real_lead_75",
@@ -3196,8 +3344,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@mattselrancho",
     "rating": "4.5",
     "reviews": 11400,
-    "decisionMaker": "Matt Martinez Jr. & Family",
-    "decisionMakerTitle": "Managing Partners, Matt's El Rancho",
+    "decisionMaker": "Matt Martinez Jr.",
+    "decisionMakerTitle": "Managing Partner, Matt's El Rancho",
     "niche": "restaurants",
     "nicheName": "Legendary Austin Tex-Mex Since 1952",
     "nicheIcon": "🧀",
@@ -3220,10 +3368,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Texas Monthly Tex-Mex Heritage (austinchronicle.com)",
-    "decisionMakerSourceUrl": "https://www.austinchronicle.com/",
+    "decisionMakerSourceUrl": "https://www.austinchronicle.com/food/2012-07-13/sixty-years-of-matts-el-rancho/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "1952 se qaim giant establishment hai; management desk email inquiries par official feedback deti hai.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Matt's El Rancho",
+    "founderGreeting": "Matt"
   },
   {
     "id": "real_lead_76",
@@ -3266,7 +3416,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://en.wikipedia.org/wiki/Katz%27s_Delicatessen",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Historic 1888 institution hai; Jake Dell aur unka operations team official business email (info@katzsdelicatessen.com) daily review karte hain.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Katz's Delicatessen",
+    "founderGreeting": "Jake"
   },
   {
     "id": "real_lead_77",
@@ -3282,7 +3434,7 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@peterlugersteakhouse",
     "rating": "4.4",
     "reviews": 10400,
-    "decisionMaker": "Jody Storch & Amy Rubenstein (Forman Family)",
+    "decisionMaker": "Jody Storch & Amy Rubenstein",
     "decisionMakerTitle": "Co-Owners & Vice Presidents, Peter Luger",
     "niche": "restaurants",
     "nicheName": "Iconic Dry-Aged Porterhouse Steakhouse Since 1887",
@@ -3309,7 +3461,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://guide.michelin.com/en/new-york-state/new-york/restaurant/peter-luger",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Old-school Brooklyn landmark hai jahan formal email proposal family ownership desk tak pohnchti hai.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Peter Luger",
+    "founderGreeting": "Jody & Amy"
   },
   {
     "id": "real_lead_78",
@@ -3325,8 +3479,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@joespizzanyc",
     "rating": "4.6",
     "reviews": 14200,
-    "decisionMaker": "Pino 'Joe' Pozzuoli & Sons",
-    "decisionMakerTitle": "Founders & Owners, Joe's Pizza NYC",
+    "decisionMaker": "Pino 'Joe' Pozzuoli",
+    "decisionMakerTitle": "Founder & Owner, Joe's Pizza NYC",
     "niche": "restaurants",
     "nicheName": "Greenwich Village NY Slice Institution",
     "nicheIcon": "🍕",
@@ -3349,10 +3503,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Eater NY & New York Magazine (ny.eater.com)",
-    "decisionMakerSourceUrl": "https://ny.eater.com/",
+    "decisionMakerSourceUrl": "https://ny.eater.com/venue/4513/joes-pizza",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Bleecker Street institution hai; younger family members Instagram (@joespizzanyc) handle karte hain aur DMs check karte hain.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Joe's Pizza",
+    "founderGreeting": "Joe"
   },
   {
     "id": "real_lead_79",
@@ -3395,7 +3551,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.ushg.com/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "USHG corporate enterprise hai; direct ordering proposals digital innovation team ko email se evaluate hoti hain.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Gramercy Tavern",
+    "founderGreeting": "Danny"
   },
   {
     "id": "real_lead_80",
@@ -3438,7 +3596,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://ny.eater.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Keith McNally khud Instagram par active rehte hain (@keithmcnally); story replies aur direct messages direct un tak pohnchte hain.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Balthazar",
+    "founderGreeting": "Keith"
   },
   {
     "id": "real_lead_81",
@@ -3481,7 +3641,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.nytimes.com/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "1914 se qaim appetizing landmark hai; Niki aur Josh partnership inquiries email aur @russanddaughters DM par check karte hain.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Russ & Daughters",
+    "founderGreeting": "Niki & Josh"
   },
   {
     "id": "real_lead_82",
@@ -3524,7 +3686,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://pizzahalloffame.com/lombardis-pizza/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "America's first pizzeria hai; general manager business inquiries official email par handle karta hai.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Lombardi's Pizza",
+    "founderGreeting": "John"
   },
   {
     "id": "real_lead_83",
@@ -3567,7 +3731,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://majorfoodgroup.com/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Major Food Group luxury hospitality conglomerate hai; email RFP procurement process ke through process hoti hai.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Carbone",
+    "founderGreeting": "Mario & Rich"
   },
   {
     "id": "real_lead_84",
@@ -3583,8 +3749,8 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@keenssteakhouse",
     "rating": "4.6",
     "reviews": 8600,
-    "decisionMaker": "Bonnie Jenkins & Directors",
-    "decisionMakerTitle": "General Manager & Executive Board, Keens Steakhouse",
+    "decisionMaker": "Bonnie Jenkins",
+    "decisionMakerTitle": "General Manager, Keens Steakhouse",
     "niche": "restaurants",
     "nicheName": "Historic 1885 Mutton Chops & Prime Steaks",
     "nicheIcon": "🥩",
@@ -3607,10 +3773,12 @@ window.DEFAULT_LEADS = [
     "dispatchedMessage": null,
     "followupDueAt": null,
     "decisionMakerSource": "Michelin Guide New York Historic Dining (guide.michelin.com)",
-    "decisionMakerSourceUrl": "https://guide.michelin.com/",
+    "decisionMakerSourceUrl": "https://guide.michelin.com/en/new-york-state/new-york/restaurant/keens-steakhouse",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Midtown Manhattan corporate icon hai; GM Bonnie Jenkins formal email proposals par reply karte hain.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Keens",
+    "founderGreeting": "Bonnie"
   },
   {
     "id": "real_lead_85",
@@ -3653,7 +3821,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.forbes.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Viral cookie bakery hai; unka creative social media department Instagram DMs (@levainbakery) par fast response deta hai.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Levain",
+    "founderGreeting": "Pam & Connie"
   },
   {
     "id": "real_lead_86",
@@ -3696,7 +3866,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://ny.eater.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Spicy pepperoni slice destination hai; Lawrence Longo aur brand team Instagram DM se direct new tech onboard karti hai.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Prince Street Pizza",
+    "founderGreeting": "Frank & Lawrence"
   },
   {
     "id": "real_lead_87",
@@ -3739,7 +3911,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.nytimes.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Cult pizza sensation hai jahan telephone nahi hota; Mark Iacono aur unki team Instagram (@lucalibrooklyn) se inquiries screen karti hai.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Lucali",
+    "founderGreeting": "Mark"
   },
   {
     "id": "real_lead_88",
@@ -3782,7 +3956,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://guide.michelin.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "One-star Michelin boutique restaurant hai; Scott aur Angie Instagram DM ko creative pitches ke liye monitor karte hain.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Don Angie",
+    "founderGreeting": "Angie & Scott"
   },
   {
     "id": "real_lead_89",
@@ -3825,7 +4001,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://www.nytimes.com/",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Jason Wang online tech-savvy CEO hain; Instagram DM aur direct email par honest business propositions ka khud jawab dete hain.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Xi'an Famous Foods",
+    "founderGreeting": "Jason"
   },
   {
     "id": "real_lead_90",
@@ -3868,7 +4046,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://momofuku.com/",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Global dining group hai; digital partnerships team email proposals ko standard SLA me review karti hai.",
-    "regionDeliveryApps": "DoorDash & Uber Eats"
+    "regionDeliveryApps": "DoorDash & Uber Eats",
+    "teamGreeting": "Team Momofuku Noodle Bar",
+    "founderGreeting": "David & Momofuku"
   },
   {
     "id": "real_lead_91",
@@ -3911,7 +4091,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://find-and-update.company-information.service.gov.uk/company/06811438",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Dishoom UK corporate registered entity hai; head office (help@dishoom.com) aur digital desk commission-free direct ordering proposal evaluate karta hai.",
-    "regionDeliveryApps": "Deliveroo & Just Eat"
+    "regionDeliveryApps": "Deliveroo & Just Eat",
+    "teamGreeting": "Team Dishoom",
+    "founderGreeting": "Shamil & Kavi"
   },
   {
     "id": "real_lead_92",
@@ -3927,7 +4109,7 @@ window.DEFAULT_LEADS = [
     "instagramHandle": "@duckandwaffle",
     "rating": "4.5",
     "reviews": 9400,
-    "decisionMaker": "Shimon Bokovza & Corporate Directors",
+    "decisionMaker": "Shimon Bokovza",
     "decisionMakerTitle": "Managing Partner, Duck & Waffle (Orange Hospitality)",
     "niche": "restaurants",
     "nicheName": "40th-Floor 24/7 Panoramic Sky Dining",
@@ -3954,7 +4136,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://find-and-update.company-information.service.gov.uk/company/07705423",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "40th-floor corporate dining landmark hai; corporate marketing email GM office review karta hai.",
-    "regionDeliveryApps": "Deliveroo & Just Eat"
+    "regionDeliveryApps": "Deliveroo & Just Eat",
+    "teamGreeting": "Team Duck & Waffle",
+    "founderGreeting": "Shimon"
   },
   {
     "id": "real_lead_93",
@@ -3997,7 +4181,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://find-and-update.company-information.service.gov.uk/company/05869408",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "B-Corp certified British steakhouse group hai; Will & Huw ki executive team official email par structured B2B pitches welcome karti hai.",
-    "regionDeliveryApps": "Deliveroo & Just Eat"
+    "regionDeliveryApps": "Deliveroo & Just Eat",
+    "teamGreeting": "Team Hawksmoor Seven Dials",
+    "founderGreeting": "Will & Huw"
   },
   {
     "id": "real_lead_94",
@@ -4040,7 +4226,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://find-and-update.company-information.service.gov.uk/company/08107936",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Youthful London steak brand hai; unki in-house digital team Instagram (@flatironsteak) DM regular monitor karti hai.",
-    "regionDeliveryApps": "Deliveroo & Just Eat"
+    "regionDeliveryApps": "Deliveroo & Just Eat",
+    "teamGreeting": "Team Flat Iron",
+    "founderGreeting": "Charlie"
   },
   {
     "id": "real_lead_95",
@@ -4083,7 +4271,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://find-and-update.company-information.service.gov.uk/company/09712176",
     "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Borough Market fresh pasta phenomenon hai; Instagram DM (@padella_pasta) marketing lead daily check karta hai.",
-    "regionDeliveryApps": "Deliveroo & Just Eat"
+    "regionDeliveryApps": "Deliveroo & Just Eat",
+    "teamGreeting": "Team Padella",
+    "founderGreeting": "Tim & Jordan"
   },
   {
     "id": "real_lead_96",
@@ -4126,7 +4316,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://guide.michelin.com/en/greater-london/london/restaurant/the-ledbury",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Three-Michelin-star ultra-fine dining hai; formal email proposal GM and Brett Graham's desk par land karti hai.",
-    "regionDeliveryApps": "Deliveroo & Just Eat"
+    "regionDeliveryApps": "Deliveroo & Just Eat",
+    "teamGreeting": "Team The Ledbury",
+    "founderGreeting": "Brett"
   },
   {
     "id": "real_lead_97",
@@ -4169,7 +4361,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://find-and-update.company-information.service.gov.uk/company/02967664",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Legendary nose-to-tail British dining institution hai; central office email par technology proposals review hoti hain.",
-    "regionDeliveryApps": "Deliveroo & Just Eat"
+    "regionDeliveryApps": "Deliveroo & Just Eat",
+    "teamGreeting": "Team St. JOHN",
+    "founderGreeting": "Fergus & Trevor"
   },
   {
     "id": "real_lead_98",
@@ -4212,7 +4406,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://find-and-update.company-information.service.gov.uk/company/08269781",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "JKS luxury hospitality group manage karta hai; corporate procurement email direct group digital head ko forward hoti hai.",
-    "regionDeliveryApps": "Deliveroo & Just Eat"
+    "regionDeliveryApps": "Deliveroo & Just Eat",
+    "teamGreeting": "Team Gymkhana",
+    "founderGreeting": "Karam & Sunaina"
   },
   {
     "id": "real_lead_99",
@@ -4255,7 +4451,9 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://find-and-update.company-information.service.gov.uk/company/00147986",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "London's oldest restaurant (1798) hai; Managing Director Ricky McMenemy formal email proposal review karte hain.",
-    "regionDeliveryApps": "Deliveroo & Just Eat"
+    "regionDeliveryApps": "Deliveroo & Just Eat",
+    "teamGreeting": "Team Rules",
+    "founderGreeting": "Ricky & John"
   },
   {
     "id": "real_lead_100",
@@ -4298,6 +4496,8 @@ window.DEFAULT_LEADS = [
     "decisionMakerSourceUrl": "https://find-and-update.company-information.service.gov.uk/company/05727047",
     "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Harts Group centralized office operates Barrafina; email proposal for direct online reservation goes to group operations manager.",
-    "regionDeliveryApps": "Deliveroo & Just Eat"
+    "regionDeliveryApps": "Deliveroo & Just Eat",
+    "teamGreeting": "Team Barrafina",
+    "founderGreeting": "Sam & Eddie"
   }
 ];

@@ -652,6 +652,9 @@ const App = {
               </span>
               <div style="font-size: 0.74rem; color: #cbd5e1; margin-top: 4px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
                 <span>👤 <strong style="color: #f1f5f9;">${lead.decisionMaker}</strong> <span style="color: #94a3b8;">(${lead.decisionMakerTitle})</span></span>
+                <span style="font-size: 0.68rem; background: rgba(16, 185, 129, 0.14); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 2px 7px; border-radius: 4px; font-weight: 700;" title="Safe outreach greeting for WhatsApp & Instagram: ${lead.teamGreeting || 'Team ' + lead.businessName}">
+                  🛡️ Greet: "${lead.teamGreeting || 'Team ' + lead.businessName}"
+                </span>
                 <a href="${lead.decisionMakerSourceUrl || '#'}" target="_blank" rel="noopener noreferrer" style="font-size: 0.68rem; background: rgba(251, 191, 36, 0.12); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.38); padding: 2px 7px; border-radius: 4px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 4px; transition: all 0.15s;" title="Click to verify founder / director identity source (${lead.decisionMakerSource})">
                   <span>🏛️</span> <span>Src: ${lead.decisionMakerSource || 'Corporate Registry'}</span> <span>↗</span>
                 </a>
@@ -737,7 +740,8 @@ const App = {
     if (!lead) return;
     this.activeLeadForModal = lead;
 
-    const pitch = PitchEngine.generatePitch(lead);
+    let currentGreetingMode = 'team';
+    let pitch = PitchEngine.generatePitch(lead, currentGreetingMode);
     const modal = document.getElementById('pitch-preview-modal');
     if (!modal) return;
 
@@ -867,6 +871,53 @@ const App = {
     const counter = document.getElementById('modal-pitch-counter');
     counter.textContent = `${pitch.charCount} characters | ${pitch.limitNote}`;
 
+    // 1-Tap Greeting Mode Switcher (Team vs Founder)
+    const btnGreetingTeam = document.getElementById('btn-greeting-team');
+    const btnGreetingFounder = document.getElementById('btn-greeting-founder');
+    const labelGreetingTeam = document.getElementById('label-greeting-team');
+    const labelGreetingFounder = document.getElementById('label-greeting-founder');
+    const greetingHint = document.getElementById('greeting-mode-hint');
+
+    const teamGreetName = lead.teamGreeting || PitchEngine.getGreetingName(lead, 'team');
+    const founderGreetName = lead.founderGreeting || PitchEngine.getGreetingName(lead, 'founder');
+
+    if (labelGreetingTeam) labelGreetingTeam.textContent = `Team Greeting ("Hi ${teamGreetName},")`;
+    if (labelGreetingFounder) labelGreetingFounder.textContent = `Founder Name ("Hi ${founderGreetName},")`;
+
+    const updateGreetingMode = (mode) => {
+      currentGreetingMode = mode;
+      if (mode === 'team') {
+        if (btnGreetingTeam) btnGreetingTeam.classList.add('active');
+        if (btnGreetingFounder) btnGreetingFounder.classList.remove('active');
+        if (greetingHint) {
+          greetingHint.textContent = '🛡️ Safe & Natural for WhatsApp / Instagram Floor Staff';
+          greetingHint.style.color = '#38bdf8';
+        }
+      } else {
+        if (btnGreetingTeam) btnGreetingTeam.classList.remove('active');
+        if (btnGreetingFounder) btnGreetingFounder.classList.add('active');
+        if (greetingHint) {
+          greetingHint.textContent = '👤 Addressed to Registered Leadership (Best for Email / LinkedIn)';
+          greetingHint.style.color = '#fbbf24';
+        }
+      }
+      pitch = PitchEngine.generatePitch(lead, currentGreetingMode);
+      textarea.value = pitch.body;
+      if (subjectInput && lead.channel === 'gmail') {
+        subjectInput.value = pitch.subject;
+      }
+      counter.textContent = `${textarea.value.length} characters | ${pitch.limitNote}`;
+    };
+
+    if (btnGreetingTeam) {
+      btnGreetingTeam.classList.add('active');
+      btnGreetingTeam.onclick = () => updateGreetingMode('team');
+    }
+    if (btnGreetingFounder) {
+      btnGreetingFounder.classList.remove('active');
+      btnGreetingFounder.onclick = () => updateGreetingMode('founder');
+    }
+
     textarea.oninput = () => {
       counter.textContent = `${textarea.value.length} characters | ${pitch.limitNote}`;
     };
@@ -918,17 +969,17 @@ const App = {
 
     const activeChannel = channelOverride || lead.channel;
 
-    // Launch direct action based on channel
-    let pitch = PitchEngine.generatePitch(lead);
-    const dmFirstName = lead.decisionMaker ? lead.decisionMaker.split(' ')[0] : 'there';
+    // Launch direct action based on channel with safe, natural team greeting default
+    let pitch = PitchEngine.generatePitch(lead, 'team');
+    const teamGreet = lead.teamGreeting || PitchEngine.getGreetingName(lead, 'team');
     const cleanBiz = lead.businessName ? lead.businessName.split('(')[0].trim() : 'your business';
 
     if (activeChannel === 'whatsapp' && lead.channel !== 'whatsapp') {
-      pitch = PitchEngine.generateWhatsAppPitch(lead, dmFirstName, cleanBiz);
+      pitch = PitchEngine.generateWhatsAppPitch(lead, teamGreet, cleanBiz);
     } else if (activeChannel === 'instagram' && lead.channel !== 'instagram') {
-      pitch = PitchEngine.generateInstagramPitch(lead, dmFirstName, cleanBiz);
+      pitch = PitchEngine.generateInstagramPitch(lead, teamGreet, cleanBiz);
     } else if (activeChannel === 'gmail' && lead.channel !== 'gmail') {
-      pitch = PitchEngine.generateGmailPitch(lead, dmFirstName, cleanBiz);
+      pitch = PitchEngine.generateGmailPitch(lead, teamGreet, cleanBiz);
     }
     const body = customBody || pitch.body;
 
