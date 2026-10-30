@@ -15,22 +15,39 @@ const App = {
     this.setupEventListeners();
     ReplyCenter.init();
 
-    // Always fetch fresh verified leads data to ensure real founders, sources, and channel strategies are active
+    // 1. Instant Synchronous Initial Load: Show verified leads immediately without waiting for network
+    const savedLeads = StorageService.getLeads();
+    const initialLeads = (savedLeads && savedLeads.length > 0 && savedLeads[0].decisionMakerSourceUrl)
+      ? savedLeads
+      : (window.DEFAULT_LEADS || []);
+
+    if (initialLeads && initialLeads.length > 0) {
+      this.leads = initialLeads.map(l => {
+        l.mapsUrl = this.getExactMapsUrl(l);
+        return l;
+      });
+      this.applyFilter('all');
+      this.updateMetrics();
+    }
+
+    // 2. Asynchronous Fresh Sync from data/leads.json
     fetch('data/leads.json')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
       .then(freshLeads => {
-        const savedLeads = StorageService.getLeads();
+        if (!freshLeads || !freshLeads.length) return;
+        const currentSaved = StorageService.getLeads() || [];
         const savedMap = {};
-        if (savedLeads && Array.isArray(savedLeads)) {
-          savedLeads.forEach(l => {
-            savedMap[l.id] = {
-              status: l.status,
-              dispatchedAt: l.dispatchedAt,
-              dispatchedMessage: l.dispatchedMessage,
-              followupDueAt: l.followupDueAt
-            };
-          });
-        }
+        currentSaved.forEach(l => {
+          savedMap[l.id] = {
+            status: l.status,
+            dispatchedAt: l.dispatchedAt,
+            dispatchedMessage: l.dispatchedMessage,
+            followupDueAt: l.followupDueAt
+          };
+        });
 
         this.leads = freshLeads.map(l => {
           l.mapsUrl = this.getExactMapsUrl(l);
@@ -48,14 +65,21 @@ const App = {
         this.updateMetrics();
       })
       .catch(err => {
-        console.warn('Could not load data/leads.json, falling back to local storage:', err);
-        const savedLeads = StorageService.getLeads();
-        if (savedLeads && savedLeads.length > 0) {
-          this.leads = savedLeads;
-          this.applyFilter('all');
-          this.updateMetrics();
+        console.warn('Network fetch bypassed, verified dataset active:', err);
+        if (!this.leads || this.leads.length === 0) {
+          const fallback = window.DEFAULT_LEADS || StorageService.getLeads();
+          if (fallback && fallback.length > 0) {
+            this.leads = fallback.map(l => {
+              l.mapsUrl = this.getExactMapsUrl(l);
+              return l;
+            });
+            StorageService.saveLeads(this.leads);
+            this.applyFilter('all');
+            this.updateMetrics();
+          }
         }
       });
+  },
 
   getExactMapsUrl(lead) {
     if (!lead) return 'https://www.google.com/maps';
