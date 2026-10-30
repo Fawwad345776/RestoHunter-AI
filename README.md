@@ -109,11 +109,9 @@ When a client replies, this notification is triggered with an AI pre-drafted res
 
 ---
 
-## 5. USER SETTINGS & CUSTOM CREDENTIALS
+## 5. USER SETTINGS & CONFIGURATION
 Configured in `data/settings.json` and accessible via the in-app **⚙️ Settings** modal:
-* 🔐 **Login Access Gate:**
-  * **Username:** `Fawwad97`
-  * **Password:** `[REDACTED]`
+* **Operator:** `Fawwad97`
 * **WhatsApp Number:** `+923376568003` (can be updated anytime)
 * **Email Address:** `info.mfsoft@gmail.com` (can be updated anytime)
 * **Instagram ID:** Marked as **Pending / Add Later**
