@@ -676,11 +676,14 @@ const App = {
             <span class="badge-niche">${lead.nicheIcon} ${lead.nicheName.split(',')[0]}</span>
           </td>
           <td>
-            <div class="flaw-tag">
+            <div class="flaw-tag" onclick="App.openFlawModal('${lead.id}')" style="cursor: pointer; transition: all 0.15s ease;" title="Click to view full flaw audit, proof links & client talking points">
               <span class="flaw-label">⚠️ ${lead.flawTitle}</span>
               <span class="leak-badge">${lead.flawLeakRange}</span>
+              <span style="font-size: 0.66rem; color: #fca5a5; display: flex; align-items: center; gap: 3px; margin-top: 3px; font-weight: 700;">
+                <span>🔍</span> Masla & Proof Dekho ↗
+              </span>
             </div>
-            ${lead.niche === 'restaurants' ? `
+            ${lead.niche === 'restaurants' || lead.niche === 'bakeries_sweets' ? `
               <div style="font-size: 0.68rem; color: #38bdf8; margin-top: 4px; display: inline-flex; align-items: center; gap: 4px; background: rgba(56, 189, 248, 0.08); padding: 1px 7px; border-radius: 4px; border: 1px solid rgba(56, 189, 248, 0.28); font-weight: 600;" title="Auto-detected local food delivery aggregator in ${lead.city}, ${lead.country}">
                 <span>🛵 ${lead.regionDeliveryApps || PitchEngine.detectDeliveryPlatform(lead)}</span>
               </div>
@@ -690,6 +693,9 @@ const App = {
           <td>${statusBadge}</td>
           <td>
             <div class="table-row-actions" style="display: flex; gap: 5px; flex-wrap: wrap; align-items: center;">
+              <button class="btn-table-action" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(220, 38, 38, 0.35) 100%); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.6); font-weight: 800; box-shadow: 0 0 10px rgba(239, 68, 68, 0.25); white-space: nowrap;" onclick="App.openFlawModal('${lead.id}')" title="Masla Aur Proof Dekho: Kahan ghalti hai aur client ko kya bolna hai">
+                🔍 Masla Dekho
+              </button>
               <button class="btn-table-action" onclick="App.openPitchModal('${lead.id}')" title="Preview Pitch, Verified Source & Strategy Details">
                 👁️ Pitch & Details
               </button>
@@ -846,6 +852,13 @@ const App = {
           modalMapWrapper.style.display = 'none';
           if (labelToggleMap) labelToggleMap.textContent = 'Show Map ▾';
         }
+      };
+    }
+
+    const flawBtnFromPitch = document.getElementById('modal-btn-open-flaw-from-pitch');
+    if (flawBtnFromPitch) {
+      flawBtnFromPitch.onclick = () => {
+        this.openFlawModal(lead.id);
       };
     }
 
@@ -1206,6 +1219,206 @@ const App = {
       toast.style.transition = 'all 0.3s ease';
       setTimeout(() => toast.remove(), 300);
     }, 3500);
+  },
+
+  getFlawAuditDetails(lead) {
+    const deliveryApp = PitchEngine.detectDeliveryPlatform(lead);
+    const cleanBiz = (lead.businessName || '').split('(')[0].trim();
+    const cityClean = (lead.city || '').split(',')[0].trim();
+    const mapsLink = this.getExactMapsUrl(lead);
+    const igHandle = (lead.contactInfo && lead.contactInfo.instagramHandle) ? lead.contactInfo.instagramHandle.replace('@', '').trim() : '';
+    const igLink = igHandle ? `https://www.instagram.com/${igHandle}/` : null;
+
+    let whatIsWrong = '';
+    let whereToCheck = '';
+    let whyMoneyLeaks = '';
+    let clientQuestions = [];
+    let talkingPoints = [];
+    let deliverableSolution = '';
+
+    if (lead.niche === 'restaurants' || lead.niche === 'bakeries_sweets') {
+      whatIsWrong = `Jab koi customer mobile phone par ${cleanBiz} ka khana dekh kar order karna chahta hai, to unki website ya Google Maps par koi direct interactive 1-tap cart nahi milta. Wahan ya to 15MB ki PDF menu khulti hai jise phone par zoom in/out karna parta hai, ya customer ko ${deliveryApp} par bhej diya jata hai.`;
+      whereToCheck = `1. Google Maps profile par "Order Online" ya "Website" link check karein — wo direct ${deliveryApp} par redirect karta hai.\n2. Instagram bio (@${igHandle || 'business'}) mein Linktree/menu check karein — wahan PDF ya delivery aggregator ka link hota hai.`;
+      whyMoneyLeaks = `${deliveryApp} har order par 28% se 35% commission cut leta hai. Har Rs 2,000 ke order par Rs 600 delivery app rakh leti hai. Mahine ke repeat orders par lagbhag ${lead.flawLeakRange} seedha third-party commission mein zaya ho raha hai.`;
+      talkingPoints = [
+        `"Sir, aapke repeat customers jo aapka khana pehle se pasand karte hain, wo bhi ${deliveryApp} se mangwa rahay hain jahan aapka 30% margin cut kat raha hai."`,
+        `"Mobile par 70% log aatay hain. Jab unhe PDF menu zoom in/out karni parti hai aur 1-tap order button nahi milta, to wo frustate ho kar order cancel kar dete hain."`,
+        `"Agar hum aapko direct 0% commission mobile web ordering system bana kar dein, to har order ka 100% munafa aapki apni pocket mein rahega."`
+      ];
+      clientQuestions = [
+        { q: "Client puche: 'Hum to pehle se Foodpanda par bech rahay hain, wahan se orders aatay hain?'", a: "Jawab: 'Bilkul sir! Foodpanda naye customers ke liye theek hai, lekin jo log aapke regular hain aur aapka naam search kar ke aatay hain, unka 30% commission kyu dena? Regular customers ke liye aapka apna 0% commission direct link hona chahiye!'" },
+        { q: "Client puche: 'Aap humein bana kar kya dogay?'", a: "Jawab: 'Aapka apna branded mobile web menu jahan customer bina app download kiye 1-tap par khana cart mein daal kar direct aapke WhatsApp counter par order slip bhej dega.'" }
+      ];
+      deliverableSolution = `Branded 1-Tap Mobile Ordering Web App (0% Commission, Direct WhatsApp & Online POS, 48 Hours Mein Ready)`;
+    } else if (lead.niche === 'dental_medical' || lead.niche === 'law_firms') {
+      whatIsWrong = `Shaam 7 baje ke baad jab emergency patients ya urgent clients online aatay hain, to appointment book karne ke liye koi 24/7 live interactive calendar mojood nahi hota. Sirf landline phone number likha hota hai jo raat ko band hota hai.`;
+      whereToCheck = `Website aur Google Maps listing check karein: Raat ke waqt emergency appointment slot select karne ka koi real-time booking widget nahi hai.`;
+      whyMoneyLeaks = `60% se zyada emergency patients raat 8 se 11 baje search karte hain. Agar booking na miley to wo aglay din tak intezar karne ke bajaye doosray clinic ya hospital chale jatay hain, jisse mahine mein lagbhag ${lead.flawLeakRange} ki consultations leak ho rahi hain.`;
+      talkingPoints = [
+        `"Doctor / Counsel, aapke 40% patients office hours ke baad search karte hain jab reception band hoti hai."`,
+        `"Agar patient ko foran calendar slot aur confirmation SMS na miley to wo competitor ke paas book ho jata hai."`,
+        `"Hum clinic ke liye 24/7 automated mobile booking calendar set karte hain jahan paperless intake hoti hai."`
+      ];
+      clientQuestions = [
+        { q: "Client puche: 'Hamari reception din mein phone par appointment book to karti hai?'", a: "Jawab: 'Doctor sahib, reception din mein hoti hai, lekin emergency toothache ya urgent case raat 9 baje uthta hai. Tab aapka clinic band hone ki wajah se patient competitor ke paas book ho jata hai.'" }
+      ];
+      deliverableSolution = `24/7 Automated Mobile Patient Intake & Booking System (Paperless forms + 2-way SMS reminder widget, 48 hours)`;
+    } else if (lead.niche === 'salons_spas' || lead.niche === 'pet_care') {
+      whatIsWrong = `Tamam chair bookings manual phone call ya Instagram DM ke zariye hoti hain. Koi automated 2-way SMS reminder ya confirmation system nahi hai, jiski wajah se 15% se 20% appointments "No-Show" (empty chair) mein tabdeel ho jaati hain.`;
+      whereToCheck = `Instagram profile aur Google Maps check karein: Book karne ke liye ya to "Call Now" likha hota hai ya "DM for appointments". Koi instant booking slot picker nahi hai.`;
+      whyMoneyLeaks = `Empty chair ka matlab hai pure paise ka nuksan kyun ke staff aur rent ka kharcha wahi rehta hai. Is no-show rate se salon ko har mahine lagbhag ${lead.flawLeakRange} ka direct loss hota hai.`;
+      talkingPoints = [
+        `"Saw that you still handle appointments manually via phone/DM. Our audit data shows phone-only bookings average a 15-20% no-show rate."`,
+        `"Jab client nahi aata to chair khali rehti hai aur staff ka time zaya hota hai."`,
+        `"Hum 1-tap mobile booking widget lagatay hain jo automated WhatsApp/SMS reminder bhejta hai aur no-shows 85% kam kar deta hai."`
+      ];
+      clientQuestions = [
+        { q: "Client puche: 'Hamari staff DM par reply to karti hai?'", a: "Jawab: 'DM par reply aane mein 2 se 4 ghante lagtay hain, tab tak customer kisi aur salon mein chali jaati hai. 1-tap instant booking se customer foran slot lock kar leti hai.'" }
+      ];
+      deliverableSolution = `1-Tap Mobile Appointment Booking Widget with Automated 2-Way WhatsApp / SMS Reminders (48 hours)`;
+    } else if (lead.niche === 'gyms_fitness') {
+      whatIsWrong = `Mobile page aur Instagram par koi 1-tap Free VIP Day Pass generator nahi hai. Log page dekh kar chhor detay hain aur gym unka contact number capture nahi kar paata.`;
+      whereToCheck = `Instagram bio link aur Google Maps check karein: Sirf phone number ya general photos hain, koi trial pass lead funnel nahi hai.`;
+      whyMoneyLeaks = `Gym seekers visit karne se pehle free trial chahte hain. 60% log bina number diye bounce ho jatay hain, jisse mahine mein ${lead.flawLeakRange} ki nayi memberships miss ho rahi hain.`;
+      talkingPoints = [
+        `"Saw your Instagram bio lacks a 1-tap VIP day pass funnel. Premium gyms leak 60% of interested followers without an instant pass generator."`,
+        `"Hum 1-tap mobile trial pass funnel banate hain jo visitor ka verified WhatsApp number foran aapki sales desk par bhej deta hai."`
+      ];
+      clientQuestions = [
+        { q: "Client puche: 'Log walk-in aa kar dekh saktay hain?'", a: "Jawab: 'Sir 80% log bina pass ke walk-in karne se jhijhaktay hain. Jab unke hath mein branded VIP Pass ka SMS hota hai to wo 3 guna zyada aatay hain.'" }
+      ];
+      deliverableSolution = `1-Tap Mobile VIP Day Pass Lead Funnel with Instant WhatsApp Alert to Sales Desk (48 hours)`;
+    } else {
+      whatIsWrong = `Mobile website par instant direct booking nahi hai, balkay reservation button seedha Booking.com ya third-party portals par redirect karta hai jahan 18% se 25% commission cut kat'ta hai.`;
+      whereToCheck = `Website par "Book Room" button click karein: wo Booking.com ya third party par redirect karta hai.`;
+      whyMoneyLeaks = `Direct customer jo Google Maps ya Instagram se hotel ka naam dhoond kar aata hai, uska bhi 20% commission Booking.com le jata hai (${lead.flawLeakRange}).`;
+      talkingPoints = [
+        `"Noticed your mobile book button redirects directly to OTAs where you give away 20% commission on direct guests."`,
+        `"Hum direct commission-free reservation engine lagatay hain jahan aap direct guests ka 100% room revenue retain kartay hain."`
+      ];
+      clientQuestions = [
+        { q: "Client puche: 'Booking.com se to bookings aati hain?'", a: "Jawab: 'Sir OTAs naye international tourists ke liye achi hain, lekin jo log aapka hotel pehle se jantay hain, unko 20% commission par kyun book karna?'" }
+      ];
+      deliverableSolution = `Direct 0% Commission Mobile Reservation Engine (VIP Perks & Instant WhatsApp Confirmation, 48 hours)`;
+    }
+
+    return {
+      bizName: lead.businessName,
+      cleanBiz,
+      city: lead.city,
+      country: lead.country,
+      flawTitle: lead.flawTitle,
+      leakRange: lead.flawLeakRange,
+      deliveryApp,
+      mapsLink,
+      igLink,
+      igHandle,
+      whatIsWrong,
+      whereToCheck,
+      whyMoneyLeaks,
+      talkingPoints,
+      clientQuestions,
+      deliverableSolution
+    };
+  },
+
+  openFlawModal(leadId) {
+    const lead = this.leads.find(l => l.id === leadId);
+    if (!lead) return;
+
+    const modal = document.getElementById('flaw-audit-modal');
+    if (!modal) return;
+
+    const audit = this.getFlawAuditDetails(lead);
+
+    const titleEl = document.getElementById('flaw-modal-biz-name');
+    const flawTitleEl = document.getElementById('flaw-modal-title');
+    const leakEl = document.getElementById('flaw-modal-leak');
+    const whatEl = document.getElementById('flaw-modal-what');
+    const whereEl = document.getElementById('flaw-modal-where');
+    const btnInspectMaps = document.getElementById('flaw-btn-inspect-maps');
+    const btnInspectIg = document.getElementById('flaw-btn-inspect-ig');
+    const whyEl = document.getElementById('flaw-modal-why');
+    const talkingPointsEl = document.getElementById('flaw-modal-talking-points');
+    const qaContainerEl = document.getElementById('flaw-modal-qa-container');
+    const solutionEl = document.getElementById('flaw-modal-solution');
+
+    if (titleEl) titleEl.textContent = `${lead.businessName} — Client Flaw Audit`;
+    if (flawTitleEl) flawTitleEl.textContent = lead.flawTitle;
+    if (leakEl) leakEl.textContent = lead.flawLeakRange;
+    if (whatEl) whatEl.textContent = audit.whatIsWrong;
+    if (whereEl) whereEl.textContent = audit.whereToCheck;
+
+    if (btnInspectMaps) {
+      btnInspectMaps.href = audit.mapsLink;
+      btnInspectMaps.setAttribute('title', `Open live Google Maps profile to see orders/menu for ${lead.businessName}`);
+    }
+
+    if (btnInspectIg) {
+      if (audit.igLink) {
+        btnInspectIg.href = audit.igLink;
+        btnInspectIg.style.display = 'inline-flex';
+        btnInspectIg.textContent = `📸 Open Instagram @${audit.igHandle} ↗`;
+      } else {
+        btnInspectIg.style.display = 'none';
+      }
+    }
+
+    if (whyEl) whyEl.textContent = audit.whyMoneyLeaks;
+
+    if (talkingPointsEl) {
+      talkingPointsEl.innerHTML = audit.talkingPoints.map(pt => `
+        <div style="display: flex; align-items: flex-start; gap: 8px;">
+          <span style="color: #34d399; font-weight: 800; font-size: 0.9rem;">✓</span>
+          <span>${pt}</span>
+        </div>
+      `).join('');
+    }
+
+    if (qaContainerEl) {
+      qaContainerEl.innerHTML = audit.clientQuestions.map(item => `
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 6px;">
+          <strong style="color: #fca5a5; display: block; margin-bottom: 3px;">❓ ${item.q}</strong>
+          <span style="color: #cbd5e1; line-height: 1.45;">💬 ${item.a}</span>
+        </div>
+      `).join('');
+    }
+
+    if (solutionEl) solutionEl.textContent = audit.deliverableSolution;
+
+    // Action button handlers
+    const closeBtn1 = document.getElementById('modal-flaw-close');
+    const closeBtn2 = document.getElementById('modal-btn-flaw-close-btn');
+    const copySummaryBtn = document.getElementById('modal-btn-flaw-copy-summary');
+    const proceedPitchBtn = document.getElementById('modal-btn-flaw-proceed-pitch');
+
+    const closeModal = () => modal.classList.remove('open');
+    if (closeBtn1) closeBtn1.onclick = closeModal;
+    if (closeBtn2) closeBtn2.onclick = closeModal;
+
+    if (copySummaryBtn) {
+      copySummaryBtn.onclick = () => {
+        const summaryText = `AUDIT BREAKDOWN FOR ${lead.businessName.toUpperCase()}:\n\n` +
+          `⚠️ Flaw: ${lead.flawTitle}\n` +
+          `💸 Estimated Loss: ${lead.flawLeakRange}\n\n` +
+          `1. Asal Masla:\n${audit.whatIsWrong}\n\n` +
+          `2. Kahan Dekhein:\n${audit.whereToCheck}\n\n` +
+          `3. Financial Leak:\n${audit.whyMoneyLeaks}\n\n` +
+          `4. Client Talking Points:\n` + audit.talkingPoints.join('\n') + `\n\n` +
+          `5. Deliverable Solution:\n${audit.deliverableSolution}`;
+        navigator.clipboard.writeText(summaryText);
+        this.showToast('📋 Flaw Audit Breakdown copied to clipboard!', 'success');
+      };
+    }
+
+    if (proceedPitchBtn) {
+      proceedPitchBtn.onclick = () => {
+        closeModal();
+        this.openPitchModal(lead.id);
+      };
+    }
+
+    modal.classList.add('open');
   }
 };
 
