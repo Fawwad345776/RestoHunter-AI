@@ -15,37 +15,47 @@ const App = {
     this.setupEventListeners();
     ReplyCenter.init();
 
-    // Check if we have saved leads, else generate initial 100
-    const savedLeads = StorageService.getLeads();
-    if (savedLeads && savedLeads.length > 0 && savedLeads[0].id && String(savedLeads[0].id).startsWith('real_lead_')) {
-      // Ensure all saved leads have the 100% exact single-pin mapsUrl with physical street address and phone source
-      savedLeads.forEach(l => {
-        l.mapsUrl = this.getExactMapsUrl(l);
-      });
-      StorageService.saveLeads(savedLeads);
-      this.leads = savedLeads;
-      this.applyFilter('all');
-      this.updateMetrics();
-    } else {
-      fetch('data/leads.json')
-        .then(res => res.json())
-        .then(data => {
-          this.leads = data.map(l => {
-            l.mapsUrl = this.getExactMapsUrl(l);
-            return l;
+    // Always fetch fresh verified leads data to ensure real founders, sources, and channel strategies are active
+    fetch('data/leads.json')
+      .then(res => res.json())
+      .then(freshLeads => {
+        const savedLeads = StorageService.getLeads();
+        const savedMap = {};
+        if (savedLeads && Array.isArray(savedLeads)) {
+          savedLeads.forEach(l => {
+            savedMap[l.id] = {
+              status: l.status,
+              dispatchedAt: l.dispatchedAt,
+              dispatchedMessage: l.dispatchedMessage,
+              followupDueAt: l.followupDueAt
+            };
           });
-          StorageService.saveLeads(this.leads);
+        }
+
+        this.leads = freshLeads.map(l => {
+          l.mapsUrl = this.getExactMapsUrl(l);
+          if (savedMap[l.id]) {
+            l.status = savedMap[l.id].status || l.status;
+            l.dispatchedAt = savedMap[l.id].dispatchedAt || null;
+            l.dispatchedMessage = savedMap[l.id].dispatchedMessage || null;
+            l.followupDueAt = savedMap[l.id].followupDueAt || null;
+          }
+          return l;
+        });
+
+        StorageService.saveLeads(this.leads);
+        this.applyFilter('all');
+        this.updateMetrics();
+      })
+      .catch(err => {
+        console.warn('Could not load data/leads.json, falling back to local storage:', err);
+        const savedLeads = StorageService.getLeads();
+        if (savedLeads && savedLeads.length > 0) {
+          this.leads = savedLeads;
           this.applyFilter('all');
           this.updateMetrics();
-        })
-        .catch(err => {
-          console.error('Error fetching data/leads.json:', err);
-        });
-    }
-
-    this.applyFilter('all');
-    this.updateMetrics();
-  },
+        }
+      });
 
   getExactMapsUrl(lead) {
     if (!lead) return 'https://www.google.com/maps';
@@ -525,13 +535,27 @@ const App = {
     }
 
     tbody.innerHTML = this.filteredLeads.map((lead, idx) => {
-      const channelBadge = lead.channel === 'whatsapp'
-        ? `<span class="badge-channel whatsapp">📲 WhatsApp</span>`
-        : lead.channel === 'gmail'
-        ? `<span class="badge-channel gmail">📧 Gmail</span>`
-        : lead.channel === 'linkedin'
-        ? `<span class="badge-channel linkedin">👔 LinkedIn</span>`
-        : `<span class="badge-channel instagram">📸 Instagram</span>`;
+      const bestChannel = lead.recommendedPitchChannel || lead.channel || 'gmail';
+      const channelBadge = bestChannel === 'whatsapp'
+        ? `<div style="display: flex; flex-direction: column; gap: 2px;">
+             <span class="badge-channel whatsapp" style="font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
+               <span>⭐</span> <span>📲 WhatsApp</span>
+             </span>
+             <span style="font-size: 0.66rem; color: #4ade80; font-weight: 600;" title="${lead.pitchChannelReason || ''}">Direct Mobile</span>
+           </div>`
+        : bestChannel === 'instagram'
+        ? `<div style="display: flex; flex-direction: column; gap: 2px;">
+             <span class="badge-channel instagram" style="font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
+               <span>⭐</span> <span>📸 Insta DM</span>
+             </span>
+             <span style="font-size: 0.66rem; color: #f472b6; font-weight: 600;" title="${lead.pitchChannelReason || ''}">Story Reply</span>
+           </div>`
+        : `<div style="display: flex; flex-direction: column; gap: 2px;">
+             <span class="badge-channel gmail" style="font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
+               <span>⭐</span> <span>📧 Gmail</span>
+             </span>
+             <span style="font-size: 0.66rem; color: #93c5fd; font-weight: 600;" title="${lead.pitchChannelReason || ''}">Corporate RFP</span>
+           </div>`;
 
       const dispatchTimeStr = lead.dispatchedAt ? new Date(lead.dispatchedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
       const statusBadge = lead.status === 'dispatched'
@@ -576,6 +600,10 @@ const App = {
         ? `• <a href="mailto:${lead.contactInfo.email}" style="color: #93c5fd; text-decoration: none; font-weight: 500;" title="Send Direct Email">📧 ${lead.contactInfo.email}</a>`
         : '';
 
+      const isWaBest = bestChannel === 'whatsapp';
+      const isIgBest = bestChannel === 'instagram';
+      const isGmailBest = bestChannel === 'gmail';
+
       return `
         <tr data-lead-id="${lead.id}">
           <td>
@@ -598,7 +626,12 @@ const App = {
                   ${emailDisplay}
                 </span>
               </span>
-              <span style="font-size: 0.74rem; color: var(--text-muted); margin-top: 2px;">👤 ${lead.decisionMaker} (${lead.decisionMakerTitle})</span>
+              <div style="font-size: 0.74rem; color: #cbd5e1; margin-top: 4px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                <span>👤 <strong style="color: #f1f5f9;">${lead.decisionMaker}</strong> <span style="color: #94a3b8;">(${lead.decisionMakerTitle})</span></span>
+                <a href="${lead.decisionMakerSourceUrl || '#'}" target="_blank" rel="noopener noreferrer" style="font-size: 0.68rem; background: rgba(251, 191, 36, 0.12); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.38); padding: 2px 7px; border-radius: 4px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 4px; transition: all 0.15s;" title="Click to verify founder / director identity source (${lead.decisionMakerSource})">
+                  <span>🏛️</span> <span>Src: ${lead.decisionMakerSource || 'Corporate Registry'}</span> <span>↗</span>
+                </a>
+              </div>
             </div>
           </td>
           <td>
@@ -614,17 +647,17 @@ const App = {
           <td>${statusBadge}</td>
           <td>
             <div class="table-row-actions" style="display: flex; gap: 5px; flex-wrap: wrap; align-items: center;">
-              <button class="btn-table-action" onclick="App.openPitchModal('${lead.id}')" title="Preview Pitch & Details">
+              <button class="btn-table-action" onclick="App.openPitchModal('${lead.id}')" title="Preview Pitch, Verified Source & Strategy Details">
                 👁️ Pitch & Details
               </button>
-              <button class="btn-table-action" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(37, 99, 235, 0.35)); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.5); padding: 5px 9px; font-size: 0.74rem; font-weight: 700; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'gmail')" title="1-Tap Open Gmail with Tailored Pitch">
-                📧 Gmail
+              <button class="btn-table-action" style="${isGmailBest ? 'background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(37, 99, 235, 0.6)); color: #ffffff; border: 1px solid #60a5fa; box-shadow: 0 0 10px rgba(59, 130, 246, 0.35);' : 'background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.25)); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.35);'} padding: 5px 9px; font-size: 0.74rem; font-weight: 700; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'gmail')" title="1-Tap Open Gmail with Tailored Pitch${isGmailBest ? ' (⭐ Recommended Channel)' : ''}">
+                ${isGmailBest ? '⭐ 📧 Gmail' : '📧 Gmail'}
               </button>
-              <button class="btn-table-action" style="background: linear-gradient(135deg, rgba(225, 48, 108, 0.25), rgba(131, 58, 180, 0.35)); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.5); padding: 5px 9px; font-size: 0.74rem; font-weight: 700; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'instagram')" title="1-Tap Auto-Copy Pitch & Open Instagram DM">
-                📸 Insta DM
+              <button class="btn-table-action" style="${isIgBest ? 'background: linear-gradient(135deg, rgba(225, 48, 108, 0.45), rgba(131, 58, 180, 0.6)); color: #ffffff; border: 1px solid #f472b6; box-shadow: 0 0 10px rgba(244, 114, 182, 0.35);' : 'background: linear-gradient(135deg, rgba(225, 48, 108, 0.15), rgba(131, 58, 180, 0.25)); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.35);'} padding: 5px 9px; font-size: 0.74rem; font-weight: 700; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'instagram')" title="1-Tap Auto-Copy Pitch & Open Instagram DM${isIgBest ? ' (⭐ Recommended Channel)' : ''}">
+                ${isIgBest ? '⭐ 📸 Insta' : '📸 Insta'}
               </button>
               ${isMobileWA
-                ? `<button class="btn-table-action btn-table-wa" style="padding: 5px 9px; font-size: 0.74rem;" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')" title="1-Tap Direct WhatsApp Chat">📲 WA</button>`
+                ? `<button class="btn-table-action btn-table-wa" style="${isWaBest ? 'box-shadow: 0 0 12px rgba(74, 222, 128, 0.5); border: 1px solid #4ade80;' : ''} padding: 5px 9px; font-size: 0.74rem;" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')" title="1-Tap Direct WhatsApp Chat${isWaBest ? ' (⭐ Recommended Channel)' : ''}">${isWaBest ? '⭐ 📲 WA' : '📲 WA'}</button>`
                 : `<button class="btn-table-action" style="background: rgba(255,255,255,0.05); color: #94a3b8; border: 1px solid rgba(255,255,255,0.15); padding: 5px 8px; font-size: 0.72rem; border-radius: 6px; cursor: pointer;" onclick="App.dispatchLandlineWhatsApp('${lead.id}')" title="Official Landline: Click to learn why WhatsApp is disabled or test on your number">📲 WA</button>`
               }
             </div>
@@ -727,6 +760,32 @@ const App = {
     if (dmNameEl) dmNameEl.textContent = lead.decisionMaker;
     if (dmTitleEl) dmTitleEl.textContent = ` (${lead.decisionMakerTitle})`;
     if (dmPhoneInput) dmPhoneInput.value = lead.contactInfo.phone;
+
+    // Founder / Decision Maker Verification Source Link
+    const dmSourceEl = document.getElementById('modal-pitch-dm-source');
+    const dmSourceLink = document.getElementById('modal-pitch-dm-source-link');
+    const bestChannelBadge = document.getElementById('modal-pitch-best-channel-badge');
+    const channelReasonEl = document.getElementById('modal-pitch-channel-reason');
+
+    if (dmSourceEl) dmSourceEl.textContent = lead.decisionMakerSource || 'SECP Corporate Filing';
+    if (dmSourceLink) {
+      dmSourceLink.href = lead.decisionMakerSourceUrl || '#';
+      dmSourceLink.setAttribute('title', `Click to verify founder / leadership identity source (${lead.decisionMakerSource})`);
+    }
+
+    // Recommended Pitch Channel Strategy
+    const recChannel = lead.recommendedPitchChannel || lead.channel || 'gmail';
+    if (bestChannelBadge) {
+      bestChannelBadge.innerHTML = recChannel === 'whatsapp'
+        ? `<span class="badge-channel whatsapp" style="font-weight: 800; font-size: 0.8rem;">⭐ Best: 📲 WhatsApp Direct</span>`
+        : recChannel === 'instagram'
+        ? `<span class="badge-channel instagram" style="font-weight: 800; font-size: 0.8rem;">⭐ Best: 📸 Instagram DM</span>`
+        : `<span class="badge-channel gmail" style="font-weight: 800; font-size: 0.8rem;">⭐ Best: 📧 Gmail Proposal</span>`;
+    }
+
+    if (channelReasonEl) {
+      channelReasonEl.innerHTML = `<strong style="color: #60a5fa;">🎯 Kahan Pitch Karein Aur Kyun:</strong> ${lead.pitchChannelReason || 'Direct channel gives highest response rate for this establishment.'}`;
+    }
 
     const modalIsMobile = lead.phoneType === 'mobile_whatsapp' || (lead.contactInfo && lead.contactInfo.phoneType === 'mobile_whatsapp') || (lead.contactInfo.phone && (/^\+92\s*3/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, '')) || /^\+971\s*5/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''))));
     const phoneTypeBadge = modalIsMobile

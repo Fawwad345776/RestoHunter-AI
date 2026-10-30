@@ -6,20 +6,68 @@
 
 const PitchEngine = {
   /**
+   * Smart greeting parser for verified founders, chef-patrons, partnerships and teams
+   */
+  getGreetingName(lead) {
+    if (!lead || !lead.decisionMaker) return 'there';
+    const dm = lead.decisionMaker.trim();
+    const bizClean = (lead.businessName || '').split('(')[0].trim();
+
+    if (/family/i.test(dm)) return dm;
+    if (/directorate|leadership|team|board/i.test(dm)) return `Team ${bizClean}`;
+    if (/group$/i.test(dm.trim())) return `${dm.replace(/\s+group$/i, '')} Team`;
+
+    if (/&\s*(directors|partners|sons|brothers)/i.test(dm)) {
+      const leadName = dm.replace(/\s*&\s*(directors|partners|sons|brothers).*/i, '').trim();
+      const tokens = leadName.split(/\s+/);
+      let first = tokens[0];
+      if (/^(haji|syed|sardar|ch)/i.test(first) && tokens.length > 1) {
+        first = tokens[1];
+      }
+      return `${first} & Team`;
+    }
+
+    if (dm.includes(' & ')) {
+      const parts = dm.split(' & ').map(p => {
+        return p.trim().split(/\s+/)[0];
+      });
+      return parts.join(' & ');
+    }
+
+    if (/^(muhammad|mohammad)\s+/i.test(dm)) {
+      const tokens = dm.split(/\s+/);
+      return tokens[1] || tokens[0];
+    }
+
+    if (/^(dr\.|chef)\s+/i.test(dm)) {
+      const tokens = dm.split(/\s+/);
+      return `${tokens[0]} ${tokens[1] || ''}`.trim();
+    }
+
+    let base = dm;
+    if (base.includes('(')) base = base.split('(')[0].trim();
+    const tokens = base.split(/\s+/);
+    if (/^(haji|syed|sardar|ch)/i.test(tokens[0]) && tokens.length > 1) {
+      return tokens[1];
+    }
+    return tokens[0];
+  },
+
+  /**
    * Generates tailored pitch based on channel constraints and local market context
    */
   generatePitch(lead) {
-    const firstName = lead.decisionMaker ? lead.decisionMaker.split(' ')[0] : 'there';
+    const greeting = this.getGreetingName(lead);
     const bizShort = lead.businessName.split('(')[0].trim();
 
     if (lead.channel === 'whatsapp') {
-      return this.generateWhatsAppPitch(lead, firstName, bizShort);
+      return this.generateWhatsAppPitch(lead, greeting, bizShort);
     } else if (lead.channel === 'linkedin') {
-      return this.generateLinkedInPitch(lead, firstName, bizShort);
+      return this.generateLinkedInPitch(lead, greeting, bizShort);
     } else if (lead.channel === 'instagram') {
-      return this.generateInstagramPitch(lead, firstName, bizShort);
+      return this.generateInstagramPitch(lead, greeting, bizShort);
     } else {
-      return this.generateGmailPitch(lead, firstName, bizShort);
+      return this.generateGmailPitch(lead, greeting, bizShort);
     }
   },
 
@@ -150,17 +198,17 @@ const PitchEngine = {
    * Day-3 Follow-Up Message Generator
    */
   generateDay3FollowUp(lead) {
-    const firstName = lead.decisionMaker ? lead.decisionMaker.split(' ')[0] : 'there';
+    const greeting = this.getGreetingName(lead);
     const bizShort = lead.businessName.split('(')[0].trim();
 
     if (lead.channel === 'whatsapp') {
-      return `Hi ${firstName}! Quick bump on my WhatsApp note regarding *${bizShort}* and the *${lead.flawLeakRange}* leak. Let me know if you're open to a quick 2-minute chat to walk through how to recover that margin! 🙌`;
+      return `Hi ${greeting}! Quick bump on my WhatsApp note regarding *${bizShort}* and the *${lead.flawLeakRange}* leak. Let me know if you're open to a quick 2-minute chat to walk through how to recover that margin! 🙌`;
     } else if (lead.channel === 'linkedin') {
-      return `Hey ${firstName}, quick follow-up on my note regarding ${bizShort} and the ${lead.flawLeakRange} leak. Would you like me to share a quick 45-second breakdown?`;
+      return `Hey ${greeting}, quick follow-up on my note regarding ${bizShort} and the ${lead.flawLeakRange} leak. Would you like me to share a quick 45-second breakdown?`;
     } else if (lead.channel === 'instagram') {
-      return `Hey guys! Quick bump on my message for ${bizShort} regarding eliminating that ${lead.flawLeakRange} app fee. Let me know if you'd like a quick 30s breakdown! 🙌`;
+      return `Hey ${greeting}! Quick bump on my message for ${bizShort} regarding eliminating that ${lead.flawLeakRange} app fee. Let me know if you'd like a quick 30s breakdown! 🙌`;
     } else {
-      return `hi ${firstName.toLowerCase()},\n\nquick bump on this — did you get a chance to see my note about recovering that ${lead.flawLeakRange} leak for ${bizShort}?\n\nno worries at all if you're swamped, just wanted to check before i archive the notes.\n\nbest,\nfawwad`;
+      return `hi ${greeting.toLowerCase()},\n\nquick bump on this — did you get a chance to see my note about recovering that ${lead.flawLeakRange} leak for ${bizShort}?\n\nno worries at all if you're swamped, just wanted to check before i archive the notes.\n\nbest,\nfawwad`;
     }
   }
 };
