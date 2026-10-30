@@ -830,6 +830,22 @@ ENRICHMENTS = {
     }
 }
 
+def detect_delivery_platform(country, city, addr=''):
+    loc = f"{country} {city} {addr}".lower()
+    if any(k in loc for k in ['pakistan', 'karachi', 'lahore', 'islamabad', 'rawalpindi', 'peshawar', 'faisalabad']):
+        return 'foodpanda'
+    if any(k in loc for k in ['uae', 'emirates', 'dubai', 'abu dhabi', 'sharjah', 'qatar', 'doha', 'riyadh']):
+        return 'Talabat & Deliveroo'
+    if any(k in loc for k in ['uk', 'united kingdom', 'london', 'manchester', 'birmingham', 'leeds', 'glasgow', 'edinburgh']):
+        return 'Deliveroo & Just Eat'
+    if any(k in loc for k in ['canada', 'toronto', 'vancouver', 'montreal']):
+        return 'SkipTheDishes & DoorDash'
+    if any(k in loc for k in ['australia', 'sydney', 'melbourne', 'brisbane']):
+        return 'Uber Eats & Menulog'
+    if any(k in loc for k in ['usa', 'united states', 'austin', 'texas', 'new york', 'nyc', 'chicago', 'los angeles']):
+        return 'DoorDash & Uber Eats'
+    return 'local delivery apps'
+
 def main():
     with open(LEADS_PATH, 'r', encoding='utf-8') as f:
         leads = json.load(f)
@@ -837,6 +853,7 @@ def main():
     updated_count = 0
     for lead in leads:
         lead_id = lead.get('id')
+        lead['regionDeliveryApps'] = detect_delivery_platform(lead.get('country', ''), lead.get('city', ''), lead.get('address', ''))
         if lead_id in ENRICHMENTS:
             enr = ENRICHMENTS[lead_id]
             lead['decisionMaker'] = enr['decisionMaker']

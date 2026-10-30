@@ -54,6 +54,68 @@ const PitchEngine = {
   },
 
   /**
+   * Automatically detects the primary food delivery platform based on lead country, city, and address
+   */
+  detectDeliveryPlatform(lead) {
+    if (lead && lead.regionDeliveryApps && lead.regionDeliveryApps.trim().length > 0) {
+      return lead.regionDeliveryApps;
+    }
+    const loc = `${lead?.country || ''} ${lead?.city || ''} ${lead?.address || ''}`.toLowerCase();
+
+    // Pakistan & South Asia -> foodpanda
+    if (/pakistan|karachi|lahore|islamabad|rawalpindi|peshawar|faisalabad|multan|quetta|sialkot|gujranwala|hyderabad/i.test(loc)) {
+      return 'foodpanda';
+    }
+
+    // United Arab Emirates, Gulf & Middle East -> Talabat & Deliveroo
+    if (/uae|emirates|dubai|abu dhabi|sharjah|qatar|doha|riyadh|jeddah|saudi|kuwait|bahrain|oman/i.test(loc)) {
+      return 'Talabat & Deliveroo';
+    }
+
+    // United Kingdom & Ireland -> Deliveroo & Just Eat
+    if (/uk|united kingdom|london|manchester|birmingham|leeds|glasgow|edinburgh|liverpool|bristol|ireland|dublin|belfast/i.test(loc)) {
+      return 'Deliveroo & Just Eat';
+    }
+
+    // Canada -> SkipTheDishes & DoorDash
+    if (/canada|toronto|vancouver|montreal|calgary|edmonton|ottawa/i.test(loc)) {
+      return 'SkipTheDishes & DoorDash';
+    }
+
+    // Australia & New Zealand -> Uber Eats & Menulog
+    if (/australia|sydney|melbourne|brisbane|perth|adelaide|new zealand|auckland|wellington/i.test(loc)) {
+      return 'Uber Eats & Menulog';
+    }
+
+    // India -> Zomato & Swiggy
+    if (/india|mumbai|delhi|bangalore|bengaluru|hyderabad|chennai|kolkata|pune/i.test(loc)) {
+      return 'Zomato & Swiggy';
+    }
+
+    // Germany & Austria -> Lieferando & Uber Eats
+    if (/germany|deutschland|berlin|munich|hamburg|frankfurt|austria|vienna/i.test(loc)) {
+      return 'Lieferando & Uber Eats';
+    }
+
+    // Netherlands -> Thuisbezorgd & Uber Eats
+    if (/netherlands|amsterdam|rotterdam|utrecht|hague/i.test(loc)) {
+      return 'Thuisbezorgd & Uber Eats';
+    }
+
+    // Spain & Italy -> Glovo & Just Eat
+    if (/spain|madrid|barcelona|italy|rome|milan/i.test(loc)) {
+      return 'Glovo & Just Eat';
+    }
+
+    // USA / North America -> DoorDash & Uber Eats
+    if (/usa|united states|austin|texas|new york|nyc|los angeles|chicago|san francisco|california|miami|florida|dallas|houston|seattle|boston|denver|atlanta|philadelphia/i.test(loc)) {
+      return 'DoorDash & Uber Eats';
+    }
+
+    return 'local delivery apps';
+  },
+
+  /**
    * Generates tailored pitch based on channel constraints and local market context
    */
   generatePitch(lead) {
@@ -75,7 +137,7 @@ const PitchEngine = {
    * WhatsApp: Direct conversational format with authentic formatting, diagnosed flaw, and clear 0% commission offer
    */
   generateWhatsAppPitch(lead, firstName, bizShort) {
-    const deliveryApp = lead.regionDeliveryApps || 'DoorDash/UberEats';
+    const deliveryApp = this.detectDeliveryPlatform(lead);
     let text = '';
 
     if (lead.niche === 'restaurants') {
@@ -103,11 +165,11 @@ const PitchEngine = {
    * LinkedIn: Strict < 300 characters connection note
    */
   generateLinkedInPitch(lead, firstName, bizShort) {
-    const deliveryApp = lead.regionDeliveryApps || 'delivery apps';
+    const deliveryApp = this.detectDeliveryPlatform(lead);
     let text = '';
 
     if (lead.niche === 'restaurants') {
-      text = `Hi ${firstName}, love ${bizShort}! Noticed delivery apps take ~30% (${lead.flawLeakRange}) of orders. We build 0% commission direct ordering systems so you keep 100% ticket revenue, ready in 48h. Open to a quick chat?`;
+      text = `Hi ${firstName}, love ${bizShort}! Noticed ${deliveryApp} takes ~30% (${lead.flawLeakRange}) of orders. We build 0% commission direct ordering systems so you keep 100% ticket revenue, ready in 48h. Open to a quick chat?`;
     } else if (lead.niche === 'dental_medical') {
       text = `Hi ${firstName}, great reviews on ${bizShort}! Noticed after-hours patients have no direct booking, losing ~${lead.flawLeakRange}. We build 24/7 mobile intake calendars for clinics in 48h. Worth a quick chat?`;
     } else if (lead.niche === 'salons_spas') {
@@ -136,11 +198,11 @@ const PitchEngine = {
    * Instagram: Story Reply format to bypass hidden spam requests folder
    */
   generateInstagramPitch(lead, firstName, bizShort) {
-    const deliveryApp = lead.regionDeliveryApps || 'delivery apps';
+    const deliveryApp = this.detectDeliveryPlatform(lead);
     let text = '';
 
     if (lead.niche === 'restaurants') {
-      text = `Yo team ${bizShort}! Just saw your story — food looks incredible 🔥 Quick question: saw you're on ${deliveryApp} — did you know a direct 1-tap ordering setup with 0% commission saves ~${lead.flawLeakRange} in app cuts? We set this up for local restaurants in 48 hours. Open to a quick 2-min chat?`;
+      text = `Hey ${firstName}! Just saw your story at ${bizShort} — food looks incredible 🔥 Quick question: saw you're on ${deliveryApp} — did you know a direct 1-tap ordering setup with 0% commission saves ~${lead.flawLeakRange} in app cuts? We set this up for local restaurants in 48 hours. Open to a quick 2-min chat?`;
     } else if (lead.niche === 'dental_medical') {
       text = `Hey guys! Loved your recent post about the clinic 🙌 Quick heads up: noticed after-hours emergency patients have no online calendar to book directly from Instagram, costing an estimated ${lead.flawLeakRange} in missed appointments. We set up 24/7 automated booking in 48 hours. Can I send a quick breakdown?`;
     } else if (lead.niche === 'salons_spas') {
@@ -164,7 +226,7 @@ const PitchEngine = {
    * Gmail: Curiosity lowercase subject line + 4-sentence body + financial leak calculation
    */
   generateGmailPitch(lead, firstName, bizShort) {
-    const deliveryApp = lead.regionDeliveryApps || 'DoorDash/UberEats';
+    const deliveryApp = this.detectDeliveryPlatform(lead);
     let subject = '';
     let body = '';
 
@@ -200,15 +262,16 @@ const PitchEngine = {
   generateDay3FollowUp(lead) {
     const greeting = this.getGreetingName(lead);
     const bizShort = lead.businessName.split('(')[0].trim();
+    const deliveryApp = this.detectDeliveryPlatform(lead);
 
     if (lead.channel === 'whatsapp') {
-      return `Hi ${greeting}! Quick bump on my WhatsApp note regarding *${bizShort}* and the *${lead.flawLeakRange}* leak. Let me know if you're open to a quick 2-minute chat to walk through how to recover that margin! 🙌`;
+      return `Hi ${greeting}! Quick bump on my WhatsApp note regarding *${bizShort}* and recovering that *${lead.flawLeakRange}* margin from ${deliveryApp}. Let me know if you're open to a quick 2-minute chat! 🙌`;
     } else if (lead.channel === 'linkedin') {
-      return `Hey ${greeting}, quick follow-up on my note regarding ${bizShort} and the ${lead.flawLeakRange} leak. Would you like me to share a quick 45-second breakdown?`;
+      return `Hey ${greeting}, quick follow-up on my note regarding ${bizShort} and the ${lead.flawLeakRange} ${deliveryApp} leak. Would you like me to share a quick 45-second breakdown?`;
     } else if (lead.channel === 'instagram') {
-      return `Hey ${greeting}! Quick bump on my message for ${bizShort} regarding eliminating that ${lead.flawLeakRange} app fee. Let me know if you'd like a quick 30s breakdown! 🙌`;
+      return `Hey ${greeting}! Quick bump on my message for ${bizShort} regarding eliminating that ${deliveryApp} commission cut (${lead.flawLeakRange}). Let me know if you'd like a quick 30s breakdown! 🙌`;
     } else {
-      return `hi ${greeting.toLowerCase()},\n\nquick bump on this — did you get a chance to see my note about recovering that ${lead.flawLeakRange} leak for ${bizShort}?\n\nno worries at all if you're swamped, just wanted to check before i archive the notes.\n\nbest,\nfawwad`;
+      return `hi ${greeting.toLowerCase()},\n\nquick bump on this — did you get a chance to see my note about recovering that ${lead.flawLeakRange} leak from ${deliveryApp.toLowerCase()} for ${bizShort}?\n\nno worries at all if you're swamped, just wanted to check before i archive the notes.\n\nbest,\nfawwad`;
     }
   }
 };

@@ -151,8 +151,8 @@ const REGION_DATASETS = {
     key: 'PAKISTAN',
     currency: 'PKR',
     currencySymbol: 'Rs. ',
-    deliveryApps: 'Foodpanda & Cheetay',
-    deliveryLeakText: 'Foodpanda & local delivery 28% commission cut',
+    deliveryApps: 'foodpanda',
+    deliveryLeakText: 'foodpanda 30% commission cut',
     otaText: 'Online travel apps 20% booking cut',
     leakMultiplier: 180, // Realistic local purchasing power leak
     tld: '.com.pk',

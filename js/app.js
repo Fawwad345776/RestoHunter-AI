@@ -642,6 +642,11 @@ const App = {
               <span class="flaw-label">⚠️ ${lead.flawTitle}</span>
               <span class="leak-badge">${lead.flawLeakRange}</span>
             </div>
+            ${lead.niche === 'restaurants' ? `
+              <div style="font-size: 0.68rem; color: #38bdf8; margin-top: 4px; display: inline-flex; align-items: center; gap: 4px; background: rgba(56, 189, 248, 0.08); padding: 1px 7px; border-radius: 4px; border: 1px solid rgba(56, 189, 248, 0.28); font-weight: 600;" title="Auto-detected local food delivery aggregator in ${lead.city}, ${lead.country}">
+                <span>🛵 ${lead.regionDeliveryApps || PitchEngine.detectDeliveryPlatform(lead)}</span>
+              </div>
+            ` : ''}
           </td>
           <td>${channelBadge}</td>
           <td>${statusBadge}</td>
@@ -729,6 +734,20 @@ const App = {
 
     document.getElementById('modal-pitch-flaw-title').textContent = lead.flawTitle;
     document.getElementById('modal-pitch-flaw-leak').textContent = lead.flawLeakRange;
+
+    // Local Regional Food Delivery Platform Detection
+    const deliveryApp = PitchEngine.detectDeliveryPlatform(lead);
+    const deliveryBadgeRow = document.getElementById('modal-pitch-delivery-badge-row');
+    const deliveryAppNameEl = document.getElementById('modal-pitch-delivery-app-name');
+    const regionLabelEl = document.getElementById('modal-pitch-region-label');
+
+    if (lead.niche === 'restaurants') {
+      if (deliveryBadgeRow) deliveryBadgeRow.style.display = 'flex';
+      if (deliveryAppNameEl) deliveryAppNameEl.textContent = `${deliveryApp} (30% Commission Cut)`;
+      if (regionLabelEl) regionLabelEl.textContent = `📍 ${lead.city || 'Local'} Detected`;
+    } else {
+      if (deliveryBadgeRow) deliveryBadgeRow.style.display = 'none';
+    }
 
     const demoLinkEl = document.getElementById('modal-pitch-demo-link');
     if (demoLinkEl) {
