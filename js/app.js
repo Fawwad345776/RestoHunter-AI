@@ -21,13 +21,14 @@ const App = {
     const hasValidScale = savedLeads && savedLeads.length > 0 && savedLeads[0].businessScale;
     const initialLeads = hasValidScale
       ? savedLeads
-      : (window.DEFAULT_LEADS || window.INITIAL_LEADS || []);
+      : (window.DEFAULT_LEADS || window.INITIAL_LEADS || (typeof INITIAL_LEADS !== 'undefined' ? INITIAL_LEADS : []));
 
     if (initialLeads && initialLeads.length > 0) {
       this.leads = initialLeads.map(l => {
         l.mapsUrl = this.getExactMapsUrl(l);
         return l;
       });
+      StorageService.saveLeads(this.leads);
       this.applyFilter('all');
       this.updateMetrics();
     }
@@ -726,6 +727,7 @@ const App = {
 
       const isWaBest = bestChannel === 'whatsapp';
       const isIgBest = bestChannel === 'instagram';
+      const isGmailBest = bestChannel === 'gmail';
       const isSmallBiz = lead.businessScale === 'small_business';
       const scaleBadge = isSmallBiz
         ? `<span class="badge-scale small" title="Chota Local Business: Seedha maalik ka mobile / WhatsApp, fast response & easy close">
