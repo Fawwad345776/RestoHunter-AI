@@ -134,28 +134,36 @@ const PitchEngine = {
   },
 
   /**
-   * WhatsApp: Direct conversational format with authentic formatting, diagnosed flaw, and clear deliverable offer
+   * WhatsApp: Direct, concise, 3-sentence conversational format with authentic formatting
    */
   generateWhatsAppPitch(lead, firstName, bizShort) {
-    const flaw = lead.flawTitle || 'Mobile conversion bottleneck';
-    const solution = lead.deliverableSolution || '1-Tap Direct Mobile Funnel (48 Hours)';
-    const leak = lead.flawLeakRange || 'significant monthly revenue';
-    const city = (lead.city || '').split(',')[0].trim();
-    const icon = lead.nicheIcon || '🎯';
+    const flaw = (lead.flawTitle || 'mobile booking bottleneck').replace(/\s*\(.*?\)/g, '').trim();
+    const solution = (lead.deliverableSolution || 'direct mobile funnel')
+      .split(' (')[0]
+      .split(' +')[0]
+      .replace(/with Instant WhatsApp.*/i, '')
+      .replace(/with WhatsApp Confirmation.*/i, '')
+      .trim();
+    const leak = lead.flawLeakRange || 'revenue';
 
-    let text = `Hi ${firstName}! Hope you're having a great week at *${bizShort}* ${icon}\n\n` +
-      `Quick observation regarding your mobile presence in ${city}:\n` +
-      `We noticed a specific bottleneck: *${flaw}*.\n\n` +
-      `For businesses of your caliber in ${city}, this drop-off typically leaks around *${leak}* in missed clients and bookings every month.\n\n` +
-      `We set up a *${solution}* so you capture 100% of these clients directly, ready in 48 hours.\n\n` +
-      `Would you be open to a quick 2-minute chat or brief walkthrough this week?`;
+    const greetingLine = firstName.toLowerCase().startsWith('team')
+      ? `Hi ${firstName}! Hope all is well 👋`
+      : `Hi ${firstName}! Hope all is well at *${bizShort}* 👋`;
+
+    // 3 short, punchy lines:
+    // Line 1: Friendly greeting
+    // Line 2: Specific bottleneck + estimated revenue leak
+    // Line 3: 48h solution + low-friction 30-sec question
+    let text = `${greetingLine}\n\n` +
+      `Noticed a quick bottleneck on mobile: *${flaw}*, leaking ~*${leak}* in missed clients.\n\n` +
+      `We build a *${solution}* in 48 hours to recover this. Mind if I share a quick 30-second breakdown?`;
 
     return {
       channel: 'whatsapp',
-      subject: `WhatsApp Direct Outreach for ${lead.decisionMaker}`,
+      subject: `WhatsApp Outreach for ${lead.decisionMaker}`,
       body: text,
       charCount: text.length,
-      limitNote: 'WhatsApp Direct Outreach (Tailored to specific diagnosed flaw)'
+      limitNote: 'WhatsApp Direct (Concise, punchy & high response rate)'
     };
   },
 
@@ -164,17 +172,19 @@ const PitchEngine = {
    */
   generateLinkedInPitch(lead, firstName, bizShort) {
     const flawClean = (lead.flawTitle || 'mobile client intake bottleneck').replace(/\s*\(.*?\)/g, '').trim();
-    const leak = lead.flawLeakRange || 'monthly revenue';
+    const leak = (lead.flawLeakRange || 'revenue').replace(/\/mo$/i, '');
     const solutionClean = (lead.deliverableSolution || 'direct booking funnel')
-      .replace(/\s*\(48 Hours\)/i, '')
-      .replace(/\s*\(Direct.*?\)/i, '')
+      .split(' (')[0]
+      .split(' +')[0]
+      .replace(/with Instant WhatsApp.*/i, '')
+      .replace(/with WhatsApp Confirmation.*/i, '')
       .trim();
 
-    let text = `Hi ${firstName}, love ${bizShort}! Noticed ${flawClean.toLowerCase()} is leaking ~${leak}. We build a ${solutionClean.toLowerCase()} in 48h to capture 100% of these clients. Open to a quick chat?`;
+    let text = `Hi ${firstName}, love ${bizShort}! Noticed ${flawClean.toLowerCase()} costs ~${leak}/mo. We build a ${solutionClean.toLowerCase()} in 48h to fix this. Worth a quick 30s chat?`;
 
     if (text.length > 295) {
       const shortFlaw = flawClean.length > 35 ? flawClean.substring(0, 32) + '...' : flawClean;
-      text = `Hi ${firstName}, noticed ${shortFlaw.toLowerCase()} leaks ~${leak} for ${bizShort}. We build a 1-tap mobile fix in 48h to recover 100% of this. Open to a quick chat?`;
+      text = `Hi ${firstName}, noticed ${shortFlaw.toLowerCase()} costs ~${leak} for ${bizShort}. We build a direct fix in 48h to recover this. Open to a quick chat?`;
     }
 
     if (text.length > 298) {
@@ -191,44 +201,47 @@ const PitchEngine = {
   },
 
   /**
-   * Instagram: Story Reply format tailored to specific flaw
+   * Instagram: Story Reply format tailored to specific flaw (Ultra-concise)
    */
   generateInstagramPitch(lead, firstName, bizShort) {
-    const flaw = lead.flawTitle || 'mobile booking bottleneck';
+    const flaw = (lead.flawTitle || 'mobile booking bottleneck').replace(/\s*\(.*?\)/g, '').trim();
     const leak = lead.flawLeakRange || 'monthly revenue';
-    const solution = (lead.deliverableSolution || 'direct mobile funnel').replace(/\s*\(48 Hours\)/i, '').trim();
     const igHandle = (lead.contactInfo && lead.contactInfo.instagramHandle)
       ? lead.contactInfo.instagramHandle.replace('@', '')
       : (lead.instagramHandle ? lead.instagramHandle.replace('@', '') : 'business');
 
-    const text = `Hey ${firstName}! Great showcase on your page 🙌 Quick heads up: noticed on mobile you have: ${flaw}. In our audit data, that drop-off leaks ~${leak} every month. We build a ${solution.toLowerCase()} in 48 hours to fix this completely. Mind if I send a quick 30s breakdown?`;
+    const text = `Hey ${firstName}! Great post 🔥 Quick observation: noticed on mobile you have: ${flaw} (~${leak} leak). We fix this in 48 hours. Mind if I send a quick 30s look?`;
 
     return {
       channel: 'instagram',
       subject: `Story Reply to @${igHandle}`,
       body: text,
       charCount: text.length,
-      limitNote: 'Story Reply Format (Lands directly in primary inbox, bypasses spam requests)'
+      limitNote: 'Story Reply (Ultra-concise, lands in primary inbox)'
     };
   },
 
   /**
-   * Gmail: Curiosity lowercase subject line + 4-sentence body + financial leak calculation
+   * Gmail: Clean 3-sentence curiosity email + financial leak calculation
    */
   generateGmailPitch(lead, firstName, bizShort) {
-    const flaw = lead.flawTitle || 'mobile client intake bottleneck';
+    const flaw = (lead.flawTitle || 'mobile client intake bottleneck').replace(/\s*\(.*?\)/g, '').trim();
     const leak = lead.flawLeakRange || 'lost monthly revenue';
-    const solution = lead.deliverableSolution || '1-tap mobile conversion system';
+    const solution = (lead.deliverableSolution || '1-tap mobile conversion system')
+      .split(' (')[0]
+      .split(' +')[0]
+      .replace(/with Instant WhatsApp.*/i, '')
+      .replace(/with WhatsApp Confirmation.*/i, '')
+      .trim();
     const city = (lead.city || '').split(',')[0].trim();
 
-    const cleanFlawShort = flaw.replace(/\s*\(.*?\)/g, '').substring(0, 38).trim();
-    const subject = `quick question regarding ${bizShort.toLowerCase()} (${cleanFlawShort.toLowerCase()})`;
+    const cleanFlawShort = flaw.substring(0, 32).trim();
+    const subject = `quick note: ${bizShort.toLowerCase()} (${cleanFlawShort.toLowerCase()})`;
 
     const body = `hi ${firstName.toLowerCase()},\n\n` +
-      `was doing a brief audit of ${bizShort} in ${city} and noticed a specific bottleneck: ${flaw.toLowerCase()}.\n\n` +
-      `for businesses of your caliber in ${city}, this friction typically leaks around ${leak} in missed clients and bookings every month.\n\n` +
-      `we set up a ${solution.toLowerCase()} to capture 100% of these clients directly, ready in 48 hours.\n\n` +
-      `would you be opposed to a brief 2-minute chat or quick walkthrough this week?\n\n` +
+      `noticed a quick bottleneck on ${bizShort}'s mobile presence in ${city}: ${flaw.toLowerCase()}.\n\n` +
+      `this typically costs businesses in your area around ${leak} in missed bookings each month. we build a ${solution.toLowerCase()} in 48 hours to recover this.\n\n` +
+      `worth a quick 2-minute chat this week?\n\n` +
       `best,\n` +
       `fawwad`;
 
@@ -237,26 +250,26 @@ const PitchEngine = {
       subject,
       body,
       charCount: body.length,
-      limitNote: 'Curiosity Lowercase Subject + 4-Sentence Body (High Open & Reply Rate)'
+      limitNote: 'Curiosity Lowercase Subject + 3 Sentences (Fast Open & High Reply)'
     };
   },
 
   /**
-   * Day-3 Follow-Up Message Generator
+   * Day-3 Follow-Up Message Generator (Ultra-concise 1-line bump)
    */
   generateDay3FollowUp(lead, mode = 'team') {
     const greeting = this.getGreetingName(lead, mode);
     const bizShort = lead.businessName.split('(')[0].trim();
-    const flaw = (lead.flawTitle || 'the mobile intake bottleneck').replace(/\s*\(.*?\)/g, '').trim();
+    const flaw = (lead.flawTitle || 'the booking leak').replace(/\s*\(.*?\)/g, '').trim();
 
     if (lead.channel === 'whatsapp') {
-      return `Hi ${greeting}! Quick bump on my WhatsApp note regarding *${bizShort}* and fixing that *${flaw}* (~${lead.flawLeakRange}). Let me know if you're open to a quick 2-minute chat! 🙌`;
+      return `Hi ${greeting}! Quick bump regarding *${bizShort}* and fixing that *${flaw}* (~${lead.flawLeakRange}). Open to a quick 2-min chat? 🙌`;
     } else if (lead.channel === 'linkedin') {
-      return `Hey ${greeting}, quick follow-up on my note regarding ${bizShort} and fixing the ${lead.flawLeakRange} leak from ${flaw.substring(0, 45)}. Worth a quick 45-second look?`;
+      return `Hey ${greeting}, quick bump regarding ${bizShort} and fixing ${flaw.substring(0, 40)}. Worth a 30s look?`;
     } else if (lead.channel === 'instagram') {
-      return `Hey ${greeting}! Quick bump on my message for ${bizShort} regarding fixing ${flaw} (~${lead.flawLeakRange}). Let me know if you'd like a quick 30s breakdown! 🙌`;
+      return `Hey ${greeting}! Quick bump regarding fixing ${flaw} for ${bizShort} (~${lead.flawLeakRange}). Mind if I share a quick breakdown? 🙌`;
     } else {
-      return `hi ${greeting.toLowerCase()},\n\nquick bump on this — did you get a chance to see my note about fixing ${flaw.toLowerCase()} and recovering ~${lead.flawLeakRange} for ${bizShort}?\n\nno worries at all if you're swamped, just wanted to check before i archive the audit.\n\nbest,\nfawwad`;
+      return `hi ${greeting.toLowerCase()},\n\nquick bump on this — open to a quick 2-minute look at fixing ${flaw.toLowerCase()} for ${bizShort}?\n\nno worries if you're swamped!\n\nbest,\nfawwad`;
     }
   }
 };
