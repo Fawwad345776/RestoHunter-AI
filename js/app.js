@@ -130,10 +130,37 @@ const App = {
   },
 
   setupEventListeners() {
-    // Start 100-Lead Hunt
+    // Start 100-Lead Hunt & Dropdown Filters (Synchronized & Instant)
     const startHuntBtn = document.getElementById('btn-start-hunt');
+    const targetNicheSelect = document.getElementById('target-niche-select');
+    const tableNicheFilter = document.getElementById('table-niche-filter');
+    const cityInput = document.getElementById('target-city-input');
+
     if (startHuntBtn) {
-      startHuntBtn.addEventListener('click', () => this.handleStartHunt());
+      startHuntBtn.addEventListener('click', () => this.handleStartHunt(true));
+    }
+
+    if (targetNicheSelect) {
+      targetNicheSelect.addEventListener('change', (e) => {
+        if (tableNicheFilter) tableNicheFilter.value = e.target.value;
+        this.handleStartHunt(true);
+      });
+    }
+
+    if (tableNicheFilter) {
+      tableNicheFilter.addEventListener('change', (e) => {
+        if (targetNicheSelect) targetNicheSelect.value = e.target.value;
+        this.handleStartHunt(false);
+      });
+    }
+
+    if (cityInput) {
+      cityInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          this.handleStartHunt(true);
+        }
+      });
     }
 
     // Target Market Toggle (Dropdown vs Custom EditText)
@@ -460,65 +487,99 @@ const App = {
   },
 
   handleCityFilter(cityQuery) {
+    const cityInput = document.getElementById('target-city-input');
     if (!cityQuery || cityQuery === 'ALL') {
-      this.applyFilter('all');
-      return;
+      if (cityInput) cityInput.value = '';
+    } else {
+      if (cityInput) cityInput.value = cityQuery;
     }
-    const q = cityQuery.toLowerCase();
-    this.filteredLeads = this.leads.filter(l =>
-      l.city.toLowerCase().includes(q) ||
-      (l.country && l.country.toLowerCase().includes(q)) ||
-      (l.address && l.address.toLowerCase().includes(q))
-    );
-    this.renderTable();
-    this.showToast(`Showing ${this.filteredLeads.length} Google Maps Verified Leads in ${cityQuery}!`, 'info');
+    this.handleStartHunt(true);
   },
 
-  handleStartHunt() {
+  handleStartHunt(scrollToTable = true) {
     const cityInput = document.getElementById('target-city-input');
     const nicheSelect = document.getElementById('target-niche-select');
-    const city = cityInput && cityInput.value.trim() ? cityInput.value.trim() : '';
-    const niche = nicheSelect ? nicheSelect.value : 'all';
+    const tableNicheFilter = document.getElementById('table-niche-filter');
 
-    let matched = this.leads;
-    if (city && city.toLowerCase() !== 'all') {
-      const q = city.toLowerCase();
-      matched = matched.filter(l =>
-        l.city.toLowerCase().includes(q) ||
-        (l.country && l.country.toLowerCase().includes(q)) ||
-        (l.address && l.address.toLowerCase().includes(q))
-      );
+    // Sync selected niche
+    let niche = 'all';
+    if (tableNicheFilter && tableNicheFilter.value) {
+      niche = tableNicheFilter.value;
+    } else if (nicheSelect && nicheSelect.value) {
+      niche = nicheSelect.value;
     }
+
+    if (nicheSelect && nicheSelect.value !== niche) nicheSelect.value = niche;
+    if (tableNicheFilter && tableNicheFilter.value !== niche) tableNicheFilter.value = niche;
+
+    const city = cityInput && cityInput.value.trim() ? cityInput.value.trim() : '';
+
+    let matched = [...this.leads];
+
+    // 1. Filter by niche if not 'all'
     if (niche && niche !== 'all') {
       matched = matched.filter(l => l.niche === niche);
     }
 
-    if (matched.length > 0) {
-      this.filteredLeads = matched;
-      this.renderTable();
-      this.showToast(`✅ Found ${matched.length} Google Maps Verified Leads!`, 'success');
-    } else {
-      this.filteredLeads = this.leads;
-      this.renderTable();
-      this.showToast(`Showing all 100 Google Maps Verified Leads!`, 'info');
+    // 2. Filter by city if user entered one
+    if (city && city.toLowerCase() !== 'all') {
+      const q = city.toLowerCase();
+      const cityMatched = matched.filter(l =>
+        (l.city && l.city.toLowerCase().includes(q)) ||
+        (l.country && l.country.toLowerCase().includes(q)) ||
+        (l.address && l.address.toLowerCase().includes(q))
+      );
+      if (cityMatched.length > 0) {
+        matched = cityMatched;
+      } else {
+        const nicheLabel = nicheSelect?.options[nicheSelect.selectedIndex]?.text || niche;
+        this.showToast(`No leads in "${city}" for ${nicheLabel}. Showing all ${matched.length} verified leads for this niche!`, 'info');
+      }
     }
 
-    const tableHeader = document.querySelector('.leads-section-header');
-    if (tableHeader) tableHeader.scrollIntoView({ behavior: 'smooth' });
+    // 3. Preserve active channel filter if user had one selected
+    if (this.currentChannelFilter && this.currentChannelFilter !== 'all') {
+      const ch = this.currentChannelFilter;
+      if (ch === 'dispatched') {
+        matched = matched.filter(l => l.status === 'dispatched' || l.status === 'replied');
+      } else if (['whatsapp', 'gmail', 'linkedin', 'instagram'].includes(ch)) {
+        matched = matched.filter(l => l.channel === ch);
+      }
+    }
+
+    this.filteredLeads = matched;
+    this.renderTable();
+
+    const selectedOptionText = nicheSelect?.options[nicheSelect.selectedIndex]?.text || 'Verified Leads';
+    this.showToast(`Showing ${matched.length} ${selectedOptionText}!`, 'success');
+
+    if (scrollToTable) {
+      const tableHeader = document.querySelector('.leads-section-header');
+      if (tableHeader) tableHeader.scrollIntoView({ behavior: 'smooth' });
+    }
   },
 
   applyFilter(filter) {
     this.currentChannelFilter = filter;
+    const nicheSelect = document.getElementById('target-niche-select');
+    const tableNicheFilter = document.getElementById('table-niche-filter');
+    const niche = (tableNicheFilter && tableNicheFilter.value) || (nicheSelect && nicheSelect.value) || 'all';
+
+    let base = [...this.leads];
+    if (niche && niche !== 'all') {
+      base = base.filter(l => l.niche === niche);
+    }
+
     if (filter === 'all') {
-      this.filteredLeads = [...this.leads];
+      this.filteredLeads = base;
     } else if (filter === 'dispatched') {
-      this.filteredLeads = this.leads.filter(l => l.status === 'dispatched' || l.status === 'replied');
+      this.filteredLeads = base.filter(l => l.status === 'dispatched' || l.status === 'replied');
     } else if (filter === 'whatsapp' || filter === 'gmail' || filter === 'linkedin' || filter === 'instagram') {
-      this.filteredLeads = this.leads.filter(l => l.channel === filter);
+      this.filteredLeads = base.filter(l => l.channel === filter);
     } else if (filter === 'replied') {
-      this.filteredLeads = this.leads.filter(l => l.status === 'replied');
+      this.filteredLeads = base.filter(l => l.status === 'replied');
     } else if (filter === 'followup') {
-      this.filteredLeads = AutopilotEngine.getDueFollowUps(this.leads);
+      this.filteredLeads = AutopilotEngine.getDueFollowUps(base);
     }
     this.renderTable();
   },
@@ -1241,84 +1302,39 @@ const App = {
 
     let websiteInsight = '';
     if (websiteLink) {
-      websiteInsight = `Inki official website (<a href="${websiteLink}" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: underline; font-weight: 700;">${websiteDomain} ↗</a>) pehle se bani hui hai. <strong>Agency inhein "website banane" ki pitch nahi karegi!</strong> Agency inhein batati hai ke inki mojooda website par customer friction aur drop-off kahan hai (jaise: PDF menus/price lists download karna parti hain, ya booking button third-party aggregator par bhej deta hai). Hum inhein <strong>"Conversion Optimization & Revenue Recovery"</strong> pitch karte hain jis se inka munafa barhta hai.`;
+      websiteInsight = `Inki official website (<a href="${websiteLink}" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: underline; font-weight: 700;">${websiteDomain} ↗</a>) pehle se bani hui hai. <strong>Agency inhein "website banane" ki pitch nahi karegi!</strong> Agency inhein batati hai ke inki mojooda digital presence mein specific friction point kya hai (${lead.flawTitle}). Hum inhein <strong>"Conversion Optimization & Revenue Recovery Funnel"</strong> deliver karte hain jis se inka munafa aur direct bookings barhti hain.`;
     } else {
-      websiteInsight = `Inki koi official direct booking/order website nahi hai — yeh 100% third-party aggregators ya direct phone calls par munhasir hain. Inhe 0% commission direct automated mobile funnel pitch karein.`;
+      websiteInsight = `Inki koi official direct booking/order website nahi hai — yeh 100% third-party aggregators, phone calls ya DMs par munhasir hain. Inhe direct 1-tap mobile funnel deliver karein.`;
     }
 
-    let whatIsWrong = '';
-    let whereToCheck = '';
-    let whyMoneyLeaks = '';
+    // Dynamic resolution of unique lead flaw and audit details
+    const whatIsWrong = lead.specificWeakness || `Jab koi customer mobile phone par ${cleanBiz} ke services/products browse karta hai, to wahan direct 1-tap booking/ordering funnel nahi milta (${lead.flawTitle}).`;
+
+    const whereToCheck = lead.whereToCheck || `1. Google Maps profile aur official website/links check karein: ${lead.flawTitle}.\n2. Instagram bio (@${igHandle || 'business'}) mein direct 1-tap funnel check karein.`;
+
+    const whyMoneyLeaks = lead.whyMoneyLeaks || `Is friction aur bottleneck ki wajah se peak hours aur after-hours customers competitor ke paas chalay jaatay hain, jis se mahine mein lagbhag ${lead.flawLeakRange} ka direct revenue loss hota hai.`;
+
+    const talkingPoints = (lead.talkingPoints && Array.isArray(lead.talkingPoints) && lead.talkingPoints.length > 0)
+      ? lead.talkingPoints
+      : [
+          `"Saw your mobile presence for ${cleanBiz}, but noticed ${lead.flawTitle} creates significant customer friction."`,
+          `"For top-tier businesses in ${cityClean}, this drop-off typically leaks ~${lead.flawLeakRange} in lost bookings/orders every month."`,
+          `"Hum 48 hours mein ${lead.deliverableSolution || 'direct 1-tap mobile conversion system'} deliver karte hain jo is leak ko khatam karta hai."`
+        ];
+
     let clientQuestions = [];
-    let talkingPoints = [];
-    let deliverableSolution = '';
-
-    if (lead.niche === 'restaurants' || lead.niche === 'bakeries_sweets') {
-      whatIsWrong = `Jab koi customer mobile phone par ${cleanBiz} ka khana dekh kar order karna chahta hai, to unki website ya Google Maps par koi direct interactive 1-tap cart nahi milta. Wahan ya to 15MB ki PDF menu khulti hai jise phone par zoom in/out karna parta hai, ya customer ko ${deliveryApp} par bhej diya jata hai.`;
-      whereToCheck = `1. Google Maps profile par "Order Online" ya "Website" link check karein — wo direct ${deliveryApp} par redirect karta hai.\n2. Instagram bio (@${igHandle || 'business'}) mein Linktree/menu check karein — wahan PDF ya delivery aggregator ka link hota hai.`;
-      whyMoneyLeaks = `${deliveryApp} har order par 28% se 35% commission cut leta hai. Har Rs 2,000 ke order par Rs 600 delivery app rakh leti hai. Mahine ke repeat orders par lagbhag ${lead.flawLeakRange} seedha third-party commission mein zaya ho raha hai.`;
-      talkingPoints = [
-        `"Sir, aapke repeat customers jo aapka khana pehle se pasand karte hain, wo bhi ${deliveryApp} se mangwa rahay hain jahan aapka 30% margin cut kat raha hai."`,
-        `"Mobile par 70% log aatay hain. Jab unhe PDF menu zoom in/out karni parti hai aur 1-tap order button nahi milta, to wo frustate ho kar order cancel kar dete hain."`,
-        `"Agar hum aapko direct 0% commission mobile web ordering system bana kar dein, to har order ka 100% munafa aapki apni pocket mein rahega."`
-      ];
-      clientQuestions = [
-        { q: "Client puche: 'Hum to pehle se Foodpanda par bech rahay hain, wahan se orders aatay hain?'", a: "Jawab: 'Bilkul sir! Foodpanda naye customers ke liye theek hai, lekin jo log aapke regular hain aur aapka naam search kar ke aatay hain, unka 30% commission kyu dena? Regular customers ke liye aapka apna 0% commission direct link hona chahiye!'" },
-        { q: "Client puche: 'Aap humein bana kar kya dogay?'", a: "Jawab: 'Aapka apna branded mobile web menu jahan customer bina app download kiye 1-tap par khana cart mein daal kar direct aapke WhatsApp counter par order slip bhej dega.'" }
-      ];
-      deliverableSolution = `Branded 1-Tap Mobile Ordering Web App (0% Commission, Direct WhatsApp & Online POS, 48 Hours Mein Ready)`;
-    } else if (lead.niche === 'dental_medical' || lead.niche === 'law_firms') {
-      whatIsWrong = `Shaam 7 baje ke baad jab emergency patients ya urgent clients online aatay hain, to appointment book karne ke liye koi 24/7 live interactive calendar mojood nahi hota. Sirf landline phone number likha hota hai jo raat ko band hota hai.`;
-      whereToCheck = `Website aur Google Maps listing check karein: Raat ke waqt emergency appointment slot select karne ka koi real-time booking widget nahi hai.`;
-      whyMoneyLeaks = `60% se zyada emergency patients raat 8 se 11 baje search karte hain. Agar booking na miley to wo aglay din tak intezar karne ke bajaye doosray clinic ya hospital chale jatay hain, jisse mahine mein lagbhag ${lead.flawLeakRange} ki consultations leak ho rahi hain.`;
-      talkingPoints = [
-        `"Doctor / Counsel, aapke 40% patients office hours ke baad search karte hain jab reception band hoti hai."`,
-        `"Agar patient ko foran calendar slot aur confirmation SMS na miley to wo competitor ke paas book ho jata hai."`,
-        `"Hum clinic ke liye 24/7 automated mobile booking calendar set karte hain jahan paperless intake hoti hai."`
-      ];
-      clientQuestions = [
-        { q: "Client puche: 'Hamari reception din mein phone par appointment book to karti hai?'", a: "Jawab: 'Doctor sahib, reception din mein hoti hai, lekin emergency toothache ya urgent case raat 9 baje uthta hai. Tab aapka clinic band hone ki wajah se patient competitor ke paas book ho jata hai.'" }
-      ];
-      deliverableSolution = `24/7 Automated Mobile Patient Intake & Booking System (Paperless forms + 2-way SMS reminder widget, 48 hours)`;
-    } else if (lead.niche === 'salons_spas' || lead.niche === 'pet_care') {
-      whatIsWrong = `Inki official website par ya to static PDF price list lagi hui hai jise mobile par zoom-in karna parta hai, ya booking button third-party webstore (jaise Zenoti) ya contact helpline par bhej deta hai. Koi automated 2-way WhatsApp slot reminder/confirmation system nahi hai, jiski wajah se 15% se 20% appointments "No-Show" (empty chair) mein tabdeel ho jaati hain.`;
-      whereToCheck = `1. Website (${websiteDomain || 'Official Site'}) par "Book Now" click karein: wo external portal ya contact page par bhejta hai.\n2. Price List check karein: static PDF download hoti hai jo mobile par zoom karni parti hai.\n3. Instagram bio (@${igHandle || 'business'}) mein check karein: direct automated 1-tap WhatsApp slot booking nahi hai.`;
-      whyMoneyLeaks = `Luxury salon mein ek senior stylist ka haircut/treatment Rs 8,000 se Rs 25,000+ hota hai. Jab client booking ke baad nahi aata (No-Show) to chair khali rehti hai aur salon ko mahine mein lagbhag ${lead.flawLeakRange} ka direct revenue loss hota hai.`;
-      talkingPoints = [
-        `"Saw your stunning website and Instagram, but noticed booking redirects through contact forms/external portals and price lists are PDFs."`,
-        `"High-end salons lose 15-20% of billings purely to empty chairs (no-shows) when there's no automated 2-way WhatsApp confirmation."`,
-        `"Hum 1-tap mobile VIP booking widget lagatay hain jo automated 2-way WhatsApp reminder bhej kar no-shows 85% khatam karta hai."`
-      ];
-      clientQuestions = [
-        { q: "Client puche: 'Hamari website to pehle se bani hui hai?'", a: "Jawab: 'Bilkul ma\\'am/sir! Aapki branding zabardast hai. Hum nayi website nahi bech rahay, balkay aapki mojooda site par automated WhatsApp booking widget aur PDF menu ko interactive banatay hain taake empty chairs aur no-shows khatam hon.'" },
-        { q: "Client puche: 'Hamari reception phone par appointments manage karti hai?'", a: "Jawab: 'Reception call to kar leti hai, lekin 70% clients phone uthanay ke bajaye WhatsApp par 1-tap \\'Confirm\\' button press karna prefer karte hain, jisse booking slot guaranteed lock ho jata hai.'" }
-      ];
-      deliverableSolution = `1-Tap Mobile VIP Salon Booking Funnel + Automated 2-Way WhatsApp Confirmation & No-Show Shield (48 hours)`;
-    } else if (lead.niche === 'gyms_fitness') {
-      whatIsWrong = `Mobile page aur Instagram par koi 1-tap Free VIP Day Pass generator nahi hai. Log page dekh kar chhor detay hain aur gym unka contact number capture nahi kar paata.`;
-      whereToCheck = `Instagram bio link aur Google Maps check karein: Sirf phone number ya general photos hain, koi trial pass lead funnel nahi hai.`;
-      whyMoneyLeaks = `Gym seekers visit karne se pehle free trial chahte hain. 60% log bina number diye bounce ho jatay hain, jisse mahine mein ${lead.flawLeakRange} ki nayi memberships miss ho rahi hain.`;
-      talkingPoints = [
-        `"Saw your Instagram bio lacks a 1-tap VIP day pass funnel. Premium gyms leak 60% of interested followers without an instant pass generator."`,
-        `"Hum 1-tap mobile trial pass funnel banate hain jo visitor ka verified WhatsApp number foran aapki sales desk par bhej deta hai."`
-      ];
-      clientQuestions = [
-        { q: "Client puche: 'Log walk-in aa kar dekh saktay hain?'", a: "Jawab: 'Sir 80% log bina pass ke walk-in karne se jhijhaktay hain. Jab unke hath mein branded VIP Pass ka SMS hota hai to wo 3 guna zyada aatay hain.'" }
-      ];
-      deliverableSolution = `1-Tap Mobile VIP Day Pass Lead Funnel with Instant WhatsApp Alert to Sales Desk (48 hours)`;
-    } else {
-      whatIsWrong = `Mobile website par instant direct booking nahi hai, balkay reservation button seedha Booking.com ya third-party portals par redirect karta hai jahan 18% se 25% commission cut kat'ta hai.`;
-      whereToCheck = `Website par "Book Room" button click karein: wo Booking.com ya third party par redirect karta hai.`;
-      whyMoneyLeaks = `Direct customer jo Google Maps ya Instagram se hotel ka naam dhoond kar aata hai, uska bhi 20% commission Booking.com le jata hai (${lead.flawLeakRange}).`;
-      talkingPoints = [
-        `"Noticed your mobile book button redirects directly to OTAs where you give away 20% commission on direct guests."`,
-        `"Hum direct commission-free reservation engine lagatay hain jahan aap direct guests ka 100% room revenue retain kartay hain."`
-      ];
-      clientQuestions = [
-        { q: "Client puche: 'Booking.com se to bookings aati hain?'", a: "Jawab: 'Sir OTAs naye international tourists ke liye achi hain, lekin jo log aapka hotel pehle se jantay hain, unko 20% commission par kyun book karna?'" }
-      ];
-      deliverableSolution = `Direct 0% Commission Mobile Reservation Engine (VIP Perks & Instant WhatsApp Confirmation, 48 hours)`;
+    if (lead.clientQuestion && lead.clientAnswer) {
+      clientQuestions.push({
+        q: lead.clientQuestion,
+        a: lead.clientAnswer
+      });
     }
+    clientQuestions.push({
+      q: `Client puche: 'Aap humein bana kar kya dogay?'`,
+      a: `Jawab: 'Sir hum 48 hours mein ${lead.deliverableSolution || '1-Tap Direct Mobile Funnel'} tayyar karke deliver karein gay jo direct aapke WhatsApp/POS system se sync hoga.'`
+    });
+
+    const deliverableSolution = lead.deliverableSolution || `Branded 1-Tap Mobile Conversion Funnel (Direct WhatsApp Sync, 48 Hours Mein Ready)`;
 
     return {
       bizName: lead.businessName,

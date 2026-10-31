@@ -239,7 +239,7 @@
           <label class="input-label" for="target-city-input">
             <span>🏙️</span> Target City / Metro
           </label>
-          <input type="text" id="target-city-input" class="custom-input" placeholder="e.g. Austin, Dubai, London, Toronto..." value="Austin, Texas">
+          <input type="text" id="target-city-input" class="custom-input" placeholder="e.g. All Cities, Karachi, Dubai, Austin, London..." value="">
         </div>
 
         <!-- Multi-Niche Selector -->
@@ -248,7 +248,7 @@
             <span>🎯</span> Niche Category
           </label>
           <select id="target-niche-select" class="custom-select">
-            <option value="all" selected>All 100 Verified Leads (All Industries)</option>
+            <option value="all" selected>All 100 Verified Leads (All 12 Industries)</option>
             <option value="restaurants">🍽️ Restaurants, Cafes & Pizzerias</option>
             <option value="bakeries_sweets">🧁 Bakeries, Desserts & Sweet Shops</option>
             <option value="dental_medical">🩺 Dental & Medical Clinics</option>
@@ -337,8 +337,27 @@
         </div>
 
         <!-- Search Bar -->
-        <div style="flex: 1; max-width: 320px;">
+        <div style="flex: 1; max-width: 260px;">
           <input type="text" id="table-search-input" class="custom-input" style="height: 38px; font-size: 0.85rem;" placeholder="Search business, owner, flaw...">
+        </div>
+
+        <!-- Table Niche Dropdown Filter -->
+        <div style="min-width: 210px;">
+          <select id="table-niche-filter" class="custom-select" style="height: 38px; font-size: 0.82rem; background: rgba(15, 23, 42, 0.85); border-color: rgba(56, 189, 248, 0.45); color: #f1f5f9; font-weight: 600;">
+            <option value="all" selected>🎯 All 12 Industries (100 Leads)</option>
+            <option value="restaurants">🍽️ Restaurants & Cafes (10)</option>
+            <option value="bakeries_sweets">🧁 Bakeries & Sweets (9)</option>
+            <option value="dental_medical">🩺 Dental & Medical (9)</option>
+            <option value="salons_spas">✂️ Barber Shops & Salons (9)</option>
+            <option value="gyms_fitness">🏋️ Gyms & Fitness (8)</option>
+            <option value="auto_repair">🚗 Auto Repair & Detailing (8)</option>
+            <option value="real_estate">🏡 Real Estate & Brokers (8)</option>
+            <option value="home_services">🔨 Home Services (HVAC/Plumb) (8)</option>
+            <option value="boutique_hotels">🏨 Boutique Hotels (8)</option>
+            <option value="event_planners">🎉 Event & Wedding Marquees (8)</option>
+            <option value="law_firms">⚖️ Law Firms & Legal (8)</option>
+            <option value="pet_care">🐕 Pet Care & Vet Clinics (7)</option>
+          </select>
         </div>
 
         <!-- Action Buttons -->
