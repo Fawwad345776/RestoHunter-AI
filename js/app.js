@@ -6,6 +6,7 @@ const App = {
   leads: [],
   filteredLeads: [],
   currentChannelFilter: 'all',
+  currentScaleFilter: 'all',
   activeLeadForModal: null,
   settings: {},
 
@@ -17,9 +18,10 @@ const App = {
 
     // 1. Instant Synchronous Initial Load: Show verified leads immediately without waiting for network
     const savedLeads = StorageService.getLeads();
-    const initialLeads = (savedLeads && savedLeads.length > 0 && savedLeads[0].decisionMakerSourceUrl)
+    const hasValidScale = savedLeads && savedLeads.length > 0 && savedLeads[0].businessScale;
+    const initialLeads = hasValidScale
       ? savedLeads
-      : (window.DEFAULT_LEADS || []);
+      : (window.DEFAULT_LEADS || window.INITIAL_LEADS || []);
 
     if (initialLeads && initialLeads.length > 0) {
       this.leads = initialLeads.map(l => {
@@ -256,6 +258,17 @@ const App = {
         document.querySelectorAll('.channel-tab-btn').forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
         this.applyFilter(tab.dataset.filter);
+      });
+    });
+
+    // Scale Filter Buttons (All / Chotay Business / Established)
+    document.querySelectorAll('.scale-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.scale-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const scale = btn.dataset.scale || 'all';
+        this.currentScaleFilter = scale;
+        this.applyFilter(this.currentChannelFilter || 'all', scale);
       });
     });
 
@@ -537,7 +550,12 @@ const App = {
       }
     }
 
-    // 3. Preserve active channel filter if user had one selected
+    // 3. Filter by business scale if active
+    if (this.currentScaleFilter && this.currentScaleFilter !== 'all') {
+      matched = matched.filter(l => l.businessScale === this.currentScaleFilter);
+    }
+
+    // 4. Preserve active channel filter if user had one selected
     if (this.currentChannelFilter && this.currentChannelFilter !== 'all') {
       const ch = this.currentChannelFilter;
       if (ch === 'dispatched') {
@@ -559,8 +577,9 @@ const App = {
     }
   },
 
-  applyFilter(filter) {
+  applyFilter(filter, scale = this.currentScaleFilter || 'all') {
     this.currentChannelFilter = filter;
+    this.currentScaleFilter = scale;
     const nicheSelect = document.getElementById('target-niche-select');
     const tableNicheFilter = document.getElementById('table-niche-filter');
     const niche = (tableNicheFilter && tableNicheFilter.value) || (nicheSelect && nicheSelect.value) || 'all';
@@ -568,6 +587,9 @@ const App = {
     let base = [...this.leads];
     if (niche && niche !== 'all') {
       base = base.filter(l => l.niche === niche);
+    }
+    if (this.currentScaleFilter && this.currentScaleFilter !== 'all') {
+      base = base.filter(l => l.businessScale === this.currentScaleFilter);
     }
 
     if (filter === 'all') {
@@ -704,14 +726,24 @@ const App = {
 
       const isWaBest = bestChannel === 'whatsapp';
       const isIgBest = bestChannel === 'instagram';
-      const isGmailBest = bestChannel === 'gmail';
+      const isSmallBiz = lead.businessScale === 'small_business';
+      const scaleBadge = isSmallBiz
+        ? `<span class="badge-scale small" title="Chota Local Business: Seedha maalik ka mobile / WhatsApp, fast response & easy close">
+             <span>🏪</span> <span>Chota Business</span>
+           </span>`
+        : `<span class="badge-scale established" title="Established Brand / Enterprise Chain">
+             <span>🏢</span> <span>Established</span>
+           </span>`;
 
       return `
         <tr data-lead-id="${lead.id}">
           <td>
             <div class="biz-name-cell">
               <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-                <span class="biz-title">${lead.businessName}</span>
+                <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                  <span class="biz-title">${lead.businessName}</span>
+                  ${scaleBadge}
+                </div>
                 <a href="${mapsPinUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 6px; font-size: 0.74rem; font-weight: 700; text-decoration: none; background: linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(220, 38, 38, 0.35) 100%); border: 1px solid rgba(239, 68, 68, 0.6); color: #fca5a5; white-space: nowrap; box-shadow: 0 0 10px rgba(239, 68, 68, 0.25); transition: all 0.2s;" title="1-Tap to Open Real Location Pin & Details on Google Maps">
                   <span>🗺️</span> <span>Maps Pin ↗</span>
                 </a>
@@ -818,6 +850,17 @@ const App = {
     if (tabGmail) tabGmail.textContent = `📧 Gmail (${gmailCount})`;
     if (tabLi) tabLi.textContent = `👔 LinkedIn (${liCount})`;
     if (tabIg) tabIg.textContent = `📸 Instagram (${igCount})`;
+
+    // Scale counts
+    const smallCount = this.leads.filter(l => l.businessScale === 'small_business').length;
+    const estCount = this.leads.filter(l => l.businessScale === 'established_brand').length;
+    const btnScaleAll = document.getElementById('btn-scale-all');
+    const btnScaleSmall = document.getElementById('btn-scale-small');
+    const btnScaleEst = document.getElementById('btn-scale-established');
+
+    if (btnScaleAll) btnScaleAll.innerHTML = `<span>🌐</span> All Scales (${totalLeads})`;
+    if (btnScaleSmall) btnScaleSmall.innerHTML = `<span>🏪</span> Chotay Business (Direct Mobile) (${smallCount})`;
+    if (btnScaleEst) btnScaleEst.innerHTML = `<span>🏢</span> Established Brands (${estCount})`;
   },
 
   openPitchModal(leadId) {
@@ -825,7 +868,7 @@ const App = {
     if (!lead) return;
     this.activeLeadForModal = lead;
 
-    let currentGreetingMode = 'team';
+    let currentGreetingMode = lead.businessScale === 'small_business' ? 'founder' : 'team';
     let pitch = PitchEngine.generatePitch(lead, currentGreetingMode);
     const modal = document.getElementById('pitch-preview-modal');
     if (!modal) return;
@@ -837,13 +880,20 @@ const App = {
     } else {
       modalTitle.textContent = `${lead.businessName} — Pitch Preview`;
     }
-    document.getElementById('modal-pitch-channel-badge').innerHTML = lead.channel === 'whatsapp'
+
+    const scaleBadgeHtml = lead.businessScale === 'small_business'
+      ? `<span class="badge-scale small" style="font-size: 0.74rem; padding: 3px 8px;">🏪 Chota Business (Direct Mobile)</span>`
+      : `<span class="badge-scale established" style="font-size: 0.74rem; padding: 3px 8px;">🏢 Established Brand</span>`;
+
+    const channelBadgeHtml = lead.channel === 'whatsapp'
       ? `<span class="badge-channel whatsapp">📲 WhatsApp Direct Outreach</span>`
       : lead.channel === 'gmail'
       ? `<span class="badge-channel gmail">📧 Gmail Pitch</span>`
       : lead.channel === 'linkedin'
       ? `<span class="badge-channel linkedin">👔 LinkedIn Connection Note</span>`
       : `<span class="badge-channel instagram">📸 Instagram Story Reply</span>`;
+
+    document.getElementById('modal-pitch-channel-badge').innerHTML = `<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">${scaleBadgeHtml} ${channelBadgeHtml}</div>`;
 
     document.getElementById('modal-pitch-flaw-title').textContent = lead.flawTitle;
     document.getElementById('modal-pitch-flaw-leak').textContent = lead.flawLeakRange;

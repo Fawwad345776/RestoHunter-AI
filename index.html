@@ -274,13 +274,11 @@
       <div class="quick-cities-bar">
         <span class="quick-cities-label">Verified Markets:</span>
         <button class="city-chip active" data-city="ALL" data-country="All">All Leads (100) 🌐</button>
-        <button class="city-chip" data-city="Karachi" data-country="Pakistan 🇵🇰">Karachi 🇵🇰 (20)</button>
-        <button class="city-chip" data-city="Lahore" data-country="Pakistan 🇵🇰">Lahore 🇵🇰 (15)</button>
-        <button class="city-chip" data-city="Islamabad" data-country="Pakistan 🇵🇰">Islamabad 🇵🇰 (10)</button>
-        <button class="city-chip" data-city="Dubai" data-country="United Arab Emirates 🇦🇪">Dubai 🇦🇪 (15)</button>
-        <button class="city-chip" data-city="Austin" data-country="USA 🇺🇸">Austin, TX 🇺🇸 (15)</button>
-        <button class="city-chip" data-city="New York" data-country="USA 🇺🇸">New York 🇺🇸 (15)</button>
-        <button class="city-chip" data-city="London" data-country="United Kingdom 🇬🇧">London 🇬🇧 (10)</button>
+        <button class="city-chip" data-city="Karachi" data-country="Pakistan 🇵🇰">Karachi 🇵🇰 (60)</button>
+        <button class="city-chip" data-city="Lahore" data-country="Pakistan 🇵🇰">Lahore 🇵🇰 (35)</button>
+        <button class="city-chip" data-city="Dubai" data-country="United Arab Emirates 🇦🇪">Dubai 🇦🇪 (1)</button>
+        <button class="city-chip" data-city="Austin" data-country="USA 🇺🇸">Austin, TX 🇺🇸 (2)</button>
+        <button class="city-chip" data-city="London" data-country="United Kingdom 🇬🇧">London 🇬🇧 (2)</button>
       </div>
     </section>
 
@@ -345,7 +343,7 @@
         <div style="min-width: 210px;">
           <select id="table-niche-filter" class="custom-select" style="height: 38px; font-size: 0.82rem; background: rgba(15, 23, 42, 0.85); border-color: rgba(56, 189, 248, 0.45); color: #f1f5f9; font-weight: 600;">
             <option value="all" selected>🎯 All 12 Industries (100 Leads)</option>
-            <option value="restaurants">🍽️ Restaurants & Cafes (10)</option>
+            <option value="restaurants">🍽️ Restaurants & Cafes (9)</option>
             <option value="bakeries_sweets">🧁 Bakeries & Sweets (9)</option>
             <option value="dental_medical">🩺 Dental & Medical (9)</option>
             <option value="salons_spas">✂️ Barber Shops & Salons (9)</option>
@@ -356,7 +354,7 @@
             <option value="boutique_hotels">🏨 Boutique Hotels (8)</option>
             <option value="event_planners">🎉 Event & Wedding Marquees (8)</option>
             <option value="law_firms">⚖️ Law Firms & Legal (8)</option>
-            <option value="pet_care">🐕 Pet Care & Vet Clinics (7)</option>
+            <option value="pet_care">🐕 Pet Care & Vet Clinics (8)</option>
           </select>
         </div>
 
@@ -374,6 +372,29 @@
           <button id="btn-export-json" class="btn-secondary" style="padding: 8px 12px; font-size: 0.84rem;" title="Download JSON">
             <span>📤</span> JSON
           </button>
+        </div>
+      </div>
+
+      <!-- Business Scale Filter Strip (Chotay Business vs Established Brands) -->
+      <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-sm); padding: 10px 16px; margin: 12px 0 10px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <span style="font-size: 0.80rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 6px;">
+            <span>⚖️</span> Business Scale:
+          </span>
+          <div class="scale-filter-group">
+            <button class="scale-filter-btn active" data-scale="all" id="btn-scale-all">
+              <span>🌐</span> All Scales (100)
+            </button>
+            <button class="scale-filter-btn" data-scale="small_business" id="btn-scale-small">
+              <span>🏪</span> Chotay Business (Direct Mobile) (50)
+            </button>
+            <button class="scale-filter-btn" data-scale="established_brand" id="btn-scale-established">
+              <span>🏢</span> Established Brands (50)
+            </button>
+          </div>
+        </div>
+        <div style="font-size: 0.78rem; color: #cbd5e1; display: inline-flex; align-items: center; gap: 6px;">
+          <span>💡</span> <span><strong style="color: #4ade80;">Chotay Business (50):</strong> Direct owner mobile WhatsApp — 8x high reply & easy 48-hour close.</span>
         </div>
       </div>
 
