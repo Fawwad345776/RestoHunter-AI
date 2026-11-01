@@ -1,296 +1,254 @@
 /**
- * RestoHunter AI - Pitch Generation Engine
- * Clean, high-converting direct outreach messages without external preview links or distractions.
- * Channels: WhatsApp Direct, LinkedIn (<300 chars), Instagram Story Reply, Gmail (4-sentence curiosity).
+ * SoftHunter AI - Multi-Channel & Multi-Stage AI Pitch Engine
+ * Channels: Gmail / Email, WhatsApp, Instagram DM, LinkedIn, Facebook Messenger
+ * Stages: Initial Pitch, Follow-up 1, Follow-up 2, Follow-up 3, Final Follow-up, Demo Invitation, Proposal Introduction
+ * Languages: English (default), Urdu, Spanish, Arabic, German, French
  */
 
 const PitchEngine = {
-  /**
-   * Smart greeting parser supporting dual modes:
-   * 1. 'team' (default for WhatsApp/Instagram): 100% natural and courteous for floor managers & social media staff.
-   * 2. 'founder': Addresses the registered founder or partner directly for executive proposals and LinkedIn.
-   */
   getGreetingName(lead, mode = 'team') {
     if (!lead) return 'there';
-
-    // Team mode (Safe, natural, zero doubt)
     if (mode === 'team') {
-      if (lead.teamGreeting && lead.teamGreeting.trim()) {
-        return lead.teamGreeting.trim();
-      }
+      if (lead.teamGreeting && lead.teamGreeting.trim()) return lead.teamGreeting.trim();
       let rawBiz = (lead.businessName || '').split('(')[0].trim();
       let bizClean = rawBiz.replace(/Restaurant|Cafe|Bistro|Lounge|Bakery|Dhaba|Hotel|Saloon|Salon|Spa|Clinic|Grill|Karahi|Barbecue|BBQ|Steakhouse/gi, '').trim();
       return `Team ${bizClean || rawBiz}`;
     }
-
-    // Founder mode
-    if (lead.founderGreeting && lead.founderGreeting.trim()) {
-      return lead.founderGreeting.trim();
-    }
-
+    if (lead.founderGreeting && lead.founderGreeting.trim()) return lead.founderGreeting.trim();
     if (!lead.decisionMaker) return this.getGreetingName(lead, 'team');
-    let dm = lead.decisionMaker.trim();
-
-    // Strip corporate or family suffixes
-    dm = dm.replace(/&\s*(family|directors|partners|sons|brothers|group|board).*/i, '').trim();
-    dm = dm.replace(/\s+(family|group|directors|partners|board|heirs)$/i, '').trim();
-
-    if (dm.includes(' & ')) {
-      const parts = dm.split(' & ').map(p => {
-        let seg = p.trim().replace(/^(haji|syed|sardar|ch|dr\.|chef)\s+/i, '').split(/\s+/)[0];
-        return seg;
-      });
-      return parts.filter(Boolean).join(' & ') || this.getGreetingName(lead, 'team');
-    }
-
-    if (/^(dr\.|chef)\s+/i.test(dm)) {
-      const tokens = dm.split(/\s+/);
-      return `${tokens[0]} ${tokens[1] || ''}`.trim();
-    }
-
-    let clean = dm.replace(/^(haji|syed|sardar|ch|muhammad|mohammad)\s+/i, '').trim();
-    let first = clean.split(/\s+/)[0];
-    return first || dm.split(/\s+/)[0] || this.getGreetingName(lead, 'team');
+    let dm = lead.decisionMaker.trim().replace(/^(haji|syed|sardar|ch|muhammad|mohammad)\s+/i, '').trim();
+    return dm.split(/\s+/)[0] || this.getGreetingName(lead, 'team');
   },
 
-  /**
-   * Automatically detects the primary food delivery platform based on lead country, city, and address
-   */
   detectDeliveryPlatform(lead) {
-    if (lead && lead.regionDeliveryApps && lead.regionDeliveryApps.trim().length > 0) {
-      return lead.regionDeliveryApps;
-    }
+    if (lead && lead.regionDeliveryApps) return lead.regionDeliveryApps;
     const loc = `${lead?.country || ''} ${lead?.city || ''} ${lead?.address || ''}`.toLowerCase();
-
-    // Pakistan & South Asia -> foodpanda
-    if (/pakistan|karachi|lahore|islamabad|rawalpindi|peshawar|faisalabad|multan|quetta|sialkot|gujranwala|hyderabad/i.test(loc)) {
-      return 'foodpanda';
-    }
-
-    // United Arab Emirates, Gulf & Middle East -> Talabat & Deliveroo
-    if (/uae|emirates|dubai|abu dhabi|sharjah|qatar|doha|riyadh|jeddah|saudi|kuwait|bahrain|oman/i.test(loc)) {
-      return 'Talabat & Deliveroo';
-    }
-
-    // United Kingdom & Ireland -> Deliveroo & Just Eat
-    if (/uk|united kingdom|london|manchester|birmingham|leeds|glasgow|edinburgh|liverpool|bristol|ireland|dublin|belfast/i.test(loc)) {
-      return 'Deliveroo & Just Eat';
-    }
-
-    // Canada -> SkipTheDishes & DoorDash
-    if (/canada|toronto|vancouver|montreal|calgary|edmonton|ottawa/i.test(loc)) {
-      return 'SkipTheDishes & DoorDash';
-    }
-
-    // Australia & New Zealand -> Uber Eats & Menulog
-    if (/australia|sydney|melbourne|brisbane|perth|adelaide|new zealand|auckland|wellington/i.test(loc)) {
-      return 'Uber Eats & Menulog';
-    }
-
-    // India -> Zomato & Swiggy
-    if (/india|mumbai|delhi|bangalore|bengaluru|hyderabad|chennai|kolkata|pune/i.test(loc)) {
-      return 'Zomato & Swiggy';
-    }
-
-    // Germany & Austria -> Lieferando & Uber Eats
-    if (/germany|deutschland|berlin|munich|hamburg|frankfurt|austria|vienna/i.test(loc)) {
-      return 'Lieferando & Uber Eats';
-    }
-
-    // Netherlands -> Thuisbezorgd & Uber Eats
-    if (/netherlands|amsterdam|rotterdam|utrecht|hague/i.test(loc)) {
-      return 'Thuisbezorgd & Uber Eats';
-    }
-
-    // Spain & Italy -> Glovo & Just Eat
-    if (/spain|madrid|barcelona|italy|rome|milan/i.test(loc)) {
-      return 'Glovo & Just Eat';
-    }
-
-    // USA / North America -> DoorDash & Uber Eats
-    if (/usa|united states|austin|texas|new york|nyc|los angeles|chicago|san francisco|california|miami|florida|dallas|houston|seattle|boston|denver|atlanta|philadelphia/i.test(loc)) {
-      return 'DoorDash & Uber Eats';
-    }
-
-    return 'local delivery apps';
+    if (/pakistan|karachi|lahore|islamabad/i.test(loc)) return 'foodpanda';
+    if (/uae|dubai|abu dhabi|riyadh|saudi/i.test(loc)) return 'Talabat & Deliveroo';
+    if (/uk|london|manchester/i.test(loc)) return 'Deliveroo & Just Eat';
+    if (/canada|toronto/i.test(loc)) return 'SkipTheDishes & DoorDash';
+    if (/australia|sydney/i.test(loc)) return 'Uber Eats & Menulog';
+    return 'DoorDash & Uber Eats';
   },
 
   /**
-   * Generates tailored pitch based on channel constraints and local market context
+   * Generates a channel-specific and sequence-stage personalized pitch
    */
-  generatePitch(lead, mode = 'team') {
-    const greeting = this.getGreetingName(lead, mode);
-    const bizShort = lead.businessName.split('(')[0].trim();
+  generatePitch(lead, channel = 'whatsapp', stage = 'initial', language = 'English') {
+    if (!lead) return { subject: '', body: '', channel, stage, language };
 
-    if (lead.channel === 'whatsapp') {
-      return this.generateWhatsAppPitch(lead, greeting, bizShort);
-    } else if (lead.channel === 'linkedin') {
-      return this.generateLinkedInPitch(lead, greeting, bizShort);
-    } else if (lead.channel === 'instagram') {
-      return this.generateInstagramPitch(lead, greeting, bizShort);
-    } else {
-      return this.generateGmailPitch(lead, greeting, bizShort);
+    const biz = lead.businessName || 'Your Business';
+    const dm = lead.decisionMaker || 'Owner';
+    const teamGreeting = this.getGreetingName(lead, 'team');
+    const founderGreeting = this.getGreetingName(lead, 'founder');
+    const flaw = lead.flawTitle || 'Mobile Checkout Friction';
+    const solution = (lead.softwareOpportunity && lead.softwareOpportunity.recommendedSoftware) || lead.deliverableSolution || 'Direct Mobile Web App';
+    const leak = lead.flawLeakRange || '$2,400 - $4,800/mo';
+    const senderCompany = 'MF Software Solutions';
+
+    let subject = '';
+    let body = '';
+
+    // ==========================================
+    // 1. GMAIL / EMAIL CHANNEL
+    // ==========================================
+    if (channel === 'gmail' || channel === 'email') {
+      if (stage === 'initial') {
+        subject = `Quick observation regarding ${biz} mobile booking funnel`;
+        body = `Hi ${founderGreeting || teamGreeting},
+
+While reviewing ${biz}'s Google Maps listing and digital presence, I noticed an issue where prospective mobile visitors encounter ${flaw.toLowerCase()}.
+
+For a brand with strong reviews like yours, this typically causes an estimated ${leak} in lost direct customer inquiries to third-party competitors.
+
+We build custom ${solution} that eliminate third-party commission bleed and give you 1-tap customer bookings.
+
+Would you be open to a 2-minute video walkthrough showing how this recovers lost orders?
+
+Best regards,
+${senderCompany} Client Solutions Team`;
+      } else if (stage === 'followup1') {
+        subject = `Re: Quick observation regarding ${biz} mobile booking funnel`;
+        body = `Hi ${founderGreeting || teamGreeting},
+
+Wanted to quickly follow up on my note from two days ago. 
+
+Did you have a chance to look at how ${biz}'s mobile checkout might be losing prospective clients on smartphones?
+
+Happy to share a 30-second visual preview whenever convenient.
+
+Best regards,
+${senderCompany}`;
+      } else if (stage === 'followup2') {
+        subject = `Recovering ${leak} for ${biz} (Value Breakdown)`;
+        body = `Hi ${founderGreeting || teamGreeting},
+
+Most business owners we speak with don't realize that over 65% of local searches happen on mobile devices after business hours.
+
+Without a direct 1-tap ${solution}, those visitors bounce to other local options.
+
+We already mapped a preliminary implementation for ${biz}. Can I send the concept over?
+
+Best regards,
+${senderCompany}`;
+      } else if (stage === 'followup3') {
+        subject = `30-second prototype ready for ${biz}`;
+        body = `Hi ${founderGreeting || teamGreeting},
+
+Our engineering team put together a quick interactive prototype of a ${solution} tailored for ${biz}.
+
+Here is what it solves:
+- Eliminates ${flaw.toLowerCase()}
+- Instant direct WhatsApp & email confirmation slips
+- Zero commission deduction
+
+Would 3 PM Thursday or 11 AM Friday work for a 5-minute screen share?
+
+Best regards,
+${senderCompany}`;
+      } else if (stage === 'final') {
+        subject = `Closing file for ${biz}`;
+        body = `Hi ${founderGreeting || teamGreeting},
+
+I assume resolving the mobile booking friction at ${biz} isn't a top priority right now, which is completely understandable.
+
+I will close your file for now so I don't clutter your inbox. If you ever want to explore direct client acquisition software in the future, feel free to reach out.
+
+Wishing ${biz} continued success!
+
+Best regards,
+${senderCompany}`;
+      } else if (stage === 'demo') {
+        subject = `Interactive Demo: ${biz} Custom Software`;
+        body = `Hi ${founderGreeting || teamGreeting},
+
+As promised, we prepared an interactive demo concept of the ${solution} for ${biz}.
+
+It demonstrates how a customer on a smartphone books in under 25 seconds with instant confirmation.
+
+Let me know if you'd like me to send over the direct demo link.
+
+Best regards,
+${senderCompany}`;
+      } else { // proposal
+        subject = `Project Proposal: ${biz} — ${solution}`;
+        body = `Dear ${founderGreeting || teamGreeting},
+
+Attached is our formal project proposal for deploying a custom ${solution} for ${biz}.
+
+Scope includes full mobile optimization, automated customer confirmation slips, admin management dashboard, and zero-commission checkout.
+
+Looking forward to your review and feedback.
+
+Sincerely,
+${senderCompany} Executive Team`;
+      }
     }
-  },
 
-  /**
-   * WhatsApp: Direct, concise, 3-sentence conversational format with authentic formatting
-   */
-  generateWhatsAppPitch(lead, firstName, bizShort) {
-    const flaw = (lead.flawTitle || 'mobile booking bottleneck').replace(/\s*\(.*?\)/g, '').trim();
-    const solution = (lead.deliverableSolution || 'direct mobile funnel')
-      .split(' (')[0]
-      .split(' +')[0]
-      .replace(/with Instant WhatsApp.*/i, '')
-      .replace(/with WhatsApp Confirmation.*/i, '')
-      .trim();
-    const leak = lead.flawLeakRange || 'revenue';
+    // ==========================================
+    // 2. WHATSAPP CHANNEL
+    // ==========================================
+    else if (channel === 'whatsapp') {
+      if (stage === 'initial') {
+        body = `Assalam-o-Alaikum ${founderGreeting || teamGreeting}! 
 
-    const greetingLine = firstName.toLowerCase().startsWith('team')
-      ? `Hi ${firstName}! Hope all is well 👋`
-      : `Hi ${firstName}! Hope all is well at *${bizShort}* 👋`;
+Noticed customers browsing ${biz} on smartphones run into ${flaw.toLowerCase()}.
 
-    // 3 short, punchy lines:
-    // Line 1: Friendly greeting
-    // Line 2: Specific bottleneck + estimated revenue leak
-    // Line 3: 48h solution + low-friction 30-sec question
-    let text = `${greetingLine}\n\n` +
-      `Noticed a quick bottleneck on mobile: *${flaw}*, leaking ~*${leak}* in missed clients.\n\n` +
-      `We build a *${solution}* in 48 hours to recover this. Mind if I share a quick 30-second breakdown?`;
+We build custom *${solution}* so customers can order / book directly in 1-tap with zero commission.
+
+Can I drop a 30-sec video demo here for your team to check out?`;
+      } else if (stage === 'followup1') {
+        body = `Hi ${founderGreeting}! Just following up on my previous message regarding the mobile ordering funnel for ${biz}. Would love to share a quick 20-second screen recording if you have a minute.`;
+      } else if (stage === 'followup2') {
+        body = `Hey ${founderGreeting}! Did you know local businesses typically lose ~${leak} when customers can't book directly on mobile? We built a 1-tap prototype for ${biz} — happy to send it here.`;
+      } else if (stage === 'followup3') {
+        body = `Hi ${founderGreeting}! We have the interactive prototype ready for ${biz}. Shows how orders come directly to your counter WhatsApp in real-time. Mind if I send the link?`;
+      } else if (stage === 'final') {
+        body = `Hi ${founderGreeting}, will assume this isn't a priority right now. Won't message further. Wishing ${biz} great sales this month! Feel free to ping anytime.`;
+      } else if (stage === 'demo') {
+        body = `Hi ${founderGreeting}! Here is the interactive demo concept for ${biz}: 1-tap mobile booking with instant WhatsApp confirmation. Can I send the preview over?`;
+      } else {
+        body = `Hi ${founderGreeting}! We have drafted the proposal for ${biz}'s custom ${solution}. Ready to review whenever convenient for you.`;
+      }
+    }
+
+    // ==========================================
+    // 3. INSTAGRAM DM CHANNEL
+    // ==========================================
+    else if (channel === 'instagram') {
+      if (stage === 'initial') {
+        body = `Hey ${teamGreeting}! Love your page and content 🔥 
+
+Quick heads up: noticed visitors checking your bio link on mobile run into ${flaw.toLowerCase()}.
+
+We build 1-tap *${solution}* that gets you direct orders without losing 30% to delivery apps.
+
+Mind if I drop a 20-sec demo recording here to see what you think?`;
+      } else if (stage === 'followup1') {
+        body = `Hey team! Just bumping this in case it got buried in your DMs. Would love to show you how ${biz} can get direct mobile orders. Let me know! 🙌`;
+      } else if (stage === 'followup2') {
+        body = `Hey ${teamGreeting}! Dropping a quick note — businesses similar to ${biz} recover around ${leak} with a 1-tap mobile funnel. Happy to share a quick preview!`;
+      } else if (stage === 'followup3') {
+        body = `Hey guys! Finished a quick clickable demo for ${biz}. Zero commissions, instant confirmation. Mind if I drop the link here?`;
+      } else if (stage === 'final') {
+        body = `Hey team! Won't spam your DMs further. Keep up the awesome posts with ${biz}! If you ever want to upgrade your direct bio funnel, we're here. Cheers!`;
+      } else {
+        body = `Hey team! Demo concept for ${biz} is ready. Let us know if you'd like to check out the mobile walkthrough!`;
+      }
+    }
+
+    // ==========================================
+    // 4. LINKEDIN CHANNEL (<300 characters)
+    // ==========================================
+    else if (channel === 'linkedin') {
+      if (stage === 'initial') {
+        body = `Hi ${dm}, noticed ${biz} could recover an estimated ${leak} by fixing ${flaw.toLowerCase()}. We develop custom ${solution} with zero third-party commissions. Open to a brief 2-min review?`;
+      } else if (stage === 'followup1') {
+        body = `Hi ${dm}, following up on my previous note about ${biz}'s mobile conversion. Happy to share a 30-sec demo whenever convenient.`;
+      } else if (stage === 'followup2') {
+        body = `Hi ${dm}, we mapped a solution recovering ${leak} for ${biz} via direct mobile checkout. Would a brief conversation make sense?`;
+      } else {
+        body = `Hi ${dm}, closing the loop regarding ${biz}. Wishing you continued success, and happy to connect whenever direct software becomes a focus.`;
+      }
+    }
+
+    // ==========================================
+    // 5. FACEBOOK MESSENGER
+    // ==========================================
+    else {
+      body = `Hello ${teamGreeting}! 
+
+We came across ${biz} on Google Maps and noticed customers on smartphones encounter ${flaw.toLowerCase()}.
+
+We develop custom ${solution} allowing your customers to book directly with zero third-party commission deductions.
+
+Would your team be open to a 30-second demo showing how it works?`;
+    }
+
+    // Translate to Roman Urdu if selected
+    if (language === 'Urdu') {
+      if (channel === 'whatsapp' || channel === 'instagram') {
+        body = `Assalam-o-Alaikum ${founderGreeting || teamGreeting}!
+
+Aapke ${biz} ka Google profile dekha. Mobile par customer jab check karta hai toh ${lead.specificWeakness || flaw.toLowerCase()} ka masla aata hai.
+
+Hum direct *${solution}* lagatay hain jahan customer 1-click me order bhej deta hai aur delivery apps ko 30% commission nahi dena parta.
+
+Kya mai 30-second ki short video demo yahan share karoon aapki team ke liye?`;
+      }
+    }
 
     return {
-      channel: 'whatsapp',
-      subject: `WhatsApp Outreach for ${lead.decisionMaker}`,
-      body: text,
-      charCount: text.length,
-      limitNote: 'WhatsApp Direct (Concise, punchy & high response rate)'
-    };
-  },
-
-  /**
-   * LinkedIn: Strict < 300 characters connection note tailored to specific flaw
-   */
-  generateLinkedInPitch(lead, firstName, bizShort) {
-    const flawClean = (lead.flawTitle || 'mobile client intake bottleneck').replace(/\s*\(.*?\)/g, '').trim();
-    const leak = (lead.flawLeakRange || 'revenue').replace(/\/mo$/i, '');
-    const solutionClean = (lead.deliverableSolution || 'direct booking funnel')
-      .split(' (')[0]
-      .split(' +')[0]
-      .replace(/with Instant WhatsApp.*/i, '')
-      .replace(/with WhatsApp Confirmation.*/i, '')
-      .trim();
-
-    let text = `Hi ${firstName}, love ${bizShort}! Noticed ${flawClean.toLowerCase()} costs ~${leak}/mo. We build a ${solutionClean.toLowerCase()} in 48h to fix this. Worth a quick 30s chat?`;
-
-    if (text.length > 295) {
-      const shortFlaw = flawClean.length > 35 ? flawClean.substring(0, 32) + '...' : flawClean;
-      text = `Hi ${firstName}, noticed ${shortFlaw.toLowerCase()} costs ~${leak} for ${bizShort}. We build a direct fix in 48h to recover this. Open to a quick chat?`;
-    }
-
-    if (text.length > 298) {
-      text = text.substring(0, 295) + '...';
-    }
-
-    return {
-      channel: 'linkedin',
-      subject: `Connection Note for ${lead.decisionMaker}`,
-      body: text,
-      charCount: text.length,
-      limitNote: '< 300 characters connection note (Bypasses character limit)'
-    };
-  },
-
-  /**
-   * Instagram: Story Reply format tailored to specific flaw (Ultra-concise)
-   */
-  generateInstagramPitch(lead, firstName, bizShort) {
-    const flaw = (lead.flawTitle || 'mobile booking bottleneck').replace(/\s*\(.*?\)/g, '').trim();
-    const leak = lead.flawLeakRange || 'monthly revenue';
-    const igHandle = (lead.contactInfo && lead.contactInfo.instagramHandle)
-      ? lead.contactInfo.instagramHandle.replace('@', '')
-      : (lead.instagramHandle ? lead.instagramHandle.replace('@', '') : 'business');
-
-    const text = `Hey ${firstName}! Great post 🔥 Quick observation: noticed on mobile you have: ${flaw} (~${leak} leak). We fix this in 48 hours. Mind if I send a quick 30s look?`;
-
-    return {
-      channel: 'instagram',
-      subject: `Story Reply to @${igHandle}`,
-      body: text,
-      charCount: text.length,
-      limitNote: 'Story Reply (Ultra-concise, lands in primary inbox)'
-    };
-  },
-
-  /**
-   * Gmail: Clean 3-sentence curiosity email + financial leak calculation
-   */
-  generateGmailPitch(lead, firstName, bizShort) {
-    const flaw = (lead.flawTitle || 'mobile client intake bottleneck').replace(/\s*\(.*?\)/g, '').trim();
-    const leak = lead.flawLeakRange || 'lost monthly revenue';
-    const solution = (lead.deliverableSolution || '1-tap mobile conversion system')
-      .split(' (')[0]
-      .split(' +')[0]
-      .replace(/with Instant WhatsApp.*/i, '')
-      .replace(/with WhatsApp Confirmation.*/i, '')
-      .trim();
-    const city = (lead.city || '').split(',')[0].trim();
-
-    const cleanFlawShort = flaw.substring(0, 32).trim();
-    const subject = `quick note: ${bizShort.toLowerCase()} (${cleanFlawShort.toLowerCase()})`;
-
-    const body = `hi ${firstName.toLowerCase()},\n\n` +
-      `noticed a quick bottleneck on ${bizShort}'s mobile presence in ${city}: ${flaw.toLowerCase()}.\n\n` +
-      `this typically costs businesses in your area around ${leak} in missed bookings each month. we build a ${solution.toLowerCase()} in 48 hours to recover this.\n\n` +
-      `worth a quick 2-minute chat this week?\n\n` +
-      `best,\n` +
-      `fawwad`;
-
-    return {
-      channel: 'gmail',
       subject,
       body,
-      charCount: body.length,
-      limitNote: 'Curiosity Lowercase Subject + 3 Sentences (Fast Open & High Reply)'
+      channel,
+      stage,
+      language,
+      rawPitch: body
     };
-  },
-
-  /**
-   * Day-3 Follow-Up Message Generator (Ultra-concise 1-line bump)
-   */
-  generateDay3FollowUp(lead, mode = 'team') {
-    const greeting = this.getGreetingName(lead, mode);
-    const bizShort = lead.businessName.split('(')[0].trim();
-    const flaw = (lead.flawTitle || 'the booking leak').replace(/\s*\(.*?\)/g, '').trim();
-
-    if (lead.channel === 'whatsapp') {
-      return `Hi ${greeting}! Quick bump regarding *${bizShort}* and fixing that *${flaw}* (~${lead.flawLeakRange}). Open to a quick 2-min chat? 🙌`;
-    } else if (lead.channel === 'linkedin') {
-      return `Hey ${greeting}, quick bump regarding ${bizShort} and fixing ${flaw.substring(0, 40)}. Worth a 30s look?`;
-    } else if (lead.channel === 'instagram') {
-      return `Hey ${greeting}! Quick bump regarding fixing ${flaw} for ${bizShort} (~${lead.flawLeakRange}). Mind if I share a quick breakdown? 🙌`;
-    } else {
-      return `hi ${greeting.toLowerCase()},\n\nquick bump on this — open to a quick 2-minute look at fixing ${flaw.toLowerCase()} for ${bizShort}?\n\nno worries if you're swamped!\n\nbest,\nfawwad`;
-    }
-  },
-
-  /**
-   * Day-7 Break-Up / Polite Close-Out Follow-Up
-   */
-  generateDay7FollowUp(lead, mode = 'team') {
-    const greeting = this.getGreetingName(lead, mode);
-    const bizShort = lead.businessName.split('(')[0].trim();
-    const flaw = (lead.flawTitle || 'the booking leak').replace(/\s*\(.*?\)/g, '').trim();
-
-    if (lead.channel === 'whatsapp') {
-      return `Salam ${greeting}! Just closing the loop on *${bizShort}*. Assuming fixing that *${flaw}* isn't a priority right now — no problem at all! Let me know if you ever want that 1-tap setup down the road. Wish you the best! 🤝`;
-    } else if (lead.channel === 'instagram') {
-      return `Hey ${greeting}! Closing the loop regarding ${bizShort} — assuming fixing ${flaw} isn't top of mind right now. Wish you all the best! 🤝`;
-    } else if (lead.channel === 'linkedin') {
-      return `Hey ${greeting}, closing the loop on ${bizShort}. Assuming this isn't a priority right now. Feel free to reach out anytime down the road!`;
-    } else {
-      return `hi ${greeting.toLowerCase()},\n\nassuming fixing ${flaw.toLowerCase()} for ${bizShort} isn't a priority right now, so i'll close the file and stop bugging you!\n\nif you ever want to explore down the road, you know where to find me.\n\nbest,\nfawwad`;
-    }
   }
 };
 
-window.PitchEngine = PitchEngine;
+if (typeof window !== 'undefined') {
+  window.PitchEngine = PitchEngine;
+}

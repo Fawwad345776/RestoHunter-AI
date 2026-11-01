@@ -3,879 +3,1251 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RestoHunter AI — Universal Multi-Niche B2B Client Acquisition Engine</title>
-  <meta name="description" content="Autonomous B2B client acquisition system prospecting local businesses with Google 4.0+ reviews, diagnosing financial digital leaks, and executing ban-proof multi-channel pitches.">
-  <meta name="theme-color" content="#0a0e17">
+  <title>SoftHunter AI — Universal B2B Lead Generation & Software Sales Automation Platform</title>
+  <meta name="description" content="Autonomous B2B software sales & client acquisition platform. Google Places discovery, PageSpeed technical audits, Universal Software Opportunity Matching, 50-lead batch automation, multi-channel outreach, and CRM pipeline.">
+  <meta name="theme-color" content="#070c1e">
   
-  <!-- PWA Manifest & App Icon -->
-  <link rel="manifest" href="manifest.json">
+  <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="assets/icon.jpg">
   <link rel="apple-touch-icon" href="assets/icon.jpg">
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=5.0">
-  <link rel="stylesheet" href="css/components.css?v=5.0">
-  <link rel="stylesheet" href="css/responsive.css?v=5.0">
+  <link rel="stylesheet" href="css/main.css?v=6.0">
+  <link rel="stylesheet" href="css/components.css?v=6.0">
+  <link rel="stylesheet" href="css/saas-dashboard.css?v=6.0">
+  <link rel="stylesheet" href="css/responsive.css?v=6.0">
 </head>
 <body>
-  <div class="bg-grid"></div>
-
-  <div class="app-container" id="app-container">
-    <!-- Top Navigation -->
-    <header class="top-nav glass-panel">
-      <div class="brand-wrapper">
-        <img src="assets/icon.jpg" alt="RestoHunter AI Logo" class="brand-logo-img">
-        <div class="brand-info">
-          <h1>
-            RestoHunter AI
-            <span class="badge-version">v2.5 AUTONOMOUS SDR</span>
-          </h1>
-          <p class="brand-tagline">
-            <span class="status-dot-pulse"></span>
-            Cloud Autopilot Active • Multi-Niche B2B Client Acquisition Engine
-          </p>
-        </div>
-      </div>
-
-      <div class="nav-actions">
-        <!-- Authorized User Badge -->
-        <div class="auth-user-badge" id="nav-user-badge" style="padding: 6px 14px;">
-          <span>👤</span>
-          <span id="nav-username-display">Fawwad97</span>
-        </div>
-
-        <!-- Quick WhatsApp Pill -->
-        <a href="https://api.whatsapp.com/send?phone=923376568003" target="_blank" class="nav-pill whatsapp-active" title="Connected WhatsApp Alerts">
-          <span>📱</span>
-          <span id="nav-wa-number">+923376568003</span>
+  <div class="saas-layout" id="saas-app">
+    <!-- ========================================================
+         SIDEBAR NAVIGATION
+         ======================================================== -->
+    <aside class="saas-sidebar" id="saas-sidebar">
+      <!-- Brand Header -->
+      <div class="sidebar-brand-header">
+        <a href="#overview" class="sidebar-brand-link" onclick="App.switchView('overview')">
+          <img src="assets/icon.jpg" alt="SoftHunter AI Logo" class="sidebar-logo-img">
+          <div class="sidebar-brand-text">
+            <span class="sidebar-brand-name">
+              SoftHunter <span style="color: #38bdf8;">AI</span>
+            </span>
+            <span class="sidebar-brand-tagline">B2B Software Sales SDR</span>
+          </div>
         </a>
-
-        <!-- Quick Email Pill -->
-        <div class="nav-pill" title="Outreach Sender Email">
-          <span>📧</span>
-          <span id="nav-email-address">info.mfsoft@gmail.com</span>
-        </div>
-
-        <!-- Social Authority Posts -->
-        <button id="btn-open-social-autopilot" class="btn-secondary" title="View Daily Social Authority Posts">
-          <span>📢</span> Social Authority
-        </button>
-
-        <!-- Settings Gear -->
-        <button id="btn-open-settings" class="btn-secondary" title="System Settings">
-          <span>⚙️</span> Settings
-        </button>
-      </div>
-    </header>
-
-    <!-- SECTION 5: LIVE REPLY CENTER STATUS BAR -->
-    <section class="reply-center-container glass-panel">
-      <div class="reply-center-header">
-        <div class="reply-center-title">
-          <div class="radar-icon-box">
-            <div class="radar-sweep-anim"></div>
-            <span>📊</span>
-          </div>
-          <span>LIVE REPLY CENTER</span>
-        </div>
-        <div class="reply-alert-note">
-          <span>⚡ Real-time alerts configured to personal WhatsApp:</span>
-          <strong>+923376568003</strong>
-        </div>
-      </div>
-
-      <!-- 4 Channels Grid: WhatsApp, Gmail, LinkedIn, Instagram -->
-      <div class="reply-channels-grid">
-        <!-- WhatsApp Direct -->
-        <div class="reply-channel-card channel-whatsapp" data-channel="whatsapp">
-          <div class="card-top-row">
-            <div class="channel-name-badge">
-              <span>📲</span>
-              <span>WhatsApp Direct</span>
-            </div>
-            <span id="whatsapp-unread-badge" class="badge-unread-red" style="background: rgba(255, 255, 255, 0.05); color: #94a3b8; border-color: rgba(255, 255, 255, 0.15);">⚪ 0 REPLIES</span>
-          </div>
-          <div class="card-stats-row">
-            <span class="stat-total">Total Pitches / Direct Replies</span>
-            <span id="whatsapp-total-count" class="stat-number">0</span>
-          </div>
-          <div class="card-action-row">
-            <a href="https://web.whatsapp.com" target="_blank" class="open-inbox-link" onclick="event.stopPropagation()">
-              Open WhatsApp Web ↗
-            </a>
-            <span class="filter-tab-label">Click card to filter table</span>
-          </div>
-        </div>
-
-        <!-- Gmail -->
-        <div class="reply-channel-card channel-gmail" data-channel="gmail">
-          <div class="card-top-row">
-            <div class="channel-name-badge">
-              <span>📧</span>
-              <span>Gmail / Direct Inbox</span>
-            </div>
-            <span id="gmail-unread-badge" class="badge-unread-red" style="background: rgba(255, 255, 255, 0.05); color: #94a3b8; border-color: rgba(255, 255, 255, 0.15);">⚪ 0 REPLIES</span>
-          </div>
-          <div class="card-stats-row">
-            <span class="stat-total">Total Outreaches / Replies</span>
-            <span id="gmail-total-count" class="stat-number">0</span>
-          </div>
-          <div class="card-action-row">
-            <a href="https://mail.google.com" target="_blank" class="open-inbox-link" onclick="event.stopPropagation()">
-              Open Gmail ↗
-            </a>
-            <span class="filter-tab-label">Click card to filter table</span>
-          </div>
-        </div>
-
-        <!-- LinkedIn -->
-        <div class="reply-channel-card channel-linkedin" data-channel="linkedin">
-          <div class="card-top-row">
-            <div class="channel-name-badge">
-              <span>👔</span>
-              <span>LinkedIn Messaging</span>
-            </div>
-            <span id="linkedin-unread-badge" class="badge-unread-red" style="background: rgba(255, 255, 255, 0.05); color: #94a3b8; border-color: rgba(255, 255, 255, 0.15);">⚪ 0 REPLIES</span>
-          </div>
-          <div class="card-stats-row">
-            <span class="stat-total">Total Connections / Replies</span>
-            <span id="linkedin-total-count" class="stat-number">0</span>
-          </div>
-          <div class="card-action-row">
-            <a href="https://www.linkedin.com/messaging" target="_blank" class="open-inbox-link" onclick="event.stopPropagation()">
-              Open LinkedIn ↗
-            </a>
-            <span class="filter-tab-label">Click card to filter table</span>
-          </div>
-        </div>
-
-        <!-- Instagram -->
-        <div class="reply-channel-card channel-instagram" data-channel="instagram">
-          <div class="card-top-row">
-            <div class="channel-name-badge">
-              <span>📸</span>
-              <span>Instagram Direct</span>
-            </div>
-            <span id="instagram-unread-badge" class="badge-unread-red" style="background: rgba(255, 255, 255, 0.05); color: #94a3b8; border-color: rgba(255, 255, 255, 0.15);">⚪ 0 REPLIES</span>
-          </div>
-          <div class="card-stats-row">
-            <span class="stat-total">Total Stories / Replies</span>
-            <span id="instagram-total-count" class="stat-number">0</span>
-          </div>
-          <div class="card-action-row">
-            <a href="https://www.instagram.com/direct/inbox" target="_blank" class="open-inbox-link" onclick="event.stopPropagation()">
-              Open Instagram ↗
-            </a>
-            <span class="filter-tab-label">Click card to filter table</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- HUNT CONTROL CONSOLE & CITY INPUT -->
-    <section class="hunt-console-panel glass-panel">
-      <div class="hunt-inputs-grid">
-        <!-- Target Market (Worldwide Dropdown + Custom EditText) -->
-        <div class="input-group">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <label class="input-label" for="target-country-select" style="margin-bottom: 0;">
-              <span>🌍</span> Target Market
-            </label>
-            <button type="button" id="btn-toggle-custom-country" class="nav-pill" style="padding: 2px 8px; font-size: 0.72rem; cursor: pointer;" title="Toggle between worldwide dropdown list and typing custom place">
-              <span id="toggle-country-icon">✏️</span> <span id="toggle-country-label">Type Custom</span>
-            </button>
-          </div>
-
-          <!-- Mode 1: Worldwide Dropdown (All Over World) -->
-          <div id="wrapper-country-select">
-            <select id="target-country-select" class="custom-select">
-              <option value="Worldwide" selected>🌐 All Over World (Global)</option>
-              <option value="USA">USA 🇺🇸</option>
-              <option value="UK">United Kingdom 🇬🇧</option>
-              <option value="Canada">Canada 🇨🇦</option>
-              <option value="Australia">Australia 🇦🇺</option>
-              <option value="UAE">United Arab Emirates (Dubai) 🇦🇪</option>
-              <option value="Saudi Arabia">Saudi Arabia 🇸🇦</option>
-              <option value="Germany">Germany 🇩🇪</option>
-              <option value="France">France 🇫🇷</option>
-              <option value="Netherlands">Netherlands 🇳🇱</option>
-              <option value="Ireland">Ireland 🇮🇪</option>
-              <option value="Switzerland">Switzerland 🇨🇭</option>
-              <option value="Singapore">Singapore 🇸🇬</option>
-              <option value="New Zealand">New Zealand 🇳🇿</option>
-              <option value="Spain">Spain 🇪🇸</option>
-              <option value="Italy">Italy 🇮🇹</option>
-              <option value="Sweden">Sweden 🇸🇪</option>
-              <option value="Norway">Norway 🇳🇴</option>
-              <option value="Denmark">Denmark 🇩🇰</option>
-              <option value="Belgium">Belgium 🇧🇪</option>
-              <option value="Austria">Austria 🇦🇹</option>
-              <option value="Qatar">Qatar 🇶🇦</option>
-              <option value="Kuwait">Kuwait 🇰🇼</option>
-              <option value="Bahrain">Bahrain 🇧🇭</option>
-              <option value="Oman">Oman 🇴🇲</option>
-              <option value="Pakistan">Pakistan 🇵🇰</option>
-              <option value="India">India 🇮🇳</option>
-              <option value="Turkey">Turkey 🇹🇷</option>
-              <option value="Japan">Japan 🇯🇵</option>
-              <option value="South Korea">South Korea 🇰🇷</option>
-              <option value="Malaysia">Malaysia 🇲🇾</option>
-              <option value="South Africa">South Africa 🇿🇦</option>
-              <option value="Brazil">Brazil 🇧🇷</option>
-              <option value="Mexico">Mexico 🇲🇽</option>
-              <option value="Argentina">Argentina 🇦🇷</option>
-              <option value="CUSTOM">✏️ Type Custom Place / Country...</option>
-            </select>
-          </div>
-
-          <!-- Mode 2: Custom EditText Input (Visible if chosen) -->
-          <div id="wrapper-country-custom" style="display: none;">
-            <input type="text" id="target-country-custom-input" class="custom-input" placeholder="Type any country, region or territory (e.g. Dubai, Texas, Berlin...)" value="">
-          </div>
-        </div>
-
-        <!-- Target City -->
-        <div class="input-group">
-          <label class="input-label" for="target-city-input">
-            <span>🏙️</span> Target City / Metro
-          </label>
-          <input type="text" id="target-city-input" class="custom-input" placeholder="Type ANY City (e.g. Islamabad, Peshawar, Rawalpindi, London, Austin, Dubai...)" value="">
-        </div>
-
-        <!-- Multi-Niche Selector -->
-        <div class="input-group">
-          <label class="input-label" for="target-niche-select">
-            <span>🎯</span> Niche Category
-          </label>
-          <select id="target-niche-select" class="custom-select">
-            <option value="all" selected>🎯 All 12 Industries (324+ Leads)</option>
-            <option value="bakeries_sweets">🧁 Bakeries & Sweets (34)</option>
-            <option value="dental_medical">🩺 Dental & Medical (28)</option>
-            <option value="salons_spas">✂️ Barber Shops & Salons (28)</option>
-            <option value="restaurants">🍽️ Restaurants & Cafes (27)</option>
-            <option value="gyms_fitness">🏋️ Gyms & Fitness (27)</option>
-            <option value="auto_repair">🚗 Auto Repair & Detailing (27)</option>
-            <option value="real_estate">🏡 Real Estate & Brokers (27)</option>
-            <option value="home_services">🔨 Home Services (HVAC/Plumb) (27)</option>
-            <option value="boutique_hotels">🏨 Boutique Hotels (26)</option>
-            <option value="event_planners">🎉 Event & Wedding Marquees (26)</option>
-            <option value="pet_care">🐕 Pet Care & Vet Clinics (24)</option>
-            <option value="law_firms">⚖️ Law Firms & Legal (23)</option>
-          </select>
-        </div>
-
-        <!-- Launch Button -->
-        <button id="btn-start-hunt" class="btn-primary" style="height: 48px; min-width: 220px;">
-          <span>🚀</span> HUNT VERIFIED CITY LEADS
+        <button id="btn-sidebar-toggle" class="btn-sidebar-collapse" title="Collapse / Expand Sidebar (Ctrl+B)">
+          ◀
         </button>
       </div>
 
-      <!-- Quick City Chips (Verified Markets Across Pakistan & Worldwide) -->
-      <div class="quick-cities-bar">
-        <span class="quick-cities-label">Verified Markets (Click Any City):</span>
-        <button class="city-chip active" data-city="ALL" data-country="All">All Leads (324) 🌐</button>
-        <button class="city-chip" data-city="Karachi" data-country="Pakistan 🇵🇰">Karachi 🇵🇰 (63)</button>
-        <button class="city-chip" data-city="Lahore" data-country="Pakistan 🇵🇰">Lahore 🇵🇰 (37)</button>
-        <button class="city-chip" data-city="Austin" data-country="USA 🇺🇸">Austin, TX 🇺🇸 (34)</button>
-        <button class="city-chip" data-city="New York" data-country="USA 🇺🇸">New York 🇺🇸 (25)</button>
-        <button class="city-chip" data-city="London" data-country="United Kingdom 🇬🇧">London 🇬🇧 (25)</button>
-        <button class="city-chip" data-city="Islamabad" data-country="Pakistan 🇵🇰">Islamabad 🇵🇰 (19)</button>
-        <button class="city-chip" data-city="Dubai" data-country="United Arab Emirates 🇦🇪">Dubai 🇦🇪 (16)</button>
-        <button class="city-chip" data-city="Abu Dhabi" data-country="United Arab Emirates 🇦🇪">Abu Dhabi 🇦🇪 (14)</button>
-        <button class="city-chip" data-city="Rawalpindi" data-country="Pakistan 🇵🇰">Rawalpindi 🇵🇰 (13)</button>
-        <button class="city-chip" data-city="Faisalabad" data-country="Pakistan 🇵🇰">Faisalabad 🇵🇰 (13)</button>
-        <button class="city-chip" data-city="Multan" data-country="Pakistan 🇵🇰">Multan 🇵🇰 (13)</button>
-        <button class="city-chip" data-city="Peshawar" data-country="Pakistan 🇵🇰">Peshawar 🇵🇰 (13)</button>
-        <button class="city-chip" data-city="Riyadh" data-country="Saudi Arabia 🇸🇦">Riyadh 🇸🇦 (12)</button>
-        <button class="city-chip" data-city="Sialkot" data-country="Pakistan 🇵🇰">Sialkot 🇵🇰 (9)</button>
-        <button class="city-chip" data-city="Hyderabad" data-country="Pakistan 🇵🇰">Hyderabad 🇵🇰 (9)</button>
-        <button class="city-chip" data-city="Quetta" data-country="Pakistan 🇵🇰">Quetta 🇵🇰 (9)</button>
-      </div>
-    </section>
-
-    <!-- METRICS STRIP -->
-    <section class="metrics-grid">
-      <div class="metric-card glass-panel">
-        <div class="metric-icon-box emerald">🎯</div>
-        <div class="metric-details">
-          <span id="metric-total-leads" class="metric-value">324</span>
-          <span class="metric-label">Prospected Leads (4.0+ Stars, 30+ Reviews)</span>
-        </div>
-      </div>
-
-      <div class="metric-card glass-panel" id="card-metric-dispatched" style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" title="Click to view Date-Wise Dispatches & Daily Outbox Breakdown">
-        <div class="metric-icon-box cyan">⚡</div>
-        <div class="metric-details">
-          <span id="metric-dispatched-count" class="metric-value">0 / 324</span>
-          <span class="metric-label">Dispatched (📅 Click for Date-Wise Log 👆)</span>
-        </div>
-      </div>
-
-      <div class="metric-card glass-panel">
-        <div class="metric-icon-box rose">💸</div>
-        <div class="metric-details">
-          <span id="metric-estimated-recovered" class="metric-value">$760.0k/mo</span>
-          <span class="metric-label">Digital Financial Leaks Diagnosed</span>
-        </div>
-      </div>
-
-      <div class="metric-card glass-panel">
-        <div class="metric-icon-box amber">💰</div>
-        <div class="metric-details">
-          <span id="metric-pipeline-value" class="metric-value">$19,500 – $60,000</span>
-          <span class="metric-label">Projected Pipeline (30–50 Closed at $650+)</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3.5: DAY-3 & DAY-7 AUTOMATED FOLLOW-UP ALERT RADAR -->
-    <section id="followup-alert-banner" class="glass-panel" style="margin-bottom: 24px; padding: 16px 22px; border-radius: 12px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(180, 83, 9, 0.16) 100%); border: 1px solid rgba(245, 158, 11, 0.45); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; box-shadow: 0 4px 20px rgba(245, 158, 11, 0.15);">
-      <div style="display: flex; align-items: center; gap: 14px;">
-        <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(245, 158, 11, 0.25); border: 1px solid #f59e0b; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
-          ⏰
-        </div>
-        <div>
-          <div style="font-weight: 800; font-size: 0.98rem; color: #fde68a; display: flex; align-items: center; gap: 8px;">
-            <span>Day-3 & Day-7 Automated Follow-Up Radar</span>
-            <span id="badge-followup-live-status" style="background: rgba(245, 158, 11, 0.25); color: #fbbf24; border: 1px solid #f59e0b; font-size: 0.72rem; padding: 2px 8px; border-radius: 6px; font-weight: 700;">Live Radar Active</span>
-          </div>
-          <div id="followup-banner-text" style="font-size: 0.84rem; color: #fef3c7; margin-top: 2px;">
-            Rozana 48 ghantay baad jin leads ka reply nahi ata, unka 1-tap follow-up nudge yahan show hota hai.
-          </div>
-        </div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-        <button id="btn-view-due-followups" class="btn-primary" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #000; font-weight: 800; font-size: 0.82rem; padding: 8px 16px; border: none; box-shadow: 0 0 14px rgba(245, 158, 11, 0.35);">
-          👉 1-Tap Filter (<span id="banner-due-count">0</span> Due Nudges)
-        </button>
-        <button id="btn-simulate-followup-demo" class="btn-secondary" style="font-size: 0.76rem; padding: 7px 12px; border-color: rgba(245, 158, 11, 0.45); color: #fde68a; background: rgba(245, 158, 11, 0.08);" title="Click to simulate 8 leads that were dispatched 48 hours ago to test the alert and 1-tap nudges">
-          🧪 Test 48h Simulation (8 Leads)
-        </button>
-      </div>
-    </section>
-
-    <!-- SECTION 4: HUMAN-IN-THE-LOOP REVIEW DASHBOARD -->
-    <section class="glass-panel" style="padding: 24px;">
-      <!-- Modern Structured Toolbar: Channel Tabs, Filters & View Toggle -->
-      <div class="leads-dashboard-toolbar">
-        <!-- Tier 1: Channel & Status Filter Tabs (Horizontal Scrollable) -->
-        <div class="channel-tabs-scroll-wrapper">
-          <div class="channel-tabs-group">
-            <button class="channel-tab-btn active" data-filter="all">All Leads (324+)</button>
-            <button class="channel-tab-btn" data-filter="dispatched" style="border-color: rgba(56, 189, 248, 0.45); color: #38bdf8; font-weight: 700; background: rgba(56, 189, 248, 0.08);">
-              🚀 Dispatched (<span id="tab-dispatched-count">0</span>)
-            </button>
-            <button class="channel-tab-btn" data-filter="dispatch_dates" id="tab-btn-dispatch-dates" style="border-color: rgba(56, 189, 248, 0.5); color: #38bdf8; font-weight: 800; background: rgba(56, 189, 248, 0.12); box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);">
-              📅 Date-Wise Log (<span id="tab-dispatch-dates-count">0</span>)
-            </button>
-            <button class="channel-tab-btn" data-filter="whatsapp">📲 WhatsApp</button>
-            <button class="channel-tab-btn" data-filter="gmail">📧 Gmail</button>
-            <button class="channel-tab-btn" data-filter="linkedin">👔 LinkedIn</button>
-            <button class="channel-tab-btn" data-filter="instagram">📸 Instagram</button>
-            <button class="channel-tab-btn" data-filter="replied">🔴 With Replies</button>
-            <button class="channel-tab-btn" data-filter="followup" id="tab-btn-followup" style="border-color: rgba(245, 158, 11, 0.5); color: #fbbf24; font-weight: 700;">⏰ Due Follow-Ups (<span id="tab-followup-count">0</span>)</button>
-          </div>
-        </div>
-
-        <!-- Tier 2: Search, Niche Filter, View Mode Toggle & Action Buttons -->
-        <div class="leads-filter-row">
-          <!-- Search Bar -->
-          <div style="flex: 1; min-width: 220px;">
-            <input type="text" id="table-search-input" class="custom-input" style="height: 40px; font-size: 0.86rem;" placeholder="🔍 Search business, city, phone, DM, flaw...">
-          </div>
-
-          <!-- Table Niche Dropdown Filter -->
-          <div style="min-width: 195px;">
-            <select id="table-niche-filter" class="custom-select" style="height: 40px; font-size: 0.82rem; background: rgba(15, 23, 42, 0.85); border-color: rgba(56, 189, 248, 0.45); color: #f1f5f9; font-weight: 600;">
-              <option value="all" selected>🎯 All 12 Industries (324+ Leads)</option>
-              <option value="bakeries_sweets">🧁 Bakeries & Sweets (34)</option>
-              <option value="dental_medical">🩺 Dental & Medical (28)</option>
-              <option value="salons_spas">✂️ Barber Shops & Salons (28)</option>
-              <option value="restaurants">🍽️ Restaurants & Cafes (27)</option>
-              <option value="gyms_fitness">🏋️ Gyms & Fitness (27)</option>
-              <option value="auto_repair">🚗 Auto Repair & Detailing (27)</option>
-              <option value="real_estate">🏡 Real Estate & Brokers (27)</option>
-              <option value="home_services">🔨 Home Services (HVAC/Plumb) (27)</option>
-              <option value="boutique_hotels">🏨 Boutique Hotels (26)</option>
-              <option value="event_planners">🎉 Event & Wedding Marquees (26)</option>
-              <option value="pet_care">🐕 Pet Care & Vet Clinics (24)</option>
-              <option value="law_firms">⚖️ Law Firms & Legal (23)</option>
-            </select>
-          </div>
-
-          <!-- View Mode Toggle (Cards vs Table) -->
-          <div class="view-toggle-wrap">
-            <button id="btn-view-cards" class="view-toggle-btn" type="button" title="Mobile & Tablet Optimized Card View">
-              <span>🗂️ Cards</span>
-            </button>
-            <button id="btn-view-table" class="view-toggle-btn active" type="button" title="Full Desktop Table View">
-              <span>📋 Table</span>
-            </button>
-          </div>
-
-          <!-- Action Buttons -->
-          <div class="leads-actions-group">
-            <button id="btn-open-add-lead" class="btn-primary" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; padding: 8px 14px; font-size: 0.84rem; box-shadow: 0 0 12px rgba(37, 211, 102, 0.35);" title="Paste any real business & WhatsApp number from Google Maps / Instagram">
-              <span>➕</span> Add Lead
-            </button>
-            <button id="btn-reset-leads-status" class="btn-secondary" style="padding: 8px 12px; font-size: 0.84rem; color: #fbbf24; border-color: rgba(251, 191, 36, 0.45); font-weight: 700;" title="Reset all dispatched leads back to 'Ready to Pitch'">
-              <span>🔄</span> Reset
-            </button>
-            <button id="btn-export-csv" class="btn-secondary" style="padding: 8px 12px; font-size: 0.84rem;" title="Download CSV">
-              <span>📥</span> CSV
-            </button>
-            <button id="btn-export-json" class="btn-secondary" style="padding: 8px 12px; font-size: 0.84rem;" title="Download JSON">
-              <span>📤</span> JSON
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 4.1: DATE-WISE DISPATCH ANALYTICS & DAILY OUTBOX PANEL -->
-      <div id="dispatch-dates-panel" class="glass-panel" style="display: none; margin-bottom: 20px; padding: 20px 24px; border-radius: 12px; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%); border: 1px solid rgba(56, 189, 248, 0.45); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);">
-        <!-- Top bar with title and action buttons -->
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 14px;">
-          <div>
-            <div style="font-size: 1.15rem; font-weight: 800; color: #38bdf8; display: flex; align-items: center; gap: 8px;">
-              <span>📅</span> Date-Wise Dispatch Analytics & Daily Outbox
-              <span id="badge-dispatch-active-days" style="font-size: 0.72rem; padding: 2px 8px; border-radius: 6px; background: rgba(56, 189, 248, 0.2); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.4); font-weight: 700;">0 Days Active</span>
-            </div>
-            <p style="font-size: 0.84rem; color: #cbd5e1; margin-top: 4px;">
-              Har date ka alag count: Dekhein kis date ko kitni leads bheji gayin, channel distribution kya tha, aur 1-tap se usi date ki leads dekhein.
-            </p>
-          </div>
-          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-            <button id="btn-simulate-multi-day-dispatches" class="btn-primary" style="background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%); color: #000; font-weight: 800; font-size: 0.80rem; padding: 7px 14px; border: none; box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);" title="Simulate dispatches across Today, Yesterday, and past days to see date counts live">
-              🧪 Test Multi-Day Simulation (15 Leads)
-            </button>
-            <button id="btn-reset-dispatches" class="btn-secondary" style="font-size: 0.78rem; padding: 7px 12px; color: #fca5a5; border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.08);" title="Reset all test dispatches back to ready state">
-              🔄 Reset Dispatches
-            </button>
-          </div>
-        </div>
-
-        <!-- Summary KPIs (Today, Yesterday, Last 7 Days, Total) -->
-        <div class="dispatch-summary-kpis" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 20px;">
-          <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 10px; padding: 12px 16px;">
-            <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">📆 Today's Dispatches</div>
-            <div id="dispatch-kpi-today" style="font-size: 1.6rem; font-weight: 800; color: #38bdf8; margin-top: 4px;">0 Leads</div>
-            <div id="dispatch-kpi-today-channels" style="font-size: 0.72rem; color: #cbd5e1; margin-top: 2px;">0 WhatsApp • 0 Gmail</div>
-          </div>
-          <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 10px; padding: 12px 16px;">
-            <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">📆 Yesterday's Dispatches</div>
-            <div id="dispatch-kpi-yesterday" style="font-size: 1.6rem; font-weight: 800; color: #f1f5f9; margin-top: 4px;">0 Leads</div>
-            <div id="dispatch-kpi-yesterday-channels" style="font-size: 0.72rem; color: #cbd5e1; margin-top: 2px;">0 WhatsApp • 0 Gmail</div>
-          </div>
-          <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 10px; padding: 12px 16px;">
-            <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">📈 Last 7 Days (Week)</div>
-            <div id="dispatch-kpi-week" style="font-size: 1.6rem; font-weight: 800; color: #34d399; margin-top: 4px;">0 Leads</div>
-            <div id="dispatch-kpi-avg" style="font-size: 0.72rem; color: #cbd5e1; margin-top: 2px;">Avg 0 / day</div>
-          </div>
-          <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 10px; padding: 12px 16px;">
-            <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">🚀 All-Time Dispatched</div>
-            <div id="dispatch-kpi-all-time" style="font-size: 1.6rem; font-weight: 800; color: #fbbf24; margin-top: 4px;">0 Leads</div>
-            <div id="dispatch-kpi-pipeline" style="font-size: 0.72rem; color: #cbd5e1; margin-top: 2px;">Active in Outreach Funnel</div>
-          </div>
-        </div>
-
-        <!-- Date Filter Buttons Bar -->
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
-          <div style="font-size: 0.85rem; font-weight: 800; color: #f1f5f9; display: flex; align-items: center; gap: 8px;">
-            <span>🗓️</span> Select Date to Filter Table:
-          </div>
-          <div id="dispatch-date-filter-chips" style="display: flex; gap: 8px; flex-wrap: wrap;">
-            <!-- Rendered dynamically -->
-          </div>
-        </div>
-
-        <!-- Date Cards Grid Container -->
-        <div id="dispatch-dates-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px;">
-          <!-- Date cards dynamically rendered here -->
-        </div>
-      </div>
-
-      <!-- Business Scale Filter Strip (Chotay Business vs Established Brands) -->
-      <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-sm); padding: 10px 16px; margin: 12px 0 10px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
-        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-          <span style="font-size: 0.80rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 6px;">
-            <span>⚖️</span> Business Scale:
-          </span>
-          <div class="scale-filter-group">
-            <button class="scale-filter-btn active" data-scale="all" id="btn-scale-all">
-              <span>🌐</span> All Scales (200)
-            </button>
-            <button class="scale-filter-btn" data-scale="small_business" id="btn-scale-small">
-              <span>🏪</span> Chotay Business (Direct Mobile) (100)
-            </button>
-            <button class="scale-filter-btn" data-scale="established_brand" id="btn-scale-established">
-              <span>🏢</span> Established Brands (100)
-            </button>
-          </div>
-        </div>
-        <div style="font-size: 0.78rem; color: #cbd5e1; display: inline-flex; align-items: center; gap: 6px;">
-          <span>💡</span> <span><strong style="color: #4ade80;">Chotay Business (100):</strong> Direct owner mobile WhatsApp — 8x high reply & easy 48-hour close.</span>
-        </div>
-      </div>
-
-      <!-- Verified Data Source & Channel Legend Strip -->
-      <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-sm); padding: 10px 16px; margin: 12px 0 16px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 0.82rem;">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 1.15rem;">📍</span>
-          <span style="color: #e2e8f0;">
-            <strong style="color: #34d399;">100% Real Google Maps Verified Data:</strong> Tamam 200 businesses ke official phone numbers aur addresses Google Maps Knowledge Graph aur central helpline se verified hain.
-          </span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 14px; font-size: 0.76rem;">
-          <span style="color: #4ade80;">📲 <strong>Mobile:</strong> Direct WhatsApp Active</span>
-          <span style="color: #93c5fd;">📞 <strong>Landline/UAN:</strong> Use 📧 Gmail ya 📸 Instagram DM</span>
-        </div>
-      </div>
-
-      <!-- Mobile Scroll Hint -->
-      <div class="table-scroll-hint" style="display: none; font-size: 0.74rem; color: #93c5fd; background: rgba(56, 189, 248, 0.08); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 8px; padding: 7px 12px; margin-bottom: 10px; text-align: center; align-items: center; justify-content: center; gap: 6px;">
-        <span>📱 <strong>Mobile View:</strong> Table ko ungli se baayein/daayein (Left/Right) scroll karein sab details & action buttons dekhne ke liye 👉</span>
-      </div>
-
-      <!-- Leads Review Table (Desktop View) -->
-      <div class="table-container" id="leads-table-container">
-        <table class="leads-table">
-          <thead>
-            <tr>
-              <th style="min-width: 260px;">Business Profile & Location</th>
-              <th style="min-width: 250px;">Verified Decision Maker</th>
-              <th style="min-width: 220px;">Flaw Audit & Lost Revenue</th>
-              <th style="min-width: 140px;">Best Channel</th>
-              <th style="min-width: 140px;">Outreach Status</th>
-              <th style="min-width: 210px;">1-Tap Actions</th>
-            </tr>
-          </thead>
-          <tbody id="leads-table-body">
-            <!-- Dynamically populated via App.renderTable() -->
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Native Mobile / Tablet Card View (Responsive & Touch-Optimized) -->
-      <div id="leads-card-container" class="leads-card-container" style="display: none;">
-        <!-- Dynamically populated via App.renderTable() in card mode -->
-      </div>
-
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; font-size: 0.8rem; color: var(--text-muted);">
-        <span id="leads-count-label">Showing 200 of 200 Leads</span>
-        <span>Ban-Proof Safety Guard: 3 to 7 min human intervals between dispatches</span>
-      </div>
-    </section>
-  </div>
-
-  <!-- PITCH PREVIEW & EDIT MODAL -->
-  <div id="pitch-preview-modal" class="modal-overlay">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3 id="modal-pitch-title">Business Name — Pitch Preview</h3>
-        <button id="modal-pitch-close" class="modal-close-btn">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <div id="modal-pitch-channel-badge"></div>
-          <span style="font-size: 0.8rem; color: var(--text-muted);">Personalized Value-First Concept</span>
-        </div>
-
-        <div class="pitch-flaw-summary-card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-          <div>
-            <div style="font-size: 0.76rem; color: var(--text-secondary); text-transform: uppercase;">Diagnosed Digital Flaw</div>
-            <strong id="modal-pitch-flaw-title" style="color: #fca5a5; font-size: 0.92rem;">Pinch-to-zoom PDF Menu on Mobile</strong>
-          </div>
-          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-            <button type="button" id="modal-btn-open-flaw-from-pitch" style="background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.55); color: #fca5a5; padding: 4px 10px; border-radius: 6px; font-size: 0.74rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="View in-depth flaw audit, proof links, and client talking points">
-              <span>🔍</span> Masla Detail & Proof ↗
-            </button>
-            <div style="text-align: right;">
-              <div style="font-size: 0.76rem; color: var(--text-secondary); text-transform: uppercase;">Estimated Loss</div>
-              <strong id="modal-pitch-flaw-leak" class="leak-badge">$2,800 – $5,200/mo</strong>
-            </div>
-          </div>
-        </div>
-
-        <!-- Regional Food Delivery Platform Auto-Detection Strip -->
-        <div id="modal-pitch-delivery-badge-row" style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: var(--radius-sm); padding: 8px 14px; margin: 8px 0; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-          <div style="display: flex; align-items: center; gap: 6px;">
-            <span style="font-size: 0.95rem;">🛵</span>
-            <span style="color: #94a3b8;">Primary Local Delivery Platform:</span>
-            <strong id="modal-pitch-delivery-app-name" style="color: #38bdf8;">foodpanda</strong>
-          </div>
-          <span id="modal-pitch-region-label" style="font-size: 0.7rem; background: rgba(56, 189, 248, 0.18); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.4); padding: 2px 7px; border-radius: 4px; font-weight: 700;">
-            📍 Auto-Detected Region
-          </span>
-        </div>
-
-        <!-- Physical Location & Interactive Google Map Verification Strip -->
-        <div class="pitch-lead-location-strip" style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: var(--radius-sm); padding: 12px 16px; margin: 12px 0; font-size: 0.8rem;">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
-            <div style="flex: 1; min-width: 240px;">
-              <div style="font-size: 0.72rem; color: #f87171; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; display: flex; align-items: center; gap: 5px;">
-                <span class="status-dot-pulse" style="background: #ef4444; box-shadow: 0 0 8px #ef4444;"></span>
-                <span>LIVE GOOGLE MAPS PIN VERIFIED</span>
-              </div>
-              <strong id="modal-pitch-address" style="color: #ffffff; font-size: 0.92rem; display: block; margin-top: 4px; font-weight: 700;">Plot 14-C, Zamzama Blvd, DHA Phase 5, Karachi</strong>
-              <span id="modal-pitch-city-country" style="color: #94a3b8; font-size: 0.76rem;">Karachi, Pakistan</span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-              <button type="button" id="modal-btn-copy-address" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); color: #f1f5f9; padding: 7px 12px; border-radius: 6px; font-size: 0.76rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s;" title="1-Click to Copy Full Business Address">
-                <span>📋</span> <span id="label-copy-address">Copy Address</span>
-              </button>
-              <button type="button" id="modal-btn-toggle-map" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.45); color: #fca5a5; padding: 7px 12px; border-radius: 6px; font-size: 0.76rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s;" title="Toggle Interactive Google Map preview inside modal">
-                <span>🗺️</span> <span id="label-toggle-map">Hide Map ▴</span>
-              </button>
-              <a id="modal-btn-open-maps" href="#" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #ffffff; padding: 7px 13px; border-radius: 6px; font-size: 0.76rem; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 0 14px rgba(239, 68, 68, 0.4); transition: transform 0.15s ease;" title="Launch native Google Maps App / Navigation">
-                <span>↗</span> Open App
+      <!-- Nav Items Scrollable -->
+      <nav class="sidebar-nav-scroll">
+        <!-- GROUP 1: CORE PLATFORM -->
+        <div class="sidebar-nav-group">
+          <div class="nav-group-title">Core Platform</div>
+          <ul class="sidebar-nav-list">
+            <li>
+              <a href="#overview" class="sidebar-nav-item active" data-view="overview">
+                <span class="nav-item-icon">📊</span>
+                <span class="nav-item-label">Overview</span>
               </a>
-            </div>
-          </div>
-
-          <!-- Embedded Live Interactive Google Map Frame -->
-          <div id="modal-map-embed-wrapper" style="margin-top: 10px; width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid rgba(239, 68, 68, 0.3); background: #070a13; transition: all 0.3s ease;">
-            <div style="background: rgba(15, 23, 42, 0.85); padding: 5px 12px; display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; color: #94a3b8; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-              <span>📍 Live Interactive Map • Zoom & Pan Enabled</span>
-              <span style="color: #4ade80; font-weight: 600;">● Active GPS Pin</span>
-            </div>
-            <iframe id="modal-map-iframe" src="about:blank" width="100%" height="220" style="border: 0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
+            </li>
+            <li>
+              <a href="#find-leads" class="sidebar-nav-item" data-view="find-leads">
+                <span class="nav-item-icon">🔍</span>
+                <span class="nav-item-label">Find New Leads</span>
+                <span class="nav-item-badge cyan">PLACES API</span>
+              </a>
+            </li>
+            <li>
+              <a href="#all-businesses" class="sidebar-nav-item" data-view="all-businesses">
+                <span class="nav-item-icon">🏢</span>
+                <span class="nav-item-label">All Businesses</span>
+                <span class="nav-item-badge" id="sidebar-total-leads-badge">324</span>
+              </a>
+            </li>
+            <li>
+              <a href="#verified-leads" class="sidebar-nav-item" data-view="verified-leads">
+                <span class="nav-item-icon">🛡️</span>
+                <span class="nav-item-label">Verified Leads</span>
+                <span class="nav-item-badge emerald">VERIFIED</span>
+              </a>
+            </li>
+          </ul>
         </div>
 
-        <!-- Verified Lead Decision Maker & Phone Strip (Editable Phone for WhatsApp) -->
-        <div class="pitch-lead-contact-strip" style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 10px 14px; margin: 10px 0; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-          <div>
-            <span style="color: var(--text-muted);">👤 Decision Maker: </span>
-            <strong id="modal-pitch-dm-name" style="color: var(--text-main);">Haider Jafri & Atif Haseeb</strong>
-            <span id="modal-pitch-dm-title" style="color: var(--text-secondary); font-size: 0.74rem;"> (Co-Founders & Operations Directors)</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: var(--text-muted);">📞 Phone / WhatsApp: </span>
-            <input type="text" id="modal-pitch-dm-phone-input" style="height: 30px; font-size: 0.82rem; width: 175px; color: #4ade80; background: rgba(0,0,0,0.5); border: 1px solid rgba(74,222,128,0.4); padding: 3px 8px; border-radius: 6px; font-family: 'JetBrains Mono', monospace;" title="Enter or edit phone number before sending">
-            <button type="button" id="btn-set-my-wa-test" style="background: rgba(74,222,128,0.15); border: 1px solid rgba(74,222,128,0.3); color: #4ade80; font-size: 0.7rem; padding: 4px 8px; border-radius: 4px; cursor: pointer;" title="Set to +923376568003 to test on your own WhatsApp">
-              🧪 Test on My WA
-            </button>
-          </div>
-        </div>
-        <div style="font-size: 0.74rem; color: #94a3b8; margin: -4px 0 10px 4px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
-          <span>📍 <strong>Number Source:</strong> <span id="modal-pitch-phone-source" style="color: #38bdf8; font-weight: 600;">Google Business Profile (Google Maps Listing)</span></span>
-          <a id="modal-pitch-source-verify-link" href="#" target="_blank" rel="noopener noreferrer" style="color: #4ade80; text-decoration: underline; font-weight: 500;">Verify Phone on Google Maps ↗</a>
-        </div>
-
-        <!-- Verified Founder & Decision Maker Source Verification -->
-        <div style="background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.35); border-radius: var(--radius-sm); padding: 10px 14px; margin: 10px 0; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-          <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-            <span style="font-size: 0.88rem;">🏛️</span>
-            <strong style="color: #fbbf24;">Founder / Role Source:</strong>
-            <span id="modal-pitch-dm-source" style="color: #f1f5f9; font-weight: 600;">SECP Corporate Registry</span>
-          </div>
-          <div>
-            <a id="modal-pitch-dm-source-link" href="#" target="_blank" rel="noopener noreferrer" style="background: rgba(251, 191, 36, 0.2); color: #fde047; border: 1px solid rgba(251, 191, 36, 0.5); padding: 4px 10px; border-radius: 6px; font-size: 0.76rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
-              <span>🔍 Verify Source ↗</span>
-            </a>
-          </div>
+        <!-- GROUP 2: DIGITAL PRESENCE & AI AUDIT -->
+        <div class="sidebar-nav-group">
+          <div class="nav-group-title">Digital Presence & AI Audit</div>
+          <ul class="sidebar-nav-list">
+            <li>
+              <a href="#website-analyzer" class="sidebar-nav-item" data-view="website-analyzer">
+                <span class="nav-item-icon">🌐</span>
+                <span class="nav-item-label">Website Analyzer</span>
+              </a>
+            </li>
+            <li>
+              <a href="#weakness-detector" class="sidebar-nav-item" data-view="weakness-detector">
+                <span class="nav-item-icon">⚠️</span>
+                <span class="nav-item-label">AI Weakness Detector</span>
+              </a>
+            </li>
+            <li>
+              <a href="#software-opportunities" class="sidebar-nav-item" data-view="software-opportunities">
+                <span class="nav-item-icon">💡</span>
+                <span class="nav-item-label">Software Opportunities</span>
+                <span class="nav-item-badge cyan">6 TYPES</span>
+              </a>
+            </li>
+            <li>
+              <a href="#pitch-generator" class="sidebar-nav-item" data-view="pitch-generator">
+                <span class="nav-item-icon">✍️</span>
+                <span class="nav-item-label">AI Pitch Generator</span>
+              </a>
+            </li>
+          </ul>
         </div>
 
-        <!-- Recommended Pitch Channel & Conversion Strategy Card -->
-        <div id="modal-pitch-channel-strategy-card" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(139, 92, 246, 0.12) 100%); border: 1px solid rgba(96, 165, 250, 0.4); border-radius: var(--radius-sm); padding: 12px 16px; margin: 10px 0; font-size: 0.82rem;">
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; flex-wrap: wrap;">
-            <div style="display: flex; align-items: center; gap: 6px;">
-              <span style="font-size: 1rem;">🎯</span>
-              <strong style="color: #93c5fd; text-transform: uppercase; font-size: 0.74rem; letter-spacing: 0.5px;">Recommended Pitch Channel</strong>
-            </div>
-            <div id="modal-pitch-best-channel-badge"></div>
-          </div>
-          <div id="modal-pitch-channel-reason" style="color: #e2e8f0; line-height: 1.45; font-size: 0.8rem;"></div>
+        <!-- GROUP 3: BATCH & DISPATCH AUTOMATION -->
+        <div class="sidebar-nav-group">
+          <div class="nav-group-title">Batch & Outreach Automation</div>
+          <ul class="sidebar-nav-list">
+            <li>
+              <a href="#lead-batch" class="sidebar-nav-item" data-view="lead-batch">
+                <span class="nav-item-icon">📦</span>
+                <span class="nav-item-label">Current Lead Batch</span>
+                <span class="nav-item-badge amber" id="sidebar-batch-badge">BATCH 01</span>
+              </a>
+            </li>
+            <li>
+              <a href="#daily-tracker" class="sidebar-nav-item" data-view="daily-tracker">
+                <span class="nav-item-icon">📈</span>
+                <span class="nav-item-label">Daily Pitch Tracker</span>
+              </a>
+            </li>
+            <li>
+              <a href="#dispatched-leads" class="sidebar-nav-item" data-view="dispatched-leads">
+                <span class="nav-item-icon">🚀</span>
+                <span class="nav-item-label">Dispatched Leads</span>
+                <span class="nav-item-badge" id="sidebar-dispatched-badge">0</span>
+              </a>
+            </li>
+            <li>
+              <a href="#date-history" class="sidebar-nav-item" data-view="date-history">
+                <span class="nav-item-icon">📅</span>
+                <span class="nav-item-label">Date-Wise History</span>
+              </a>
+            </li>
+          </ul>
         </div>
 
-        <!-- Subject row (for Gmail) -->
-        <div id="modal-pitch-subject-row" class="input-group" style="display: none;">
-          <label class="input-label" for="modal-pitch-subject">Lowercase Subject Line</label>
-          <input type="text" id="modal-pitch-subject" class="custom-input" style="height: 40px; font-size: 0.88rem;">
+        <!-- GROUP 4: CRM & CLIENT CONVERSION -->
+        <div class="sidebar-nav-group">
+          <div class="nav-group-title">CRM & Client Conversion</div>
+          <ul class="sidebar-nav-list">
+            <li>
+              <a href="#followup-manager" class="sidebar-nav-item" data-view="followup-manager">
+                <span class="nav-item-icon">⏰</span>
+                <span class="nav-item-label">Follow-up Manager</span>
+                <span class="nav-item-badge amber" id="sidebar-followup-badge">0 DUE</span>
+              </a>
+            </li>
+            <li>
+              <a href="#reply-inbox" class="sidebar-nav-item" data-view="reply-inbox">
+                <span class="nav-item-icon">📥</span>
+                <span class="nav-item-label">Reply Inbox</span>
+                <span class="nav-item-badge" id="sidebar-reply-badge">0</span>
+              </a>
+            </li>
+            <li>
+              <a href="#crm" class="sidebar-nav-item" data-view="crm">
+                <span class="nav-item-icon">💼</span>
+                <span class="nav-item-label">CRM Pipeline</span>
+              </a>
+            </li>
+            <li>
+              <a href="#analytics" class="sidebar-nav-item" data-view="analytics">
+                <span class="nav-item-icon">📉</span>
+                <span class="nav-item-label">Analytics</span>
+              </a>
+            </li>
+            <li>
+              <a href="#settings" class="sidebar-nav-item" data-view="settings">
+                <span class="nav-item-icon">⚙️</span>
+                <span class="nav-item-label">Settings & APIs</span>
+              </a>
+            </li>
+          </ul>
         </div>
+      </nav>
 
-        <!-- 1-TAP GREETING TONE SWITCHER (ZERO DOUBT) -->
-        <div class="pitch-greeting-selector-strip" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: var(--radius-sm); padding: 10px 14px; margin: 10px 0;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
-            <span style="font-size: 0.74rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px;">
-              🎯 Outreach Greeting Tone:
-            </span>
-            <span id="greeting-mode-hint" style="font-size: 0.72rem; color: #38bdf8; font-weight: 600;">
-              🛡️ Safe & Natural for WhatsApp / Instagram Floor Staff
-            </span>
-          </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-            <button type="button" id="btn-greeting-team" class="btn-greeting-mode active" title="Addresses the restaurant team naturally (100% safe for staff answering WhatsApp/DM)">
-              <span>🛡️</span>
-              <span id="label-greeting-team">Team Greeting ("Hi Team Kolachi,")</span>
-            </button>
-            <button type="button" id="btn-greeting-founder" class="btn-greeting-mode" title="Addresses the verified founder directly (Best for LinkedIn or Executive Email)">
-              <span>👤</span>
-              <span id="label-greeting-founder">Founder Name ("Hi Haider & Atif,")</span>
-            </button>
-          </div>
-          <div style="font-size: 0.71rem; color: #64748b; margin-top: 6px; line-height: 1.4;">
-            💡 <em>Pro Agency Tip:</em> Public WhatsApp aur Instagram helpline par 90% floor managers ya reservation desk hota hai. <strong>"Team"</strong> greeting se message hamesha genuine aur courteous lagta hai. Founder name executive email ke liye best hai.
-          </div>
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <div class="sidebar-footer-info">
+          <span class="footer-user-name">Fawwad97 (Admin)</span>
+          <span class="footer-status-pill">
+            <span class="status-dot"></span> System Live & Connected
+          </span>
         </div>
-
-        <div class="input-group">
-          <label class="input-label" for="modal-pitch-textarea">Pitch Body</label>
-          <textarea id="modal-pitch-textarea" class="pitch-textarea"></textarea>
-          <div id="modal-pitch-counter" class="char-counter">0 characters</div>
-        </div>
+        <button id="btn-sidebar-quick-settings" class="btn-nav-icon" title="Settings" onclick="App.switchView('settings')">
+          ⚙️
+        </button>
       </div>
-      <div class="modal-footer" style="flex-wrap: wrap; gap: 8px;">
-        <button id="modal-btn-copy" class="btn-secondary">📋 Copy Pitch</button>
-        <button id="modal-btn-send-wa" class="btn-primary" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);">
-          <span>📲</span> Bhej Do (WhatsApp)
-        </button>
-        <button id="modal-btn-send-insta" class="btn-secondary" style="background: linear-gradient(135deg, rgba(225, 48, 108, 0.18), rgba(131, 58, 180, 0.28)); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.55); font-weight: 700; box-shadow: 0 0 12px rgba(225, 48, 108, 0.25);" title="Auto-copies pitch and opens business Instagram Profile/DM">
-          <span>📸</span> Bhej Do (Instagram DM)
-        </button>
-        <button id="modal-btn-send-gmail" class="btn-secondary" style="color: #f87171; border-color: rgba(248, 113, 113, 0.4);" title="US/UK clients landline par hain, isko click kar ke direct Gmail bhein">
-          <span>📧</span> Bhej Do (Gmail Instead)
-        </button>
-        <button id="modal-btn-bhejdo" class="btn-primary">🚀 Bhej Do (Channel)</button>
+    </aside>
+
+    <!-- ========================================================
+         MAIN CONTENT AREA
+         ======================================================== -->
+    <main class="saas-main">
+      <!-- TOP NAVIGATION BAR -->
+      <header class="saas-top-navbar">
+        <div class="top-nav-left">
+          <button id="btn-mobile-sidebar" class="btn-mobile-menu" title="Open Menu">
+            ☰
+          </button>
+          <div class="top-nav-search-wrap">
+            <span class="top-nav-search-icon">🔍</span>
+            <input type="text" id="global-search-input" placeholder="Search businesses, cities, Place IDs..." autocomplete="off">
+          </div>
+        </div>
+
+        <div class="top-nav-right">
+          <!-- Active 50-Lead Batch Status Pill -->
+          <div id="top-nav-batch-pill" class="top-nav-batch-pill" onclick="App.switchView('lead-batch')" title="Click to view Active 50-Lead Batch">
+            <span>📦</span>
+            <span id="top-batch-label" class="batch-pill-label">Batch #01: 0/50</span>
+            <div class="batch-pill-bar">
+              <div id="top-batch-fill" class="batch-pill-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <!-- API Status Dots Group -->
+          <div class="api-status-group" title="API Integrations Status">
+            <span class="status-dot" id="dot-places-status" title="Google Places API Ready"></span> Places
+            <span class="status-dot" id="dot-pagespeed-status" title="PageSpeed Insights Ready"></span> PageSpeed
+            <span class="status-dot" id="dot-ai-status" title="AI Pitch Engine Ready"></span> AI
+            <span class="status-dot" id="dot-wa-status" title="WhatsApp Business Ready"></span> WhatsApp
+          </div>
+
+          <!-- Add Real Lead Quick Action -->
+          <button id="btn-top-add-lead" class="btn-primary" style="height: 38px; padding: 0 14px; font-size: 0.80rem;" onclick="App.openAddLeadModal()">
+            <span>➕</span> Add Lead
+          </button>
+
+          <!-- Notification Bell -->
+          <button id="btn-nav-notifications" class="btn-nav-icon" title="Notifications & Replies" onclick="App.switchView('reply-inbox')">
+            <span>🔔</span>
+            <span id="nav-notification-badge" class="nav-notification-badge" style="display: none;">0</span>
+          </button>
+
+          <!-- Settings Button -->
+          <button id="btn-top-settings" class="btn-nav-icon" title="Settings" onclick="App.switchView('settings')">
+            <span>⚙️</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- CONTENT PANES -->
+      <div class="saas-content-area">
+
+        <!-- ====================================================
+             VIEW 1: OVERVIEW
+             ==================================================== -->
+        <section id="view-overview" class="saas-view-pane active">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">📊 Executive Sales Dashboard</h1>
+              <p class="view-header-desc">Autonomous B2B client acquisition, Google Maps verification, and universal software sales automation.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn-secondary" onclick="App.switchView('find-leads')">
+                <span>🔍</span> Discover New Leads
+              </button>
+              <button class="btn-primary" onclick="App.switchView('lead-batch')">
+                <span>⚡</span> Pitch Active Batch
+              </button>
+            </div>
+          </div>
+
+          <!-- Active Batch Progress Hero Card -->
+          <div class="batch-card-hero">
+            <div class="batch-hero-top">
+              <div class="batch-title-tag">
+                <span>📦</span> <span id="overview-batch-title">Batch #01</span>
+                <span class="batch-status-badge active" id="overview-batch-status-badge">Active Batch</span>
+              </div>
+              <div style="font-size: 0.82rem; color: #94a3b8;">
+                Rules: Only real dispatches count toward completion. Next batch unlocks at 100%.
+              </div>
+            </div>
+
+            <div class="batch-progress-container">
+              <div style="display: flex; justify-content: space-between; font-size: 0.84rem; margin-bottom: 6px;">
+                <span>Unique Businesses Pitched Progress:</span>
+                <span><strong id="overview-batch-progress-text" style="color: #38bdf8;">0 / 50 Pitched</strong> (<span id="overview-batch-progress-pct">0%</span>)</span>
+              </div>
+              <div class="batch-progress-bar-bg">
+                <div id="overview-batch-bar-fill" class="batch-progress-bar-fill" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <div class="batch-stats-grid">
+              <div class="batch-stat-box">
+                <div class="batch-stat-num" id="overview-batch-total">50</div>
+                <div class="batch-stat-label">Total Batch Leads</div>
+              </div>
+              <div class="batch-stat-box">
+                <div class="batch-stat-num" style="color: #38bdf8;" id="overview-batch-pitched">0</div>
+                <div class="batch-stat-label">Successfully Pitched</div>
+              </div>
+              <div class="batch-stat-box">
+                <div class="batch-stat-num" style="color: #fbbf24;" id="overview-batch-remaining">50</div>
+                <div class="batch-stat-label">Remaining to Pitch</div>
+              </div>
+              <div class="batch-stat-box">
+                <div class="batch-stat-num" style="color: #f87171;" id="overview-batch-lock-status">🔒 LOCKED</div>
+                <div class="batch-stat-label">Next Batch Status</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KPI Metric Cards Grid -->
+          <div class="metrics-grid" style="margin-bottom: 24px;">
+            <div class="metric-card glass-panel" onclick="App.switchView('all-businesses')" style="cursor: pointer;">
+              <div class="metric-icon-box emerald">🎯</div>
+              <div class="metric-details">
+                <span id="kpi-total-discovered" class="metric-value">324</span>
+                <span class="metric-label">Businesses in Database</span>
+              </div>
+            </div>
+            <div class="metric-card glass-panel" onclick="App.switchView('verified-leads')" style="cursor: pointer;">
+              <div class="metric-icon-box cyan">🛡️</div>
+              <div class="metric-details">
+                <span id="kpi-verified-leads" class="metric-value">324</span>
+                <span class="metric-label">Google Maps Verified (100%)</span>
+              </div>
+            </div>
+            <div class="metric-card glass-panel" onclick="App.switchView('daily-tracker')" style="cursor: pointer;">
+              <div class="metric-icon-box amber">⚡</div>
+              <div class="metric-details">
+                <span id="kpi-dispatched-count" class="metric-value">0</span>
+                <span class="metric-label">Unique Pitched Businesses</span>
+              </div>
+            </div>
+            <div class="metric-card glass-panel" onclick="App.switchView('reply-inbox')" style="cursor: pointer;">
+              <div class="metric-icon-box rose">📥</div>
+              <div class="metric-details">
+                <span id="kpi-replies-count" class="metric-value">0</span>
+                <span class="metric-label">Incoming Client Replies</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Funnel & Recent Activity Grid -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <!-- Conversion Funnel -->
+            <div class="glass-panel" style="padding: 20px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <h3 style="font-size: 1.1rem; color: #fff; font-family: 'Outfit', sans-serif;">🎯 Sales Conversion Funnel</h3>
+                <span style="font-size: 0.74rem; color: #94a3b8;">Real Database Data</span>
+              </div>
+              <div id="analytics-funnel-container"></div>
+            </div>
+
+            <!-- Recent Outreach Activity Feed -->
+            <div class="glass-panel" style="padding: 20px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <h3 style="font-size: 1.1rem; color: #fff; font-family: 'Outfit', sans-serif;">🚀 Recent Dispatch Events</h3>
+                <button class="btn-sec-action" onclick="App.switchView('dispatched-leads')">View All Dispatches ↗</button>
+              </div>
+              <div id="overview-recent-dispatches" style="display: flex; flex-direction: column; gap: 8px; max-height: 380px; overflow-y: auto;">
+                <p style="color: #94a3b8; font-size: 0.85rem; padding: 20px 0; text-align: center;">No messages dispatched yet today. Start pitching your active 50-lead batch!</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 2: FIND NEW LEADS (GOOGLE PLACES API NEW)
+             ==================================================== -->
+        <section id="view-find-leads" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">🔍 Google Places API (New) Business Discovery</h1>
+              <p class="view-header-desc">Search and discover real local businesses worldwide with exact Place IDs, verified phone numbers, and operational statuses.</p>
+            </div>
+            <div class="api-status-group">
+              <span class="status-dot"></span> Google Places API (New) Ready
+            </div>
+          </div>
+
+          <!-- Discovery Search Form -->
+          <div class="glass-panel" style="padding: 22px; margin-bottom: 24px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 14px;">
+              <div class="input-group">
+                <label class="input-label" for="search-country">Country *</label>
+                <select id="search-country" class="custom-select">
+                  <option value="Pakistan" selected>🇵🇰 Pakistan</option>
+                  <option value="United States">🇺🇸 United States</option>
+                  <option value="United Kingdom">🇬🇧 United Kingdom</option>
+                  <option value="United Arab Emirates">🇦🇪 United Arab Emirates</option>
+                  <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
+                  <option value="Canada">🇨🇦 Canada</option>
+                  <option value="Australia">🇦🇺 Australia</option>
+                  <option value="Global">🌐 Global / Any</option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="search-state">State / Province</label>
+                <input type="text" id="search-state" class="custom-input" placeholder="e.g. Sindh, Punjab, Texas, London">
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="search-city">City / Metro *</label>
+                <input type="text" id="search-city" class="custom-input" placeholder="e.g. Karachi, Lahore, Austin, Dubai..." value="Karachi">
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="search-category">Business Category *</label>
+                <select id="search-category" class="custom-select">
+                  <option value="all">🎯 All Categories</option>
+                  <option value="restaurants" selected>🍽️ Restaurants & Cafes</option>
+                  <option value="bakeries_sweets">🧁 Bakeries & Sweets</option>
+                  <option value="dental_medical">🩺 Dental & Medical</option>
+                  <option value="salons_spas">✂️ Barber Shops & Salons</option>
+                  <option value="gyms_fitness">🏋️ Gyms & Fitness</option>
+                  <option value="auto_repair">🚗 Auto Repair & Detailing</option>
+                  <option value="real_estate">🏡 Real Estate & Brokers</option>
+                  <option value="home_services">🔨 Home Services (HVAC/Plumbing)</option>
+                  <option value="boutique_hotels">🏨 Boutique Hotels</option>
+                  <option value="event_planners">🎉 Event & Wedding Marquees</option>
+                  <option value="law_firms">⚖️ Law Firms & Legal</option>
+                  <option value="pet_care">🐕 Pet Care & Vet Clinics</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 18px;">
+              <div class="input-group">
+                <label class="input-label" for="search-keyword">Custom Keyword</label>
+                <input type="text" id="search-keyword" class="custom-input" placeholder="e.g. Rooftop, Pizzeria, Cosmetic, Orthopedic">
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="search-count">Number of Leads</label>
+                <select id="search-count" class="custom-select">
+                  <option value="10">10 Leads</option>
+                  <option value="25" selected>25 Leads</option>
+                  <option value="50">50 Leads (1 Full Batch)</option>
+                  <option value="100">100 Leads</option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="search-min-rating">Min Google Rating</label>
+                <select id="search-min-rating" class="custom-select">
+                  <option value="4.0" selected>⭐ 4.0+ Stars</option>
+                  <option value="4.3">⭐ 4.3+ Stars</option>
+                  <option value="4.5">⭐ 4.5+ Stars</option>
+                  <option value="3.5">⭐ 3.5+ Stars</option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="search-min-reviews">Min Reviews</label>
+                <select id="search-min-reviews" class="custom-select">
+                  <option value="30" selected>30+ Reviews</option>
+                  <option value="50">50+ Reviews</option>
+                  <option value="100">100+ Reviews</option>
+                  <option value="10">10+ Reviews</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Checkbox Filters & Launch Button -->
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px;">
+              <div style="display: flex; align-items: center; gap: 20px;">
+                <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; cursor: pointer;">
+                  <input type="checkbox" id="search-require-website"> Require Website Available
+                </label>
+                <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; cursor: pointer;">
+                  <input type="checkbox" id="search-require-phone" checked> Require Phone Number Available
+                </label>
+              </div>
+
+              <button id="btn-run-places-search" class="btn-primary" style="height: 44px; min-width: 220px;" onclick="App.handleRunPlacesSearch()">
+                <span>🚀</span> DISCOVER VERIFIED LEADS
+              </button>
+            </div>
+          </div>
+
+          <!-- Search Results Container -->
+          <div id="places-search-results-section" style="display: none;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+              <h3 style="font-size: 1.1rem; color: #fff;" id="places-results-header">Search Results</h3>
+              <div style="display: flex; gap: 10px;">
+                <button class="btn-secondary" onclick="App.addAllSearchToBatch()">
+                  <span>📦</span> Add All to Active Batch
+                </button>
+                <button class="btn-secondary" onclick="App.exportCurrentSearchCSV()">
+                  <span>📥</span> Export CSV
+                </button>
+              </div>
+            </div>
+
+            <div class="table-responsive-wrapper glass-panel">
+              <table class="leads-table">
+                <thead>
+                  <tr>
+                    <th>Business Profile & Place ID</th>
+                    <th>Google Verification</th>
+                    <th>Contact & Operating Status</th>
+                    <th>Universal Software Opportunity</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="places-search-results-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 3: ALL BUSINESSES (FULL DATABASE)
+             ==================================================== -->
+        <section id="view-all-businesses" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">🏢 All Prospected Businesses</h1>
+              <p class="view-header-desc">Searchable database of curated businesses with Google Place IDs, verified contacts, and ban-safe outreach funnels.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn-secondary" onclick="App.exportCSV()"><span>📥</span> Export CSV</button>
+              <button class="btn-primary" onclick="App.openAddLeadModal()"><span>➕</span> Add New Business</button>
+            </div>
+          </div>
+
+          <!-- Quick Cities Bar -->
+          <div class="quick-cities-bar" style="margin-bottom: 18px;">
+            <span class="quick-cities-label">Verified Markets (Click Any City):</span>
+            <button class="city-chip active" data-city="ALL" data-country="All">All Leads (324) 🌐</button>
+            <button class="city-chip" data-city="Karachi" data-country="Pakistan 🇵🇰">Karachi 🇵🇰 (63)</button>
+            <button class="city-chip" data-city="Lahore" data-country="Pakistan 🇵🇰">Lahore 🇵🇰 (37)</button>
+            <button class="city-chip" data-city="Austin" data-country="USA 🇺🇸">Austin, TX 🇺🇸 (34)</button>
+            <button class="city-chip" data-city="New York" data-country="USA 🇺🇸">New York 🇺🇸 (25)</button>
+            <button class="city-chip" data-city="London" data-country="United Kingdom 🇬🇧">London 🇬🇧 (25)</button>
+            <button class="city-chip" data-city="Islamabad" data-country="Pakistan 🇵🇰">Islamabad 🇵🇰 (19)</button>
+            <button class="city-chip" data-city="Dubai" data-country="United Arab Emirates 🇦🇪">Dubai 🇦🇪 (16)</button>
+            <button class="city-chip" data-city="Abu Dhabi" data-country="United Arab Emirates 🇦🇪">Abu Dhabi 🇦🇪 (14)</button>
+            <button class="city-chip" data-city="Rawalpindi" data-country="Pakistan 🇵🇰">Rawalpindi 🇵🇰 (13)</button>
+            <button class="city-chip" data-city="Faisalabad" data-country="Pakistan 🇵🇰">Faisalabad 🇵🇰 (13)</button>
+            <button class="city-chip" data-city="Multan" data-country="Pakistan 🇵🇰">Multan 🇵🇰 (13)</button>
+            <button class="city-chip" data-city="Peshawar" data-country="Pakistan 🇵🇰">Peshawar 🇵🇰 (13)</button>
+            <button class="city-chip" data-city="Riyadh" data-country="Saudi Arabia 🇸🇦">Riyadh 🇸🇦 (12)</button>
+            <button class="city-chip" data-city="Sialkot" data-country="Pakistan 🇵🇰">Sialkot 🇵🇰 (9)</button>
+            <button class="city-chip" data-city="Hyderabad" data-country="Pakistan 🇵🇰">Hyderabad 🇵🇰 (9)</button>
+            <button class="city-chip" data-city="Quetta" data-country="Pakistan 🇵🇰">Quetta 🇵🇰 (9)</button>
+          </div>
+
+          <!-- Channel & Scale Filter Tabs -->
+          <div class="leads-dashboard-toolbar" style="margin-bottom: 18px;">
+            <div class="channel-tabs-scroll-wrapper">
+              <div class="channel-tabs-group">
+                <button class="channel-tab-btn active" data-filter="all">All Leads (324+)</button>
+                <button class="channel-tab-btn" data-filter="dispatched" style="color: #38bdf8;">
+                  🚀 Dispatched (<span id="tab-dispatched-count">0</span>)
+                </button>
+                <button class="channel-tab-btn" data-filter="whatsapp">📲 WhatsApp</button>
+                <button class="channel-tab-btn" data-filter="gmail">📧 Gmail</button>
+                <button class="channel-tab-btn" data-filter="linkedin">👔 LinkedIn</button>
+                <button class="channel-tab-btn" data-filter="instagram">📸 Instagram</button>
+                <button class="channel-tab-btn" data-filter="replied">🔴 With Replies</button>
+                <button class="channel-tab-btn" data-filter="followup" style="color: #fbbf24;">⏰ Due Follow-Ups (<span id="tab-followup-count">0</span>)</button>
+              </div>
+            </div>
+
+            <!-- Tier 2: Search, Niche & View Mode -->
+            <div class="leads-filter-row">
+              <div style="flex: 1; min-width: 200px;">
+                <input type="text" id="table-search-input" class="custom-input" style="height: 40px;" placeholder="🔍 Search business, city, phone, DM, weakness...">
+              </div>
+
+              <div style="min-width: 195px;">
+                <select id="table-niche-filter" class="custom-select" style="height: 40px;">
+                  <option value="all" selected>🎯 All 12 Industries (324+ Leads)</option>
+                  <option value="bakeries_sweets">🧁 Bakeries & Sweets (34)</option>
+                  <option value="dental_medical">🩺 Dental & Medical (28)</option>
+                  <option value="salons_spas">✂️ Barber Shops & Salons (28)</option>
+                  <option value="restaurants">🍽️ Restaurants & Cafes (27)</option>
+                  <option value="gyms_fitness">🏋️ Gyms & Fitness (27)</option>
+                  <option value="auto_repair">🚗 Auto Repair & Detailing (27)</option>
+                  <option value="real_estate">🏡 Real Estate & Brokers (27)</option>
+                  <option value="home_services">🔨 Home Services (HVAC/Plumb) (27)</option>
+                  <option value="boutique_hotels">🏨 Boutique Hotels (26)</option>
+                  <option value="event_planners">🎉 Event & Wedding Marquees (26)</option>
+                  <option value="pet_care">🐕 Pet Care & Vet Clinics (24)</option>
+                  <option value="law_firms">⚖️ Law Firms & Legal (23)</option>
+                </select>
+              </div>
+
+              <!-- View Mode Toggle -->
+              <div class="view-toggle-wrap">
+                <button id="btn-view-cards" class="view-toggle-btn" type="button" title="Cards View">
+                  <span>🗂️ Cards</span>
+                </button>
+                <button id="btn-view-table" class="view-toggle-btn active" type="button" title="Table View">
+                  <span>📋 Table</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Leads Data Table View -->
+          <div id="table-view-container" class="table-responsive-wrapper glass-panel">
+            <table class="leads-table">
+              <thead>
+                <tr>
+                  <th style="min-width: 250px;">Business Profile & Location</th>
+                  <th style="min-width: 220px;">Decision Maker & Contacts</th>
+                  <th style="min-width: 260px;">Flaw Audit & Lost Revenue</th>
+                  <th style="min-width: 140px;">Best Channel</th>
+                  <th style="min-width: 130px;">Status</th>
+                  <th style="min-width: 170px;">1-Tap Actions</th>
+                </tr>
+              </thead>
+              <tbody id="leads-tbody"></tbody>
+            </table>
+          </div>
+
+          <!-- Leads Card Grid View -->
+          <div id="cards-view-container" class="leads-cards-grid" style="display: none;"></div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 4: VERIFIED LEADS ONLY
+             ==================================================== -->
+        <section id="view-verified-leads" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">🛡️ Google Maps Verified Businesses</h1>
+              <p class="view-header-desc">Strictly verified listings with matched Google Place IDs, verified operating status, and exact Google Maps listing navigation.</p>
+            </div>
+            <div class="api-status-group">
+              <span class="status-dot"></span> 100% Verified Only
+            </div>
+          </div>
+
+          <div class="table-responsive-wrapper glass-panel">
+            <table class="leads-table">
+              <thead>
+                <tr>
+                  <th>Business & Verified Place ID</th>
+                  <th>Location & Operating Status</th>
+                  <th>Verification Score</th>
+                  <th>Exact Google Maps Link</th>
+                  <th>Outreach Action</th>
+                </tr>
+              </thead>
+              <tbody id="verified-leads-tbody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 5: WEBSITE ANALYZER (PAGESPEED INSIGHTS)
+             ==================================================== -->
+        <section id="view-website-analyzer" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">🌐 Google PageSpeed Insights & Technical Presence Audit</h1>
+              <p class="view-header-desc">Inspect website speed, mobile responsiveness, broken checkout flows, and digital booking capabilities.</p>
+            </div>
+          </div>
+
+          <!-- URL Input Bar -->
+          <div class="glass-panel" style="padding: 20px; margin-bottom: 24px;">
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <div style="flex: 1; min-width: 260px;">
+                <input type="url" id="analyzer-url-input" class="custom-input" placeholder="Enter business website URL (e.g. https://example.com)">
+              </div>
+              <div style="min-width: 220px;">
+                <select id="analyzer-select-lead" class="custom-select">
+                  <option value="">Or Select Business from Database...</option>
+                </select>
+              </div>
+              <button class="btn-primary" style="min-width: 160px;" onclick="App.runWebsiteAudit()">
+                <span>⚡</span> Analyze Website
+              </button>
+            </div>
+          </div>
+
+          <!-- Audit Results Area -->
+          <div id="analyzer-results-area" class="glass-panel" style="padding: 24px;">
+            <div style="text-align: center; color: #94a3b8; padding: 40px 0;">
+              Enter a website URL above or select a business from the database to run a verified technical audit.
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 6: AI WEAKNESS DETECTOR
+             ==================================================== -->
+        <section id="view-weakness-detector" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">⚠️ AI Weakness & Evidence Detector</h1>
+              <p class="view-header-desc">Evidence-based digital friction detection: PDF menu bottlenecks, third-party commission drains, and missing mobile booking funnels.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px;" id="weakness-detector-grid"></div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 7: UNIVERSAL SOFTWARE OPPORTUNITIES
+             ==================================================== -->
+        <section id="view-software-opportunities" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">💡 Universal Software Opportunities</h1>
+              <p class="view-header-desc">AI-matched software development opportunities across all 6 core categories: Web, Mobile, Desktop, CRM/ERP, AI & Custom.</p>
+            </div>
+          </div>
+
+          <!-- 6 Category Filter Tabs -->
+          <div class="opportunities-category-tabs">
+            <button class="opp-category-tab active" data-opp-cat="all">🎯 All 6 Categories</button>
+            <button class="opp-category-tab" data-opp-cat="website_development">🌐 A. Website & Web Apps</button>
+            <button class="opp-category-tab" data-opp-cat="mobile_app_development">📱 B. Mobile Apps</button>
+            <button class="opp-category-tab" data-opp-cat="desktop_software">💻 C. Desktop & POS</button>
+            <button class="opp-category-tab" data-opp-cat="business_management">📊 D. CRM & ERP</button>
+            <button class="opp-category-tab" data-opp-cat="ai_automation">🤖 E. AI & Automation</button>
+            <button class="opp-category-tab" data-opp-cat="custom_software">⚖️ F. Custom Enterprise</button>
+          </div>
+
+          <!-- Opportunities Grid -->
+          <div class="opportunities-grid" id="software-opportunities-grid"></div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 8: AI PITCH GENERATOR
+             ==================================================== -->
+        <section id="view-pitch-generator" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">✍️ Multi-Channel AI Pitch Studio</h1>
+              <p class="view-header-desc">Generate tailored, high-converting outreach copy for Gmail, WhatsApp, Instagram DM, LinkedIn, and Facebook with multi-stage follow-ups.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 340px 1fr; gap: 24px;">
+            <!-- Controls Panel -->
+            <div class="glass-panel" style="padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+              <div class="input-group">
+                <label class="input-label" for="pitch-studio-select-lead">Target Business</label>
+                <select id="pitch-studio-select-lead" class="custom-select" onchange="App.handlePitchStudioChange()"></select>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="pitch-studio-channel">Outreach Channel</label>
+                <select id="pitch-studio-channel" class="custom-select" onchange="App.handlePitchStudioChange()">
+                  <option value="whatsapp" selected>📲 WhatsApp Direct</option>
+                  <option value="gmail">📧 Gmail / Email</option>
+                  <option value="instagram">📸 Instagram DM</option>
+                  <option value="linkedin">👔 LinkedIn InMail (<300 chars)</option>
+                  <option value="facebook">💬 Facebook Messenger</option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="pitch-studio-stage">Sequence Stage</label>
+                <select id="pitch-studio-stage" class="custom-select" onchange="App.handlePitchStudioChange()">
+                  <option value="initial" selected>1. Initial Pitch</option>
+                  <option value="followup1">2. Follow-Up 1 (Day 2)</option>
+                  <option value="followup2">3. Follow-Up 2 (Day 4 - Value Drop)</option>
+                  <option value="followup3">4. Follow-Up 3 (Day 7 - Demo Offer)</option>
+                  <option value="final">5. Final Breakup (Day 10)</option>
+                  <option value="demo">6. Interactive Demo Invitation</option>
+                  <option value="proposal">7. Formal Proposal Intro</option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="pitch-studio-language">Language</label>
+                <select id="pitch-studio-language" class="custom-select" onchange="App.handlePitchStudioChange()">
+                  <option value="English" selected>English</option>
+                  <option value="Urdu">Urdu (Roman / Courteous)</option>
+                  <option value="Spanish">Spanish</option>
+                  <option value="Arabic">Arabic</option>
+                  <option value="German">German</option>
+                  <option value="French">French</option>
+                </select>
+              </div>
+
+              <button class="btn-primary" style="margin-top: 10px;" onclick="App.generateAiPitchStudio()">
+                <span>✨</span> Regenerate with AI
+              </button>
+
+              <button class="btn-secondary" onclick="App.openFullProposalModal()">
+                <span>📄</span> View Full Software Proposal
+              </button>
+            </div>
+
+            <!-- Pitch Preview & Dispatch -->
+            <div class="glass-panel" style="padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="font-size: 1.1rem; color: #fff;" id="pitch-studio-preview-title">Generated Pitch Preview</h3>
+                <span style="font-size: 0.76rem; color: #94a3b8;">* Generating or copying does not increase sent count</span>
+              </div>
+
+              <div id="pitch-studio-subject-wrap" style="display: none;">
+                <label class="input-label">Subject Line</label>
+                <input type="text" id="pitch-studio-subject" class="custom-input" style="font-weight: 700;">
+              </div>
+
+              <div>
+                <label class="input-label">Message Body (Editable)</label>
+                <textarea id="pitch-studio-textarea" class="custom-input" style="height: 220px; font-size: 0.88rem; line-height: 1.6; font-family: 'JetBrains Mono', monospace;"></textarea>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                <button class="btn-secondary" onclick="App.copyPitchStudioText()">
+                  <span>📋</span> Copy Message
+                </button>
+                <button id="btn-pitch-studio-dispatch" class="btn-primary" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #000; font-weight: 800; border: none; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);" onclick="App.dispatchFromPitchStudio()">
+                  <span>⚡</span> Approve & Open Channel Dispatch
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 9: CURRENT LEAD BATCH (50-LEAD SYSTEM)
+             ==================================================== -->
+        <section id="view-lead-batch" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">📦 50-Lead Batch Management System</h1>
+              <p class="view-header-desc">Mandatory batch sales workflow: Pitch 50 unique businesses to 100% completion before unlocking the next batch.</p>
+            </div>
+          </div>
+
+          <div id="batch-management-hero"></div>
+
+          <!-- Batch Leads Table -->
+          <div class="table-responsive-wrapper glass-panel" style="margin-top: 24px;">
+            <table class="leads-table">
+              <thead>
+                <tr>
+                  <th>Business Profile & Place ID</th>
+                  <th>Decision Maker & Contact</th>
+                  <th>Recommended Software</th>
+                  <th>Pitch Channel</th>
+                  <th>Pitch Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="batch-leads-tbody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 10: DAILY PITCH TRACKER
+             ==================================================== -->
+        <section id="view-daily-tracker" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">📈 Daily Pitch Tracker & Performance</h1>
+              <p class="view-header-desc">Track unique businesses pitched, total successful dispatches, and channel breakdown for today and past dates.</p>
+            </div>
+            <!-- Date Filter Pills -->
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button class="date-filter-pill active" data-range="today" onclick="App.setDailyTrackerRange('today')">Today</button>
+              <button class="date-filter-pill" data-range="yesterday" onclick="App.setDailyTrackerRange('yesterday')">Yesterday</button>
+              <button class="date-filter-pill" data-range="last7" onclick="App.setDailyTrackerRange('last7')">Last 7 Days</button>
+              <button class="date-filter-pill" data-range="last30" onclick="App.setDailyTrackerRange('last30')">Last 30 Days</button>
+            </div>
+          </div>
+
+          <!-- Tracker Metrics Grid -->
+          <div class="metrics-grid" style="margin-bottom: 24px;">
+            <div class="metric-card glass-panel">
+              <div class="metric-icon-box emerald">🎯</div>
+              <div class="metric-details">
+                <span id="tracker-unique-pitched" class="metric-value">0</span>
+                <span class="metric-label">Unique Businesses Pitched</span>
+              </div>
+            </div>
+            <div class="metric-card glass-panel">
+              <div class="metric-icon-box cyan">⚡</div>
+              <div class="metric-details">
+                <span id="tracker-total-dispatches" class="metric-value">0</span>
+                <span class="metric-label">Total Channel Dispatches</span>
+              </div>
+            </div>
+            <div class="metric-card glass-panel">
+              <div class="metric-icon-box amber">📦</div>
+              <div class="metric-details">
+                <span id="tracker-remaining-batch" class="metric-value">50</span>
+                <span class="metric-label">Remaining in Batch</span>
+              </div>
+            </div>
+            <div class="metric-card glass-panel">
+              <div class="metric-icon-box rose">🔴</div>
+              <div class="metric-details">
+                <span id="tracker-replied-count" class="metric-value">0</span>
+                <span class="metric-label">Direct Client Replies</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Channel Distribution Row -->
+          <div class="glass-panel" style="padding: 20px; margin-bottom: 24px;">
+            <h3 style="font-size: 1.05rem; color: #fff; margin-bottom: 14px;">Channel Performance Breakdown</h3>
+            <div id="analytics-channel-container"></div>
+          </div>
+
+          <!-- Dispatch Log Table -->
+          <div class="table-responsive-wrapper glass-panel">
+            <table class="leads-table">
+              <thead>
+                <tr>
+                  <th>Business Name & City</th>
+                  <th>Channel</th>
+                  <th>Dispatch Date & Time</th>
+                  <th>Batch</th>
+                  <th>Exact Message Sent</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="daily-tracker-tbody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 11: DISPATCHED LEADS (PERMANENT NAVIGATION)
+             ==================================================== -->
+        <section id="view-dispatched-leads" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">🚀 Dispatched Leads Outbox</h1>
+              <p class="view-header-desc">Permanent audit log of every lead successfully contacted with timestamps, exact pitches, and follow-up states.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn-secondary" onclick="App.exportDispatchesCSV()"><span>📥</span> Export Dispatches</button>
+            </div>
+          </div>
+
+          <div class="table-responsive-wrapper glass-panel">
+            <table class="leads-table">
+              <thead>
+                <tr>
+                  <th>Business & Location</th>
+                  <th>Contact Info</th>
+                  <th>Pitch Channel</th>
+                  <th>Dispatch Timestamp</th>
+                  <th>Batch</th>
+                  <th>Exact Message Sent</th>
+                  <th>Follow-up State</th>
+                </tr>
+              </thead>
+              <tbody id="dispatched-leads-tbody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 12: DATE-WISE HISTORY
+             ==================================================== -->
+        <section id="view-date-history" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">📅 Date-Wise Outreach History</h1>
+              <p class="view-header-desc">Accordion calendar view. Click any date to expand and inspect every business pitched on that exact day.</p>
+            </div>
+          </div>
+
+          <div id="date-history-accordion-container"></div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 13: FOLLOW-UP MANAGER
+             ==================================================== -->
+        <section id="view-followup-manager" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">⏰ Smart Follow-up Manager</h1>
+              <p class="view-header-desc">Automated sequence scheduling (Day 2, 4, 7, 10). Human approval required before dispatch. Stops immediately upon client reply.</p>
+            </div>
+          </div>
+
+          <!-- Schedule Settings Bar -->
+          <div class="glass-panel" style="padding: 18px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+            <div style="font-size: 0.85rem; color: #cbd5e1;">
+              <strong>Active Follow-up Sequence:</strong> First Nudge (+2 Days) • Value Drop (+4 Days) • Demo Offer (+7 Days) • Final Breakup (+10 Days)
+            </div>
+            <button class="btn-secondary" onclick="App.switchView('settings')">
+              <span>⚙️</span> Edit Schedule Intervals
+            </button>
+          </div>
+
+          <div class="table-responsive-wrapper glass-panel">
+            <table class="leads-table">
+              <thead>
+                <tr>
+                  <th>Business & Contact</th>
+                  <th>Original Dispatch</th>
+                  <th>Next Follow-up Due</th>
+                  <th>Sequence Stage</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="followup-manager-tbody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 14: REPLY INBOX & AUTO-PAUSE
+             ==================================================== -->
+        <section id="view-reply-inbox" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">📥 Live Reply Inbox & Auto-Pause Center</h1>
+              <p class="view-header-desc">Incoming client responses across WhatsApp, Gmail, LinkedIn, and Instagram. Pending follow-ups are automatically paused upon reply.</p>
+            </div>
+            <button class="btn-secondary" onclick="App.simulateIncomingReplyModal()">
+              <span>🧪</span> Simulate Incoming Reply (Test Webhook)
+            </button>
+          </div>
+
+          <!-- 4-Channel Radar Grid -->
+          <div class="reply-channels-grid" style="margin-bottom: 24px;">
+            <div class="reply-channel-card channel-whatsapp" data-channel="whatsapp">
+              <div class="card-top-row">
+                <div class="channel-name-badge"><span>📲</span> <span>WhatsApp Direct</span></div>
+                <span id="inbox-wa-badge" class="badge-unread-red">0 REPLIES</span>
+              </div>
+              <div class="card-stats-row"><span class="stat-total">Total WhatsApp Replies</span><span id="inbox-wa-total" class="stat-number">0</span></div>
+            </div>
+            <div class="reply-channel-card channel-gmail" data-channel="gmail">
+              <div class="card-top-row">
+                <div class="channel-name-badge"><span>📧</span> <span>Gmail / Email</span></div>
+                <span id="inbox-gmail-badge" class="badge-unread-red">0 REPLIES</span>
+              </div>
+              <div class="card-stats-row"><span class="stat-total">Total Email Replies</span><span id="inbox-gmail-total" class="stat-number">0</span></div>
+            </div>
+            <div class="reply-channel-card channel-instagram" data-channel="instagram">
+              <div class="card-top-row">
+                <div class="channel-name-badge"><span>📸</span> <span>Instagram DM</span></div>
+                <span id="inbox-insta-badge" class="badge-unread-red">0 REPLIES</span>
+              </div>
+              <div class="card-stats-row"><span class="stat-total">Total Instagram Replies</span><span id="inbox-insta-total" class="stat-number">0</span></div>
+            </div>
+            <div class="reply-channel-card channel-linkedin" data-channel="linkedin">
+              <div class="card-top-row">
+                <div class="channel-name-badge"><span>👔</span> <span>LinkedIn</span></div>
+                <span id="inbox-linkedin-badge" class="badge-unread-red">0 REPLIES</span>
+              </div>
+              <div class="card-stats-row"><span class="stat-total">Total LinkedIn Replies</span><span id="inbox-linkedin-total" class="stat-number">0</span></div>
+            </div>
+          </div>
+
+          <!-- Replies Conversation List -->
+          <div class="glass-panel" style="padding: 20px;">
+            <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 14px;">Recent Prospect Conversations</h3>
+            <div id="reply-conversations-list" style="display: flex; flex-direction: column; gap: 12px;"></div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 15: CRM PIPELINE
+             ==================================================== -->
+        <section id="view-crm" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">💼 CRM Client Lifecycle Pipeline</h1>
+              <p class="view-header-desc">Track client status from Discovery to Pitched, Replied, Meeting Scheduled, Proposal Sent, and Won Project.</p>
+            </div>
+          </div>
+
+          <!-- CRM Kanban / Stages Grid -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;" id="crm-stages-grid"></div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 16: ANALYTICS
+             ==================================================== -->
+        <section id="view-analytics" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">📉 Platform Analytics & Performance</h1>
+              <p class="view-header-desc">Real-time performance analytics calculated directly from database records.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+            <div class="glass-panel" style="padding: 22px;">
+              <h3 style="font-size: 1.05rem; color: #fff; margin-bottom: 12px;">Universal Software Opportunities by Category</h3>
+              <div id="analytics-opportunities-container"></div>
+            </div>
+            <div class="glass-panel" style="padding: 22px;">
+              <h3 style="font-size: 1.05rem; color: #fff; margin-bottom: 12px;">Geographic Lead Distribution</h3>
+              <div id="analytics-geo-container"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             VIEW 17: SETTINGS & APIS
+             ==================================================== -->
+        <section id="view-settings" class="saas-view-pane">
+          <div class="view-header-strip">
+            <div>
+              <h1 class="view-header-title">⚙️ Platform Settings & API Configuration</h1>
+              <p class="view-header-desc">Configure authorized Google Places API, PageSpeed Insights API, AI engine keys, and outreach sender credentials.</p>
+            </div>
+            <button class="btn-primary" onclick="App.handleSaveAllSettings()">
+              <span>💾</span> Save All Settings
+            </button>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <!-- API Credentials -->
+            <div class="glass-panel" style="padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+              <h3 style="font-size: 1.1rem; color: #38bdf8;">🔑 External API Credentials</h3>
+
+              <div class="input-group">
+                <label class="input-label" for="setting-google-places-key">Google Places API (New) Key</label>
+                <input type="password" id="setting-google-places-key" class="custom-input" placeholder="AIzaSy... (For live Google Maps global search)">
+                <span style="font-size: 0.74rem; color: #94a3b8;">Enables live discovery across 100% of global cities with Google Places API (New).</span>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="setting-pagespeed-key">Google PageSpeed Insights API Key</label>
+                <input type="password" id="setting-pagespeed-key" class="custom-input" placeholder="AIzaSy... (For verified website performance audits)">
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="setting-openai-key">OpenAI API Key (GPT-4o / GPT-4o-mini)</label>
+                <input type="password" id="setting-openai-key" class="custom-input" placeholder="sk-proj-... (Optional AI pitch engine)">
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="setting-gemini-key">Google Gemini API Key</label>
+                <input type="password" id="setting-gemini-key" class="custom-input" placeholder="AIzaSy... (Optional alternative AI generator)">
+              </div>
+            </div>
+
+            <!-- Company & Outreach Configuration -->
+            <div class="glass-panel" style="padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+              <h3 style="font-size: 1.1rem; color: #10b981;">🏢 Software Company & Outreach Info</h3>
+
+              <div class="input-group">
+                <label class="input-label" for="setting-company-name">Your Software Agency / Company Name</label>
+                <input type="text" id="setting-company-name" class="custom-input" value="MF Software Solutions">
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="setting-company-website">Official Website</label>
+                <input type="url" id="setting-company-website" class="custom-input" value="https://mfsoftware.com">
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="setting-wa-number">Personal WhatsApp Alert Number</label>
+                <input type="text" id="setting-wa-number" class="custom-input" value="+923376568003">
+                <span style="font-size: 0.74rem; color: #94a3b8;">Incoming prospect replies immediately send a notification alert here.</span>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="setting-email-address">Outreach Sender Email Address</label>
+                <input type="email" id="setting-email-address" class="custom-input" value="info.mfsoft@gmail.com">
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ========================================================
+       MODALS
+       ======================================================== -->
+
+  <!-- 1. FULL SOFTWARE PROJECT PROPOSAL MODAL -->
+  <div id="modal-proposal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 840px;">
+      <div class="modal-header" style="background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);">
+        <h3 style="color: #fff; display: flex; align-items: center; gap: 8px;">
+          <span>📄</span> Formal Software Project Proposal
+        </h3>
+        <button class="modal-close-btn" onclick="document.getElementById('modal-proposal').classList.remove('open')">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-proposal-body" style="line-height: 1.6; font-size: 0.88rem; max-height: 70vh; overflow-y: auto;"></div>
+      <div class="modal-footer" style="justify-content: space-between;">
+        <button class="btn-secondary" onclick="App.copyProposalText()">📋 Copy Proposal</button>
+        <button class="btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
       </div>
     </div>
   </div>
 
-  <!-- FLAW AUDIT & CLIENT TALKING POINTS MODAL (MASLA INSPECTOR) -->
-  <div id="flaw-audit-modal" class="modal-overlay">
-    <div class="modal-card" style="max-width: 760px;">
-      <div class="modal-header" style="background: linear-gradient(90deg, #991b1b, #7f1d1d); color: #fff;">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <span style="font-size: 1.25rem;">🔍</span>
-          <div>
-            <h3 id="flaw-modal-biz-name" style="color: #fff; margin: 0; font-size: 1.1rem;">Kolachi Restaurant — Client Flaw Audit</h3>
-            <span style="font-size: 0.72rem; color: #fecaca;">Pitch karne se pehle masla khud dekhein aur samjhein</span>
-          </div>
-        </div>
-        <button id="modal-flaw-close" class="modal-close-btn" style="color: #fff;">&times;</button>
+  <!-- 2. FLAW AUDIT DETAILS MODAL -->
+  <div id="modal-flaw" class="modal-overlay">
+    <div class="modal-card" style="max-width: 780px;">
+      <div class="modal-header">
+        <h3 id="flaw-modal-biz-title">⚠️ Verified Business Weakness & Talking Points</h3>
+        <button class="modal-close-btn" onclick="document.getElementById('modal-flaw').classList.remove('open')">&times;</button>
       </div>
-
-      <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px; max-height: 80vh; overflow-y: auto;">
-        <!-- Top Summary Leak Strip -->
-        <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 8px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-          <div>
-            <div style="font-size: 0.72rem; color: #f87171; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px;">DIAGNOSED DIGITAL FLAW</div>
-            <strong id="flaw-modal-title" style="color: #ffffff; font-size: 1rem; display: block; margin-top: 2px;">Pinch-to-zoom PDF Menu on Mobile</strong>
-          </div>
-          <div style="text-align: right;">
-            <div style="font-size: 0.72rem; color: #f87171; text-transform: uppercase; font-weight: 800;">ESTIMATED MONTHLY LOSS</div>
-            <strong id="flaw-modal-leak" class="leak-badge" style="font-size: 1rem; padding: 4px 10px;">Rs 500k – 900k/mo</strong>
-          </div>
+      <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px; max-height: 70vh; overflow-y: auto;">
+        <!-- Weakness Details -->
+        <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 8px; padding: 14px;">
+          <h4 id="flaw-modal-title" style="color: #fca5a5; font-size: 1rem; margin-bottom: 6px;"></h4>
+          <p id="flaw-modal-desc" style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5;"></p>
         </div>
 
-        <!-- Section 1: Asal Masla Kya Hai? -->
-        <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 8px; padding: 12px 16px;">
-          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
-            <span style="font-size: 1rem;">🧐</span>
-            <strong style="color: #38bdf8; font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.5px;">1. Asal Masla Kya Hai? (What is the Flaw?)</strong>
-          </div>
-          <p id="flaw-modal-what" style="color: #e2e8f0; font-size: 0.86rem; line-height: 1.55; margin: 0;"></p>
+        <!-- Evidence & Inspection -->
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 14px;">
+          <strong style="color: #fbbf24; font-size: 0.86rem;">📸 Verification Evidence:</strong>
+          <p id="flaw-modal-where" style="color: #cbd5e1; font-size: 0.82rem; margin: 6px 0 10px 0;"></p>
+          <div id="flaw-modal-proof-buttons" style="display: flex; gap: 8px; flex-wrap: wrap;"></div>
         </div>
 
-        <!-- Section 2: Proof & Inspection Links -->
-        <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 8px; padding: 12px 16px;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
-            <div style="display: flex; align-items: center; gap: 6px;">
-              <span style="font-size: 1rem;">📸</span>
-              <strong style="color: #fbbf24; font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.5px;">2. Yeh Masla Kahan Check Karein? (Inspect Yourself)</strong>
-            </div>
-            <span style="font-size: 0.72rem; color: #94a3b8;">Client ko bolnay se pehle khud link khol kar dekhein</span>
-          </div>
-          <p id="flaw-modal-where" style="color: #cbd5e1; font-size: 0.82rem; line-height: 1.5; margin: 0 0 10px 0; white-space: pre-line;"></p>
-          <div id="flaw-modal-proof-buttons" style="display: flex; gap: 8px; flex-wrap: wrap;">
-            <a id="flaw-btn-inspect-maps" href="#" target="_blank" rel="noopener noreferrer" style="background: rgba(239, 68, 68, 0.18); border: 1px solid rgba(239, 68, 68, 0.45); color: #fca5a5; padding: 7px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
-              <span>🗺️</span> Open Google Maps Profile ↗
-            </a>
-            <a id="flaw-btn-inspect-ig" href="#" target="_blank" rel="noopener noreferrer" style="background: rgba(244, 114, 182, 0.18); border: 1px solid rgba(244, 114, 182, 0.45); color: #f472b6; padding: 7px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
-              <span>📸</span> Open Instagram Bio / Menu ↗
-            </a>
-            <a id="flaw-btn-inspect-web" href="#" target="_blank" rel="noopener noreferrer" style="background: rgba(56, 189, 248, 0.18); border: 1px solid rgba(56, 189, 248, 0.45); color: #38bdf8; padding: 7px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
-              <span>🌐</span> Open Official Website ↗
-            </a>
-          </div>
+        <!-- Financial Impact -->
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 14px;">
+          <strong style="color: #f87171; font-size: 0.86rem;">💸 Financial Leakage:</strong>
+          <p id="flaw-modal-why" style="color: #cbd5e1; font-size: 0.84rem; margin-top: 4px;"></p>
         </div>
 
-        <!-- Section 2.5: Website Bani Hui Hai Phir Masla Kya Hai? -->
-        <div id="flaw-modal-website-status-box" style="background: rgba(56, 189, 248, 0.08); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 8px; padding: 12px 16px;">
-          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 5px;">
-            <span style="font-size: 1rem;">💡</span>
-            <strong style="color: #38bdf8; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">Agency Insight: Website Bani Hui Hai Phir Hum Kya Pitch Kar Rahay Hain?</strong>
-          </div>
-          <p id="flaw-modal-website-explanation" style="color: #cbd5e1; font-size: 0.82rem; line-height: 1.5; margin: 0;"></p>
-        </div>
-
-        <!-- Section 3: Paisa Kahan Zaya Ho Raha Hai? -->
-        <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 8px; padding: 12px 16px;">
-          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
-            <span style="font-size: 1rem;">💸</span>
-            <strong style="color: #f87171; font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.5px;">3. Paisa Kahan Zaya Ho Raha Hai? (Financial Leak Proof)</strong>
-          </div>
-          <p id="flaw-modal-why" style="color: #e2e8f0; font-size: 0.86rem; line-height: 1.55; margin: 0;"></p>
-        </div>
-
-        <!-- Section 4: Client Ko Kaise Samjhana Hai? (Cheat Sheet) -->
-        <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(6, 95, 70, 0.15) 100%); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 8px; padding: 12px 16px;">
-          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
-            <span style="font-size: 1rem;">🗣️</span>
-            <strong style="color: #6ee7b7; font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.5px;">4. Client Ko Call / WhatsApp Par Kya Bolna Hai? (Agency Cheat Sheet)</strong>
-          </div>
-          <div id="flaw-modal-talking-points" style="display: flex; flex-direction: column; gap: 6px; font-size: 0.82rem; color: #d1fae5; line-height: 1.45;"></div>
-        </div>
-
-        <!-- Section 5: Client Ke Common Sawalaat Aur Unke Jawabaat -->
-        <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 8px; padding: 12px 16px;">
-          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
-            <span style="font-size: 1rem;">💡</span>
-            <strong style="color: #a78bfa; font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.5px;">5. Agar Client Sawal Kare To Kya Jawab Dein?</strong>
-          </div>
-          <div id="flaw-modal-qa-container" style="display: flex; flex-direction: column; gap: 8px; font-size: 0.82rem;"></div>
-        </div>
-
-        <!-- Section 6: Hum Client Ko Kya Bana Kar Den Gay? -->
-        <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 8px; padding: 12px 16px;">
-          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
-            <span style="font-size: 1rem;">🛠️</span>
-            <strong style="color: #38bdf8; font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.5px;">6. Hum Client Ko Kya Bana Kar Den Gay? (The 48-Hour Fix)</strong>
-          </div>
-          <p id="flaw-modal-solution" style="color: #e2e8f0; font-size: 0.86rem; line-height: 1.5; margin: 0; font-weight: 600;"></p>
+        <!-- Talking Points -->
+        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 14px;">
+          <strong style="color: #6ee7b7; font-size: 0.86rem;">🗣️ Outreach Talking Points:</strong>
+          <div id="flaw-modal-talking-points" style="margin-top: 6px; font-size: 0.82rem; color: #d1fae5; display: flex; flex-direction: column; gap: 6px;"></div>
         </div>
       </div>
-
-      <div class="modal-footer" style="flex-wrap: wrap; gap: 8px; justify-content: space-between;">
-        <button id="modal-btn-flaw-copy-summary" class="btn-secondary" style="font-size: 0.82rem;">
-          📋 Copy Flaw Summary
-        </button>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <button id="modal-btn-flaw-close-btn" class="btn-secondary" style="font-size: 0.82rem;">
-            ✖ Band Karein
-          </button>
-          <button id="modal-btn-flaw-proceed-pitch" class="btn-primary" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; font-size: 0.84rem; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);">
-            <span>🚀</span> Samjh Aa Gaya — Ab Pitch Send Karo!
-          </button>
-        </div>
+      <div class="modal-footer" style="justify-content: flex-end;">
+        <button class="btn-secondary" onclick="document.getElementById('modal-flaw').classList.remove('open')">Close</button>
       </div>
     </div>
   </div>
 
-  <!-- ADD REAL LEAD / CUSTOM NUMBER MODAL -->
+  <!-- 3. ADD REAL LEAD MODAL -->
   <div id="add-lead-modal" class="modal-overlay">
     <div class="modal-card" style="max-width: 580px;">
-      <div class="modal-header" style="background: linear-gradient(90deg, #128c7e, #075e54); color: #fff;">
-        <h3 style="color: #fff; display: flex; align-items: center; gap: 8px;">
-          <span>➕</span> Add Real Lead / Custom WhatsApp Number
-        </h3>
-        <button id="modal-add-lead-close" class="modal-close-btn" style="color: #fff;">&times;</button>
+      <div class="modal-header">
+        <h3>➕ Add Real Business Lead</h3>
+        <button class="modal-close-btn" onclick="document.getElementById('add-lead-modal').classList.remove('open')">&times;</button>
       </div>
       <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px;">
-        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5; margin: 0;">
-          Google Maps, Instagram, ya Foodpanda se real business ka name aur WhatsApp number paste karen. RestoHunter AI foran tailored pitch generate kare ga aur 1-click WhatsApp message tayyar kar de ga.
-        </p>
-
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
           <div class="input-group">
             <label class="input-label" for="new-lead-business-name">Business Name *</label>
@@ -883,151 +1255,57 @@
           </div>
           <div class="input-group">
             <label class="input-label" for="new-lead-owner-name">Owner / Decision Maker</label>
-            <input type="text" id="new-lead-owner-name" class="custom-input" placeholder="e.g. Tariq Mehmood (Owner)">
+            <input type="text" id="new-lead-owner-name" class="custom-input" placeholder="e.g. Tariq Mehmood">
           </div>
         </div>
-
-        <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 12px;">
-          <div class="input-group">
-            <label class="input-label" for="new-lead-phone" style="color: #4ade80;">Real WhatsApp / Mobile Number *</label>
-            <input type="text" id="new-lead-phone" class="custom-input" placeholder="+92 300 1234567 or +971 50..." style="border-color: rgba(74, 222, 128, 0.4); font-family: 'JetBrains Mono', monospace;" required>
-          </div>
-          <div class="input-group">
-            <label class="input-label" for="new-lead-email">Business Email (Optional)</label>
-            <input type="email" id="new-lead-email" class="custom-input" placeholder="info@kolachi.com">
-          </div>
-        </div>
-
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
           <div class="input-group">
-            <label class="input-label" for="new-lead-city">City & Country</label>
-            <input type="text" id="new-lead-city" class="custom-input" placeholder="Karachi, Pakistan">
+            <label class="input-label" for="new-lead-phone">Phone Number *</label>
+            <input type="text" id="new-lead-phone" class="custom-input" placeholder="+92 300 1234567" required>
           </div>
           <div class="input-group">
-            <label class="input-label" for="new-lead-niche">Niche</label>
-            <select id="new-lead-niche" class="custom-select">
-              <option value="restaurants" selected>🍽️ Restaurants & Cafes</option>
-              <option value="bakeries_sweets">🧁 Bakeries & Sweet Shops</option>
-              <option value="dental_medical">🦷 Dental & Medical Clinics</option>
-              <option value="salons_spas">💈 Salons & Barbershops</option>
-              <option value="gyms_fitness">🏋️ Gyms & Fitness Centers</option>
-              <option value="auto_repair">🚗 Auto Repair & Detailing</option>
-              <option value="real_estate">🏡 Real Estate & Property Brokers</option>
-              <option value="home_services">🔧 Home Services (HVAC/Roofing)</option>
-              <option value="boutique_hotels">🏨 Boutique Hotels</option>
-              <option value="event_planners">🎉 Wedding Halls & Events</option>
-              <option value="law_firms">⚖️ Law Firms & Attorneys</option>
-              <option value="pet_care">🐕 Pet Grooming & Clinics</option>
-            </select>
+            <label class="input-label" for="new-lead-city">City & Country *</label>
+            <input type="text" id="new-lead-city" class="custom-input" placeholder="Karachi, Pakistan" required>
           </div>
         </div>
-
         <div class="input-group">
-          <label class="input-label" for="new-lead-address">Physical Street Address / Area (e.g. Zamzama DHA Phase 5)</label>
-          <input type="text" id="new-lead-address" class="custom-input" placeholder="e.g. Plot 14-C, Zamzama Commercial Lane 6, DHA Phase 5, Karachi">
-        </div>
-
-        <div class="input-group">
-          <label class="input-label" for="new-lead-flaw">Detected Problem / Flaw</label>
-          <select id="new-lead-flaw" class="custom-select">
-            <option value="Pinch-to-zoom PDF Menu on Mobile">Pinch-to-zoom PDF Menu on Mobile ($2,800/mo loss)</option>
-            <option value="Delivery Apps Eating 30% Margin">Paying 30% Commissions to Foodpanda / Talabat / DoorDash</option>
-            <option value="No Direct WhatsApp Reservation / Order Engine">No Direct WhatsApp / Online Reservation System</option>
-            <option value="Slow Mobile Site (7.4s Load Time)">Slow Mobile Page Load (7.4s - losing 53% clicks)</option>
-            <option value="Zero Automated Follow-ups for Past Diners">Zero Automated Customer Retention / VIP Rewards</option>
-          </select>
+          <label class="input-label" for="new-lead-website">Website (Optional)</label>
+          <input type="url" id="new-lead-website" class="custom-input" placeholder="https://...">
         </div>
       </div>
       <div class="modal-footer">
-        <button id="modal-btn-cancel-add-lead" class="btn-secondary">Cancel</button>
-        <button id="modal-btn-save-real-lead" class="btn-primary" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);">
-          <span>🚀</span> Save & Open WhatsApp Pitch
-        </button>
+        <button class="btn-secondary" onclick="document.getElementById('add-lead-modal').classList.remove('open')">Cancel</button>
+        <button class="btn-primary" onclick="App.handleSaveRealLead()">Save & Add to Batch</button>
       </div>
     </div>
   </div>
 
-
-
-  <!-- SETTINGS MODAL -->
-  <div id="settings-modal" class="modal-overlay">
-    <div class="modal-card" style="max-width: 640px;">
+  <!-- 4. PITCH CUSTOMIZER MODAL -->
+  <div id="modal-pitch" class="modal-overlay">
+    <div class="modal-card" style="max-width: 680px;">
       <div class="modal-header">
-        <h3>⚙️ RestoHunter AI — System Settings & Credentials</h3>
-        <button id="modal-settings-close" class="modal-close-btn">&times;</button>
+        <h3 id="modal-pitch-title">🎯 Tailored Sales Pitch</h3>
+        <button class="modal-close-btn" onclick="document.getElementById('modal-pitch').classList.remove('open')">&times;</button>
       </div>
-      <div class="modal-body">
-        <!-- WhatsApp Phone -->
-        <div class="input-group">
-          <label class="input-label" for="setting-wa-number">
-            <span>📱</span> WhatsApp Alert Number (With Country Code)
-          </label>
-          <input type="text" id="setting-wa-number" class="custom-input" value="+923376568003">
-          <span style="font-size: 0.74rem; color: var(--text-muted);">Incoming replies trigger real-time WhatsApp alerts to this number.</span>
-        </div>
-
-        <!-- Sender Email -->
-        <div class="input-group">
-          <label class="input-label" for="setting-email-address">
-            <span>📧</span> Outreach Sender Email Address
-          </label>
-          <input type="email" id="setting-email-address" class="custom-input" value="info.mfsoft@gmail.com">
-          <span style="font-size: 0.74rem; color: var(--text-muted);">Configured default address for Gmail client outreach.</span>
-        </div>
-
-        <!-- Instagram Status -->
-        <div class="input-group">
-          <label class="input-label">
-            <span>📸</span> Instagram Profile Status
-          </label>
-          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
-            <span>Status: <strong id="setting-insta-status" style="color: var(--amber-light);">Pending / Add Later</strong></span>
-            <span style="font-size: 0.78rem; color: var(--text-muted);">You can add your Instagram handle or session anytime</span>
-          </div>
-        </div>
-
-        <!-- LinkedIn Status -->
-        <div class="input-group">
-          <label class="input-label">
-            <span>👔</span> LinkedIn Profile Status
-          </label>
-          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
-            <span>Status: <strong id="setting-linkedin-status" style="color: var(--amber-light);">Pending / Add Later</strong></span>
-            <span style="font-size: 0.78rem; color: var(--text-muted);">You can add your LinkedIn profile or li_at token anytime</span>
-          </div>
-        </div>
-
-        <!-- Google Gemini API Key -->
-        <div class="input-group">
-          <label class="input-label" for="setting-gemini-key">
-            <span>✨</span> Google Gemini API Key (Optional)
-          </label>
-          <input type="password" id="setting-gemini-key" class="custom-input" placeholder="AIzaSy... (leave empty for built-in high-speed smart generator)">
-          <span style="font-size: 0.74rem; color: var(--text-muted);">Get free API key from Google AI Studio. System works with 0 latency using built-in generator.</span>
-        </div>
+      <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px;">
+        <textarea id="modal-pitch-textarea" class="custom-input" style="height: 200px; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem;"></textarea>
       </div>
-      <div class="modal-footer">
-        <button id="btn-save-settings" class="btn-primary">💾 Save Settings</button>
+      <div class="modal-footer" style="justify-content: space-between;">
+        <button class="btn-secondary" onclick="App.copyModalPitchText()">📋 Copy</button>
+        <button class="btn-primary" id="btn-modal-pitch-send" onclick="App.executeModalPitchSend()">⚡ Send Now</button>
       </div>
     </div>
   </div>
 
-  <!-- SOCIAL AUTHORITY & CLOUD AUTOPILOT MODAL -->
-  <div id="social-autopilot-modal" class="modal-overlay">
-    <div class="modal-card" style="max-width: 760px;">
-      <div class="modal-header">
-        <h3>📢 Daily Social Authority Posts & Autopilot Engine</h3>
-        <button id="modal-social-close" class="modal-close-btn">&times;</button>
+  <!-- 5. LANDLINE / US NUMBER MODAL -->
+  <div id="modal-landline-wa" class="modal-overlay">
+    <div class="modal-card" style="max-width: 540px;">
+      <div class="modal-header" style="background: #1e293b;">
+        <h3 style="color: #fbbf24;">⚠️ Landline / US Line (No WhatsApp)</h3>
+        <button class="modal-close-btn" onclick="document.getElementById('modal-landline-wa').classList.remove('open')">&times;</button>
       </div>
-      <div class="modal-body">
-        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">
-          Cloud Autopilot generates daily authority-building content to build inbound credibility on LinkedIn and Instagram while you prospect:
-        </p>
-        <div id="social-templates-container"></div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn-secondary" onclick="document.getElementById('social-autopilot-modal').classList.remove('open')">Close</button>
-      </div>
+      <div class="modal-body" id="modal-landline-wa-body" style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.6;"></div>
+      <div class="modal-footer" id="modal-landline-wa-footer"></div>
     </div>
   </div>
 
@@ -1035,32 +1313,18 @@
   <div id="toast-container" class="toast-container"></div>
 
   <!-- Core JavaScript Modules -->
-  <script src="js/auth.js?v=5.0"></script>
-  <script src="js/storage.js?v=5.0"></script>
-  <script src="js/leadGenerator.js?v=5.0"></script>
-  <script src="js/pitchEngine.js?v=5.0"></script>
-  <script src="js/whatsappService.js?v=5.0"></script>
-  <script src="js/replyCenter.js?v=5.0"></script>
-  <script src="js/autopilot.js?v=5.0"></script>
-  <script src="data/leads.js?v=5.0"></script>
-  <script src="js/app.js?v=5.0"></script>
-
-  <!-- Clear Old Cache & Unregister Service Workers to Ensure Fresh Real-Time Loads -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(registrations => {
-        for (let r of registrations) {
-          r.unregister();
-        }
-      });
-    }
-    if ('caches' in window) {
-      caches.keys().then(names => {
-        for (let name of names) {
-          caches.delete(name);
-        }
-      });
-    }
-  </script>
+  <script src="js/auth.js?v=6.0"></script>
+  <script src="js/storage.js?v=6.0"></script>
+  <script src="js/softwareCatalog.js?v=6.0"></script>
+  <script src="js/placesService.js?v=6.0"></script>
+  <script src="js/websiteAnalyzer.js?v=6.0"></script>
+  <script src="js/batchManager.js?v=6.0"></script>
+  <script src="js/pitchEngine.js?v=6.0"></script>
+  <script src="js/whatsappService.js?v=6.0"></script>
+  <script src="js/replyCenter.js?v=6.0"></script>
+  <script src="js/autopilot.js?v=6.0"></script>
+  <script src="js/analytics.js?v=6.0"></script>
+  <script src="data/leads.js?v=6.0"></script>
+  <script src="js/app.js?v=6.0"></script>
 </body>
 </html>
