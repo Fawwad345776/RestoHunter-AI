@@ -3,64 +3,7 @@
  * Channels: WhatsApp Direct, Gmail, LinkedIn, Instagram
  */
 
-const SAMPLE_CLIENT_REPLIES = [
-  {
-    platform: 'WhatsApp',
-    channelKey: 'whatsapp',
-    businessName: 'Copper Pot Bistro',
-    city: 'London',
-    clientMessage: "Hi Fawwad, saw your WhatsApp note! Does this 0% commission direct menu work on both iPhones and Androids without downloading an app?",
-    aiSuggestedReply: "Hi Oliver! Yes, 100% works on any mobile browser instantly. Diners don't need to download anything. Ready to preview the London setup?"
-  },
-  {
-    platform: 'LinkedIn',
-    channelKey: 'linkedin',
-    businessName: 'Dr. Elena Dental',
-    city: 'Miami',
-    clientMessage: "Hey! Sounds interesting. How much do you charge for this?",
-    aiSuggestedReply: "Hi Dr. Elena! It's $650 one-time, ready in 48 hours. Can I share a quick 1-min preview video?"
-  },
-  {
-    platform: 'Gmail',
-    channelKey: 'gmail',
-    businessName: 'Artisan Trattoria',
-    city: 'Austin',
-    clientMessage: "We've been getting killed by DoorDash fees. Does this integrate with our current Clover POS?",
-    aiSuggestedReply: "Hi Chef Marcus! Yes, 100% integrates directly with Clover & Toast. You save roughly $3,200/mo in commissions right away. Mind if I send the 45s setup video?"
-  },
-  {
-    platform: 'WhatsApp',
-    channelKey: 'whatsapp',
-    businessName: 'Beacon Physical Therapy',
-    city: 'Sydney',
-    clientMessage: "Our front desk is overwhelmed with phone bookings. Can this patient calendar sync with Cliniko?",
-    aiSuggestedReply: "Hi Sarah! Yes, it integrates directly with Cliniko & Google Calendar. Patients can book in 30 seconds 24/7. Mind if I send the 1-min screen recording?"
-  },
-  {
-    platform: 'Instagram',
-    channelKey: 'instagram',
-    businessName: 'Velvet Lounge Hair Studio',
-    city: 'London',
-    clientMessage: "OMG our no-shows this Saturday were awful. How does the automated SMS reminder work?",
-    aiSuggestedReply: "Hey Sarah! It sends a 2-way confirmation 24h & 2h before the appointment, cutting no-shows by 85%. I can set it up on your chairs this afternoon — can I send the demo?"
-  },
-  {
-    platform: 'Gmail',
-    channelKey: 'gmail',
-    businessName: 'ProGuard Roofing',
-    city: 'Dallas',
-    clientMessage: "Can this quote calculator handle storm damage insurance claims estimates too?",
-    aiSuggestedReply: "Hi David! Yes, it includes instant storm deductible calculators. Can generate 5-8 extra emergency leads per storm. Want to see the 1-min screen recording?"
-  },
-  {
-    platform: 'LinkedIn',
-    channelKey: 'linkedin',
-    businessName: 'The Rosemary Boutique Inn',
-    city: 'Toronto',
-    clientMessage: "We give Expedia over $6,000 every single month. Would love to see your direct booking concept.",
-    aiSuggestedReply: "Hi Amanda! That's exactly what our direct VIP engine eliminates. I made a 1-min personalized preview for Rosemary Inn here: https://fawwad345776.github.io/RestoHunter-AI/?v=3.1. Let me know what you think!"
-  }
-];
+const SAMPLE_CLIENT_REPLIES = [];
 
 const ReplyCenter = {
   activeFilter: null,
@@ -71,40 +14,34 @@ const ReplyCenter = {
   },
 
   getRepliesData() {
-    let replies = StorageService.getReplies();
-    if (!replies || replies.length === 0) {
-      replies = [...SAMPLE_CLIENT_REPLIES];
-      StorageService.saveReplies(replies);
-    }
-    return replies;
+    const stored = StorageService.getReplies();
+    return stored || [];
   },
 
   renderStats() {
+    const leads = (window.App && window.App.leads) || StorageService.getLeads() || [];
     const replies = this.getRepliesData();
+
     const stats = {
-      whatsapp: { total: 0, unread: 0 },
-      gmail: { total: 0, unread: 0 },
-      linkedin: { total: 0, unread: 0 },
-      instagram: { total: 0, unread: 0 }
+      whatsapp: {
+        total: leads.filter(l => l.channel === 'whatsapp' && (l.status === 'dispatched' || l.status === 'replied')).length,
+        replies: leads.filter(l => l.channel === 'whatsapp' && l.status === 'replied').length + replies.filter(r => r.channelKey === 'whatsapp').length
+      },
+      gmail: {
+        total: leads.filter(l => l.channel === 'gmail' && (l.status === 'dispatched' || l.status === 'replied')).length,
+        replies: leads.filter(l => l.channel === 'gmail' && l.status === 'replied').length + replies.filter(r => r.channelKey === 'gmail').length
+      },
+      linkedin: {
+        total: leads.filter(l => l.channel === 'linkedin' && (l.status === 'dispatched' || l.status === 'replied')).length,
+        replies: leads.filter(l => l.channel === 'linkedin' && l.status === 'replied').length + replies.filter(r => r.channelKey === 'linkedin').length
+      },
+      instagram: {
+        total: leads.filter(l => l.channel === 'instagram' && (l.status === 'dispatched' || l.status === 'replied')).length,
+        replies: leads.filter(l => l.channel === 'instagram' && l.status === 'replied').length + replies.filter(r => r.channelKey === 'instagram').length
+      }
     };
 
-    replies.forEach(r => {
-      const ch = r.channelKey;
-      if (stats[ch]) {
-        stats[ch].total++;
-        if (!r.isRead) stats[ch].unread++;
-      }
-    });
-
-    // Provide lively defaults if fresh
-    if (stats.whatsapp.total === 0) {
-      stats.whatsapp = { total: 25, unread: 6 };
-      stats.gmail = { total: 25, unread: 7 };
-      stats.linkedin = { total: 25, unread: 2 };
-      stats.instagram = { total: 25, unread: 5 };
-    }
-
-    // Update DOM badges
+    // Update DOM counts and badges with real honest data
     const waBadge = document.getElementById('whatsapp-unread-badge');
     const waTotal = document.getElementById('whatsapp-total-count');
     const gmailBadge = document.getElementById('gmail-unread-badge');
@@ -114,14 +51,31 @@ const ReplyCenter = {
     const instaBadge = document.getElementById('instagram-unread-badge');
     const instaTotal = document.getElementById('instagram-total-count');
 
-    if (waBadge) waBadge.textContent = `🟢 ${stats.whatsapp.unread} NEW`;
     if (waTotal) waTotal.textContent = stats.whatsapp.total;
-    if (gmailBadge) gmailBadge.textContent = `🔴 ${stats.gmail.unread} NEW`;
     if (gmailTotal) gmailTotal.textContent = stats.gmail.total;
-    if (linkedinBadge) linkedinBadge.textContent = `🔴 ${stats.linkedin.unread} NEW`;
     if (linkedinTotal) linkedinTotal.textContent = stats.linkedin.total;
-    if (instaBadge) instaBadge.textContent = `🔴 ${stats.instagram.unread} NEW`;
     if (instaTotal) instaTotal.textContent = stats.instagram.total;
+
+    if (waBadge) {
+      waBadge.textContent = stats.whatsapp.replies > 0 ? `🟢 ${stats.whatsapp.replies} REPLIED` : `⚪ 0 REPLIES`;
+      waBadge.style.background = stats.whatsapp.replies > 0 ? 'rgba(37, 211, 102, 0.2)' : 'rgba(255, 255, 255, 0.05)';
+      waBadge.style.color = stats.whatsapp.replies > 0 ? '#4ade80' : '#94a3b8';
+    }
+    if (gmailBadge) {
+      gmailBadge.textContent = stats.gmail.replies > 0 ? `🔴 ${stats.gmail.replies} REPLIED` : `⚪ 0 REPLIES`;
+      gmailBadge.style.background = stats.gmail.replies > 0 ? 'rgba(239, 68, 68, 0.2)' : 'rgba(255, 255, 255, 0.05)';
+      gmailBadge.style.color = stats.gmail.replies > 0 ? '#f87171' : '#94a3b8';
+    }
+    if (linkedinBadge) {
+      linkedinBadge.textContent = stats.linkedin.replies > 0 ? `🔵 ${stats.linkedin.replies} REPLIED` : `⚪ 0 REPLIES`;
+      linkedinBadge.style.background = stats.linkedin.replies > 0 ? 'rgba(10, 102, 194, 0.2)' : 'rgba(255, 255, 255, 0.05)';
+      linkedinBadge.style.color = stats.linkedin.replies > 0 ? '#60a5fa' : '#94a3b8';
+    }
+    if (instaBadge) {
+      instaBadge.textContent = stats.instagram.replies > 0 ? `🟣 ${stats.instagram.replies} REPLIED` : `⚪ 0 REPLIES`;
+      instaBadge.style.background = stats.instagram.replies > 0 ? 'rgba(225, 48, 108, 0.2)' : 'rgba(255, 255, 255, 0.05)';
+      instaBadge.style.color = stats.instagram.replies > 0 ? '#f472b6' : '#94a3b8';
+    }
   },
 
   setupListeners() {
@@ -168,8 +122,21 @@ const ReplyCenter = {
         aiSuggestedReply: `Hi ${customLead.decisionMaker.split(' ')[0]}! We can have it live in 48 hours for $650 one-time. Can I share a quick 1-min preview video?`
       };
     } else {
-      const samples = SAMPLE_CLIENT_REPLIES;
-      replyObj = samples[Math.floor(Math.random() * samples.length)];
+      const availableLeads = (window.App && window.App.leads) || [];
+      const randomLead = availableLeads[Math.floor(Math.random() * availableLeads.length)] || {
+        channel: 'whatsapp',
+        businessName: 'Master Biryani',
+        city: 'Karachi',
+        decisionMaker: 'Tariq Mehmood'
+      };
+      replyObj = {
+        platform: randomLead.channel === 'whatsapp' ? 'WhatsApp' : randomLead.channel === 'gmail' ? 'Gmail' : randomLead.channel === 'linkedin' ? 'LinkedIn' : 'Instagram',
+        channelKey: randomLead.channel || 'whatsapp',
+        businessName: randomLead.businessName,
+        city: (randomLead.city || '').split(',')[0],
+        clientMessage: "Hi Fawwad, saw your note! How does this 1-tap mobile setup work?",
+        aiSuggestedReply: `Hi ${randomLead.decisionMaker.split(' ')[0]}! It's a 1-tap direct mobile system ready in 48 hours for $650. Can I share a quick 1-min preview?`
+      };
     }
 
     // Mark as unread

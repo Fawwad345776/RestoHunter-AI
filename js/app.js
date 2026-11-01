@@ -14,6 +14,15 @@ const App = {
     this.settings = StorageService.getSettings();
     this.setupUI();
     this.setupEventListeners();
+
+    // Clean any old dummy mock replies from previous sessions
+    try {
+      const oldReplies = StorageService.getReplies();
+      if (oldReplies && oldReplies.some(r => r.businessName === 'Copper Pot Bistro' || r.businessName === 'Dr. Elena Dental')) {
+        localStorage.removeItem('restohunter_replies');
+      }
+    } catch (e) {}
+
     ReplyCenter.init();
 
     // 1. Instant Synchronous Initial Load: Show verified leads immediately without waiting for network
@@ -348,10 +357,12 @@ const App = {
           StorageService.saveLeads(this.leads);
           try {
             localStorage.removeItem('restohunter_history');
+            localStorage.removeItem('restohunter_replies');
           } catch (e) {}
+          if (window.ReplyCenter && ReplyCenter.renderStats) ReplyCenter.renderStats();
           this.updateMetrics();
           this.renderTable();
-          this.showToast('✅ All leads reset to "Ready to Pitch"! Ab aap WhatsApp se 1-by-1 bhej sakte hain.', 'success');
+          this.showToast('✅ Sab beqar ka test data saaf kar diya gaya hai! Tamam 200 leads fresh "Ready to Pitch" par hain.', 'success');
         }
       });
     }
@@ -1000,6 +1011,10 @@ const App = {
           badgeLiveStatus.style.color = '#fbbf24';
         }
       }
+    }
+
+    if (window.ReplyCenter && ReplyCenter.renderStats) {
+      ReplyCenter.renderStats();
     }
   },
 
