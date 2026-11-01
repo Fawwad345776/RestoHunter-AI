@@ -389,17 +389,20 @@
   }
 
   /* Table Container - Mobile Smooth Swipe with Proper Header Alignment */
-  .table-container {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  .table-container,
+  .table-responsive-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-subtle);
+    display: block !important;
+    box-sizing: border-box !important;
   }
 
   .leads-table {
-    min-width: 860px;
+    min-width: 680px;
     width: 100%;
   }
 
@@ -522,7 +525,7 @@
   }
 
   .leads-table {
-    min-width: 820px;
+    min-width: 600px;
   }
 
   .leads-actions-group {

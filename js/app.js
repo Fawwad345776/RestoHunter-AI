@@ -109,6 +109,20 @@ const App = {
       })
       .catch(() => {});
 
+    // Auto-detect mobile screen and default to Card view for cleaner touch experience
+    if (window.innerWidth <= 768) {
+      const btnCards = document.getElementById('btn-view-cards');
+      const btnTable = document.getElementById('btn-view-table');
+      if (btnCards && btnTable) {
+        btnCards.classList.add('active');
+        btnTable.classList.remove('active');
+        const tv = document.getElementById('table-view-container');
+        const cv = document.getElementById('cards-view-container');
+        if (tv) tv.style.display = 'none';
+        if (cv) cv.style.display = 'grid';
+      }
+    }
+
     // Route to initial hash or default to overview
     const hash = window.location.hash.replace('#', '');
     if (hash && document.getElementById(`view-${hash}`)) {
@@ -129,8 +143,7 @@ const App = {
         const targetView = item.dataset.view;
         if (targetView) {
           this.switchView(targetView);
-          // Auto-close mobile sidebar if open
-          document.getElementById('saas-sidebar')?.classList.remove('mobile-open');
+          this.closeMobileSidebar();
         }
       });
     });
@@ -148,8 +161,14 @@ const App = {
     // Mobile sidebar toggle
     const btnMobile = document.getElementById('btn-mobile-sidebar');
     if (btnMobile) {
-      btnMobile.addEventListener('click', () => {
-        document.getElementById('saas-sidebar').classList.toggle('mobile-open');
+      btnMobile.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const sidebar = document.getElementById('saas-sidebar');
+        if (sidebar && sidebar.classList.contains('mobile-open')) {
+          this.closeMobileSidebar();
+        } else {
+          this.openMobileSidebar();
+        }
       });
     }
 
@@ -178,11 +197,22 @@ const App = {
     }
   },
 
+  openMobileSidebar() {
+    document.getElementById('saas-sidebar')?.classList.add('mobile-open');
+    document.getElementById('saas-sidebar-backdrop')?.classList.add('active');
+  },
+
+  closeMobileSidebar() {
+    document.getElementById('saas-sidebar')?.classList.remove('mobile-open');
+    document.getElementById('saas-sidebar-backdrop')?.classList.remove('active');
+  },
+
   switchView(viewName) {
     const pane = document.getElementById(`view-${viewName}`);
     if (!pane) return;
 
     this.currentView = viewName;
+    this.closeMobileSidebar();
 
     // Update active class on panes
     document.querySelectorAll('.saas-view-pane').forEach(p => p.classList.remove('active'));

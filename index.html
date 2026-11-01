@@ -199,6 +199,9 @@
       </div>
     </aside>
 
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div id="saas-sidebar-backdrop" class="sidebar-backdrop" onclick="App.closeMobileSidebar()"></div>
+
     <!-- ========================================================
          MAIN CONTENT AREA
          ======================================================== -->
@@ -348,7 +351,7 @@
           </div>
 
           <!-- Funnel & Recent Activity Grid -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <div class="saas-grid-2col">
             <!-- Conversion Funnel -->
             <div class="glass-panel" style="padding: 20px;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
@@ -612,12 +615,12 @@
             <table class="leads-table">
               <thead>
                 <tr>
-                  <th style="min-width: 250px;">Business Profile & Location</th>
-                  <th style="min-width: 220px;">Decision Maker & Contacts</th>
-                  <th style="min-width: 260px;">Flaw Audit & Lost Revenue</th>
-                  <th style="min-width: 140px;">Best Channel</th>
-                  <th style="min-width: 130px;">Status</th>
-                  <th style="min-width: 170px;">1-Tap Actions</th>
+                  <th style="min-width: 180px;">Business Profile & Location</th>
+                  <th style="min-width: 150px;">Decision Maker & Contacts</th>
+                  <th style="min-width: 180px;">Flaw Audit & Lost Revenue</th>
+                  <th style="min-width: 100px;">Best Channel</th>
+                  <th style="min-width: 90px;">Status</th>
+                  <th style="min-width: 120px;">1-Tap Actions</th>
                 </tr>
               </thead>
               <tbody id="leads-tbody"></tbody>
@@ -705,7 +708,7 @@
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px;" id="weakness-detector-grid"></div>
+          <div class="weakness-detector-grid" id="weakness-detector-grid"></div>
         </section>
 
         <!-- ====================================================
@@ -745,7 +748,7 @@
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: 340px 1fr; gap: 24px;">
+          <div class="pitch-studio-grid">
             <!-- Controls Panel -->
             <div class="glass-panel" style="padding: 20px; display: flex; flex-direction: column; gap: 14px;">
               <div class="input-group">
@@ -1095,7 +1098,7 @@
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+          <div class="saas-grid-2col" style="margin-bottom: 24px;">
             <div class="glass-panel" style="padding: 22px;">
               <h3 style="font-size: 1.05rem; color: #fff; margin-bottom: 12px;">Universal Software Opportunities by Category</h3>
               <div id="analytics-opportunities-container"></div>
@@ -1121,7 +1124,7 @@
             </button>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <div class="saas-grid-2col">
             <!-- API Credentials -->
             <div class="glass-panel" style="padding: 24px; display: flex; flex-direction: column; gap: 16px;">
               <h3 style="font-size: 1.1rem; color: #38bdf8;">🔑 External API Credentials</h3>
@@ -1248,7 +1251,7 @@
         <button class="modal-close-btn" onclick="document.getElementById('add-lead-modal').classList.remove('open')">&times;</button>
       </div>
       <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px;">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="saas-grid-2col" style="gap: 12px;">
           <div class="input-group">
             <label class="input-label" for="new-lead-business-name">Business Name *</label>
             <input type="text" id="new-lead-business-name" class="custom-input" placeholder="e.g. Kolachi Restaurant" required>
@@ -1258,7 +1261,7 @@
             <input type="text" id="new-lead-owner-name" class="custom-input" placeholder="e.g. Tariq Mehmood">
           </div>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="saas-grid-2col" style="gap: 12px;">
           <div class="input-group">
             <label class="input-label" for="new-lead-phone">Phone Number *</label>
             <input type="text" id="new-lead-phone" class="custom-input" placeholder="+92 300 1234567" required>

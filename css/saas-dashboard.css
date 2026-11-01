@@ -21,10 +21,38 @@
   --saas-top-nav-height: 64px;
 }
 
+/* Master Mobile Viewport & Box Sizing Protection */
+html {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background-color: var(--saas-navy-950);
+  color: var(--saas-text-main);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
 /* Master Layout */
 .saas-layout {
   display: flex;
   min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
   background-color: var(--saas-navy-950);
   background-image: 
     radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
@@ -33,6 +61,7 @@
   background-attachment: fixed;
   color: var(--saas-text-main);
   overflow-x: hidden;
+  position: relative;
 }
 
 /* Sidebar */
@@ -273,11 +302,15 @@
 
 /* Main Content Area */
 .saas-main {
-  flex: 1;
+  flex: 1 1 0%;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
   margin-left: var(--saas-sidebar-width);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
   transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -298,6 +331,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .top-nav-left {
@@ -461,11 +497,16 @@
   max-width: 1600px;
   width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .saas-view-pane {
   display: none;
   animation: fadeIn 0.25s ease-out;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .saas-view-pane.active {
@@ -475,6 +516,62 @@
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Table Wrapper - Strictly prevents tables from expanding viewport */
+.table-responsive-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  display: block !important;
+  position: relative !important;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-sizing: border-box !important;
+}
+
+.table-responsive-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Responsive Grid Utilities */
+.saas-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.pitch-studio-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 24px;
+}
+
+.weakness-detector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* Mobile Sidebar Backdrop */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 8, 20, 0.80);
+  backdrop-filter: blur(4px);
+  z-index: 990;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.sidebar-backdrop.active {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* View Page Headers */
@@ -707,53 +804,259 @@
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Responsive Rules */
+/* ==========================================================================
+   COMPREHENSIVE RESPONSIVE DESIGN FOR DESKTOP, TABLET & MOBILE PHONES
+   ========================================================================== */
+
+/* 1. Large Tablets & Small Laptops (<= 1100px) */
+@media (max-width: 1100px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px;
+  }
+}
+
+/* 2. Tablets & Mobile Drawer Navigation (<= 992px) */
 @media (max-width: 992px) {
   .saas-sidebar {
     transform: translateX(-100%);
-    width: 260px;
+    width: 280px;
+    max-width: 85vw;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: none;
   }
 
   .saas-sidebar.mobile-open {
     transform: translateX(0);
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.95);
   }
 
   .saas-main {
     margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 100vw !important;
   }
 
   .btn-mobile-menu {
-    display: block;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--saas-border);
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.25rem;
   }
 
-  .top-nav-search-wrap input:focus {
-    width: 220px;
+  .saas-grid-2col {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .pitch-studio-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
   }
 
   .top-nav-right .api-status-group {
     display: none;
   }
+
+  .batch-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
+  }
 }
 
-@media (max-width: 640px) {
+/* 3. Standard Mobile Phones & Phablets (<= 768px) */
+@media (max-width: 768px) {
+  .saas-top-navbar {
+    padding: 0 12px;
+    height: 58px;
+  }
+
   .saas-content-area {
-    padding: 14px;
+    padding: 16px 12px;
+  }
+
+  .view-header-strip {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .view-header-strip > div:last-child {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .view-header-strip > div:last-child button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .view-header-title {
+    font-size: 1.25rem;
+  }
+
+  .top-nav-search-wrap {
+    width: 100%;
+    max-width: 160px;
+  }
+
+  .top-nav-search-wrap input {
+    height: 34px;
+    font-size: 0.75rem;
+    padding-left: 30px;
+  }
+
+  .top-nav-batch-pill {
+    padding: 4px 8px;
+    font-size: 0.72rem;
   }
 
   .top-nav-batch-pill .batch-pill-label {
     display: none;
   }
 
-  .top-nav-search-wrap {
-    width: 140px;
+  .batch-card-hero {
+    padding: 16px;
+    border-radius: 12px;
   }
 
-  .top-nav-search-wrap input {
-    font-size: 0.75rem;
+  .batch-hero-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .leads-dashboard-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .leads-filter-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .leads-filter-row > * {
+    width: 100% !important;
+  }
+
+  .leads-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .weakness-detector-grid {
+    grid-template-columns: 1fr !important;
   }
 
   .opportunities-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Table Horizontal Scrolling Hint */
+  .table-responsive-wrapper::after {
+    content: '👉 Swipe table horizontally to see all columns';
+    display: block;
+    font-size: 0.70rem;
+    color: #94a3b8;
+    text-align: right;
+    padding: 8px 6px 0 0;
+  }
+
+  /* Modals on Mobile */
+  .modal-overlay {
+    padding: 8px;
+    align-items: flex-end;
+  }
+
+  .modal-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 94vh !important;
+    margin: 0 !important;
+    border-radius: 18px 18px 0 0 !important;
+  }
+}
+
+/* 4. Compact Mobile Devices (<= 480px) */
+@media (max-width: 480px) {
+  .saas-top-navbar {
+    padding: 0 8px;
+    gap: 6px;
+  }
+
+  .top-nav-left {
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .top-nav-search-wrap {
+    display: none; /* Hide topbar search on narrow screens; page search handles it */
+  }
+
+  .top-nav-right {
+    gap: 4px;
+  }
+
+  #btn-top-add-lead {
+    padding: 0 8px;
+    font-size: 0.72rem;
+    height: 32px;
+  }
+
+  .btn-nav-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .batch-stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px;
+  }
+
+  .batch-stat-box {
+    padding: 10px 8px;
+  }
+
+  .batch-stat-num {
+    font-size: 1.25rem;
+  }
+
+  .view-header-title {
+    font-size: 1.15rem;
+  }
+
+  .leads-table th, .leads-table td {
+    padding: 8px 10px;
+    font-size: 0.76rem;
+  }
+
+  .modal-overlay {
+    padding: 0;
+  }
+
+  .modal-card {
+    border-radius: 14px 14px 0 0 !important;
+    max-height: 96vh !important;
   }
 }
