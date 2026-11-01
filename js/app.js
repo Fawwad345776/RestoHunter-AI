@@ -1885,28 +1885,40 @@ const App = {
     if (!lead) return { score: 50, label: 'Moderate', badgeClass: 'badge-reply-low', icon: '📊', reason: 'Verified listing' };
 
     let score = 50; // Base score
-    const phone = String(lead.phone || '');
+    const phone = String(lead.phone || '').trim().replace(/[\s\-()]/g, '');
     const phoneType = String(lead.phoneType || '');
     const channel = String(lead.recommendedPitchChannel || lead.channel || '');
+    const dm = String(lead.decisionMaker || '').trim();
+    const hasRealDm = dm && !['owner', 'unknown', 'principal', 'n/a', ''].includes(dm.toLowerCase());
+    const hasInsta = Boolean(lead.instagramHandle || (lead.contactInfo && lead.contactInfo.instagramHandle));
+    const hasEmail = Boolean(lead.email);
 
-    // 1. Direct Owner Mobile WhatsApp (+25 to +35 pts)
+    // 1. Direct Decision-Maker Contact Channel (+25 pts)
+    // - Direct WhatsApp mobile: Pakistan (+923, 03), UAE (+9715, 05), Saudi (+9665, 05), UK (+447, 07)
+    // - Direct Instagram DM to verified handle (channel === 'instagram')
+    // - Direct Executive line / mobile with identified decision maker
     const isMobileWA = (
       phoneType === 'mobile_whatsapp' ||
       lead.whatsappVerified === true ||
-      phone.startsWith('+923') || phone.startsWith('923') || phone.startsWith('03')
+      phone.startsWith('+923') || phone.startsWith('923') || phone.startsWith('03') ||
+      phone.startsWith('+9715') || phone.startsWith('9715') ||
+      phone.startsWith('+9665') || phone.startsWith('9665') ||
+      phone.startsWith('+447') || phone.startsWith('447') || phone.startsWith('07')
     );
 
-    if (isMobileWA) {
+    const isDirectInsta = (channel === 'instagram' || hasInsta) && hasRealDm;
+    const isDirectPhone = Boolean(phone) && hasRealDm;
+
+    if (isMobileWA || isDirectInsta || isDirectPhone) {
       score += 25;
-    } else if (channel === 'instagram' && (lead.instagramHandle || (lead.contactInfo && lead.contactInfo.instagramHandle))) {
+    } else if (hasInsta) {
       score += 18;
-    } else if (lead.email) {
-      score += 12;
+    } else if (hasEmail) {
+      score += 15;
     }
 
     // 2. Named Real Decision Maker with Title (+15 pts)
-    const dm = String(lead.decisionMaker || '').trim();
-    if (dm && !['owner', 'unknown', 'principal', 'n/a', ''].includes(dm.toLowerCase())) {
+    if (hasRealDm) {
       score += 10;
       if (lead.decisionMakerTitle && !String(lead.decisionMakerTitle).toLowerCase().includes('principal')) {
         score += 5;
@@ -1915,7 +1927,7 @@ const App = {
 
     // 3. High Financial Leakage / Pain Point Urgency (+15 pts)
     const leak = String(lead.flawLeakRange || '').toLowerCase();
-    if (['80k', '100k', '140k', '150k', '200k', '250k', '$3', '$4', '$5', '$6', '$8'].some(k => leak.includes(k))) {
+    if (['80k', '100k', '140k', '150k', '200k', '250k', '$3', '$4', '$5', '$6', '$8', 'aed', 'sar', '£'].some(k => leak.includes(k))) {
       score += 15;
     } else if (leak) {
       score += 10;
@@ -1964,9 +1976,10 @@ const App = {
       icon = '📊';
     }
 
-    const reason = isMobileWA
-      ? 'Direct Owner Mobile WhatsApp + Identified Decision Maker + Urgent Flaw'
-      : (dm ? `Identified Decision Maker (${dm}) + High Reviews` : 'Verified Digital Presence');
+    const channelName = isMobileWA ? 'WhatsApp' : (channel === 'instagram' ? 'Instagram DM' : (lead.email ? 'Direct Email' : 'Phone'));
+    const reason = hasRealDm
+      ? `Direct Channel (${channelName}) + Identified Decision Maker (${dm}) + Urgent Revenue Leak`
+      : 'Verified Listing with Direct Contact Channel';
 
     return { score, label, badgeClass, icon, reason };
   },
@@ -1978,11 +1991,83 @@ const App = {
     return `<span class="badge-reply-score ${meta.badgeClass}" title="${meta.reason}">${meta.icon} ${meta.score}% Reply Chance</span>`;
   },
 
+  getLeadRegion(lead) {
+    if (!lead) return 'Other';
+    const c = String(lead.country || '').toLowerCase();
+    const city = String(lead.city || '').toLowerCase();
+
+    if (c.includes('usa') || c.includes('united states') || city.includes('austin') || city.includes('new york')) {
+      return 'USA';
+    }
+    if (c.includes('emirates') || c.includes('uae') || city.includes('dubai') || city.includes('abu dhabi')) {
+      return 'UAE';
+    }
+    if (c.includes('united kingdom') || c.includes('uk') || city.includes('london')) {
+      return 'UK';
+    }
+    if (c.includes('saudi') || c.includes('ksa') || city.includes('riyadh')) {
+      return 'Saudi';
+    }
+    if (c.includes('pakistan') || city.includes('karachi') || city.includes('lahore') || city.includes('islamabad')) {
+      return 'Pakistan';
+    }
+    return 'Other';
+  },
+
   sortLeads(leadsArray, sortKey = 'reply_chance') {
     const list = [...leadsArray];
     switch (sortKey) {
-      case 'reply_chance':
-        return list.sort((a, b) => this.calculateReplyScore(b).score - this.calculateReplyScore(a).score);
+      case 'reply_chance': {
+        // Check how many unique regions are present in this list
+        const regionSet = new Set(list.map(l => this.getLeadRegion(l)));
+        if (regionSet.size <= 1) {
+          // Single region or city filtered: standard score descending sort
+          return list.sort((a, b) => {
+            const diff = this.calculateReplyScore(b).score - this.calculateReplyScore(a).score;
+            if (diff !== 0) return diff;
+            return parseInt(b.reviews || 0, 10) - parseInt(a.reviews || 0, 10);
+          });
+        }
+
+        // Worldwide Multi-Region View: Interleave high-reply leads across global markets
+        const buckets = {
+          'USA': [],
+          'UAE': [],
+          'UK': [],
+          'Saudi': [],
+          'Pakistan': [],
+          'Other': []
+        };
+
+        list.forEach(l => {
+          const r = this.getLeadRegion(l);
+          if (buckets[r]) buckets[r].push(l);
+          else buckets['Other'].push(l);
+        });
+
+        // Sort each bucket by reply score descending, then by reviews descending
+        Object.keys(buckets).forEach(k => {
+          buckets[k].sort((a, b) => {
+            const scoreDiff = this.calculateReplyScore(b).score - this.calculateReplyScore(a).score;
+            if (scoreDiff !== 0) return scoreDiff;
+            return parseInt(b.reviews || 0, 10) - parseInt(a.reviews || 0, 10);
+          });
+        });
+
+        // Round-robin rotation: USA ➔ UAE ➔ UK ➔ Saudi ➔ Pakistan ➔ Other
+        const rotation = ['USA', 'UAE', 'UK', 'Saudi', 'Pakistan', 'Other'].filter(k => buckets[k].length > 0);
+        const result = [];
+        const maxLen = Math.max(...rotation.map(k => buckets[k].length));
+
+        for (let i = 0; i < maxLen; i++) {
+          for (const r of rotation) {
+            if (i < buckets[r].length) {
+              result.push(buckets[r][i]);
+            }
+          }
+        }
+        return result;
+      }
       case 'reviews':
         return list.sort((a, b) => parseInt(b.reviews || 0, 10) - parseInt(a.reviews || 0, 10));
       case 'rating':
@@ -1996,7 +2081,7 @@ const App = {
       case 'name_asc':
         return list.sort((a, b) => (a.businessName || '').localeCompare(b.businessName || ''));
       default:
-        return list.sort((a, b) => this.calculateReplyScore(b).score - this.calculateReplyScore(a).score);
+        return this.sortLeads(list, 'reply_chance');
     }
   },
 

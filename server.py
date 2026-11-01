@@ -291,24 +291,39 @@ class SoftHunterHandler(SimpleHTTPRequestHandler):
 
             def compute_reply_likelihood(item):
                 s = 50
-                p = str(item.get('phone') or '')
+                p = str(item.get('phone') or '').strip().replace(' ', '').replace('-', '')
                 pt = str(item.get('phoneType') or '')
                 ch = str(item.get('recommendedPitchChannel') or item.get('channel') or '')
-                if pt == 'mobile_whatsapp' or item.get('whatsappVerified') or p.startswith(('+923', '923', '03')):
-                    s += 25
-                elif ch == 'instagram' and item.get('instagramHandle'):
-                    s += 18
-                elif item.get('email'):
-                    s += 12
-
                 dm = str(item.get('decisionMaker') or '').strip()
-                if dm and dm.lower() not in ('owner', 'unknown', 'principal', 'n/a', ''):
+                has_real_dm = bool(dm and dm.lower() not in ('owner', 'unknown', 'principal', 'n/a', ''))
+                has_insta = bool(item.get('instagramHandle') or (item.get('contactInfo', {}) or {}).get('instagramHandle'))
+                has_email = bool(item.get('email'))
+
+                # Direct Decision-Maker Outreach Channel (+25 pts)
+                # WhatsApp mobile in PK (+923), UAE (+9715), Saudi (+9665), UK (+447)
+                # Direct Instagram DM or direct executive phone with named decision maker
+                is_direct_wa = (
+                    pt == 'mobile_whatsapp' or
+                    item.get('whatsappVerified') is True or
+                    p.startswith(('+923', '923', '03', '+9715', '9715', '+9665', '9665', '+447', '447', '07'))
+                )
+                is_direct_insta = (ch == 'instagram' or item.get('instagramHandle')) and has_insta and has_real_dm
+                is_direct_phone = bool(p) and has_real_dm
+
+                if is_direct_wa or is_direct_insta or is_direct_phone:
+                    s += 25
+                elif has_insta:
+                    s += 18
+                elif has_email:
+                    s += 15
+
+                if has_real_dm:
                     s += 10
                     if item.get('decisionMakerTitle') and 'principal' not in str(item.get('decisionMakerTitle')).lower():
                         s += 5
 
                 leak = str(item.get('flawLeakRange') or '').lower()
-                if any(k in leak for k in ('80k', '100k', '140k', '150k', '200k', '250k', '$3', '$4', '$5', '$6', '$8')):
+                if any(k in leak for k in ('80k', '100k', '140k', '150k', '200k', '250k', '$3', '$4', '$5', '$6', '$8', 'aed', 'sar', '£')):
                     s += 15
                 elif leak:
                     s += 10
@@ -342,7 +357,7 @@ class SoftHunterHandler(SimpleHTTPRequestHandler):
             for l in all_leads:
                 if city and city.lower() != 'all' and city.lower() not in l.get('city', '').lower():
                     continue
-                if country and country.lower() != 'all' and country.lower() not in l.get('country', '').lower():
+                if country and country.lower() != 'all' and country.lower() != 'global' and country.lower() not in l.get('country', '').lower():
                     continue
                 if category and category.lower() != 'all':
                     niche_str = f"{l.get('niche', '')} {l.get('nicheName', '')}".lower()
@@ -364,13 +379,50 @@ class SoftHunterHandler(SimpleHTTPRequestHandler):
                 l_copy['replyProbabilityScore'] = compute_reply_likelihood(l)
                 filtered.append(l_copy)
 
-            # Sort by reply probability score descending (Highest Reply Chance First)
-            filtered.sort(key=lambda x: x.get('replyProbabilityScore', 50), reverse=True)
+            # Check if this is an unfiltered Global search
+            is_global_multi_market = (
+                (not city or city.lower() in ('all', 'global', '')) and
+                (not country or country.lower() in ('all', 'global', ''))
+            )
+
+            if is_global_multi_market:
+                # Interleave leads across global regions: USA ➔ UAE ➔ UK ➔ Saudi ➔ Pakistan
+                buckets = {'USA': [], 'UAE': [], 'UK': [], 'Saudi': [], 'Pakistan': [], 'Other': []}
+                for item in filtered:
+                    c = str(item.get('country') or '').lower()
+                    ct = str(item.get('city') or '').lower()
+                    if 'usa' in c or 'united states' in c or 'austin' in ct or 'new york' in ct:
+                        buckets['USA'].append(item)
+                    elif 'emirates' in c or 'uae' in c or 'dubai' in ct or 'abu dhabi' in ct:
+                        buckets['UAE'].append(item)
+                    elif 'united kingdom' in c or 'uk' in c or 'london' in ct:
+                        buckets['UK'].append(item)
+                    elif 'saudi' in c or 'ksa' in c or 'riyadh' in ct:
+                        buckets['Saudi'].append(item)
+                    elif 'pakistan' in c or any(k in ct for k in ['karachi', 'lahore', 'islamabad']):
+                        buckets['Pakistan'].append(item)
+                    else:
+                        buckets['Other'].append(item)
+
+                for k in buckets:
+                    buckets[k].sort(key=lambda x: (x.get('replyProbabilityScore', 50), int(x.get('reviews') or 0)), reverse=True)
+
+                interleaved = []
+                rotation = [k for k in ['USA', 'UAE', 'UK', 'Saudi', 'Pakistan', 'Other'] if buckets[k]]
+                max_len = max(len(buckets[k]) for k in rotation) if rotation else 0
+                for i in range(max_len):
+                    for r in rotation:
+                        if i < len(buckets[r]):
+                            interleaved.append(buckets[r][i])
+                filtered = interleaved
+            else:
+                # Specific city or single country: sort by reply score descending
+                filtered.sort(key=lambda x: (x.get('replyProbabilityScore', 50), int(x.get('reviews') or 0)), reverse=True)
 
             return self._send_json({
                 "success": True,
                 "source": "verified_local_database",
-                "notice": "Results ranked by Highest Reply Likelihood. Add Google Places API Key in Settings to scan live new cities.",
+                "notice": "Results ranked by Worldwide Highest Reply Likelihood (Interleaved Global Priority Queue).",
                 "count": len(filtered[:requested_count]),
                 "results": filtered[:requested_count]
             })

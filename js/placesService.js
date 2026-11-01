@@ -106,18 +106,23 @@ const PlacesService = {
         return true;
       });
 
-      // Sort by highest reply likelihood
-      filtered.sort((a, b) => {
-        const scoreA = (window.App && window.App.calculateReplyScore) ? window.App.calculateReplyScore(a).score : 50;
-        const scoreB = (window.App && window.App.calculateReplyScore) ? window.App.calculateReplyScore(b).score : 50;
-        return scoreB - scoreA;
-      });
+      // Sort by highest reply likelihood (worldwide interleaved)
+      let sortedResults = filtered;
+      if (window.App && typeof window.App.sortLeads === 'function') {
+        sortedResults = window.App.sortLeads(filtered, 'reply_chance');
+      } else {
+        sortedResults.sort((a, b) => {
+          const scoreA = (window.App && window.App.calculateReplyScore) ? window.App.calculateReplyScore(a).score : 50;
+          const scoreB = (window.App && window.App.calculateReplyScore) ? window.App.calculateReplyScore(b).score : 50;
+          return scoreB - scoreA;
+        });
+      }
 
       return {
         success: true,
         source: 'verified_local_database',
-        count: filtered.slice(0, count).length,
-        results: filtered.slice(0, count)
+        count: sortedResults.slice(0, count).length,
+        results: sortedResults.slice(0, count)
       };
     }
   },
