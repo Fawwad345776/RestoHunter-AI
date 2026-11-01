@@ -139,16 +139,48 @@ const AutopilotEngine = {
   },
 
   /**
-   * Day-3 Follow-Up Scanner
+   * Day-3 & Day-7 Follow-Up Scanner
+   * Triggers when 48+ hours (Day-3) or 168+ hours (Day-7) have passed since initial dispatch
    */
   getDueFollowUps(leads) {
-    const now = new Date();
+    const now = Date.now();
     return leads.filter(l => {
+      if (l.status === 'replied' || l.followupStage === 'day7_done') return false;
+      if ((l.status === 'dispatched' || l.status === 'followup_due') && l.dispatchedAt) {
+        const sentTime = new Date(l.dispatchedAt).getTime();
+        const hoursPassed = (now - sentTime) / (1000 * 3600);
+        if (l.followupStage === 'day3_done') {
+          return hoursPassed >= 168;
+        }
+        return hoursPassed >= 48;
+      }
       if (l.status === 'dispatched' && l.followupDueAt) {
-        return new Date(l.followupDueAt) <= now;
+        return new Date(l.followupDueAt).getTime() <= now;
       }
       return false;
     });
+  },
+
+  getFollowupStats(leads) {
+    const now = Date.now();
+    let day3Due = 0;
+    let day7Due = 0;
+    leads.forEach(l => {
+      if (l.status === 'replied' || l.followupStage === 'day7_done') return;
+      if ((l.status === 'dispatched' || l.status === 'followup_due') && l.dispatchedAt) {
+        const hours = (now - new Date(l.dispatchedAt).getTime()) / (1000 * 3600);
+        if (hours >= 168) {
+          day7Due++;
+        } else if (hours >= 48 && l.followupStage !== 'day3_done') {
+          day3Due++;
+        }
+      }
+    });
+    return {
+      totalDue: day3Due + day7Due,
+      day3Due,
+      day7Due
+    };
   },
 
   getSocialTemplates() {

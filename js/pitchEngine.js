@@ -271,6 +271,25 @@ const PitchEngine = {
     } else {
       return `hi ${greeting.toLowerCase()},\n\nquick bump on this — open to a quick 2-minute look at fixing ${flaw.toLowerCase()} for ${bizShort}?\n\nno worries if you're swamped!\n\nbest,\nfawwad`;
     }
+  },
+
+  /**
+   * Day-7 Break-Up / Polite Close-Out Follow-Up
+   */
+  generateDay7FollowUp(lead, mode = 'team') {
+    const greeting = this.getGreetingName(lead, mode);
+    const bizShort = lead.businessName.split('(')[0].trim();
+    const flaw = (lead.flawTitle || 'the booking leak').replace(/\s*\(.*?\)/g, '').trim();
+
+    if (lead.channel === 'whatsapp') {
+      return `Salam ${greeting}! Just closing the loop on *${bizShort}*. Assuming fixing that *${flaw}* isn't a priority right now — no problem at all! Let me know if you ever want that 1-tap setup down the road. Wish you the best! 🤝`;
+    } else if (lead.channel === 'instagram') {
+      return `Hey ${greeting}! Closing the loop regarding ${bizShort} — assuming fixing ${flaw} isn't top of mind right now. Wish you all the best! 🤝`;
+    } else if (lead.channel === 'linkedin') {
+      return `Hey ${greeting}, closing the loop on ${bizShort}. Assuming this isn't a priority right now. Feel free to reach out anytime down the road!`;
+    } else {
+      return `hi ${greeting.toLowerCase()},\n\nassuming fixing ${flaw.toLowerCase()} for ${bizShort} isn't a priority right now, so i'll close the file and stop bugging you!\n\nif you ever want to explore down the road, you know where to find me.\n\nbest,\nfawwad`;
+    }
   }
 };
 

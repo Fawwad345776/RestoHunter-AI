@@ -302,6 +302,28 @@ const App = {
       });
     }
 
+    // Follow-Up Radar Banner Buttons
+    const btnViewDue = document.getElementById('btn-view-due-followups');
+    if (btnViewDue) {
+      btnViewDue.addEventListener('click', () => {
+        const tab = document.querySelector('.channel-tab-btn[data-filter="followup"]');
+        if (tab) {
+          document.querySelectorAll('.channel-tab-btn').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+        }
+        this.applyFilter('followup');
+        const tableHeader = document.querySelector('.leads-section-header');
+        if (tableHeader) tableHeader.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
+    const btnSimulateDemo = document.getElementById('btn-simulate-followup-demo');
+    if (btnSimulateDemo) {
+      btnSimulateDemo.addEventListener('click', () => {
+        this.simulateFollowupDemo();
+      });
+    }
+
     // Search Input
     const searchInput = document.getElementById('table-search-input');
     if (searchInput) {
@@ -320,6 +342,8 @@ const App = {
             l.dispatchedAt = null;
             l.dispatchedMessage = null;
             l.followupDueAt = null;
+            l.followupStage = null;
+            l.lastFollowupAt = null;
           });
           StorageService.saveLeads(this.leads);
           try {
@@ -642,7 +666,11 @@ const App = {
     } else if (filter === 'replied') {
       this.filteredLeads = base.filter(l => l.status === 'replied');
     } else if (filter === 'followup') {
-      this.filteredLeads = AutopilotEngine.getDueFollowUps(base);
+      let dues = AutopilotEngine.getDueFollowUps(base);
+      if (dues.length === 0 && AutopilotEngine.getDueFollowUps(this.leads).length > 0) {
+        dues = AutopilotEngine.getDueFollowUps(this.leads);
+      }
+      this.filteredLeads = dues;
     }
     this.renderTable();
   },
@@ -717,10 +745,31 @@ const App = {
            </div>`;
 
       const dispatchTimeStr = lead.dispatchedAt ? new Date(lead.dispatchedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
-      const statusBadge = lead.status === 'dispatched'
-        ? `<span class="status-pill dispatched" title="Dispatched: ${dispatchTimeStr || 'Recorded'}">🚀 Dispatched ${dispatchTimeStr ? `(${dispatchTimeStr})` : ''}</span>`
-        : lead.status === 'replied'
+      const isDispatched = lead.status === 'dispatched' || lead.status === 'followup_due';
+      let isFollowupDue = false;
+      let isDay7 = false;
+      if (lead.status !== 'replied' && lead.followupStage !== 'day7_done') {
+        if (isDispatched && lead.dispatchedAt) {
+          const hoursPassed = (Date.now() - new Date(lead.dispatchedAt).getTime()) / (1000 * 3600);
+          isDay7 = hoursPassed >= 168 || lead.followupStage === 'day3_done';
+          if (lead.followupStage === 'day3_done') {
+            isFollowupDue = hoursPassed >= 168;
+          } else {
+            isFollowupDue = hoursPassed >= 48;
+          }
+        }
+      }
+
+      const statusBadge = lead.status === 'replied'
         ? `<span class="status-pill replied">🔴 Replied</span>`
+        : isFollowupDue
+        ? `<span class="status-pill followup" style="background: rgba(245, 158, 11, 0.25); color: #fbbf24; border: 1px solid #f59e0b; font-weight: 800; box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);">⏰ ${isDay7 ? 'Day-7 Nudge' : 'Day-3 Nudge'}</span>`
+        : lead.followupStage === 'day7_done'
+        ? `<span class="status-pill dispatched" style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border-color: rgba(16, 185, 129, 0.35);">✅ Sequence Done</span>`
+        : lead.followupStage === 'day3_done'
+        ? `<span class="status-pill dispatched" style="background: rgba(245, 158, 11, 0.12); color: #fde68a; border-color: rgba(245, 158, 11, 0.3);">⏱️ Day-3 Sent</span>`
+        : lead.status === 'dispatched'
+        ? `<span class="status-pill dispatched" title="Dispatched: ${dispatchTimeStr || 'Recorded'}">🚀 Dispatched ${dispatchTimeStr ? `(${dispatchTimeStr})` : ''}</span>`
         : lead.status === 'followup_due'
         ? `<span class="status-pill followup">⏰ Follow-Up Due</span>`
         : `<span class="status-pill ready">Ready to Pitch</span>`;
@@ -841,6 +890,12 @@ const App = {
               <button class="btn-table-action" onclick="App.openPitchModal('${lead.id}')" title="Preview Pitch, Verified Source & Strategy Details">
                 👁️ Pitch & Details
               </button>
+              ${isFollowupDue
+                ? `<button class="btn-table-action" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #000; font-weight: 800; border: none; box-shadow: 0 0 12px rgba(245, 158, 11, 0.45); padding: 5px 10px; font-size: 0.74rem; white-space: nowrap;" onclick="App.dispatchFollowup('${lead.id}')" title="1-Tap Send ${isDay7 ? 'Day-7 Breakup' : 'Day-3'} Follow-Up Nudge">
+                    ⏰ 1-Tap Nudge (${isDay7 ? 'Day-7' : 'Day-3'})
+                  </button>`
+                : ''
+              }
               ${Boolean(lead.email && lead.email.includes('@'))
                 ? `<button class="btn-table-action" style="${isGmailBest ? 'background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(37, 99, 235, 0.6)); color: #ffffff; border: 1px solid #60a5fa; box-shadow: 0 0 10px rgba(59, 130, 246, 0.35);' : 'background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.25)); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.35);'} padding: 5px 9px; font-size: 0.74rem; font-weight: 700; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'gmail')" title="1-Tap Open Gmail with Tailored Pitch${isGmailBest ? ' (⭐ Recommended Channel)' : ''}">
                     ${isGmailBest ? '⭐ 📧 Gmail' : '📧 Gmail'}
@@ -908,6 +963,44 @@ const App = {
     if (btnScaleAll) btnScaleAll.innerHTML = `<span>🌐</span> All Scales (${totalLeads})`;
     if (btnScaleSmall) btnScaleSmall.innerHTML = `<span>🏪</span> Chotay Business (Direct Mobile) (${smallCount})`;
     if (btnScaleEst) btnScaleEst.innerHTML = `<span>🏢</span> Established Brands (${estCount})`;
+
+    // Day-3 & Day-7 Follow-up Radar update
+    const dueFollowups = AutopilotEngine.getDueFollowUps(this.leads);
+    const dueCount = dueFollowups.length;
+    const bannerDueCountEl = document.getElementById('banner-due-count');
+    const tabFollowupCountEl = document.getElementById('tab-followup-count');
+    const bannerTextEl = document.getElementById('followup-banner-text');
+    const bannerSection = document.getElementById('followup-alert-banner');
+    const badgeLiveStatus = document.getElementById('badge-followup-live-status');
+
+    if (bannerDueCountEl) bannerDueCountEl.textContent = dueCount;
+    if (tabFollowupCountEl) tabFollowupCountEl.textContent = dueCount;
+
+    if (bannerTextEl) {
+      if (dueCount > 0) {
+        bannerTextEl.innerHTML = `🔔 <strong>Alert:</strong> Aaj in <strong>${dueCount} purani leads</strong> ko 48+ ghantay ho chuke hain! Inhein 1-tap follow-up nudge bhejo taake reply rate 3x barh sake.`;
+        if (bannerSection) {
+          bannerSection.style.borderColor = '#f59e0b';
+          bannerSection.style.boxShadow = '0 0 25px rgba(245, 158, 11, 0.35)';
+        }
+        if (badgeLiveStatus) {
+          badgeLiveStatus.textContent = `${dueCount} Nudges Due Today`;
+          badgeLiveStatus.style.background = '#f59e0b';
+          badgeLiveStatus.style.color = '#000';
+        }
+      } else {
+        bannerTextEl.innerHTML = `Rozana 48 ghantay baad jin leads ka reply nahi ata, unka 1-tap follow-up nudge yahan show hota hai. (Total Dispatched: ${dispatchedCount})`;
+        if (bannerSection) {
+          bannerSection.style.borderColor = 'rgba(245, 158, 11, 0.45)';
+          bannerSection.style.boxShadow = '0 4px 20px rgba(245, 158, 11, 0.15)';
+        }
+        if (badgeLiveStatus) {
+          badgeLiveStatus.textContent = 'Live Radar Active';
+          badgeLiveStatus.style.background = 'rgba(245, 158, 11, 0.25)';
+          badgeLiveStatus.style.color = '#fbbf24';
+        }
+      }
+    }
   },
 
   openPitchModal(leadId) {
@@ -1294,6 +1387,103 @@ const App = {
     if (choice) {
       this.dispatchSingleLead(lead.id, null, 'whatsapp', this.settings.whatsapp_number || '+923376568003');
     }
+  },
+
+  dispatchFollowup(leadId) {
+    const lead = this.leads.find(l => l.id === leadId);
+    if (!lead) return;
+
+    const dispatchedTime = lead.dispatchedAt ? new Date(lead.dispatchedAt).getTime() : (Date.now() - 48 * 3600 * 1000);
+    const hoursPassed = (Date.now() - dispatchedTime) / (3600 * 1000);
+    const isDay7 = hoursPassed >= 168 || lead.followupStage === 'day3_done';
+
+    const followupText = isDay7
+      ? PitchEngine.generateDay7FollowUp(lead, this.contactMode || 'team')
+      : PitchEngine.generateDay3FollowUp(lead, this.contactMode || 'team');
+
+    // Update follow-up status
+    lead.followupStage = isDay7 ? 'day7_done' : 'day3_done';
+    lead.lastFollowupAt = new Date().toISOString();
+    if (!isDay7) {
+      const nextDue = new Date();
+      nextDue.setHours(nextDue.getHours() + 96); // 4 days later = Day 7
+      lead.followupDueAt = nextDue.toISOString();
+    } else {
+      lead.followupDueAt = null;
+    }
+
+    StorageService.saveLeads(this.leads);
+
+    const activeChannel = lead.channel || 'whatsapp';
+    const cleanBiz = lead.businessName.split('(')[0].trim();
+
+    if (activeChannel === 'whatsapp') {
+      const rawPhone = (lead.contactInfo && lead.contactInfo.phone) || this.settings.whatsapp_number || '+923376568003';
+      const cleanPhone = rawPhone.replace(/[^0-9]/g, '');
+      const waText = encodeURIComponent(followupText);
+      const waUrl = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${waText}`;
+      window.open(waUrl, '_blank');
+      this.showToast(`⏰ 1-Tap ${isDay7 ? 'Day-7 Breakup' : 'Day-3'} Nudge opened for ${cleanBiz} on WhatsApp!`, 'success');
+    } else if (activeChannel === 'instagram') {
+      try {
+        navigator.clipboard.writeText(followupText);
+      } catch (e) {
+        console.warn('Clipboard write failed:', e);
+      }
+      const rawHandle = (lead.contactInfo && lead.contactInfo.instagramHandle) || '';
+      const cleanHandle = rawHandle.replace(/[@/]/g, '').trim();
+      if (cleanHandle) {
+        window.open(`https://www.instagram.com/${cleanHandle}/`, '_blank');
+        this.showToast(`📋 ${isDay7 ? 'Day-7' : 'Day-3'} Nudge copied! Opened Instagram for @${cleanHandle}. Just paste (Ctrl+V)!`, 'success');
+      } else {
+        window.open(`https://www.instagram.com/direct/inbox/`, '_blank');
+        this.showToast(`📋 ${isDay7 ? 'Day-7' : 'Day-3'} Nudge copied! Opened Instagram Direct Inbox. Just paste (Ctrl+V)!`, 'success');
+      }
+    } else if (activeChannel === 'gmail') {
+      const email = lead.email || (lead.contactInfo && lead.contactInfo.email);
+      const subject = encodeURIComponent(`re: ${cleanBiz} (quick bump)`);
+      const emailBody = encodeURIComponent(followupText);
+      const mailtoUrl = `mailto:${email || ''}?subject=${subject}&body=${emailBody}`;
+      window.open(mailtoUrl, '_blank');
+      this.showToast(`📧 ${isDay7 ? 'Day-7' : 'Day-3'} Follow-Up email opened for ${cleanBiz}!`, 'success');
+    } else if (activeChannel === 'linkedin') {
+      try {
+        navigator.clipboard.writeText(followupText);
+      } catch (e) {}
+      window.open(`https://www.linkedin.com/messaging`, '_blank');
+      this.showToast(`💼 ${isDay7 ? 'Day-7' : 'Day-3'} Nudge copied! Opened LinkedIn Messaging.`, 'success');
+    }
+
+    this.renderTable();
+    this.updateMetrics();
+  },
+
+  simulateFollowupDemo() {
+    const demoCount = Math.min(8, this.leads.length);
+    const now = Date.now();
+    for (let i = 0; i < demoCount; i++) {
+      const lead = this.leads[i];
+      lead.status = 'dispatched';
+      const hoursAgo = i < 6 ? 49 : 172; // 6 Day-3, 2 Day-7
+      lead.dispatchedAt = new Date(now - hoursAgo * 3600 * 1000).toISOString();
+      lead.followupDueAt = new Date(now - 1 * 3600 * 1000).toISOString();
+      lead.followupStage = hoursAgo > 168 ? 'day3_done' : 'ready';
+    }
+    StorageService.saveLeads(this.leads);
+    this.updateMetrics();
+
+    // Switch to followup tab
+    const tab = document.querySelector(`.channel-tab-btn[data-filter="followup"]`);
+    if (tab) {
+      document.querySelectorAll('.channel-tab-btn').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    }
+    this.applyFilter('followup');
+
+    const tableHeader = document.querySelector('.leads-section-header');
+    if (tableHeader) tableHeader.scrollIntoView({ behavior: 'smooth' });
+
+    this.showToast(`🧪 Test Simulation Activated! ${demoCount} leads ko 48h/7-Day follow-up alert par set kar diya gaya hai.`, 'success');
   },
 
   handleSaveSettings() {
