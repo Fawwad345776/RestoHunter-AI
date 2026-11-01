@@ -244,6 +244,13 @@ const App = {
         const selectedCity = chip.dataset.city;
         const cityInput = document.getElementById('target-city-input');
         if (cityInput && selectedCity !== 'ALL') cityInput.value = selectedCity;
+
+        // Reset scale filter to 'all' so selecting a city shows all leads in that city
+        this.currentScaleFilter = 'all';
+        document.querySelectorAll('.scale-filter-btn').forEach(b => b.classList.remove('active'));
+        const btnScaleAll = document.getElementById('btn-scale-all');
+        if (btnScaleAll) btnScaleAll.classList.add('active');
+
         if (selectedCity === 'ALL') {
           if (cityInput) cityInput.value = '';
           this.applyFilter(this.currentChannelFilter || 'all');
@@ -258,6 +265,13 @@ const App = {
       tab.addEventListener('click', () => {
         document.querySelectorAll('.channel-tab-btn').forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
+        if (tab.dataset.filter === 'all') {
+          // Reset scale filter to 'all' when clicking All Leads
+          this.currentScaleFilter = 'all';
+          document.querySelectorAll('.scale-filter-btn').forEach(b => b.classList.remove('active'));
+          const btnScaleAll = document.getElementById('btn-scale-all');
+          if (btnScaleAll) btnScaleAll.classList.add('active');
+        }
         this.applyFilter(tab.dataset.filter);
       });
     });
@@ -553,7 +567,16 @@ const App = {
 
     // 3. Filter by business scale if active
     if (this.currentScaleFilter && this.currentScaleFilter !== 'all') {
-      matched = matched.filter(l => l.businessScale === this.currentScaleFilter);
+      const scaleMatched = matched.filter(l => l.businessScale === this.currentScaleFilter);
+      if (scaleMatched.length > 0) {
+        matched = scaleMatched;
+      } else {
+        // Fallback so user doesn't get an empty list
+        this.currentScaleFilter = 'all';
+        document.querySelectorAll('.scale-filter-btn').forEach(b => b.classList.remove('active'));
+        const btnScaleAll = document.getElementById('btn-scale-all');
+        if (btnScaleAll) btnScaleAll.classList.add('active');
+      }
     }
 
     // 4. Preserve active channel filter if user had one selected
@@ -590,7 +613,15 @@ const App = {
       base = base.filter(l => l.niche === niche);
     }
     if (this.currentScaleFilter && this.currentScaleFilter !== 'all') {
-      base = base.filter(l => l.businessScale === this.currentScaleFilter);
+      const scaleFiltered = base.filter(l => l.businessScale === this.currentScaleFilter);
+      if (scaleFiltered.length > 0) {
+        base = scaleFiltered;
+      } else {
+        this.currentScaleFilter = 'all';
+        document.querySelectorAll('.scale-filter-btn').forEach(b => b.classList.remove('active'));
+        const btnScaleAll = document.getElementById('btn-scale-all');
+        if (btnScaleAll) btnScaleAll.classList.add('active');
+      }
     }
 
     if (filter === 'all') {
@@ -831,7 +862,7 @@ const App = {
     if (elTotal) elTotal.textContent = totalLeads;
     if (elDispatched) elDispatched.textContent = `${dispatchedCount} / ${totalLeads}`;
     if (elRecovered) elRecovered.textContent = `$${(totalLeads * 3.8).toFixed(1)}k/mo`;
-    if (elPipeline) elPipeline.textContent = `$${(15 * 650).toLocaleString()} – $${(25 * 1200).toLocaleString()}`;
+    if (elPipeline) elPipeline.textContent = `$${(30 * 650).toLocaleString()} – $${(50 * 1200).toLocaleString()}`;
 
     // Update channel tabs count
     const waCount = this.leads.filter(l => l.channel === 'whatsapp').length;
