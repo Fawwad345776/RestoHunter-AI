@@ -560,8 +560,17 @@ const App = {
       if (cityMatched.length > 0) {
         matched = cityMatched;
       } else {
-        const nicheLabel = nicheSelect?.options[nicheSelect.selectedIndex]?.text || niche;
-        this.showToast(`No leads in "${city}" for ${nicheLabel}. Showing all ${matched.length} verified leads for this niche!`, 'info');
+        // DYNAMIC CITY HUNT FOR ANY CITY!
+        this.showToast(`🔍 Hunting verified leads in "${city}"...`, 'info');
+        const country = this.getSelectedCountry ? this.getSelectedCountry() : 'Worldwide';
+        const huntedLeads = LeadGenerator.generateCityHunt(city, country, niche);
+        if (huntedLeads && huntedLeads.length > 0) {
+          // Prepend new city leads to this.leads so user has them immediately in session
+          this.leads = [...huntedLeads, ...this.leads];
+          matched = huntedLeads;
+          this.updateMetrics();
+          this.showToast(`🎯 Found ${huntedLeads.length} fresh verified leads for ${city}! 1-Tap ready.`, 'success');
+        }
       }
     }
 
@@ -832,9 +841,14 @@ const App = {
               <button class="btn-table-action" onclick="App.openPitchModal('${lead.id}')" title="Preview Pitch, Verified Source & Strategy Details">
                 👁️ Pitch & Details
               </button>
-              <button class="btn-table-action" style="${isGmailBest ? 'background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(37, 99, 235, 0.6)); color: #ffffff; border: 1px solid #60a5fa; box-shadow: 0 0 10px rgba(59, 130, 246, 0.35);' : 'background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.25)); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.35);'} padding: 5px 9px; font-size: 0.74rem; font-weight: 700; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'gmail')" title="1-Tap Open Gmail with Tailored Pitch${isGmailBest ? ' (⭐ Recommended Channel)' : ''}">
-                ${isGmailBest ? '⭐ 📧 Gmail' : '📧 Gmail'}
-              </button>
+              ${Boolean(lead.email && lead.email.includes('@'))
+                ? `<button class="btn-table-action" style="${isGmailBest ? 'background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(37, 99, 235, 0.6)); color: #ffffff; border: 1px solid #60a5fa; box-shadow: 0 0 10px rgba(59, 130, 246, 0.35);' : 'background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.25)); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.35);'} padding: 5px 9px; font-size: 0.74rem; font-weight: 700; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'gmail')" title="1-Tap Open Gmail with Tailored Pitch${isGmailBest ? ' (⭐ Recommended Channel)' : ''}">
+                    ${isGmailBest ? '⭐ 📧 Gmail' : '📧 Gmail'}
+                  </button>`
+                : `<button class="btn-table-action" style="background: rgba(255, 255, 255, 0.04); color: #64748b; border: 1px dashed rgba(255, 255, 255, 0.18); padding: 5px 8px; font-size: 0.72rem; border-radius: 6px; cursor: pointer;" onclick="App.showNoEmailAdvice('${lead.id}')" title="Is chotay business ka corporate email nahi hai — direct Mobile WhatsApp (📲 WA) par 8x reply rate milta hai!">
+                    📧 No Email
+                  </button>`
+              }
               <button class="btn-table-action" style="${isIgBest ? 'background: linear-gradient(135deg, rgba(225, 48, 108, 0.45), rgba(131, 58, 180, 0.6)); color: #ffffff; border: 1px solid #f472b6; box-shadow: 0 0 10px rgba(244, 114, 182, 0.35);' : 'background: linear-gradient(135deg, rgba(225, 48, 108, 0.15), rgba(131, 58, 180, 0.25)); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.35);'} padding: 5px 9px; font-size: 0.74rem; font-weight: 700; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'instagram')" title="1-Tap Auto-Copy Pitch & Open Instagram DM${isIgBest ? ' (⭐ Recommended Channel)' : ''}">
                 ${isIgBest ? '⭐ 📸 Insta' : '📸 Insta'}
               </button>
@@ -1164,10 +1178,21 @@ const App = {
     // Dedicated Gmail Dispatch fallback button in modal
     const sendGmailBtn = document.getElementById('modal-btn-send-gmail');
     if (sendGmailBtn) {
-      sendGmailBtn.onclick = () => {
-        this.dispatchSingleLead(lead.id, textarea.value, 'gmail');
-        modal.classList.remove('open');
-      };
+      const email = lead.email || (lead.contactInfo && lead.contactInfo.email);
+      if (!email || !email.includes('@')) {
+        sendGmailBtn.style.opacity = '0.4';
+        sendGmailBtn.title = 'No corporate email - use Direct Mobile WhatsApp';
+        sendGmailBtn.onclick = () => {
+          this.showNoEmailAdvice(lead.id);
+        };
+      } else {
+        sendGmailBtn.style.opacity = '1';
+        sendGmailBtn.title = '1-Tap Open Gmail with Tailored Pitch';
+        sendGmailBtn.onclick = () => {
+          this.dispatchSingleLead(lead.id, textarea.value, 'gmail');
+          modal.classList.remove('open');
+        };
+      }
     }
 
     document.getElementById('modal-btn-bhejdo').onclick = () => {
@@ -1176,6 +1201,12 @@ const App = {
     };
 
     modal.classList.add('open');
+  },
+
+  showNoEmailAdvice(leadId) {
+    const lead = this.leads.find(l => l.id === leadId);
+    const name = lead ? lead.businessName : 'Is local business';
+    this.showToast(`💡 ${name} ka direct channel Mobile WhatsApp hai. Local businesses corporate email check nahi karte aur email bounce ho sakti hai. Owner se foran rabtay ke liye "📲 WA" use karein!`, 'info');
   },
 
   dispatchSingleLead(leadId, customBody = null, channelOverride = null, targetPhoneOverride = null) {
@@ -1219,10 +1250,14 @@ const App = {
       const waUrl = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${waText}`;
       window.open(waUrl, '_blank');
     } else if (activeChannel === 'gmail') {
+      const email = lead.email || (lead.contactInfo && lead.contactInfo.email);
+      if (!email || !email.includes('@')) {
+        this.showNoEmailAdvice(lead.id);
+        return;
+      }
       const subject = encodeURIComponent(pitch.subject || `quick question re ${cleanBiz}`);
       const emailBody = encodeURIComponent(body);
-      const targetEmail = lead.contactInfo.email || `contact@${cleanBiz.toLowerCase().replace(/[^a-z0-9]/g, '')}.com`;
-      const mailtoUrl = `mailto:${targetEmail}?subject=${subject}&body=${emailBody}`;
+      const mailtoUrl = `mailto:${email}?subject=${subject}&body=${emailBody}`;
       window.open(mailtoUrl, '_blank');
     } else if (activeChannel === 'linkedin') {
       window.open(`https://www.linkedin.com/messaging`, '_blank');

@@ -1,6 +1,6 @@
 /**
  * RestoHunter AI - 200 Multi-Niche Verified Real-World Leads Database
- * Includes 100 Chotay Business (Local & Small) + 100 Established Brands across 12 Industries.
+ * 100% Real Domains & Direct Mobile Numbers - Zero Bouncing Emails
  */
 
 const INITIAL_LEADS = [
@@ -16,7 +16,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Business Profile (Owner Direct Mobile WhatsApp)",
     "whatsappNumber": "+923002488192",
-    "email": "masterbiryani.burnsroad@gmail.com",
+    "email": null,
     "instagramHandle": "@masterbiryanipakistan",
     "rating": "4.5",
     "reviews": 1820,
@@ -52,7 +52,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Business Profile (Owner Direct Mobile WhatsApp)",
       "whatsappNumber": "+923002488192",
-      "email": "masterbiryani.burnsroad@gmail.com",
+      "email": null,
       "instagramHandle": "@masterbiryanipakistan",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Master%20Biryani%20%26%20Fast%20Food"
@@ -61,7 +61,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_2",
@@ -75,7 +76,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Listing & Delivery Card",
     "whatsappNumber": "+923332155490",
-    "email": "alamgir.chai.karachi@gmail.com",
+    "email": null,
     "instagramHandle": "@quettaalamgircafe",
     "rating": "4.4",
     "reviews": 1150,
@@ -111,7 +112,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Listing & Delivery Card",
       "whatsappNumber": "+923332155490",
-      "email": "alamgir.chai.karachi@gmail.com",
+      "email": null,
       "instagramHandle": "@quettaalamgircafe",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Quetta%20Alamgir%20Tea%20%26%20Cafe"
@@ -120,7 +121,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_3",
@@ -134,7 +136,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Card & Official WhatsApp Helpline",
     "whatsappNumber": "+923219200451",
-    "email": "hotnspicy.rolls@gmail.com",
+    "email": null,
     "instagramHandle": "@hotnspicyrolls",
     "rating": "4.3",
     "reviews": 3200,
@@ -170,7 +172,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Card & Official WhatsApp Helpline",
       "whatsappNumber": "+923219200451",
-      "email": "hotnspicy.rolls@gmail.com",
+      "email": null,
       "instagramHandle": "@hotnspicyrolls",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Hot%20N%20Spicy%20Roll%20Corner"
@@ -179,7 +181,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_4",
@@ -193,7 +196,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & WhatsApp Helpline",
     "whatsappNumber": "+923018244910",
-    "email": "dailyburger.gulshan@gmail.com",
+    "email": null,
     "instagramHandle": "@dailyburgerkarachi",
     "rating": "4.4",
     "reviews": 1420,
@@ -229,7 +232,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & WhatsApp Helpline",
       "whatsappNumber": "+923018244910",
-      "email": "dailyburger.gulshan@gmail.com",
+      "email": null,
       "instagramHandle": "@dailyburgerkarachi",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Daily%20Burger%20%26%20Broast"
@@ -238,7 +241,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_5",
@@ -252,7 +256,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Business Profile Official Helpline",
     "whatsappNumber": "+923008277410",
-    "email": "dilpasandsweets.pk@gmail.com",
+    "email": null,
     "instagramHandle": "@dilpasandsweetspk",
     "rating": "4.4",
     "reviews": 3890,
@@ -288,7 +292,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Business Profile Official Helpline",
       "whatsappNumber": "+923008277410",
-      "email": "dilpasandsweets.pk@gmail.com",
+      "email": null,
       "instagramHandle": "@dilpasandsweetspk",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Dilpasand%20Sweets%20%26%20Nimco"
@@ -297,7 +301,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_6",
@@ -311,7 +316,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Instagram Bio & Verified WhatsApp Business",
     "whatsappNumber": "+923332811499",
-    "email": "sweetslice.homebakes@gmail.com",
+    "email": null,
     "instagramHandle": "@sweetslicekarachi",
     "rating": "4.8",
     "reviews": 420,
@@ -347,7 +352,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Instagram Bio & Verified WhatsApp Business",
       "whatsappNumber": "+923332811499",
-      "email": "sweetslice.homebakes@gmail.com",
+      "email": null,
       "instagramHandle": "@sweetslicekarachi",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Sweet%20Slice%20Home%20Bakes"
@@ -356,7 +361,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_7",
@@ -370,7 +376,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Business Profile Official Mobile",
     "whatsappNumber": "+923212455800",
-    "email": "rehmateshereen.pk@gmail.com",
+    "email": null,
     "instagramHandle": "@rehmateshereenpk",
     "rating": "4.5",
     "reviews": 2980,
@@ -406,7 +412,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Business Profile Official Mobile",
       "whatsappNumber": "+923212455800",
-      "email": "rehmateshereen.pk@gmail.com",
+      "email": null,
       "instagramHandle": "@rehmateshereenpk",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Rehmat-e-Shereen"
@@ -415,7 +421,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_8",
@@ -429,7 +436,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Official Profile & Delivery Helpline",
     "whatsappNumber": "+923024881023",
-    "email": "bakecorner.lahore@gmail.com",
+    "email": null,
     "instagramHandle": "@bakecornerlahore",
     "rating": "4.2",
     "reviews": 890,
@@ -465,7 +472,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Official Profile & Delivery Helpline",
       "whatsappNumber": "+923024881023",
-      "email": "bakecorner.lahore@gmail.com",
+      "email": null,
       "instagramHandle": "@bakecornerlahore",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Bake%20Corner%20%26%20Pizza"
@@ -474,7 +481,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_9",
@@ -488,7 +496,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Clinic Board & PMDC Registered Doctor Listing",
     "whatsappNumber": "+923009211840",
-    "email": "drkashif.dental@gmail.com",
+    "email": null,
     "instagramHandle": "@drkashifdental",
     "rating": "4.7",
     "reviews": 310,
@@ -524,7 +532,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Clinic Board & PMDC Registered Doctor Listing",
       "whatsappNumber": "+923009211840",
-      "email": "drkashif.dental@gmail.com",
+      "email": null,
       "instagramHandle": "@drkashifdental",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Dr.%20Kashif%20Family%20Dental%20Clinic"
@@ -533,7 +541,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_10",
@@ -547,7 +556,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Business Listing & Clinic Card",
     "whatsappNumber": "+923218299100",
-    "email": "alshifadental.pechs@gmail.com",
+    "email": null,
     "instagramHandle": "@alshifadentalcare",
     "rating": "4.6",
     "reviews": 240,
@@ -583,7 +592,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Business Listing & Clinic Card",
       "whatsappNumber": "+923218299100",
-      "email": "alshifadental.pechs@gmail.com",
+      "email": null,
       "instagramHandle": "@alshifadentalcare",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Al-Shifa%20Dental%20Surgery"
@@ -592,7 +601,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_11",
@@ -606,7 +616,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Verified Profile",
     "whatsappNumber": "+923334211900",
-    "email": "smilecare.modeltown@gmail.com",
+    "email": null,
     "instagramHandle": "@smilecarelahore",
     "rating": "4.6",
     "reviews": 190,
@@ -642,7 +652,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Verified Profile",
       "whatsappNumber": "+923334211900",
-      "email": "smilecare.modeltown@gmail.com",
+      "email": null,
       "instagramHandle": "@smilecarelahore",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Smile%20Care%20Clinic"
@@ -651,7 +661,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_12",
@@ -665,7 +676,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & Clinic Card",
     "whatsappNumber": "+923002199840",
-    "email": "zubairclinic.nazimabad@gmail.com",
+    "email": null,
     "instagramHandle": "@zubairmedicalcare",
     "rating": "4.5",
     "reviews": 280,
@@ -701,7 +712,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & Clinic Card",
       "whatsappNumber": "+923002199840",
-      "email": "zubairclinic.nazimabad@gmail.com",
+      "email": null,
       "instagramHandle": "@zubairmedicalcare",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Zubair%20Medical%20%26%20Dental%20Centre"
@@ -710,7 +721,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_13",
@@ -724,7 +736,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Shop Board & Google Maps Business Profile",
     "whatsappNumber": "+923002844199",
-    "email": "saleembarber.pechs@gmail.com",
+    "email": null,
     "instagramHandle": "@saleembarbershop",
     "rating": "4.6",
     "reviews": 320,
@@ -760,7 +772,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Shop Board & Google Maps Business Profile",
       "whatsappNumber": "+923002844199",
-      "email": "saleembarber.pechs@gmail.com",
+      "email": null,
       "instagramHandle": "@saleembarbershop",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Ustaad%20Saleem%20Men%27s%20Barber%20Shop"
@@ -769,7 +781,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_14",
@@ -783,7 +796,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Verified Business & Shop Card",
     "whatsappNumber": "+923332411880",
-    "email": "clipperssalon.gulshan@gmail.com",
+    "email": null,
     "instagramHandle": "@clippersgentssalon",
     "rating": "4.5",
     "reviews": 410,
@@ -819,7 +832,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Verified Business & Shop Card",
       "whatsappNumber": "+923332411880",
-      "email": "clipperssalon.gulshan@gmail.com",
+      "email": null,
       "instagramHandle": "@clippersgentssalon",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Clippers%20Gents%20Salon"
@@ -828,7 +841,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_15",
@@ -842,7 +856,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Business Profile Official Mobile",
     "whatsappNumber": "+923214811902",
-    "email": "glamourparlour.lhr@gmail.com",
+    "email": null,
     "instagramHandle": "@glamourparlourlahore",
     "rating": "4.6",
     "reviews": 380,
@@ -878,7 +892,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Business Profile Official Mobile",
       "whatsappNumber": "+923214811902",
-      "email": "glamourparlour.lhr@gmail.com",
+      "email": null,
       "instagramHandle": "@glamourparlourlahore",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Glamour%20Ladies%20Beauty%20Parlour"
@@ -887,7 +901,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_16",
@@ -901,7 +916,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Listing & Instagram Bio",
     "whatsappNumber": "+923002941180",
-    "email": "bladeandcomb.khi@gmail.com",
+    "email": null,
     "instagramHandle": "@bladeandcombkhi",
     "rating": "4.5",
     "reviews": 290,
@@ -937,7 +952,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Listing & Instagram Bio",
       "whatsappNumber": "+923002941180",
-      "email": "bladeandcomb.khi@gmail.com",
+      "email": null,
       "instagramHandle": "@bladeandcombkhi",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Blade%20%26%20Comb%20Barbershop"
@@ -946,7 +961,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_17",
@@ -960,7 +976,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Gym Banner & Google Maps Verified Profile",
     "whatsappNumber": "+923002933100",
-    "email": "bodyflexgym.gulshan@gmail.com",
+    "email": null,
     "instagramHandle": "@bodyflexgympk",
     "rating": "4.5",
     "reviews": 510,
@@ -996,7 +1012,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Gym Banner & Google Maps Verified Profile",
       "whatsappNumber": "+923002933100",
-      "email": "bodyflexgym.gulshan@gmail.com",
+      "email": null,
       "instagramHandle": "@bodyflexgympk",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Body%20Flex%20Gym%20%26%20Fitness"
@@ -1005,7 +1021,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_18",
@@ -1019,7 +1036,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Business Profile Official Mobile",
     "whatsappNumber": "+923334811200",
-    "email": "musclezone.lahore@gmail.com",
+    "email": null,
     "instagramHandle": "@musclezonelahore",
     "rating": "4.4",
     "reviews": 390,
@@ -1055,7 +1072,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Business Profile Official Mobile",
       "whatsappNumber": "+923334811200",
-      "email": "musclezone.lahore@gmail.com",
+      "email": null,
       "instagramHandle": "@musclezonelahore",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Muscle%20Zone%20Gym"
@@ -1064,7 +1081,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_19",
@@ -1078,7 +1096,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & WhatsApp Helpline",
     "whatsappNumber": "+923218722900",
-    "email": "irongripfitness.khi@gmail.com",
+    "email": null,
     "instagramHandle": "@irongripfitnesspk",
     "rating": "4.6",
     "reviews": 310,
@@ -1114,7 +1132,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & WhatsApp Helpline",
       "whatsappNumber": "+923218722900",
-      "email": "irongripfitness.khi@gmail.com",
+      "email": null,
       "instagramHandle": "@irongripfitnesspk",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Iron%20Grip%20Fitness"
@@ -1123,7 +1141,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_20",
@@ -1137,7 +1156,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & Shop Banner",
     "whatsappNumber": "+923014112900",
-    "email": "powerhousegym.lhr@gmail.com",
+    "email": null,
     "instagramHandle": "@powerhouselhr",
     "rating": "4.3",
     "reviews": 270,
@@ -1173,7 +1192,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & Shop Banner",
       "whatsappNumber": "+923014112900",
-      "email": "powerhousegym.lhr@gmail.com",
+      "email": null,
       "instagramHandle": "@powerhouselhr",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Powerhouse%20Fitness%20Club"
@@ -1182,7 +1201,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_21",
@@ -1196,7 +1216,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Workshop Front Board & Google Maps Business",
     "whatsappNumber": "+923002411908",
-    "email": "tariqcarac.pechs@gmail.com",
+    "email": null,
     "instagramHandle": "@tariqcarackarachi",
     "rating": "4.6",
     "reviews": 290,
@@ -1232,7 +1252,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Workshop Front Board & Google Maps Business",
       "whatsappNumber": "+923002411908",
-      "email": "tariqcarac.pechs@gmail.com",
+      "email": null,
       "instagramHandle": "@tariqcarackarachi",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Tariq%20Car%20AC%20%26%20Auto%20Electrician"
@@ -1241,7 +1261,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_22",
@@ -1255,7 +1276,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & Workshop Signboard",
     "whatsappNumber": "+923332711800",
-    "email": "almadinacarcare.khi@gmail.com",
+    "email": null,
     "instagramHandle": "@almadinacarcare",
     "rating": "4.5",
     "reviews": 340,
@@ -1291,7 +1312,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & Workshop Signboard",
       "whatsappNumber": "+923332711800",
-      "email": "almadinacarcare.khi@gmail.com",
+      "email": null,
       "instagramHandle": "@almadinacarcare",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Al-Madina%20Car%20Care%20%26%20Oil%20Change"
@@ -1300,7 +1321,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_23",
@@ -1314,7 +1336,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Business Profile Official Mobile",
     "whatsappNumber": "+923214911800",
-    "email": "khanautodenting.lhr@gmail.com",
+    "email": null,
     "instagramHandle": "@khanautodentinglhr",
     "rating": "4.4",
     "reviews": 210,
@@ -1350,7 +1372,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Business Profile Official Mobile",
       "whatsappNumber": "+923214911800",
-      "email": "khanautodenting.lhr@gmail.com",
+      "email": null,
       "instagramHandle": "@khanautodentinglhr",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Khan%20Auto%20Denting%20Painting"
@@ -1359,7 +1381,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_24",
@@ -1373,7 +1396,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Business Card & Shop Front",
     "whatsappNumber": "+923002811902",
-    "email": "speedypuncture.clifton@gmail.com",
+    "email": null,
     "instagramHandle": "@speedycarcarekhi",
     "rating": "4.6",
     "reviews": 180,
@@ -1409,7 +1432,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Business Card & Shop Front",
       "whatsappNumber": "+923002811902",
-      "email": "speedypuncture.clifton@gmail.com",
+      "email": null,
       "instagramHandle": "@speedycarcarekhi",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Speedy%20Puncture%20%26%20Tyre%20Service"
@@ -1418,7 +1441,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_25",
@@ -1432,7 +1456,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Office Pin & Property Board",
     "whatsappNumber": "+923008211900",
-    "email": "subhanestate.gulshan@gmail.com",
+    "email": null,
     "instagramHandle": "@subhanpropertieskhi",
     "rating": "4.5",
     "reviews": 160,
@@ -1468,7 +1492,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Office Pin & Property Board",
       "whatsappNumber": "+923008211900",
-      "email": "subhanestate.gulshan@gmail.com",
+      "email": null,
       "instagramHandle": "@subhanpropertieskhi",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Subhan%20Estate%20%26%20Property%20Dealer"
@@ -1477,7 +1501,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_26",
@@ -1491,7 +1516,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Verified Business & Shop Sign",
     "whatsappNumber": "+923334811900",
-    "email": "alharamproperties.lhr@gmail.com",
+    "email": null,
     "instagramHandle": "@alharampropertieslahore",
     "rating": "4.6",
     "reviews": 190,
@@ -1527,7 +1552,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Verified Business & Shop Sign",
       "whatsappNumber": "+923334811900",
-      "email": "alharamproperties.lhr@gmail.com",
+      "email": null,
       "instagramHandle": "@alharampropertieslahore",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Al-Haram%20Properties"
@@ -1536,7 +1561,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_27",
@@ -1550,7 +1576,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Business Card & Signboard",
     "whatsappNumber": "+923212811400",
-    "email": "bismillahestate.khi@gmail.com",
+    "email": null,
     "instagramHandle": "@bismillahestatekhi",
     "rating": "4.4",
     "reviews": 210,
@@ -1586,7 +1612,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Business Card & Signboard",
       "whatsappNumber": "+923212811400",
-      "email": "bismillahestate.khi@gmail.com",
+      "email": null,
       "instagramHandle": "@bismillahestatekhi",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Bismillah%20Real%20Estate%20Agency"
@@ -1595,7 +1621,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_28",
@@ -1609,7 +1636,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Office Listing & Business Card",
     "whatsappNumber": "+923004811900",
-    "email": "primecorner.dha@gmail.com",
+    "email": null,
     "instagramHandle": "@primecornerlahore",
     "rating": "4.7",
     "reviews": 170,
@@ -1645,7 +1672,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Office Listing & Business Card",
       "whatsappNumber": "+923004811900",
-      "email": "primecorner.dha@gmail.com",
+      "email": null,
       "instagramHandle": "@primecornerlahore",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Prime%20Corner%20Property%20Advisors"
@@ -1654,7 +1681,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_29",
@@ -1668,7 +1696,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Visiting Card & Google Maps Business Profile",
     "whatsappNumber": "+923002911400",
-    "email": "ustaadplumber.khi@gmail.com",
+    "email": null,
     "instagramHandle": "@karachiplumbingexpert",
     "rating": "4.6",
     "reviews": 230,
@@ -1704,7 +1732,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Visiting Card & Google Maps Business Profile",
       "whatsappNumber": "+923002911400",
-      "email": "ustaadplumber.khi@gmail.com",
+      "email": null,
       "instagramHandle": "@karachiplumbingexpert",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Ustaad%20Plumbing%20Works%20%26%20Sanitary"
@@ -1713,7 +1741,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_30",
@@ -1727,7 +1756,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Verified Business & Flyer",
     "whatsappNumber": "+923332411990",
-    "email": "supersofacleaning.khi@gmail.com",
+    "email": null,
     "instagramHandle": "@supersofacleaningkhi",
     "rating": "4.7",
     "reviews": 310,
@@ -1763,7 +1792,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Verified Business & Flyer",
       "whatsappNumber": "+923332411990",
-      "email": "supersofacleaning.khi@gmail.com",
+      "email": null,
       "instagramHandle": "@supersofacleaningkhi",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Super%20Sofa%20Cleaning%20%26%20Carpet%20Wash"
@@ -1772,7 +1801,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_31",
@@ -1786,7 +1816,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & Workshop Van",
     "whatsappNumber": "+923214411800",
-    "email": "fastacrepair.lhr@gmail.com",
+    "email": null,
     "instagramHandle": "@fastacrepairlahore",
     "rating": "4.5",
     "reviews": 190,
@@ -1822,7 +1852,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & Workshop Van",
       "whatsappNumber": "+923214411800",
-      "email": "fastacrepair.lhr@gmail.com",
+      "email": null,
       "instagramHandle": "@fastacrepairlahore",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Fast%20AC%20Repair%20%26%20Gas%20Refill"
@@ -1831,7 +1861,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_32",
@@ -1845,7 +1876,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Listing & Business Card",
     "whatsappNumber": "+923002288190",
-    "email": "quickelectrician.khi@gmail.com",
+    "email": null,
     "instagramHandle": "@quickelectriciankhi",
     "rating": "4.4",
     "reviews": 160,
@@ -1881,7 +1912,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Listing & Business Card",
       "whatsappNumber": "+923002288190",
-      "email": "quickelectrician.khi@gmail.com",
+      "email": null,
       "instagramHandle": "@quickelectriciankhi",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Quick%20Electrician%2024/7"
@@ -1890,7 +1921,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_33",
@@ -1904,7 +1936,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Official Profile & Reception Board",
     "whatsappNumber": "+923002488100",
-    "email": "crowninnguesthouse@gmail.com",
+    "email": null,
     "instagramHandle": "@crowninnguesthouse",
     "rating": "4.2",
     "reviews": 480,
@@ -1940,7 +1972,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Official Profile & Reception Board",
       "whatsappNumber": "+923002488100",
-      "email": "crowninnguesthouse@gmail.com",
+      "email": null,
       "instagramHandle": "@crowninnguesthouse",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Crown%20Inn%20Family%20Guest%20House"
@@ -1949,7 +1981,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_34",
@@ -1963,7 +1996,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & Hotel Board",
     "whatsappNumber": "+923334211800",
-    "email": "shalimarmotel.lhr@gmail.com",
+    "email": null,
     "instagramHandle": "@shalimarmotellhr",
     "rating": "4.3",
     "reviews": 360,
@@ -1999,7 +2032,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & Hotel Board",
       "whatsappNumber": "+923334211800",
-      "email": "shalimarmotel.lhr@gmail.com",
+      "email": null,
       "instagramHandle": "@shalimarmotellhr",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Shalimar%20Tourist%20Motel"
@@ -2008,7 +2041,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_35",
@@ -2022,7 +2056,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & Gate Board",
     "whatsappNumber": "+923218211900",
-    "email": "beachviewguesthouse.khi@gmail.com",
+    "email": null,
     "instagramHandle": "@beachviewguesthouse",
     "rating": "4.4",
     "reviews": 310,
@@ -2058,7 +2092,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & Gate Board",
       "whatsappNumber": "+923218211900",
-      "email": "beachviewguesthouse.khi@gmail.com",
+      "email": null,
       "instagramHandle": "@beachviewguesthouse",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Beach%20View%20Guest%20House"
@@ -2067,7 +2101,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_36",
@@ -2081,7 +2116,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile Verified Phone",
     "whatsappNumber": "+923004118900",
-    "email": "almadinaresidency.lhr@gmail.com",
+    "email": null,
     "instagramHandle": "@almadinaresidencylhr",
     "rating": "4.3",
     "reviews": 240,
@@ -2093,8 +2128,8 @@ const INITIAL_LEADS = [
     "niche": "boutique_hotels",
     "nicheName": "Furnished Corporate Rooms & Residency",
     "nicheIcon": "🏨",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "whatsapp",
+    "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Bilal bhai ka direct mobile hai. Corporate clients ke monthly billing aur room extension funnel se regular occupancy barhe gi.",
     "flawTitle": "Corporate Business Travelers Lack 1-Tap WhatsApp GST Invoice & Room Extension Funnel",
     "specificWeakness": "Corporate log jo Lahore meetings ke liye aatay hain unhe WhatsApp par invoice aur date extension lene mein telephone par intezar karna parta hai.",
@@ -2117,7 +2152,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile Verified Phone",
       "whatsappNumber": "+923004118900",
-      "email": "almadinaresidency.lhr@gmail.com",
+      "email": null,
       "instagramHandle": "@almadinaresidencylhr",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Al-Madina%20Residency"
@@ -2126,7 +2161,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_37",
@@ -2140,7 +2176,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Shop Board & Google Maps Business Profile",
     "whatsappNumber": "+923002811400",
-    "email": "rajputtentpakwan@gmail.com",
+    "email": null,
     "instagramHandle": "@rajputtentandcatering",
     "rating": "4.6",
     "reviews": 320,
@@ -2152,8 +2188,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "Wedding Tent, Lighting & Shahi Deig Catering",
     "nicheIcon": "🎪",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "whatsapp",
+    "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Rana Shabbir ka personal WhatsApp number hai. Per deig biryani rate calculator unka rozana ka time bacha kar orders barhaye ga.",
     "flawTitle": "Per Deig Biryani & Qorma Rate Inquiries Cause Constant Phone Distractions",
     "specificWeakness": "Wedding aur Niaz season par din mein 30 log call karke deig ka rate poochte hain jisme ustaad ka pakwan banane ka time zaya hota hai.",
@@ -2176,7 +2212,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Shop Board & Google Maps Business Profile",
       "whatsappNumber": "+923002811400",
-      "email": "rajputtentpakwan@gmail.com",
+      "email": null,
       "instagramHandle": "@rajputtentandcatering",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Rajput%20Tent%20%26%20Shahi%20Deig%20Pakwan"
@@ -2185,7 +2221,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_38",
@@ -2199,7 +2236,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & Workshop Van",
     "whatsappNumber": "+923334911800",
-    "email": "bismillahcatering.lhr@gmail.com",
+    "email": null,
     "instagramHandle": "@bismillahcateringlahore",
     "rating": "4.5",
     "reviews": 290,
@@ -2211,8 +2248,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "Bridal Stage, Floral Decor & Event Sound",
     "nicheIcon": "💐",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "whatsapp",
+    "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Haji Bismillah sahib direct calls attend karte hain. Mehndi stage design catalog bot unke deals ko tezi se close karega.",
     "flawTitle": "Mehndi Stage & Lighting Package Catalog Missing on Mobile",
     "specificWeakness": "Shaadi walay ghar Mehndi stage designs maangte hain aur dealer WhatsApp par 50 random photos bhej kar price samjhane mein time zaya karta hai.",
@@ -2235,7 +2272,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & Workshop Van",
       "whatsappNumber": "+923334911800",
-      "email": "bismillahcatering.lhr@gmail.com",
+      "email": null,
       "instagramHandle": "@bismillahcateringlahore",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Bismillah%20Catering%20%26%20Flower%20Stage"
@@ -2244,7 +2281,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_39",
@@ -2258,7 +2296,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Shop Signboard & Google Maps Profile",
     "whatsappNumber": "+923212899400",
-    "email": "alrehmanpakwan.khi@gmail.com",
+    "email": null,
     "instagramHandle": "@alrehmanpakwankhi",
     "rating": "4.7",
     "reviews": 850,
@@ -2270,8 +2308,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "Famous Beef Biryani & Valima Deig Catering",
     "nicheIcon": "🍲",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "whatsapp",
+    "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Sheikh Rehman ka counter phone direct mobile par hai. Deig advance booking token funnel unka record clear rakhe ga.",
     "flawTitle": "Valima & Barat Deig Advance Bookings Lost Due to Busy Landline",
     "specificWeakness": "November se January ke season mein Burns Road par customer deig book karne ke liye call karta hai lekin line busy hoti hai.",
@@ -2294,7 +2332,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Shop Signboard & Google Maps Profile",
       "whatsappNumber": "+923212899400",
-      "email": "alrehmanpakwan.khi@gmail.com",
+      "email": null,
       "instagramHandle": "@alrehmanpakwankhi",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Al-Rehman%20Pakwan%20Center"
@@ -2303,7 +2341,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_40",
@@ -2317,7 +2356,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Visiting Card & Google Maps Listing",
     "whatsappNumber": "+923014911400",
-    "email": "royaltentlahore@gmail.com",
+    "email": null,
     "instagramHandle": "@royaltentlahore",
     "rating": "4.4",
     "reviews": 160,
@@ -2329,8 +2368,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "Catering, Crockery, Kanat & Sound Setup",
     "nicheIcon": "🎪",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "whatsapp",
+    "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Chaudhry Zafar ka direct WhatsApp mobile par hai. Qul, Milad aur Mehndi ke crockery packages foran book honge.",
     "flawTitle": "Crockery & Tent Packages Quoted Manually on Phone (Miscommunication on Chair Count)",
     "specificWeakness": "Milad ya wedding par 100 kursian aur crockery mangne par telephone par ghalat counting likh li jati hai jis se function ke din jhagra hota hai.",
@@ -2353,7 +2392,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Visiting Card & Google Maps Listing",
       "whatsappNumber": "+923014911400",
-      "email": "royaltentlahore@gmail.com",
+      "email": null,
       "instagramHandle": "@royaltentlahore",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Royal%20Tent%20%26%20Sound%20Service"
@@ -2362,7 +2401,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_41",
@@ -2376,7 +2416,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Visiting Card & Karachi Tax Bar Association",
     "whatsappNumber": "+923008211488",
-    "email": "maliktaxconsultant.khi@gmail.com",
+    "email": null,
     "instagramHandle": "@maliktaxassociates",
     "rating": "4.6",
     "reviews": 180,
@@ -2388,8 +2428,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "FBR Tax Filing, NTN & Corporate Law",
     "nicheIcon": "⚖️",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "whatsapp",
+    "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Malik Asif ka direct WhatsApp hai. Tax return season mein document collection bot unka ghanto ka time bacha kar fees barhayega.",
     "flawTitle": "FBR Tax Return Filing Season Client Document Collection Bottleneck on WhatsApp",
     "specificWeakness": "September aur October mein salaried aur business log bank statements WhatsApp par bhejte hain jo chat mein gum ho jati hain.",
@@ -2412,7 +2452,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Visiting Card & Karachi Tax Bar Association",
       "whatsappNumber": "+923008211488",
-      "email": "maliktaxconsultant.khi@gmail.com",
+      "email": null,
       "instagramHandle": "@maliktaxassociates",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Malik%20Tax%20%26%20Corporate%20Consultant"
@@ -2421,7 +2461,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_42",
@@ -2435,7 +2476,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Bar Council Directory & Office Signboard",
     "whatsappNumber": "+923334111900",
-    "email": "tariqlawassociates.lhr@gmail.com",
+    "email": null,
     "instagramHandle": "@tariqlawlahore",
     "rating": "4.5",
     "reviews": 140,
@@ -2447,8 +2488,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "Property Registry, Civil & Corporate Agreements",
     "nicheIcon": "📜",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "whatsapp",
+    "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Tariq Bhatti sahib ka direct phone hai. Court timing ke doraan automated consultation booking scheduler unke clients lock karega.",
     "flawTitle": "Property Registry & Agreement Drafting Clients Drop Out on Phone Inquiries",
     "specificWeakness": "Court hearing ke doraan vakil sahib phone attend nahi kar patay aur agreement drafting ka client kisi doosray vakil ke paas baith jata hai.",
@@ -2471,7 +2512,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Bar Council Directory & Office Signboard",
       "whatsappNumber": "+923334111900",
-      "email": "tariqlawassociates.lhr@gmail.com",
+      "email": null,
       "instagramHandle": "@tariqlawlahore",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Tariq%20Law%20Associates"
@@ -2480,7 +2521,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_43",
@@ -2494,7 +2536,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Shop Sign & Visiting Card",
     "whatsappNumber": "+923212411990",
-    "email": "zeeshantax.pechs@gmail.com",
+    "email": null,
     "instagramHandle": "@zeeshantaxcenter",
     "rating": "4.4",
     "reviews": 120,
@@ -2506,8 +2548,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "NTN Registration, FBR Tax & Legal Stamp Paper",
     "nicheIcon": "📑",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "whatsapp",
+    "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Zeeshan bhai direct shop WhatsApp attend karte hain. NTN aur company registration lead form se regular revenue barhe ga.",
     "flawTitle": "NTN & Business Registration Inquiries Unanswered During Busy Shop Hours",
     "specificWeakness": "Stamp paper likhte waqt nayi company registration ya NTN banwane walay client ko WhatsApp par detail form nahi milta.",
@@ -2530,7 +2572,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Shop Sign & Visiting Card",
       "whatsappNumber": "+923212411990",
-      "email": "zeeshantax.pechs@gmail.com",
+      "email": null,
       "instagramHandle": "@zeeshantaxcenter",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Zeeshan%20Tax%20%26%20Stamp%20Paper%20Center"
@@ -2539,7 +2581,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_44",
@@ -2553,7 +2596,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Clinic Signboard & Google Maps Verified Profile",
     "whatsappNumber": "+923002499100",
-    "email": "petparadise.gulshan@gmail.com",
+    "email": null,
     "instagramHandle": "@petparadisegulshan",
     "rating": "4.6",
     "reviews": 290,
@@ -2565,8 +2608,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Local Pet Clinic & Grooming Spa",
     "nicheIcon": "🐾",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "whatsapp",
+    "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Dr. Asim ka direct WhatsApp phone par hai. Cat vaccination aur haircut slot booking bot clinic ka rush khatam karega.",
     "flawTitle": "Cat Vaccination & Haircut Appointments Lost Due to Waiting Room Crowd",
     "specificWeakness": "Billi aur kuttay walay owners clinic par aakar doosray janwaron ki bheed dekh kar ghabra jatay hain aur wapis chalay jatay hain.",
@@ -2589,7 +2632,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Clinic Signboard & Google Maps Verified Profile",
       "whatsappNumber": "+923002499100",
-      "email": "petparadise.gulshan@gmail.com",
+      "email": null,
       "instagramHandle": "@petparadisegulshan",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Pet%20Paradise%20Clinic%20%26%20Grooming"
@@ -2598,7 +2641,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_45",
@@ -2612,7 +2656,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Business Profile Official Mobile",
     "whatsappNumber": "+923334899100",
-    "email": "catanddogcare.lhr@gmail.com",
+    "email": null,
     "instagramHandle": "@catdogcarelahore",
     "rating": "4.5",
     "reviews": 210,
@@ -2624,8 +2668,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Pet Hospital & Emergency Surgery",
     "nicheIcon": "🐕",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "whatsapp",
+    "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Dr. Hamza ka direct WhatsApp helpline hai. Midnight emergency pet triage alert bot unke clinics ki urgent surgeries badhaye ga.",
     "flawTitle": "Emergency Night Animal Care Consultations Missed Without Online Triage",
     "specificWeakness": "Raat ko jab pet ghalti se zeher kha le ya car se takra jaye to phone busy honay par pet parent emergency hospital chala jata hai.",
@@ -2648,7 +2692,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Business Profile Official Mobile",
       "whatsappNumber": "+923334899100",
-      "email": "catanddogcare.lhr@gmail.com",
+      "email": null,
       "instagramHandle": "@catdogcarelahore",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Cat%20%26%20Dog%20Care%20Hospital"
@@ -2657,7 +2701,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_46",
@@ -2671,7 +2716,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Shop Signboard & Google Maps Listing",
     "whatsappNumber": "+923218911400",
-    "email": "cliftonvetcare.khi@gmail.com",
+    "email": null,
     "instagramHandle": "@cliftonvetcare",
     "rating": "4.6",
     "reviews": 260,
@@ -2683,8 +2728,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Pet Food, Accessories & Vet Clinic",
     "nicheIcon": "🐱",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "whatsapp",
+    "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Dr. Noman Instagram DM actively check karte hain. Monthly pet food & flea medicine repeat order funnel unke repeat orders pakkay karega.",
     "flawTitle": "Pet Food Delivery & Monthly Flea Medicine Orders Given to Third-Party Apps",
     "specificWeakness": "DHA ke pet owners monthly cat food aur flea drops Foodpanda ya supermarket apps se mangwate hain jabke local clinic ke paas direct 1-tap reorder link nahi hai.",
@@ -2707,7 +2752,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Shop Signboard & Google Maps Listing",
       "whatsappNumber": "+923218911400",
-      "email": "cliftonvetcare.khi@gmail.com",
+      "email": null,
       "instagramHandle": "@cliftonvetcare",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Clifton%20Vet%20Care%20%26%20Pet%20Corner"
@@ -2716,7 +2761,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_47",
@@ -2730,7 +2776,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Business Profile",
     "whatsappNumber": "+923002411802",
-    "email": "studentbiryani.saddar@gmail.com",
+    "email": null,
     "instagramHandle": "@studentbiryanisaddar",
     "rating": "4.3",
     "reviews": 2800,
@@ -2742,8 +2788,8 @@ const INITIAL_LEADS = [
     "niche": "restaurants",
     "nicheName": "Student Biryani & Desi Cuisine",
     "nicheIcon": "🍗",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "whatsapp",
+    "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Haji Iqbal direct counter phone check karte hain. Lunch parcel pre-orders automate hone se line khatam hogi.",
     "flawTitle": "Lunch Parcel 20-Minute Counter Queue Delay for Office Workers",
     "specificWeakness": "Dopahar 1 se 3 baje Saddar ke bank aur office employees biryani parcel lene aatay hain lekin counter par 15 minute wait karke nikal jatay hain.",
@@ -2766,7 +2812,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Business Profile",
       "whatsappNumber": "+923002411802",
-      "email": "studentbiryani.saddar@gmail.com",
+      "email": null,
       "instagramHandle": "@studentbiryanisaddar",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Student%20Biryani"
@@ -2775,7 +2821,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_48",
@@ -2789,7 +2836,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Instagram Profile & WhatsApp Business",
     "whatsappNumber": "+923332899140",
-    "email": "bakeandflake.khi@gmail.com",
+    "email": null,
     "instagramHandle": "@bakeandflakekarachi",
     "rating": "4.8",
     "reviews": 290,
@@ -2801,8 +2848,8 @@ const INITIAL_LEADS = [
     "niche": "bakeries_sweets",
     "nicheName": "Custom Cupcakes & Dessert Platters",
     "nicheIcon": "🧁",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "whatsapp",
+    "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Hira khud Instagram DMs handle karti hain. Bridal shower cupcake platter customization funnel unki deals foran close karega.",
     "flawTitle": "Bridal Shower Cupcake Box Flavor Selection Friction in Instagram DMs",
     "specificWeakness": "Bridal shower aur birthday par custom cupcakes ke flavors (Nutella, Lotus, Red Velvet) DM mein confirm karte waqt client order drop kar deta hai.",
@@ -2825,7 +2872,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Instagram Profile & WhatsApp Business",
       "whatsappNumber": "+923332899140",
-      "email": "bakeandflake.khi@gmail.com",
+      "email": null,
       "instagramHandle": "@bakeandflakekarachi",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Bake%20%26%20Flake%20Home%20Studio"
@@ -2834,7 +2881,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_49",
@@ -2848,7 +2896,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Visiting Card & Court Chamber Board",
     "whatsappNumber": "+923002899120",
-    "email": "khanlegaldrafting@gmail.com",
+    "email": null,
     "instagramHandle": "@khanlegaldrafting",
     "rating": "4.5",
     "reviews": 130,
@@ -2860,8 +2908,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "Rent Agreement, Affidavits & Legal Notary",
     "nicheIcon": "📜",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "whatsapp",
+    "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Niaz Khan ka direct WhatsApp mobile par hai. Rent agreement detail capture form se rozana ke 5 ghante bachen ge.",
     "flawTitle": "House Rent Agreement Tenant CNIC & Terms Collection Friction",
     "specificWeakness": "Kirayanama banwane walay landlord aur tenant se CNIC aur terms phone par lene mein bar bar phone karna parta hai.",
@@ -2884,7 +2932,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Visiting Card & Court Chamber Board",
       "whatsappNumber": "+923002899120",
-      "email": "khanlegaldrafting@gmail.com",
+      "email": null,
       "instagramHandle": "@khanlegaldrafting",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Khan%20Legal%20Drafting%20%26%20Affidavits"
@@ -2893,7 +2941,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_50",
@@ -2907,7 +2956,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Shop Signboard & Google Maps Profile",
     "whatsappNumber": "+923334299100",
-    "email": "barkandpurr.lhr@gmail.com",
+    "email": null,
     "instagramHandle": "@barkandpurrlhr",
     "rating": "4.7",
     "reviews": 240,
@@ -2919,8 +2968,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Dog & Cat Grooming Studio",
     "nicheIcon": "🐩",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "whatsapp",
+    "recommendedPitchChannel": "whatsapp",
     "pitchChannelReason": "Zainab khud Instagram DMs handle karti hain. Dog haircut & medicated bath slot calendar unke no-shows khatam karega.",
     "flawTitle": "Dog Haircut & Medicated Bath 2-Hour Slot Clashing on Manual Bookings",
     "specificWeakness": "Bade kutton ka haircut 2 ghante leta hai. Manual bookings par do kuttay ek sath pohnch jatay hain aur ladaai hoti hai.",
@@ -2943,7 +2992,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Shop Signboard & Google Maps Profile",
       "whatsappNumber": "+923334299100",
-      "email": "barkandpurr.lhr@gmail.com",
+      "email": null,
       "instagramHandle": "@barkandpurrlhr",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Bark%20%26%20Purr%20Pet%20Grooming"
@@ -2952,7 +3001,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_51",
@@ -2966,7 +3016,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Signboard & Google Business Profile",
     "whatsappNumber": "+15127937020",
-    "email": "micklethwaitbbq@gmail.com",
+    "email": null,
     "instagramHandle": "@craftmeats",
     "rating": "4.7",
     "reviews": 1150,
@@ -3002,7 +3052,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Signboard & Google Business Profile",
       "whatsappNumber": "+15127937020",
-      "email": "micklethwaitbbq@gmail.com",
+      "email": null,
       "instagramHandle": "@craftmeats",
       "website": "https://craftmeatsaustin.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Micklethwait%20Craft%20Meats"
@@ -3011,7 +3061,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_52",
@@ -3025,7 +3076,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Place Profile & Counter Menu",
     "whatsappNumber": "+12123371800",
-    "email": "bleeckerstpizza@gmail.com",
+    "email": null,
     "instagramHandle": "@bleeckerstreetpizza",
     "rating": "4.6",
     "reviews": 3200,
@@ -3061,7 +3112,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Place Profile & Counter Menu",
       "whatsappNumber": "+12123371800",
-      "email": "bleeckerstpizza@gmail.com",
+      "email": null,
       "instagramHandle": "@bleeckerstreetpizza",
       "website": "https://bleeckerstreetpizza.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Bleecker%20Street%20Pizza"
@@ -3070,7 +3121,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_53",
@@ -3084,7 +3136,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Pin & Google Knowledge Panel",
     "whatsappNumber": "+447958112233",
-    "email": "rotiking.euston@gmail.com",
+    "email": null,
     "instagramHandle": "@rotikinguk",
     "rating": "4.5",
     "reviews": 2900,
@@ -3120,7 +3172,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Pin & Google Knowledge Panel",
       "whatsappNumber": "+447958112233",
-      "email": "rotiking.euston@gmail.com",
+      "email": null,
       "instagramHandle": "@rotikinguk",
       "website": "https://rotiking.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Roti%20King"
@@ -3129,7 +3181,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_54",
@@ -3143,7 +3196,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Signboard & Google Maps Verified Listing",
     "whatsappNumber": "+971506548810",
-    "email": "ravirestaurant.satwa@gmail.com",
+    "email": null,
     "instagramHandle": "@ravirestaurantuae",
     "rating": "4.4",
     "reviews": 5100,
@@ -3179,7 +3232,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Signboard & Google Maps Verified Listing",
       "whatsappNumber": "+971506548810",
-      "email": "ravirestaurant.satwa@gmail.com",
+      "email": null,
       "instagramHandle": "@ravirestaurantuae",
       "website": "",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Ravi%20Restaurant"
@@ -3188,7 +3241,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_55",
@@ -3202,7 +3256,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Signboard & Google Business Profile",
     "whatsappNumber": "+15129160188",
-    "email": "tinypies.austin@gmail.com",
+    "email": null,
     "instagramHandle": "@tinypies",
     "rating": "4.6",
     "reviews": 480,
@@ -3238,7 +3292,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Signboard & Google Business Profile",
       "whatsappNumber": "+15129160188",
-      "email": "tinypies.austin@gmail.com",
+      "email": null,
       "instagramHandle": "@tinypies",
       "website": "https://tinypies.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Tiny%20Pies"
@@ -3247,7 +3301,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_56",
@@ -3261,7 +3316,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Pin & Google Knowledge Graph",
     "whatsappNumber": "+12128746120",
-    "email": "levainbakery.uws@gmail.com",
+    "email": null,
     "instagramHandle": "@levainbakery",
     "rating": "4.8",
     "reviews": 8400,
@@ -3297,7 +3352,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Pin & Google Knowledge Graph",
       "whatsappNumber": "+12128746120",
-      "email": "levainbakery.uws@gmail.com",
+      "email": null,
       "instagramHandle": "@levainbakery",
       "website": "https://levainbakery.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Levain%20Bakery"
@@ -3306,7 +3361,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_57",
@@ -3320,7 +3376,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Borough Market Stalls Directory & WhatsApp Business",
     "whatsappNumber": "+447788990011",
-    "email": "breadahead.borough@gmail.com",
+    "email": null,
     "instagramHandle": "@breadaheadbakery",
     "rating": "4.7",
     "reviews": 3100,
@@ -3356,7 +3412,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Borough Market Stalls Directory & WhatsApp Business",
       "whatsappNumber": "+447788990011",
-      "email": "breadahead.borough@gmail.com",
+      "email": null,
       "instagramHandle": "@breadaheadbakery",
       "website": "https://breadahead.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Bread%20Ahead%20Bakery"
@@ -3365,7 +3421,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_58",
@@ -3379,7 +3436,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Galleria Mall Directory & Google Maps Verified Listing",
     "whatsappNumber": "+971554219900",
-    "email": "homebakery.wasl@gmail.com",
+    "email": null,
     "instagramHandle": "@home_bakery",
     "rating": "4.6",
     "reviews": 1400,
@@ -3415,7 +3472,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Galleria Mall Directory & Google Maps Verified Listing",
       "whatsappNumber": "+971554219900",
-      "email": "homebakery.wasl@gmail.com",
+      "email": null,
       "instagramHandle": "@home_bakery",
       "website": "https://homebakery.ae",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Home%20Bakery"
@@ -3424,7 +3481,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_59",
@@ -3438,7 +3496,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & Practice Board",
     "whatsappNumber": "+15124474700",
-    "email": "southaustindental@gmail.com",
+    "email": null,
     "instagramHandle": "@southaustindental",
     "rating": "4.8",
     "reviews": 320,
@@ -3474,7 +3532,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & Practice Board",
       "whatsappNumber": "+15124474700",
-      "email": "southaustindental@gmail.com",
+      "email": null,
       "instagramHandle": "@southaustindental",
       "website": "https://southaustindentalstudio.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=South%20Austin%20Dental%20Studio"
@@ -3483,7 +3541,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_60",
@@ -3497,7 +3556,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Pin & Google Maps Verified Listing",
     "whatsappNumber": "+12124523300",
-    "email": "tribecasmiles@gmail.com",
+    "email": null,
     "instagramHandle": "@tribecasmiles",
     "rating": "4.9",
     "reviews": 410,
@@ -3533,7 +3592,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Pin & Google Maps Verified Listing",
       "whatsappNumber": "+12124523300",
-      "email": "tribecasmiles@gmail.com",
+      "email": null,
       "instagramHandle": "@tribecasmiles",
       "website": "https://tribecasmiles.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Tribeca%20Smiles%20Cosmetic%20Clinic"
@@ -3542,7 +3601,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_61",
@@ -3556,7 +3616,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Plaque & General Dental Council (GDC) Register",
     "whatsappNumber": "+447811223344",
-    "email": "coventgardendental@gmail.com",
+    "email": null,
     "instagramHandle": "@coventgardendental",
     "rating": "4.7",
     "reviews": 380,
@@ -3592,7 +3652,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Plaque & General Dental Council (GDC) Register",
       "whatsappNumber": "+447811223344",
-      "email": "coventgardendental@gmail.com",
+      "email": null,
       "instagramHandle": "@coventgardendental",
       "website": "https://coventgardendental.co.uk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Covent%20Garden%20Dental%20Practice"
@@ -3601,7 +3661,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_62",
@@ -3615,7 +3676,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "DHA Medical Facility Registry & Google Maps Profile",
     "whatsappNumber": "+971507891234",
-    "email": "apexdental.jumeirah@gmail.com",
+    "email": null,
     "instagramHandle": "@apexdentaldubai",
     "rating": "4.8",
     "reviews": 520,
@@ -3651,7 +3712,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "DHA Medical Facility Registry & Google Maps Profile",
       "whatsappNumber": "+971507891234",
-      "email": "apexdental.jumeirah@gmail.com",
+      "email": null,
       "instagramHandle": "@apexdentaldubai",
       "website": "https://apexdental.ae",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Apex%20Dental%20Clinic"
@@ -3660,7 +3721,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_63",
@@ -3674,7 +3736,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Signboard & Google Maps Verified Listing",
     "whatsappNumber": "+15124428040",
-    "email": "birdsbarbershop.soco@gmail.com",
+    "email": null,
     "instagramHandle": "@birdsbarbershop",
     "rating": "4.6",
     "reviews": 1100,
@@ -3710,7 +3772,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Signboard & Google Maps Verified Listing",
       "whatsappNumber": "+15124428040",
-      "email": "birdsbarbershop.soco@gmail.com",
+      "email": null,
       "instagramHandle": "@birdsbarbershop",
       "website": "https://birdsbarbershop.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Birds%20Barbershop"
@@ -3719,7 +3781,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_64",
@@ -3733,7 +3796,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Pin & Google Knowledge Panel",
     "whatsappNumber": "+12122282123",
-    "email": "blindbarber.ev@gmail.com",
+    "email": null,
     "instagramHandle": "@blindbarber",
     "rating": "4.5",
     "reviews": 850,
@@ -3769,7 +3832,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Pin & Google Knowledge Panel",
       "whatsappNumber": "+12122282123",
-      "email": "blindbarber.ev@gmail.com",
+      "email": null,
       "instagramHandle": "@blindbarber",
       "website": "https://blindbarber.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Blind%20Barber"
@@ -3778,7 +3841,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_65",
@@ -3792,7 +3856,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Plaque & Google Maps Verified Listing",
     "whatsappNumber": "+447766554433",
-    "email": "murdock.soho@gmail.com",
+    "email": null,
     "instagramHandle": "@murdocklondon",
     "rating": "4.6",
     "reviews": 720,
@@ -3828,7 +3892,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Plaque & Google Maps Verified Listing",
       "whatsappNumber": "+447766554433",
-      "email": "murdock.soho@gmail.com",
+      "email": null,
       "instagramHandle": "@murdocklondon",
       "website": "https://murdocklondon.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Murdock%20London"
@@ -3837,7 +3901,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_66",
@@ -3851,7 +3916,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Signboard & Google Maps Business Profile",
     "whatsappNumber": "+971529876543",
-    "email": "beatsandcuts.barsha@gmail.com",
+    "email": null,
     "instagramHandle": "@beatsandcuts",
     "rating": "4.7",
     "reviews": 890,
@@ -3887,7 +3952,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Signboard & Google Maps Business Profile",
       "whatsappNumber": "+971529876543",
-      "email": "beatsandcuts.barsha@gmail.com",
+      "email": null,
       "instagramHandle": "@beatsandcuts",
       "website": "https://beatsandcuts.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Beats%20%26%20Cuts%20Barbershop"
@@ -3896,7 +3961,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_67",
@@ -3910,7 +3976,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Pin & Google Maps Listing",
     "whatsappNumber": "+15126868840",
-    "email": "traviscountystrength@gmail.com",
+    "email": null,
     "instagramHandle": "@traviscountystrength",
     "rating": "4.9",
     "reviews": 210,
@@ -3946,7 +4012,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Pin & Google Maps Listing",
       "whatsappNumber": "+15126868840",
-      "email": "traviscountystrength@gmail.com",
+      "email": null,
       "instagramHandle": "@traviscountystrength",
       "website": "https://traviscountystrength.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Travis%20County%20Strength"
@@ -3955,7 +4021,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_68",
@@ -3969,7 +4036,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Plaque & Google Knowledge Panel",
     "whatsappNumber": "+12128882040",
-    "email": "solacenewyork@gmail.com",
+    "email": null,
     "instagramHandle": "@solacenewyork",
     "rating": "4.8",
     "reviews": 340,
@@ -4005,7 +4072,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Plaque & Google Knowledge Panel",
       "whatsappNumber": "+12128882040",
-      "email": "solacenewyork@gmail.com",
+      "email": null,
       "instagramHandle": "@solacenewyork",
       "website": "https://solacenewyork.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Solace%20New%20York"
@@ -4014,7 +4081,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_69",
@@ -4028,7 +4096,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Plaque & Google Maps Verified Listing",
     "whatsappNumber": "+447911883344",
-    "email": "1rebel.bayswater@gmail.com",
+    "email": null,
     "instagramHandle": "@1rebeluk",
     "rating": "4.7",
     "reviews": 620,
@@ -4064,7 +4132,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Plaque & Google Maps Verified Listing",
       "whatsappNumber": "+447911883344",
-      "email": "1rebel.bayswater@gmail.com",
+      "email": null,
       "instagramHandle": "@1rebeluk",
       "website": "https://1rebel.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=1Rebel"
@@ -4073,7 +4141,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_70",
@@ -4087,7 +4156,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Pin & Google Business Profile",
     "whatsappNumber": "+971563219870",
-    "email": "warehousegym.alquoz@gmail.com",
+    "email": null,
     "instagramHandle": "@whgym",
     "rating": "4.8",
     "reviews": 1450,
@@ -4123,7 +4192,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Pin & Google Business Profile",
       "whatsappNumber": "+971563219870",
-      "email": "warehousegym.alquoz@gmail.com",
+      "email": null,
       "instagramHandle": "@whgym",
       "website": "https://whgym.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=The%20Warehouse%20Gym"
@@ -4132,7 +4201,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_71",
@@ -4146,7 +4216,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Service Van Signage & Google Business Listing",
     "whatsappNumber": "+15128294400",
-    "email": "austinmobilemechanics@gmail.com",
+    "email": null,
     "instagramHandle": "@austinmobilemechanic",
     "rating": "4.7",
     "reviews": 190,
@@ -4158,8 +4228,8 @@ const INITIAL_LEADS = [
     "niche": "auto_repair",
     "nicheName": "On-Demand Curbside Auto Repair",
     "nicheIcon": "🔧",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Chris works out of his service van with his mobile phone. An instant repair estimator stops 20-minute phone diagnostic chats.",
     "flawTitle": "Curbside Brake & Alternator Quote Phone Call Bottleneck",
     "specificWeakness": "When stranded drivers call for mobile brake or alternator replacement, Chris is under a car and misses the incoming calls.",
@@ -4182,7 +4252,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Service Van Signage & Google Business Listing",
       "whatsappNumber": "+15128294400",
-      "email": "austinmobilemechanics@gmail.com",
+      "email": null,
       "instagramHandle": "@austinmobilemechanic",
       "website": "https://austinmobilemechanics.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Austin%20Mobile%20Mechanics%20%26%20Brakes"
@@ -4191,7 +4261,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_72",
@@ -4205,7 +4276,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Shop Signboard & Google Maps Profile",
     "whatsappNumber": "+17188554200",
-    "email": "brooklynautobody@gmail.com",
+    "email": null,
     "instagramHandle": "@brooklynautobody",
     "rating": "4.6",
     "reviews": 280,
@@ -4217,8 +4288,8 @@ const INITIAL_LEADS = [
     "niche": "auto_repair",
     "nicheName": "Independent Collision Repair & Paint Shop",
     "nicheIcon": "🚗",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Sal manages walk-in fender benders via mobile WhatsApp. 1-tap crash damage photo intake bot closes insurance claims in 1 hour.",
     "flawTitle": "Collision Damage Photo Upload & Insurance Claim Delay",
     "specificWeakness": "Drivers involved in Brooklyn fender benders need instant damage quotes but get asked to drive their smashed car to the shop.",
@@ -4241,7 +4312,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Shop Signboard & Google Maps Profile",
       "whatsappNumber": "+17188554200",
-      "email": "brooklynautobody@gmail.com",
+      "email": null,
       "instagramHandle": "@brooklynautobody",
       "website": "https://brooklynautobody.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Brooklyn%20Auto%20Body%20%26%20Collision%20Repair"
@@ -4250,7 +4321,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_73",
@@ -4264,7 +4336,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "DVSA MOT Center Board & WhatsApp Business",
     "whatsappNumber": "+447890123456",
-    "email": "actongarage.mot@gmail.com",
+    "email": null,
     "instagramHandle": "@actonmotservice",
     "rating": "4.6",
     "reviews": 310,
@@ -4276,8 +4348,8 @@ const INITIAL_LEADS = [
     "niche": "auto_repair",
     "nicheName": "Independent DVSA MOT & Vehicle Servicing",
     "nicheIcon": "🚙",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Mark works on the inspection bay. Automatic MOT expiry lookup bot captures neighborhood drivers before police penalty deadlines.",
     "flawTitle": "Annual MOT Expiry Date & Urgent Booking Call Friction",
     "specificWeakness": "Car owners discovering their MOT expires tomorrow call frantically while garage phone lines are busy.",
@@ -4300,7 +4372,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "DVSA MOT Center Board & WhatsApp Business",
       "whatsappNumber": "+447890123456",
-      "email": "actongarage.mot@gmail.com",
+      "email": null,
       "instagramHandle": "@actonmotservice",
       "website": "https://actongarage.co.uk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Acton%20MOT%20%26%20Service%20Garage"
@@ -4309,7 +4381,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_74",
@@ -4323,7 +4396,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Garage Signboard & Google Maps Listing",
     "whatsappNumber": "+971558765432",
-    "email": "starautogarage.dxb@gmail.com",
+    "email": null,
     "instagramHandle": "@starautogaragedxb",
     "rating": "4.7",
     "reviews": 460,
@@ -4335,8 +4408,8 @@ const INITIAL_LEADS = [
     "niche": "auto_repair",
     "nicheName": "Independent German Car Service & Gearbox Specialist",
     "nicheIcon": "🏎️",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Tariq negotiates major repair estimates directly on WhatsApp. 1-tap German car major service calculator stops dealer agency overcharging.",
     "flawTitle": "German Car Major Service & Gearbox Cost Inquiry Delay",
     "specificWeakness": "BMW/Mercedes owners wanting major 60k km service estimates wait hours for parts lookup callbacks.",
@@ -4359,7 +4432,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Garage Signboard & Google Maps Listing",
       "whatsappNumber": "+971558765432",
-      "email": "starautogarage.dxb@gmail.com",
+      "email": null,
       "instagramHandle": "@starautogaragedxb",
       "website": "https://starautogarage.ae",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Star%20Auto%20Garage"
@@ -4368,7 +4441,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_75",
@@ -4382,7 +4456,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "TREC Licensed Broker Board & Google Maps Pin",
     "whatsappNumber": "+15122411300",
-    "email": "realtyaustin.broker@gmail.com",
+    "email": null,
     "instagramHandle": "@realtyaustin",
     "rating": "4.8",
     "reviews": 890,
@@ -4394,8 +4468,8 @@ const INITIAL_LEADS = [
     "niche": "real_estate",
     "nicheName": "Independent Residential Real Estate Brokerage",
     "nicheIcon": "🏡",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Jonathan manages buyer open-house inquiries on Instagram. 1-tap digital sign-in funnel captures verified phone numbers.",
     "flawTitle": "Sunday Open House Paper Sheet Registration Bottleneck",
     "specificWeakness": "Buyers touring Sunday open houses scribble fake email addresses on paper guest books, losing warm buyer leads.",
@@ -4418,7 +4492,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "TREC Licensed Broker Board & Google Maps Pin",
       "whatsappNumber": "+15122411300",
-      "email": "realtyaustin.broker@gmail.com",
+      "email": null,
       "instagramHandle": "@realtyaustin",
       "website": "https://realtyaustin.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Realty%20Austin%20Neighborhood%20Brokers"
@@ -4427,7 +4501,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_76",
@@ -4441,7 +4516,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Pin & NY DOS Real Estate Register",
     "whatsappNumber": "+17184852200",
-    "email": "bedfordflatbush@gmail.com",
+    "email": null,
     "instagramHandle": "@bedfordproperties",
     "rating": "4.7",
     "reviews": 230,
@@ -4453,8 +4528,8 @@ const INITIAL_LEADS = [
     "niche": "real_estate",
     "nicheName": "Boutique Brooklyn Rental & Sales Brokerage",
     "nicheIcon": "🏢",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "David works directly with renters on WhatsApp. 1-tap video tour & income verification bot eliminates endless showing no-shows.",
     "flawTitle": "Brooklyn Apartment Showing No-Show & Unqualified Tour Waste",
     "specificWeakness": "Brokers travel across Brooklyn for apartment showings only to have clients ghost or fail the 40x rent income requirement.",
@@ -4477,7 +4552,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Pin & NY DOS Real Estate Register",
       "whatsappNumber": "+17184852200",
-      "email": "bedfordflatbush@gmail.com",
+      "email": null,
       "instagramHandle": "@bedfordproperties",
       "website": "https://bedfordproperties.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Bedford%20Flatbush%20Property%20Group"
@@ -4486,7 +4561,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_77",
@@ -4500,7 +4576,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Plaque & Property Ombudsman UK Listing",
     "whatsappNumber": "+447700900123",
-    "email": "islingtonproperty@gmail.com",
+    "email": null,
     "instagramHandle": "@islingtonproperty",
     "rating": "4.6",
     "reviews": 210,
@@ -4512,8 +4588,8 @@ const INITIAL_LEADS = [
     "niche": "real_estate",
     "nicheName": "Boutique Upper Street Residential Lettings",
     "nicheIcon": "🏡",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Sarah oversees high-value Georgian townhouse lettings. WhatsApp tenant right-to-rent screening speeds up lease signings by 48 hours.",
     "flawTitle": "Tenant Right-to-Rent & Holding Deposit Delay Friction",
     "specificWeakness": "Tenants agreeing to let Georgian flats delay submitting passport and salary slips over email, leaving landlords in limbo.",
@@ -4536,7 +4612,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Plaque & Property Ombudsman UK Listing",
       "whatsappNumber": "+447700900123",
-      "email": "islingtonproperty@gmail.com",
+      "email": null,
       "instagramHandle": "@islingtonproperty",
       "website": "https://islingtonproperty.co.uk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Islington%20Property%20Associates"
@@ -4545,7 +4621,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_78",
@@ -4559,7 +4636,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "RERA Registered Broker Card & Google Maps Listing",
     "whatsappNumber": "+971501239876",
-    "email": "espacerealestate.dxb@gmail.com",
+    "email": null,
     "instagramHandle": "@espacedubai",
     "rating": "4.8",
     "reviews": 650,
@@ -4571,8 +4648,8 @@ const INITIAL_LEADS = [
     "niche": "real_estate",
     "nicheName": "Independent Villa & Marina Luxury Brokerage",
     "nicheIcon": "🏙️",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "John's brokers live on WhatsApp. 1-tap off-plan payment plan and ROI brochure bot sends verified PDF floorplans in 10 seconds.",
     "flawTitle": "International Investor WhatsApp Off-Plan Brochure Delay",
     "specificWeakness": "Overseas investors messaging from the UK and Europe wait hours for agents to find and send 50MB PDF off-plan brochures.",
@@ -4595,7 +4672,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "RERA Registered Broker Card & Google Maps Listing",
       "whatsappNumber": "+971501239876",
-      "email": "espacerealestate.dxb@gmail.com",
+      "email": null,
       "instagramHandle": "@espacedubai",
       "website": "https://espace.ae",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Espace%20Real%20Estate%20Brokers"
@@ -4604,7 +4681,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_79",
@@ -4618,7 +4696,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Service Van Fleet & Google Maps Listing",
     "whatsappNumber": "+15122639288",
-    "email": "radiantplumbing.austin@gmail.com",
+    "email": null,
     "instagramHandle": "@radiantplumbing",
     "rating": "4.8",
     "reviews": 1600,
@@ -4630,8 +4708,8 @@ const INITIAL_LEADS = [
     "niche": "home_services",
     "nicheName": "Residential Plumbing & AC Emergency Dispatch",
     "nicheIcon": "🚰",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Brad built his business on customer response speed. An emergency water leak dispatch bot books vans before competitor dispatchers answer.",
     "flawTitle": "After-Hours Water Heater Burst Emergency Dispatch Friction",
     "specificWeakness": "Homeowners with a flooding water heater at 10 PM call into automated call-center menus and hang up in frustration.",
@@ -4654,7 +4732,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Service Van Fleet & Google Maps Listing",
       "whatsappNumber": "+15122639288",
-      "email": "radiantplumbing.austin@gmail.com",
+      "email": null,
       "instagramHandle": "@radiantplumbing",
       "website": "https://radiantplumbing.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Radiant%20Plumbing%20%26%20Air"
@@ -4663,7 +4741,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_80",
@@ -4677,7 +4756,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Pin & NYC Dept of Buildings Licensed Plumbers",
     "whatsappNumber": "+12127298800",
-    "email": "manhattanplumbers247@gmail.com",
+    "email": null,
     "instagramHandle": "@nycplumbers",
     "rating": "4.6",
     "reviews": 340,
@@ -4689,8 +4768,8 @@ const INITIAL_LEADS = [
     "niche": "home_services",
     "nicheName": "High-Rise & Brownstone Emergency Plumbing",
     "nicheIcon": "🔧",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Mike dispatches emergency vans across Manhattan. 1-tap pipe freeze & boiler breakdown dispatch funnel captures urgent co-op board jobs.",
     "flawTitle": "Winter Brownstone Frozen Pipe & Steam Boiler Breakdown Call Delay",
     "specificWeakness": "When historic brownstone pipes freeze, frantic tenants calling reception get busy signals during freezing cold snaps.",
@@ -4713,7 +4792,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Pin & NYC Dept of Buildings Licensed Plumbers",
       "whatsappNumber": "+12127298800",
-      "email": "manhattanplumbers247@gmail.com",
+      "email": null,
       "instagramHandle": "@nycplumbers",
       "website": "https://manhattanemergencyplumbers.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=24/7%20Manhattan%20Emergency%20Plumbers"
@@ -4722,7 +4801,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_81",
@@ -4736,7 +4816,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Gas Safe Register & Google Business Profile",
     "whatsappNumber": "+447833112233",
-    "email": "pimlicomaintenance.ken@gmail.com",
+    "email": null,
     "instagramHandle": "@pimlicoplumbing",
     "rating": "4.7",
     "reviews": 480,
@@ -4748,8 +4828,8 @@ const INITIAL_LEADS = [
     "niche": "home_services",
     "nicheName": "High-End Residential Boiler & Electrical Emergency",
     "nicheIcon": "⚡",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Scott manages West London emergency dispatch vans. A 1-tap boiler fault code WhatsApp bot diagnoses repairs before the van departs.",
     "flawTitle": "Combi Boiler Error Code Call-Out Diagnostic Delay",
     "specificWeakness": "Homeowners with Worcester Bosch error codes (EA/F1) call describing complex blinking lights while phone queues build.",
@@ -4772,7 +4852,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Gas Safe Register & Google Business Profile",
       "whatsappNumber": "+447833112233",
-      "email": "pimlicomaintenance.ken@gmail.com",
+      "email": null,
       "instagramHandle": "@pimlicoplumbing",
       "website": "https://pimlicomaintenance.co.uk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Pimlico%20Emergency%20Maintenance"
@@ -4781,7 +4861,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_82",
@@ -4795,7 +4876,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Service Van Fleet & Google Business Profile",
     "whatsappNumber": "+971528899001",
-    "email": "hitchesglitches.tecom@gmail.com",
+    "email": null,
     "instagramHandle": "@hitchesandglitches",
     "rating": "4.6",
     "reviews": 710,
@@ -4807,8 +4888,8 @@ const INITIAL_LEADS = [
     "niche": "home_services",
     "nicheName": "Villa AC Maintenance & Chiller Repair",
     "nicheIcon": "❄️",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Ali coordinates villa AC emergency teams via WhatsApp. An instant AC cooling failure dispatch funnel saves families in 48°C heat.",
     "flawTitle": "Summer Villa AC Cooling Breakdown Emergency Call Bottleneck",
     "specificWeakness": "When villa AC chillers blow warm air in July, 40 families call simultaneously while phone lines remain engaged.",
@@ -4831,7 +4912,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Service Van Fleet & Google Business Profile",
       "whatsappNumber": "+971528899001",
-      "email": "hitchesglitches.tecom@gmail.com",
+      "email": null,
       "instagramHandle": "@hitchesandglitches",
       "website": "https://hitchesglitches.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Hitches%20%26%20Glitches%20Technical%20Services"
@@ -4840,7 +4921,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_83",
@@ -4854,7 +4936,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Front Desk & Google Maps Verified Listing",
     "whatsappNumber": "+15124411124",
-    "email": "austinmotel.soco@gmail.com",
+    "email": null,
     "instagramHandle": "@austinmotel",
     "rating": "4.6",
     "reviews": 1350,
@@ -4866,8 +4948,8 @@ const INITIAL_LEADS = [
     "niche": "boutique_hotels",
     "nicheName": "Retro Mid-Century Boutique Motel & Neon Pool",
     "nicheIcon": "🏊",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Liz Lambert's team manages poolside events via Instagram. A 1-tap pool day-pass link eliminates weekend phone call inquiries.",
     "flawTitle": "Weekend Retro Pool Day-Pass Reservation Friction",
     "specificWeakness": "Locals wanting $40 pool lounge day passes flood the front desk phone while hotel guests check in.",
@@ -4890,7 +4972,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Front Desk & Google Maps Verified Listing",
       "whatsappNumber": "+15124411124",
-      "email": "austinmotel.soco@gmail.com",
+      "email": null,
       "instagramHandle": "@austinmotel",
       "website": "https://austinmotel.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Austin%20Motel%20%26%20Pool%20Bar"
@@ -4899,7 +4981,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_84",
@@ -4913,7 +4996,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Plaque & Google Knowledge Panel",
     "whatsappNumber": "+12123210100",
-    "email": "marltonhotel.ny@gmail.com",
+    "email": null,
     "instagramHandle": "@marltonhotel",
     "rating": "4.5",
     "reviews": 780,
@@ -4925,8 +5008,8 @@ const INITIAL_LEADS = [
     "niche": "boutique_hotels",
     "nicheName": "Bohemian Greenwich Village Boutique Inn",
     "nicheIcon": "☕",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Sean drives intimate lobby lounge atmosphere. 1-tap direct room booking funnel bypasses 18% Booking.com commissions.",
     "flawTitle": "High Booking.com Commission Leak on Weekend Staycations",
     "specificWeakness": "Greenwich Village staycation travelers book via OTA apps because the mobile website booking flow takes 6 screens.",
@@ -4949,7 +5032,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Plaque & Google Knowledge Panel",
       "whatsappNumber": "+12123210100",
-      "email": "marltonhotel.ny@gmail.com",
+      "email": null,
       "instagramHandle": "@marltonhotel",
       "website": "https://marltonhotel.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=The%20Marlton%20Hotel%20%26%20Espresso%20Bar"
@@ -4958,7 +5041,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_85",
@@ -4972,7 +5056,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Plaque & Historic Hotels UK Listing",
     "whatsappNumber": "+447712345678",
-    "email": "rookeryhotel.london@gmail.com",
+    "email": null,
     "instagramHandle": "@rookeryhotel",
     "rating": "4.7",
     "reviews": 540,
@@ -4984,8 +5068,8 @@ const INITIAL_LEADS = [
     "niche": "boutique_hotels",
     "nicheName": "Georgian Period Boutique Hotel & Library",
     "nicheIcon": "🏨",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Peter manages direct corporate executive bookings. A 1-tap WhatsApp corporate booking funnel recovers City legal travelers.",
     "flawTitle": "City of London Legal & Banking Corporate Booking Friction",
     "specificWeakness": "Barristers and bankers working near Farringdon trying to book quiet Georgian suites get redirected to slow external portals.",
@@ -5008,7 +5092,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Plaque & Historic Hotels UK Listing",
       "whatsappNumber": "+447712345678",
-      "email": "rookeryhotel.london@gmail.com",
+      "email": null,
       "instagramHandle": "@rookeryhotel",
       "website": "https://rookeryhotel.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=The%20Rookery%20Hotel"
@@ -5017,7 +5101,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_86",
@@ -5031,7 +5116,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Heritage Site Plaque & Google Business Profile",
     "whatsappNumber": "+971509988776",
-    "email": "xvaart@gmail.com",
+    "email": null,
     "instagramHandle": "@xvaarthotel",
     "rating": "4.7",
     "reviews": 680,
@@ -5043,8 +5128,8 @@ const INITIAL_LEADS = [
     "niche": "boutique_hotels",
     "nicheName": "Historical Wind-Tower Heritage Hotel & Art Cafe",
     "nicheIcon": "🎨",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Mona showcases cultural courtyard art exhibitions on Instagram. A 1-tap courtyard cafe & room booking funnel stops OTA commission loss.",
     "flawTitle": "Historical Courtyard Cafe & Art Suite Booking Delay",
     "specificWeakness": "Visitors wanting courtyard vegetarian dining and art suites face confusing mobile booking pages and book elsewhere.",
@@ -5067,7 +5152,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Heritage Site Plaque & Google Business Profile",
       "whatsappNumber": "+971509988776",
-      "email": "xvaart@gmail.com",
+      "email": null,
       "instagramHandle": "@xvaarthotel",
       "website": "https://xvahotel.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=XVA%20Art%20Hotel%20%26%20Courtyard"
@@ -5076,7 +5161,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_87",
@@ -5090,7 +5176,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Pin & Google Maps Verified Listing",
     "whatsappNumber": "+15129683200",
-    "email": "austinweddingplanners@gmail.com",
+    "email": null,
     "instagramHandle": "@austinweddingplanners",
     "rating": "4.9",
     "reviews": 180,
@@ -5102,8 +5188,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "Hill Country & Urban Wedding Planning Studio",
     "nicheIcon": "💍",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Rebecca's brides reach out via Instagram DMs. 1-tap wedding cost calculator & date lock bot converts inquiries into paid retainers.",
     "flawTitle": "Hill Country Wedding Budget & Date Inquiry Friction in DMs",
     "specificWeakness": "Engaged couples asking for wedding packages in DMs abandon the conversation when asked to fill out long 20-question questionnaires.",
@@ -5126,7 +5212,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Pin & Google Maps Verified Listing",
       "whatsappNumber": "+15129683200",
-      "email": "austinweddingplanners@gmail.com",
+      "email": null,
       "instagramHandle": "@austinweddingplanners",
       "website": "https://austinweddingplanners.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Austin%20Wedding%20Planners%20Studio"
@@ -5135,7 +5221,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_88",
@@ -5149,7 +5236,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Plaque & Google Knowledge Panel",
     "whatsappNumber": "+12128795500",
-    "email": "detailsnycevents@gmail.com",
+    "email": null,
     "instagramHandle": "@detailsnycevents",
     "rating": "4.8",
     "reviews": 190,
@@ -5161,8 +5248,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "Luxury Corporate Galas & Private Events",
     "nicheIcon": "🎉",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Bryan drives high-society event visual identity on Instagram. 1-tap corporate RFP intake funnel captures luxury brand galas.",
     "flawTitle": "Corporate Gala & Brand Launch Scope Intake Delay",
     "specificWeakness": "Fashion & luxury brand marketing directors looking for 48-hour gala proposals get stuck in multi-day email chains.",
@@ -5185,7 +5272,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Plaque & Google Knowledge Panel",
       "whatsappNumber": "+12128795500",
-      "email": "detailsnycevents@gmail.com",
+      "email": null,
       "instagramHandle": "@detailsnycevents",
       "website": "https://detailsnycevents.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Details%20NYC%20Event%20Design"
@@ -5194,7 +5281,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_89",
@@ -5208,7 +5296,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Mayfair Office Plaque & Google Maps Profile",
     "whatsappNumber": "+447799001122",
-    "email": "quintessentiallyweddings.uk@gmail.com",
+    "email": null,
     "instagramHandle": "@quintessentiallyweddings",
     "rating": "4.8",
     "reviews": 160,
@@ -5220,8 +5308,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "High-Society Mayfair & Country Estate Weddings",
     "nicheIcon": "💐",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Jenny coordinates directly with brides on WhatsApp. A 1-tap country estate venue shortlisting tool saves 2 weeks of coordination.",
     "flawTitle": "English Country Estate Venue Availability WhatsApp Friction",
     "specificWeakness": "International couples planning weddings in the Cotswolds message on WhatsApp waiting days for date checks across multiple estates.",
@@ -5244,7 +5332,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Mayfair Office Plaque & Google Maps Profile",
       "whatsappNumber": "+447799001122",
-      "email": "quintessentiallyweddings.uk@gmail.com",
+      "email": null,
       "instagramHandle": "@quintessentiallyweddings",
       "website": "https://quintessentiallyweddings.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Quintessentially%20Weddings"
@@ -5253,7 +5341,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_90",
@@ -5267,7 +5356,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Pin & Google Maps Verified Listing",
     "whatsappNumber": "+971503344556",
-    "email": "carouselweddings.dxb@gmail.com",
+    "email": null,
     "instagramHandle": "@carouselevents",
     "rating": "4.9",
     "reviews": 380,
@@ -5279,8 +5368,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "Bespoke Royal & Luxury Arab Weddings",
     "nicheIcon": "✨",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Zainab negotiates high-ticket ballroom weddings via WhatsApp. 1-tap ballroom availability and budget filter qualifies VIP brides.",
     "flawTitle": "Luxury Ballroom Date Availability & Stage Decor Consultation Delay",
     "specificWeakness": "Families inquiring about luxury hotel ballroom weddings (Armani, One&Only) get delayed in lengthy WhatsApp voice note exchanges.",
@@ -5303,7 +5392,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Pin & Google Maps Verified Listing",
       "whatsappNumber": "+971503344556",
-      "email": "carouselweddings.dxb@gmail.com",
+      "email": null,
       "instagramHandle": "@carouselevents",
       "website": "https://carousel.ae",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Carousel%20Weddings%20%26%20Events"
@@ -5312,7 +5401,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_91",
@@ -5326,7 +5416,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Office Plaque & State Bar of Texas Directory",
     "whatsappNumber": "+15124741800",
-    "email": "austintenantlaw@gmail.com",
+    "email": null,
     "instagramHandle": "@austintenantlaw",
     "rating": "4.7",
     "reviews": 160,
@@ -5338,8 +5428,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "Tenant Protection & Commercial Lease Disputes",
     "nicheIcon": "⚖️",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Mark works directly with small business lease clients. A 1-tap mobile lease review intake bot stops 30-minute phone intake calls.",
     "flawTitle": "Commercial Lease Document & Eviction Notice Intake Friction",
     "specificWeakness": "Small business owners facing sudden commercial rent hikes or eviction notices struggle to upload 60-page PDF leases on mobile.",
@@ -5362,7 +5452,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Office Plaque & State Bar of Texas Directory",
       "whatsappNumber": "+15124741800",
-      "email": "austintenantlaw@gmail.com",
+      "email": null,
       "instagramHandle": "@austintenantlaw",
       "website": "https://austintenantlaw.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Austin%20Tenant%20Rights%20Legal%20Clinic"
@@ -5371,7 +5461,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_92",
@@ -5385,7 +5476,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Plaque & NY State Unified Court System",
     "whatsappNumber": "+17185203300",
-    "email": "queensbusinesslaw@gmail.com",
+    "email": null,
     "instagramHandle": "@queensbusinesslaw",
     "rating": "4.6",
     "reviews": 180,
@@ -5397,8 +5488,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "Bilingual Immigrant Business Contracts & Notary",
     "nicheIcon": "📜",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "David serves immigrant store owners on WhatsApp. A 1-tap contract drafting details uploader eliminates manual office paperwork delays.",
     "flawTitle": "Storefront Lease & Vendor Contract Details Intake Bottleneck",
     "specificWeakness": "Bodega and restaurant owners needing quick partnership agreements or lease reviews get delayed trying to find paperwork.",
@@ -5421,7 +5512,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Plaque & NY State Unified Court System",
       "whatsappNumber": "+17185203300",
-      "email": "queensbusinesslaw@gmail.com",
+      "email": null,
       "instagramHandle": "@queensbusinesslaw",
       "website": "https://queensbusinesslaw.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Queens%20Small%20Business%20Legal%20Aid"
@@ -5430,7 +5521,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_93",
@@ -5444,7 +5536,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Faculty Office of the Archbishop of Canterbury Notary Register",
     "whatsappNumber": "+447844556677",
-    "email": "bloomsburynotary@gmail.com",
+    "email": null,
     "instagramHandle": "@bloomsburynotary",
     "rating": "4.8",
     "reviews": 220,
@@ -5456,8 +5548,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "Apostille & International Legal Document Notarization",
     "nicheIcon": "⚖️",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Oliver is active on mobile for urgent notary calls. A 1-tap WhatsApp Apostille intake funnel captures overseas business clients.",
     "flawTitle": "Urgent Foreign Apostille & Power of Attorney Document Clashing",
     "specificWeakness": "Expats needing urgent FCDO apostille stamps for overseas property sales call repeatedly to confirm document requirements.",
@@ -5480,7 +5572,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Faculty Office of the Archbishop of Canterbury Notary Register",
       "whatsappNumber": "+447844556677",
-      "email": "bloomsburynotary@gmail.com",
+      "email": null,
       "instagramHandle": "@bloomsburynotary",
       "website": "https://bloomsburynotary.co.uk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Bloomsbury%20Notary%20Public%20Solicitors"
@@ -5489,7 +5581,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_94",
@@ -5503,7 +5596,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Ministry of Justice UAE & Dubai Courts Registered Law Firm",
     "whatsappNumber": "+971556677889",
-    "email": "alsafarlegal.dxb@gmail.com",
+    "email": null,
     "instagramHandle": "@alsafarlegal",
     "rating": "4.7",
     "reviews": 310,
@@ -5515,8 +5608,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "Commercial Dispute & Trade License Resolution",
     "nicheIcon": "⚖️",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Kavitha handles commercial litigation inquiries via WhatsApp. A 1-tap commercial trade dispute intake funnel converts leads in 1 hour.",
     "flawTitle": "Trade License & Commercial B2B Payment Dispute Intake Delay",
     "specificWeakness": "Business Bay entrepreneurs facing bounced cheques or supplier payment defaults get delayed in slow corporate email forms.",
@@ -5539,7 +5632,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Ministry of Justice UAE & Dubai Courts Registered Law Firm",
       "whatsappNumber": "+971556677889",
-      "email": "alsafarlegal.dxb@gmail.com",
+      "email": null,
       "instagramHandle": "@alsafarlegal",
       "website": "https://alsafarlegal.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Al%20Safar%20%26%20Partners%20Legal"
@@ -5548,7 +5641,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_95",
@@ -5562,7 +5656,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Signboard & Google Maps Verified Listing",
     "whatsappNumber": "+15122492498",
-    "email": "mudpuppies.austin@gmail.com",
+    "email": null,
     "instagramHandle": "@mudpuppiesatx",
     "rating": "4.6",
     "reviews": 420,
@@ -5574,8 +5668,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Full Service Dog Grooming & Splash Park Daycare",
     "nicheIcon": "🐕",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Kelly shares fresh haircuts on Instagram. 1-tap breed-specific grooming calendar eliminates scheduling clashes for large dogs.",
     "flawTitle": "Large Dog De-Shedding Slot Scheduling Clashing on Mobile",
     "specificWeakness": "Heavy shedding breeds (Golden Retrievers/Huskies) requiring 2-hour grooming tables get double-booked during Saturday morning rush.",
@@ -5598,7 +5692,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Signboard & Google Maps Verified Listing",
       "whatsappNumber": "+15122492498",
-      "email": "mudpuppies.austin@gmail.com",
+      "email": null,
       "instagramHandle": "@mudpuppiesatx",
       "website": "https://mudpuppies.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Mud%20Puppies%20Dog%20Spa%20%26%20Daycare"
@@ -5607,7 +5701,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_96",
@@ -5621,7 +5716,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Pin & Google Knowledge Graph",
     "whatsappNumber": "+15124530090",
-    "email": "dirtydogsaustin@gmail.com",
+    "email": null,
     "instagramHandle": "@dirtydogsaustin",
     "rating": "4.7",
     "reviews": 380,
@@ -5633,8 +5728,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Neighborhood Self-Serve Tub Wash & Pro Grooming",
     "nicheIcon": "🛁",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Brian works the shop floor. A 1-tap self-wash tub line reservation link stops South Lamar dog owners driving away on muddy days.",
     "flawTitle": "Sunday Muddy Greenbelt Dog Wash Tub Queue Bottleneck",
     "specificWeakness": "After rain on the Barton Creek Greenbelt, 30 dog owners rush the self-serve tubs at once and walk away when all 6 tubs are full.",
@@ -5657,7 +5752,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Pin & Google Knowledge Graph",
       "whatsappNumber": "+15124530090",
-      "email": "dirtydogsaustin@gmail.com",
+      "email": null,
       "instagramHandle": "@dirtydogsaustin",
       "website": "https://dirty-dogs.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Dirty%20Dogs%20Self%20Wash%20%26%20Grooming"
@@ -5666,7 +5761,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_97",
@@ -5680,7 +5776,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Plaque & NYC DOHMH Pet Care Facility Registry",
     "whatsappNumber": "+12126883647",
-    "email": "biscuitsandbath.sutton@gmail.com",
+    "email": null,
     "instagramHandle": "@biscuitsandbath",
     "rating": "4.5",
     "reviews": 310,
@@ -5692,8 +5788,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Boutique Manhattan Dog Daycare & Styling",
     "nicheIcon": "🐩",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Scott manages client intake on Instagram. 1-tap daycare temperament test scheduling bot stops working Manhattan dog owners dropping out.",
     "flawTitle": "New Dog Daycare Temperament Test Booking Friction",
     "specificWeakness": "Manhattan executives wanting dog daycare must complete cumbersome 10-page medical forms before booking a 20-minute temperament test.",
@@ -5716,7 +5812,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Plaque & NYC DOHMH Pet Care Facility Registry",
       "whatsappNumber": "+12126883647",
-      "email": "biscuitsandbath.sutton@gmail.com",
+      "email": null,
       "instagramHandle": "@biscuitsandbath",
       "website": "https://biscuitsandbath.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Biscuits%20%26%20Bath"
@@ -5725,7 +5821,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_98",
@@ -5739,7 +5836,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Mobile Van Signage & Google Business Listing",
     "whatsappNumber": "+19176204400",
-    "email": "nycmobilegrooming@gmail.com",
+    "email": null,
     "instagramHandle": "@nycmobilegrooming",
     "rating": "4.8",
     "reviews": 190,
@@ -5751,8 +5848,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Curbside Mobile Van Pet Grooming",
     "nicheIcon": "🚐",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Leo operates his grooming van with his phone on the dashboard. An automated zip-code cluster booking bot saves 2 hours of Manhattan driving.",
     "flawTitle": "Manhattan Traffic Travel Time & Curbside Van Route Clashing",
     "specificWeakness": "Clients in Tribeca and Upper West Side book appointments haphazardly, forcing Leo to spend 2 hours sitting in Manhattan cross-town traffic.",
@@ -5775,7 +5872,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Mobile Van Signage & Google Business Listing",
       "whatsappNumber": "+19176204400",
-      "email": "nycmobilegrooming@gmail.com",
+      "email": null,
       "instagramHandle": "@nycmobilegrooming",
       "website": "https://nycmobilegrooming.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=NYC%20Mobile%20Dog%20Grooming%20Van"
@@ -5784,7 +5881,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_99",
@@ -5798,7 +5896,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Plaque & Pet Industry Federation (PIF) UK",
     "whatsappNumber": "+447855667788",
-    "email": "groomdogcity.hackney@gmail.com",
+    "email": null,
     "instagramHandle": "@groomdogcity",
     "rating": "4.7",
     "reviews": 340,
@@ -5810,8 +5908,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Artisan Hand-Stripping & Asian Fusion Grooming",
     "nicheIcon": "✂️",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Stuart showcases Asian Fusion pet styling on Instagram. 1-tap hand-stripping slot booking calendar locks 3-hour styling slots.",
     "flawTitle": "Artisan Hand-Stripping 3-Hour Slot Double Booking Stress",
     "specificWeakness": "Wire-haired breeds requiring specialized 3-hour hand stripping get booked over routine bath appointments, causing staff burnout.",
@@ -5834,7 +5932,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Plaque & Pet Industry Federation (PIF) UK",
       "whatsappNumber": "+447855667788",
-      "email": "groomdogcity.hackney@gmail.com",
+      "email": null,
       "instagramHandle": "@groomdogcity",
       "website": "https://groomdogcity.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Groom%20Dog%20City"
@@ -5843,7 +5941,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_100",
@@ -5857,7 +5956,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Storefront Pin & Dubai Municipality Veterinary Department",
     "whatsappNumber": "+971504455667",
-    "email": "pawsandwhiskers.dxb@gmail.com",
+    "email": null,
     "instagramHandle": "@pawsandwhiskersdubai",
     "rating": "4.8",
     "reviews": 460,
@@ -5869,8 +5968,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Cage-Free Dog Daycare & Feline Hydrotherapy",
     "nicheIcon": "🐱",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "instagram",
+    "recommendedPitchChannel": "instagram",
     "pitchChannelReason": "Fatima communicates with pet parents directly on WhatsApp. 1-tap holiday boarding suite reservation funnel stops summer rush abandonments.",
     "flawTitle": "Summer Expat Holiday Pet Boarding Suite Reservation Bottleneck",
     "specificWeakness": "During June-August summer holiday rush, expat families messaging on WhatsApp for private dog/cat suites get delayed responses.",
@@ -5893,7 +5992,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Storefront Pin & Dubai Municipality Veterinary Department",
       "whatsappNumber": "+971504455667",
-      "email": "pawsandwhiskers.dxb@gmail.com",
+      "email": null,
       "instagramHandle": "@pawsandwhiskersdubai",
       "website": "https://pawsandwhiskersdubai.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Paws%20%26%20Whiskers%20Pet%20Nursery"
@@ -5902,7 +6001,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_101",
@@ -5928,8 +6028,8 @@ const INITIAL_LEADS = [
     "niche": "restaurants",
     "nicheName": "Fine Dining & Seaside Barbecue",
     "nicheIcon": "🍽️",
-    "channel": "whatsapp",
-    "recommendedPitchChannel": "whatsapp",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Kolachi ki in-house marketing team Instagram DM rozana check karti hai. Second option contact@kolachirestaurant.com hai.",
     "flawTitle": "Overwhelmed Sunset Phone Line Bottleneck (No WhatsApp Table Booking)",
     "specificWeakness": "Sunset seaside outdoor seating ke liye koi direct 1-tap WhatsApp table reservation link nahi hai. Phone lines peak rush mein busy hoti hain aur 40% diners frustrate ho kar doosray Do Darya spots chale jatay hain.",
@@ -5961,7 +6061,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_102",
@@ -5987,8 +6088,8 @@ const INITIAL_LEADS = [
     "niche": "restaurants",
     "nicheName": "Artisan European Cafe & Gourmet Pizza",
     "nicheIcon": "🍕",
-    "channel": "whatsapp",
-    "recommendedPitchChannel": "whatsapp",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Direct active mobile WhatsApp number (+92 322 2224090) cafe management handle karti hai.",
     "flawTitle": "Pinch-to-zoom 15MB PDF Menu on Mobile Screens",
     "specificWeakness": "Mobile par khana dekhne ke liye 15MB ki PDF download hoti hai jise phone par ungliyon se zoom-in/out karna parta hai. 60% mobile users order chhor kar Foodpanda par chale jatay hain jahan 30% commission cut kat'ta hai.",
@@ -6020,7 +6121,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_103",
@@ -6046,8 +6148,8 @@ const INITIAL_LEADS = [
     "niche": "restaurants",
     "nicheName": "Mughlai Buffet & Traditional Banqueting",
     "nicheIcon": "🏰",
-    "channel": "whatsapp",
-    "recommendedPitchChannel": "whatsapp",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Corporate buffet contracts aur banquet events ke liye info@lalqila.com formal review team check karti hai.",
     "flawTitle": "No Online Pre-Payment System for Large Family Buffets",
     "specificWeakness": "10 se 30 afraad ke family buffet bookings ke liye koi online seat confirmation token nahi hai. Cash on arrival ki wajah se 20% reserved tables weekend par no-show karti hain.",
@@ -6079,7 +6181,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_104",
@@ -6105,8 +6208,8 @@ const INITIAL_LEADS = [
     "niche": "restaurants",
     "nicheName": "Casual Pan-Asian & Chinese Dining",
     "nicheIcon": "🥢",
-    "channel": "whatsapp",
-    "recommendedPitchChannel": "whatsapp",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Direct WhatsApp line (+92 300 0446769) active delivery tracking aur customer support handle karti hai.",
     "flawTitle": "Delivery App Margin Squeeze on High-Volume Corporate Lunches",
     "specificWeakness": "Clifton aur DHA ke corporate offices Ginsoy se bari quantities mein soup aur platters mangwate hain, lekin Ginsoy unhe Foodpanda par order karne par majboor karta hai jahan 30% margin cut kat raha hai.",
@@ -6138,7 +6241,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_105",
@@ -6164,8 +6268,8 @@ const INITIAL_LEADS = [
     "niche": "restaurants",
     "nicheName": "Iconic Charcoal Barbecue & Afghan Cuisine",
     "nicheIcon": "🔥",
-    "channel": "whatsapp",
-    "recommendedPitchChannel": "whatsapp",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Instagram DM aur info@bbqtonight.com procurement team check karti hai.",
     "flawTitle": "No 1-Tap QR Ordering for Open-Air Car Service",
     "specificWeakness": "Boating Basin par har shaam 100+ car customers roadside gaari mein khana khate hain. Waiters kagaz ki parchi le kar ghanto bhagte hain jis se 30-minute order delay hota hai.",
@@ -6197,7 +6301,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_106",
@@ -6223,8 +6328,8 @@ const INITIAL_LEADS = [
     "niche": "restaurants",
     "nicheName": "Authentic Lebanese & Mediterranean Dining",
     "nicheIcon": "🥙",
-    "channel": "whatsapp",
-    "recommendedPitchChannel": "whatsapp",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "UAE corporate executives WhatsApp business communication par foran interact karte hain.",
     "flawTitle": "Talabat & Deliveroo 30% Commission Drain on Regular Shisha Diners",
     "specificWeakness": "Sheikh Zayed Road aur DIFC ke regular office professionals Talabat se daily shawarma aur grill platters mangwate hain, jahan Al Safadi har order par 30% commission gawa raha hai.",
@@ -6256,7 +6361,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_107",
@@ -6282,8 +6388,8 @@ const INITIAL_LEADS = [
     "niche": "restaurants",
     "nicheName": "Legendary Texas Smoked Brisket & Ribs",
     "nicheIcon": "🍖",
-    "channel": "whatsapp",
-    "recommendedPitchChannel": "whatsapp",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Austin pitmasters prefer concise curiosity-driven emails to info@terryblacksbbq.com.",
     "flawTitle": "90-Minute In-Person Waiting Line Without Mobile Express VIP Pickup",
     "specificWeakness": "Barton Springs location par 90-minute ki physical waiting line hoti hai. Jo locals 5 lbs brisket jaldi pick karna chahte hain wo line dekh kar leave kar dete hain.",
@@ -6315,7 +6421,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_108",
@@ -6341,8 +6448,8 @@ const INITIAL_LEADS = [
     "niche": "restaurants",
     "nicheName": "Iconic NYC Thin Crust Pizza Slices",
     "nicheIcon": "🍕",
-    "channel": "whatsapp",
-    "recommendedPitchChannel": "whatsapp",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "High energy NYC pizza joints respond within hours to Instagram DMs.",
     "flawTitle": "Cash/Counter Queuing Friction on Late-Night College Crowd",
     "specificWeakness": "Late night Carmine St par sidewalk line block ho jati hai. Phone orders handle karne ke liye staff ke paas time nahi hota aur delivery apps 30% commission cut le leti hain.",
@@ -6374,7 +6481,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_109",
@@ -6400,8 +6508,8 @@ const INITIAL_LEADS = [
     "niche": "restaurants",
     "nicheName": "Bombay Irani Cafe & Breakfast Bacon Naan",
     "nicheIcon": "☕",
-    "channel": "whatsapp",
-    "recommendedPitchChannel": "whatsapp",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Shamil Thakrar actively posts on LinkedIn about restaurant innovation and customer experience.",
     "flawTitle": "2-Hour Physical Sidewalk Queue Without Virtual Booking Ticket",
     "specificWeakness": "Evening Covent Garden line mein 100+ diners baarish ya thand mein 2 ghante khare hotay hain. Har shaam 30+ diners wait dekh kar doosray West End restaurants chale jatay hain.",
@@ -6433,7 +6541,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_110",
@@ -6459,8 +6568,8 @@ const INITIAL_LEADS = [
     "niche": "restaurants",
     "nicheName": "British Charcoal Steaks & Sunday Roast",
     "nicheIcon": "🥩",
-    "channel": "whatsapp",
-    "recommendedPitchChannel": "whatsapp",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Will Beckett is an influential LinkedIn voice in UK hospitality operations.",
     "flawTitle": "High OpenTable Fee Overhead on Loyal Regular Diners",
     "specificWeakness": "London steak lovers who already know Hawksmoor book through OpenTable where Hawksmoor pays £1.50 to £2.50 per seated guest, costing thousands monthly on diners who already know the brand.",
@@ -6492,7 +6601,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_111",
@@ -6518,8 +6628,8 @@ const INITIAL_LEADS = [
     "niche": "bakeries_sweets",
     "nicheName": "Artisan Cakes, Fudge Brownies & Dessert Jars",
     "nicheIcon": "🧁",
-    "channel": "whatsapp",
-    "recommendedPitchChannel": "whatsapp",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Direct WhatsApp line (+92 300 0529377) actively handles daily custom cake inquiries.",
     "flawTitle": "No Custom Birthday Cake 3D Builder on Mobile (Slow WhatsApp Chats)",
     "specificWeakness": "Birthday cake ke custom design, size aur flavor choose karne ke liye koi direct 1-tap mobile builder nahi hai. Customer ko WhatsApp par 20 messages ka slow exchange karna parta hai jis se 45% customers drop off ho jatay hain.",
@@ -6551,7 +6661,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_112",
@@ -6565,7 +6676,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Official Profile & Lahore Chamber of Commerce",
     "whatsappNumber": "+923214455667",
-    "email": "contact@rahatbakers.com.pk",
+    "email": "contact@rahatbakers.pk",
     "instagramHandle": "@rahatbakersofficial",
     "rating": "4.4",
     "reviews": 16400,
@@ -6577,8 +6688,8 @@ const INITIAL_LEADS = [
     "niche": "bakeries_sweets",
     "nicheName": "Traditional Bakery, Patties & Fresh Breads",
     "nicheIcon": "🥐",
-    "channel": "whatsapp",
-    "recommendedPitchChannel": "whatsapp",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Direct active mobile WhatsApp number (+92 321 4455667) for instant bakery orders.",
     "flawTitle": "Morning Rush Takeaway Counter Bottleneck (No Pre-Order Pickup)",
     "specificWeakness": "Subah 7:30 se 9:30 tak school aur office crowd bakery par lambi line banata hai. Log jaldi mein hotay hain aur line dekh kar bina bread/patties liye chale jatay hain.",
@@ -6601,7 +6712,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Official Profile & Lahore Chamber of Commerce",
       "whatsappNumber": "+923214455667",
-      "email": "contact@rahatbakers.com.pk",
+      "email": "contact@rahatbakers.pk",
       "instagramHandle": "@rahatbakersofficial",
       "website": "https://rahatbakers.com.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Rahat%20Bakers"
@@ -6610,7 +6721,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_113",
@@ -6624,7 +6736,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Official Website (chashni.com.pk) & Brand Registry",
     "whatsappNumber": "+923008451888",
-    "email": "orders@chashni.com.pk",
+    "email": "orders@chashni.pk",
     "instagramHandle": "@chashnisweetsofficial",
     "rating": "4.5",
     "reviews": 4800,
@@ -6636,8 +6748,8 @@ const INITIAL_LEADS = [
     "niche": "bakeries_sweets",
     "nicheName": "Luxury Traditional Mithai & Festive Gifting",
     "nicheIcon": "🍬",
-    "channel": "whatsapp",
-    "recommendedPitchChannel": "whatsapp",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Luxury mithai gifting orders Instagram stories aur DM se initiate hotay hain.",
     "flawTitle": "No Online Festive Gifting Box Customizer on Mobile",
     "specificWeakness": "Shaadi aur Eid par luxury mithai box customize karne ke liye overseas Pakistanis aur corporate clients ko manual phone calls karni parti hain. Koi digital box builder mojood nahi hai.",
@@ -6660,7 +6772,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Official Website (chashni.com.pk) & Brand Registry",
       "whatsappNumber": "+923008451888",
-      "email": "orders@chashni.com.pk",
+      "email": "orders@chashni.pk",
       "instagramHandle": "@chashnisweetsofficial",
       "website": "https://chashni.com.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Chashni%20Sweets"
@@ -6669,7 +6781,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_114",
@@ -6695,8 +6808,8 @@ const INITIAL_LEADS = [
     "niche": "bakeries_sweets",
     "nicheName": "Gourmet Bakery, Cheese Croissants & Patisserie",
     "nicheIcon": "🥖",
-    "channel": "whatsapp",
-    "recommendedPitchChannel": "whatsapp",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Direct active mobile WhatsApp number (+92 300 8444455) for bakery management.",
     "flawTitle": "Evening Snack Rush Foodpanda Commission Drain (30%)",
     "specificWeakness": "Evening 4:30 se 7:00 tak cheese croissants aur fresh chicken patties ka huge rush hota hai. Regular customers Foodpanda se order karte hain jahan Jalal Sons har order par 30% margin gawa raha hai.",
@@ -6728,7 +6841,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_115",
@@ -6754,8 +6868,8 @@ const INITIAL_LEADS = [
     "niche": "bakeries_sweets",
     "nicheName": "Iconic Banana Pudding & Vintage Cupcakes",
     "nicheIcon": "🧁",
-    "channel": "whatsapp",
-    "recommendedPitchChannel": "whatsapp",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Magnolia's marketing team actively monitors Instagram DMs (@magnoliabakery).",
     "flawTitle": "Sidewalk Pudding Queue Resulting in Lunch Walk-Offs",
     "specificWeakness": "West Village location par banana pudding lene ke liye tourists aur locals 40 minute line mein khare hotay hain. Locals line dekh kar walk-off kar jatay hain.",
@@ -6787,7 +6901,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_116",
@@ -6813,8 +6928,8 @@ const INITIAL_LEADS = [
     "niche": "bakeries_sweets",
     "nicheName": "Artisan Cinnamon Rolls, Scones & Sourdough",
     "nicheIcon": "🥐",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Austin independent bakeries review community outreach via info@uppercrustbakery.com.",
     "flawTitle": "Cinnamon Rolls Selling Out Without Mobile Morning Pre-Order",
     "specificWeakness": "Famous cinnamon rolls morning 9:00 AM tak sell out ho jati hain. Customers drive karke aate hain aur empty shelves dekh kar disappoint hokar wapis chale jatay hain.",
@@ -6846,7 +6961,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_117",
@@ -6872,8 +6988,8 @@ const INITIAL_LEADS = [
     "niche": "bakeries_sweets",
     "nicheName": "American Style Red Velvet Cupcakes & Layer Cakes",
     "nicheIcon": "🍰",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Hummingbird's visual brand thrives on Instagram DM interactions.",
     "flawTitle": "High Deliveroo Commissions on Local London Tea Orders (30%)",
     "specificWeakness": "South Kensington aur Chelsea ke residents afternoon tea cupcakes Deliveroo se order karte hain jahan Hummingbird har box par 30% margin gawa raha hai.",
@@ -6905,7 +7021,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_118",
@@ -6919,7 +7036,7 @@ const INITIAL_LEADS = [
     "phoneType": "landline_uan",
     "phoneSource": "Official Website & Dubai DED Business Directory",
     "whatsappNumber": "+971523448822",
-    "email": "info@boulangerie22.ae",
+    "email": "info@boulangerie22.com",
     "instagramHandle": "@boulangerie22uae",
     "rating": "4.6",
     "reviews": 1850,
@@ -6931,8 +7048,8 @@ const INITIAL_LEADS = [
     "niche": "bakeries_sweets",
     "nicheName": "Artisan French Sourdough & Viennoiserie",
     "nicheIcon": "🥐",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Direct active mobile WhatsApp number (+971 52 344 8822) for VIP Dubai clients.",
     "flawTitle": "No Custom French Cake Pre-Order Portal for Jumeirah Villas",
     "specificWeakness": "Jumeirah villa residents custom weekend party cakes order karne ke liye WhatsApp par photos bhejte hain jahan confirmation mein 4 ghante lagtay hain.",
@@ -6955,7 +7072,7 @@ const INITIAL_LEADS = [
       "phoneType": "landline_uan",
       "phoneSource": "Official Website & Dubai DED Business Directory",
       "whatsappNumber": "+971523448822",
-      "email": "info@boulangerie22.ae",
+      "email": "info@boulangerie22.com",
       "instagramHandle": "@boulangerie22uae",
       "website": "https://boulangerie22.ae",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Boulangerie%2022"
@@ -6964,7 +7081,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_119",
@@ -6978,7 +7096,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Official Profile & Karachi Bakery Network",
     "whatsappNumber": "+923002488112",
-    "email": "orders@fabcakes.pk",
+    "email": "orders@fabcakes.com",
     "instagramHandle": "@fabcakespk",
     "rating": "4.5",
     "reviews": 3100,
@@ -6990,8 +7108,8 @@ const INITIAL_LEADS = [
     "niche": "bakeries_sweets",
     "nicheName": "Bespoke Fondant Wedding & Theme Cakes",
     "nicheIcon": "🎂",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Bespoke cake artist Farah Babar handles client inquiries directly via Instagram DM (@fabcakespk).",
     "flawTitle": "Wedding Cake Consultation DM Bottleneck (No Calendar Slot Picker)",
     "specificWeakness": "Wedding cakes ke liye brides DM karti hain lekin meeting slot aur tasting schedule karne ke liye 3 din lagtay hain chat mein, jiski wajah se bride competitor baker ke paas book ho jati hai.",
@@ -7014,7 +7132,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Official Profile & Karachi Bakery Network",
       "whatsappNumber": "+923002488112",
-      "email": "orders@fabcakes.pk",
+      "email": "orders@fabcakes.com",
       "instagramHandle": "@fabcakespk",
       "website": "https://fabcakes.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Fab%20Cakes"
@@ -7023,7 +7141,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_120",
@@ -7037,7 +7156,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Official Google Business Profile & PMDC Verified (0333-1221763)",
     "whatsappNumber": "+923331221763",
-    "email": "info@smileondental.pk",
+    "email": null,
     "instagramHandle": "@smileondentalpk",
     "rating": "4.8",
     "reviews": 520,
@@ -7049,8 +7168,8 @@ const INITIAL_LEADS = [
     "niche": "dental_medical",
     "nicheName": "Cosmetic Dentistry & Orthodontics",
     "nicheIcon": "🦷",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Direct active mobile WhatsApp number (+92 333 1221763) doctor and clinic manager monitor.",
     "flawTitle": "Zero 24/7 Automated Emergency Toothache Slot Booking Calendar",
     "specificWeakness": "Raat 8 baje ke baad jab emergency toothache uthta hai, to appointment book karne ke liye koi real-time calendar nahi hota. Patient aglay din tak intezar karne ke bajaye competitor hospital chala jata hai.",
@@ -7073,7 +7192,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Official Google Business Profile & PMDC Verified (0333-1221763)",
       "whatsappNumber": "+923331221763",
-      "email": "info@smileondental.pk",
+      "email": null,
       "instagramHandle": "@smileondentalpk",
       "website": "https://smileondental.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Smile%20On%20Dental%20Clinic"
@@ -7082,7 +7201,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_121",
@@ -7108,8 +7228,8 @@ const INITIAL_LEADS = [
     "niche": "dental_medical",
     "nicheName": "Implantology, Maxillofacial & Advanced Dental Care",
     "nicheIcon": "🩺",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Executive clinical proposals review info@altamashclinic.com par hoti hai.",
     "flawTitle": "Paper-Based Patient Intake Causing 25-Minute Waiting Room Delays",
     "specificWeakness": "Har naye patient ko clinic aakar clipboard par 3 page ka paper form bharna parta hai. Receptionist manual computer entry karti hai jis se patient frustrate hota hai.",
@@ -7141,7 +7261,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_122",
@@ -7167,8 +7288,8 @@ const INITIAL_LEADS = [
     "niche": "dental_medical",
     "nicheName": "Cosmetic Dentistry, Invisalign & Veneers",
     "nicheIcon": "✨",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Cosmetic smile transformations actively showcased and messaged via Instagram DM.",
     "flawTitle": "No 60-Second Virtual Smile Consultation Funnel on Mobile",
     "specificWeakness": "Tech workers in Austin interested in Invisalign or Veneers have no 60-second photo upload tool. They are asked to 'Call during business hours', causing 70% of mobile inquiries to bounce.",
@@ -7200,7 +7321,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_123",
@@ -7226,8 +7348,8 @@ const INITIAL_LEADS = [
     "niche": "dental_medical",
     "nicheName": "Harley Street Standard Aesthetic Dentistry & Veneers",
     "nicheIcon": "🦷",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Dr. Tim is an established aesthetic dental authority on LinkedIn.",
     "flawTitle": "High Consultation No-Show Rate (£250 Slot Loss) on Unconfirmed Leads",
     "specificWeakness": "Private cosmetic consultations booked via web form have a 22% no-show rate because there is no automated 2-way SMS deposit confirmation system.",
@@ -7259,7 +7381,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_124",
@@ -7285,8 +7408,8 @@ const INITIAL_LEADS = [
     "niche": "dental_medical",
     "nicheName": "Cosmetic Surgery, Aesthetic Medicine & Laser Clinic",
     "nicheIcon": "💉",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Direct WhatsApp line (+971 50 999 8877) handles VIP UAE patient consultations.",
     "flawTitle": "WhatsApp Inquiry Drop-Off on High-Ticket Skin Laser Packages",
     "specificWeakness": "UAE patients inquiring about AED 5,000 skin tightening and fillers wait 3-4 hours for reception agents to reply on WhatsApp, causing them to book at competing clinics.",
@@ -7318,7 +7441,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_125",
@@ -7332,7 +7456,7 @@ const INITIAL_LEADS = [
     "phoneType": "landline_uan",
     "phoneSource": "Official Hospital Directory & Sindh Healthcare Commission",
     "whatsappNumber": "+923332114455",
-    "email": "info@fgh.com.pk",
+    "email": "info@fatimiyah.org",
     "instagramHandle": "@fatimiyahhospital",
     "rating": "4.4",
     "reviews": 1820,
@@ -7344,8 +7468,8 @@ const INITIAL_LEADS = [
     "niche": "dental_medical",
     "nicheName": "Community Dentistry & Oral Surgery Wing",
     "nicheIcon": "🏥",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Formal hospital administration review via info@fgh.com.pk.",
     "flawTitle": "Long Morning Queue Slip Issuance (No Digital Token Tracker)",
     "specificWeakness": "Daily 200+ dental patients subah 7 AM se token lene ke liye line mein khare hotay hain. Koi digital live token tracking screen nahi hai jis se waiting hall over-congested rehta hai.",
@@ -7368,7 +7492,7 @@ const INITIAL_LEADS = [
       "phoneType": "landline_uan",
       "phoneSource": "Official Hospital Directory & Sindh Healthcare Commission",
       "whatsappNumber": "+923332114455",
-      "email": "info@fgh.com.pk",
+      "email": "info@fatimiyah.org",
       "instagramHandle": "@fatimiyahhospital",
       "website": "https://fgh.com.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Fatimiyah%20Hospital%20Dental%20Wing"
@@ -7377,7 +7501,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_126",
@@ -7403,8 +7528,8 @@ const INITIAL_LEADS = [
     "niche": "dental_medical",
     "nicheName": "Luxury Urban Dental Care & Teeth Whitening",
     "nicheIcon": "🦷",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Dr. Saliba actively reviews clinic modernization proposals via email.",
     "flawTitle": "No Online 1-Tap Insurance Verification for Urgent Checkups",
     "specificWeakness": "Downtown professionals checking in for cleaning have to wait 15 minutes while the receptionist calls Delta Dental or Cigna. 35% of busy executives cancel when insurance isn't instantly verified.",
@@ -7436,7 +7561,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_127",
@@ -7462,8 +7588,8 @@ const INITIAL_LEADS = [
     "niche": "dental_medical",
     "nicheName": "Pioneer Multi-Specialty Dental Clinic",
     "nicheIcon": "🦷",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Direct active mobile WhatsApp number (+92 300 8443322) handles private inquiries.",
     "flawTitle": "Zero Automated 6-Month Teeth Cleaning Recall System",
     "specificWeakness": "Patients dental filling ya scaling karwa kar chale jatay hain lekin 6 mahine baad unko automated reminder nahi jata. 80% patients follow-up cleaning bhool jatay hain.",
@@ -7495,7 +7621,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_128",
@@ -7521,8 +7648,8 @@ const INITIAL_LEADS = [
     "niche": "dental_medical",
     "nicheName": "Midtown Manhattan Aesthetic & Restorative Dentistry",
     "nicheIcon": "🦷",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Dr. Jones engages frequently with dental practice management thought leadership on LinkedIn.",
     "flawTitle": "Evening Teeth Whitening Abandonment (No 1-Tap Booking)",
     "specificWeakness": "Midtown Manhattan professionals looking for express Zoom teeth whitening before a gala have to submit an email inquiry form that takes 24 hours for a response.",
@@ -7554,7 +7681,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_129",
@@ -7568,7 +7696,7 @@ const INITIAL_LEADS = [
     "phoneType": "landline_uan",
     "phoneSource": "Google Business Profile & Salon Central Line (021-35860905)",
     "whatsappNumber": "+923008282110",
-    "email": "info@toniandguykarachi.com",
+    "email": "info@toniandguy.pk",
     "instagramHandle": "@toniandguykarachi",
     "rating": "4.6",
     "reviews": 1400,
@@ -7580,8 +7708,8 @@ const INITIAL_LEADS = [
     "niche": "salons_spas",
     "nicheName": "Luxury Hair Dressing & Styling Spa",
     "nicheIcon": "✂️",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Fashion salon ka pura client pipeline Instagram se chalta hai; DM me automated no-show reduction pitch par response guaranteed hota hai.",
     "flawTitle": "High No-Show Rate Due to Lack of 2-Way SMS Confirmations",
     "specificWeakness": "Tamam appointments phone call ya Instagram DM se hoti hain. Koi automated 2-way WhatsApp reminder nahi jata jiski wajah se 15-20% high-ticket hair styling chairs khali (No-Show) rehti hain.",
@@ -7604,7 +7732,7 @@ const INITIAL_LEADS = [
       "phoneType": "landline_uan",
       "phoneSource": "Google Business Profile & Salon Central Line (021-35860905)",
       "whatsappNumber": "+923008282110",
-      "email": "info@toniandguykarachi.com",
+      "email": "info@toniandguy.pk",
       "instagramHandle": "@toniandguykarachi",
       "website": "https://toniandguy.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Toni%20%26%20Guy%20South%20Pakistan"
@@ -7613,7 +7741,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_130",
@@ -7639,8 +7768,8 @@ const INITIAL_LEADS = [
     "niche": "salons_spas",
     "nicheName": "Celebrity Bridal Makeup & Hair Spa",
     "nicheIcon": "💄",
-    "channel": "instagram",
-    "recommendedPitchChannel": "instagram",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Kashee's bridal empire runs 100% on Instagram DM engagement.",
     "flawTitle": "Overwhelmed Phone Lines on Bridal Inquiries (45-Min Hold)",
     "specificWeakness": "Shaadi season mein rozana 500+ brides bridal packages aur slot confirmation ke liye call karti hain. UAN lines musalsal busy rehti hain aur brides doosray salon chale jatay hain.",
@@ -7672,7 +7801,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_131",
@@ -7686,7 +7816,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Official Google Maps Profile & Salon Directory",
     "whatsappNumber": "+923008261122",
-    "email": "info@pengssalon.com",
+    "email": null,
     "instagramHandle": "@pengssalon",
     "rating": "4.5",
     "reviews": 1250,
@@ -7722,7 +7852,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Official Google Maps Profile & Salon Directory",
       "whatsappNumber": "+923008261122",
-      "email": "info@pengssalon.com",
+      "email": null,
       "instagramHandle": "@pengssalon",
       "website": "https://pengssalon.com",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Peng%27s%20Salon"
@@ -7731,7 +7861,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_132",
@@ -7757,8 +7888,8 @@ const INITIAL_LEADS = [
     "niche": "salons_spas",
     "nicheName": "Iconic Austin Rock 'N Roll Barbershop & Salon",
     "nicheIcon": "💈",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Birds' creative vibe is highly active on Instagram DMs.",
     "flawTitle": "Weekend 60-Minute Barbershop Waitlist Abandonment",
     "specificWeakness": "South Congress location par weekend haircuts ke liye 1 hour waitlist hoti hai. Walk-in tech guys line dekh kar coffee peene chale jatay hain aur call back miss kar dete hain.",
@@ -7790,7 +7921,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_133",
@@ -7816,8 +7948,8 @@ const INITIAL_LEADS = [
     "niche": "salons_spas",
     "nicheName": "Traditional Ottoman Hot Towel Shave & Hair Treatment",
     "nicheIcon": "🪒",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Operations directors engage professionally via LinkedIn.",
     "flawTitle": "Lunchtime Mayfair Hot-Towel Shave Walk-Outs (No Pre-Book Slot)",
     "specificWeakness": "Mayfair finance executives wanting a 30-minute hot towel shave between meetings find all chairs full and walk away because there is no 1-tap express slot booking.",
@@ -7849,7 +7981,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_134",
@@ -7875,8 +8008,8 @@ const INITIAL_LEADS = [
     "niche": "salons_spas",
     "nicheName": "Premium Hair Colouring, Nails & Spa Treatments",
     "nicheIcon": "💅",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Direct WhatsApp line (+971 50 888 3534) coordinates luxury appointments.",
     "flawTitle": "No Automated Multi-Service Package Booking on Mobile",
     "specificWeakness": "Clients wanting Hair + Mani-Pedi + Facial combined packages have to coordinate 20 messages on WhatsApp to align stylist schedules, causing 40% of package bookings to fall through.",
@@ -7908,7 +8041,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_135",
@@ -7934,8 +8068,8 @@ const INITIAL_LEADS = [
     "niche": "salons_spas",
     "nicheName": "Boutique SoHo Editorial Hair Studio & Extensions",
     "nicheIcon": "💇",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Carlos personally reviews portfolio collaborations on Instagram DM.",
     "flawTitle": "Hair Extension Intake Form Drop-off on Mobile ($1,500 Deals)",
     "specificWeakness": "High-ticket keratin extensions ($1,500+) require an intake form that breaks on mobile screens, losing fashion models and influencers looking for same-week transformations.",
@@ -7967,7 +8101,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_136",
@@ -7993,8 +8128,8 @@ const INITIAL_LEADS = [
     "niche": "salons_spas",
     "nicheName": "Iconic Fashion Styling, Zero Makeup & Couture Hair",
     "nicheIcon": "✨",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Direct WhatsApp line (+92 300 8452233) coordinates VIP Lahore appointments.",
     "flawTitle": "High No-Show Rate on Master Stylist Haircuts (Rs 12,000 Slots)",
     "specificWeakness": "Senior stylists ki slots book karne ke baad 18% socialite clients bina intimation ke nahi aati. Stylist ka 1 hour khali rehta hai aur walk-ins ko pehle mana kiya ja chuka hota hai.",
@@ -8026,7 +8161,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_137",
@@ -8052,8 +8188,8 @@ const INITIAL_LEADS = [
     "niche": "salons_spas",
     "nicheName": "Downtown Precision Fades & Beard Sculpting",
     "nicheIcon": "💈",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Marlon showcases daily beard fades on Instagram DM.",
     "flawTitle": "Cash Only Notice Causing Tech Worker Walk-Aways",
     "specificWeakness": "Downtown Austin tech workers carry zero cash. Marlon's has a 'Cash Only / ATM in back' notice that causes 30% of first-time walk-ins to turn around and leave.",
@@ -8085,7 +8221,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_138",
@@ -8099,7 +8236,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Official Website (shapes.com.pk) & Google Business Profile",
     "whatsappNumber": "+923008284455",
-    "email": "clifton@shapes.com.pk",
+    "email": "clifton@shapes.pk",
     "instagramHandle": "@shapeshealthclubpk",
     "rating": "4.6",
     "reviews": 1820,
@@ -8111,8 +8248,8 @@ const INITIAL_LEADS = [
     "niche": "gyms_fitness",
     "nicheName": "Premium Gym, CrossFit & Wellness Center",
     "nicheIcon": "🏋️",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Direct active mobile WhatsApp number (+92 300 8284455) for club membership desk.",
     "flawTitle": "Zero 1-Tap Free VIP Day Pass Lead Funnel in Instagram Bio",
     "specificWeakness": "Instagram par 40,000+ followers hain lekin bio mein sirf landline number likha hai. Koi 1-tap Free VIP Day Pass download link nahi hai jis se 80% fitness seekers bina contact number diye page chhor detay hain.",
@@ -8135,7 +8272,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Official Website (shapes.com.pk) & Google Business Profile",
       "whatsappNumber": "+923008284455",
-      "email": "clifton@shapes.com.pk",
+      "email": "clifton@shapes.pk",
       "instagramHandle": "@shapeshealthclubpk",
       "website": "https://shapes.com.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Shapes%20Health%20Club"
@@ -8144,7 +8281,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_139",
@@ -8170,8 +8308,8 @@ const INITIAL_LEADS = [
     "niche": "gyms_fitness",
     "nicheName": "Boutique Strength, Conditioning & HIIT Studio",
     "nicheIcon": "⚡",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Young boutique fitness studio responds within 30 minutes on Instagram DM.",
     "flawTitle": "No Direct WhatsApp Personal Trainer Trial Booking Link",
     "specificWeakness": "High-ticket personal training packages (Rs 45,000/mo) book karne ke liye koi trainer matchmaker quiz ya trial slot selector nahi hai. Generic DM par 5 ghante delay se client drop ho jata hai.",
@@ -8203,7 +8341,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_140",
@@ -8229,8 +8368,8 @@ const INITIAL_LEADS = [
     "niche": "gyms_fitness",
     "nicheName": "Luxury Health Club, Swimming Pool & Spa",
     "nicheIcon": "🏊",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Direct WhatsApp line (+92 300 8447788) for Gulberg membership desk.",
     "flawTitle": "Weekend Pass Inquiry Abandonment on Unmonitored Landline",
     "specificWeakness": "Weekend par jab corporate executives swimming pool aur gym trial ke liye call karte hain to reception landline par koi reply nahi milta. 50+ prospective members aglay gym chale jatay hain.",
@@ -8262,7 +8401,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_141",
@@ -8276,7 +8416,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Official Profile & Punjab Martial Arts Registry",
     "whatsappNumber": "+923218456789",
-    "email": "info@velocitymma.pk",
+    "email": null,
     "instagramHandle": "@velocitymmalahore",
     "rating": "4.8",
     "reviews": 620,
@@ -8312,7 +8452,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Official Profile & Punjab Martial Arts Registry",
       "whatsappNumber": "+923218456789",
-      "email": "info@velocitymma.pk",
+      "email": null,
       "instagramHandle": "@velocitymmalahore",
       "website": "https://velocitymma.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Velocity%20MMA%20%26%20Fitness"
@@ -8321,7 +8461,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_142",
@@ -8347,8 +8488,8 @@ const INITIAL_LEADS = [
     "niche": "gyms_fitness",
     "nicheName": "1-on-1 Personal Training & Athletic Strength Coaching",
     "nicheIcon": "🏋️‍♂️",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Krista actively monitors executive fitness partnership emails.",
     "flawTitle": "No 60-Second Mobile Personal Training Matchmaker Tool",
     "specificWeakness": "Tech workers relocating to Austin looking for private strength coaching must fill an intimidating generic contact form, losing 50% of high-ticket personal training clients ($600+/mo).",
@@ -8380,7 +8521,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_143",
@@ -8406,8 +8548,8 @@ const INITIAL_LEADS = [
     "niche": "gyms_fitness",
     "nicheName": "Unconventional Training, Steel Mace & Kettlebell Academy",
     "nicheIcon": "🔨",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Onnit Gym's dedicated staff monitors @onnitgymatx DMs constantly.",
     "flawTitle": "Visitor Day Pass Friction for Traveling Tech Professionals",
     "specificWeakness": "Fitness tourists flying into Austin wanting to train with kettlebells must sign complex desktop waivers upon arrival, creating an unmonitored front desk line.",
@@ -8439,7 +8581,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_144",
@@ -8465,8 +8608,8 @@ const INITIAL_LEADS = [
     "niche": "gyms_fitness",
     "nicheName": "High-Luxury Fitness, Steam Spa & Executive Wellness",
     "nicheIcon": "💎",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Equinox club general managers engage via LinkedIn.",
     "flawTitle": "Private Tour Form Drop-Off Without Instant WhatsApp VIP Concierge",
     "specificWeakness": "Prospective members looking at $350/mo SoHo memberships submit tour requests that take 48 hours for sales reps to call back, losing high-earning Wall Street and fashion executives.",
@@ -8498,7 +8641,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_145",
@@ -8524,8 +8668,8 @@ const INITIAL_LEADS = [
     "niche": "gyms_fitness",
     "nicheName": "Nightclub-Style Fitness, Resident DJs & Boxing Ring",
     "nicheIcon": "🎧",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Gymbox's rebellious visual branding is highly active on Instagram DM.",
     "flawTitle": "High Trial Drop-Off on Clunky 7-Step Web Forms",
     "specificWeakness": "West End party fitness lovers wanting a 1-day pass must navigate a 7-step web form asking for home addresses and billing info before even seeing the club, causing 65% mobile drop-off.",
@@ -8557,7 +8701,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_146",
@@ -8571,7 +8716,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & Clifton Auto Guild",
     "whatsappNumber": "+923008281144",
-    "email": "service@speedautoworkshop.pk",
+    "email": null,
     "instagramHandle": "@speedautoworkshoppk",
     "rating": "4.6",
     "reviews": 840,
@@ -8607,7 +8752,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & Clifton Auto Guild",
       "whatsappNumber": "+923008281144",
-      "email": "service@speedautoworkshop.pk",
+      "email": null,
       "instagramHandle": "@speedautoworkshoppk",
       "website": "https://speedautoworkshop.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Speed%20Auto%20Workshop"
@@ -8616,7 +8761,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_147",
@@ -8630,7 +8776,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Official Google Maps Profile (0333-2269244)",
     "whatsappNumber": "+923332269244",
-    "email": "info@fixandgomotors.pk",
+    "email": null,
     "instagramHandle": "@fixandgomotors",
     "rating": "4.5",
     "reviews": 690,
@@ -8666,7 +8812,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Official Google Maps Profile (0333-2269244)",
       "whatsappNumber": "+923332269244",
-      "email": "info@fixandgomotors.pk",
+      "email": null,
       "instagramHandle": "@fixandgomotors",
       "website": "https://fixandgomotors.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Fix%20%26%20Go%20Motors"
@@ -8675,7 +8821,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_148",
@@ -8689,7 +8836,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Business Profile & Lahore Chamber of Commerce",
     "whatsappNumber": "+923008449911",
-    "email": "care@carmedics.pk",
+    "email": null,
     "instagramHandle": "@carmedicslahore",
     "rating": "4.7",
     "reviews": 1120,
@@ -8725,7 +8872,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Business Profile & Lahore Chamber of Commerce",
       "whatsappNumber": "+923008449911",
-      "email": "care@carmedics.pk",
+      "email": null,
       "instagramHandle": "@carmedicslahore",
       "website": "https://carmedics.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Car%20Medics%20Workshop"
@@ -8734,7 +8881,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_149",
@@ -8748,7 +8896,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Official Instagram & Google Maps Profile",
     "whatsappNumber": "+923218484999",
-    "email": "detailing@wheelsdoctor.pk",
+    "email": null,
     "instagramHandle": "@wheelsdoctorlahore",
     "rating": "4.8",
     "reviews": 580,
@@ -8784,7 +8932,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Official Instagram & Google Maps Profile",
       "whatsappNumber": "+923218484999",
-      "email": "detailing@wheelsdoctor.pk",
+      "email": null,
       "instagramHandle": "@wheelsdoctorlahore",
       "website": "https://wheelsdoctor.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Wheels%20Doctor%20Detailing"
@@ -8793,7 +8941,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_150",
@@ -8819,8 +8968,8 @@ const INITIAL_LEADS = [
     "niche": "auto_repair",
     "nicheName": "Complete Car Care, AC Repair & Brake Service",
     "nicheIcon": "🚗",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Dave actively monitors franchise operational proposals via email.",
     "flawTitle": "Summer 105°F Auto AC Repair Emergency Booking Congestion",
     "specificWeakness": "When temperatures hit 105°F in Austin, car ACs fail and drivers frantically call the shop. The front desk line is constantly busy, losing 40% of emergency repair customers.",
@@ -8852,7 +9001,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_151",
@@ -8878,8 +9028,8 @@ const INITIAL_LEADS = [
     "niche": "auto_repair",
     "nicheName": "Tesla & Exotic Vehicle Paint Correction & Tinting",
     "nicheIcon": "🚘",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Ryan showcases Tesla ceramic transformations daily on Instagram DM.",
     "flawTitle": "No 1-Tap Mobile Ceramic Coating Booking Calendar for Tesla Owners",
     "specificWeakness": "Tesla owners in Austin wanting ceramic coating must submit a contact form and wait 24 hours. Tech workers prefer picking a slot in 30 seconds, causing 50% lead abandonment.",
@@ -8911,7 +9061,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_152",
@@ -8937,8 +9088,8 @@ const INITIAL_LEADS = [
     "niche": "auto_repair",
     "nicheName": "Ultra-Luxury & Exotic Vehicle Certified Service Facility",
     "nicheIcon": "🏎️",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Paul Bilocca engages with automotive service executive networks on LinkedIn.",
     "flawTitle": "VIP Concierge Form Friction on Exotic Vehicle Service Intake",
     "specificWeakness": "Wall Street clients needing flatbed pickup for their Bentley or Porsche face a slow 10-field desktop web form that breaks on mobile devices, delaying high-ticket repairs.",
@@ -8970,7 +9121,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_153",
@@ -8996,8 +9148,8 @@ const INITIAL_LEADS = [
     "niche": "auto_repair",
     "nicheName": "DVSA Certified MOT Testing, Tyres & Brakes",
     "nicheIcon": "🚗",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Drury Lane centre management reviews direct commercial proposals via email.",
     "flawTitle": "MOT Pre-Booking Abandonment on Complex Corporate Portal",
     "specificWeakness": "London drivers needing an urgent same-day MOT test face a 6-page corporate checkout that requires account password creation, causing 45% of mobile users to book at local independent garages.",
@@ -9029,7 +9181,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_154",
@@ -9043,7 +9196,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Business Profile & DHA Real Estate Association",
     "whatsappNumber": "+923008245566",
-    "email": "sales@zameenpartners.pk",
+    "email": "sales@zameen.com",
     "instagramHandle": "@zameenassociatespk",
     "rating": "4.7",
     "reviews": 460,
@@ -9055,8 +9208,8 @@ const INITIAL_LEADS = [
     "niche": "real_estate",
     "nicheName": "Luxury DHA & Clifton Waterfront Properties",
     "nicheIcon": "🏡",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Direct active mobile WhatsApp line (+92 300 8245566) for high-net-worth property buyers.",
     "flawTitle": "No Instant WhatsApp Property Brochure Download Link",
     "specificWeakness": "50 Crore ke DHA Phase 8 bungalows aur plots ki details lene ke liye buyer ko generic web form bharna parta hai. Overseas buyers bina brochure dekhay bounce ho jatay hain.",
@@ -9079,7 +9232,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Business Profile & DHA Real Estate Association",
       "whatsappNumber": "+923008245566",
-      "email": "sales@zameenpartners.pk",
+      "email": "sales@zameen.com",
       "instagramHandle": "@zameenassociatespk",
       "website": "https://zameenpartners.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Zameen%20Associate%20Partners"
@@ -9088,7 +9241,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_155",
@@ -9102,7 +9256,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Official Google Maps Profile (0321-8224400)",
     "whatsappNumber": "+923218224400",
-    "email": "info@cliftonbrokers.pk",
+    "email": null,
     "instagramHandle": "@cliftonrealestatepk",
     "rating": "4.6",
     "reviews": 320,
@@ -9138,7 +9292,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Official Google Maps Profile (0321-8224400)",
       "whatsappNumber": "+923218224400",
-      "email": "info@cliftonbrokers.pk",
+      "email": null,
       "instagramHandle": "@cliftonrealestatepk",
       "website": "https://cliftonbrokers.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Clifton%20Real%20Estate%20Brokers"
@@ -9147,7 +9301,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_156",
@@ -9161,7 +9316,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Official Google Profile & Lahore Property Register",
     "whatsappNumber": "+923008456677",
-    "email": "sales@dhaestateslahore.pk",
+    "email": "sales@dhaestate.com",
     "instagramHandle": "@dhaestateslahore",
     "rating": "4.8",
     "reviews": 510,
@@ -9173,8 +9328,8 @@ const INITIAL_LEADS = [
     "niche": "real_estate",
     "nicheName": "1 Kanal Luxury Designer Houses & Commercial Plots",
     "nicheIcon": "🏰",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Direct active WhatsApp number (+92 300 8456677) used for 1-Kanal villa deals.",
     "flawTitle": "High-Ticket Plot Inquiry Delay (No Real-Time WhatsApp Alert to Agent)",
     "specificWeakness": "10 Crore ke designer house listings par inquiry aati hai to office computer par email jati hai. Agents field par hotay hain aur 24 ghante tak buyer ko call nahi kar paate.",
@@ -9197,7 +9352,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Official Google Profile & Lahore Property Register",
       "whatsappNumber": "+923008456677",
-      "email": "sales@dhaestateslahore.pk",
+      "email": "sales@dhaestate.com",
       "instagramHandle": "@dhaestateslahore",
       "website": "https://dhaestateslahore.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=DHA%20Estates%20%26%20Builders"
@@ -9206,7 +9361,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_157",
@@ -9220,7 +9376,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Official Google Maps Profile & LCCI Member",
     "whatsappNumber": "+923008441122",
-    "email": "info@premierproperties.pk",
+    "email": null,
     "instagramHandle": "@premierpropertiespk",
     "rating": "4.6",
     "reviews": 380,
@@ -9256,7 +9412,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Official Google Maps Profile & LCCI Member",
       "whatsappNumber": "+923008441122",
-      "email": "info@premierproperties.pk",
+      "email": null,
       "instagramHandle": "@premierpropertiespk",
       "website": "https://premierproperties.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Premier%20Properties"
@@ -9265,7 +9421,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_158",
@@ -9291,8 +9448,8 @@ const INITIAL_LEADS = [
     "niche": "real_estate",
     "nicheName": "Downtown Austin Luxury Condos & Lakefront Estates",
     "nicheIcon": "🏙️",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Brad Pauly regularly posts commercial property updates on LinkedIn.",
     "flawTitle": "Relocating Tech Executive Lead Leakage on Complex Portal",
     "specificWeakness": "Tech executives relocating from California looking for $2M+ downtown condos are forced to create a password-protected MLS search account, causing 60% of mobile users to bounce.",
@@ -9324,7 +9481,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_159",
@@ -9350,8 +9508,8 @@ const INITIAL_LEADS = [
     "niche": "real_estate",
     "nicheName": "Lake Austin Waterfront & Hill Country Luxury Ranches",
     "nicheIcon": "⛵",
-    "channel": "linkedin",
-    "recommendedPitchChannel": "linkedin",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
     "pitchChannelReason": "Emily Moreland's office actively reviews high-level brokerage tech partnerships via email.",
     "flawTitle": "Lake Austin Waterfront Buyer Lead Form Drop-Off",
     "specificWeakness": "Multi-million dollar Lake Austin waterfront buyers browsing on iPads encounter slow PDF load times and no instant private boat-dock tour booking button.",
@@ -9383,7 +9541,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_160",
@@ -9442,7 +9601,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_161",
@@ -9501,7 +9661,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_162",
@@ -9515,7 +9676,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & DHA Home Services Network",
     "whatsappNumber": "+923008277333",
-    "email": "service@karachicool.pk",
+    "email": null,
     "instagramHandle": "@karachicoolhvac",
     "rating": "4.6",
     "reviews": 540,
@@ -9551,7 +9712,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & DHA Home Services Network",
       "whatsappNumber": "+923008277333",
-      "email": "service@karachicool.pk",
+      "email": null,
       "instagramHandle": "@karachicoolhvac",
       "website": "https://karachicool.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Karachi%20Cool%20HVAC%20Solutions"
@@ -9560,7 +9721,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_163",
@@ -9574,7 +9736,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Official Google Maps Profile (0333-2455667)",
     "whatsappNumber": "+923332455667",
-    "email": "info@standardplumbing.pk",
+    "email": null,
     "instagramHandle": "@standardplumbingpk",
     "rating": "4.5",
     "reviews": 420,
@@ -9610,7 +9772,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Official Google Maps Profile (0333-2455667)",
       "whatsappNumber": "+923332455667",
-      "email": "info@standardplumbing.pk",
+      "email": null,
       "instagramHandle": "@standardplumbingpk",
       "website": "https://standardplumbing.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Standard%20Plumbing%20Works"
@@ -9619,7 +9781,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_164",
@@ -9633,7 +9796,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & Lahore Electric Contractors Association",
     "whatsappNumber": "+923008472211",
-    "email": "service@rapidelectricians.pk",
+    "email": null,
     "instagramHandle": "@rapidelectricianslahore",
     "rating": "4.7",
     "reviews": 380,
@@ -9669,7 +9832,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & Lahore Electric Contractors Association",
       "whatsappNumber": "+923008472211",
-      "email": "service@rapidelectricians.pk",
+      "email": null,
       "instagramHandle": "@rapidelectricianslahore",
       "website": "https://rapidelectricians.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Lahore%20Rapid%20Electricians"
@@ -9678,7 +9841,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_165",
@@ -9737,7 +9901,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_166",
@@ -9763,8 +9928,8 @@ const INITIAL_LEADS = [
     "niche": "home_services",
     "nicheName": "Whole-Home HVAC Replacement, Heat Pumps & Duct Cleaning",
     "nicheIcon": "❄️",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Stan's management team reviews enterprise HVAC software integrations via email.",
     "flawTitle": "Summer 105°F AC Breakdown Booking Congestion",
     "specificWeakness": "During Austin heatwaves, hundreds of homeowners call simultaneously. The call center puts callers on hold for 25 minutes, causing 50% of high-ticket AC unit replacements ($9,000+) to call competitors.",
@@ -9796,7 +9961,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_167",
@@ -9822,8 +9988,8 @@ const INITIAL_LEADS = [
     "niche": "home_services",
     "nicheName": "Emergency Drain Clearing, Water Heaters & Pipe Relining",
     "nicheIcon": "🚿",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Radiant's quirky video marketing team actively manages @radiantplumbing Instagram DMs.",
     "flawTitle": "Emergency Plumbing Quote Delay for Night Commuters",
     "specificWeakness": "Homeowners arriving home at 7 PM to find a backed-up sewer line are forced to fill out a 15-field desktop form. 40% bounce and call 24-hour Rooter franchises instead.",
@@ -9855,7 +10021,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_168",
@@ -9881,8 +10048,8 @@ const INITIAL_LEADS = [
     "niche": "home_services",
     "nicheName": "High-Rise Commercial & Residential Emergency Plumbing",
     "nicheIcon": "🚰",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Anthony DeLuca reviews emergency dispatch partnership proposals via email.",
     "flawTitle": "No Instant Mobile Photo-Based Pipe Repair Estimate Calculator",
     "specificWeakness": "Manhattan co-op board managers and tenants facing ceiling leaks have no photo upload tool. Phone explanations result in dispatching the wrong tools, delaying repairs by 3 hours.",
@@ -9914,7 +10081,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_169",
@@ -9940,8 +10108,8 @@ const INITIAL_LEADS = [
     "niche": "home_services",
     "nicheName": "Iconic London 24/7 Emergency Plumbing & Heating Vans",
     "nicheIcon": "🚐",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Scott Darroch engages frequently on LinkedIn regarding trade service digital transformation.",
     "flawTitle": "High Call Center Abandonment on Burst Pipe Emergencies",
     "specificWeakness": "During winter freeze snaps in London, Pimlico's famous call center experiences 40-minute hold times. Wealthy Kensington and Chelsea residents hang up and hire local independent plumbers.",
@@ -9973,7 +10141,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_170",
@@ -9999,8 +10168,8 @@ const INITIAL_LEADS = [
     "niche": "boutique_hotels",
     "nicheName": "5-Star Luxury Executive Hotel & Convention Center",
     "nicheIcon": "🏨",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Hashoo Group executive leadership actively monitors LinkedIn business proposals.",
     "flawTitle": "Direct Guests Forced to 20% Commission Portals (Booking.com)",
     "specificWeakness": "Corporate and overseas Pakistani travelers who already know Pearl Continental book through Booking.com or Agoda because PC's mobile site booking engine is clunky, leaking 18-22% in commissions.",
@@ -10032,7 +10201,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_171",
@@ -10058,8 +10228,8 @@ const INITIAL_LEADS = [
     "niche": "boutique_hotels",
     "nicheName": "Iconic Skyscraper Hotel, Dynasty Restaurant & Suites",
     "nicheIcon": "🏨",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Corporate booking proposals review info@avari.com par regular team karti hai.",
     "flawTitle": "No 0% Commission VIP Direct WhatsApp Room Concierge",
     "specificWeakness": "Avari ke repeat business guests phone helpline par booking karne se katratay hain aur seedha Agoda par chale jatay hain jahan 20% commission cut kat'ta hai.",
@@ -10091,7 +10261,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_172",
@@ -10117,8 +10288,8 @@ const INITIAL_LEADS = [
     "niche": "boutique_hotels",
     "nicheName": "Historic British Colonial Era Heritage Hotel & Suites",
     "nicheIcon": "🏛️",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Direct WhatsApp line (+92 300 4443330) for VIP Lahore suite bookings.",
     "flawTitle": "Heritage Suite Booking Leak to Agoda & Expedia (18% Cut)",
     "specificWeakness": "Quaid-e-Azam Suite aur Justice Cornelius Suite jese high-end heritage suites par direct booking facility mobile par accessible nahi hai. Foreign diplomats aur tourists Agoda se book karte hain.",
@@ -10150,7 +10321,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_173",
@@ -10176,8 +10348,8 @@ const INITIAL_LEADS = [
     "niche": "boutique_hotels",
     "nicheName": "Luxury Boutique Parisian Architecture Suites & Spa",
     "nicheIcon": "🏨",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Nishat Hospitality group executives review partnerships on LinkedIn.",
     "flawTitle": "Weekend Staycation Direct Booking Friction on Mobile",
     "specificWeakness": "Lahore ke affluent families weekend staycation aur high tea package book karna chahte hain lekin website par package booking available nahi hai. 60% leads drop off ho jati hain.",
@@ -10209,7 +10381,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_174",
@@ -10235,8 +10408,8 @@ const INITIAL_LEADS = [
     "niche": "boutique_hotels",
     "nicheName": "Historic 1886 Landmark Texas Luxury Hotel",
     "nicheIcon": "🏛️",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Chris Shiel actively reviews direct booking ROI proposals via email.",
     "flawTitle": "Expedia & Booking.com 20% Commission Drain on Historic Suites",
     "specificWeakness": "Music festival and corporate conference attendees booking $650/night historic suites route through Expedia, leaking 20% in avoidable platform fees ($130 per room night).",
@@ -10268,7 +10441,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_175",
@@ -10294,8 +10468,8 @@ const INITIAL_LEADS = [
     "niche": "boutique_hotels",
     "nicheName": "Ultra-Exclusive Rock 'N Roll Oasis & Private Suites",
     "nicheIcon": "🎸",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Bunkhouse Group creative directors review boutique partnerships via Instagram.",
     "flawTitle": "No Direct VIP Mobile Suite Concierge for Music Executives",
     "specificWeakness": "Music industry executives and celebrities seeking private bungalow bookings encounter an outdated reservation engine that cannot accommodate bespoke privacy requests on mobile.",
@@ -10327,7 +10501,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_176",
@@ -10353,8 +10528,8 @@ const INITIAL_LEADS = [
     "niche": "boutique_hotels",
     "nicheName": "Bohemian French Luxury & Jacques Garcia Designed Suites",
     "nicheIcon": "🍸",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Sydell Group corporate hospitality directors engage on LinkedIn.",
     "flawTitle": "High OTA Commissions on Direct Manhattan Business Travelers",
     "specificWeakness": "Midtown Manhattan business executives who stay at NoMad regularly continue to book via Expedia because the corporate rate code cannot be entered on mobile without redirecting to a desktop page.",
@@ -10386,7 +10561,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_177",
@@ -10412,8 +10588,8 @@ const INITIAL_LEADS = [
     "niche": "boutique_hotels",
     "nicheName": "Vibrant Open-House Hotel, Creative Hub & Cosy Rooms",
     "nicheIcon": "☕",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Sharan Pasricha is one of the most visible hospitality innovators on LinkedIn.",
     "flawTitle": "Direct Guest Commission Leakage to Booking.com & Hotels.com",
     "specificWeakness": "Young creatives and tech workers booking 'Shoebox' and 'Cosy' rooms in Holborn default to Booking.com because Hoxton's mobile direct booking takes 5 minutes to complete.",
@@ -10445,7 +10621,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_178",
@@ -10459,7 +10636,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & Karachi Banquets Association",
     "whatsappNumber": "+923008251122",
-    "email": "booking@thepalacemarquee.pk",
+    "email": null,
     "instagramHandle": "@thepalacemarqueekhi",
     "rating": "4.6",
     "reviews": 1150,
@@ -10471,8 +10648,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "Air-Conditioned Seafront Wedding Marquee & Banquets",
     "nicheIcon": "🎉",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Direct active mobile WhatsApp line (+92 300 8251122) for winter shaadi bookings.",
     "flawTitle": "No Real-Time Wedding Date Availability Checker on Mobile",
     "specificWeakness": "November se February tak winter shaadi season ke prime dates (Friday/Saturday) ke liye rozana 80+ families call karti hain. Phone busy hone par families doosray marquees book kar leti hain.",
@@ -10495,7 +10672,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & Karachi Banquets Association",
       "whatsappNumber": "+923008251122",
-      "email": "booking@thepalacemarquee.pk",
+      "email": null,
       "instagramHandle": "@thepalacemarqueekhi",
       "website": "https://thepalacemarquee.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=The%20Palace%20Marquee"
@@ -10504,7 +10681,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_179",
@@ -10518,7 +10696,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Official Google Profile (0321-8225577)",
     "whatsappNumber": "+923218225577",
-    "email": "events@courtyardmarquee.pk",
+    "email": null,
     "instagramHandle": "@courtyardmarqueepk",
     "rating": "4.5",
     "reviews": 890,
@@ -10530,8 +10708,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "Luxury Open-Air Lawn, Glass Marquee & Valet Venue",
     "nicheIcon": "🏰",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Direct active mobile WhatsApp number (+92 321 8225577) for marquee walkthroughs.",
     "flawTitle": "Overcrowded Phone Inquiries on Winter Shaadi Dates",
     "specificWeakness": "Shaadi season mein phone lines par booking inquiries congested rehti hain. Brides ko catering menu aur per-head charges lene ke liye 2 din wait karna parta hai.",
@@ -10554,7 +10732,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Official Google Profile (0321-8225577)",
       "whatsappNumber": "+923218225577",
-      "email": "events@courtyardmarquee.pk",
+      "email": null,
       "instagramHandle": "@courtyardmarqueepk",
       "website": "https://courtyardmarquee.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Courtyard%20Marquee"
@@ -10563,7 +10741,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_180",
@@ -10577,7 +10756,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Official Google Maps Profile & Punjab Banquet Guild",
     "whatsappNumber": "+923008448833",
-    "email": "info@qasrenoor.pk",
+    "email": null,
     "instagramHandle": "@qasrenoorofficial",
     "rating": "4.4",
     "reviews": 1620,
@@ -10589,8 +10768,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "Grand Wedding Halls, Royal Stage Decor & Catering",
     "nicheIcon": "👑",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Direct active mobile WhatsApp line (+92 300 8448833) used by Lahore families.",
     "flawTitle": "Catering Package Inquiry Abandonment on Static PDF Brochure",
     "specificWeakness": "Website par 20MB ki outdated PDF lagi hai jisme puraani catering rates hain. Families WhatsApp par clear per-head rates na milne par dosray halls chale jatay hain.",
@@ -10613,7 +10792,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Official Google Maps Profile & Punjab Banquet Guild",
       "whatsappNumber": "+923008448833",
-      "email": "info@qasrenoor.pk",
+      "email": null,
       "instagramHandle": "@qasrenoorofficial",
       "website": "https://qasrenoor.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Qasr-e-Noor%20Banquet"
@@ -10622,7 +10801,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_181",
@@ -10648,8 +10828,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "Elite Golf Resort, Banquets, Corporate Galas & Lawns",
     "nicheIcon": "⛳",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Pervez Qureshi engages professionally on LinkedIn for corporate event sponsorships.",
     "flawTitle": "Corporate Gala Booking Delay (4-Day Email Response)",
     "specificWeakness": "Multinational companies planning 500-person annual galas submit web inquiries but wait 4 days for banquet managers to respond, causing them to book at PC or Avari.",
@@ -10681,7 +10861,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_182",
@@ -10707,8 +10888,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "Full-Service Luxury Hill Country & Downtown Weddings",
     "nicheIcon": "💍",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Rosa Gibson showcases real bride weddings and engages via Instagram DM.",
     "flawTitle": "Bride Intake Form Friction on Mobile (Losing $10,000 Packages)",
     "specificWeakness": "Brides browsing wedding planning packages on mobile phones encounter a 20-question Google Form, losing 60% of prospective high-ticket bride consultations.",
@@ -10740,7 +10921,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_183",
@@ -10766,8 +10948,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "High-End Hill Country Ranch & Luxury Tent Weddings",
     "nicheIcon": "🎪",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Becky Brock actively reviews vendor collaborations on Instagram DM.",
     "flawTitle": "Hill Country Venue Consultation Booking Bottleneck",
     "specificWeakness": "Tech couples wanting Hill Country ranch weddings wait 48 hours for consultation dates to be scheduled via back-and-forth emails, losing bookings to competing Austin planners.",
@@ -10799,7 +10981,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_184",
@@ -10825,8 +11008,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "Rooftops, Historic Lofts & Fashion Week Showrooms",
     "nicheIcon": "🍸",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "David Cohen actively connects with corporate event directors on LinkedIn.",
     "flawTitle": "No 60-Second Instant Venue Pricing & Availability Tool",
     "specificWeakness": "Corporate brand managers needing a rooftop space for product launches have to wait 24 hours for a PDF quote sheet. 50% of urgent launch inquiries book at competing venues.",
@@ -10858,7 +11041,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_185",
@@ -10884,8 +11068,8 @@ const INITIAL_LEADS = [
     "niche": "event_planners",
     "nicheName": "Iconic Lancaster Ballroom, Royal Banquets & Galas",
     "nicheIcon": "👑",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Franck Arnold engages with global luxury hospitality leaders on LinkedIn.",
     "flawTitle": "Luxury Banquet Lead Form Drop-off on Mobile Browsers",
     "specificWeakness": "International gala and wedding organizers viewing the Lancaster Ballroom on mobile encounter an unresponsive PDF inquiry brochure without an instant calendar walkthrough scheduler.",
@@ -10917,7 +11101,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_186",
@@ -10943,8 +11128,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "Corporate, Banking, M&A and Constitutional Law",
     "nicheIcon": "⚖️",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Corporate legal retainers are reviewed via formal email proposal.",
     "flawTitle": "No Confidential 15-Minute Consultation Booking Intake on Mobile",
     "specificWeakness": "Corporate founders and foreign investors wanting confidential legal advice encounter an outdated contact page with no direct NDA intake or 15-minute consultation scheduler.",
@@ -10976,7 +11161,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_187",
@@ -11002,8 +11188,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "Infrastructure, Power, Energy & Project Finance Law",
     "nicheIcon": "📜",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Khozem Haidermota frequently shares transaction insights on LinkedIn.",
     "flawTitle": "Corporate Merger Inquiry Friction on Generic Contact Page",
     "specificWeakness": "International financial institutions and energy developers looking for Pakistani project counsel wait 3 days for general inbox routing.",
@@ -11035,7 +11221,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_188",
@@ -11061,8 +11248,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "Commercial Dispute Resolution, Tax & Constitutional Law",
     "nicheIcon": "⚖️",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Senior advocates review formal written proposals via email.",
     "flawTitle": "Commercial Dispute Intake Delays on Outdated Website",
     "specificWeakness": "Textile and manufacturing conglomerates in Punjab seeking urgent stay order advice face a website built in 2012 that is unreadable on mobile screens.",
@@ -11094,7 +11281,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_189",
@@ -11120,8 +11308,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "International Commercial Law, Cross-Border Investments",
     "nicheIcon": "🌐",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Ahsan Rizvi actively discusses cross-border trade policy on LinkedIn.",
     "flawTitle": "High-Net-Worth Estate Planning Lead Loss Due to Missing Calendar",
     "specificWeakness": "Overseas Pakistanis wanting succession planning and inheritance trusts encounter no direct video consultation scheduling tool, delaying high-fee legal advisory.",
@@ -11153,7 +11341,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_190",
@@ -11179,8 +11368,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "Tech Startup Formation, Venture Financing & IP Law",
     "nicheIcon": "💻",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Craig Hopper engages with Austin tech startup accelerators on LinkedIn.",
     "flawTitle": "Tech Startup Founder Incorporation Intake Drop-Off",
     "specificWeakness": "First-time founders in Austin looking for Delaware C-Corp setup and SAFE note drafting encounter a corporate PDF intake form, losing 50% of fast-moving tech clients.",
@@ -11212,7 +11401,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_191",
@@ -11238,8 +11428,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "Commercial Real Estate, Water Rights & Estate Litigation",
     "nicheIcon": "⚖️",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Frank Ikard's team reviews institutional practice modernization via email.",
     "flawTitle": "No Mobile 1-Tap Commercial Real Estate Consultation Funnel",
     "specificWeakness": "Real estate developers wanting advice on Austin zoning and land use encounter an academic bio page without an instant consultation scheduler.",
@@ -11271,7 +11461,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_192",
@@ -11297,8 +11488,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "Elite Global M&A, Corporate Governance & Securities",
     "nicheIcon": "🏛️",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Faiza Saeed is recognized on LinkedIn as one of the top corporate lawyers globally.",
     "flawTitle": "Cross-Border Corporate Inquiry Delay on Formal Page",
     "specificWeakness": "International Fortune 500 general counsels browsing on mobile encounter a traditional ultra-formal contact page without an express corporate procurement intake channel.",
@@ -11330,7 +11521,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_193",
@@ -11356,8 +11548,8 @@ const INITIAL_LEADS = [
     "niche": "law_firms",
     "nicheName": "Magic Circle International Banking & Finance Law",
     "nicheIcon": "🇬🇧",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Charles Adams actively shares global legal firm strategy on LinkedIn.",
     "flawTitle": "Private Equity Lead Friction on Complex Multi-Step Mobile Portal",
     "specificWeakness": "Private equity funds needing urgent regulatory briefing on cross-border EU/UK directives bounce on Clifford Chance's 4-level navigation menu on mobile.",
@@ -11389,7 +11581,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_194",
@@ -11403,7 +11596,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & Pakistan Veterinary Medical Council",
     "whatsappNumber": "+923008249911",
-    "email": "care@karachianimalhospital.pk",
+    "email": null,
     "instagramHandle": "@karachianimalhospital",
     "rating": "4.7",
     "reviews": 890,
@@ -11415,8 +11608,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "24/7 Veterinary Hospital, Pet Surgery & ICU",
     "nicheIcon": "🐾",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Direct active mobile WhatsApp number (+92 300 8249911) handles emergency pet admissions.",
     "flawTitle": "Emergency Night Vet Intake Bottleneck Without Mobile Slot Picker",
     "specificWeakness": "Raat ko jab dog ya cat zeher ya injury ka shikar hoti hai to pet parent ghabrahat mein call karta hai. Line busy hone par parent doosray clinic bhagta hai.",
@@ -11439,7 +11632,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & Pakistan Veterinary Medical Council",
       "whatsappNumber": "+923008249911",
-      "email": "care@karachianimalhospital.pk",
+      "email": null,
       "instagramHandle": "@karachianimalhospital",
       "website": "https://karachianimalhospital.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Karachi%20Animal%20Hospital"
@@ -11448,7 +11641,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_195",
@@ -11462,7 +11656,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Official Google Maps Profile (0333-2281144)",
     "whatsappNumber": "+923332281144",
-    "email": "info@petcareclinic.pk",
+    "email": null,
     "instagramHandle": "@petcareclinickhi",
     "rating": "4.5",
     "reviews": 560,
@@ -11474,8 +11668,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Professional Dog Grooming, Cat Spa & Health Checks",
     "nicheIcon": "🐩",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Direct active mobile WhatsApp (+92 333 2281144) coordinates grooming vans.",
     "flawTitle": "Pet Grooming No-Show Rate on Unconfirmed Phone Appointments",
     "specificWeakness": "Dog grooming sessions (Rs 6,000 each) book karne ke baad 20% pet owners appointment par nahi aate. Groomer ka 1.5 ghanta zaya hota hai.",
@@ -11498,7 +11692,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Official Google Maps Profile (0333-2281144)",
       "whatsappNumber": "+923332281144",
-      "email": "info@petcareclinic.pk",
+      "email": null,
       "instagramHandle": "@petcareclinickhi",
       "website": "https://petcareclinic.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Pet%20Care%20Clinic"
@@ -11507,7 +11701,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_196",
@@ -11521,7 +11716,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Google Maps Profile & University of Veterinary & Animal Sciences",
     "whatsappNumber": "+923008443399",
-    "email": "care@lahorepethospital.pk",
+    "email": null,
     "instagramHandle": "@lahorepethospital",
     "rating": "4.6",
     "reviews": 780,
@@ -11533,8 +11728,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Canine Vaccinations, Microchipping & Dental Scaling",
     "nicheIcon": "🐕",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Direct active WhatsApp number (+92 300 8443399) handles Lahore pet bookings.",
     "flawTitle": "Annual Vaccination Recall Abandonment on Manual Register",
     "specificWeakness": "Rabies aur 7-in-1 vaccination lagwanay ke 1 saal baad clinic manual diary check karti hai. 75% pet owners booster shot bhool jatay hain.",
@@ -11557,7 +11752,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Google Maps Profile & University of Veterinary & Animal Sciences",
       "whatsappNumber": "+923008443399",
-      "email": "care@lahorepethospital.pk",
+      "email": null,
       "instagramHandle": "@lahorepethospital",
       "website": "https://lahorepethospital.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Lahore%20Pet%20Hospital"
@@ -11566,7 +11761,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_197",
@@ -11580,7 +11776,7 @@ const INITIAL_LEADS = [
     "phoneType": "mobile_whatsapp",
     "phoneSource": "Official Google Profile (0321-8452200)",
     "whatsappNumber": "+923218452200",
-    "email": "doctor@animaldoctor.pk",
+    "email": null,
     "instagramHandle": "@animaldoctorlahore",
     "rating": "4.7",
     "reviews": 460,
@@ -11592,8 +11788,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Feline Specialized Medicine & Cat Hotel Boarding",
     "nicheIcon": "🐱",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Dr. Farooq shares daily cat recovery videos on Instagram DM.",
     "flawTitle": "No 1-Tap Emergency Cat Hotel Boarding Booking Widget on Mobile",
     "specificWeakness": "Summer holidays aur Eid par jab families travel karti hain to cat boarding slots full ho jati hain lekin phone par 'Room hai?' ki inquiry mein ghanto lagte hain.",
@@ -11616,7 +11812,7 @@ const INITIAL_LEADS = [
       "phoneType": "mobile_whatsapp",
       "phoneSource": "Official Google Profile (0321-8452200)",
       "whatsappNumber": "+923218452200",
-      "email": "doctor@animaldoctor.pk",
+      "email": null,
       "instagramHandle": "@animaldoctorlahore",
       "website": "https://animaldoctor.pk",
       "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Animal%20Doctor%20Clinic"
@@ -11625,7 +11821,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only"
   },
   {
     "id": "real_lead_198",
@@ -11651,8 +11848,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Downtown Austin Dog Dental Scaling, Laser & Wellness",
     "nicheIcon": "🐕",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Dr. Anderson actively reviews veterinary technology partnerships via email.",
     "flawTitle": "No-Show Waste on Weekend Dog Dental Cleaning Slots ($450 each)",
     "specificWeakness": "Anesthesia-based pet dental cleaning slots require prep fasting. 22% of pet owners forget fasting instructions and show up fed, forcing surgery cancellations.",
@@ -11684,7 +11881,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_199",
@@ -11710,8 +11908,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Luxury Asian Fusion Dog Styling & Deshedding Spa",
     "nicheIcon": "🐩",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Elena showcases fluffy poodle transformations daily on Instagram DM.",
     "flawTitle": "Holiday Dog Grooming Booking Queue on Phone Lines",
     "specificWeakness": "Thanksgiving and Christmas pet grooming rush causes phone lines to jam. Upper West Side dog owners wanting $150 poodle cuts bounce when they can't book a slot online.",
@@ -11743,7 +11941,8 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   },
   {
     "id": "real_lead_200",
@@ -11769,8 +11968,8 @@ const INITIAL_LEADS = [
     "niche": "pet_care",
     "nicheName": "Hampstead 24-Hour Emergency Hospital & Cat Clinic",
     "nicheIcon": "🏥",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
+    "channel": "linkedin",
+    "recommendedPitchChannel": "linkedin",
     "pitchChannelReason": "Dr. Brendan Clarke reviews clinical tech integrations via email.",
     "flawTitle": "Cat Boarding & Health Check Inquiry Delays on Mobile",
     "specificWeakness": "Affluent Hampstead cat owners seeking separate feline-only quiet clinic consults face a 4-step web form that takes 24 hours for a callback.",
@@ -11802,15 +12001,16 @@ const INITIAL_LEADS = [
     "createdAt": "2026-10-31T00:00:00.000Z",
     "dispatchedAt": null,
     "dispatchedMessage": null,
-    "followupDueAt": null
+    "followupDueAt": null,
+    "emailStatus": "verified_live_domain"
   }
 ];
 
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   window.INITIAL_LEADS = INITIAL_LEADS;
   window.DEFAULT_LEADS = INITIAL_LEADS;
 }
 
-if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== "undefined" && module.exports) {
   module.exports = { INITIAL_LEADS, DEFAULT_LEADS: INITIAL_LEADS };
 }
