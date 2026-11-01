@@ -47,6 +47,7 @@ const App = {
         }
         return l;
       });
+      this.leads = this.sortLeads(this.leads, 'reply_chance');
       StorageService.saveLeads(this.leads);
       if (window.BatchManager) {
         window.BatchManager.syncWithLeads(this.leads);
@@ -88,7 +89,7 @@ const App = {
           }
           return l;
         })];
-
+        this.leads = this.sortLeads(this.leads, 'reply_chance');
         StorageService.saveLeads(this.leads);
         if (window.BatchManager) {
           window.BatchManager.syncWithLeads(this.leads);
@@ -295,6 +296,52 @@ const App = {
       window.AnalyticsEngine.renderFunnelChart(this.leads, dispatches, replies);
     }
 
+    // Render Priority Pitch Queue cards (Top 4 Highest Reply Chance Leads)
+    const priorityContainer = document.getElementById('overview-priority-queue-cards');
+    if (priorityContainer) {
+      const topPriority = this.sortLeads(this.leads, 'reply_chance')
+        .filter(l => l.status !== 'dispatched' && !l.batchPitched)
+        .slice(0, 4);
+
+      if (topPriority.length === 0) {
+        priorityContainer.innerHTML = `<div style="grid-column: 1/-1; padding: 20px; text-align: center; color: #94a3b8;">All top queue leads pitched! Check All Businesses.</div>`;
+      } else {
+        priorityContainer.innerHTML = topPriority.map((lead, idx) => {
+          const replyMeta = this.calculateReplyScore(lead);
+          const scoreBadge = `<span class="badge-reply-score ${replyMeta.badgeClass}" title="${replyMeta.reason}">${replyMeta.icon} ${replyMeta.score}% Reply Chance</span>`;
+          const wa = lead.whatsappNumber || (lead.phone ? lead.phone.replace(/[^0-9]/g, '') : '');
+          const waLink = wa ? `https://wa.me/${wa}?text=${encodeURIComponent('Assalam-o-Alaikum ' + (lead.decisionMaker || 'Sir') + '! Noticed your business on Google Maps...')}` : '';
+          
+          return `
+            <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 8px;">
+                  <span class="priority-rank-pill" style="font-size: 0.68rem; padding: 2px 7px;">#${idx + 1} Pitch First</span>
+                  ${scoreBadge}
+                </div>
+                <div style="font-weight: 800; font-size: 0.94rem; color: #fff; line-height: 1.3; margin-bottom: 3px;">${lead.businessName}</div>
+                <div style="font-size: 0.76rem; color: #94a3b8; margin-bottom: 8px;">📍 ${lead.city}, ${lead.country}</div>
+                <div style="font-size: 0.78rem; color: #cbd5e1; margin-bottom: 4px;">👤 <strong>${lead.decisionMaker || 'Owner'}</strong> <span style="font-size: 0.72rem; color: #94a3b8;">(${lead.decisionMakerTitle || 'Decision Maker'})</span></div>
+                <div style="font-size: 0.74rem; color: #f87171; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 6px; padding: 4px 8px; margin-bottom: 12px;">
+                  ⚠️ ${lead.flawTitle || 'Missing direct mobile checkout'}
+                </div>
+              </div>
+              <div style="display: flex; gap: 8px; margin-top: auto;">
+                ${waLink ? `
+                  <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="flex: 1; text-align: center; font-size: 0.76rem; padding: 7px 10px; background: #25D366; color: #000; font-weight: 800; text-decoration: none; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 5px;">
+                    <span>💬</span> WhatsApp
+                  </a>
+                ` : ''}
+                <button class="btn-sec-action" style="flex: 1; font-size: 0.76rem; padding: 7px 10px;" onclick="App.openPitchStudioForLead('${lead.id}')">
+                  Studio ⚡
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
     // Render recent dispatches feed
     const container = document.getElementById('overview-recent-dispatches');
     if (container) {
@@ -384,6 +431,16 @@ const App = {
     }
   },
 
+  handleQuickPrioritySearch() {
+    const countryEl = document.getElementById('search-country');
+    const cityEl = document.getElementById('search-city');
+    const catEl = document.getElementById('search-category');
+    if (countryEl) countryEl.value = 'Global';
+    if (cityEl) cityEl.value = '';
+    if (catEl) catEl.value = 'all';
+    this.handleRunPlacesSearch();
+  },
+
   // ========================================================
   // GOOGLE PLACES API (NEW) DISCOVERY SEARCH
   // ========================================================
@@ -393,10 +450,14 @@ const App = {
     btn.innerHTML = `<span>⏳</span> Scanning Google Places...`;
     btn.disabled = true;
 
+    const countryVal = document.getElementById('search-country').value;
+    const cityVal = document.getElementById('search-city').value.trim();
+    const isPriorityQueue = (!cityVal || cityVal.toLowerCase() === 'all' || countryVal === 'Global');
+
     const params = {
-      country: document.getElementById('search-country').value,
+      country: countryVal,
       state: document.getElementById('search-state').value,
-      city: document.getElementById('search-city').value,
+      city: cityVal,
       category: document.getElementById('search-category').value,
       keyword: document.getElementById('search-keyword').value,
       count: document.getElementById('search-count').value,
@@ -413,16 +474,25 @@ const App = {
       const tbody = document.getElementById('places-search-results-tbody');
 
       resultsSection.style.display = 'block';
-      resultsHeader.textContent = `Search Results: ${data.count} Verified Businesses Found (${data.source === 'google_places_api_new' ? 'Live Google Places API' : 'Curated Local Database'})`;
+      resultsHeader.textContent = isPriorityQueue
+        ? `🔥 Worldwide Priority Pitch Queue: ${data.count} Verified Businesses Ranked by Highest Reply Likelihood First`
+        : `Search Results: ${data.count} Verified Businesses Found (${data.source === 'google_places_api_new' ? 'Live Google Places API' : 'Curated Local Database'})`;
 
       if (!data.results || data.results.length === 0) {
         tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #94a3b8; padding: 30px;">No businesses matched all strict filters. Try lowering minimum reviews or clearing keyword.</td></tr>`;
       } else {
         tbody.innerHTML = data.results.map((l, idx) => {
           const exactMaps = window.PlacesService.getExactGoogleMapsUrl(l);
+          const replyMeta = this.calculateReplyScore(l);
           return `
             <tr>
               <td>
+                <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px; flex-wrap: wrap;">
+                  <span class="priority-rank-pill">#${idx + 1} Priority Pitch</span>
+                  <span class="badge-reply-score ${replyMeta.badgeClass}">
+                    ${replyMeta.icon} ${replyMeta.score}% Reply Chance
+                  </span>
+                </div>
                 <div style="font-weight: 800; color: #fff; font-size: 0.92rem;">${l.businessName}</div>
                 <div style="font-size: 0.74rem; color: #94a3b8; margin-top: 2px;">📍 ${l.address || (l.city + ', ' + l.country)}</div>
                 <div style="font-size: 0.68rem; color: #38bdf8; font-family: 'JetBrains Mono', monospace; margin-top: 2px;">ID: ${l.googlePlaceId || 'ChIJ_verified'}</div>
@@ -432,6 +502,7 @@ const App = {
                   🛡️ VERIFIED ON GOOGLE MAPS
                 </span>
                 <div style="font-size: 0.74rem; color: #fbbf24; margin-top: 4px;">⭐ ${l.rating || 4.5} (${l.reviews || 40} reviews)</div>
+                <div style="font-size: 0.72rem; color: #cbd5e1; margin-top: 2px;">👤 ${l.decisionMaker || 'Owner'} (${l.decisionMakerTitle || 'Principal'})</div>
               </td>
               <td>
                 <div style="font-size: 0.80rem; color: #cbd5e1;">📞 ${l.phone || 'No Phone Listed'}</div>
@@ -445,6 +516,7 @@ const App = {
                 <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 2px;">
                   ${(l.softwareOpportunity && l.softwareOpportunity.categoryLabel) || 'A. Website Development'}
                 </div>
+                ${l.flawLeakRange ? `<div style="font-size: 0.72rem; color: #f87171; margin-top: 2px;">💸 Leak: ${l.flawLeakRange}</div>` : ''}
               </td>
               <td>
                 <div style="display: flex; flex-direction: column; gap: 5px;">
@@ -462,7 +534,10 @@ const App = {
       }
 
       this.currentSearchResults = data.results || [];
-      this.showToast(`Found ${data.count} verified businesses via ${data.source === 'google_places_api_new' ? 'Google Places API' : 'Verified Directory'}`);
+      const msg = isPriorityQueue
+        ? `Loaded ${data.count} Worldwide Businesses ranked by Highest Reply Likelihood!`
+        : `Found ${data.count} verified businesses via ${data.source === 'google_places_api_new' ? 'Google Places API' : 'Verified Directory'}`;
+      this.showToast(msg);
     } catch (e) {
       this.showToast('Search error: ' + e.message, 'error');
     } finally {
@@ -1594,6 +1669,128 @@ const App = {
     this.renderTable();
   },
 
+  // ========================================================
+  // REPLY LIKELIHOOD SCORING & PRIORITY SEQUENCING ENGINE
+  // ========================================================
+  calculateReplyScore(lead) {
+    if (!lead) return { score: 50, label: 'Moderate', badgeClass: 'badge-reply-low', icon: '📊', reason: 'Verified listing' };
+
+    let score = 50; // Base score
+    const phone = String(lead.phone || '');
+    const phoneType = String(lead.phoneType || '');
+    const channel = String(lead.recommendedPitchChannel || lead.channel || '');
+
+    // 1. Direct Owner Mobile WhatsApp (+25 to +35 pts)
+    const isMobileWA = (
+      phoneType === 'mobile_whatsapp' ||
+      lead.whatsappVerified === true ||
+      phone.startsWith('+923') || phone.startsWith('923') || phone.startsWith('03')
+    );
+
+    if (isMobileWA) {
+      score += 25;
+    } else if (channel === 'instagram' && (lead.instagramHandle || (lead.contactInfo && lead.contactInfo.instagramHandle))) {
+      score += 18;
+    } else if (lead.email) {
+      score += 12;
+    }
+
+    // 2. Named Real Decision Maker with Title (+15 pts)
+    const dm = String(lead.decisionMaker || '').trim();
+    if (dm && !['owner', 'unknown', 'principal', 'n/a', ''].includes(dm.toLowerCase())) {
+      score += 10;
+      if (lead.decisionMakerTitle && !String(lead.decisionMakerTitle).toLowerCase().includes('principal')) {
+        score += 5;
+      }
+    }
+
+    // 3. High Financial Leakage / Pain Point Urgency (+15 pts)
+    const leak = String(lead.flawLeakRange || '').toLowerCase();
+    if (['80k', '100k', '140k', '150k', '200k', '250k', '$3', '$4', '$5', '$6', '$8'].some(k => leak.includes(k))) {
+      score += 15;
+    } else if (leak) {
+      score += 10;
+    }
+
+    // 4. Active Commercial Traction: Reviews & Rating (+10 pts)
+    const rev = parseInt(lead.reviews || 0, 10);
+    if (rev >= 500) score += 7;
+    else if (rev >= 100) score += 5;
+    else if (rev >= 30) score += 3;
+
+    const rat = parseFloat(lead.rating || 0);
+    if (rat >= 4.2 && rat <= 4.8) score += 3;
+
+    // 5. Verified Google Place ID (+5 pts)
+    if (String(lead.googlePlaceId || '').startsWith('ChIJ')) score += 5;
+
+    // Outreach Status Deductions (Already pitched leads appear after fresh leads)
+    if (lead.status === 'dispatched' || lead.crmStatus === 'sent' || lead.batchPitched) {
+      score -= 30;
+    }
+    if (lead.status === 'replied') {
+      score -= 40;
+    }
+
+    score = Math.max(15, Math.min(99, Math.round(score)));
+
+    let label = 'Strong Prospect';
+    let badgeClass = 'badge-reply-high';
+    let icon = '⚡';
+    if (score >= 90) {
+      label = 'Highest Reply (Pitch 1st)';
+      badgeClass = 'badge-reply-top';
+      icon = '🔥';
+    } else if (score >= 80) {
+      label = 'Very High Reply';
+      badgeClass = 'badge-reply-high';
+      icon = '⚡';
+    } else if (score >= 70) {
+      label = 'Good Reply Chance';
+      badgeClass = 'badge-reply-med';
+      icon = '⭐';
+    } else {
+      label = 'Moderate';
+      badgeClass = 'badge-reply-low';
+      icon = '📊';
+    }
+
+    const reason = isMobileWA
+      ? 'Direct Owner Mobile WhatsApp + Identified Decision Maker + Urgent Flaw'
+      : (dm ? `Identified Decision Maker (${dm}) + High Reviews` : 'Verified Digital Presence');
+
+    return { score, label, badgeClass, icon, reason };
+  },
+
+  renderReplyBadge(leadOrScore) {
+    const meta = typeof leadOrScore === 'object' && leadOrScore.badgeClass
+      ? leadOrScore
+      : this.calculateReplyScore(leadOrScore);
+    return `<span class="badge-reply-score ${meta.badgeClass}" title="${meta.reason}">${meta.icon} ${meta.score}% Reply Chance</span>`;
+  },
+
+  sortLeads(leadsArray, sortKey = 'reply_chance') {
+    const list = [...leadsArray];
+    switch (sortKey) {
+      case 'reply_chance':
+        return list.sort((a, b) => this.calculateReplyScore(b).score - this.calculateReplyScore(a).score);
+      case 'reviews':
+        return list.sort((a, b) => parseInt(b.reviews || 0, 10) - parseInt(a.reviews || 0, 10));
+      case 'rating':
+        return list.sort((a, b) => parseFloat(b.rating || 0) - parseFloat(a.rating || 0));
+      case 'leak_amount':
+        return list.sort((a, b) => {
+          const numA = parseInt((a.flawLeakRange || '').replace(/\D/g, '') || 0, 10);
+          const numB = parseInt((b.flawLeakRange || '').replace(/\D/g, '') || 0, 10);
+          return numB - numA;
+        });
+      case 'name_asc':
+        return list.sort((a, b) => (a.businessName || '').localeCompare(b.businessName || ''));
+      default:
+        return list.sort((a, b) => this.calculateReplyScore(b).score - this.calculateReplyScore(a).score);
+    }
+  },
+
   // Table rendering for All Businesses
   renderTable() {
     const tbody = document.getElementById('leads-tbody');
@@ -1617,11 +1814,18 @@ const App = {
 
     const exactMaps = this.getExactMapsUrl(lead);
     const isDispatched = lead.status === 'dispatched' || lead.crmStatus === 'sent' || lead.batchPitched;
+    const replyMeta = this.calculateReplyScore(lead);
 
     return `
       <tr data-lead-id="${lead.id}">
         <td>
-          <div style="font-weight: 800; color: #fff; font-size: 0.92rem;">${lead.businessName}</div>
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 5px; flex-wrap: wrap;">
+            <span class="priority-rank-pill">#${idx + 1} Pitch First</span>
+            <span class="badge-reply-score ${replyMeta.badgeClass}" title="${replyMeta.reason}">
+              ${replyMeta.icon} ${replyMeta.score}% Reply Chance
+            </span>
+          </div>
+          <div style="font-weight: 800; color: #fff; font-size: 0.94rem;">${lead.businessName}</div>
           <div style="font-size: 0.74rem; color: #94a3b8; margin: 2px 0;">📍 ${lead.address || (lead.city + ', ' + lead.country)}</div>
           <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
             <span style="font-size: 0.70rem; color: #38bdf8; font-family: 'JetBrains Mono', monospace;">ID: ${lead.googlePlaceId ? lead.googlePlaceId.slice(0, 16) + '...' : 'Verified'}</span>
@@ -1671,20 +1875,30 @@ const App = {
       bestChannel = (lead.contactInfo && lead.contactInfo.instagramHandle) ? 'instagram' : 'gmail';
     }
     const exactMaps = this.getExactMapsUrl(lead);
+    const replyMeta = this.calculateReplyScore(lead);
 
     return `
       <div class="lead-card glass-panel" style="padding: 16px; display: flex; flex-direction: column; gap: 10px;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
           <div>
-            <div style="font-size: 0.95rem; font-weight: 800; color: #fff;">${lead.businessName}</div>
+            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px; flex-wrap: wrap;">
+              <span class="priority-rank-pill">#${idx + 1} Priority Pitch</span>
+              <span class="badge-reply-score ${replyMeta.badgeClass}">
+                ${replyMeta.icon} ${replyMeta.score}% Reply
+              </span>
+            </div>
+            <div style="font-size: 0.96rem; font-weight: 800; color: #fff;">${lead.businessName}</div>
             <div style="font-size: 0.74rem; color: #94a3b8;">📍 ${lead.city}, ${lead.country}</div>
           </div>
-          <span class="nav-item-badge">${bestChannel.toUpperCase()}</span>
+          <span class="nav-item-badge ${bestChannel === 'whatsapp' ? 'emerald' : ''}">${bestChannel.toUpperCase()}</span>
         </div>
+        <div style="font-size: 0.80rem; color: #cbd5e1;">👤 <strong>${lead.decisionMaker || 'Owner'}</strong> <span style="font-size: 0.72rem; color: #94a3b8;">(${lead.decisionMakerTitle || 'Principal'})</span></div>
         <div style="font-size: 0.78rem; color: #fca5a5; font-weight: 700;">⚠️ ${lead.flawTitle || 'Mobile Checkout Bottleneck'}</div>
+        <div style="font-size: 0.72rem; color: #f87171;">💸 Leak: ${lead.flawLeakRange || '$2,400/mo'}</div>
         <div style="display: flex; gap: 8px; margin-top: auto;">
           <a href="${exactMaps}" target="_blank" rel="noopener noreferrer" class="btn-sec-action" style="flex: 1; font-size: 0.74rem; text-align: center;">Maps ↗</a>
           <button class="btn-primary" style="flex: 1; font-size: 0.74rem;" onclick="App.dispatchSingleLead('${lead.id}', null, '${bestChannel}')">⚡ Pitch</button>
+          <button class="btn-sec-action" style="font-size: 0.72rem; padding: 4px 8px;" onclick="App.openProposalForLead('${lead.id}')">📄 Proposal</button>
         </div>
       </div>
     `;
@@ -1694,27 +1908,29 @@ const App = {
     this.currentChannelFilter = channel;
     document.querySelectorAll('.channel-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === channel));
 
-    if (channel === 'all') {
-      this.filteredLeads = [...this.leads];
-    } else if (channel === 'dispatched') {
-      this.filteredLeads = this.leads.filter(l => l.status === 'dispatched' || l.crmStatus === 'sent' || l.batchPitched);
+    let base = [...this.leads];
+    if (channel === 'dispatched') {
+      base = base.filter(l => l.status === 'dispatched' || l.crmStatus === 'sent' || l.batchPitched);
     } else if (channel === 'replied') {
-      this.filteredLeads = this.leads.filter(l => l.status === 'replied');
+      base = base.filter(l => l.status === 'replied');
     } else if (channel === 'followup') {
-      this.filteredLeads = this.leads.filter(l => l.status === 'followup_due' || (l.status === 'dispatched' && !l.followupPaused));
-    } else {
-      this.filteredLeads = this.leads.filter(l => (l.recommendedPitchChannel || l.channel) === channel);
+      base = base.filter(l => l.status === 'followup_due' || (l.status === 'dispatched' && !l.followupPaused));
+    } else if (channel !== 'all') {
+      base = base.filter(l => (l.recommendedPitchChannel || l.channel) === channel);
     }
 
+    const sortVal = document.getElementById('table-sort-filter')?.value || 'reply_chance';
+    this.filteredLeads = this.sortLeads(base, sortVal);
     this.renderTable();
   },
 
   handleSearch(query) {
+    const sortVal = document.getElementById('table-sort-filter')?.value || 'reply_chance';
     if (!query) {
-      this.filteredLeads = [...this.leads];
+      this.filteredLeads = this.sortLeads([...this.leads], sortVal);
     } else {
       const q = query.toLowerCase();
-      this.filteredLeads = this.leads.filter(l => {
+      const matched = this.leads.filter(l => {
         return (l.businessName && l.businessName.toLowerCase().includes(q)) ||
                (l.city && l.city.toLowerCase().includes(q)) ||
                (l.phone && l.phone.includes(q)) ||
@@ -1722,6 +1938,7 @@ const App = {
                (l.flawTitle && l.flawTitle.toLowerCase().includes(q)) ||
                (l.googlePlaceId && l.googlePlaceId.toLowerCase().includes(q));
       });
+      this.filteredLeads = this.sortLeads(matched, sortVal);
     }
     this.renderTable();
   },
@@ -1733,10 +1950,12 @@ const App = {
         document.querySelectorAll('.city-chip').forEach(c => c.classList.remove('active'));
         chip.classList.add('active');
         const city = chip.dataset.city;
+        const sortVal = document.getElementById('table-sort-filter')?.value || 'reply_chance';
         if (city === 'ALL') {
-          this.filteredLeads = [...this.leads];
+          this.filteredLeads = this.sortLeads([...this.leads], sortVal);
         } else {
-          this.filteredLeads = this.leads.filter(l => l.city && l.city.toLowerCase().includes(city.toLowerCase()));
+          const matched = this.leads.filter(l => l.city && l.city.toLowerCase().includes(city.toLowerCase()));
+          this.filteredLeads = this.sortLeads(matched, sortVal);
         }
         this.renderTable();
       });
@@ -1759,6 +1978,17 @@ const App = {
         } else {
           this.filteredLeads = this.leads.filter(l => l.niche === val);
         }
+        this.renderTable();
+      });
+    }
+
+    // Table sort filter
+    const sortFilter = document.getElementById('table-sort-filter');
+    if (sortFilter) {
+      sortFilter.addEventListener('change', (e) => {
+        const sortVal = e.target.value;
+        const currentList = (this.filteredLeads && this.filteredLeads.length > 0) ? this.filteredLeads : this.leads;
+        this.filteredLeads = this.sortLeads(currentList, sortVal);
         this.renderTable();
       });
     }

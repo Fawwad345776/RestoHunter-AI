@@ -574,6 +574,58 @@ body {
   pointer-events: auto;
 }
 
+/* Reply Probability & Pitch Priority Badges */
+.badge-reply-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.badge-reply-top {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.22) 0%, rgba(245, 158, 11, 0.22) 100%);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.55);
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.25);
+}
+
+.badge-reply-high {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.45);
+}
+
+.badge-reply-med {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.badge-reply-low {
+  background: rgba(148, 163, 184, 0.15);
+  color: #cbd5e1;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.priority-rank-pill {
+  font-size: 0.68rem;
+  color: #38bdf8;
+  font-weight: 800;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
 /* View Page Headers */
 .view-header-strip {
   display: flex;

@@ -350,6 +350,26 @@
             </div>
           </div>
 
+          <!-- Top Priority Outreach Queue (Highest Reply Likelihood) -->
+          <div class="glass-panel" style="padding: 20px; margin-bottom: 24px; border-left: 4px solid #f97316;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+              <div>
+                <h3 style="font-size: 1.1rem; color: #fff; font-family: 'Outfit', sans-serif; display: flex; align-items: center; gap: 8px; margin: 0;">
+                  <span>🔥</span> Top Priority Outreach Queue (Highest Reply Likelihood)
+                </h3>
+                <p style="font-size: 0.78rem; color: #94a3b8; margin: 4px 0 0 0;">
+                  Agar koi city/country filter na ho, to system automatic in businesses ko #1 sequence me dikhata hai jinse reply aane ka chance sab se zyada hai.
+                </p>
+              </div>
+              <button class="btn-sec-action" onclick="App.switchView('all-businesses')" style="font-size: 0.80rem;">
+                View All Sequenced Leads (324) ➔
+              </button>
+            </div>
+            <div id="overview-priority-queue-cards" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px;">
+              <!-- Rendered dynamically by App.renderOverview() -->
+            </div>
+          </div>
+
           <!-- Funnel & Recent Activity Grid -->
           <div class="saas-grid-2col">
             <!-- Conversion Funnel -->
@@ -388,31 +408,45 @@
             </div>
           </div>
 
+          <!-- Priority Pitch Mode Hint Banner -->
+          <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 1.5rem;">🔥</span>
+              <div>
+                <div style="font-size: 0.88rem; font-weight: 800; color: #fff;">Smart Sequence: Highest Reply Probability (Pitch 1st)</div>
+                <div style="font-size: 0.76rem; color: #94a3b8;">Agar aap koi country ya city select nahi karein gay, to system automatically wo businesses pehle dikhaye ga jahan Direct Owner Mobile WhatsApp + Identified Decision Maker + Urgent Flaw hone ki wajah se reply aane ka chance sab se zyada hai.</div>
+              </div>
+            </div>
+            <button type="button" class="btn-primary" style="height: 38px; font-size: 0.78rem;" onclick="App.handleQuickPrioritySearch()">
+              ⚡ Show Top High-Reply Leads
+            </button>
+          </div>
+
           <!-- Discovery Search Form -->
           <div class="glass-panel" style="padding: 22px; margin-bottom: 24px;">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 14px;">
               <div class="input-group">
                 <label class="input-label" for="search-country">Country *</label>
                 <select id="search-country" class="custom-select">
-                  <option value="Pakistan" selected>🇵🇰 Pakistan</option>
+                  <option value="Global" selected>🌐 Global (Highest Reply Probability Queue)</option>
+                  <option value="Pakistan">🇵🇰 Pakistan</option>
                   <option value="United States">🇺🇸 United States</option>
                   <option value="United Kingdom">🇬🇧 United Kingdom</option>
                   <option value="United Arab Emirates">🇦🇪 United Arab Emirates</option>
                   <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
                   <option value="Canada">🇨🇦 Canada</option>
                   <option value="Australia">🇦🇺 Australia</option>
-                  <option value="Global">🌐 Global / Any</option>
                 </select>
               </div>
 
               <div class="input-group">
                 <label class="input-label" for="search-state">State / Province</label>
-                <input type="text" id="search-state" class="custom-input" placeholder="e.g. Sindh, Punjab, Texas, London">
+                <input type="text" id="search-state" class="custom-input" placeholder="e.g. Leave blank or Sindh, Texas...">
               </div>
 
               <div class="input-group">
-                <label class="input-label" for="search-city">City / Metro *</label>
-                <input type="text" id="search-city" class="custom-input" placeholder="e.g. Karachi, Lahore, Austin, Dubai..." value="Karachi">
+                <label class="input-label" for="search-city">City / Metro</label>
+                <input type="text" id="search-city" class="custom-input" placeholder="e.g. Leave blank for Priority Queue, or enter Karachi, Austin..." value="">
               </div>
 
               <div class="input-group">
@@ -595,6 +629,17 @@
                   <option value="event_planners">🎉 Event & Wedding Marquees (26)</option>
                   <option value="pet_care">🐕 Pet Care & Vet Clinics (24)</option>
                   <option value="law_firms">⚖️ Law Firms & Legal (23)</option>
+                </select>
+              </div>
+
+              <!-- Priority Sort Filter -->
+              <div style="min-width: 220px;">
+                <select id="table-sort-filter" class="custom-select" style="height: 40px; font-weight: 700; color: #38bdf8; border-color: rgba(56, 189, 248, 0.45); background: rgba(7, 12, 30, 0.9);">
+                  <option value="reply_chance" selected>🔥 Highest Reply Chance (Pitch 1st)</option>
+                  <option value="leak_amount">💸 Highest Financial Leakage</option>
+                  <option value="reviews">💬 Most Google Reviews</option>
+                  <option value="rating">⭐ Highest Google Rating</option>
+                  <option value="name_asc">🔤 Alphabetical (A-Z)</option>
                 </select>
               </div>
 

@@ -96,13 +96,21 @@ const PlacesService = {
       // Client-side fallback to verified dataset
       const allLeads = (window.App && window.App.leads) || (window.INITIAL_LEADS) || [];
       const filtered = allLeads.filter(l => {
-        if (city && city.toLowerCase() !== 'all' && !l.city.toLowerCase().includes(city.toLowerCase())) return false;
+        if (city && city.toLowerCase() !== 'all' && city.toLowerCase() !== 'global' && !l.city.toLowerCase().includes(city.toLowerCase())) return false;
+        if (country && country.toLowerCase() !== 'all' && country.toLowerCase() !== 'global' && !l.country.toLowerCase().includes(country.toLowerCase())) return false;
         if (category && category !== 'all' && l.niche !== category) return false;
         if (parseFloat(l.rating || 0) < minRating) return false;
         if (parseInt(l.reviews || 0) < minReviews) return false;
         if (requireWebsite && !l.website) return false;
         if (requirePhone && !l.phone) return false;
         return true;
+      });
+
+      // Sort by highest reply likelihood
+      filtered.sort((a, b) => {
+        const scoreA = (window.App && window.App.calculateReplyScore) ? window.App.calculateReplyScore(a).score : 50;
+        const scoreB = (window.App && window.App.calculateReplyScore) ? window.App.calculateReplyScore(b).score : 50;
+        return scoreB - scoreA;
       });
 
       return {

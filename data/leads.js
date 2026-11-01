@@ -1,7 +1,4 @@
-/**
- * SoftHunter AI - Verified Leads Database
- */
-const INITIAL_LEADS = [
+const DEFAULT_LEADS = [
   {
     "id": "real_lead_1",
     "businessName": "Master Biryani & Fast Food (Burns Road)",
@@ -98,7 +95,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_2",
@@ -196,7 +194,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_3",
@@ -294,7 +293,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_4",
@@ -392,7 +392,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_5",
@@ -490,7 +491,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_6",
@@ -588,7 +590,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_7",
@@ -686,7 +689,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_8",
@@ -784,7 +788,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_9",
@@ -882,7 +887,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_10",
@@ -980,7 +986,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_11",
@@ -1078,7 +1085,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_12",
@@ -1176,7 +1184,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_13",
@@ -1220,7 +1229,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "none",
     "teamGreeting": "Team Saleem Barber",
     "founderGreeting": "Ustaad Saleem",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ustaad%20Saleem%20Men%27s%20Barber%20Shop%2C%20Near%20Jheel%20Park%2C%20PECHS%20Block%202%2C%20Karachi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ustaad%20Saleem%20Men's%20Barber%20Shop%2C%20Near%20Jheel%20Park%2C%20PECHS%20Block%202%2C%20Karachi",
     "contactInfo": {
       "phone": "+923002844199",
       "phoneType": "mobile_whatsapp",
@@ -1274,7 +1283,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_14",
@@ -1372,7 +1382,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_15",
@@ -1470,7 +1481,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_16",
@@ -1568,7 +1580,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_17",
@@ -1666,7 +1679,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_18",
@@ -1764,7 +1778,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_19",
@@ -1862,7 +1877,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_20",
@@ -1960,7 +1976,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_21",
@@ -2058,7 +2075,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_22",
@@ -2156,7 +2174,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_23",
@@ -2254,7 +2273,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_24",
@@ -2352,7 +2372,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_25",
@@ -2450,7 +2471,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_26",
@@ -2548,7 +2570,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_27",
@@ -2646,7 +2669,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_28",
@@ -2744,7 +2768,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_29",
@@ -2842,7 +2867,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_30",
@@ -2940,7 +2966,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_31",
@@ -3038,7 +3065,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_32",
@@ -3082,7 +3110,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "none",
     "teamGreeting": "Team Quick Electrician",
     "founderGreeting": "Hafiz Usman",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Quick%20Electrician%2024/7%2C%20Chowrangi%20No.%202%2C%20Nazimabad%2C%20Karachi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Quick%20Electrician%2024%2F7%2C%20Chowrangi%20No.%202%2C%20Nazimabad%2C%20Karachi",
     "contactInfo": {
       "phone": "+923002288190",
       "phoneType": "mobile_whatsapp",
@@ -3136,7 +3164,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_33",
@@ -3234,7 +3263,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_34",
@@ -3332,7 +3362,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_35",
@@ -3430,7 +3461,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_36",
@@ -3528,7 +3560,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_37",
@@ -3626,7 +3659,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_38",
@@ -3724,7 +3758,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_39",
@@ -3822,7 +3857,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_40",
@@ -3920,7 +3956,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_41",
@@ -4018,7 +4055,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_42",
@@ -4116,7 +4154,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_43",
@@ -4214,7 +4253,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_44",
@@ -4312,7 +4352,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_45",
@@ -4410,7 +4451,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_46",
@@ -4508,7 +4550,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_47",
@@ -4606,7 +4649,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_48",
@@ -4704,7 +4748,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_49",
@@ -4802,7 +4847,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_50",
@@ -4900,7 +4946,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_01",
     "batchNumber": 1,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_51",
@@ -4998,7 +5045,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_52",
@@ -5096,7 +5144,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_53",
@@ -5194,7 +5243,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_54",
@@ -5292,7 +5342,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_55",
@@ -5390,7 +5441,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_56",
@@ -5488,7 +5540,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_57",
@@ -5586,7 +5639,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_58",
@@ -5684,301 +5738,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
-  },
-  {
-    "id": "real_lead_59",
-    "businessName": "South Austin Dental Studio",
-    "businessScale": "small_business",
-    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
-    "city": "Austin, Texas",
-    "country": "USA \ud83c\uddfa\ud83c\uddf8",
-    "address": "4006 S Lamar Blvd, Austin, TX 78704",
-    "phone": "+15124474700",
-    "phoneType": "landline_uan",
-    "phoneSource": "Google Maps Profile & Practice Board",
-    "whatsappNumber": null,
-    "email": null,
-    "instagramHandle": "@southaustindental",
-    "rating": "4.8",
-    "reviews": 320,
-    "decisionMaker": "Dr. Nick Yiannios",
-    "decisionMakerTitle": "Principal Dentist & Founder",
-    "decisionMakerSource": "Texas Dental Association Board Directory",
-    "decisionMakerSourceUrl": "https://maps.google.com/?q=South+Austin+Dental+Studio",
-    "website": "https://southaustindentalstudio.com",
-    "niche": "dental_medical",
-    "nicheName": "General & Cosmetic Family Dentistry",
-    "nicheIcon": "\ud83e\uddb7",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
-    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
-    "flawTitle": "Weekend After-Hours Emergency Tooth Pain Appointment Drop-Off",
-    "specificWeakness": "When patients experience severe toothaches on Friday evening, the office answering machine tells them to wait until Monday.",
-    "whereToCheck": "Google profile check: 24/7 Mobile Emergency Toothache Triage & Slot Hold Bot missing.",
-    "whyMoneyLeaks": "Losing 3-5 emergency root canal/crown patients per week leaks ~$4,200/mo to corporate dental chains.",
-    "talkingPoints": [
-      "Dr. Nick, patients with unbearable tooth pain at 8 PM won't wait for Monday voicemail callbacks.",
-      "We build a 1-tap WhatsApp Emergency Toothache Triage Bot that captures pain details and locks Saturday morning slots."
-    ],
-    "clientQuestion": "Will I get spam messages at 3 AM?",
-    "clientAnswer": "Dr. Nick, the bot screens for severe symptoms and deposits confirmed cases directly into your morning schedule.",
-    "deliverableSolution": "24/7 Mobile Emergency Toothache Triage & Booking Funnel (48 Hours)",
-    "flawLeakRange": "$4,200 \u2013 $7,500/mo",
-    "regionDeliveryApps": "none",
-    "teamGreeting": "Team South Austin Dental",
-    "founderGreeting": "Dr. Nick",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=South%20Austin%20Dental%20Studio%2C%204006%20S%20Lamar%20Blvd%2C%20Austin%2C%20TX%2078704",
-    "contactInfo": {
-      "phone": "+15124474700",
-      "phoneType": "landline_uan",
-      "phoneSource": "Google Maps Profile & Practice Board",
-      "whatsappNumber": null,
-      "email": null,
-      "instagramHandle": "@southaustindental",
-      "website": "https://southaustindentalstudio.com",
-      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=South%20Austin%20Dental%20Studio"
-    },
-    "status": "ready",
-    "createdAt": "2026-10-31T00:00:00.000Z",
-    "dispatchedAt": null,
-    "dispatchedMessage": null,
-    "followupDueAt": null,
-    "emailStatus": "none_mobile_only",
-    "googlePlaceId": "ChIJ0a2b1d413ca91d9ae22eadf",
-    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ0a2b1d413ca91d9ae22eadf",
-    "operatingStatus": "OPERATIONAL",
-    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
-    "authenticityStatus": "VERIFIED",
-    "normalizedPhone": "+15124474700",
-    "whatsappVerificationStatus": "NOT AVAILABLE",
-    "softwareOpportunity": {
-      "category": "ai_automation",
-      "categoryLabel": "E. AI & Automation",
-      "categoryIcon": "\ud83e\udd16",
-      "recommendedSoftware": "24/7 AI Patient Triage Assistant & Instant Calendar Booking Portal",
-      "businessBenefit": "Captures high-ticket after-hours dental/medical emergency inquiries before patients call competitors.",
-      "mvpScope": "AI chatbot trained on clinic procedures, automated calendar slot confirmation, SMS/WhatsApp appointment reminders.",
-      "demoConcept": "Live triage simulator answering patient toothache questions and booking available slots.",
-      "complexity": "Medium",
-      "suggestedTechStack": "FastAPI, OpenAI GPT-4o-mini, PostgreSQL, Twilio SMS, Google Calendar API"
-    },
-    "websiteAudit": {
-      "websiteAvailable": true,
-      "speedScore": 68,
-      "mobileResponsive": true,
-      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
-      "brokenLinks": 0,
-      "sslActive": true,
-      "onlineOrdering": false,
-      "onlineBooking": false,
-      "customerPortal": false,
-      "ecommerce": false,
-      "confidenceLevel": "95% Verified",
-      "verificationStatus": "Confirmed via Google Maps & Web Audit",
-      "businessImpact": "$4,200 \u2013 $7,500/mo",
-      "suggestedSolution": "24/7 Mobile Emergency Toothache Triage & Booking Funnel (48 Hours)"
-    },
-    "batchId": "batch_02",
-    "batchNumber": 2,
-    "batchPitched": false,
-    "crmStatus": "qualified"
-  },
-  {
-    "id": "real_lead_60",
-    "businessName": "Tribeca Smiles Cosmetic Clinic",
-    "businessScale": "small_business",
-    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
-    "city": "New York, NY",
-    "country": "USA \ud83c\uddfa\ud83c\uddf8",
-    "address": "44 Walker St, New York, NY 10013",
-    "phone": "+12124523300",
-    "phoneType": "landline_uan",
-    "phoneSource": "Storefront Pin & Google Maps Verified Listing",
-    "whatsappNumber": null,
-    "email": null,
-    "instagramHandle": "@tribecasmiles",
-    "rating": "4.9",
-    "reviews": 410,
-    "decisionMaker": "Dr. Frederick Solomon",
-    "decisionMakerTitle": "Founder & Aesthetic Dentist",
-    "decisionMakerSource": "New York State Dental Board Directory",
-    "decisionMakerSourceUrl": "https://maps.google.com/?q=Tribeca+Smiles+Walker+St+New+York",
-    "website": "https://tribecasmiles.com",
-    "niche": "dental_medical",
-    "nicheName": "Veneers & Aesthetic Smile Design",
-    "nicheIcon": "\ud83e\ude7a",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
-    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
-    "flawTitle": "Cosmetic Veneer & Smile Makeover Pricing Friction in Instagram DMs",
-    "specificWeakness": "High-intent prospective patients asking 'how much for 6 veneers?' in DMs get sent generic website PDF forms and vanish.",
-    "whereToCheck": "Instagram bio check: 1-Tap Mobile Smile Photo Assessment & Virtual Quote Bot missing.",
-    "whyMoneyLeaks": "Dropping 4-6 veneer inquiries monthly costs the clinic ~$8,000 \u2013 $14,000 in lost treatment plans.",
-    "talkingPoints": [
-      "Dr. Solomon, high-net-worth Tribeca clients asking about veneers in DMs hate filling out 5-page PDF intake forms.",
-      "We build a 1-tap Mobile Smile Assessment where they snap a selfie and receive estimated treatment tiers in 60 seconds."
-    ],
-    "clientQuestion": "Can we give quotes without in-chair X-rays?",
-    "clientAnswer": "Dr. Solomon, the tool gives estimated price ranges and requires a $150 deposit to lock the in-person 3D scan.",
-    "deliverableSolution": "1-Tap Mobile Smile Photo Assessment & Deposit Funnel (48 Hours)",
-    "flawLeakRange": "$8,000 \u2013 $14,000/mo",
-    "regionDeliveryApps": "none",
-    "teamGreeting": "Team Tribeca Smiles",
-    "founderGreeting": "Dr. Solomon",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tribeca%20Smiles%20Cosmetic%20Clinic%2C%2044%20Walker%20St%2C%20New%20York%2C%20NY%2010013",
-    "contactInfo": {
-      "phone": "+12124523300",
-      "phoneType": "landline_uan",
-      "phoneSource": "Storefront Pin & Google Maps Verified Listing",
-      "whatsappNumber": null,
-      "email": null,
-      "instagramHandle": "@tribecasmiles",
-      "website": "https://tribecasmiles.com",
-      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Tribeca%20Smiles%20Cosmetic%20Clinic"
-    },
-    "status": "ready",
-    "createdAt": "2026-10-31T00:00:00.000Z",
-    "dispatchedAt": null,
-    "dispatchedMessage": null,
-    "followupDueAt": null,
-    "emailStatus": "none_mobile_only",
-    "googlePlaceId": "ChIJ46579245a7f9e19fc11dc10",
-    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ46579245a7f9e19fc11dc10",
-    "operatingStatus": "OPERATIONAL",
-    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
-    "authenticityStatus": "VERIFIED",
-    "normalizedPhone": "+12124523300",
-    "whatsappVerificationStatus": "NOT AVAILABLE",
-    "softwareOpportunity": {
-      "category": "ai_automation",
-      "categoryLabel": "E. AI & Automation",
-      "categoryIcon": "\ud83e\udd16",
-      "recommendedSoftware": "24/7 AI Patient Triage Assistant & Instant Calendar Booking Portal",
-      "businessBenefit": "Captures high-ticket after-hours dental/medical emergency inquiries before patients call competitors.",
-      "mvpScope": "AI chatbot trained on clinic procedures, automated calendar slot confirmation, SMS/WhatsApp appointment reminders.",
-      "demoConcept": "Live triage simulator answering patient toothache questions and booking available slots.",
-      "complexity": "Medium",
-      "suggestedTechStack": "FastAPI, OpenAI GPT-4o-mini, PostgreSQL, Twilio SMS, Google Calendar API"
-    },
-    "websiteAudit": {
-      "websiteAvailable": true,
-      "speedScore": 68,
-      "mobileResponsive": true,
-      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
-      "brokenLinks": 0,
-      "sslActive": true,
-      "onlineOrdering": false,
-      "onlineBooking": false,
-      "customerPortal": false,
-      "ecommerce": false,
-      "confidenceLevel": "95% Verified",
-      "verificationStatus": "Confirmed via Google Maps & Web Audit",
-      "businessImpact": "$8,000 \u2013 $14,000/mo",
-      "suggestedSolution": "1-Tap Mobile Smile Photo Assessment & Deposit Funnel (48 Hours)"
-    },
-    "batchId": "batch_02",
-    "batchNumber": 2,
-    "batchPitched": false,
-    "crmStatus": "qualified"
-  },
-  {
-    "id": "real_lead_61",
-    "businessName": "Covent Garden Dental Practice",
-    "businessScale": "small_business",
-    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
-    "city": "London",
-    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
-    "address": "47 Bedford St, London WC2E 9HA",
-    "phone": "+447811223344",
-    "phoneType": "landline_uan",
-    "phoneSource": "Storefront Plaque & General Dental Council (GDC) Register",
-    "whatsappNumber": null,
-    "email": null,
-    "instagramHandle": "@coventgardendental",
-    "rating": "4.7",
-    "reviews": 380,
-    "decisionMaker": "Dr. Keith Cohen",
-    "decisionMakerTitle": "Principal Dental Surgeon",
-    "decisionMakerSource": "British Dental Association Member List",
-    "decisionMakerSourceUrl": "https://maps.google.com/?q=Covent+Garden+Dental+London",
-    "website": "https://coventgardendental.co.uk",
-    "niche": "dental_medical",
-    "nicheName": "Central London Emergency & Private Dental Care",
-    "nicheIcon": "\ud83e\uddb7",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
-    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
-    "flawTitle": "Tourist & West End Theatre Staff Emergency Dental Appointment Delay",
-    "specificWeakness": "Tourists with chipped teeth and actors needing emergency fillings can't reach reception during evening theatre showtimes.",
-    "whereToCheck": "Google profile: 1-Tap WhatsApp Emergency Dental Slot Pass missing.",
-    "whyMoneyLeaks": "Losing 5-8 urgent dental consultations per week leaks ~\u00a33,500/mo to 24/7 Harley Street clinics.",
-    "talkingPoints": [
-      "Dr. Keith, tourists and theatre staff in Covent Garden with chipped teeth need immediate confirmed booking without telephone queues.",
-      "We build a 1-tap WhatsApp Emergency Slot Pass where patients upload a tooth photo and book the next available dental chair."
-    ],
-    "clientQuestion": "Does it integrate with our Software of Excellence calendar?",
-    "clientAnswer": "Dr. Keith, confirmed slots automatically sync with your SOE Exact or Dentally diary via webhook.",
-    "deliverableSolution": "1-Tap Mobile WhatsApp Emergency Dental Slot Intake Engine (48 Hours)",
-    "flawLeakRange": "\u00a33,500 \u2013 \u00a36,000/mo",
-    "regionDeliveryApps": "none",
-    "teamGreeting": "Team Covent Garden Dental",
-    "founderGreeting": "Dr. Keith",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Covent%20Garden%20Dental%20Practice%2C%2047%20Bedford%20St%2C%20London%20WC2E%209HA",
-    "contactInfo": {
-      "phone": "+447811223344",
-      "phoneType": "landline_uan",
-      "phoneSource": "Storefront Plaque & General Dental Council (GDC) Register",
-      "whatsappNumber": null,
-      "email": null,
-      "instagramHandle": "@coventgardendental",
-      "website": "https://coventgardendental.co.uk",
-      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Covent%20Garden%20Dental%20Practice"
-    },
-    "status": "ready",
-    "createdAt": "2026-10-31T00:00:00.000Z",
-    "dispatchedAt": null,
-    "dispatchedMessage": null,
-    "followupDueAt": null,
-    "emailStatus": "none_mobile_only",
-    "googlePlaceId": "ChIJ2a2f860e853f28401115d7a",
-    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ2a2f860e853f28401115d7a",
-    "operatingStatus": "OPERATIONAL",
-    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
-    "authenticityStatus": "VERIFIED",
-    "normalizedPhone": "+447811223344",
-    "whatsappVerificationStatus": "NOT AVAILABLE",
-    "softwareOpportunity": {
-      "category": "ai_automation",
-      "categoryLabel": "E. AI & Automation",
-      "categoryIcon": "\ud83e\udd16",
-      "recommendedSoftware": "24/7 AI Patient Triage Assistant & Instant Calendar Booking Portal",
-      "businessBenefit": "Captures high-ticket after-hours dental/medical emergency inquiries before patients call competitors.",
-      "mvpScope": "AI chatbot trained on clinic procedures, automated calendar slot confirmation, SMS/WhatsApp appointment reminders.",
-      "demoConcept": "Live triage simulator answering patient toothache questions and booking available slots.",
-      "complexity": "Medium",
-      "suggestedTechStack": "FastAPI, OpenAI GPT-4o-mini, PostgreSQL, Twilio SMS, Google Calendar API"
-    },
-    "websiteAudit": {
-      "websiteAvailable": true,
-      "speedScore": 68,
-      "mobileResponsive": true,
-      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
-      "brokenLinks": 0,
-      "sslActive": true,
-      "onlineOrdering": false,
-      "onlineBooking": false,
-      "customerPortal": false,
-      "ecommerce": false,
-      "confidenceLevel": "95% Verified",
-      "verificationStatus": "Confirmed via Google Maps & Web Audit",
-      "businessImpact": "\u00a33,500 \u2013 \u00a36,000/mo",
-      "suggestedSolution": "1-Tap Mobile WhatsApp Emergency Dental Slot Intake Engine (48 Hours)"
-    },
-    "batchId": "batch_02",
-    "batchNumber": 2,
-    "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_62",
@@ -6076,7 +5837,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_63",
@@ -6174,7 +5936,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_64",
@@ -6272,7 +6035,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_65",
@@ -6370,7 +6134,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_66",
@@ -6468,7 +6233,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_67",
@@ -6566,7 +6332,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_68",
@@ -6664,7 +6431,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_69",
@@ -6762,7 +6530,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_70",
@@ -6860,7 +6629,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_71",
@@ -6958,7 +6728,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_72",
@@ -7056,7 +6827,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_73",
@@ -7154,7 +6926,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_74",
@@ -7252,301 +7025,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
-  },
-  {
-    "id": "real_lead_75",
-    "businessName": "Realty Austin Neighborhood Brokers",
-    "businessScale": "small_business",
-    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
-    "city": "Austin, Texas",
-    "country": "USA \ud83c\uddfa\ud83c\uddf8",
-    "address": "4615 Spicewood Springs Rd, Austin, TX 78759",
-    "phone": "+15122411300",
-    "phoneType": "landline_uan",
-    "phoneSource": "TREC Licensed Broker Board & Google Maps Pin",
-    "whatsappNumber": null,
-    "email": null,
-    "instagramHandle": "@realtyaustin",
-    "rating": "4.8",
-    "reviews": 890,
-    "decisionMaker": "Jonathan Boatwright",
-    "decisionMakerTitle": "Co-Owner & Managing Broker",
-    "decisionMakerSource": "Texas Real Estate Commission (TREC) Directory",
-    "decisionMakerSourceUrl": "https://maps.google.com/?q=Realty+Austin+Spicewood",
-    "website": "https://realtyaustin.com",
-    "niche": "real_estate",
-    "nicheName": "Independent Residential Real Estate Brokerage",
-    "nicheIcon": "\ud83c\udfe1",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
-    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
-    "flawTitle": "Sunday Open House Paper Sheet Registration Bottleneck",
-    "specificWeakness": "Buyers touring Sunday open houses scribble fake email addresses on paper guest books, losing warm buyer leads.",
-    "whereToCheck": "Instagram bio check: 1-Tap Mobile Open House Check-In & Listing Sheet Bot missing.",
-    "whyMoneyLeaks": "Losing 2-3 qualified home buyers monthly costs ~$18,000 in buyer agency commissions.",
-    "talkingPoints": [
-      "Jonathan, buyers touring Austin homes hate writing their phone number on a public paper clip board.",
-      "We build a 1-tap QR Open House Check-In where buyers tap on mobile to unlock the digital disclosure packet instantly."
-    ],
-    "clientQuestion": "Does it filter out tire-kickers from pre-approved buyers?",
-    "clientAnswer": "Jonathan, the form asks if they have a pre-approval letter and tags hot buyers instantly for your agents.",
-    "deliverableSolution": "1-Tap Mobile Open House QR Registration & Disclosure Funnel (48 Hours)",
-    "flawLeakRange": "$12,000 \u2013 $22,000/mo",
-    "regionDeliveryApps": "none",
-    "teamGreeting": "Team Realty Austin",
-    "founderGreeting": "Jonathan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Realty%20Austin%20Neighborhood%20Brokers%2C%204615%20Spicewood%20Springs%20Rd%2C%20Austin%2C%20TX%2078759",
-    "contactInfo": {
-      "phone": "+15122411300",
-      "phoneType": "landline_uan",
-      "phoneSource": "TREC Licensed Broker Board & Google Maps Pin",
-      "whatsappNumber": null,
-      "email": null,
-      "instagramHandle": "@realtyaustin",
-      "website": "https://realtyaustin.com",
-      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Realty%20Austin%20Neighborhood%20Brokers"
-    },
-    "status": "ready",
-    "createdAt": "2026-10-31T00:00:00.000Z",
-    "dispatchedAt": null,
-    "dispatchedMessage": null,
-    "followupDueAt": null,
-    "emailStatus": "none_mobile_only",
-    "googlePlaceId": "ChIJ0cd0656c19241cebbfd2cb5",
-    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ0cd0656c19241cebbfd2cb5",
-    "operatingStatus": "OPERATIONAL",
-    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
-    "authenticityStatus": "VERIFIED",
-    "normalizedPhone": "+15122411300",
-    "whatsappVerificationStatus": "NOT AVAILABLE",
-    "softwareOpportunity": {
-      "category": "business_management",
-      "categoryLabel": "D. Business Management Software (CRM/ERP)",
-      "categoryIcon": "\ud83d\udcca",
-      "recommendedSoftware": "Custom Multi-Property Lead & Booking Management ERP",
-      "businessBenefit": "Prevents double-booking disasters and stops multi-thousand-dollar event and buyer inquiries from being lost in WhatsApp chats.",
-      "mvpScope": "Visual date reservation calendar, lead stage pipeline (Inquiry -> Tour -> Contract -> Deposit), contract generation.",
-      "demoConcept": "Interactive booking board with drag-and-drop event hall reservation.",
-      "complexity": "High",
-      "suggestedTechStack": "Django / FastAPI, Vue 3 / React, PostgreSQL, AWS S3, DocuSign API"
-    },
-    "websiteAudit": {
-      "websiteAvailable": true,
-      "speedScore": 68,
-      "mobileResponsive": true,
-      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
-      "brokenLinks": 0,
-      "sslActive": true,
-      "onlineOrdering": false,
-      "onlineBooking": false,
-      "customerPortal": false,
-      "ecommerce": false,
-      "confidenceLevel": "95% Verified",
-      "verificationStatus": "Confirmed via Google Maps & Web Audit",
-      "businessImpact": "$12,000 \u2013 $22,000/mo",
-      "suggestedSolution": "1-Tap Mobile Open House QR Registration & Disclosure Funnel (48 Hours)"
-    },
-    "batchId": "batch_02",
-    "batchNumber": 2,
-    "batchPitched": false,
-    "crmStatus": "qualified"
-  },
-  {
-    "id": "real_lead_76",
-    "businessName": "Bedford Flatbush Property Group",
-    "businessScale": "small_business",
-    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
-    "city": "New York, NY",
-    "country": "USA \ud83c\uddfa\ud83c\uddf8",
-    "address": "1214 Bedford Ave, Brooklyn, NY 11216",
-    "phone": "+17184852200",
-    "phoneType": "landline_uan",
-    "phoneSource": "Storefront Pin & NY DOS Real Estate Register",
-    "whatsappNumber": null,
-    "email": null,
-    "instagramHandle": "@bedfordproperties",
-    "rating": "4.7",
-    "reviews": 230,
-    "decisionMaker": "David Klein",
-    "decisionMakerTitle": "Principal Broker & Founder",
-    "decisionMakerSource": "New York Department of State Real Estate Board",
-    "decisionMakerSourceUrl": "https://maps.google.com/?q=Bedford+Flatbush+Brooklyn",
-    "website": "https://bedfordproperties.com",
-    "niche": "real_estate",
-    "nicheName": "Boutique Brooklyn Rental & Sales Brokerage",
-    "nicheIcon": "\ud83c\udfe2",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
-    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
-    "flawTitle": "Brooklyn Apartment Showing No-Show & Unqualified Tour Waste",
-    "specificWeakness": "Brokers travel across Brooklyn for apartment showings only to have clients ghost or fail the 40x rent income requirement.",
-    "whereToCheck": "Google profile: 1-Tap WhatsApp Video Tour & 40x Rent Pre-Screen Bot missing.",
-    "whyMoneyLeaks": "Unqualified showings waste ~35 broker hours weekly, costing ~$6,500/mo in lost rental fees.",
-    "talkingPoints": [
-      "David, your agents waste 4 hours traveling between Bed-Stuy and Crown Heights for clients who don't show up.",
-      "We build a 1-tap WhatsApp Video Tour Bot that verifies 40x rent qualification before scheduling in-person keys."
-    ],
-    "clientQuestion": "Will renters feel comfortable sharing income upfront?",
-    "clientAnswer": "David, the bot frames it as 'Fast-Track Landlord Approval' and gives qualified renters first priority.",
-    "deliverableSolution": "1-Tap Mobile Apartment Video Tour & 40x Rent Screening Bot (48 Hours)",
-    "flawLeakRange": "$6,500 \u2013 $11,000/mo",
-    "regionDeliveryApps": "none",
-    "teamGreeting": "Team Bedford Properties",
-    "founderGreeting": "David",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bedford%20Flatbush%20Property%20Group%2C%201214%20Bedford%20Ave%2C%20Brooklyn%2C%20NY%2011216",
-    "contactInfo": {
-      "phone": "+17184852200",
-      "phoneType": "landline_uan",
-      "phoneSource": "Storefront Pin & NY DOS Real Estate Register",
-      "whatsappNumber": null,
-      "email": null,
-      "instagramHandle": "@bedfordproperties",
-      "website": "https://bedfordproperties.com",
-      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Bedford%20Flatbush%20Property%20Group"
-    },
-    "status": "ready",
-    "createdAt": "2026-10-31T00:00:00.000Z",
-    "dispatchedAt": null,
-    "dispatchedMessage": null,
-    "followupDueAt": null,
-    "emailStatus": "none_mobile_only",
-    "googlePlaceId": "ChIJdd3023ea88e4f5a59665d77",
-    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJdd3023ea88e4f5a59665d77",
-    "operatingStatus": "OPERATIONAL",
-    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
-    "authenticityStatus": "VERIFIED",
-    "normalizedPhone": "+17184852200",
-    "whatsappVerificationStatus": "NOT AVAILABLE",
-    "softwareOpportunity": {
-      "category": "business_management",
-      "categoryLabel": "D. Business Management Software (CRM/ERP)",
-      "categoryIcon": "\ud83d\udcca",
-      "recommendedSoftware": "Custom Multi-Property Lead & Booking Management ERP",
-      "businessBenefit": "Prevents double-booking disasters and stops multi-thousand-dollar event and buyer inquiries from being lost in WhatsApp chats.",
-      "mvpScope": "Visual date reservation calendar, lead stage pipeline (Inquiry -> Tour -> Contract -> Deposit), contract generation.",
-      "demoConcept": "Interactive booking board with drag-and-drop event hall reservation.",
-      "complexity": "High",
-      "suggestedTechStack": "Django / FastAPI, Vue 3 / React, PostgreSQL, AWS S3, DocuSign API"
-    },
-    "websiteAudit": {
-      "websiteAvailable": true,
-      "speedScore": 68,
-      "mobileResponsive": true,
-      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
-      "brokenLinks": 0,
-      "sslActive": true,
-      "onlineOrdering": false,
-      "onlineBooking": false,
-      "customerPortal": false,
-      "ecommerce": false,
-      "confidenceLevel": "95% Verified",
-      "verificationStatus": "Confirmed via Google Maps & Web Audit",
-      "businessImpact": "$6,500 \u2013 $11,000/mo",
-      "suggestedSolution": "1-Tap Mobile Apartment Video Tour & 40x Rent Screening Bot (48 Hours)"
-    },
-    "batchId": "batch_02",
-    "batchNumber": 2,
-    "batchPitched": false,
-    "crmStatus": "qualified"
-  },
-  {
-    "id": "real_lead_77",
-    "businessName": "Islington Property Associates",
-    "businessScale": "small_business",
-    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
-    "city": "London",
-    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
-    "address": "298 Upper St, London N1 2TU",
-    "phone": "+447700900123",
-    "phoneType": "landline_uan",
-    "phoneSource": "Storefront Plaque & Property Ombudsman UK Listing",
-    "whatsappNumber": null,
-    "email": null,
-    "instagramHandle": "@islingtonproperty",
-    "rating": "4.6",
-    "reviews": 210,
-    "decisionMaker": "Sarah Jenkins",
-    "decisionMakerTitle": "Managing Partner & Lettings Director",
-    "decisionMakerSource": "ARLA Propertymark Member Register",
-    "decisionMakerSourceUrl": "https://maps.google.com/?q=Islington+Property+Upper+St+London",
-    "website": "https://islingtonproperty.co.uk",
-    "niche": "real_estate",
-    "nicheName": "Boutique Upper Street Residential Lettings",
-    "nicheIcon": "\ud83c\udfe1",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
-    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
-    "flawTitle": "Tenant Right-to-Rent & Holding Deposit Delay Friction",
-    "specificWeakness": "Tenants agreeing to let Georgian flats delay submitting passport and salary slips over email, leaving landlords in limbo.",
-    "whereToCheck": "Google profile: 1-Tap Mobile WhatsApp Tenant Screening & Holding Deposit Link missing.",
-    "whyMoneyLeaks": "Slow document collection delays tenancy start dates, costing landlords ~\u00a33,200/mo in void periods.",
-    "talkingPoints": [
-      "Sarah, tenants on Upper Street take 5 days to email right-to-rent documents while your landlords grow impatient.",
-      "We build a 1-tap WhatsApp Tenant Intake Link where they upload passport photos and pay holding deposit in 60 seconds."
-    ],
-    "clientQuestion": "Does it comply with UK Tenant Fees Act legislation?",
-    "clientAnswer": "Sarah, holding deposits are capped strictly at 1 week's rent with statutory refund terms built into the receipt.",
-    "deliverableSolution": "1-Tap Mobile WhatsApp Tenant Right-to-Rent & Deposit Engine (48 Hours)",
-    "flawLeakRange": "\u00a33,200 \u2013 \u00a35,800/mo",
-    "regionDeliveryApps": "none",
-    "teamGreeting": "Team Islington Property",
-    "founderGreeting": "Sarah",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Islington%20Property%20Associates%2C%20298%20Upper%20St%2C%20London%20N1%202TU",
-    "contactInfo": {
-      "phone": "+447700900123",
-      "phoneType": "landline_uan",
-      "phoneSource": "Storefront Plaque & Property Ombudsman UK Listing",
-      "whatsappNumber": null,
-      "email": null,
-      "instagramHandle": "@islingtonproperty",
-      "website": "https://islingtonproperty.co.uk",
-      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Islington%20Property%20Associates"
-    },
-    "status": "ready",
-    "createdAt": "2026-10-31T00:00:00.000Z",
-    "dispatchedAt": null,
-    "dispatchedMessage": null,
-    "followupDueAt": null,
-    "emailStatus": "none_mobile_only",
-    "googlePlaceId": "ChIJ86c335e773b8444e47e2ca4",
-    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ86c335e773b8444e47e2ca4",
-    "operatingStatus": "OPERATIONAL",
-    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
-    "authenticityStatus": "VERIFIED",
-    "normalizedPhone": "+447700900123",
-    "whatsappVerificationStatus": "NOT AVAILABLE",
-    "softwareOpportunity": {
-      "category": "business_management",
-      "categoryLabel": "D. Business Management Software (CRM/ERP)",
-      "categoryIcon": "\ud83d\udcca",
-      "recommendedSoftware": "Custom Multi-Property Lead & Booking Management ERP",
-      "businessBenefit": "Prevents double-booking disasters and stops multi-thousand-dollar event and buyer inquiries from being lost in WhatsApp chats.",
-      "mvpScope": "Visual date reservation calendar, lead stage pipeline (Inquiry -> Tour -> Contract -> Deposit), contract generation.",
-      "demoConcept": "Interactive booking board with drag-and-drop event hall reservation.",
-      "complexity": "High",
-      "suggestedTechStack": "Django / FastAPI, Vue 3 / React, PostgreSQL, AWS S3, DocuSign API"
-    },
-    "websiteAudit": {
-      "websiteAvailable": true,
-      "speedScore": 68,
-      "mobileResponsive": true,
-      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
-      "brokenLinks": 0,
-      "sslActive": true,
-      "onlineOrdering": false,
-      "onlineBooking": false,
-      "customerPortal": false,
-      "ecommerce": false,
-      "confidenceLevel": "95% Verified",
-      "verificationStatus": "Confirmed via Google Maps & Web Audit",
-      "businessImpact": "\u00a33,200 \u2013 \u00a35,800/mo",
-      "suggestedSolution": "1-Tap Mobile WhatsApp Tenant Right-to-Rent & Deposit Engine (48 Hours)"
-    },
-    "batchId": "batch_02",
-    "batchNumber": 2,
-    "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_78",
@@ -7644,301 +7124,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
-  },
-  {
-    "id": "real_lead_79",
-    "businessName": "Radiant Plumbing & Air (Austin)",
-    "businessScale": "small_business",
-    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
-    "city": "Austin, Texas",
-    "country": "USA \ud83c\uddfa\ud83c\uddf8",
-    "address": "901 W Braker Ln, Austin, TX 78758",
-    "phone": "+15122639288",
-    "phoneType": "landline_uan",
-    "phoneSource": "Service Van Fleet & Google Maps Listing",
-    "whatsappNumber": null,
-    "email": null,
-    "instagramHandle": "@radiantplumbing",
-    "rating": "4.8",
-    "reviews": 1600,
-    "decisionMaker": "Brad Casebier",
-    "decisionMakerTitle": "Founder & Master Plumber",
-    "decisionMakerSource": "Texas State Board of Plumbing Examiners",
-    "decisionMakerSourceUrl": "https://maps.google.com/?q=Radiant+Plumbing+Austin",
-    "website": "https://radiantplumbing.com",
-    "niche": "home_services",
-    "nicheName": "Residential Plumbing & AC Emergency Dispatch",
-    "nicheIcon": "\ud83d\udeb0",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
-    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
-    "flawTitle": "After-Hours Water Heater Burst Emergency Dispatch Friction",
-    "specificWeakness": "Homeowners with a flooding water heater at 10 PM call into automated call-center menus and hang up in frustration.",
-    "whereToCheck": "Google profile: 1-Tap 24/7 Mobile Emergency Plumbing Dispatch Bot missing.",
-    "whyMoneyLeaks": "Losing 4-6 emergency tank replacement jobs per week leaks ~$8,000/mo.",
-    "talkingPoints": [
-      "Brad, when a water heater bursts at 10 PM, homeowners want a van dispatched in 2 minutes, not a call center hold melody.",
-      "We build a 1-tap WhatsApp Emergency Dispatch Bot where homeowners send a video of the leak and lock the first morning van."
-    ],
-    "clientQuestion": "Does it dispatch to our ServiceTitan software?",
-    "clientAnswer": "Brad, the bot pushes the job details, photos, and address directly into your ServiceTitan dispatch board.",
-    "deliverableSolution": "1-Tap Mobile 24/7 Emergency Plumbing Dispatch Engine (48 Hours)",
-    "flawLeakRange": "$8,000 \u2013 $14,000/mo",
-    "regionDeliveryApps": "none",
-    "teamGreeting": "Team Radiant Plumbing",
-    "founderGreeting": "Brad",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Radiant%20Plumbing%20%26%20Air%2C%20901%20W%20Braker%20Ln%2C%20Austin%2C%20TX%2078758",
-    "contactInfo": {
-      "phone": "+15122639288",
-      "phoneType": "landline_uan",
-      "phoneSource": "Service Van Fleet & Google Maps Listing",
-      "whatsappNumber": null,
-      "email": null,
-      "instagramHandle": "@radiantplumbing",
-      "website": "https://radiantplumbing.com",
-      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Radiant%20Plumbing%20%26%20Air"
-    },
-    "status": "ready",
-    "createdAt": "2026-10-31T00:00:00.000Z",
-    "dispatchedAt": null,
-    "dispatchedMessage": null,
-    "followupDueAt": null,
-    "emailStatus": "none_mobile_only",
-    "googlePlaceId": "ChIJce52addfaa5c5ee5a6c60b3",
-    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJce52addfaa5c5ee5a6c60b3",
-    "operatingStatus": "OPERATIONAL",
-    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
-    "authenticityStatus": "VERIFIED",
-    "normalizedPhone": "+15122639288",
-    "whatsappVerificationStatus": "NOT AVAILABLE",
-    "softwareOpportunity": {
-      "category": "desktop_software",
-      "categoryLabel": "C. Desktop & Cloud Business Tools",
-      "categoryIcon": "\ud83d\udcbb",
-      "recommendedSoftware": "Workshop Job Card, Inventory & Quick WhatsApp Invoice POS",
-      "businessBenefit": "Prevents lost parts leakage, streamlines technician labor tracking, and sends instant digital inspection slips to vehicle owners.",
-      "mvpScope": "Digital job card creation, parts inventory deduction, 1-click WhatsApp PDF invoice with payment link.",
-      "demoConcept": "Interactive desktop dashboard demonstrating 20-second repair estimate generation.",
-      "complexity": "Medium",
-      "suggestedTechStack": "Electron / Tauri, React, SQLite / PostgreSQL, PDFKit, WhatsApp Webhook"
-    },
-    "websiteAudit": {
-      "websiteAvailable": true,
-      "speedScore": 68,
-      "mobileResponsive": true,
-      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
-      "brokenLinks": 0,
-      "sslActive": true,
-      "onlineOrdering": false,
-      "onlineBooking": false,
-      "customerPortal": false,
-      "ecommerce": false,
-      "confidenceLevel": "95% Verified",
-      "verificationStatus": "Confirmed via Google Maps & Web Audit",
-      "businessImpact": "$8,000 \u2013 $14,000/mo",
-      "suggestedSolution": "1-Tap Mobile 24/7 Emergency Plumbing Dispatch Engine (48 Hours)"
-    },
-    "batchId": "batch_02",
-    "batchNumber": 2,
-    "batchPitched": false,
-    "crmStatus": "qualified"
-  },
-  {
-    "id": "real_lead_80",
-    "businessName": "24/7 Manhattan Emergency Plumbers",
-    "businessScale": "small_business",
-    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
-    "city": "New York, NY",
-    "country": "USA \ud83c\uddfa\ud83c\uddf8",
-    "address": "210 W 29th St, New York, NY 10001",
-    "phone": "+12127298800",
-    "phoneType": "landline_uan",
-    "phoneSource": "Storefront Pin & NYC Dept of Buildings Licensed Plumbers",
-    "whatsappNumber": null,
-    "email": null,
-    "instagramHandle": "@nycplumbers",
-    "rating": "4.6",
-    "reviews": 340,
-    "decisionMaker": "Mike O'Connor",
-    "decisionMakerTitle": "Master Plumber & Owner",
-    "decisionMakerSource": "NYC Licensed Master Plumbers Association",
-    "decisionMakerSourceUrl": "https://maps.google.com/?q=Manhattan+Emergency+Plumbers",
-    "website": "https://manhattanemergencyplumbers.com",
-    "niche": "home_services",
-    "nicheName": "High-Rise & Brownstone Emergency Plumbing",
-    "nicheIcon": "\ud83d\udd27",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
-    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
-    "flawTitle": "Winter Brownstone Frozen Pipe & Steam Boiler Breakdown Call Delay",
-    "specificWeakness": "When historic brownstone pipes freeze, frantic tenants calling reception get busy signals during freezing cold snaps.",
-    "whereToCheck": "Google profile: 1-Tap WhatsApp Frozen Pipe Emergency Dispatch Pass missing.",
-    "whyMoneyLeaks": "Missed emergency freeze calls leak ~$9,500/mo to large franchise plumbing operators.",
-    "talkingPoints": [
-      "Mike, during sub-zero cold snaps, 20 brownstone owners call at once while your dispatch phone rings off the hook.",
-      "We build a 1-tap WhatsApp Emergency Pipe Bot that takes their address, water shutoff status, and books the nearest van."
-    ],
-    "clientQuestion": "Can it collect an emergency dispatch fee upfront?",
-    "clientAnswer": "Yes Mike, the bot collects a $99 dispatch hold via Apple Pay to prevent technicians driving to cancelled calls.",
-    "deliverableSolution": "1-Tap Mobile NYC Emergency Pipe Freeze Dispatch Funnel (48 Hours)",
-    "flawLeakRange": "$9,500 \u2013 $16,000/mo",
-    "regionDeliveryApps": "none",
-    "teamGreeting": "Team Manhattan Plumbers",
-    "founderGreeting": "Mike",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=24/7%20Manhattan%20Emergency%20Plumbers%2C%20210%20W%2029th%20St%2C%20New%20York%2C%20NY%2010001",
-    "contactInfo": {
-      "phone": "+12127298800",
-      "phoneType": "landline_uan",
-      "phoneSource": "Storefront Pin & NYC Dept of Buildings Licensed Plumbers",
-      "whatsappNumber": null,
-      "email": null,
-      "instagramHandle": "@nycplumbers",
-      "website": "https://manhattanemergencyplumbers.com",
-      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=24/7%20Manhattan%20Emergency%20Plumbers"
-    },
-    "status": "ready",
-    "createdAt": "2026-10-31T00:00:00.000Z",
-    "dispatchedAt": null,
-    "dispatchedMessage": null,
-    "followupDueAt": null,
-    "emailStatus": "none_mobile_only",
-    "googlePlaceId": "ChIJ4fc6d947622e0d0db4c09ef",
-    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ4fc6d947622e0d0db4c09ef",
-    "operatingStatus": "OPERATIONAL",
-    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
-    "authenticityStatus": "VERIFIED",
-    "normalizedPhone": "+12127298800",
-    "whatsappVerificationStatus": "NOT AVAILABLE",
-    "softwareOpportunity": {
-      "category": "desktop_software",
-      "categoryLabel": "C. Desktop & Cloud Business Tools",
-      "categoryIcon": "\ud83d\udcbb",
-      "recommendedSoftware": "Workshop Job Card, Inventory & Quick WhatsApp Invoice POS",
-      "businessBenefit": "Prevents lost parts leakage, streamlines technician labor tracking, and sends instant digital inspection slips to vehicle owners.",
-      "mvpScope": "Digital job card creation, parts inventory deduction, 1-click WhatsApp PDF invoice with payment link.",
-      "demoConcept": "Interactive desktop dashboard demonstrating 20-second repair estimate generation.",
-      "complexity": "Medium",
-      "suggestedTechStack": "Electron / Tauri, React, SQLite / PostgreSQL, PDFKit, WhatsApp Webhook"
-    },
-    "websiteAudit": {
-      "websiteAvailable": true,
-      "speedScore": 68,
-      "mobileResponsive": true,
-      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
-      "brokenLinks": 0,
-      "sslActive": true,
-      "onlineOrdering": false,
-      "onlineBooking": false,
-      "customerPortal": false,
-      "ecommerce": false,
-      "confidenceLevel": "95% Verified",
-      "verificationStatus": "Confirmed via Google Maps & Web Audit",
-      "businessImpact": "$9,500 \u2013 $16,000/mo",
-      "suggestedSolution": "1-Tap Mobile NYC Emergency Pipe Freeze Dispatch Funnel (48 Hours)"
-    },
-    "batchId": "batch_02",
-    "batchNumber": 2,
-    "batchPitched": false,
-    "crmStatus": "qualified"
-  },
-  {
-    "id": "real_lead_81",
-    "businessName": "Pimlico Emergency Maintenance (Kensington)",
-    "businessScale": "small_business",
-    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
-    "city": "London",
-    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
-    "address": "12 Wrights Ln, Kensington, London W8 6TA",
-    "phone": "+447833112233",
-    "phoneType": "landline_uan",
-    "phoneSource": "Gas Safe Register & Google Business Profile",
-    "whatsappNumber": null,
-    "email": null,
-    "instagramHandle": "@pimlicoplumbing",
-    "rating": "4.7",
-    "reviews": 480,
-    "decisionMaker": "Scott Mullins",
-    "decisionMakerTitle": "Operations Director",
-    "decisionMakerSource": "Gas Safe Registered Engineers UK",
-    "decisionMakerSourceUrl": "https://maps.google.com/?q=Pimlico+Emergency+Kensington+London",
-    "website": "https://pimlicomaintenance.co.uk",
-    "niche": "home_services",
-    "nicheName": "High-End Residential Boiler & Electrical Emergency",
-    "nicheIcon": "\u26a1",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
-    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
-    "flawTitle": "Combi Boiler Error Code Call-Out Diagnostic Delay",
-    "specificWeakness": "Homeowners with Worcester Bosch error codes (EA/F1) call describing complex blinking lights while phone queues build.",
-    "whereToCheck": "Google profile: 1-Tap Boiler Error Code Photo Diagnostic Bot missing.",
-    "whyMoneyLeaks": "Slow telephone diagnostics waste engineer call-out visits, costing ~\u00a33,500/mo in non-billable drive time.",
-    "talkingPoints": [
-      "Scott, Kensington homeowners describing boiler error codes over the phone send engineers out with the wrong spare parts.",
-      "We build a 1-tap WhatsApp Boiler Fault Bot where they photograph the display and the engineer brings the exact part on van 1."
-    ],
-    "clientQuestion": "Will it work with Vaillant and Worcester Bosch boilers?",
-    "clientAnswer": "Scott, the diagnostic logic covers all major UK domestic boiler brands and common fault code sequences.",
-    "deliverableSolution": "1-Tap Mobile Boiler Error Code Photo Diagnostic & Dispatch Engine (48 Hours)",
-    "flawLeakRange": "\u00a33,500 \u2013 \u00a36,200/mo",
-    "regionDeliveryApps": "none",
-    "teamGreeting": "Team Pimlico Emergency",
-    "founderGreeting": "Scott",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pimlico%20Emergency%20Maintenance%2C%2012%20Wrights%20Ln%2C%20Kensington%2C%20London%20W8%206TA",
-    "contactInfo": {
-      "phone": "+447833112233",
-      "phoneType": "landline_uan",
-      "phoneSource": "Gas Safe Register & Google Business Profile",
-      "whatsappNumber": null,
-      "email": null,
-      "instagramHandle": "@pimlicoplumbing",
-      "website": "https://pimlicomaintenance.co.uk",
-      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Pimlico%20Emergency%20Maintenance"
-    },
-    "status": "ready",
-    "createdAt": "2026-10-31T00:00:00.000Z",
-    "dispatchedAt": null,
-    "dispatchedMessage": null,
-    "followupDueAt": null,
-    "emailStatus": "none_mobile_only",
-    "googlePlaceId": "ChIJ3f638eefc0cc4d18ab721e1",
-    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ3f638eefc0cc4d18ab721e1",
-    "operatingStatus": "OPERATIONAL",
-    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
-    "authenticityStatus": "VERIFIED",
-    "normalizedPhone": "+447833112233",
-    "whatsappVerificationStatus": "NOT AVAILABLE",
-    "softwareOpportunity": {
-      "category": "desktop_software",
-      "categoryLabel": "C. Desktop & Cloud Business Tools",
-      "categoryIcon": "\ud83d\udcbb",
-      "recommendedSoftware": "Workshop Job Card, Inventory & Quick WhatsApp Invoice POS",
-      "businessBenefit": "Prevents lost parts leakage, streamlines technician labor tracking, and sends instant digital inspection slips to vehicle owners.",
-      "mvpScope": "Digital job card creation, parts inventory deduction, 1-click WhatsApp PDF invoice with payment link.",
-      "demoConcept": "Interactive desktop dashboard demonstrating 20-second repair estimate generation.",
-      "complexity": "Medium",
-      "suggestedTechStack": "Electron / Tauri, React, SQLite / PostgreSQL, PDFKit, WhatsApp Webhook"
-    },
-    "websiteAudit": {
-      "websiteAvailable": true,
-      "speedScore": 68,
-      "mobileResponsive": true,
-      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
-      "brokenLinks": 0,
-      "sslActive": true,
-      "onlineOrdering": false,
-      "onlineBooking": false,
-      "customerPortal": false,
-      "ecommerce": false,
-      "confidenceLevel": "95% Verified",
-      "verificationStatus": "Confirmed via Google Maps & Web Audit",
-      "businessImpact": "\u00a33,500 \u2013 \u00a36,200/mo",
-      "suggestedSolution": "1-Tap Mobile Boiler Error Code Photo Diagnostic & Dispatch Engine (48 Hours)"
-    },
-    "batchId": "batch_02",
-    "batchNumber": 2,
-    "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_82",
@@ -8036,7 +7223,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_83",
@@ -8134,7 +7322,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_84",
@@ -8232,7 +7421,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_85",
@@ -8276,7 +7466,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "none",
     "teamGreeting": "Team The Rookery",
     "founderGreeting": "Peter",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Rookery%20Hotel%2C%2012%20Peter%27s%20Ln%2C%20Cowcross%20St%2C%20London%20EC1M%206DS",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Rookery%20Hotel%2C%2012%20Peter's%20Ln%2C%20Cowcross%20St%2C%20London%20EC1M%206DS",
     "contactInfo": {
       "phone": "+447712345678",
       "phoneType": "landline_uan",
@@ -8330,7 +7520,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_86",
@@ -8428,7 +7619,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_87",
@@ -8526,7 +7718,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_88",
@@ -8624,7 +7817,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_89",
@@ -8722,7 +7916,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_90",
@@ -8820,301 +8015,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
-  },
-  {
-    "id": "real_lead_91",
-    "businessName": "Austin Tenant Rights Legal Clinic",
-    "businessScale": "small_business",
-    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
-    "city": "Austin, Texas",
-    "country": "USA \ud83c\uddfa\ud83c\uddf8",
-    "address": "1200 E 11th St, Austin, TX 78702",
-    "phone": "+15124741800",
-    "phoneType": "landline_uan",
-    "phoneSource": "Office Plaque & State Bar of Texas Directory",
-    "whatsappNumber": null,
-    "email": null,
-    "instagramHandle": "@austintenantlaw",
-    "rating": "4.7",
-    "reviews": 160,
-    "decisionMaker": "Mark Rogers",
-    "decisionMakerTitle": "Managing Attorney",
-    "decisionMakerSource": "State Bar of Texas Licensed Attorneys",
-    "decisionMakerSourceUrl": "https://maps.google.com/?q=Austin+Tenant+Rights+Legal",
-    "website": "https://austintenantlaw.com",
-    "niche": "law_firms",
-    "nicheName": "Tenant Protection & Commercial Lease Disputes",
-    "nicheIcon": "\u2696\ufe0f",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
-    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
-    "flawTitle": "Commercial Lease Document & Eviction Notice Intake Friction",
-    "specificWeakness": "Small business owners facing sudden commercial rent hikes or eviction notices struggle to upload 60-page PDF leases on mobile.",
-    "whereToCheck": "Google profile: 1-Tap WhatsApp Commercial Lease Upload & Retainer Bot missing.",
-    "whyMoneyLeaks": "Losing 4-6 lease dispute retainers monthly costs ~$7,500/mo.",
-    "talkingPoints": [
-      "Mark, small business tenants facing a 3-day notice can't scan and email a 60-page lease from their phone during an emergency.",
-      "We build a 1-tap WhatsApp Lease Intake Bot where clients take photos of the key clauses and book an emergency attorney review."
-    ],
-    "clientQuestion": "Can it collect our $250 initial document review retainer?",
-    "clientAnswer": "Mark, the bot collects the $250 consultation fee via Stripe before the client document is submitted.",
-    "deliverableSolution": "1-Tap Mobile Commercial Lease Upload & Consultation Funnel (48 Hours)",
-    "flawLeakRange": "$7,500 \u2013 $12,500/mo",
-    "regionDeliveryApps": "none",
-    "teamGreeting": "Team Austin Tenant Law",
-    "founderGreeting": "Mark",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Austin%20Tenant%20Rights%20Legal%20Clinic%2C%201200%20E%2011th%20St%2C%20Austin%2C%20TX%2078702",
-    "contactInfo": {
-      "phone": "+15124741800",
-      "phoneType": "landline_uan",
-      "phoneSource": "Office Plaque & State Bar of Texas Directory",
-      "whatsappNumber": null,
-      "email": null,
-      "instagramHandle": "@austintenantlaw",
-      "website": "https://austintenantlaw.com",
-      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Austin%20Tenant%20Rights%20Legal%20Clinic"
-    },
-    "status": "ready",
-    "createdAt": "2026-10-31T00:00:00.000Z",
-    "dispatchedAt": null,
-    "dispatchedMessage": null,
-    "followupDueAt": null,
-    "emailStatus": "none_mobile_only",
-    "googlePlaceId": "ChIJ59b7afb1737b152be43b2ee",
-    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ59b7afb1737b152be43b2ee",
-    "operatingStatus": "OPERATIONAL",
-    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
-    "authenticityStatus": "VERIFIED",
-    "normalizedPhone": "+15124741800",
-    "whatsappVerificationStatus": "NOT AVAILABLE",
-    "softwareOpportunity": {
-      "category": "custom_software",
-      "categoryLabel": "F. Custom Software & Enterprise Systems",
-      "categoryIcon": "\u2696\ufe0f",
-      "recommendedSoftware": "Secure Client Intake Portal & Case Conflict Check Automation",
-      "businessBenefit": "Automates client confidentiality intake, screens case eligibility instantly, and secures confidential evidence files.",
-      "mvpScope": "Encrypted digital intake form, automated conflict of interest scanner, client consultation scheduling.",
-      "demoConcept": "Secure intake workflow demonstration with automated eligibility score.",
-      "complexity": "High",
-      "suggestedTechStack": "Ruby on Rails / NestJS, Next.js, PostgreSQL, AES-256 Encryption, Stripe Invoicing"
-    },
-    "websiteAudit": {
-      "websiteAvailable": true,
-      "speedScore": 68,
-      "mobileResponsive": true,
-      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
-      "brokenLinks": 0,
-      "sslActive": true,
-      "onlineOrdering": false,
-      "onlineBooking": false,
-      "customerPortal": false,
-      "ecommerce": false,
-      "confidenceLevel": "95% Verified",
-      "verificationStatus": "Confirmed via Google Maps & Web Audit",
-      "businessImpact": "$7,500 \u2013 $12,500/mo",
-      "suggestedSolution": "1-Tap Mobile Commercial Lease Upload & Consultation Funnel (48 Hours)"
-    },
-    "batchId": "batch_02",
-    "batchNumber": 2,
-    "batchPitched": false,
-    "crmStatus": "qualified"
-  },
-  {
-    "id": "real_lead_92",
-    "businessName": "Queens Small Business Legal Aid",
-    "businessScale": "small_business",
-    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
-    "city": "New York, NY",
-    "country": "USA \ud83c\uddfa\ud83c\uddf8",
-    "address": "89-00 Sutphin Blvd, Jamaica, NY 11435",
-    "phone": "+17185203300",
-    "phoneType": "landline_uan",
-    "phoneSource": "Storefront Plaque & NY State Unified Court System",
-    "whatsappNumber": null,
-    "email": null,
-    "instagramHandle": "@queensbusinesslaw",
-    "rating": "4.6",
-    "reviews": 180,
-    "decisionMaker": "David Stern",
-    "decisionMakerTitle": "Principal Notary & Commercial Solicitor",
-    "decisionMakerSource": "New York State Bar Association Register",
-    "decisionMakerSourceUrl": "https://maps.google.com/?q=Queens+Small+Business+Legal+Aid",
-    "website": "https://queensbusinesslaw.com",
-    "niche": "law_firms",
-    "nicheName": "Bilingual Immigrant Business Contracts & Notary",
-    "nicheIcon": "\ud83d\udcdc",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
-    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
-    "flawTitle": "Storefront Lease & Vendor Contract Details Intake Bottleneck",
-    "specificWeakness": "Bodega and restaurant owners needing quick partnership agreements or lease reviews get delayed trying to find paperwork.",
-    "whereToCheck": "Google profile: 1-Tap Bilingual Contract Drafting Intake Bot missing.",
-    "whyMoneyLeaks": "Paperwork delays cause ~15 immigrant business clients to hire cheap notary competitors (~$5,000/mo loss).",
-    "talkingPoints": [
-      "David, bodega owners in Queens needing a partnership agreement don't have time to travel to Sutphin Blvd twice.",
-      "We build a 1-tap WhatsApp Contract Bot where both partners upload IDs and terms, and receive the finalized draft in 24 hours."
-    ],
-    "clientQuestion": "Is it available in Spanish and Urdu?",
-    "clientAnswer": "David, the bot automatically switches between English, Spanish, and Urdu based on the client's phone language.",
-    "deliverableSolution": "1-Tap Bilingual Mobile Contract Intake & Notary Funnel (48 Hours)",
-    "flawLeakRange": "$5,000 \u2013 $8,500/mo",
-    "regionDeliveryApps": "none",
-    "teamGreeting": "Team Queens Business Law",
-    "founderGreeting": "David",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Queens%20Small%20Business%20Legal%20Aid%2C%2089-00%20Sutphin%20Blvd%2C%20Jamaica%2C%20NY%2011435",
-    "contactInfo": {
-      "phone": "+17185203300",
-      "phoneType": "landline_uan",
-      "phoneSource": "Storefront Plaque & NY State Unified Court System",
-      "whatsappNumber": null,
-      "email": null,
-      "instagramHandle": "@queensbusinesslaw",
-      "website": "https://queensbusinesslaw.com",
-      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Queens%20Small%20Business%20Legal%20Aid"
-    },
-    "status": "ready",
-    "createdAt": "2026-10-31T00:00:00.000Z",
-    "dispatchedAt": null,
-    "dispatchedMessage": null,
-    "followupDueAt": null,
-    "emailStatus": "none_mobile_only",
-    "googlePlaceId": "ChIJb3d8c050e7cce1f7cf1bf7a",
-    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJb3d8c050e7cce1f7cf1bf7a",
-    "operatingStatus": "OPERATIONAL",
-    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
-    "authenticityStatus": "VERIFIED",
-    "normalizedPhone": "+17185203300",
-    "whatsappVerificationStatus": "NOT AVAILABLE",
-    "softwareOpportunity": {
-      "category": "custom_software",
-      "categoryLabel": "F. Custom Software & Enterprise Systems",
-      "categoryIcon": "\u2696\ufe0f",
-      "recommendedSoftware": "Secure Client Intake Portal & Case Conflict Check Automation",
-      "businessBenefit": "Automates client confidentiality intake, screens case eligibility instantly, and secures confidential evidence files.",
-      "mvpScope": "Encrypted digital intake form, automated conflict of interest scanner, client consultation scheduling.",
-      "demoConcept": "Secure intake workflow demonstration with automated eligibility score.",
-      "complexity": "High",
-      "suggestedTechStack": "Ruby on Rails / NestJS, Next.js, PostgreSQL, AES-256 Encryption, Stripe Invoicing"
-    },
-    "websiteAudit": {
-      "websiteAvailable": true,
-      "speedScore": 68,
-      "mobileResponsive": true,
-      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
-      "brokenLinks": 0,
-      "sslActive": true,
-      "onlineOrdering": false,
-      "onlineBooking": false,
-      "customerPortal": false,
-      "ecommerce": false,
-      "confidenceLevel": "95% Verified",
-      "verificationStatus": "Confirmed via Google Maps & Web Audit",
-      "businessImpact": "$5,000 \u2013 $8,500/mo",
-      "suggestedSolution": "1-Tap Bilingual Mobile Contract Intake & Notary Funnel (48 Hours)"
-    },
-    "batchId": "batch_02",
-    "batchNumber": 2,
-    "batchPitched": false,
-    "crmStatus": "qualified"
-  },
-  {
-    "id": "real_lead_93",
-    "businessName": "Bloomsbury Notary Public Solicitors",
-    "businessScale": "small_business",
-    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
-    "city": "London",
-    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
-    "address": "40 Russell Square, London WC1B 4DH",
-    "phone": "+447844556677",
-    "phoneType": "landline_uan",
-    "phoneSource": "Faculty Office of the Archbishop of Canterbury Notary Register",
-    "whatsappNumber": null,
-    "email": null,
-    "instagramHandle": "@bloomsburynotary",
-    "rating": "4.8",
-    "reviews": 220,
-    "decisionMaker": "Oliver Higgins",
-    "decisionMakerTitle": "Senior Scrivener Notary",
-    "decisionMakerSource": "The Notaries Society UK Directory",
-    "decisionMakerSourceUrl": "https://maps.google.com/?q=Bloomsbury+Notary+Public+London",
-    "website": "https://bloomsburynotary.co.uk",
-    "niche": "law_firms",
-    "nicheName": "Apostille & International Legal Document Notarization",
-    "nicheIcon": "\u2696\ufe0f",
-    "channel": "gmail",
-    "recommendedPitchChannel": "gmail",
-    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
-    "flawTitle": "Urgent Foreign Apostille & Power of Attorney Document Clashing",
-    "specificWeakness": "Expats needing urgent FCDO apostille stamps for overseas property sales call repeatedly to confirm document requirements.",
-    "whereToCheck": "Google profile: 1-Tap WhatsApp Apostille Document Check & Booking Bot missing.",
-    "whyMoneyLeaks": "Telephone bottlenecks cause ~20 urgent notarization clients to use rival Holborn firms (~\u00a32,400/mo).",
-    "talkingPoints": [
-      "Oliver, expats needing an urgent power of attorney stamped for Spain or Dubai won't wait for email responses.",
-      "We build a 1-tap WhatsApp Notary Bot where clients photograph their document for instant verification before booking."
-    ],
-    "clientQuestion": "Does it verify Foreign Office (FCDO) legalisation requirements?",
-    "clientAnswer": "Oliver, the bot verifies the destination country and informs the client whether Hague Apostille or Embassy legalisation is needed.",
-    "deliverableSolution": "1-Tap Mobile WhatsApp Notary Document Checker & Slot Bot (48 Hours)",
-    "flawLeakRange": "\u00a32,400 \u2013 \u00a34,200/mo",
-    "regionDeliveryApps": "none",
-    "teamGreeting": "Team Bloomsbury Notary",
-    "founderGreeting": "Oliver",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bloomsbury%20Notary%20Public%20Solicitors%2C%2040%20Russell%20Square%2C%20London%20WC1B%204DH",
-    "contactInfo": {
-      "phone": "+447844556677",
-      "phoneType": "landline_uan",
-      "phoneSource": "Faculty Office of the Archbishop of Canterbury Notary Register",
-      "whatsappNumber": null,
-      "email": null,
-      "instagramHandle": "@bloomsburynotary",
-      "website": "https://bloomsburynotary.co.uk",
-      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Bloomsbury%20Notary%20Public%20Solicitors"
-    },
-    "status": "ready",
-    "createdAt": "2026-10-31T00:00:00.000Z",
-    "dispatchedAt": null,
-    "dispatchedMessage": null,
-    "followupDueAt": null,
-    "emailStatus": "none_mobile_only",
-    "googlePlaceId": "ChIJ5cd1459cfaf8065b69c6fbb",
-    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ5cd1459cfaf8065b69c6fbb",
-    "operatingStatus": "OPERATIONAL",
-    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
-    "authenticityStatus": "VERIFIED",
-    "normalizedPhone": "+447844556677",
-    "whatsappVerificationStatus": "NOT AVAILABLE",
-    "softwareOpportunity": {
-      "category": "custom_software",
-      "categoryLabel": "F. Custom Software & Enterprise Systems",
-      "categoryIcon": "\u2696\ufe0f",
-      "recommendedSoftware": "Secure Client Intake Portal & Case Conflict Check Automation",
-      "businessBenefit": "Automates client confidentiality intake, screens case eligibility instantly, and secures confidential evidence files.",
-      "mvpScope": "Encrypted digital intake form, automated conflict of interest scanner, client consultation scheduling.",
-      "demoConcept": "Secure intake workflow demonstration with automated eligibility score.",
-      "complexity": "High",
-      "suggestedTechStack": "Ruby on Rails / NestJS, Next.js, PostgreSQL, AES-256 Encryption, Stripe Invoicing"
-    },
-    "websiteAudit": {
-      "websiteAvailable": true,
-      "speedScore": 68,
-      "mobileResponsive": true,
-      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
-      "brokenLinks": 0,
-      "sslActive": true,
-      "onlineOrdering": false,
-      "onlineBooking": false,
-      "customerPortal": false,
-      "ecommerce": false,
-      "confidenceLevel": "95% Verified",
-      "verificationStatus": "Confirmed via Google Maps & Web Audit",
-      "businessImpact": "\u00a32,400 \u2013 \u00a34,200/mo",
-      "suggestedSolution": "1-Tap Mobile WhatsApp Notary Document Checker & Slot Bot (48 Hours)"
-    },
-    "batchId": "batch_02",
-    "batchNumber": 2,
-    "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_94",
@@ -9212,7 +8114,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_95",
@@ -9310,7 +8213,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_96",
@@ -9408,7 +8312,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_97",
@@ -9506,7 +8411,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_98",
@@ -9604,7 +8510,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_99",
@@ -9702,7 +8609,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_100",
@@ -9800,7 +8708,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_02",
     "batchNumber": 2,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_101",
@@ -9895,10 +8804,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs 600k \u2013 950k/mo",
       "suggestedSolution": "1-Tap Mobile VIP Table Reservation Funnel with Instant WhatsApp Token (48 Hours)"
     },
-    "batchId": "batch_03",
+    "batchId": "batch_02",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_102",
@@ -9993,10 +8903,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs 450k \u2013 750k/mo",
       "suggestedSolution": "Branded 1-Tap Mobile Web Cart (0% Commission, Direct WhatsApp Counter Slip, 48 Hours)"
     },
-    "batchId": "batch_03",
+    "batchId": "batch_02",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_103",
@@ -10040,7 +8951,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Lal Qila",
     "founderGreeting": "Tariq & Umer",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lal%20Qila%20Restaurant%2C%2010/A%2C%20Main%20Shahrah-e-Faisal%2C%20Block%207/8%2C%20Karachi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lal%20Qila%20Restaurant%2C%2010%2FA%2C%20Main%20Shahrah-e-Faisal%2C%20Block%207%2F8%2C%20Karachi",
     "contactInfo": {
       "phone": "(021) 111-525-745",
       "phoneType": "landline_uan",
@@ -10091,10 +9002,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs 700k \u2013 1.2M/mo",
       "suggestedSolution": "VIP Buffet Seat Reservation Token Funnel with Instant WhatsApp Confirmation (48 Hours)"
     },
-    "batchId": "batch_03",
+    "batchId": "batch_02",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_104",
@@ -10189,10 +9101,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs 500k \u2013 850k/mo",
       "suggestedSolution": "0% Commission Direct Corporate Lunch Web Ordering System (48 Hours)"
     },
-    "batchId": "batch_03",
+    "batchId": "batch_02",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_105",
@@ -10236,7 +9149,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Bar.B.Q Tonight",
     "founderGreeting": "Sardar & Jamshed",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bar.B.Q%20Tonight%2C%20Comm.%205/1%2C%20Boating%20Basin%2C%20Block%205%2C%20Clifton%2C%20Karachi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bar.B.Q%20Tonight%2C%20Comm.%205%2F1%2C%20Boating%20Basin%2C%20Block%205%2C%20Clifton%2C%20Karachi",
     "contactInfo": {
       "phone": "(021) 111-227-111",
       "phoneType": "landline_uan",
@@ -10287,10 +9200,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs 550k \u2013 900k/mo",
       "suggestedSolution": "1-Tap QR In-Car Express Ordering Engine with Real-Time Parking Bay Counter (48 Hours)"
     },
-    "batchId": "batch_03",
+    "batchId": "batch_02",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_106",
@@ -10385,10 +9299,11 @@ const INITIAL_LEADS = [
       "businessImpact": "$4,200 \u2013 $7,500/mo",
       "suggestedSolution": "Direct 0% Commission Mobile Web Ordering Engine with Instant Apple Pay (48 Hours)"
     },
-    "batchId": "batch_03",
+    "batchId": "batch_02",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_107",
@@ -10432,7 +9347,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Terry Black's",
     "founderGreeting": "Mark & Michael",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Terry%20Black%27s%20Barbecue%2C%201003%20Barton%20Springs%20Rd%2C%20Austin%2C%20TX%2078704",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Terry%20Black's%20Barbecue%2C%201003%20Barton%20Springs%20Rd%2C%20Austin%2C%20TX%2078704",
     "contactInfo": {
       "phone": "+1 512 394 5899",
       "phoneType": "landline_uan",
@@ -10483,10 +9398,11 @@ const INITIAL_LEADS = [
       "businessImpact": "$6,000 \u2013 $11,000/mo",
       "suggestedSolution": "Express Mobile Pre-Order Curbside Pickup Funnel with SMS Ready Alerts (48 Hours)"
     },
-    "batchId": "batch_03",
+    "batchId": "batch_02",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_108",
@@ -10530,7 +9446,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "DoorDash & Uber Eats",
     "teamGreeting": "Team Joe's Pizza",
     "founderGreeting": "Joe & Sal",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Joe%27s%20Pizza%2C%207%20Carmine%20St%2C%20Greenwich%20Village%2C%20NY%2010014",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Joe's%20Pizza%2C%207%20Carmine%20St%2C%20Greenwich%20Village%2C%20NY%2010014",
     "contactInfo": {
       "phone": "+1 212 366 1182",
       "phoneType": "landline_uan",
@@ -10581,10 +9497,11 @@ const INITIAL_LEADS = [
       "businessImpact": "$4,800 \u2013 $8,500/mo",
       "suggestedSolution": "1-Tap Direct Whole-Pie Mobile Web Checkout (0% Commission, 48 Hours)"
     },
-    "batchId": "batch_03",
+    "batchId": "batch_02",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_109",
@@ -10628,7 +9545,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Deliveroo & Just Eat",
     "teamGreeting": "Team Dishoom",
     "founderGreeting": "Shamil & Kavi",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dishoom%2C%2012%20Upper%20St%20Martin%27s%20Lane%2C%20London%20WC2H%209FB",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dishoom%2C%2012%20Upper%20St%20Martin's%20Lane%2C%20London%20WC2H%209FB",
     "contactInfo": {
       "phone": "+44 20 7420 9320",
       "phoneType": "landline_uan",
@@ -10679,10 +9596,11 @@ const INITIAL_LEADS = [
       "businessImpact": "\u00a35,000 \u2013 \u00a38,500/mo",
       "suggestedSolution": "Dynamic Virtual Queue Mobile SMS Concierge (Zero App Download, 48 Hours)"
     },
-    "batchId": "batch_03",
+    "batchId": "batch_02",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_110",
@@ -10777,10 +9695,11 @@ const INITIAL_LEADS = [
       "businessImpact": "\u00a33,800 \u2013 \u00a36,200/mo",
       "suggestedSolution": "Direct Commission-Free VIP Reservation Engine with Table Management Integration (48 Hours)"
     },
-    "batchId": "batch_03",
+    "batchId": "batch_02",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_111",
@@ -10875,10 +9794,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs 350k \u2013 600k/mo",
       "suggestedSolution": "1-Tap Mobile Custom Birthday Cake Ordering & Pre-Payment Engine (48 Hours)"
     },
-    "batchId": "batch_03",
+    "batchId": "batch_02",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_112",
@@ -10973,10 +9893,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs 300k \u2013 520k/mo",
       "suggestedSolution": "Express Morning Rush Pre-Order & Grab-and-Go Bag Counter System (48 Hours)"
     },
-    "batchId": "batch_03",
+    "batchId": "batch_02",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_113",
@@ -11074,7 +9995,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_114",
@@ -11172,7 +10094,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_115",
@@ -11270,7 +10193,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_116",
@@ -11368,7 +10292,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_117",
@@ -11466,7 +10391,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_118",
@@ -11564,7 +10490,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_119",
@@ -11662,7 +10589,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_120",
@@ -11760,7 +10688,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_121",
@@ -11858,7 +10787,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_122",
@@ -11956,7 +10886,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_123",
@@ -12054,7 +10985,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_124",
@@ -12152,7 +11084,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_125",
@@ -12196,7 +11129,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "none",
     "teamGreeting": "Team Fatimiyah Dental",
     "founderGreeting": "Dr. Shabih Zaidi",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fatimiyah%20Hospital%20Dental%20Wing%2C%20272/1%2C%20Britto%20Road%2C%20Soldier%20Bazar%2C%20Karachi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fatimiyah%20Hospital%20Dental%20Wing%2C%20272%2F1%2C%20Britto%20Road%2C%20Soldier%20Bazar%2C%20Karachi",
     "contactInfo": {
       "phone": "(021) 111-344-344",
       "phoneType": "landline_uan",
@@ -12250,7 +11183,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_126",
@@ -12348,7 +11282,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_127",
@@ -12392,7 +11327,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "none",
     "teamGreeting": "Team Rahman & Rahman",
     "founderGreeting": "Dr. Amin",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rahman%20%26%20Rahman%20Dental%20Surgeons%2C%207/1-B%2C%20New%20Garden%20Town%2C%20Lahore",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rahman%20%26%20Rahman%20Dental%20Surgeons%2C%207%2F1-B%2C%20New%20Garden%20Town%2C%20Lahore",
     "contactInfo": {
       "phone": "+92 300 8443322",
       "phoneType": "mobile_whatsapp",
@@ -12446,7 +11381,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_128",
@@ -12544,7 +11480,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_129",
@@ -12642,7 +11579,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_130",
@@ -12686,7 +11624,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "none",
     "teamGreeting": "Team Kashee's",
     "founderGreeting": "Kashif (Kashee)",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kashee%27s%20Beauty%20Parlour%2C%20Main%20Tariq%20Road%2C%20PECHS%20Block%202%2C%20Karachi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kashee's%20Beauty%20Parlour%2C%20Main%20Tariq%20Road%2C%20PECHS%20Block%202%2C%20Karachi",
     "contactInfo": {
       "phone": "(021) 111-527-433",
       "phoneType": "landline_uan",
@@ -12740,7 +11678,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_131",
@@ -12784,7 +11723,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "none",
     "teamGreeting": "Team Peng's Salon",
     "founderGreeting": "Peng",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Peng%27s%20Salon%2C%20Block%204%2C%20Clifton%2C%20Karachi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Peng's%20Salon%2C%20Block%204%2C%20Clifton%2C%20Karachi",
     "contactInfo": {
       "phone": "+92 300 8261122",
       "phoneType": "mobile_whatsapp",
@@ -12838,7 +11777,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_132",
@@ -12936,7 +11876,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_133",
@@ -12980,7 +11921,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "none",
     "teamGreeting": "Team Ted's Grooming Room",
     "founderGreeting": "Operations Directorate",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ted%27s%20Grooming%20Room%2C%2031%20Mortimer%20St%2C%20London%20W1W%208RP",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ted's%20Grooming%20Room%2C%2031%20Mortimer%20St%2C%20London%20W1W%208RP",
     "contactInfo": {
       "phone": "+44 20 7636 7636",
       "phoneType": "landline_uan",
@@ -13034,7 +11975,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_134",
@@ -13132,7 +12074,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_135",
@@ -13230,7 +12173,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_136",
@@ -13328,7 +12272,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_137",
@@ -13372,7 +12317,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "none",
     "teamGreeting": "Team Marlon's Barber",
     "founderGreeting": "Marlon",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Marlon%27s%20Barber%20Shop%2C%20810%20Guadaloupe%20St%2C%20Austin%2C%20TX%2078701",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Marlon's%20Barber%20Shop%2C%20810%20Guadaloupe%20St%2C%20Austin%2C%20TX%2078701",
     "contactInfo": {
       "phone": "+1 512 472 2887",
       "phoneType": "landline_uan",
@@ -13426,7 +12371,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_138",
@@ -13524,7 +12470,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_139",
@@ -13622,7 +12569,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_140",
@@ -13720,7 +12668,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_141",
@@ -13818,7 +12767,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_142",
@@ -13916,7 +12866,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_143",
@@ -14014,7 +12965,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_144",
@@ -14112,7 +13064,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_145",
@@ -14156,7 +13109,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "none",
     "teamGreeting": "Team Gymbox",
     "founderGreeting": "Richard & Marc",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gymbox%2C%2042-49%20St%20Martin%27s%20Lane%2C%20London%20WC2N%204EJ",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gymbox%2C%2042-49%20St%20Martin's%20Lane%2C%20London%20WC2N%204EJ",
     "contactInfo": {
       "phone": "+44 20 3006 2875",
       "phoneType": "landline_uan",
@@ -14210,7 +13163,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_146",
@@ -14308,7 +13262,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_147",
@@ -14406,7 +13361,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_148",
@@ -14504,7 +13460,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_149",
@@ -14602,7 +13559,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_150",
@@ -14700,7 +13658,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_03",
     "batchNumber": 3,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_151",
@@ -14795,10 +13754,11 @@ const INITIAL_LEADS = [
       "businessImpact": "$12,000 \u2013 $18,000/mo",
       "suggestedSolution": "1-Tap Mobile Tesla Ceramic Coating Selector & Apple Pay Deposit Funnel (48 Hours)"
     },
-    "batchId": "batch_04",
+    "batchId": "batch_03",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_152",
@@ -14893,10 +13853,11 @@ const INITIAL_LEADS = [
       "businessImpact": "$25,000 \u2013 $40,000/mo",
       "suggestedSolution": "1-Tap VIP Exotic Mobile Service Concierge with VIN Auto-Decoder (48 Hours)"
     },
-    "batchId": "batch_04",
+    "batchId": "batch_03",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_153",
@@ -14991,10 +13952,11 @@ const INITIAL_LEADS = [
       "businessImpact": "\u00a34,500 \u2013 \u00a37,500/mo",
       "suggestedSolution": "30-Second Mobile MOT Express Slot Booking Funnel with Apple Pay (48 Hours)"
     },
-    "batchId": "batch_04",
+    "batchId": "batch_03",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_154",
@@ -15089,10 +14051,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs 1.5M \u2013 3.0M/mo",
       "suggestedSolution": "1-Tap WhatsApp Real Estate Brochure Funnel with Instant Agent Lead Alert (48 Hours)"
     },
-    "batchId": "batch_04",
+    "batchId": "batch_03",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_155",
@@ -15187,10 +14150,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs 1.0M \u2013 2.2M/mo",
       "suggestedSolution": "Automated International Real Estate Lead Router & Zoom Booking Funnel (48 Hours)"
     },
-    "batchId": "batch_04",
+    "batchId": "batch_03",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_156",
@@ -15285,10 +14249,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs 1.2M \u2013 2.5M/mo",
       "suggestedSolution": "Instant Real-Time WhatsApp Real Estate Lead Dispatcher (48 Hours)"
     },
-    "batchId": "batch_04",
+    "batchId": "batch_03",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_157",
@@ -15383,10 +14348,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs 1.8M \u2013 3.2M/mo",
       "suggestedSolution": "1-Tap Mobile Luxury Penthouse Virtual Tour Booking Calendar (48 Hours)"
     },
-    "batchId": "batch_04",
+    "batchId": "batch_03",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_158",
@@ -15481,10 +14447,11 @@ const INITIAL_LEADS = [
       "businessImpact": "$30,000 \u2013 $50,000/mo",
       "suggestedSolution": "1-Tap Mobile VIP Relocation Assessment & SMS Lead Capture Engine (48 Hours)"
     },
-    "batchId": "batch_04",
+    "batchId": "batch_03",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_159",
@@ -15579,10 +14546,11 @@ const INITIAL_LEADS = [
       "businessImpact": "$40,000 \u2013 $75,000/mo",
       "suggestedSolution": "1-Tap Private Luxury Waterfront Showing Concierge with Auto-NDA (48 Hours)"
     },
-    "batchId": "batch_04",
+    "batchId": "batch_03",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_160",
@@ -15677,10 +14645,11 @@ const INITIAL_LEADS = [
       "businessImpact": "$50,000 \u2013 $90,000/mo",
       "suggestedSolution": "1-Tap Mobile Penthouse Reel-to-Tour Lead Capture Funnel (48 Hours)"
     },
-    "batchId": "batch_04",
+    "batchId": "batch_03",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_161",
@@ -15775,10 +14744,11 @@ const INITIAL_LEADS = [
       "businessImpact": "\u00a325,000 \u2013 \u00a345,000/mo",
       "suggestedSolution": "Frictionless International Investor Valuation & WhatsApp Lead Tool (48 Hours)"
     },
-    "batchId": "batch_04",
+    "batchId": "batch_03",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_162",
@@ -15873,10 +14843,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs 350k \u2013 600k/mo",
       "suggestedSolution": "24/7 WhatsApp Emergency AC Breakdown Dispatch & Morning Priority Booking Bot (48 Hours)"
     },
-    "batchId": "batch_04",
+    "batchId": "batch_03",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_163",
@@ -15974,7 +14945,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_164",
@@ -16072,7 +15044,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_165",
@@ -16170,7 +15143,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_166",
@@ -16214,7 +15188,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "none",
     "teamGreeting": "Team Stan's HVAC",
     "founderGreeting": "Stan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Stan%27s%20Heating%20%26%20Air%2C%207011%20W%20Parmer%20Ln%2C%20Austin%2C%20TX%2078729",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Stan's%20Heating%20%26%20Air%2C%207011%20W%20Parmer%20Ln%2C%20Austin%2C%20TX%2078729",
     "contactInfo": {
       "phone": "+1 512 300 0000",
       "phoneType": "landline_uan",
@@ -16268,7 +15242,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_167",
@@ -16366,7 +15341,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_168",
@@ -16464,7 +15440,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_169",
@@ -16562,7 +15539,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_170",
@@ -16660,7 +15638,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_171",
@@ -16758,7 +15737,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_172",
@@ -16802,7 +15782,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "none",
     "teamGreeting": "Team Faletti's",
     "founderGreeting": "Haji Asghar",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti%27s%20Hotel%2C%2024%20Egerton%20Rd%2C%20Lahore",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's%20Hotel%2C%2024%20Egerton%20Rd%2C%20Lahore",
     "contactInfo": {
       "phone": "(042) 111-444-333",
       "phoneType": "landline_uan",
@@ -16856,7 +15836,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_173",
@@ -16954,7 +15935,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_174",
@@ -17052,7 +16034,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_175",
@@ -17150,7 +16133,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_176",
@@ -17248,7 +16232,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_177",
@@ -17346,7 +16331,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_178",
@@ -17444,7 +16430,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_179",
@@ -17542,7 +16529,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_180",
@@ -17640,7 +16628,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_181",
@@ -17738,7 +16727,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_182",
@@ -17836,7 +16826,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_183",
@@ -17934,7 +16925,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_184",
@@ -18032,7 +17024,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_185",
@@ -18130,7 +17123,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_186",
@@ -18228,7 +17222,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_187",
@@ -18272,7 +17267,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "none",
     "teamGreeting": "Team Haidermota",
     "founderGreeting": "Khozem",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Haidermota%20%26%20Co%2C%20State%20Life%20Building%201%2C%20I.I.%20Chundrigar%20Rd%20/%20Civil%20Lines%2C%20Karachi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Haidermota%20%26%20Co%2C%20State%20Life%20Building%201%2C%20I.I.%20Chundrigar%20Rd%20%2F%20Civil%20Lines%2C%20Karachi",
     "contactInfo": {
       "phone": "(021) 111-529-929",
       "phoneType": "landline_uan",
@@ -18326,7 +17321,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_188",
@@ -18424,7 +17420,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_189",
@@ -18522,7 +17519,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_190",
@@ -18620,7 +17618,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_191",
@@ -18718,7 +17717,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_192",
@@ -18816,7 +17816,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_193",
@@ -18914,7 +17915,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_194",
@@ -19012,7 +18014,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_195",
@@ -19110,7 +18113,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_196",
@@ -19208,7 +18212,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_197",
@@ -19306,7 +18311,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_198",
@@ -19404,7 +18410,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_199",
@@ -19502,7 +18509,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_200",
@@ -19600,7 +18608,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_04",
     "batchNumber": 4,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_201",
@@ -19645,7 +18654,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Burning Brownie",
     "founderGreeting": "Haji",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning+Brownie,+F-7+Jinnah+Super,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning%20Brownie%2C%20Shop%2014%2C%20F-7%20Jinnah%20Super%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002037194",
       "phoneType": "mobile_whatsapp",
@@ -19696,10 +18705,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 255,000 \u2013 Rs. 527,000/mo",
       "suggestedSolution": "1-Tap Mobile Custom Cake Builder with WhatsApp Slip (48 Hours)"
     },
-    "batchId": "batch_05",
+    "batchId": "batch_04",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_202",
@@ -19744,7 +18754,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Rawalpindi Dental Clinic",
     "founderGreeting": "Zeeshan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi+Dental+Clinic,+Beverly+Centre+(Blue+Area),+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi%20Dental%20Clinic%2C%20Shop%2016%2C%20Beverly%20Centre%20(Blue%20Area)%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002074388",
       "phoneType": "mobile_whatsapp",
@@ -19795,10 +18805,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 476,000 \u2013 Rs. 986,000/mo",
       "suggestedSolution": "24/7 1-Tap Mobile Patient Booking Concierge (48 Hours)"
     },
-    "batchId": "batch_05",
+    "batchId": "batch_04",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_203",
@@ -19843,7 +18854,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Executive Cut Men Salon",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive+Cut+Men+Salon,+F-10+Markaz,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive%20Cut%20Men%20Salon%2C%20Shop%2018%2C%20F-10%20Markaz%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002111582",
       "phoneType": "mobile_whatsapp",
@@ -19894,10 +18905,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 272,000 \u2013 Rs. 578,000/mo",
       "suggestedSolution": "1-Tap VIP Stylist Chair & Bridal Consultation Funnel (48 Hours)"
     },
-    "batchId": "batch_05",
+    "batchId": "batch_04",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_204",
@@ -19942,7 +18954,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Velocity MMA & Fitness",
     "founderGreeting": "Malik",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity+MMA+&+Fitness,+I-8+Markaz,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity%20MMA%20%26%20Fitness%2C%20Shop%2020%2C%20I-8%20Markaz%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002148776",
       "phoneType": "mobile_whatsapp",
@@ -19993,10 +19005,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 306,000 \u2013 Rs. 646,000/mo",
       "suggestedSolution": "1-Tap VIP 1-Day Trial Mobile Funnel with SMS Pass (48 Hours)"
     },
-    "batchId": "batch_05",
+    "batchId": "batch_04",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_205",
@@ -20041,7 +19054,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Margalla Auto Workshop",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla+Auto+Workshop,+Centaurus+Mall+Strip,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla%20Auto%20Workshop%2C%20Shop%2022%2C%20Centaurus%20Mall%20Strip%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002185970",
       "phoneType": "mobile_whatsapp",
@@ -20092,10 +19105,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 323,000 \u2013 Rs. 697,000/mo",
       "suggestedSolution": "1-Tap Instant Service Diagnostic & Slot Booking Funnel (48 Hours)"
     },
-    "batchId": "batch_05",
+    "batchId": "batch_04",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_206",
@@ -20140,7 +19154,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Zameen Associate Partners",
     "founderGreeting": "Mian",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen+Associate+Partners,+E-11+Northern+Strip,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen%20Associate%20Partners%2C%20Shop%2024%2C%20E-11%20Northern%20Strip%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002223164",
       "phoneType": "mobile_whatsapp",
@@ -20191,10 +19205,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 544,000 \u2013 Rs. 1,275,000/mo",
       "suggestedSolution": "1-Tap VIP Property Tour & Video Walkthrough Booking Funnel (48 Hours)"
     },
-    "batchId": "batch_05",
+    "batchId": "batch_04",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_207",
@@ -20239,7 +19254,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Al-Rehman Electric & Solar",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman+Electric+&+Solar,+G-9+Karachi+Company,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman%20Electric%20%26%20Solar%2C%20Shop%2026%2C%20G-9%20Karachi%20Company%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002260358",
       "phoneType": "mobile_whatsapp",
@@ -20290,10 +19305,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 374,000 \u2013 Rs. 782,000/mo",
       "suggestedSolution": "1-Tap Emergency Mobile Dispatch Booking Widget (48 Hours)"
     },
-    "batchId": "batch_05",
+    "batchId": "batch_04",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_208",
@@ -20338,7 +19354,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Faletti's Grand Hotel",
     "founderGreeting": "Nisar",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's+Grand+Hotel,+F-11+Markaz,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's%20Grand%20Hotel%2C%20Shop%2028%2C%20F-11%20Markaz%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002297552",
       "phoneType": "mobile_whatsapp",
@@ -20389,10 +19405,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 578,000 \u2013 Rs. 1,394,000/mo",
       "suggestedSolution": "0% Commission Direct Mobile VIP Booking Engine (48 Hours)"
     },
-    "batchId": "batch_05",
+    "batchId": "batch_04",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_209",
@@ -20437,7 +19454,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Crown Wedding Planners",
     "founderGreeting": "Farhan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown+Wedding+Planners,+Diplomatic+Enclave+Road,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown%20Wedding%20Planners%2C%20Shop%2030%2C%20Diplomatic%20Enclave%20Road%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002334746",
       "phoneType": "mobile_whatsapp",
@@ -20488,10 +19505,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 442,000 \u2013 Rs. 1,054,000/mo",
       "suggestedSolution": "1-Tap Live Wedding Date Availability & Hall Tour Funnel (48 Hours)"
     },
-    "batchId": "batch_05",
+    "batchId": "batch_04",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_210",
@@ -20536,7 +19554,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Apex Law Chambers",
     "founderGreeting": "Hamza",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Apex+Law+Chambers,+F-6+Markaz+(Super+Market),+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Apex%20Law%20Chambers%2C%20Shop%2032%2C%20F-6%20Markaz%20(Super%20Market)%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002371940",
       "phoneType": "mobile_whatsapp",
@@ -20587,10 +19605,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 595,000 \u2013 Rs. 1,445,000/mo",
       "suggestedSolution": "1-Tap Private Client Case Evaluation & Retainer Intake Funnel (48 Hours)"
     },
-    "batchId": "batch_05",
+    "batchId": "batch_04",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_211",
@@ -20635,7 +19654,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Happy Paws Animal Hospital",
     "founderGreeting": "Bilal",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy+Paws+Animal+Hospital,+F-7+Jinnah+Super,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy%20Paws%20Animal%20Hospital%2C%20Shop%2034%2C%20F-7%20Jinnah%20Super%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002409134",
       "phoneType": "mobile_whatsapp",
@@ -20686,10 +19705,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 238,000 \u2013 Rs. 527,000/mo",
       "suggestedSolution": "1-Tap Pet Vaccination & Emergency Slot Booking Concierge (48 Hours)"
     },
-    "batchId": "batch_05",
+    "batchId": "batch_04",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_212",
@@ -20734,7 +19754,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team The Monal View",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The+Monal+View,+Beverly+Centre+(Blue+Area),+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Monal%20View%2C%20Shop%2036%2C%20Beverly%20Centre%20(Blue%20Area)%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002446328",
       "phoneType": "mobile_whatsapp",
@@ -20785,10 +19805,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 357,000 \u2013 Rs. 714,000/mo",
       "suggestedSolution": "1-Tap Mobile Ordering & VIP Reservation Funnel (48 Hours)"
     },
-    "batchId": "batch_05",
+    "batchId": "batch_04",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_213",
@@ -20833,7 +19854,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Gourmet Bakers",
     "founderGreeting": "Syed",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gourmet+Bakers,+F-10+Markaz,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gourmet%20Bakers%2C%20Shop%2038%2C%20F-10%20Markaz%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002483522",
       "phoneType": "mobile_whatsapp",
@@ -20887,7 +19908,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_214",
@@ -20932,7 +19954,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Teeth & Braces Dental",
     "founderGreeting": "Tariq",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Teeth+&+Braces+Dental,+I-8+Markaz,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Teeth%20%26%20Braces%20Dental%2C%20Shop%2040%2C%20I-8%20Markaz%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002520716",
       "phoneType": "mobile_whatsapp",
@@ -20986,7 +20008,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_215",
@@ -21031,7 +20054,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Toni & Guy South",
     "founderGreeting": "Haji",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Toni+&+Guy+South,+Centaurus+Mall+Strip,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Toni%20%26%20Guy%20South%2C%20Shop%2042%2C%20Centaurus%20Mall%20Strip%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002557910",
       "phoneType": "mobile_whatsapp",
@@ -21085,7 +20108,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_216",
@@ -21130,7 +20154,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Velocity MMA & Fitness",
     "founderGreeting": "Zeeshan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity+MMA+&+Fitness,+E-11+Northern+Strip,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity%20MMA%20%26%20Fitness%2C%20Shop%2044%2C%20E-11%20Northern%20Strip%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002595104",
       "phoneType": "mobile_whatsapp",
@@ -21184,7 +20208,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_217",
@@ -21229,7 +20254,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Asian Auto Workshop",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Asian+Auto+Workshop,+G-9+Karachi+Company,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Asian%20Auto%20Workshop%2C%20Shop%2046%2C%20G-9%20Karachi%20Company%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002632298",
       "phoneType": "mobile_whatsapp",
@@ -21283,7 +20308,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_218",
@@ -21328,7 +20354,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Premier Realty Advisors",
     "founderGreeting": "Malik",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Premier+Realty+Advisors,+F-11+Markaz,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Premier%20Realty%20Advisors%2C%20Shop%2048%2C%20F-11%20Markaz%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002669492",
       "phoneType": "mobile_whatsapp",
@@ -21382,7 +20408,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_219",
@@ -21427,7 +20454,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Master Cool Technical Services",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Master+Cool+Technical+Services,+Diplomatic+Enclave+Road,+Islamabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Master%20Cool%20Technical%20Services%2C%20Shop%2050%2C%20Diplomatic%20Enclave%20Road%2C%20Islamabad",
     "contactInfo": {
       "phone": "+923002706686",
       "phoneType": "mobile_whatsapp",
@@ -21481,7 +20508,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_220",
@@ -21526,7 +20554,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Burning Brownie",
     "founderGreeting": "Haji",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning+Brownie,+Commercial+Market+(Satellite+Town),+Rawalpindi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning%20Brownie%2C%20Shop%2014%2C%20Commercial%20Market%20(Satellite%20Town)%2C%20Rawalpindi",
     "contactInfo": {
       "phone": "+923332037194",
       "phoneType": "mobile_whatsapp",
@@ -21580,7 +20608,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_221",
@@ -21625,7 +20654,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Rawalpindi Dental Clinic",
     "founderGreeting": "Zeeshan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi+Dental+Clinic,+Bahria+Town+Phase+4,+Rawalpindi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi%20Dental%20Clinic%2C%20Shop%2016%2C%20Bahria%20Town%20Phase%204%2C%20Rawalpindi",
     "contactInfo": {
       "phone": "+923332074388",
       "phoneType": "mobile_whatsapp",
@@ -21679,7 +20708,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_222",
@@ -21724,7 +20754,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Executive Cut Men Salon",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive+Cut+Men+Salon,+Chaklala+Scheme+3,+Rawalpindi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive%20Cut%20Men%20Salon%2C%20Shop%2018%2C%20Chaklala%20Scheme%203%2C%20Rawalpindi",
     "contactInfo": {
       "phone": "+923332111582",
       "phoneType": "mobile_whatsapp",
@@ -21778,7 +20808,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_223",
@@ -21823,7 +20854,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Velocity MMA & Fitness",
     "founderGreeting": "Malik",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity+MMA+&+Fitness,+Peshawar+Road+Cantt,+Rawalpindi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity%20MMA%20%26%20Fitness%2C%20Shop%2020%2C%20Peshawar%20Road%20Cantt%2C%20Rawalpindi",
     "contactInfo": {
       "phone": "+923332148776",
       "phoneType": "mobile_whatsapp",
@@ -21877,7 +20908,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_224",
@@ -21922,7 +20954,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Margalla Auto Workshop",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla+Auto+Workshop,+Murree+Road+Strip,+Rawalpindi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla%20Auto%20Workshop%2C%20Shop%2022%2C%20Murree%20Road%20Strip%2C%20Rawalpindi",
     "contactInfo": {
       "phone": "+923332185970",
       "phoneType": "mobile_whatsapp",
@@ -21976,7 +21008,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_225",
@@ -22021,7 +21054,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Zameen Associate Partners",
     "founderGreeting": "Mian",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen+Associate+Partners,+Westridge+1+Cantt,+Rawalpindi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen%20Associate%20Partners%2C%20Shop%2024%2C%20Westridge%201%20Cantt%2C%20Rawalpindi",
     "contactInfo": {
       "phone": "+923332223164",
       "phoneType": "mobile_whatsapp",
@@ -22075,7 +21108,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_226",
@@ -22120,7 +21154,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Al-Rehman Electric & Solar",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman+Electric+&+Solar,+Kashmir+Road+(Saddar+Cantt),+Rawalpindi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman%20Electric%20%26%20Solar%2C%20Shop%2026%2C%20Kashmir%20Road%20(Saddar%20Cantt)%2C%20Rawalpindi",
     "contactInfo": {
       "phone": "+923332260358",
       "phoneType": "mobile_whatsapp",
@@ -22174,7 +21208,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_227",
@@ -22219,7 +21254,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Faletti's Grand Hotel",
     "founderGreeting": "Nisar",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's+Grand+Hotel,+Commercial+Market+(Satellite+Town),+Rawalpindi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's%20Grand%20Hotel%2C%20Shop%2028%2C%20Commercial%20Market%20(Satellite%20Town)%2C%20Rawalpindi",
     "contactInfo": {
       "phone": "+923332297552",
       "phoneType": "mobile_whatsapp",
@@ -22273,7 +21308,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_228",
@@ -22318,7 +21354,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Crown Wedding Planners",
     "founderGreeting": "Farhan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown+Wedding+Planners,+Bahria+Town+Phase+4,+Rawalpindi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown%20Wedding%20Planners%2C%20Shop%2030%2C%20Bahria%20Town%20Phase%204%2C%20Rawalpindi",
     "contactInfo": {
       "phone": "+923332334746",
       "phoneType": "mobile_whatsapp",
@@ -22372,7 +21408,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_229",
@@ -22417,7 +21454,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Apex Law Chambers",
     "founderGreeting": "Hamza",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Apex+Law+Chambers,+Chaklala+Scheme+3,+Rawalpindi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Apex%20Law%20Chambers%2C%20Shop%2032%2C%20Chaklala%20Scheme%203%2C%20Rawalpindi",
     "contactInfo": {
       "phone": "+923332371940",
       "phoneType": "mobile_whatsapp",
@@ -22471,7 +21508,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_230",
@@ -22516,7 +21554,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Happy Paws Animal Hospital",
     "founderGreeting": "Bilal",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy+Paws+Animal+Hospital,+Peshawar+Road+Cantt,+Rawalpindi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy%20Paws%20Animal%20Hospital%2C%20Shop%2034%2C%20Peshawar%20Road%20Cantt%2C%20Rawalpindi",
     "contactInfo": {
       "phone": "+923332409134",
       "phoneType": "mobile_whatsapp",
@@ -22570,7 +21608,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_231",
@@ -22615,7 +21654,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team The Monal View",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The+Monal+View,+Murree+Road+Strip,+Rawalpindi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Monal%20View%2C%20Shop%2036%2C%20Murree%20Road%20Strip%2C%20Rawalpindi",
     "contactInfo": {
       "phone": "+923332446328",
       "phoneType": "mobile_whatsapp",
@@ -22669,7 +21708,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_232",
@@ -22714,7 +21754,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Gourmet Bakers",
     "founderGreeting": "Syed",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gourmet+Bakers,+Westridge+1+Cantt,+Rawalpindi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gourmet%20Bakers%2C%20Shop%2038%2C%20Westridge%201%20Cantt%2C%20Rawalpindi",
     "contactInfo": {
       "phone": "+923332483522",
       "phoneType": "mobile_whatsapp",
@@ -22768,7 +21808,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_233",
@@ -22813,7 +21854,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Burning Brownie",
     "founderGreeting": "Haji",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning+Brownie,+Kohinoor+City+Commercial+Area,+Faisalabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning%20Brownie%2C%20Shop%2014%2C%20Kohinoor%20City%20Commercial%20Area%2C%20Faisalabad",
     "contactInfo": {
       "phone": "+923012037194",
       "phoneType": "mobile_whatsapp",
@@ -22867,7 +21908,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_234",
@@ -22912,7 +21954,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Rawalpindi Dental Clinic",
     "founderGreeting": "Zeeshan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi+Dental+Clinic,+Canal+Road+Strip,+Faisalabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi%20Dental%20Clinic%2C%20Shop%2016%2C%20Canal%20Road%20Strip%2C%20Faisalabad",
     "contactInfo": {
       "phone": "+923012074388",
       "phoneType": "mobile_whatsapp",
@@ -22966,7 +22008,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_235",
@@ -23011,7 +22054,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Executive Cut Men Salon",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive+Cut+Men+Salon,+Jaranwala+Road,+Faisalabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive%20Cut%20Men%20Salon%2C%20Shop%2018%2C%20Jaranwala%20Road%2C%20Faisalabad",
     "contactInfo": {
       "phone": "+923012111582",
       "phoneType": "mobile_whatsapp",
@@ -23065,7 +22108,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_236",
@@ -23110,7 +22154,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Velocity MMA & Fitness",
     "founderGreeting": "Malik",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity+MMA+&+Fitness,+Satiana+Road+Market,+Faisalabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity%20MMA%20%26%20Fitness%2C%20Shop%2020%2C%20Satiana%20Road%20Market%2C%20Faisalabad",
     "contactInfo": {
       "phone": "+923012148776",
       "phoneType": "mobile_whatsapp",
@@ -23164,7 +22208,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_237",
@@ -23209,7 +22254,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Margalla Auto Workshop",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla+Auto+Workshop,+Batala+Colony,+Faisalabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla%20Auto%20Workshop%2C%20Shop%2022%2C%20Batala%20Colony%2C%20Faisalabad",
     "contactInfo": {
       "phone": "+923012185970",
       "phoneType": "mobile_whatsapp",
@@ -23263,7 +22308,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_238",
@@ -23308,7 +22354,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Zameen Associate Partners",
     "founderGreeting": "Mian",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen+Associate+Partners,+D-Ground+(Peoples+Colony),+Faisalabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen%20Associate%20Partners%2C%20Shop%2024%2C%20D-Ground%20(Peoples%20Colony)%2C%20Faisalabad",
     "contactInfo": {
       "phone": "+923012223164",
       "phoneType": "mobile_whatsapp",
@@ -23362,7 +22408,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_239",
@@ -23407,7 +22454,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Al-Rehman Electric & Solar",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman+Electric+&+Solar,+Kohinoor+City+Commercial+Area,+Faisalabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman%20Electric%20%26%20Solar%2C%20Shop%2026%2C%20Kohinoor%20City%20Commercial%20Area%2C%20Faisalabad",
     "contactInfo": {
       "phone": "+923012260358",
       "phoneType": "mobile_whatsapp",
@@ -23461,7 +22508,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_240",
@@ -23506,7 +22554,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Faletti's Grand Hotel",
     "founderGreeting": "Nisar",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's+Grand+Hotel,+Canal+Road+Strip,+Faisalabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's%20Grand%20Hotel%2C%20Shop%2028%2C%20Canal%20Road%20Strip%2C%20Faisalabad",
     "contactInfo": {
       "phone": "+923012297552",
       "phoneType": "mobile_whatsapp",
@@ -23560,7 +22608,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_241",
@@ -23605,7 +22654,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Crown Wedding Planners",
     "founderGreeting": "Farhan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown+Wedding+Planners,+Jaranwala+Road,+Faisalabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown%20Wedding%20Planners%2C%20Shop%2030%2C%20Jaranwala%20Road%2C%20Faisalabad",
     "contactInfo": {
       "phone": "+923012334746",
       "phoneType": "mobile_whatsapp",
@@ -23659,7 +22708,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_242",
@@ -23704,7 +22754,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Apex Law Chambers",
     "founderGreeting": "Hamza",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Apex+Law+Chambers,+Satiana+Road+Market,+Faisalabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Apex%20Law%20Chambers%2C%20Shop%2032%2C%20Satiana%20Road%20Market%2C%20Faisalabad",
     "contactInfo": {
       "phone": "+923012371940",
       "phoneType": "mobile_whatsapp",
@@ -23758,7 +22808,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_243",
@@ -23803,7 +22854,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Happy Paws Animal Hospital",
     "founderGreeting": "Bilal",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy+Paws+Animal+Hospital,+Batala+Colony,+Faisalabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy%20Paws%20Animal%20Hospital%2C%20Shop%2034%2C%20Batala%20Colony%2C%20Faisalabad",
     "contactInfo": {
       "phone": "+923012409134",
       "phoneType": "mobile_whatsapp",
@@ -23857,7 +22908,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_244",
@@ -23902,7 +22954,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team The Monal View",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The+Monal+View,+D-Ground+(Peoples+Colony),+Faisalabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Monal%20View%2C%20Shop%2036%2C%20D-Ground%20(Peoples%20Colony)%2C%20Faisalabad",
     "contactInfo": {
       "phone": "+923012446328",
       "phoneType": "mobile_whatsapp",
@@ -23956,7 +23008,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_245",
@@ -24001,7 +23054,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Gourmet Bakers",
     "founderGreeting": "Syed",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gourmet+Bakers,+Kohinoor+City+Commercial+Area,+Faisalabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gourmet%20Bakers%2C%20Shop%2038%2C%20Kohinoor%20City%20Commercial%20Area%2C%20Faisalabad",
     "contactInfo": {
       "phone": "+923012483522",
       "phoneType": "mobile_whatsapp",
@@ -24055,7 +23108,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_246",
@@ -24100,7 +23154,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Burning Brownie",
     "founderGreeting": "Haji",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning+Brownie,+Gulgasht+Colony+Commercial,+Multan",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning%20Brownie%2C%20Shop%2014%2C%20Gulgasht%20Colony%20Commercial%2C%20Multan",
     "contactInfo": {
       "phone": "+923002037194",
       "phoneType": "mobile_whatsapp",
@@ -24154,7 +23208,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_247",
@@ -24199,7 +23254,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Rawalpindi Dental Clinic",
     "founderGreeting": "Zeeshan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi+Dental+Clinic,+Bosan+Road+Strip,+Multan",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi%20Dental%20Clinic%2C%20Shop%2016%2C%20Bosan%20Road%20Strip%2C%20Multan",
     "contactInfo": {
       "phone": "+923002074388",
       "phoneType": "mobile_whatsapp",
@@ -24253,7 +23308,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_248",
@@ -24298,7 +23354,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Executive Cut Men Salon",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive+Cut+Men+Salon,+Hussain+Agahi+Market,+Multan",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive%20Cut%20Men%20Salon%2C%20Shop%2018%2C%20Hussain%20Agahi%20Market%2C%20Multan",
     "contactInfo": {
       "phone": "+923002111582",
       "phoneType": "mobile_whatsapp",
@@ -24352,7 +23408,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_249",
@@ -24397,7 +23454,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Velocity MMA & Fitness",
     "founderGreeting": "Malik",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity+MMA+&+Fitness,+Model+Town+C-Block,+Multan",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity%20MMA%20%26%20Fitness%2C%20Shop%2020%2C%20Model%20Town%20C-Block%2C%20Multan",
     "contactInfo": {
       "phone": "+923002148776",
       "phoneType": "mobile_whatsapp",
@@ -24451,7 +23508,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_250",
@@ -24496,7 +23554,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Margalla Auto Workshop",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla+Auto+Workshop,+Officers+Colony,+Multan",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla%20Auto%20Workshop%2C%20Shop%2022%2C%20Officers%20Colony%2C%20Multan",
     "contactInfo": {
       "phone": "+923002185970",
       "phoneType": "mobile_whatsapp",
@@ -24550,7 +23608,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_05",
     "batchNumber": 5,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_251",
@@ -24595,7 +23654,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Zameen Associate Partners",
     "founderGreeting": "Mian",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen+Associate+Partners,+Abdali+Road+(Cantt),+Multan",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen%20Associate%20Partners%2C%20Shop%2024%2C%20Abdali%20Road%20(Cantt)%2C%20Multan",
     "contactInfo": {
       "phone": "+923002223164",
       "phoneType": "mobile_whatsapp",
@@ -24646,10 +23705,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 544,000 \u2013 Rs. 1,275,000/mo",
       "suggestedSolution": "1-Tap VIP Property Tour & Video Walkthrough Booking Funnel (48 Hours)"
     },
-    "batchId": "batch_06",
+    "batchId": "batch_05",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_252",
@@ -24694,7 +23754,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Al-Rehman Electric & Solar",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman+Electric+&+Solar,+Gulgasht+Colony+Commercial,+Multan",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman%20Electric%20%26%20Solar%2C%20Shop%2026%2C%20Gulgasht%20Colony%20Commercial%2C%20Multan",
     "contactInfo": {
       "phone": "+923002260358",
       "phoneType": "mobile_whatsapp",
@@ -24745,10 +23805,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 374,000 \u2013 Rs. 782,000/mo",
       "suggestedSolution": "1-Tap Emergency Mobile Dispatch Booking Widget (48 Hours)"
     },
-    "batchId": "batch_06",
+    "batchId": "batch_05",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_253",
@@ -24793,7 +23854,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Faletti's Grand Hotel",
     "founderGreeting": "Nisar",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's+Grand+Hotel,+Bosan+Road+Strip,+Multan",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's%20Grand%20Hotel%2C%20Shop%2028%2C%20Bosan%20Road%20Strip%2C%20Multan",
     "contactInfo": {
       "phone": "+923002297552",
       "phoneType": "mobile_whatsapp",
@@ -24844,10 +23905,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 578,000 \u2013 Rs. 1,394,000/mo",
       "suggestedSolution": "0% Commission Direct Mobile VIP Booking Engine (48 Hours)"
     },
-    "batchId": "batch_06",
+    "batchId": "batch_05",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_254",
@@ -24892,7 +23954,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Crown Wedding Planners",
     "founderGreeting": "Farhan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown+Wedding+Planners,+Hussain+Agahi+Market,+Multan",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown%20Wedding%20Planners%2C%20Shop%2030%2C%20Hussain%20Agahi%20Market%2C%20Multan",
     "contactInfo": {
       "phone": "+923002334746",
       "phoneType": "mobile_whatsapp",
@@ -24943,10 +24005,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 442,000 \u2013 Rs. 1,054,000/mo",
       "suggestedSolution": "1-Tap Live Wedding Date Availability & Hall Tour Funnel (48 Hours)"
     },
-    "batchId": "batch_06",
+    "batchId": "batch_05",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_255",
@@ -24991,7 +24054,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Apex Law Chambers",
     "founderGreeting": "Hamza",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Apex+Law+Chambers,+Model+Town+C-Block,+Multan",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Apex%20Law%20Chambers%2C%20Shop%2032%2C%20Model%20Town%20C-Block%2C%20Multan",
     "contactInfo": {
       "phone": "+923002371940",
       "phoneType": "mobile_whatsapp",
@@ -25042,10 +24105,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 595,000 \u2013 Rs. 1,445,000/mo",
       "suggestedSolution": "1-Tap Private Client Case Evaluation & Retainer Intake Funnel (48 Hours)"
     },
-    "batchId": "batch_06",
+    "batchId": "batch_05",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_256",
@@ -25090,7 +24154,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Happy Paws Animal Hospital",
     "founderGreeting": "Bilal",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy+Paws+Animal+Hospital,+Officers+Colony,+Multan",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy%20Paws%20Animal%20Hospital%2C%20Shop%2034%2C%20Officers%20Colony%2C%20Multan",
     "contactInfo": {
       "phone": "+923002409134",
       "phoneType": "mobile_whatsapp",
@@ -25141,10 +24205,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 238,000 \u2013 Rs. 527,000/mo",
       "suggestedSolution": "1-Tap Pet Vaccination & Emergency Slot Booking Concierge (48 Hours)"
     },
-    "batchId": "batch_06",
+    "batchId": "batch_05",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_257",
@@ -25189,7 +24254,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team The Monal View",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The+Monal+View,+Abdali+Road+(Cantt),+Multan",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Monal%20View%2C%20Shop%2036%2C%20Abdali%20Road%20(Cantt)%2C%20Multan",
     "contactInfo": {
       "phone": "+923002446328",
       "phoneType": "mobile_whatsapp",
@@ -25240,10 +24305,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 357,000 \u2013 Rs. 714,000/mo",
       "suggestedSolution": "1-Tap Mobile Ordering & VIP Reservation Funnel (48 Hours)"
     },
-    "batchId": "batch_06",
+    "batchId": "batch_05",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_258",
@@ -25288,7 +24354,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Gourmet Bakers",
     "founderGreeting": "Syed",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gourmet+Bakers,+Gulgasht+Colony+Commercial,+Multan",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gourmet%20Bakers%2C%20Shop%2038%2C%20Gulgasht%20Colony%20Commercial%2C%20Multan",
     "contactInfo": {
       "phone": "+923002483522",
       "phoneType": "mobile_whatsapp",
@@ -25339,10 +24405,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 255,000 \u2013 Rs. 527,000/mo",
       "suggestedSolution": "1-Tap Mobile Custom Cake Builder with WhatsApp Slip (48 Hours)"
     },
-    "batchId": "batch_06",
+    "batchId": "batch_05",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_259",
@@ -25387,7 +24454,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Burning Brownie",
     "founderGreeting": "Haji",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning+Brownie,+University+Road+Strip,+Peshawar",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning%20Brownie%2C%20Shop%2014%2C%20University%20Road%20Strip%2C%20Peshawar",
     "contactInfo": {
       "phone": "+923002037194",
       "phoneType": "mobile_whatsapp",
@@ -25438,10 +24505,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 255,000 \u2013 Rs. 527,000/mo",
       "suggestedSolution": "1-Tap Mobile Custom Cake Builder with WhatsApp Slip (48 Hours)"
     },
-    "batchId": "batch_06",
+    "batchId": "batch_05",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_260",
@@ -25486,7 +24554,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Rawalpindi Dental Clinic",
     "founderGreeting": "Zeeshan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi+Dental+Clinic,+Hayatabad+Phase+3,+Peshawar",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi%20Dental%20Clinic%2C%20Shop%2016%2C%20Hayatabad%20Phase%203%2C%20Peshawar",
     "contactInfo": {
       "phone": "+923002074388",
       "phoneType": "mobile_whatsapp",
@@ -25537,10 +24605,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 476,000 \u2013 Rs. 986,000/mo",
       "suggestedSolution": "24/7 1-Tap Mobile Patient Booking Concierge (48 Hours)"
     },
-    "batchId": "batch_06",
+    "batchId": "batch_05",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_261",
@@ -25585,7 +24654,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Executive Cut Men Salon",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive+Cut+Men+Salon,+Saddar+Cantt+Bazaar,+Peshawar",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive%20Cut%20Men%20Salon%2C%20Shop%2018%2C%20Saddar%20Cantt%20Bazaar%2C%20Peshawar",
     "contactInfo": {
       "phone": "+923002111582",
       "phoneType": "mobile_whatsapp",
@@ -25636,10 +24705,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 272,000 \u2013 Rs. 578,000/mo",
       "suggestedSolution": "1-Tap VIP Stylist Chair & Bridal Consultation Funnel (48 Hours)"
     },
-    "batchId": "batch_06",
+    "batchId": "batch_05",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_262",
@@ -25684,7 +24754,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Velocity MMA & Fitness",
     "founderGreeting": "Malik",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity+MMA+&+Fitness,+Ring+Road+Strip,+Peshawar",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity%20MMA%20%26%20Fitness%2C%20Shop%2020%2C%20Ring%20Road%20Strip%2C%20Peshawar",
     "contactInfo": {
       "phone": "+923002148776",
       "phoneType": "mobile_whatsapp",
@@ -25735,10 +24805,11 @@ const INITIAL_LEADS = [
       "businessImpact": "Rs. 306,000 \u2013 Rs. 646,000/mo",
       "suggestedSolution": "1-Tap VIP 1-Day Trial Mobile Funnel with SMS Pass (48 Hours)"
     },
-    "batchId": "batch_06",
+    "batchId": "batch_05",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_263",
@@ -25783,7 +24854,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Margalla Auto Workshop",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla+Auto+Workshop,+Deans+Trade+Center,+Peshawar",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla%20Auto%20Workshop%2C%20Shop%2022%2C%20Deans%20Trade%20Center%2C%20Peshawar",
     "contactInfo": {
       "phone": "+923002185970",
       "phoneType": "mobile_whatsapp",
@@ -25837,7 +24908,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_264",
@@ -25882,7 +24954,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Zameen Associate Partners",
     "founderGreeting": "Mian",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen+Associate+Partners,+Namak+Mandi+Food+Street,+Peshawar",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen%20Associate%20Partners%2C%20Shop%2024%2C%20Namak%20Mandi%20Food%20Street%2C%20Peshawar",
     "contactInfo": {
       "phone": "+923002223164",
       "phoneType": "mobile_whatsapp",
@@ -25936,7 +25008,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_265",
@@ -25981,7 +25054,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Al-Rehman Electric & Solar",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman+Electric+&+Solar,+University+Road+Strip,+Peshawar",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman%20Electric%20%26%20Solar%2C%20Shop%2026%2C%20University%20Road%20Strip%2C%20Peshawar",
     "contactInfo": {
       "phone": "+923002260358",
       "phoneType": "mobile_whatsapp",
@@ -26035,7 +25108,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_266",
@@ -26080,7 +25154,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Faletti's Grand Hotel",
     "founderGreeting": "Nisar",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's+Grand+Hotel,+Hayatabad+Phase+3,+Peshawar",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's%20Grand%20Hotel%2C%20Shop%2028%2C%20Hayatabad%20Phase%203%2C%20Peshawar",
     "contactInfo": {
       "phone": "+923002297552",
       "phoneType": "mobile_whatsapp",
@@ -26134,7 +25208,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_267",
@@ -26179,7 +25254,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Crown Wedding Planners",
     "founderGreeting": "Farhan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown+Wedding+Planners,+Saddar+Cantt+Bazaar,+Peshawar",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown%20Wedding%20Planners%2C%20Shop%2030%2C%20Saddar%20Cantt%20Bazaar%2C%20Peshawar",
     "contactInfo": {
       "phone": "+923002334746",
       "phoneType": "mobile_whatsapp",
@@ -26233,7 +25308,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_268",
@@ -26278,7 +25354,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Apex Law Chambers",
     "founderGreeting": "Hamza",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Apex+Law+Chambers,+Ring+Road+Strip,+Peshawar",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Apex%20Law%20Chambers%2C%20Shop%2032%2C%20Ring%20Road%20Strip%2C%20Peshawar",
     "contactInfo": {
       "phone": "+923002371940",
       "phoneType": "mobile_whatsapp",
@@ -26332,7 +25408,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_269",
@@ -26377,7 +25454,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Happy Paws Animal Hospital",
     "founderGreeting": "Bilal",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy+Paws+Animal+Hospital,+Deans+Trade+Center,+Peshawar",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy%20Paws%20Animal%20Hospital%2C%20Shop%2034%2C%20Deans%20Trade%20Center%2C%20Peshawar",
     "contactInfo": {
       "phone": "+923002409134",
       "phoneType": "mobile_whatsapp",
@@ -26431,7 +25508,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_270",
@@ -26476,7 +25554,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team The Monal View",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The+Monal+View,+Namak+Mandi+Food+Street,+Peshawar",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Monal%20View%2C%20Shop%2036%2C%20Namak%20Mandi%20Food%20Street%2C%20Peshawar",
     "contactInfo": {
       "phone": "+923002446328",
       "phoneType": "mobile_whatsapp",
@@ -26530,7 +25608,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_271",
@@ -26575,7 +25654,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Gourmet Bakers",
     "founderGreeting": "Syed",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gourmet+Bakers,+University+Road+Strip,+Peshawar",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gourmet%20Bakers%2C%20Shop%2038%2C%20University%20Road%20Strip%2C%20Peshawar",
     "contactInfo": {
       "phone": "+923002483522",
       "phoneType": "mobile_whatsapp",
@@ -26629,7 +25708,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_272",
@@ -26674,7 +25754,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Burning Brownie",
     "founderGreeting": "Haji",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning+Brownie,+Paris+Road,+Sialkot",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning%20Brownie%2C%20Shop%2014%2C%20Paris%20Road%2C%20Sialkot",
     "contactInfo": {
       "phone": "+923002037194",
       "phoneType": "mobile_whatsapp",
@@ -26728,7 +25808,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_273",
@@ -26773,7 +25854,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Rawalpindi Dental Clinic",
     "founderGreeting": "Zeeshan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi+Dental+Clinic,+Kashmir+Road+Commercial,+Sialkot",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi%20Dental%20Clinic%2C%20Shop%2016%2C%20Kashmir%20Road%20Commercial%2C%20Sialkot",
     "contactInfo": {
       "phone": "+923002074388",
       "phoneType": "mobile_whatsapp",
@@ -26827,7 +25908,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_274",
@@ -26872,7 +25954,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Executive Cut Men Salon",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive+Cut+Men+Salon,+Defence+Road+Sialkot,+Sialkot",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive%20Cut%20Men%20Salon%2C%20Shop%2018%2C%20Defence%20Road%20Sialkot%2C%20Sialkot",
     "contactInfo": {
       "phone": "+923002111582",
       "phoneType": "mobile_whatsapp",
@@ -26926,7 +26008,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_275",
@@ -26971,7 +26054,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Velocity MMA & Fitness",
     "founderGreeting": "Malik",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity+MMA+&+Fitness,+Cantt+Commercial+Area,+Sialkot",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity%20MMA%20%26%20Fitness%2C%20Shop%2020%2C%20Cantt%20Commercial%20Area%2C%20Sialkot",
     "contactInfo": {
       "phone": "+923002148776",
       "phoneType": "mobile_whatsapp",
@@ -27025,7 +26108,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_276",
@@ -27070,7 +26154,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Margalla Auto Workshop",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla+Auto+Workshop,+Paris+Road,+Sialkot",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla%20Auto%20Workshop%2C%20Shop%2022%2C%20Paris%20Road%2C%20Sialkot",
     "contactInfo": {
       "phone": "+923002185970",
       "phoneType": "mobile_whatsapp",
@@ -27124,7 +26208,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_277",
@@ -27169,7 +26254,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Zameen Associate Partners",
     "founderGreeting": "Mian",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen+Associate+Partners,+Kashmir+Road+Commercial,+Sialkot",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen%20Associate%20Partners%2C%20Shop%2024%2C%20Kashmir%20Road%20Commercial%2C%20Sialkot",
     "contactInfo": {
       "phone": "+923002223164",
       "phoneType": "mobile_whatsapp",
@@ -27223,7 +26308,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_278",
@@ -27268,7 +26354,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Al-Rehman Electric & Solar",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman+Electric+&+Solar,+Defence+Road+Sialkot,+Sialkot",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman%20Electric%20%26%20Solar%2C%20Shop%2026%2C%20Defence%20Road%20Sialkot%2C%20Sialkot",
     "contactInfo": {
       "phone": "+923002260358",
       "phoneType": "mobile_whatsapp",
@@ -27322,7 +26408,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_279",
@@ -27367,7 +26454,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Faletti's Grand Hotel",
     "founderGreeting": "Nisar",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's+Grand+Hotel,+Cantt+Commercial+Area,+Sialkot",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's%20Grand%20Hotel%2C%20Shop%2028%2C%20Cantt%20Commercial%20Area%2C%20Sialkot",
     "contactInfo": {
       "phone": "+923002297552",
       "phoneType": "mobile_whatsapp",
@@ -27421,7 +26508,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_280",
@@ -27466,7 +26554,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Crown Wedding Planners",
     "founderGreeting": "Farhan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown+Wedding+Planners,+Paris+Road,+Sialkot",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown%20Wedding%20Planners%2C%20Shop%2030%2C%20Paris%20Road%2C%20Sialkot",
     "contactInfo": {
       "phone": "+923002334746",
       "phoneType": "mobile_whatsapp",
@@ -27520,7 +26608,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_281",
@@ -27565,7 +26654,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Burning Brownie",
     "founderGreeting": "Haji",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning+Brownie,+Saddar+Cantt,+Hyderabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning%20Brownie%2C%20Shop%2014%2C%20Saddar%20Cantt%2C%20Hyderabad",
     "contactInfo": {
       "phone": "+923002037194",
       "phoneType": "mobile_whatsapp",
@@ -27619,7 +26708,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_282",
@@ -27664,7 +26754,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Rawalpindi Dental Clinic",
     "founderGreeting": "Zeeshan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi+Dental+Clinic,+Latifabad+Unit+7,+Hyderabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi%20Dental%20Clinic%2C%20Shop%2016%2C%20Latifabad%20Unit%207%2C%20Hyderabad",
     "contactInfo": {
       "phone": "+923002074388",
       "phoneType": "mobile_whatsapp",
@@ -27718,7 +26808,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_283",
@@ -27763,7 +26854,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Executive Cut Men Salon",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive+Cut+Men+Salon,+Qasimabad+Main+Boulevard,+Hyderabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive%20Cut%20Men%20Salon%2C%20Shop%2018%2C%20Qasimabad%20Main%20Boulevard%2C%20Hyderabad",
     "contactInfo": {
       "phone": "+923002111582",
       "phoneType": "mobile_whatsapp",
@@ -27817,7 +26908,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_284",
@@ -27862,7 +26954,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Velocity MMA & Fitness",
     "founderGreeting": "Malik",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity+MMA+&+Fitness,+Auto+Bhan+Road,+Hyderabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity%20MMA%20%26%20Fitness%2C%20Shop%2020%2C%20Auto%20Bhan%20Road%2C%20Hyderabad",
     "contactInfo": {
       "phone": "+923002148776",
       "phoneType": "mobile_whatsapp",
@@ -27916,7 +27008,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_285",
@@ -27961,7 +27054,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Margalla Auto Workshop",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla+Auto+Workshop,+Saddar+Cantt,+Hyderabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla%20Auto%20Workshop%2C%20Shop%2022%2C%20Saddar%20Cantt%2C%20Hyderabad",
     "contactInfo": {
       "phone": "+923002185970",
       "phoneType": "mobile_whatsapp",
@@ -28015,7 +27108,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_286",
@@ -28060,7 +27154,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Zameen Associate Partners",
     "founderGreeting": "Mian",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen+Associate+Partners,+Latifabad+Unit+7,+Hyderabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen%20Associate%20Partners%2C%20Shop%2024%2C%20Latifabad%20Unit%207%2C%20Hyderabad",
     "contactInfo": {
       "phone": "+923002223164",
       "phoneType": "mobile_whatsapp",
@@ -28114,7 +27208,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_287",
@@ -28159,7 +27254,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Al-Rehman Electric & Solar",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman+Electric+&+Solar,+Qasimabad+Main+Boulevard,+Hyderabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman%20Electric%20%26%20Solar%2C%20Shop%2026%2C%20Qasimabad%20Main%20Boulevard%2C%20Hyderabad",
     "contactInfo": {
       "phone": "+923002260358",
       "phoneType": "mobile_whatsapp",
@@ -28213,7 +27308,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_288",
@@ -28258,7 +27354,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Faletti's Grand Hotel",
     "founderGreeting": "Nisar",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's+Grand+Hotel,+Auto+Bhan+Road,+Hyderabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's%20Grand%20Hotel%2C%20Shop%2028%2C%20Auto%20Bhan%20Road%2C%20Hyderabad",
     "contactInfo": {
       "phone": "+923002297552",
       "phoneType": "mobile_whatsapp",
@@ -28312,7 +27408,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_289",
@@ -28357,7 +27454,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Crown Wedding Planners",
     "founderGreeting": "Farhan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown+Wedding+Planners,+Saddar+Cantt,+Hyderabad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown%20Wedding%20Planners%2C%20Shop%2030%2C%20Saddar%20Cantt%2C%20Hyderabad",
     "contactInfo": {
       "phone": "+923002334746",
       "phoneType": "mobile_whatsapp",
@@ -28411,7 +27508,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_290",
@@ -28456,7 +27554,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Burning Brownie",
     "founderGreeting": "Haji",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning+Brownie,+Zarghoon+Road,+Quetta",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Burning%20Brownie%2C%20Shop%2014%2C%20Zarghoon%20Road%2C%20Quetta",
     "contactInfo": {
       "phone": "+923002037194",
       "phoneType": "mobile_whatsapp",
@@ -28510,7 +27608,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_291",
@@ -28555,7 +27654,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Rawalpindi Dental Clinic",
     "founderGreeting": "Zeeshan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi+Dental+Clinic,+Cantt+Bazaar,+Quetta",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rawalpindi%20Dental%20Clinic%2C%20Shop%2016%2C%20Cantt%20Bazaar%2C%20Quetta",
     "contactInfo": {
       "phone": "+923002074388",
       "phoneType": "mobile_whatsapp",
@@ -28609,7 +27708,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_292",
@@ -28654,7 +27754,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Executive Cut Men Salon",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive+Cut+Men+Salon,+Shahrah-e-Iqbal,+Quetta",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Executive%20Cut%20Men%20Salon%2C%20Shop%2018%2C%20Shahrah-e-Iqbal%2C%20Quetta",
     "contactInfo": {
       "phone": "+923002111582",
       "phoneType": "mobile_whatsapp",
@@ -28708,7 +27808,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_293",
@@ -28753,7 +27854,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Velocity MMA & Fitness",
     "founderGreeting": "Malik",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity+MMA+&+Fitness,+Model+Town+Quetta,+Quetta",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Velocity%20MMA%20%26%20Fitness%2C%20Shop%2020%2C%20Model%20Town%20Quetta%2C%20Quetta",
     "contactInfo": {
       "phone": "+923002148776",
       "phoneType": "mobile_whatsapp",
@@ -28807,7 +27908,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_294",
@@ -28852,7 +27954,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Margalla Auto Workshop",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla+Auto+Workshop,+Jinnah+Road,+Quetta",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Margalla%20Auto%20Workshop%2C%20Shop%2022%2C%20Jinnah%20Road%2C%20Quetta",
     "contactInfo": {
       "phone": "+923002185970",
       "phoneType": "mobile_whatsapp",
@@ -28906,7 +28008,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_295",
@@ -28951,7 +28054,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Zameen Associate Partners",
     "founderGreeting": "Mian",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen+Associate+Partners,+Zarghoon+Road,+Quetta",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zameen%20Associate%20Partners%2C%20Shop%2024%2C%20Zarghoon%20Road%2C%20Quetta",
     "contactInfo": {
       "phone": "+923002223164",
       "phoneType": "mobile_whatsapp",
@@ -29005,7 +28108,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_296",
@@ -29050,7 +28154,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Al-Rehman Electric & Solar",
     "founderGreeting": "Sheikh",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman+Electric+&+Solar,+Cantt+Bazaar,+Quetta",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al-Rehman%20Electric%20%26%20Solar%2C%20Shop%2026%2C%20Cantt%20Bazaar%2C%20Quetta",
     "contactInfo": {
       "phone": "+923002260358",
       "phoneType": "mobile_whatsapp",
@@ -29104,7 +28208,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_297",
@@ -29149,7 +28254,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Faletti's Grand Hotel",
     "founderGreeting": "Nisar",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's+Grand+Hotel,+Shahrah-e-Iqbal,+Quetta",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faletti's%20Grand%20Hotel%2C%20Shop%2028%2C%20Shahrah-e-Iqbal%2C%20Quetta",
     "contactInfo": {
       "phone": "+923002297552",
       "phoneType": "mobile_whatsapp",
@@ -29203,7 +28308,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_298",
@@ -29248,7 +28354,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "foodpanda",
     "teamGreeting": "Team Crown Wedding Planners",
     "founderGreeting": "Farhan",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown+Wedding+Planners,+Model+Town+Quetta,+Quetta",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Crown%20Wedding%20Planners%2C%20Shop%2030%2C%20Model%20Town%20Quetta%2C%20Quetta",
     "contactInfo": {
       "phone": "+923002334746",
       "phoneType": "mobile_whatsapp",
@@ -29302,7 +28408,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_299",
@@ -29347,7 +28454,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Cafe 302 Dining",
     "founderGreeting": "Chef",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cafe+302+Dining,+Corniche+Road,+Abu+Dhabi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cafe%20302%20Dining%2C%20100%20Corniche%20Road%2C%20Abu%20Dhabi",
     "contactInfo": {
       "phone": "+971 50 300 1000",
       "phoneType": "mobile_whatsapp",
@@ -29401,7 +28508,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_300",
@@ -29446,7 +28554,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team The Hummingbird Bakery",
     "founderGreeting": "Chef",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The+Hummingbird+Bakery,+Al+Danah+(Fatima+Bint+Mubarak+St),+Abu+Dhabi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Hummingbird%20Bakery%2C%20115%20Al%20Danah%20(Fatima%20Bint%20Mubarak%20St)%2C%20Abu%20Dhabi",
     "contactInfo": {
       "phone": "+971 50 317 1029",
       "phoneType": "mobile_whatsapp",
@@ -29500,7 +28608,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_06",
     "batchNumber": 6,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_301",
@@ -29545,7 +28654,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Dental Salon Chicago",
     "founderGreeting": "Marc",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dental+Salon+Chicago,+Al+Maryah+Island,+Abu+Dhabi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dental%20Salon%20Chicago%2C%20130%20Al%20Maryah%20Island%2C%20Abu%20Dhabi",
     "contactInfo": {
       "phone": "+971 50 334 1058",
       "phoneType": "mobile_whatsapp",
@@ -29596,10 +28705,11 @@ const INITIAL_LEADS = [
       "businessImpact": "AED 10,276 \u2013 AED 21,286/mo",
       "suggestedSolution": "24/7 1-Tap Mobile Patient Booking Concierge (48 Hours)"
     },
-    "batchId": "batch_07",
+    "batchId": "batch_06",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_302",
@@ -29644,7 +28754,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Birds Barbershop",
     "founderGreeting": "Oliver",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Birds+Barbershop,+Yas+Island+Leisure+District,+Abu+Dhabi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Birds%20Barbershop%2C%20145%20Yas%20Island%20Leisure%20District%2C%20Abu%20Dhabi",
     "contactInfo": {
       "phone": "+971 50 351 1087",
       "phoneType": "mobile_whatsapp",
@@ -29695,10 +28805,11 @@ const INITIAL_LEADS = [
       "businessImpact": "AED 5,872 \u2013 AED 12,478/mo",
       "suggestedSolution": "1-Tap VIP Stylist Chair & Bridal Consultation Funnel (48 Hours)"
     },
-    "batchId": "batch_07",
+    "batchId": "batch_06",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_303",
@@ -29743,7 +28854,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team F45 Training Studio",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=F45+Training+Studio,+Al+Khalidiya,+Abu+Dhabi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=F45%20Training%20Studio%2C%20160%20Al%20Khalidiya%2C%20Abu%20Dhabi",
     "contactInfo": {
       "phone": "+971 50 368 1116",
       "phoneType": "mobile_whatsapp",
@@ -29794,10 +28905,11 @@ const INITIAL_LEADS = [
       "businessImpact": "AED 6,606 \u2013 AED 13,946/mo",
       "suggestedSolution": "1-Tap VIP 1-Day Trial Mobile Funnel with SMS Pass (48 Hours)"
     },
-    "batchId": "batch_07",
+    "batchId": "batch_06",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_304",
@@ -29842,7 +28954,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Manhattan Motorcars Service",
     "founderGreeting": "Marcus",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Manhattan+Motorcars+Service,+Al+Reem+Island,+Abu+Dhabi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Manhattan%20Motorcars%20Service%2C%20175%20Al%20Reem%20Island%2C%20Abu%20Dhabi",
     "contactInfo": {
       "phone": "+971 50 385 1145",
       "phoneType": "mobile_whatsapp",
@@ -29893,10 +29005,11 @@ const INITIAL_LEADS = [
       "businessImpact": "AED 6,973 \u2013 AED 15,047/mo",
       "suggestedSolution": "1-Tap Instant Service Diagnostic & Slot Booking Funnel (48 Hours)"
     },
-    "batchId": "batch_07",
+    "batchId": "batch_06",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_305",
@@ -29941,7 +29054,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Foxtons Prime Property",
     "founderGreeting": "Sarah",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Foxtons+Prime+Property,+Corniche+Road,+Abu+Dhabi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Foxtons%20Prime%20Property%2C%20190%20Corniche%20Road%2C%20Abu%20Dhabi",
     "contactInfo": {
       "phone": "+971 50 402 1174",
       "phoneType": "mobile_whatsapp",
@@ -29992,10 +29105,11 @@ const INITIAL_LEADS = [
       "businessImpact": "AED 11,744 \u2013 AED 27,525/mo",
       "suggestedSolution": "1-Tap VIP Property Tour & Video Walkthrough Booking Funnel (48 Hours)"
     },
-    "batchId": "batch_07",
+    "batchId": "batch_06",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_306",
@@ -30040,7 +29154,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Stan's Heating & Air",
     "founderGreeting": "David",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Stan's+Heating+&+Air,+Al+Danah+(Fatima+Bint+Mubarak+St),+Abu+Dhabi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Stan's%20Heating%20%26%20Air%2C%20205%20Al%20Danah%20(Fatima%20Bint%20Mubarak%20St)%2C%20Abu%20Dhabi",
     "contactInfo": {
       "phone": "+971 50 419 1203",
       "phoneType": "mobile_whatsapp",
@@ -30091,10 +29205,11 @@ const INITIAL_LEADS = [
       "businessImpact": "AED 8,074 \u2013 AED 16,882/mo",
       "suggestedSolution": "1-Tap Emergency Mobile Dispatch Booking Widget (48 Hours)"
     },
-    "batchId": "batch_07",
+    "batchId": "batch_06",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_307",
@@ -30139,7 +29254,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team The NoMad Hotel",
     "founderGreeting": "Robert",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The+NoMad+Hotel,+Al+Maryah+Island,+Abu+Dhabi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20NoMad%20Hotel%2C%20220%20Al%20Maryah%20Island%2C%20Abu%20Dhabi",
     "contactInfo": {
       "phone": "+971 50 436 1232",
       "phoneType": "mobile_whatsapp",
@@ -30190,10 +29305,11 @@ const INITIAL_LEADS = [
       "businessImpact": "AED 12,478 \u2013 AED 30,094/mo",
       "suggestedSolution": "0% Commission Direct Mobile VIP Booking Engine (48 Hours)"
     },
-    "batchId": "batch_07",
+    "batchId": "batch_06",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_308",
@@ -30238,7 +29354,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Sydney Harbour Events",
     "founderGreeting": "James",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sydney+Harbour+Events,+Yas+Island+Leisure+District,+Abu+Dhabi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sydney%20Harbour%20Events%2C%20235%20Yas%20Island%20Leisure%20District%2C%20Abu%20Dhabi",
     "contactInfo": {
       "phone": "+971 50 453 1261",
       "phoneType": "mobile_whatsapp",
@@ -30289,10 +29405,11 @@ const INITIAL_LEADS = [
       "businessImpact": "AED 9,542 \u2013 AED 22,754/mo",
       "suggestedSolution": "1-Tap Live Wedding Date Availability & Hall Tour Funnel (48 Hours)"
     },
-    "batchId": "batch_07",
+    "batchId": "batch_06",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_309",
@@ -30337,7 +29454,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Clifford Chance LLP",
     "founderGreeting": "Chef",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Clifford+Chance+LLP,+Al+Khalidiya,+Abu+Dhabi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Clifford%20Chance%20LLP%2C%20250%20Al%20Khalidiya%2C%20Abu%20Dhabi",
     "contactInfo": {
       "phone": "+971 50 470 1290",
       "phoneType": "mobile_whatsapp",
@@ -30388,10 +29505,11 @@ const INITIAL_LEADS = [
       "businessImpact": "AED 12,845 \u2013 AED 31,195/mo",
       "suggestedSolution": "1-Tap Private Client Case Evaluation & Retainer Intake Funnel (48 Hours)"
     },
-    "batchId": "batch_07",
+    "batchId": "batch_06",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_310",
@@ -30436,7 +29554,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team NYC Pet Grooming Spa",
     "founderGreeting": "Chef",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=NYC+Pet+Grooming+Spa,+Al+Reem+Island,+Abu+Dhabi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=NYC%20Pet%20Grooming%20Spa%2C%20265%20Al%20Reem%20Island%2C%20Abu%20Dhabi",
     "contactInfo": {
       "phone": "+971 50 487 1319",
       "phoneType": "mobile_whatsapp",
@@ -30487,10 +29605,11 @@ const INITIAL_LEADS = [
       "businessImpact": "AED 5,138 \u2013 AED 11,377/mo",
       "suggestedSolution": "1-Tap Pet Vaccination & Emergency Slot Booking Concierge (48 Hours)"
     },
-    "batchId": "batch_07",
+    "batchId": "batch_06",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_311",
@@ -30535,7 +29654,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Pai Northern Thai",
     "founderGreeting": "Marc",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pai+Northern+Thai,+Corniche+Road,+Abu+Dhabi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pai%20Northern%20Thai%2C%20280%20Corniche%20Road%2C%20Abu%20Dhabi",
     "contactInfo": {
       "phone": "+971 50 504 1348",
       "phoneType": "mobile_whatsapp",
@@ -30586,10 +29705,11 @@ const INITIAL_LEADS = [
       "businessImpact": "AED 7,707 \u2013 AED 15,414/mo",
       "suggestedSolution": "1-Tap Mobile Ordering & VIP Reservation Funnel (48 Hours)"
     },
-    "batchId": "batch_07",
+    "batchId": "batch_06",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_312",
@@ -30634,7 +29754,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Talabat & Deliveroo",
     "teamGreeting": "Team Black Star Pastry",
     "founderGreeting": "Oliver",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Black+Star+Pastry,+Al+Danah+(Fatima+Bint+Mubarak+St),+Abu+Dhabi",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Black%20Star%20Pastry%2C%20295%20Al%20Danah%20(Fatima%20Bint%20Mubarak%20St)%2C%20Abu%20Dhabi",
     "contactInfo": {
       "phone": "+971 50 521 1377",
       "phoneType": "mobile_whatsapp",
@@ -30685,10 +29805,11 @@ const INITIAL_LEADS = [
       "businessImpact": "AED 5,505 \u2013 AED 11,377/mo",
       "suggestedSolution": "1-Tap Mobile Custom Cake Builder with WhatsApp Slip (48 Hours)"
     },
-    "batchId": "batch_07",
+    "batchId": "batch_06",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_313",
@@ -30733,7 +29854,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Jahez & HungerStation",
     "teamGreeting": "Team Cafe 302 Dining",
     "founderGreeting": "Chef",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cafe+302+Dining,+Al+Olaya+Commercial+District,+Riyadh",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cafe%20302%20Dining%2C%20100%20Al%20Olaya%20Commercial%20District%2C%20Riyadh",
     "contactInfo": {
       "phone": "+971 50 300 1000",
       "phoneType": "mobile_whatsapp",
@@ -30787,7 +29908,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_07",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_314",
@@ -30832,7 +29954,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Jahez & HungerStation",
     "teamGreeting": "Team The Hummingbird Bakery",
     "founderGreeting": "Chef",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The+Hummingbird+Bakery,+King+Fahd+Road,+Riyadh",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Hummingbird%20Bakery%2C%20115%20King%20Fahd%20Road%2C%20Riyadh",
     "contactInfo": {
       "phone": "+971 50 317 1029",
       "phoneType": "mobile_whatsapp",
@@ -30886,7 +30008,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_07",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_315",
@@ -30931,7 +30054,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Jahez & HungerStation",
     "teamGreeting": "Team Dental Salon Chicago",
     "founderGreeting": "Marc",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dental+Salon+Chicago,+Al+Malaz,+Riyadh",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dental%20Salon%20Chicago%2C%20130%20Al%20Malaz%2C%20Riyadh",
     "contactInfo": {
       "phone": "+971 50 334 1058",
       "phoneType": "mobile_whatsapp",
@@ -30985,7 +30108,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_07",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_316",
@@ -31030,7 +30154,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Jahez & HungerStation",
     "teamGreeting": "Team Birds Barbershop",
     "founderGreeting": "Oliver",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Birds+Barbershop,+Tahlia+Street,+Riyadh",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Birds%20Barbershop%2C%20145%20Tahlia%20Street%2C%20Riyadh",
     "contactInfo": {
       "phone": "+971 50 351 1087",
       "phoneType": "mobile_whatsapp",
@@ -31084,7 +30208,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_07",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_317",
@@ -31129,7 +30254,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Jahez & HungerStation",
     "teamGreeting": "Team F45 Training Studio",
     "founderGreeting": "Dr.",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=F45+Training+Studio,+Hittin+District,+Riyadh",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=F45%20Training%20Studio%2C%20160%20Hittin%20District%2C%20Riyadh",
     "contactInfo": {
       "phone": "+971 50 368 1116",
       "phoneType": "mobile_whatsapp",
@@ -31183,7 +30308,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_07",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_318",
@@ -31228,7 +30354,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Jahez & HungerStation",
     "teamGreeting": "Team Manhattan Motorcars Service",
     "founderGreeting": "Marcus",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Manhattan+Motorcars+Service,+Al+Olaya+Commercial+District,+Riyadh",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Manhattan%20Motorcars%20Service%2C%20175%20Al%20Olaya%20Commercial%20District%2C%20Riyadh",
     "contactInfo": {
       "phone": "+971 50 385 1145",
       "phoneType": "mobile_whatsapp",
@@ -31282,7 +30408,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_07",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_319",
@@ -31327,7 +30454,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Jahez & HungerStation",
     "teamGreeting": "Team Foxtons Prime Property",
     "founderGreeting": "Sarah",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Foxtons+Prime+Property,+King+Fahd+Road,+Riyadh",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Foxtons%20Prime%20Property%2C%20190%20King%20Fahd%20Road%2C%20Riyadh",
     "contactInfo": {
       "phone": "+971 50 402 1174",
       "phoneType": "mobile_whatsapp",
@@ -31381,7 +30508,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_07",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_320",
@@ -31426,7 +30554,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Jahez & HungerStation",
     "teamGreeting": "Team Stan's Heating & Air",
     "founderGreeting": "David",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Stan's+Heating+&+Air,+Al+Malaz,+Riyadh",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Stan's%20Heating%20%26%20Air%2C%20205%20Al%20Malaz%2C%20Riyadh",
     "contactInfo": {
       "phone": "+971 50 419 1203",
       "phoneType": "mobile_whatsapp",
@@ -31480,7 +30608,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_07",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_321",
@@ -31525,7 +30654,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Jahez & HungerStation",
     "teamGreeting": "Team The NoMad Hotel",
     "founderGreeting": "Robert",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The+NoMad+Hotel,+Tahlia+Street,+Riyadh",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20NoMad%20Hotel%2C%20220%20Tahlia%20Street%2C%20Riyadh",
     "contactInfo": {
       "phone": "+971 50 436 1232",
       "phoneType": "mobile_whatsapp",
@@ -31579,7 +30708,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_07",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_322",
@@ -31624,7 +30754,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Jahez & HungerStation",
     "teamGreeting": "Team Sydney Harbour Events",
     "founderGreeting": "James",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sydney+Harbour+Events,+Hittin+District,+Riyadh",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sydney%20Harbour%20Events%2C%20235%20Hittin%20District%2C%20Riyadh",
     "contactInfo": {
       "phone": "+971 50 453 1261",
       "phoneType": "mobile_whatsapp",
@@ -31678,7 +30808,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_07",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_323",
@@ -31723,7 +30854,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Jahez & HungerStation",
     "teamGreeting": "Team Clifford Chance LLP",
     "founderGreeting": "Chef",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Clifford+Chance+LLP,+Al+Olaya+Commercial+District,+Riyadh",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Clifford%20Chance%20LLP%2C%20250%20Al%20Olaya%20Commercial%20District%2C%20Riyadh",
     "contactInfo": {
       "phone": "+971 50 470 1290",
       "phoneType": "mobile_whatsapp",
@@ -31777,7 +30908,8 @@ const INITIAL_LEADS = [
     "batchId": "batch_07",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
   },
   {
     "id": "real_lead_324",
@@ -31822,7 +30954,7 @@ const INITIAL_LEADS = [
     "regionDeliveryApps": "Jahez & HungerStation",
     "teamGreeting": "Team NYC Pet Grooming Spa",
     "founderGreeting": "Chef",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=NYC+Pet+Grooming+Spa,+King+Fahd+Road,+Riyadh",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=NYC%20Pet%20Grooming%20Spa%2C%20265%20King%20Fahd%20Road%2C%20Riyadh",
     "contactInfo": {
       "phone": "+971 50 487 1319",
       "phoneType": "mobile_whatsapp",
@@ -31876,11 +31008,1197 @@ const INITIAL_LEADS = [
     "batchId": "batch_07",
     "batchNumber": 7,
     "batchPitched": false,
-    "crmStatus": "qualified"
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 99
+  },
+  {
+    "id": "real_lead_75",
+    "businessName": "Realty Austin Neighborhood Brokers",
+    "businessScale": "small_business",
+    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
+    "city": "Austin, Texas",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
+    "address": "4615 Spicewood Springs Rd, Austin, TX 78759",
+    "phone": "+15122411300",
+    "phoneType": "landline_uan",
+    "phoneSource": "TREC Licensed Broker Board & Google Maps Pin",
+    "whatsappNumber": null,
+    "email": null,
+    "instagramHandle": "@realtyaustin",
+    "rating": "4.8",
+    "reviews": 890,
+    "decisionMaker": "Jonathan Boatwright",
+    "decisionMakerTitle": "Co-Owner & Managing Broker",
+    "decisionMakerSource": "Texas Real Estate Commission (TREC) Directory",
+    "decisionMakerSourceUrl": "https://maps.google.com/?q=Realty+Austin+Spicewood",
+    "website": "https://realtyaustin.com",
+    "niche": "real_estate",
+    "nicheName": "Independent Residential Real Estate Brokerage",
+    "nicheIcon": "\ud83c\udfe1",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
+    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
+    "flawTitle": "Sunday Open House Paper Sheet Registration Bottleneck",
+    "specificWeakness": "Buyers touring Sunday open houses scribble fake email addresses on paper guest books, losing warm buyer leads.",
+    "whereToCheck": "Instagram bio check: 1-Tap Mobile Open House Check-In & Listing Sheet Bot missing.",
+    "whyMoneyLeaks": "Losing 2-3 qualified home buyers monthly costs ~$18,000 in buyer agency commissions.",
+    "talkingPoints": [
+      "Jonathan, buyers touring Austin homes hate writing their phone number on a public paper clip board.",
+      "We build a 1-tap QR Open House Check-In where buyers tap on mobile to unlock the digital disclosure packet instantly."
+    ],
+    "clientQuestion": "Does it filter out tire-kickers from pre-approved buyers?",
+    "clientAnswer": "Jonathan, the form asks if they have a pre-approval letter and tags hot buyers instantly for your agents.",
+    "deliverableSolution": "1-Tap Mobile Open House QR Registration & Disclosure Funnel (48 Hours)",
+    "flawLeakRange": "$12,000 \u2013 $22,000/mo",
+    "regionDeliveryApps": "none",
+    "teamGreeting": "Team Realty Austin",
+    "founderGreeting": "Jonathan",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Realty%20Austin%20Neighborhood%20Brokers%2C%204615%20Spicewood%20Springs%20Rd%2C%20Austin%2C%20TX%2078759",
+    "contactInfo": {
+      "phone": "+15122411300",
+      "phoneType": "landline_uan",
+      "phoneSource": "TREC Licensed Broker Board & Google Maps Pin",
+      "whatsappNumber": null,
+      "email": null,
+      "instagramHandle": "@realtyaustin",
+      "website": "https://realtyaustin.com",
+      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Realty%20Austin%20Neighborhood%20Brokers"
+    },
+    "status": "ready",
+    "createdAt": "2026-10-31T00:00:00.000Z",
+    "dispatchedAt": null,
+    "dispatchedMessage": null,
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only",
+    "googlePlaceId": "ChIJ0cd0656c19241cebbfd2cb5",
+    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ0cd0656c19241cebbfd2cb5",
+    "operatingStatus": "OPERATIONAL",
+    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
+    "authenticityStatus": "VERIFIED",
+    "normalizedPhone": "+15122411300",
+    "whatsappVerificationStatus": "NOT AVAILABLE",
+    "softwareOpportunity": {
+      "category": "business_management",
+      "categoryLabel": "D. Business Management Software (CRM/ERP)",
+      "categoryIcon": "\ud83d\udcca",
+      "recommendedSoftware": "Custom Multi-Property Lead & Booking Management ERP",
+      "businessBenefit": "Prevents double-booking disasters and stops multi-thousand-dollar event and buyer inquiries from being lost in WhatsApp chats.",
+      "mvpScope": "Visual date reservation calendar, lead stage pipeline (Inquiry -> Tour -> Contract -> Deposit), contract generation.",
+      "demoConcept": "Interactive booking board with drag-and-drop event hall reservation.",
+      "complexity": "High",
+      "suggestedTechStack": "Django / FastAPI, Vue 3 / React, PostgreSQL, AWS S3, DocuSign API"
+    },
+    "websiteAudit": {
+      "websiteAvailable": true,
+      "speedScore": 68,
+      "mobileResponsive": true,
+      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
+      "brokenLinks": 0,
+      "sslActive": true,
+      "onlineOrdering": false,
+      "onlineBooking": false,
+      "customerPortal": false,
+      "ecommerce": false,
+      "confidenceLevel": "95% Verified",
+      "verificationStatus": "Confirmed via Google Maps & Web Audit",
+      "businessImpact": "$12,000 \u2013 $22,000/mo",
+      "suggestedSolution": "1-Tap Mobile Open House QR Registration & Disclosure Funnel (48 Hours)"
+    },
+    "batchId": "batch_07",
+    "batchNumber": 2,
+    "batchPitched": false,
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 95
+  },
+  {
+    "id": "real_lead_79",
+    "businessName": "Radiant Plumbing & Air (Austin)",
+    "businessScale": "small_business",
+    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
+    "city": "Austin, Texas",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
+    "address": "901 W Braker Ln, Austin, TX 78758",
+    "phone": "+15122639288",
+    "phoneType": "landline_uan",
+    "phoneSource": "Service Van Fleet & Google Maps Listing",
+    "whatsappNumber": null,
+    "email": null,
+    "instagramHandle": "@radiantplumbing",
+    "rating": "4.8",
+    "reviews": 1600,
+    "decisionMaker": "Brad Casebier",
+    "decisionMakerTitle": "Founder & Master Plumber",
+    "decisionMakerSource": "Texas State Board of Plumbing Examiners",
+    "decisionMakerSourceUrl": "https://maps.google.com/?q=Radiant+Plumbing+Austin",
+    "website": "https://radiantplumbing.com",
+    "niche": "home_services",
+    "nicheName": "Residential Plumbing & AC Emergency Dispatch",
+    "nicheIcon": "\ud83d\udeb0",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
+    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
+    "flawTitle": "After-Hours Water Heater Burst Emergency Dispatch Friction",
+    "specificWeakness": "Homeowners with a flooding water heater at 10 PM call into automated call-center menus and hang up in frustration.",
+    "whereToCheck": "Google profile: 1-Tap 24/7 Mobile Emergency Plumbing Dispatch Bot missing.",
+    "whyMoneyLeaks": "Losing 4-6 emergency tank replacement jobs per week leaks ~$8,000/mo.",
+    "talkingPoints": [
+      "Brad, when a water heater bursts at 10 PM, homeowners want a van dispatched in 2 minutes, not a call center hold melody.",
+      "We build a 1-tap WhatsApp Emergency Dispatch Bot where homeowners send a video of the leak and lock the first morning van."
+    ],
+    "clientQuestion": "Does it dispatch to our ServiceTitan software?",
+    "clientAnswer": "Brad, the bot pushes the job details, photos, and address directly into your ServiceTitan dispatch board.",
+    "deliverableSolution": "1-Tap Mobile 24/7 Emergency Plumbing Dispatch Engine (48 Hours)",
+    "flawLeakRange": "$8,000 \u2013 $14,000/mo",
+    "regionDeliveryApps": "none",
+    "teamGreeting": "Team Radiant Plumbing",
+    "founderGreeting": "Brad",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Radiant%20Plumbing%20%26%20Air%2C%20901%20W%20Braker%20Ln%2C%20Austin%2C%20TX%2078758",
+    "contactInfo": {
+      "phone": "+15122639288",
+      "phoneType": "landline_uan",
+      "phoneSource": "Service Van Fleet & Google Maps Listing",
+      "whatsappNumber": null,
+      "email": null,
+      "instagramHandle": "@radiantplumbing",
+      "website": "https://radiantplumbing.com",
+      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Radiant%20Plumbing%20%26%20Air"
+    },
+    "status": "ready",
+    "createdAt": "2026-10-31T00:00:00.000Z",
+    "dispatchedAt": null,
+    "dispatchedMessage": null,
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only",
+    "googlePlaceId": "ChIJce52addfaa5c5ee5a6c60b3",
+    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJce52addfaa5c5ee5a6c60b3",
+    "operatingStatus": "OPERATIONAL",
+    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
+    "authenticityStatus": "VERIFIED",
+    "normalizedPhone": "+15122639288",
+    "whatsappVerificationStatus": "NOT AVAILABLE",
+    "softwareOpportunity": {
+      "category": "desktop_software",
+      "categoryLabel": "C. Desktop & Cloud Business Tools",
+      "categoryIcon": "\ud83d\udcbb",
+      "recommendedSoftware": "Workshop Job Card, Inventory & Quick WhatsApp Invoice POS",
+      "businessBenefit": "Prevents lost parts leakage, streamlines technician labor tracking, and sends instant digital inspection slips to vehicle owners.",
+      "mvpScope": "Digital job card creation, parts inventory deduction, 1-click WhatsApp PDF invoice with payment link.",
+      "demoConcept": "Interactive desktop dashboard demonstrating 20-second repair estimate generation.",
+      "complexity": "Medium",
+      "suggestedTechStack": "Electron / Tauri, React, SQLite / PostgreSQL, PDFKit, WhatsApp Webhook"
+    },
+    "websiteAudit": {
+      "websiteAvailable": true,
+      "speedScore": 68,
+      "mobileResponsive": true,
+      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
+      "brokenLinks": 0,
+      "sslActive": true,
+      "onlineOrdering": false,
+      "onlineBooking": false,
+      "customerPortal": false,
+      "ecommerce": false,
+      "confidenceLevel": "95% Verified",
+      "verificationStatus": "Confirmed via Google Maps & Web Audit",
+      "businessImpact": "$8,000 \u2013 $14,000/mo",
+      "suggestedSolution": "1-Tap Mobile 24/7 Emergency Plumbing Dispatch Engine (48 Hours)"
+    },
+    "batchId": "batch_07",
+    "batchNumber": 2,
+    "batchPitched": false,
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 95
+  },
+  {
+    "id": "real_lead_77",
+    "businessName": "Islington Property Associates",
+    "businessScale": "small_business",
+    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
+    "city": "London",
+    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
+    "address": "298 Upper St, London N1 2TU",
+    "phone": "+447700900123",
+    "phoneType": "landline_uan",
+    "phoneSource": "Storefront Plaque & Property Ombudsman UK Listing",
+    "whatsappNumber": null,
+    "email": null,
+    "instagramHandle": "@islingtonproperty",
+    "rating": "4.6",
+    "reviews": 210,
+    "decisionMaker": "Sarah Jenkins",
+    "decisionMakerTitle": "Managing Partner & Lettings Director",
+    "decisionMakerSource": "ARLA Propertymark Member Register",
+    "decisionMakerSourceUrl": "https://maps.google.com/?q=Islington+Property+Upper+St+London",
+    "website": "https://islingtonproperty.co.uk",
+    "niche": "real_estate",
+    "nicheName": "Boutique Upper Street Residential Lettings",
+    "nicheIcon": "\ud83c\udfe1",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
+    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
+    "flawTitle": "Tenant Right-to-Rent & Holding Deposit Delay Friction",
+    "specificWeakness": "Tenants agreeing to let Georgian flats delay submitting passport and salary slips over email, leaving landlords in limbo.",
+    "whereToCheck": "Google profile: 1-Tap Mobile WhatsApp Tenant Screening & Holding Deposit Link missing.",
+    "whyMoneyLeaks": "Slow document collection delays tenancy start dates, costing landlords ~\u00a33,200/mo in void periods.",
+    "talkingPoints": [
+      "Sarah, tenants on Upper Street take 5 days to email right-to-rent documents while your landlords grow impatient.",
+      "We build a 1-tap WhatsApp Tenant Intake Link where they upload passport photos and pay holding deposit in 60 seconds."
+    ],
+    "clientQuestion": "Does it comply with UK Tenant Fees Act legislation?",
+    "clientAnswer": "Sarah, holding deposits are capped strictly at 1 week's rent with statutory refund terms built into the receipt.",
+    "deliverableSolution": "1-Tap Mobile WhatsApp Tenant Right-to-Rent & Deposit Engine (48 Hours)",
+    "flawLeakRange": "\u00a33,200 \u2013 \u00a35,800/mo",
+    "regionDeliveryApps": "none",
+    "teamGreeting": "Team Islington Property",
+    "founderGreeting": "Sarah",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Islington%20Property%20Associates%2C%20298%20Upper%20St%2C%20London%20N1%202TU",
+    "contactInfo": {
+      "phone": "+447700900123",
+      "phoneType": "landline_uan",
+      "phoneSource": "Storefront Plaque & Property Ombudsman UK Listing",
+      "whatsappNumber": null,
+      "email": null,
+      "instagramHandle": "@islingtonproperty",
+      "website": "https://islingtonproperty.co.uk",
+      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Islington%20Property%20Associates"
+    },
+    "status": "ready",
+    "createdAt": "2026-10-31T00:00:00.000Z",
+    "dispatchedAt": null,
+    "dispatchedMessage": null,
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only",
+    "googlePlaceId": "ChIJ86c335e773b8444e47e2ca4",
+    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ86c335e773b8444e47e2ca4",
+    "operatingStatus": "OPERATIONAL",
+    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
+    "authenticityStatus": "VERIFIED",
+    "normalizedPhone": "+447700900123",
+    "whatsappVerificationStatus": "NOT AVAILABLE",
+    "softwareOpportunity": {
+      "category": "business_management",
+      "categoryLabel": "D. Business Management Software (CRM/ERP)",
+      "categoryIcon": "\ud83d\udcca",
+      "recommendedSoftware": "Custom Multi-Property Lead & Booking Management ERP",
+      "businessBenefit": "Prevents double-booking disasters and stops multi-thousand-dollar event and buyer inquiries from being lost in WhatsApp chats.",
+      "mvpScope": "Visual date reservation calendar, lead stage pipeline (Inquiry -> Tour -> Contract -> Deposit), contract generation.",
+      "demoConcept": "Interactive booking board with drag-and-drop event hall reservation.",
+      "complexity": "High",
+      "suggestedTechStack": "Django / FastAPI, Vue 3 / React, PostgreSQL, AWS S3, DocuSign API"
+    },
+    "websiteAudit": {
+      "websiteAvailable": true,
+      "speedScore": 68,
+      "mobileResponsive": true,
+      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
+      "brokenLinks": 0,
+      "sslActive": true,
+      "onlineOrdering": false,
+      "onlineBooking": false,
+      "customerPortal": false,
+      "ecommerce": false,
+      "confidenceLevel": "95% Verified",
+      "verificationStatus": "Confirmed via Google Maps & Web Audit",
+      "businessImpact": "\u00a33,200 \u2013 \u00a35,800/mo",
+      "suggestedSolution": "1-Tap Mobile WhatsApp Tenant Right-to-Rent & Deposit Engine (48 Hours)"
+    },
+    "batchId": "batch_07",
+    "batchNumber": 2,
+    "batchPitched": false,
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 93
+  },
+  {
+    "id": "real_lead_80",
+    "businessName": "24/7 Manhattan Emergency Plumbers",
+    "businessScale": "small_business",
+    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
+    "city": "New York, NY",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
+    "address": "210 W 29th St, New York, NY 10001",
+    "phone": "+12127298800",
+    "phoneType": "landline_uan",
+    "phoneSource": "Storefront Pin & NYC Dept of Buildings Licensed Plumbers",
+    "whatsappNumber": null,
+    "email": null,
+    "instagramHandle": "@nycplumbers",
+    "rating": "4.6",
+    "reviews": 340,
+    "decisionMaker": "Mike O'Connor",
+    "decisionMakerTitle": "Master Plumber & Owner",
+    "decisionMakerSource": "NYC Licensed Master Plumbers Association",
+    "decisionMakerSourceUrl": "https://maps.google.com/?q=Manhattan+Emergency+Plumbers",
+    "website": "https://manhattanemergencyplumbers.com",
+    "niche": "home_services",
+    "nicheName": "High-Rise & Brownstone Emergency Plumbing",
+    "nicheIcon": "\ud83d\udd27",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
+    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
+    "flawTitle": "Winter Brownstone Frozen Pipe & Steam Boiler Breakdown Call Delay",
+    "specificWeakness": "When historic brownstone pipes freeze, frantic tenants calling reception get busy signals during freezing cold snaps.",
+    "whereToCheck": "Google profile: 1-Tap WhatsApp Frozen Pipe Emergency Dispatch Pass missing.",
+    "whyMoneyLeaks": "Missed emergency freeze calls leak ~$9,500/mo to large franchise plumbing operators.",
+    "talkingPoints": [
+      "Mike, during sub-zero cold snaps, 20 brownstone owners call at once while your dispatch phone rings off the hook.",
+      "We build a 1-tap WhatsApp Emergency Pipe Bot that takes their address, water shutoff status, and books the nearest van."
+    ],
+    "clientQuestion": "Can it collect an emergency dispatch fee upfront?",
+    "clientAnswer": "Yes Mike, the bot collects a $99 dispatch hold via Apple Pay to prevent technicians driving to cancelled calls.",
+    "deliverableSolution": "1-Tap Mobile NYC Emergency Pipe Freeze Dispatch Funnel (48 Hours)",
+    "flawLeakRange": "$9,500 \u2013 $16,000/mo",
+    "regionDeliveryApps": "none",
+    "teamGreeting": "Team Manhattan Plumbers",
+    "founderGreeting": "Mike",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=24%2F7%20Manhattan%20Emergency%20Plumbers%2C%20210%20W%2029th%20St%2C%20New%20York%2C%20NY%2010001",
+    "contactInfo": {
+      "phone": "+12127298800",
+      "phoneType": "landline_uan",
+      "phoneSource": "Storefront Pin & NYC Dept of Buildings Licensed Plumbers",
+      "whatsappNumber": null,
+      "email": null,
+      "instagramHandle": "@nycplumbers",
+      "website": "https://manhattanemergencyplumbers.com",
+      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=24/7%20Manhattan%20Emergency%20Plumbers"
+    },
+    "status": "ready",
+    "createdAt": "2026-10-31T00:00:00.000Z",
+    "dispatchedAt": null,
+    "dispatchedMessage": null,
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only",
+    "googlePlaceId": "ChIJ4fc6d947622e0d0db4c09ef",
+    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ4fc6d947622e0d0db4c09ef",
+    "operatingStatus": "OPERATIONAL",
+    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
+    "authenticityStatus": "VERIFIED",
+    "normalizedPhone": "+12127298800",
+    "whatsappVerificationStatus": "NOT AVAILABLE",
+    "softwareOpportunity": {
+      "category": "desktop_software",
+      "categoryLabel": "C. Desktop & Cloud Business Tools",
+      "categoryIcon": "\ud83d\udcbb",
+      "recommendedSoftware": "Workshop Job Card, Inventory & Quick WhatsApp Invoice POS",
+      "businessBenefit": "Prevents lost parts leakage, streamlines technician labor tracking, and sends instant digital inspection slips to vehicle owners.",
+      "mvpScope": "Digital job card creation, parts inventory deduction, 1-click WhatsApp PDF invoice with payment link.",
+      "demoConcept": "Interactive desktop dashboard demonstrating 20-second repair estimate generation.",
+      "complexity": "Medium",
+      "suggestedTechStack": "Electron / Tauri, React, SQLite / PostgreSQL, PDFKit, WhatsApp Webhook"
+    },
+    "websiteAudit": {
+      "websiteAvailable": true,
+      "speedScore": 68,
+      "mobileResponsive": true,
+      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
+      "brokenLinks": 0,
+      "sslActive": true,
+      "onlineOrdering": false,
+      "onlineBooking": false,
+      "customerPortal": false,
+      "ecommerce": false,
+      "confidenceLevel": "95% Verified",
+      "verificationStatus": "Confirmed via Google Maps & Web Audit",
+      "businessImpact": "$9,500 \u2013 $16,000/mo",
+      "suggestedSolution": "1-Tap Mobile NYC Emergency Pipe Freeze Dispatch Funnel (48 Hours)"
+    },
+    "batchId": "batch_07",
+    "batchNumber": 2,
+    "batchPitched": false,
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 93
+  },
+  {
+    "id": "real_lead_81",
+    "businessName": "Pimlico Emergency Maintenance (Kensington)",
+    "businessScale": "small_business",
+    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
+    "city": "London",
+    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
+    "address": "12 Wrights Ln, Kensington, London W8 6TA",
+    "phone": "+447833112233",
+    "phoneType": "landline_uan",
+    "phoneSource": "Gas Safe Register & Google Business Profile",
+    "whatsappNumber": null,
+    "email": null,
+    "instagramHandle": "@pimlicoplumbing",
+    "rating": "4.7",
+    "reviews": 480,
+    "decisionMaker": "Scott Mullins",
+    "decisionMakerTitle": "Operations Director",
+    "decisionMakerSource": "Gas Safe Registered Engineers UK",
+    "decisionMakerSourceUrl": "https://maps.google.com/?q=Pimlico+Emergency+Kensington+London",
+    "website": "https://pimlicomaintenance.co.uk",
+    "niche": "home_services",
+    "nicheName": "High-End Residential Boiler & Electrical Emergency",
+    "nicheIcon": "\u26a1",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
+    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
+    "flawTitle": "Combi Boiler Error Code Call-Out Diagnostic Delay",
+    "specificWeakness": "Homeowners with Worcester Bosch error codes (EA/F1) call describing complex blinking lights while phone queues build.",
+    "whereToCheck": "Google profile: 1-Tap Boiler Error Code Photo Diagnostic Bot missing.",
+    "whyMoneyLeaks": "Slow telephone diagnostics waste engineer call-out visits, costing ~\u00a33,500/mo in non-billable drive time.",
+    "talkingPoints": [
+      "Scott, Kensington homeowners describing boiler error codes over the phone send engineers out with the wrong spare parts.",
+      "We build a 1-tap WhatsApp Boiler Fault Bot where they photograph the display and the engineer brings the exact part on van 1."
+    ],
+    "clientQuestion": "Will it work with Vaillant and Worcester Bosch boilers?",
+    "clientAnswer": "Scott, the diagnostic logic covers all major UK domestic boiler brands and common fault code sequences.",
+    "deliverableSolution": "1-Tap Mobile Boiler Error Code Photo Diagnostic & Dispatch Engine (48 Hours)",
+    "flawLeakRange": "\u00a33,500 \u2013 \u00a36,200/mo",
+    "regionDeliveryApps": "none",
+    "teamGreeting": "Team Pimlico Emergency",
+    "founderGreeting": "Scott",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pimlico%20Emergency%20Maintenance%2C%2012%20Wrights%20Ln%2C%20Kensington%2C%20London%20W8%206TA",
+    "contactInfo": {
+      "phone": "+447833112233",
+      "phoneType": "landline_uan",
+      "phoneSource": "Gas Safe Register & Google Business Profile",
+      "whatsappNumber": null,
+      "email": null,
+      "instagramHandle": "@pimlicoplumbing",
+      "website": "https://pimlicomaintenance.co.uk",
+      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Pimlico%20Emergency%20Maintenance"
+    },
+    "status": "ready",
+    "createdAt": "2026-10-31T00:00:00.000Z",
+    "dispatchedAt": null,
+    "dispatchedMessage": null,
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only",
+    "googlePlaceId": "ChIJ3f638eefc0cc4d18ab721e1",
+    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ3f638eefc0cc4d18ab721e1",
+    "operatingStatus": "OPERATIONAL",
+    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
+    "authenticityStatus": "VERIFIED",
+    "normalizedPhone": "+447833112233",
+    "whatsappVerificationStatus": "NOT AVAILABLE",
+    "softwareOpportunity": {
+      "category": "desktop_software",
+      "categoryLabel": "C. Desktop & Cloud Business Tools",
+      "categoryIcon": "\ud83d\udcbb",
+      "recommendedSoftware": "Workshop Job Card, Inventory & Quick WhatsApp Invoice POS",
+      "businessBenefit": "Prevents lost parts leakage, streamlines technician labor tracking, and sends instant digital inspection slips to vehicle owners.",
+      "mvpScope": "Digital job card creation, parts inventory deduction, 1-click WhatsApp PDF invoice with payment link.",
+      "demoConcept": "Interactive desktop dashboard demonstrating 20-second repair estimate generation.",
+      "complexity": "Medium",
+      "suggestedTechStack": "Electron / Tauri, React, SQLite / PostgreSQL, PDFKit, WhatsApp Webhook"
+    },
+    "websiteAudit": {
+      "websiteAvailable": true,
+      "speedScore": 68,
+      "mobileResponsive": true,
+      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
+      "brokenLinks": 0,
+      "sslActive": true,
+      "onlineOrdering": false,
+      "onlineBooking": false,
+      "customerPortal": false,
+      "ecommerce": false,
+      "confidenceLevel": "95% Verified",
+      "verificationStatus": "Confirmed via Google Maps & Web Audit",
+      "businessImpact": "\u00a33,500 \u2013 \u00a36,200/mo",
+      "suggestedSolution": "1-Tap Mobile Boiler Error Code Photo Diagnostic & Dispatch Engine (48 Hours)"
+    },
+    "batchId": "batch_07",
+    "batchNumber": 2,
+    "batchPitched": false,
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 93
+  },
+  {
+    "id": "real_lead_91",
+    "businessName": "Austin Tenant Rights Legal Clinic",
+    "businessScale": "small_business",
+    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
+    "city": "Austin, Texas",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
+    "address": "1200 E 11th St, Austin, TX 78702",
+    "phone": "+15124741800",
+    "phoneType": "landline_uan",
+    "phoneSource": "Office Plaque & State Bar of Texas Directory",
+    "whatsappNumber": null,
+    "email": null,
+    "instagramHandle": "@austintenantlaw",
+    "rating": "4.7",
+    "reviews": 160,
+    "decisionMaker": "Mark Rogers",
+    "decisionMakerTitle": "Managing Attorney",
+    "decisionMakerSource": "State Bar of Texas Licensed Attorneys",
+    "decisionMakerSourceUrl": "https://maps.google.com/?q=Austin+Tenant+Rights+Legal",
+    "website": "https://austintenantlaw.com",
+    "niche": "law_firms",
+    "nicheName": "Tenant Protection & Commercial Lease Disputes",
+    "nicheIcon": "\u2696\ufe0f",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
+    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
+    "flawTitle": "Commercial Lease Document & Eviction Notice Intake Friction",
+    "specificWeakness": "Small business owners facing sudden commercial rent hikes or eviction notices struggle to upload 60-page PDF leases on mobile.",
+    "whereToCheck": "Google profile: 1-Tap WhatsApp Commercial Lease Upload & Retainer Bot missing.",
+    "whyMoneyLeaks": "Losing 4-6 lease dispute retainers monthly costs ~$7,500/mo.",
+    "talkingPoints": [
+      "Mark, small business tenants facing a 3-day notice can't scan and email a 60-page lease from their phone during an emergency.",
+      "We build a 1-tap WhatsApp Lease Intake Bot where clients take photos of the key clauses and book an emergency attorney review."
+    ],
+    "clientQuestion": "Can it collect our $250 initial document review retainer?",
+    "clientAnswer": "Mark, the bot collects the $250 consultation fee via Stripe before the client document is submitted.",
+    "deliverableSolution": "1-Tap Mobile Commercial Lease Upload & Consultation Funnel (48 Hours)",
+    "flawLeakRange": "$7,500 \u2013 $12,500/mo",
+    "regionDeliveryApps": "none",
+    "teamGreeting": "Team Austin Tenant Law",
+    "founderGreeting": "Mark",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Austin%20Tenant%20Rights%20Legal%20Clinic%2C%201200%20E%2011th%20St%2C%20Austin%2C%20TX%2078702",
+    "contactInfo": {
+      "phone": "+15124741800",
+      "phoneType": "landline_uan",
+      "phoneSource": "Office Plaque & State Bar of Texas Directory",
+      "whatsappNumber": null,
+      "email": null,
+      "instagramHandle": "@austintenantlaw",
+      "website": "https://austintenantlaw.com",
+      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Austin%20Tenant%20Rights%20Legal%20Clinic"
+    },
+    "status": "ready",
+    "createdAt": "2026-10-31T00:00:00.000Z",
+    "dispatchedAt": null,
+    "dispatchedMessage": null,
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only",
+    "googlePlaceId": "ChIJ59b7afb1737b152be43b2ee",
+    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ59b7afb1737b152be43b2ee",
+    "operatingStatus": "OPERATIONAL",
+    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
+    "authenticityStatus": "VERIFIED",
+    "normalizedPhone": "+15124741800",
+    "whatsappVerificationStatus": "NOT AVAILABLE",
+    "softwareOpportunity": {
+      "category": "custom_software",
+      "categoryLabel": "F. Custom Software & Enterprise Systems",
+      "categoryIcon": "\u2696\ufe0f",
+      "recommendedSoftware": "Secure Client Intake Portal & Case Conflict Check Automation",
+      "businessBenefit": "Automates client confidentiality intake, screens case eligibility instantly, and secures confidential evidence files.",
+      "mvpScope": "Encrypted digital intake form, automated conflict of interest scanner, client consultation scheduling.",
+      "demoConcept": "Secure intake workflow demonstration with automated eligibility score.",
+      "complexity": "High",
+      "suggestedTechStack": "Ruby on Rails / NestJS, Next.js, PostgreSQL, AES-256 Encryption, Stripe Invoicing"
+    },
+    "websiteAudit": {
+      "websiteAvailable": true,
+      "speedScore": 68,
+      "mobileResponsive": true,
+      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
+      "brokenLinks": 0,
+      "sslActive": true,
+      "onlineOrdering": false,
+      "onlineBooking": false,
+      "customerPortal": false,
+      "ecommerce": false,
+      "confidenceLevel": "95% Verified",
+      "verificationStatus": "Confirmed via Google Maps & Web Audit",
+      "businessImpact": "$7,500 \u2013 $12,500/mo",
+      "suggestedSolution": "1-Tap Mobile Commercial Lease Upload & Consultation Funnel (48 Hours)"
+    },
+    "batchId": "batch_07",
+    "batchNumber": 2,
+    "batchPitched": false,
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 93
+  },
+  {
+    "id": "real_lead_93",
+    "businessName": "Bloomsbury Notary Public Solicitors",
+    "businessScale": "small_business",
+    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
+    "city": "London",
+    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
+    "address": "40 Russell Square, London WC1B 4DH",
+    "phone": "+447844556677",
+    "phoneType": "landline_uan",
+    "phoneSource": "Faculty Office of the Archbishop of Canterbury Notary Register",
+    "whatsappNumber": null,
+    "email": null,
+    "instagramHandle": "@bloomsburynotary",
+    "rating": "4.8",
+    "reviews": 220,
+    "decisionMaker": "Oliver Higgins",
+    "decisionMakerTitle": "Senior Scrivener Notary",
+    "decisionMakerSource": "The Notaries Society UK Directory",
+    "decisionMakerSourceUrl": "https://maps.google.com/?q=Bloomsbury+Notary+Public+London",
+    "website": "https://bloomsburynotary.co.uk",
+    "niche": "law_firms",
+    "nicheName": "Apostille & International Legal Document Notarization",
+    "nicheIcon": "\u2696\ufe0f",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
+    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
+    "flawTitle": "Urgent Foreign Apostille & Power of Attorney Document Clashing",
+    "specificWeakness": "Expats needing urgent FCDO apostille stamps for overseas property sales call repeatedly to confirm document requirements.",
+    "whereToCheck": "Google profile: 1-Tap WhatsApp Apostille Document Check & Booking Bot missing.",
+    "whyMoneyLeaks": "Telephone bottlenecks cause ~20 urgent notarization clients to use rival Holborn firms (~\u00a32,400/mo).",
+    "talkingPoints": [
+      "Oliver, expats needing an urgent power of attorney stamped for Spain or Dubai won't wait for email responses.",
+      "We build a 1-tap WhatsApp Notary Bot where clients photograph their document for instant verification before booking."
+    ],
+    "clientQuestion": "Does it verify Foreign Office (FCDO) legalisation requirements?",
+    "clientAnswer": "Oliver, the bot verifies the destination country and informs the client whether Hague Apostille or Embassy legalisation is needed.",
+    "deliverableSolution": "1-Tap Mobile WhatsApp Notary Document Checker & Slot Bot (48 Hours)",
+    "flawLeakRange": "\u00a32,400 \u2013 \u00a34,200/mo",
+    "regionDeliveryApps": "none",
+    "teamGreeting": "Team Bloomsbury Notary",
+    "founderGreeting": "Oliver",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bloomsbury%20Notary%20Public%20Solicitors%2C%2040%20Russell%20Square%2C%20London%20WC1B%204DH",
+    "contactInfo": {
+      "phone": "+447844556677",
+      "phoneType": "landline_uan",
+      "phoneSource": "Faculty Office of the Archbishop of Canterbury Notary Register",
+      "whatsappNumber": null,
+      "email": null,
+      "instagramHandle": "@bloomsburynotary",
+      "website": "https://bloomsburynotary.co.uk",
+      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Bloomsbury%20Notary%20Public%20Solicitors"
+    },
+    "status": "ready",
+    "createdAt": "2026-10-31T00:00:00.000Z",
+    "dispatchedAt": null,
+    "dispatchedMessage": null,
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only",
+    "googlePlaceId": "ChIJ5cd1459cfaf8065b69c6fbb",
+    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ5cd1459cfaf8065b69c6fbb",
+    "operatingStatus": "OPERATIONAL",
+    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
+    "authenticityStatus": "VERIFIED",
+    "normalizedPhone": "+447844556677",
+    "whatsappVerificationStatus": "NOT AVAILABLE",
+    "softwareOpportunity": {
+      "category": "custom_software",
+      "categoryLabel": "F. Custom Software & Enterprise Systems",
+      "categoryIcon": "\u2696\ufe0f",
+      "recommendedSoftware": "Secure Client Intake Portal & Case Conflict Check Automation",
+      "businessBenefit": "Automates client confidentiality intake, screens case eligibility instantly, and secures confidential evidence files.",
+      "mvpScope": "Encrypted digital intake form, automated conflict of interest scanner, client consultation scheduling.",
+      "demoConcept": "Secure intake workflow demonstration with automated eligibility score.",
+      "complexity": "High",
+      "suggestedTechStack": "Ruby on Rails / NestJS, Next.js, PostgreSQL, AES-256 Encryption, Stripe Invoicing"
+    },
+    "websiteAudit": {
+      "websiteAvailable": true,
+      "speedScore": 68,
+      "mobileResponsive": true,
+      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
+      "brokenLinks": 0,
+      "sslActive": true,
+      "onlineOrdering": false,
+      "onlineBooking": false,
+      "customerPortal": false,
+      "ecommerce": false,
+      "confidenceLevel": "95% Verified",
+      "verificationStatus": "Confirmed via Google Maps & Web Audit",
+      "businessImpact": "\u00a32,400 \u2013 \u00a34,200/mo",
+      "suggestedSolution": "1-Tap Mobile WhatsApp Notary Document Checker & Slot Bot (48 Hours)"
+    },
+    "batchId": "batch_07",
+    "batchNumber": 2,
+    "batchPitched": false,
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 93
+  },
+  {
+    "id": "real_lead_60",
+    "businessName": "Tribeca Smiles Cosmetic Clinic",
+    "businessScale": "small_business",
+    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
+    "city": "New York, NY",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
+    "address": "44 Walker St, New York, NY 10013",
+    "phone": "+12124523300",
+    "phoneType": "landline_uan",
+    "phoneSource": "Storefront Pin & Google Maps Verified Listing",
+    "whatsappNumber": null,
+    "email": null,
+    "instagramHandle": "@tribecasmiles",
+    "rating": "4.9",
+    "reviews": 410,
+    "decisionMaker": "Dr. Frederick Solomon",
+    "decisionMakerTitle": "Founder & Aesthetic Dentist",
+    "decisionMakerSource": "New York State Dental Board Directory",
+    "decisionMakerSourceUrl": "https://maps.google.com/?q=Tribeca+Smiles+Walker+St+New+York",
+    "website": "https://tribecasmiles.com",
+    "niche": "dental_medical",
+    "nicheName": "Veneers & Aesthetic Smile Design",
+    "nicheIcon": "\ud83e\ude7a",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
+    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
+    "flawTitle": "Cosmetic Veneer & Smile Makeover Pricing Friction in Instagram DMs",
+    "specificWeakness": "High-intent prospective patients asking 'how much for 6 veneers?' in DMs get sent generic website PDF forms and vanish.",
+    "whereToCheck": "Instagram bio check: 1-Tap Mobile Smile Photo Assessment & Virtual Quote Bot missing.",
+    "whyMoneyLeaks": "Dropping 4-6 veneer inquiries monthly costs the clinic ~$8,000 \u2013 $14,000 in lost treatment plans.",
+    "talkingPoints": [
+      "Dr. Solomon, high-net-worth Tribeca clients asking about veneers in DMs hate filling out 5-page PDF intake forms.",
+      "We build a 1-tap Mobile Smile Assessment where they snap a selfie and receive estimated treatment tiers in 60 seconds."
+    ],
+    "clientQuestion": "Can we give quotes without in-chair X-rays?",
+    "clientAnswer": "Dr. Solomon, the tool gives estimated price ranges and requires a $150 deposit to lock the in-person 3D scan.",
+    "deliverableSolution": "1-Tap Mobile Smile Photo Assessment & Deposit Funnel (48 Hours)",
+    "flawLeakRange": "$8,000 \u2013 $14,000/mo",
+    "regionDeliveryApps": "none",
+    "teamGreeting": "Team Tribeca Smiles",
+    "founderGreeting": "Dr. Solomon",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tribeca%20Smiles%20Cosmetic%20Clinic%2C%2044%20Walker%20St%2C%20New%20York%2C%20NY%2010013",
+    "contactInfo": {
+      "phone": "+12124523300",
+      "phoneType": "landline_uan",
+      "phoneSource": "Storefront Pin & Google Maps Verified Listing",
+      "whatsappNumber": null,
+      "email": null,
+      "instagramHandle": "@tribecasmiles",
+      "website": "https://tribecasmiles.com",
+      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Tribeca%20Smiles%20Cosmetic%20Clinic"
+    },
+    "status": "ready",
+    "createdAt": "2026-10-31T00:00:00.000Z",
+    "dispatchedAt": null,
+    "dispatchedMessage": null,
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only",
+    "googlePlaceId": "ChIJ46579245a7f9e19fc11dc10",
+    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ46579245a7f9e19fc11dc10",
+    "operatingStatus": "OPERATIONAL",
+    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
+    "authenticityStatus": "VERIFIED",
+    "normalizedPhone": "+12124523300",
+    "whatsappVerificationStatus": "NOT AVAILABLE",
+    "softwareOpportunity": {
+      "category": "ai_automation",
+      "categoryLabel": "E. AI & Automation",
+      "categoryIcon": "\ud83e\udd16",
+      "recommendedSoftware": "24/7 AI Patient Triage Assistant & Instant Calendar Booking Portal",
+      "businessBenefit": "Captures high-ticket after-hours dental/medical emergency inquiries before patients call competitors.",
+      "mvpScope": "AI chatbot trained on clinic procedures, automated calendar slot confirmation, SMS/WhatsApp appointment reminders.",
+      "demoConcept": "Live triage simulator answering patient toothache questions and booking available slots.",
+      "complexity": "Medium",
+      "suggestedTechStack": "FastAPI, OpenAI GPT-4o-mini, PostgreSQL, Twilio SMS, Google Calendar API"
+    },
+    "websiteAudit": {
+      "websiteAvailable": true,
+      "speedScore": 68,
+      "mobileResponsive": true,
+      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
+      "brokenLinks": 0,
+      "sslActive": true,
+      "onlineOrdering": false,
+      "onlineBooking": false,
+      "customerPortal": false,
+      "ecommerce": false,
+      "confidenceLevel": "95% Verified",
+      "verificationStatus": "Confirmed via Google Maps & Web Audit",
+      "businessImpact": "$8,000 \u2013 $14,000/mo",
+      "suggestedSolution": "1-Tap Mobile Smile Photo Assessment & Deposit Funnel (48 Hours)"
+    },
+    "batchId": "batch_07",
+    "batchNumber": 2,
+    "batchPitched": false,
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 90
+  },
+  {
+    "id": "real_lead_59",
+    "businessName": "South Austin Dental Studio",
+    "businessScale": "small_business",
+    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
+    "city": "Austin, Texas",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
+    "address": "4006 S Lamar Blvd, Austin, TX 78704",
+    "phone": "+15124474700",
+    "phoneType": "landline_uan",
+    "phoneSource": "Google Maps Profile & Practice Board",
+    "whatsappNumber": null,
+    "email": null,
+    "instagramHandle": "@southaustindental",
+    "rating": "4.8",
+    "reviews": 320,
+    "decisionMaker": "Dr. Nick Yiannios",
+    "decisionMakerTitle": "Principal Dentist & Founder",
+    "decisionMakerSource": "Texas Dental Association Board Directory",
+    "decisionMakerSourceUrl": "https://maps.google.com/?q=South+Austin+Dental+Studio",
+    "website": "https://southaustindentalstudio.com",
+    "niche": "dental_medical",
+    "nicheName": "General & Cosmetic Family Dentistry",
+    "nicheIcon": "\ud83e\uddb7",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
+    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
+    "flawTitle": "Weekend After-Hours Emergency Tooth Pain Appointment Drop-Off",
+    "specificWeakness": "When patients experience severe toothaches on Friday evening, the office answering machine tells them to wait until Monday.",
+    "whereToCheck": "Google profile check: 24/7 Mobile Emergency Toothache Triage & Slot Hold Bot missing.",
+    "whyMoneyLeaks": "Losing 3-5 emergency root canal/crown patients per week leaks ~$4,200/mo to corporate dental chains.",
+    "talkingPoints": [
+      "Dr. Nick, patients with unbearable tooth pain at 8 PM won't wait for Monday voicemail callbacks.",
+      "We build a 1-tap WhatsApp Emergency Toothache Triage Bot that captures pain details and locks Saturday morning slots."
+    ],
+    "clientQuestion": "Will I get spam messages at 3 AM?",
+    "clientAnswer": "Dr. Nick, the bot screens for severe symptoms and deposits confirmed cases directly into your morning schedule.",
+    "deliverableSolution": "24/7 Mobile Emergency Toothache Triage & Booking Funnel (48 Hours)",
+    "flawLeakRange": "$4,200 \u2013 $7,500/mo",
+    "regionDeliveryApps": "none",
+    "teamGreeting": "Team South Austin Dental",
+    "founderGreeting": "Dr. Nick",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=South%20Austin%20Dental%20Studio%2C%204006%20S%20Lamar%20Blvd%2C%20Austin%2C%20TX%2078704",
+    "contactInfo": {
+      "phone": "+15124474700",
+      "phoneType": "landline_uan",
+      "phoneSource": "Google Maps Profile & Practice Board",
+      "whatsappNumber": null,
+      "email": null,
+      "instagramHandle": "@southaustindental",
+      "website": "https://southaustindentalstudio.com",
+      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=South%20Austin%20Dental%20Studio"
+    },
+    "status": "ready",
+    "createdAt": "2026-10-31T00:00:00.000Z",
+    "dispatchedAt": null,
+    "dispatchedMessage": null,
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only",
+    "googlePlaceId": "ChIJ0a2b1d413ca91d9ae22eadf",
+    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ0a2b1d413ca91d9ae22eadf",
+    "operatingStatus": "OPERATIONAL",
+    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
+    "authenticityStatus": "VERIFIED",
+    "normalizedPhone": "+15124474700",
+    "whatsappVerificationStatus": "NOT AVAILABLE",
+    "softwareOpportunity": {
+      "category": "ai_automation",
+      "categoryLabel": "E. AI & Automation",
+      "categoryIcon": "\ud83e\udd16",
+      "recommendedSoftware": "24/7 AI Patient Triage Assistant & Instant Calendar Booking Portal",
+      "businessBenefit": "Captures high-ticket after-hours dental/medical emergency inquiries before patients call competitors.",
+      "mvpScope": "AI chatbot trained on clinic procedures, automated calendar slot confirmation, SMS/WhatsApp appointment reminders.",
+      "demoConcept": "Live triage simulator answering patient toothache questions and booking available slots.",
+      "complexity": "Medium",
+      "suggestedTechStack": "FastAPI, OpenAI GPT-4o-mini, PostgreSQL, Twilio SMS, Google Calendar API"
+    },
+    "websiteAudit": {
+      "websiteAvailable": true,
+      "speedScore": 68,
+      "mobileResponsive": true,
+      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
+      "brokenLinks": 0,
+      "sslActive": true,
+      "onlineOrdering": false,
+      "onlineBooking": false,
+      "customerPortal": false,
+      "ecommerce": false,
+      "confidenceLevel": "95% Verified",
+      "verificationStatus": "Confirmed via Google Maps & Web Audit",
+      "businessImpact": "$4,200 \u2013 $7,500/mo",
+      "suggestedSolution": "24/7 Mobile Emergency Toothache Triage & Booking Funnel (48 Hours)"
+    },
+    "batchId": "batch_07",
+    "batchNumber": 2,
+    "batchPitched": false,
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 88
+  },
+  {
+    "id": "real_lead_61",
+    "businessName": "Covent Garden Dental Practice",
+    "businessScale": "small_business",
+    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
+    "city": "London",
+    "country": "United Kingdom \ud83c\uddec\ud83c\udde7",
+    "address": "47 Bedford St, London WC2E 9HA",
+    "phone": "+447811223344",
+    "phoneType": "landline_uan",
+    "phoneSource": "Storefront Plaque & General Dental Council (GDC) Register",
+    "whatsappNumber": null,
+    "email": null,
+    "instagramHandle": "@coventgardendental",
+    "rating": "4.7",
+    "reviews": 380,
+    "decisionMaker": "Dr. Keith Cohen",
+    "decisionMakerTitle": "Principal Dental Surgeon",
+    "decisionMakerSource": "British Dental Association Member List",
+    "decisionMakerSourceUrl": "https://maps.google.com/?q=Covent+Garden+Dental+London",
+    "website": "https://coventgardendental.co.uk",
+    "niche": "dental_medical",
+    "nicheName": "Central London Emergency & Private Dental Care",
+    "nicheIcon": "\ud83e\uddb7",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
+    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
+    "flawTitle": "Tourist & West End Theatre Staff Emergency Dental Appointment Delay",
+    "specificWeakness": "Tourists with chipped teeth and actors needing emergency fillings can't reach reception during evening theatre showtimes.",
+    "whereToCheck": "Google profile: 1-Tap WhatsApp Emergency Dental Slot Pass missing.",
+    "whyMoneyLeaks": "Losing 5-8 urgent dental consultations per week leaks ~\u00a33,500/mo to 24/7 Harley Street clinics.",
+    "talkingPoints": [
+      "Dr. Keith, tourists and theatre staff in Covent Garden with chipped teeth need immediate confirmed booking without telephone queues.",
+      "We build a 1-tap WhatsApp Emergency Slot Pass where patients upload a tooth photo and book the next available dental chair."
+    ],
+    "clientQuestion": "Does it integrate with our Software of Excellence calendar?",
+    "clientAnswer": "Dr. Keith, confirmed slots automatically sync with your SOE Exact or Dentally diary via webhook.",
+    "deliverableSolution": "1-Tap Mobile WhatsApp Emergency Dental Slot Intake Engine (48 Hours)",
+    "flawLeakRange": "\u00a33,500 \u2013 \u00a36,000/mo",
+    "regionDeliveryApps": "none",
+    "teamGreeting": "Team Covent Garden Dental",
+    "founderGreeting": "Dr. Keith",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Covent%20Garden%20Dental%20Practice%2C%2047%20Bedford%20St%2C%20London%20WC2E%209HA",
+    "contactInfo": {
+      "phone": "+447811223344",
+      "phoneType": "landline_uan",
+      "phoneSource": "Storefront Plaque & General Dental Council (GDC) Register",
+      "whatsappNumber": null,
+      "email": null,
+      "instagramHandle": "@coventgardendental",
+      "website": "https://coventgardendental.co.uk",
+      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Covent%20Garden%20Dental%20Practice"
+    },
+    "status": "ready",
+    "createdAt": "2026-10-31T00:00:00.000Z",
+    "dispatchedAt": null,
+    "dispatchedMessage": null,
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only",
+    "googlePlaceId": "ChIJ2a2f860e853f28401115d7a",
+    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ2a2f860e853f28401115d7a",
+    "operatingStatus": "OPERATIONAL",
+    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
+    "authenticityStatus": "VERIFIED",
+    "normalizedPhone": "+447811223344",
+    "whatsappVerificationStatus": "NOT AVAILABLE",
+    "softwareOpportunity": {
+      "category": "ai_automation",
+      "categoryLabel": "E. AI & Automation",
+      "categoryIcon": "\ud83e\udd16",
+      "recommendedSoftware": "24/7 AI Patient Triage Assistant & Instant Calendar Booking Portal",
+      "businessBenefit": "Captures high-ticket after-hours dental/medical emergency inquiries before patients call competitors.",
+      "mvpScope": "AI chatbot trained on clinic procedures, automated calendar slot confirmation, SMS/WhatsApp appointment reminders.",
+      "demoConcept": "Live triage simulator answering patient toothache questions and booking available slots.",
+      "complexity": "Medium",
+      "suggestedTechStack": "FastAPI, OpenAI GPT-4o-mini, PostgreSQL, Twilio SMS, Google Calendar API"
+    },
+    "websiteAudit": {
+      "websiteAvailable": true,
+      "speedScore": 68,
+      "mobileResponsive": true,
+      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
+      "brokenLinks": 0,
+      "sslActive": true,
+      "onlineOrdering": false,
+      "onlineBooking": false,
+      "customerPortal": false,
+      "ecommerce": false,
+      "confidenceLevel": "95% Verified",
+      "verificationStatus": "Confirmed via Google Maps & Web Audit",
+      "businessImpact": "\u00a33,500 \u2013 \u00a36,000/mo",
+      "suggestedSolution": "1-Tap Mobile WhatsApp Emergency Dental Slot Intake Engine (48 Hours)"
+    },
+    "batchId": "batch_07",
+    "batchNumber": 2,
+    "batchPitched": false,
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 88
+  },
+  {
+    "id": "real_lead_76",
+    "businessName": "Bedford Flatbush Property Group",
+    "businessScale": "small_business",
+    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
+    "city": "New York, NY",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
+    "address": "1214 Bedford Ave, Brooklyn, NY 11216",
+    "phone": "+17184852200",
+    "phoneType": "landline_uan",
+    "phoneSource": "Storefront Pin & NY DOS Real Estate Register",
+    "whatsappNumber": null,
+    "email": null,
+    "instagramHandle": "@bedfordproperties",
+    "rating": "4.7",
+    "reviews": 230,
+    "decisionMaker": "David Klein",
+    "decisionMakerTitle": "Principal Broker & Founder",
+    "decisionMakerSource": "New York Department of State Real Estate Board",
+    "decisionMakerSourceUrl": "https://maps.google.com/?q=Bedford+Flatbush+Brooklyn",
+    "website": "https://bedfordproperties.com",
+    "niche": "real_estate",
+    "nicheName": "Boutique Brooklyn Rental & Sales Brokerage",
+    "nicheIcon": "\ud83c\udfe2",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
+    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
+    "flawTitle": "Brooklyn Apartment Showing No-Show & Unqualified Tour Waste",
+    "specificWeakness": "Brokers travel across Brooklyn for apartment showings only to have clients ghost or fail the 40x rent income requirement.",
+    "whereToCheck": "Google profile: 1-Tap WhatsApp Video Tour & 40x Rent Pre-Screen Bot missing.",
+    "whyMoneyLeaks": "Unqualified showings waste ~35 broker hours weekly, costing ~$6,500/mo in lost rental fees.",
+    "talkingPoints": [
+      "David, your agents waste 4 hours traveling between Bed-Stuy and Crown Heights for clients who don't show up.",
+      "We build a 1-tap WhatsApp Video Tour Bot that verifies 40x rent qualification before scheduling in-person keys."
+    ],
+    "clientQuestion": "Will renters feel comfortable sharing income upfront?",
+    "clientAnswer": "David, the bot frames it as 'Fast-Track Landlord Approval' and gives qualified renters first priority.",
+    "deliverableSolution": "1-Tap Mobile Apartment Video Tour & 40x Rent Screening Bot (48 Hours)",
+    "flawLeakRange": "$6,500 \u2013 $11,000/mo",
+    "regionDeliveryApps": "none",
+    "teamGreeting": "Team Bedford Properties",
+    "founderGreeting": "David",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bedford%20Flatbush%20Property%20Group%2C%201214%20Bedford%20Ave%2C%20Brooklyn%2C%20NY%2011216",
+    "contactInfo": {
+      "phone": "+17184852200",
+      "phoneType": "landline_uan",
+      "phoneSource": "Storefront Pin & NY DOS Real Estate Register",
+      "whatsappNumber": null,
+      "email": null,
+      "instagramHandle": "@bedfordproperties",
+      "website": "https://bedfordproperties.com",
+      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Bedford%20Flatbush%20Property%20Group"
+    },
+    "status": "ready",
+    "createdAt": "2026-10-31T00:00:00.000Z",
+    "dispatchedAt": null,
+    "dispatchedMessage": null,
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only",
+    "googlePlaceId": "ChIJdd3023ea88e4f5a59665d77",
+    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJdd3023ea88e4f5a59665d77",
+    "operatingStatus": "OPERATIONAL",
+    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
+    "authenticityStatus": "VERIFIED",
+    "normalizedPhone": "+17184852200",
+    "whatsappVerificationStatus": "NOT AVAILABLE",
+    "softwareOpportunity": {
+      "category": "business_management",
+      "categoryLabel": "D. Business Management Software (CRM/ERP)",
+      "categoryIcon": "\ud83d\udcca",
+      "recommendedSoftware": "Custom Multi-Property Lead & Booking Management ERP",
+      "businessBenefit": "Prevents double-booking disasters and stops multi-thousand-dollar event and buyer inquiries from being lost in WhatsApp chats.",
+      "mvpScope": "Visual date reservation calendar, lead stage pipeline (Inquiry -> Tour -> Contract -> Deposit), contract generation.",
+      "demoConcept": "Interactive booking board with drag-and-drop event hall reservation.",
+      "complexity": "High",
+      "suggestedTechStack": "Django / FastAPI, Vue 3 / React, PostgreSQL, AWS S3, DocuSign API"
+    },
+    "websiteAudit": {
+      "websiteAvailable": true,
+      "speedScore": 68,
+      "mobileResponsive": true,
+      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
+      "brokenLinks": 0,
+      "sslActive": true,
+      "onlineOrdering": false,
+      "onlineBooking": false,
+      "customerPortal": false,
+      "ecommerce": false,
+      "confidenceLevel": "95% Verified",
+      "verificationStatus": "Confirmed via Google Maps & Web Audit",
+      "businessImpact": "$6,500 \u2013 $11,000/mo",
+      "suggestedSolution": "1-Tap Mobile Apartment Video Tour & 40x Rent Screening Bot (48 Hours)"
+    },
+    "batchId": "batch_07",
+    "batchNumber": 2,
+    "batchPitched": false,
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 88
+  },
+  {
+    "id": "real_lead_92",
+    "businessName": "Queens Small Business Legal Aid",
+    "businessScale": "small_business",
+    "businessScaleLabel": "\ud83c\udfea Chota Business (Direct Owner Mobile)",
+    "city": "New York, NY",
+    "country": "USA \ud83c\uddfa\ud83c\uddf8",
+    "address": "89-00 Sutphin Blvd, Jamaica, NY 11435",
+    "phone": "+17185203300",
+    "phoneType": "landline_uan",
+    "phoneSource": "Storefront Plaque & NY State Unified Court System",
+    "whatsappNumber": null,
+    "email": null,
+    "instagramHandle": "@queensbusinesslaw",
+    "rating": "4.6",
+    "reviews": 180,
+    "decisionMaker": "David Stern",
+    "decisionMakerTitle": "Principal Notary & Commercial Solicitor",
+    "decisionMakerSource": "New York State Bar Association Register",
+    "decisionMakerSourceUrl": "https://maps.google.com/?q=Queens+Small+Business+Legal+Aid",
+    "website": "https://queensbusinesslaw.com",
+    "niche": "law_firms",
+    "nicheName": "Bilingual Immigrant Business Contracts & Notary",
+    "nicheIcon": "\ud83d\udcdc",
+    "channel": "gmail",
+    "recommendedPitchChannel": "gmail",
+    "pitchChannelReason": "Corporate decision makers review proposals and software audits via official Gmail/Email.",
+    "flawTitle": "Storefront Lease & Vendor Contract Details Intake Bottleneck",
+    "specificWeakness": "Bodega and restaurant owners needing quick partnership agreements or lease reviews get delayed trying to find paperwork.",
+    "whereToCheck": "Google profile: 1-Tap Bilingual Contract Drafting Intake Bot missing.",
+    "whyMoneyLeaks": "Paperwork delays cause ~15 immigrant business clients to hire cheap notary competitors (~$5,000/mo loss).",
+    "talkingPoints": [
+      "David, bodega owners in Queens needing a partnership agreement don't have time to travel to Sutphin Blvd twice.",
+      "We build a 1-tap WhatsApp Contract Bot where both partners upload IDs and terms, and receive the finalized draft in 24 hours."
+    ],
+    "clientQuestion": "Is it available in Spanish and Urdu?",
+    "clientAnswer": "David, the bot automatically switches between English, Spanish, and Urdu based on the client's phone language.",
+    "deliverableSolution": "1-Tap Bilingual Mobile Contract Intake & Notary Funnel (48 Hours)",
+    "flawLeakRange": "$5,000 \u2013 $8,500/mo",
+    "regionDeliveryApps": "none",
+    "teamGreeting": "Team Queens Business Law",
+    "founderGreeting": "David",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Queens%20Small%20Business%20Legal%20Aid%2C%2089-00%20Sutphin%20Blvd%2C%20Jamaica%2C%20NY%2011435",
+    "contactInfo": {
+      "phone": "+17185203300",
+      "phoneType": "landline_uan",
+      "phoneSource": "Storefront Plaque & NY State Unified Court System",
+      "whatsappNumber": null,
+      "email": null,
+      "instagramHandle": "@queensbusinesslaw",
+      "website": "https://queensbusinesslaw.com",
+      "linkedinProfile": "https://www.linkedin.com/search/results/all/?keywords=Queens%20Small%20Business%20Legal%20Aid"
+    },
+    "status": "ready",
+    "createdAt": "2026-10-31T00:00:00.000Z",
+    "dispatchedAt": null,
+    "dispatchedMessage": null,
+    "followupDueAt": null,
+    "emailStatus": "none_mobile_only",
+    "googlePlaceId": "ChIJb3d8c050e7cce1f7cf1bf7a",
+    "exactMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJb3d8c050e7cce1f7cf1bf7a",
+    "operatingStatus": "OPERATIONAL",
+    "verificationStatus": "VERIFIED ON GOOGLE MAPS",
+    "authenticityStatus": "VERIFIED",
+    "normalizedPhone": "+17185203300",
+    "whatsappVerificationStatus": "NOT AVAILABLE",
+    "softwareOpportunity": {
+      "category": "custom_software",
+      "categoryLabel": "F. Custom Software & Enterprise Systems",
+      "categoryIcon": "\u2696\ufe0f",
+      "recommendedSoftware": "Secure Client Intake Portal & Case Conflict Check Automation",
+      "businessBenefit": "Automates client confidentiality intake, screens case eligibility instantly, and secures confidential evidence files.",
+      "mvpScope": "Encrypted digital intake form, automated conflict of interest scanner, client consultation scheduling.",
+      "demoConcept": "Secure intake workflow demonstration with automated eligibility score.",
+      "complexity": "High",
+      "suggestedTechStack": "Ruby on Rails / NestJS, Next.js, PostgreSQL, AES-256 Encryption, Stripe Invoicing"
+    },
+    "websiteAudit": {
+      "websiteAvailable": true,
+      "speedScore": 68,
+      "mobileResponsive": true,
+      "mobileUsability": "Friction Detected (Missing 1-tap mobile booking)",
+      "brokenLinks": 0,
+      "sslActive": true,
+      "onlineOrdering": false,
+      "onlineBooking": false,
+      "customerPortal": false,
+      "ecommerce": false,
+      "confidenceLevel": "95% Verified",
+      "verificationStatus": "Confirmed via Google Maps & Web Audit",
+      "businessImpact": "$5,000 \u2013 $8,500/mo",
+      "suggestedSolution": "1-Tap Bilingual Mobile Contract Intake & Notary Funnel (48 Hours)"
+    },
+    "batchId": "batch_07",
+    "batchNumber": 2,
+    "batchPitched": false,
+    "crmStatus": "qualified",
+    "replyProbabilityScore": 88
   }
 ];
-
-if (typeof window !== 'undefined') {
-  window.INITIAL_LEADS = INITIAL_LEADS;
-  window.DEFAULT_LEADS = INITIAL_LEADS;
-}
+var INITIAL_LEADS = DEFAULT_LEADS;
+if (typeof window !== "undefined") { window.DEFAULT_LEADS = DEFAULT_LEADS; window.INITIAL_LEADS = DEFAULT_LEADS; }

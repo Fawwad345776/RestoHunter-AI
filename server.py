@@ -288,6 +288,57 @@ class SoftHunterHandler(SimpleHTTPRequestHandler):
             # Fallback to authentic verified leads dataset matching criteria
             all_leads = load_json(LEADS_FILE, [])
             filtered = []
+
+            def compute_reply_likelihood(item):
+                s = 50
+                p = str(item.get('phone') or '')
+                pt = str(item.get('phoneType') or '')
+                ch = str(item.get('recommendedPitchChannel') or item.get('channel') or '')
+                if pt == 'mobile_whatsapp' or item.get('whatsappVerified') or p.startswith(('+923', '923', '03')):
+                    s += 25
+                elif ch == 'instagram' and item.get('instagramHandle'):
+                    s += 18
+                elif item.get('email'):
+                    s += 12
+
+                dm = str(item.get('decisionMaker') or '').strip()
+                if dm and dm.lower() not in ('owner', 'unknown', 'principal', 'n/a', ''):
+                    s += 10
+                    if item.get('decisionMakerTitle') and 'principal' not in str(item.get('decisionMakerTitle')).lower():
+                        s += 5
+
+                leak = str(item.get('flawLeakRange') or '').lower()
+                if any(k in leak for k in ('80k', '100k', '140k', '150k', '200k', '250k', '$3', '$4', '$5', '$6', '$8')):
+                    s += 15
+                elif leak:
+                    s += 10
+
+                try:
+                    rev = int(item.get('reviews') or 0)
+                    if rev >= 500:
+                        s += 7
+                    elif rev >= 100:
+                        s += 5
+                    elif rev >= 30:
+                        s += 3
+                except:
+                    pass
+
+                try:
+                    rat = float(item.get('rating') or 0)
+                    if 4.2 <= rat <= 4.8:
+                        s += 3
+                except:
+                    pass
+
+                if str(item.get('googlePlaceId') or '').startswith('ChIJ'):
+                    s += 5
+
+                if item.get('status') in ('dispatched', 'replied') or item.get('crmStatus') == 'sent' or item.get('batchPitched'):
+                    s -= 30
+
+                return max(15, min(99, s))
+
             for l in all_leads:
                 if city and city.lower() != 'all' and city.lower() not in l.get('city', '').lower():
                     continue
@@ -309,12 +360,17 @@ class SoftHunterHandler(SimpleHTTPRequestHandler):
                     continue
                 if require_phone and not l.get('phone'):
                     continue
-                filtered.append(l)
+                l_copy = dict(l)
+                l_copy['replyProbabilityScore'] = compute_reply_likelihood(l)
+                filtered.append(l_copy)
+
+            # Sort by reply probability score descending (Highest Reply Chance First)
+            filtered.sort(key=lambda x: x.get('replyProbabilityScore', 50), reverse=True)
 
             return self._send_json({
                 "success": True,
                 "source": "verified_local_database",
-                "notice": "Results matched from Curated Verified Database. Add Google Places API Key in Settings to scan live new cities.",
+                "notice": "Results ranked by Highest Reply Likelihood. Add Google Places API Key in Settings to scan live new cities.",
                 "count": len(filtered[:requested_count]),
                 "results": filtered[:requested_count]
             })
