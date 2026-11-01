@@ -13,9 +13,9 @@
   <link rel="apple-touch-icon" href="assets/icon.jpg">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=4.8">
-  <link rel="stylesheet" href="css/components.css?v=4.8">
-  <link rel="stylesheet" href="css/responsive.css?v=4.8">
+  <link rel="stylesheet" href="css/main.css?v=4.9">
+  <link rel="stylesheet" href="css/components.css?v=4.9">
+  <link rel="stylesheet" href="css/responsive.css?v=4.9">
 </head>
 <body>
   <div class="bg-grid"></div>
@@ -360,62 +360,78 @@
 
     <!-- SECTION 4: HUMAN-IN-THE-LOOP REVIEW DASHBOARD -->
     <section class="glass-panel" style="padding: 24px;">
-      <!-- Table Controls & Channel Tabs -->
-      <div class="leads-section-header">
-        <div class="channel-tabs-group">
-          <button class="channel-tab-btn active" data-filter="all">All Leads (384+)</button>
-          <button class="channel-tab-btn" data-filter="dispatched" style="border-color: rgba(56, 189, 248, 0.45); color: #38bdf8; font-weight: 700; background: rgba(56, 189, 248, 0.08);">
-            🚀 Dispatched (<span id="tab-dispatched-count">0</span>)
-          </button>
-          <button class="channel-tab-btn" data-filter="dispatch_dates" id="tab-btn-dispatch-dates" style="border-color: rgba(56, 189, 248, 0.5); color: #38bdf8; font-weight: 800; background: rgba(56, 189, 248, 0.12); box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);">
-            📅 Date-Wise Log (<span id="tab-dispatch-dates-count">0</span>)
-          </button>
-          <button class="channel-tab-btn" data-filter="whatsapp">📲 WhatsApp</button>
-          <button class="channel-tab-btn" data-filter="gmail">📧 Gmail</button>
-          <button class="channel-tab-btn" data-filter="linkedin">👔 LinkedIn</button>
-          <button class="channel-tab-btn" data-filter="instagram">📸 Instagram</button>
-          <button class="channel-tab-btn" data-filter="replied">🔴 With Replies</button>
-          <button class="channel-tab-btn" data-filter="followup" id="tab-btn-followup" style="border-color: rgba(245, 158, 11, 0.5); color: #fbbf24; font-weight: 700;">⏰ Due Follow-Ups (<span id="tab-followup-count">0</span>)</button>
+      <!-- Modern Structured Toolbar: Channel Tabs, Filters & View Toggle -->
+      <div class="leads-dashboard-toolbar">
+        <!-- Tier 1: Channel & Status Filter Tabs (Horizontal Scrollable) -->
+        <div class="channel-tabs-scroll-wrapper">
+          <div class="channel-tabs-group">
+            <button class="channel-tab-btn active" data-filter="all">All Leads (384+)</button>
+            <button class="channel-tab-btn" data-filter="dispatched" style="border-color: rgba(56, 189, 248, 0.45); color: #38bdf8; font-weight: 700; background: rgba(56, 189, 248, 0.08);">
+              🚀 Dispatched (<span id="tab-dispatched-count">0</span>)
+            </button>
+            <button class="channel-tab-btn" data-filter="dispatch_dates" id="tab-btn-dispatch-dates" style="border-color: rgba(56, 189, 248, 0.5); color: #38bdf8; font-weight: 800; background: rgba(56, 189, 248, 0.12); box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);">
+              📅 Date-Wise Log (<span id="tab-dispatch-dates-count">0</span>)
+            </button>
+            <button class="channel-tab-btn" data-filter="whatsapp">📲 WhatsApp</button>
+            <button class="channel-tab-btn" data-filter="gmail">📧 Gmail</button>
+            <button class="channel-tab-btn" data-filter="linkedin">👔 LinkedIn</button>
+            <button class="channel-tab-btn" data-filter="instagram">📸 Instagram</button>
+            <button class="channel-tab-btn" data-filter="replied">🔴 With Replies</button>
+            <button class="channel-tab-btn" data-filter="followup" id="tab-btn-followup" style="border-color: rgba(245, 158, 11, 0.5); color: #fbbf24; font-weight: 700;">⏰ Due Follow-Ups (<span id="tab-followup-count">0</span>)</button>
+          </div>
         </div>
 
-        <!-- Search Bar -->
-        <div style="flex: 1; max-width: 320px;">
-          <input type="text" id="table-search-input" class="custom-input" style="height: 38px; font-size: 0.85rem;" placeholder="🔍 Search ANY city (e.g. Islamabad), business...">
-        </div>
+        <!-- Tier 2: Search, Niche Filter, View Mode Toggle & Action Buttons -->
+        <div class="leads-filter-row">
+          <!-- Search Bar -->
+          <div style="flex: 1; min-width: 220px;">
+            <input type="text" id="table-search-input" class="custom-input" style="height: 40px; font-size: 0.86rem;" placeholder="🔍 Search business, city, phone, DM, flaw...">
+          </div>
 
-        <!-- Table Niche Dropdown Filter -->
-        <div style="min-width: 210px;">
-          <select id="table-niche-filter" class="custom-select" style="height: 38px; font-size: 0.82rem; background: rgba(15, 23, 42, 0.85); border-color: rgba(56, 189, 248, 0.45); color: #f1f5f9; font-weight: 600;">
-            <option value="all" selected>🎯 All 12 Industries (384+ Leads)</option>
-            <option value="restaurants">🍽️ Restaurants & Cafes (19)</option>
-            <option value="bakeries_sweets">🧁 Bakeries & Sweets (18)</option>
-            <option value="dental_medical">🩺 Dental & Medical (17)</option>
-            <option value="salons_spas">✂️ Barber Shops & Salons (17)</option>
-            <option value="pet_care">🐕 Pet Care & Vet Clinics (17)</option>
-            <option value="gyms_fitness">🏋️ Gyms & Fitness (16)</option>
-            <option value="auto_repair">🚗 Auto Repair & Detailing (16)</option>
-            <option value="real_estate">🏡 Real Estate & Brokers (16)</option>
-            <option value="home_services">🔨 Home Services (HVAC/Plumb) (16)</option>
-            <option value="boutique_hotels">🏨 Boutique Hotels (16)</option>
-            <option value="event_planners">🎉 Event & Wedding Marquees (16)</option>
-            <option value="law_firms">⚖️ Law Firms & Legal (16)</option>
-          </select>
-        </div>
+          <!-- Table Niche Dropdown Filter -->
+          <div style="min-width: 195px;">
+            <select id="table-niche-filter" class="custom-select" style="height: 40px; font-size: 0.82rem; background: rgba(15, 23, 42, 0.85); border-color: rgba(56, 189, 248, 0.45); color: #f1f5f9; font-weight: 600;">
+              <option value="all" selected>🎯 All 12 Industries (384+ Leads)</option>
+              <option value="restaurants">🍽️ Restaurants & Cafes (19)</option>
+              <option value="bakeries_sweets">🧁 Bakeries & Sweets (18)</option>
+              <option value="dental_medical">🩺 Dental & Medical (17)</option>
+              <option value="salons_spas">✂️ Barber Shops & Salons (17)</option>
+              <option value="pet_care">🐕 Pet Care & Vet Clinics (17)</option>
+              <option value="gyms_fitness">🏋️ Gyms & Fitness (16)</option>
+              <option value="auto_repair">🚗 Auto Repair & Detailing (16)</option>
+              <option value="real_estate">🏡 Real Estate & Brokers (16)</option>
+              <option value="home_services">🔨 Home Services (HVAC/Plumb) (16)</option>
+              <option value="boutique_hotels">🏨 Boutique Hotels (16)</option>
+              <option value="event_planners">🎉 Event & Wedding Marquees (16)</option>
+              <option value="law_firms">⚖️ Law Firms & Legal (16)</option>
+            </select>
+          </div>
 
-        <!-- Action Buttons -->
-        <div class="leads-actions-group">
-          <button id="btn-open-add-lead" class="btn-primary" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; padding: 8px 14px; font-size: 0.84rem; box-shadow: 0 0 12px rgba(37, 211, 102, 0.35);" title="Paste any real business & WhatsApp number from Google Maps / Instagram">
-            <span>➕</span> Add Real Lead / Number
-          </button>
-          <button id="btn-reset-leads-status" class="btn-secondary" style="padding: 8px 12px; font-size: 0.84rem; color: #fbbf24; border-color: rgba(251, 191, 36, 0.45); font-weight: 700;" title="Reset all dispatched leads back to 'Ready to Pitch'">
-            <span>🔄</span> Reset to Ready
-          </button>
-          <button id="btn-export-csv" class="btn-secondary" style="padding: 8px 12px; font-size: 0.84rem;" title="Download CSV">
-            <span>📥</span> CSV
-          </button>
-          <button id="btn-export-json" class="btn-secondary" style="padding: 8px 12px; font-size: 0.84rem;" title="Download JSON">
-            <span>📤</span> JSON
-          </button>
+          <!-- View Mode Toggle (Cards vs Table) -->
+          <div class="view-toggle-wrap">
+            <button id="btn-view-cards" class="view-toggle-btn" type="button" title="Mobile & Tablet Optimized Card View">
+              <span>🗂️ Cards</span>
+            </button>
+            <button id="btn-view-table" class="view-toggle-btn active" type="button" title="Full Desktop Table View">
+              <span>📋 Table</span>
+            </button>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="leads-actions-group">
+            <button id="btn-open-add-lead" class="btn-primary" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; padding: 8px 14px; font-size: 0.84rem; box-shadow: 0 0 12px rgba(37, 211, 102, 0.35);" title="Paste any real business & WhatsApp number from Google Maps / Instagram">
+              <span>➕</span> Add Lead
+            </button>
+            <button id="btn-reset-leads-status" class="btn-secondary" style="padding: 8px 12px; font-size: 0.84rem; color: #fbbf24; border-color: rgba(251, 191, 36, 0.45); font-weight: 700;" title="Reset all dispatched leads back to 'Ready to Pitch'">
+              <span>🔄</span> Reset
+            </button>
+            <button id="btn-export-csv" class="btn-secondary" style="padding: 8px 12px; font-size: 0.84rem;" title="Download CSV">
+              <span>📥</span> CSV
+            </button>
+            <button id="btn-export-json" class="btn-secondary" style="padding: 8px 12px; font-size: 0.84rem;" title="Download JSON">
+              <span>📤</span> JSON
+            </button>
+          </div>
         </div>
       </div>
 
@@ -524,23 +540,28 @@
         <span>📱 <strong>Mobile View:</strong> Table ko ungli se baayein/daayein (Left/Right) scroll karein sab details & action buttons dekhne ke liye 👉</span>
       </div>
 
-      <!-- Leads Review Table -->
-      <div class="table-container">
+      <!-- Leads Review Table (Desktop View) -->
+      <div class="table-container" id="leads-table-container">
         <table class="leads-table">
           <thead>
             <tr>
-              <th>Business & Decision Maker</th>
-              <th>Niche</th>
-              <th>Flaw Audit & Monthly Leak</th>
-              <th>Channel</th>
-              <th>Status</th>
-              <th>Actions</th>
+              <th style="min-width: 260px;">Business Profile & Location</th>
+              <th style="min-width: 250px;">Verified Decision Maker</th>
+              <th style="min-width: 220px;">Flaw Audit & Lost Revenue</th>
+              <th style="min-width: 140px;">Best Channel</th>
+              <th style="min-width: 140px;">Outreach Status</th>
+              <th style="min-width: 210px;">1-Tap Actions</th>
             </tr>
           </thead>
           <tbody id="leads-table-body">
             <!-- Dynamically populated via App.renderTable() -->
           </tbody>
         </table>
+      </div>
+
+      <!-- Native Mobile / Tablet Card View (Responsive & Touch-Optimized) -->
+      <div id="leads-card-container" class="leads-card-container" style="display: none;">
+        <!-- Dynamically populated via App.renderTable() in card mode -->
       </div>
 
       <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; font-size: 0.8rem; color: var(--text-muted);">
@@ -1018,15 +1039,15 @@
   <div id="toast-container" class="toast-container"></div>
 
   <!-- Core JavaScript Modules -->
-  <script src="js/auth.js?v=4.8"></script>
-  <script src="js/storage.js?v=4.8"></script>
-  <script src="js/leadGenerator.js?v=4.8"></script>
-  <script src="js/pitchEngine.js?v=4.8"></script>
-  <script src="js/whatsappService.js?v=4.8"></script>
-  <script src="js/replyCenter.js?v=4.8"></script>
-  <script src="js/autopilot.js?v=4.8"></script>
-  <script src="data/leads.js?v=4.8"></script>
-  <script src="js/app.js?v=4.8"></script>
+  <script src="js/auth.js?v=4.9"></script>
+  <script src="js/storage.js?v=4.9"></script>
+  <script src="js/leadGenerator.js?v=4.9"></script>
+  <script src="js/pitchEngine.js?v=4.9"></script>
+  <script src="js/whatsappService.js?v=4.9"></script>
+  <script src="js/replyCenter.js?v=4.9"></script>
+  <script src="js/autopilot.js?v=4.9"></script>
+  <script src="data/leads.js?v=4.9"></script>
+  <script src="js/app.js?v=4.9"></script>
 
   <!-- Clear Old Cache & Unregister Service Workers to Ensure Fresh Real-Time Loads -->
   <script>

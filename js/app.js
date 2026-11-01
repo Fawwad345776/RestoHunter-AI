@@ -7,6 +7,7 @@ const App = {
   filteredLeads: [],
   currentChannelFilter: 'all',
   currentScaleFilter: 'all',
+  currentViewMode: (typeof window !== 'undefined' && window.innerWidth <= 768) ? 'cards' : 'table',
   activeLeadForModal: null,
   settings: {},
 
@@ -24,6 +25,9 @@ const App = {
     } catch (e) {}
 
     ReplyCenter.init();
+
+    // Initialize View Mode (Cards for Mobile <= 768px, Table for Desktop)
+    this.setViewMode(this.currentViewMode, false);
 
     // 1. Instant Synchronous Initial Load: Show verified leads immediately without waiting for network
     const savedLeads = StorageService.getLeads();
@@ -367,6 +371,16 @@ const App = {
       searchInput.addEventListener('input', (e) => {
         this.handleSearch(e.target.value);
       });
+    }
+
+    // View Switcher (Cards vs Table)
+    const btnViewCards = document.getElementById('btn-view-cards');
+    const btnViewTable = document.getElementById('btn-view-table');
+    if (btnViewCards) {
+      btnViewCards.addEventListener('click', () => this.setViewMode('cards'));
+    }
+    if (btnViewTable) {
+      btnViewTable.addEventListener('click', () => this.setViewMode('table'));
     }
 
     // Reset Leads to Ready Status
@@ -742,16 +756,24 @@ const App = {
       this.applyFilter(this.currentChannelFilter);
       return;
     }
-    let matched = this.leads.filter(l =>
-      (l.businessName && l.businessName.toLowerCase().includes(q)) ||
-      (l.city && l.city.toLowerCase().includes(q)) ||
-      (l.country && l.country.toLowerCase().includes(q)) ||
-      (l.address && l.address.toLowerCase().includes(q)) ||
-      (l.nicheName && l.nicheName.toLowerCase().includes(q)) ||
-      (l.flawTitle && l.flawTitle.toLowerCase().includes(q)) ||
-      (l.decisionMaker && l.decisionMaker.toLowerCase().includes(q)) ||
-      (l.channel && l.channel.toLowerCase().includes(q))
-    );
+    let matched = this.leads.filter(l => {
+      const phone = (l.contactInfo && l.contactInfo.phone) ? l.contactInfo.phone.toLowerCase() : '';
+      const email = (l.contactInfo && l.contactInfo.email) ? l.contactInfo.email.toLowerCase() : (l.email ? l.email.toLowerCase() : '');
+      const ig = (l.contactInfo && l.contactInfo.instagramHandle) ? l.contactInfo.instagramHandle.toLowerCase() : '';
+      return (
+        (l.businessName && l.businessName.toLowerCase().includes(q)) ||
+        (l.city && l.city.toLowerCase().includes(q)) ||
+        (l.country && l.country.toLowerCase().includes(q)) ||
+        (l.address && l.address.toLowerCase().includes(q)) ||
+        (l.nicheName && l.nicheName.toLowerCase().includes(q)) ||
+        (l.flawTitle && l.flawTitle.toLowerCase().includes(q)) ||
+        (l.decisionMaker && l.decisionMaker.toLowerCase().includes(q)) ||
+        (l.channel && l.channel.toLowerCase().includes(q)) ||
+        phone.includes(q) ||
+        email.includes(q) ||
+        ig.includes(q)
+      );
+    });
 
     // If no leads match and user typed 3+ characters (like a city name e.g. "Islamabad", "Abbottabad", "Berlin"),
     // trigger dynamic city hunt on the fly so the user gets instant verified results!
@@ -771,222 +793,508 @@ const App = {
     this.renderTable();
   },
 
+  setViewMode(mode, shouldRender = true) {
+    this.currentViewMode = mode;
+    const btnCards = document.getElementById('btn-view-cards');
+    const btnTable = document.getElementById('btn-view-table');
+    const tableContainer = document.getElementById('leads-table-container');
+    const cardContainer = document.getElementById('leads-card-container');
+    const scrollHint = document.querySelector('.table-scroll-hint');
+
+    if (btnCards) btnCards.classList.toggle('active', mode === 'cards');
+    if (btnTable) btnTable.classList.toggle('active', mode === 'table');
+
+    if (mode === 'cards') {
+      if (tableContainer) tableContainer.style.display = 'none';
+      if (cardContainer) cardContainer.style.display = 'grid';
+      if (scrollHint) scrollHint.style.display = 'none';
+    } else {
+      if (tableContainer) tableContainer.style.display = 'block';
+      if (cardContainer) cardContainer.style.display = 'none';
+      if (scrollHint && typeof window !== 'undefined' && window.innerWidth <= 992) {
+        scrollHint.style.display = 'flex';
+      }
+    }
+
+    if (shouldRender) {
+      this.renderTable();
+    }
+  },
+
   renderTable() {
     const tbody = document.getElementById('leads-table-body');
+    const cardContainer = document.getElementById('leads-card-container');
     const countLabel = document.getElementById('leads-count-label');
     if (countLabel) countLabel.textContent = `Showing ${this.filteredLeads.length} of ${this.leads.length} Leads`;
-    if (!tbody) return;
 
+    // Ensure correct container visibility based on currentViewMode
+    const tableContainer = document.getElementById('leads-table-container');
+    if (this.currentViewMode === 'cards') {
+      if (tableContainer) tableContainer.style.display = 'none';
+      if (cardContainer) cardContainer.style.display = 'grid';
+    } else {
+      if (tableContainer) tableContainer.style.display = 'block';
+      if (cardContainer) cardContainer.style.display = 'none';
+    }
+
+    // Empty state
     if (this.filteredLeads.length === 0) {
-      tbody.innerHTML = `
-        <tr>
-          <td colspan="7" style="text-align: center; padding: 40px; color: var(--text-muted);">
+      if (tbody) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted);">
+              No leads found matching current filter or search criteria.
+            </td>
+          </tr>
+        `;
+      }
+      if (cardContainer) {
+        cardContainer.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; color: var(--text-muted); background: rgba(15, 23, 42, 0.4); border-radius: 12px; border: 1px dashed var(--border-subtle);">
             No leads found matching current filter or search criteria.
-          </td>
-        </tr>
-      `;
+          </div>
+        `;
+      }
       return;
     }
 
-    tbody.innerHTML = this.filteredLeads.map((lead, idx) => {
-      const bestChannel = lead.recommendedPitchChannel || lead.channel || 'gmail';
-      const channelBadge = bestChannel === 'whatsapp'
-        ? `<div style="display: flex; flex-direction: column; gap: 2px;">
-             <span class="badge-channel whatsapp" style="font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
-               <span>⭐</span> <span>📲 WhatsApp</span>
-             </span>
-             <span style="font-size: 0.66rem; color: #4ade80; font-weight: 600;" title="${lead.pitchChannelReason || ''}">Direct Mobile</span>
-           </div>`
-        : bestChannel === 'instagram'
-        ? `<div style="display: flex; flex-direction: column; gap: 2px;">
-             <span class="badge-channel instagram" style="font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
-               <span>⭐</span> <span>📸 Insta DM</span>
-             </span>
-             <span style="font-size: 0.66rem; color: #f472b6; font-weight: 600;" title="${lead.pitchChannelReason || ''}">Story Reply</span>
-           </div>`
-        : `<div style="display: flex; flex-direction: column; gap: 2px;">
-             <span class="badge-channel gmail" style="font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
-               <span>⭐</span> <span>📧 Gmail</span>
-             </span>
-             <span style="font-size: 0.66rem; color: #93c5fd; font-weight: 600;" title="${lead.pitchChannelReason || ''}">Corporate RFP</span>
-           </div>`;
+    // Render Table Rows (Desktop 6-Column Layout)
+    if (tbody) {
+      tbody.innerHTML = this.filteredLeads.map((lead, idx) => this.renderLeadTableRow(lead, idx)).join('');
+    }
 
-      const dObj = lead.dispatchedAt ? new Date(lead.dispatchedAt) : null;
-      const monthNamesShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      const dispatchDateDisplay = dObj ? `${String(dObj.getDate()).padStart(2, '0')} ${monthNamesShort[dObj.getMonth()]}` : '';
-      const dispatchTimeStr = dObj ? dObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
-      const dispatchFullBadge = dObj ? `${dispatchDateDisplay} (${dispatchTimeStr})` : 'Dispatched';
-      const isDispatched = lead.status === 'dispatched' || lead.status === 'followup_due';
-      let isFollowupDue = false;
-      let isDay7 = false;
-      if (lead.status !== 'replied' && lead.followupStage !== 'day7_done') {
-        if (isDispatched && lead.dispatchedAt) {
-          const hoursPassed = (Date.now() - new Date(lead.dispatchedAt).getTime()) / (1000 * 3600);
-          isDay7 = hoursPassed >= 168 || lead.followupStage === 'day3_done';
-          if (lead.followupStage === 'day3_done') {
-            isFollowupDue = hoursPassed >= 168;
-          } else {
-            isFollowupDue = hoursPassed >= 48;
-          }
+    // Render Native Mobile / Tablet Cards
+    if (cardContainer) {
+      cardContainer.innerHTML = this.filteredLeads.map((lead, idx) => this.renderLeadCard(lead, idx)).join('');
+    }
+  },
+
+  renderLeadTableRow(lead, idx) {
+    const bestChannel = lead.recommendedPitchChannel || lead.channel || 'gmail';
+    const channelBadge = bestChannel === 'whatsapp'
+      ? `<div style="display: flex; flex-direction: column; gap: 2px;">
+           <span class="badge-channel whatsapp" style="font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
+             <span>⭐</span> <span>📲 WhatsApp</span>
+           </span>
+           <span style="font-size: 0.66rem; color: #4ade80; font-weight: 600;" title="${lead.pitchChannelReason || ''}">Direct Mobile</span>
+         </div>`
+      : bestChannel === 'instagram'
+      ? `<div style="display: flex; flex-direction: column; gap: 2px;">
+           <span class="badge-channel instagram" style="font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
+             <span>⭐</span> <span>📸 Insta DM</span>
+           </span>
+           <span style="font-size: 0.66rem; color: #f472b6; font-weight: 600;" title="${lead.pitchChannelReason || ''}">Story Reply</span>
+         </div>`
+      : `<div style="display: flex; flex-direction: column; gap: 2px;">
+           <span class="badge-channel gmail" style="font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
+             <span>⭐</span> <span>📧 Gmail</span>
+           </span>
+           <span style="font-size: 0.66rem; color: #93c5fd; font-weight: 600;" title="${lead.pitchChannelReason || ''}">Corporate RFP</span>
+         </div>`;
+
+    const dObj = lead.dispatchedAt ? new Date(lead.dispatchedAt) : null;
+    const monthNamesShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const dispatchDateDisplay = dObj ? `${String(dObj.getDate()).padStart(2, '0')} ${monthNamesShort[dObj.getMonth()]}` : '';
+    const dispatchTimeStr = dObj ? dObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
+    const dispatchFullBadge = dObj ? `${dispatchDateDisplay} (${dispatchTimeStr})` : 'Dispatched';
+    const isDispatched = lead.status === 'dispatched' || lead.status === 'followup_due';
+    let isFollowupDue = false;
+    let isDay7 = false;
+    if (lead.status !== 'replied' && lead.followupStage !== 'day7_done') {
+      if (isDispatched && lead.dispatchedAt) {
+        const hoursPassed = (Date.now() - new Date(lead.dispatchedAt).getTime()) / (1000 * 3600);
+        isDay7 = hoursPassed >= 168 || lead.followupStage === 'day3_done';
+        if (lead.followupStage === 'day3_done') {
+          isFollowupDue = hoursPassed >= 168;
+        } else {
+          isFollowupDue = hoursPassed >= 48;
         }
       }
+    }
 
-      const statusBadge = lead.status === 'replied'
-        ? `<span class="status-pill replied">🔴 Replied</span>`
-        : isFollowupDue
-        ? `<span class="status-pill followup" style="background: rgba(245, 158, 11, 0.25); color: #fbbf24; border: 1px solid #f59e0b; font-weight: 800; box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);">⏰ ${isDay7 ? 'Day-7 Nudge' : 'Day-3 Nudge'}</span>`
-        : lead.followupStage === 'day7_done'
-        ? `<span class="status-pill dispatched" style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border-color: rgba(16, 185, 129, 0.35);">✅ Sequence Done</span>`
-        : lead.followupStage === 'day3_done'
-        ? `<span class="status-pill dispatched" style="background: rgba(245, 158, 11, 0.12); color: #fde68a; border-color: rgba(245, 158, 11, 0.3);">⏱️ Day-3 Sent</span>`
-        : lead.status === 'dispatched'
-        ? `<span class="status-pill dispatched" style="font-weight: 700; white-space: nowrap; display: inline-flex; align-items: center; gap: 4px;" title="Dispatched on ${lead.dispatchedAt || 'Recorded'}">🚀 ${dispatchFullBadge}</span>`
-        : lead.status === 'followup_due'
-        ? `<span class="status-pill followup">⏰ Follow-Up Due</span>`
-        : `<span class="status-pill ready">Ready to Pitch</span>`;
+    const statusBadge = lead.status === 'replied'
+      ? `<span class="status-pill replied">🔴 Replied</span>`
+      : isFollowupDue
+      ? `<span class="status-pill followup" style="background: rgba(245, 158, 11, 0.25); color: #fbbf24; border: 1px solid #f59e0b; font-weight: 800; box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);">⏰ ${isDay7 ? 'Day-7 Nudge' : 'Day-3 Nudge'}</span>`
+      : lead.followupStage === 'day7_done'
+      ? `<span class="status-pill dispatched" style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border-color: rgba(16, 185, 129, 0.35);">✅ Sequence Done</span>`
+      : lead.followupStage === 'day3_done'
+      ? `<span class="status-pill dispatched" style="background: rgba(245, 158, 11, 0.12); color: #fde68a; border-color: rgba(245, 158, 11, 0.3);">⏱️ Day-3 Sent</span>`
+      : lead.status === 'dispatched'
+      ? `<span class="status-pill dispatched" style="font-weight: 700; white-space: nowrap; display: inline-flex; align-items: center; gap: 4px;" title="Dispatched on ${lead.dispatchedAt || 'Recorded'}">🚀 ${dispatchFullBadge}</span>`
+      : lead.status === 'followup_due'
+      ? `<span class="status-pill followup">⏰ Follow-Up Due</span>`
+      : `<span class="status-pill ready">Ready to Pitch</span>`;
 
-      const cleanPhone = (lead.contactInfo.phone || '').replace(/[^0-9]/g, '');
-      const fullAddress = lead.address || `${lead.city}, ${lead.country}`;
-      const mapsPinUrl = this.getExactMapsUrl(lead);
+    const cleanPhone = (lead.contactInfo && lead.contactInfo.phone ? lead.contactInfo.phone : '').replace(/[^0-9]/g, '');
+    const fullAddress = lead.address || `${lead.city}, ${lead.country}`;
+    const mapsPinUrl = this.getExactMapsUrl(lead);
 
-      const isPakMobile = lead.contactInfo.phone && /^\+92\s*3\d{2}/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''));
-      const isUaeMobile = lead.contactInfo.phone && /^\+971\s*5/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''));
-      const isMobileWA = lead.phoneType === 'mobile_whatsapp' || (lead.contactInfo && lead.contactInfo.phoneType === 'mobile_whatsapp') || isPakMobile || isUaeMobile;
-      const igHandle = (lead.contactInfo.instagramHandle || '').replace('@', '').trim();
-      const phoneSource = (lead.contactInfo && lead.contactInfo.phoneSource) || lead.phoneSource || 'Official Google Business Profile (Maps Knowledge Panel)';
+    const isPakMobile = lead.contactInfo && lead.contactInfo.phone && /^\+92\s*3\d{2}/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''));
+    const isUaeMobile = lead.contactInfo && lead.contactInfo.phone && /^\+971\s*5/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''));
+    const isMobileWA = (lead.phoneType === 'mobile_whatsapp') || (lead.contactInfo && lead.contactInfo.phoneType === 'mobile_whatsapp') || isPakMobile || isUaeMobile;
+    const igHandle = (lead.contactInfo && lead.contactInfo.instagramHandle ? lead.contactInfo.instagramHandle : '').replace('@', '').trim();
+    const emailAddr = (lead.contactInfo && lead.contactInfo.email) ? lead.contactInfo.email : (lead.email && lead.email.includes('@') ? lead.email : '');
+    const websiteUrl = lead.website || (lead.contactInfo && lead.contactInfo.website) || '';
+    const cleanWebDomain = websiteUrl ? websiteUrl.replace('https://', '').replace('http://', '').replace(/\/$/, '') : '';
 
-      const phoneDisplay = isMobileWA
-        ? `<a href="https://api.whatsapp.com/send?phone=${cleanPhone}" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;" title="Verified Mobile WhatsApp — 1-Tap to Chat">
-             <span>📲</span> ${lead.contactInfo.phone}
-             <span style="font-size:0.68rem; background: rgba(74,222,128,0.18); color: #4ade80; padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(74,222,128,0.4); font-weight: 700;">Mobile WA Active ✅</span>
-           </a>
-           <span style="font-size:0.68rem; color: #94a3b8; background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 3px;" title="Official Source of Phone Number">
-             📍 <strong style="color: #cbd5e1;">Src:</strong> ${phoneSource}
-           </span>`
-        : `<span style="color: #cbd5e1; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;" title="Official Landline / UAN Helpline (Not on WhatsApp — use Gmail or Instagram DM)">
-             <span>📞</span> ${lead.contactInfo.phone}
-             <span style="font-size:0.68rem; background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(56, 189, 248, 0.35); font-weight: 700;">Landline / UAN ⚡</span>
-           </span>
-           <span style="font-size:0.68rem; color: #94a3b8; background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 3px;" title="Official Source of Phone Number">
-             📍 <strong style="color: #cbd5e1;">Src:</strong> ${phoneSource}
-           </span>`;
+    const isWaBest = bestChannel === 'whatsapp';
+    const isIgBest = bestChannel === 'instagram';
+    const isGmailBest = bestChannel === 'gmail';
+    const isSmallBiz = lead.businessScale === 'small_business';
+    const scaleBadge = isSmallBiz
+      ? `<span class="badge-scale small" title="Chota Local Business: Seedha maalik ka mobile / WhatsApp, fast response & easy close">
+           <span>🏪</span> <span>Chota Business</span>
+         </span>`
+      : `<span class="badge-scale established" title="Established Brand / Enterprise Chain">
+           <span>🏢</span> <span>Established</span>
+         </span>`;
 
-      const igDisplay = igHandle
-        ? `• <a href="https://www.instagram.com/${igHandle}/" target="_blank" style="color: #f472b6; text-decoration: none; font-weight: 600;" title="Open Instagram Profile / DM">📸 @${igHandle}</a>`
-        : '';
+    // Contact Pills for Decision Maker Cell
+    const phonePill = isMobileWA
+      ? `<a href="https://api.whatsapp.com/send?phone=${cleanPhone}" target="_blank" class="contact-pill wa" title="Verified Mobile WhatsApp — 1-Tap to Chat">
+           <span>📲</span> <span>${lead.contactInfo.phone}</span> <span style="font-size:0.62rem; opacity:0.85;">(WA Active)</span>
+         </a>`
+      : `<span class="contact-pill landline" title="Official Landline / UAN Helpline">
+           <span>📞</span> <span>${lead.contactInfo ? lead.contactInfo.phone : 'N/A'}</span>
+         </span>`;
 
-      const emailDisplay = lead.contactInfo.email
-        ? `• <a href="mailto:${lead.contactInfo.email}" style="color: #93c5fd; text-decoration: none; font-weight: 500;" title="Send Direct Email">📧 ${lead.contactInfo.email}</a>`
-        : '';
+    const igPill = igHandle
+      ? `<a href="https://www.instagram.com/${igHandle}/" target="_blank" class="contact-pill ig" title="Open Instagram Profile / DM">
+           <span>📸</span> <span>@${igHandle}</span>
+         </a>`
+      : '';
 
-      const websiteUrl = lead.website || (lead.contactInfo && lead.contactInfo.website) || '';
-      const cleanWebDomain = websiteUrl ? websiteUrl.replace('https://', '').replace('http://', '').replace(/\/$/, '') : '';
-      const webDisplay = websiteUrl
-        ? `• <a href="${websiteUrl}" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 3px;" title="Open Official Website (${cleanWebDomain})">🌐 ${cleanWebDomain} ↗</a>`
-        : '';
+    const emailPill = emailAddr
+      ? `<a href="mailto:${emailAddr}" class="contact-pill email" title="Send Direct Email">
+           <span>📧</span> <span>${emailAddr}</span>
+         </a>`
+      : '';
 
-      const isWaBest = bestChannel === 'whatsapp';
-      const isIgBest = bestChannel === 'instagram';
-      const isGmailBest = bestChannel === 'gmail';
-      const isSmallBiz = lead.businessScale === 'small_business';
-      const scaleBadge = isSmallBiz
-        ? `<span class="badge-scale small" title="Chota Local Business: Seedha maalik ka mobile / WhatsApp, fast response & easy close">
-             <span>🏪</span> <span>Chota Business</span>
-           </span>`
-        : `<span class="badge-scale established" title="Established Brand / Enterprise Chain">
-             <span>🏢</span> <span>Established</span>
-           </span>`;
+    const webPill = cleanWebDomain
+      ? `<a href="${websiteUrl}" target="_blank" rel="noopener noreferrer" class="contact-pill web" title="Open Official Website (${cleanWebDomain})">
+           <span>🌐</span> <span>${cleanWebDomain} ↗</span>
+         </a>`
+      : '';
 
-      return `
-        <tr data-lead-id="${lead.id}">
-          <td>
-            <div class="biz-name-cell">
-              <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-                <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                  <span class="biz-title">${lead.businessName}</span>
-                  ${scaleBadge}
-                </div>
-                <a href="${mapsPinUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 6px; font-size: 0.74rem; font-weight: 700; text-decoration: none; background: linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(220, 38, 38, 0.35) 100%); border: 1px solid rgba(239, 68, 68, 0.6); color: #fca5a5; white-space: nowrap; box-shadow: 0 0 10px rgba(239, 68, 68, 0.25); transition: all 0.2s;" title="1-Tap to Open Real Location Pin & Details on Google Maps">
-                  <span>🗺️</span> <span>Maps Pin ↗</span>
-                </a>
+    // Hero Action Button
+    let heroActionBtn = '';
+    if (isWaBest) {
+      heroActionBtn = isMobileWA
+        ? `<button class="btn-hero-action wa" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')" title="1-Tap Direct WhatsApp Chat">
+             <span>⚡</span> <span>WhatsApp</span>
+           </button>`
+        : `<button class="btn-hero-action" style="background: rgba(255,255,255,0.06); color: #94a3b8; border: 1px solid rgba(255,255,255,0.18);" onclick="App.dispatchLandlineWhatsApp('${lead.id}')" title="Official Landline: Click to test or see alternative">
+             <span>📞</span> <span>Landline WA</span>
+           </button>`;
+    } else if (isIgBest) {
+      heroActionBtn = `<button class="btn-hero-action insta" onclick="App.dispatchSingleLead('${lead.id}', null, 'instagram')" title="1-Tap Copy Pitch & Open Instagram DM">
+           <span>⚡</span> <span>Insta DM</span>
+         </button>`;
+    } else {
+      heroActionBtn = emailAddr
+        ? `<button class="btn-hero-action gmail" onclick="App.dispatchSingleLead('${lead.id}', null, 'gmail')" title="1-Tap Open Gmail with Tailored Pitch">
+             <span>⚡</span> <span>Gmail</span>
+           </button>`
+        : `<button class="btn-hero-action" style="background: rgba(255,255,255,0.06); color: #94a3b8; border: 1px dashed rgba(255,255,255,0.2);" onclick="App.showNoEmailAdvice('${lead.id}')">
+             <span>📧</span> <span>No Email</span>
+           </button>`;
+    }
+
+    const dueNudgeBtn = isFollowupDue
+      ? `<button class="btn-hero-action" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #000; font-weight: 800; border: none; box-shadow: 0 0 10px rgba(245, 158, 11, 0.4); padding: 5px 9px; font-size: 0.74rem;" onclick="App.dispatchFollowup('${lead.id}')" title="1-Tap Send ${isDay7 ? 'Day-7 Breakup' : 'Day-3'} Follow-Up Nudge">
+           ⏰ ${isDay7 ? 'Day-7' : 'Day-3'} Nudge
+         </button>`
+      : '';
+
+    return `
+      <tr data-lead-id="${lead.id}">
+        <!-- Col 1: Business Profile & Location -->
+        <td>
+          <div class="lead-biz-cell">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                <span class="biz-title" style="font-size: 0.95rem; font-weight: 800; color: #f8fafc;">${lead.businessName}</span>
+                ${scaleBadge}
               </div>
-              <span class="biz-location" style="display: flex; flex-direction: column; gap: 3px; margin-top: 3px;">
-                <span style="color: #cbd5e1; font-size: 0.76rem; display: flex; align-items: center; gap: 5px;">
-                  <span style="color: #ef4444;">📌</span> <strong style="color: #f1f5f9;">Address:</strong> ${fullAddress}
-                </span>
-                <span style="font-size: 0.74rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                  <span>📍 ${lead.city}</span>
-                  • <span class="google-rating-chip">⭐ ${lead.rating} (${(Number(lead.reviews) || 50).toLocaleString()} reviews)</span>
-                  • ${phoneDisplay}
-                  ${igDisplay}
-                  ${emailDisplay}
-                  ${webDisplay}
-                </span>
-              </span>
-              <div style="font-size: 0.74rem; color: #cbd5e1; margin-top: 4px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                <span>👤 <strong style="color: #f1f5f9;">${lead.decisionMaker}</strong> <span style="color: #94a3b8;">(${lead.decisionMakerTitle})</span></span>
-                <span style="font-size: 0.68rem; background: rgba(16, 185, 129, 0.14); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 2px 7px; border-radius: 4px; font-weight: 700;" title="Safe outreach greeting for WhatsApp & Instagram: ${lead.teamGreeting || 'Team ' + lead.businessName}">
-                  🛡️ Greet: "${lead.teamGreeting || 'Team ' + lead.businessName}"
-                </span>
-                <a href="${lead.decisionMakerSourceUrl || '#'}" target="_blank" rel="noopener noreferrer" style="font-size: 0.68rem; background: rgba(251, 191, 36, 0.12); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.38); padding: 2px 7px; border-radius: 4px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 4px; transition: all 0.15s;" title="Click to verify founder / director identity source (${lead.decisionMakerSource})">
-                  <span>🏛️</span> <span>Src: ${lead.decisionMakerSource || 'Corporate Registry'}</span> <span>↗</span>
-                </a>
-              </div>
+              <a href="${mapsPinUrl}" target="_blank" rel="noopener noreferrer" class="btn-maps-pin" title="1-Tap to Open Real Location Pin on Google Maps">
+                <span>🗺️</span> <span>Maps Pin ↗</span>
+              </a>
             </div>
-          </td>
-          <td>
-            <span class="badge-niche">${lead.nicheIcon} ${lead.nicheName.split(',')[0]}</span>
-          </td>
-          <td>
-            <div class="flaw-tag" onclick="App.openFlawModal('${lead.id}')" style="cursor: pointer; transition: all 0.15s ease;" title="Click to view full flaw audit, proof links & client talking points">
-              <span class="flaw-label">⚠️ ${lead.flawTitle}</span>
-              <span class="leak-badge">${lead.flawLeakRange}</span>
-              <span style="font-size: 0.66rem; color: #fca5a5; display: flex; align-items: center; gap: 3px; margin-top: 3px; font-weight: 700;">
-                <span>🔍</span> Masla & Proof Dekho ↗
-              </span>
+            <div style="color: #cbd5e1; font-size: 0.78rem; display: flex; align-items: flex-start; gap: 5px; margin-top: 4px;">
+              <span style="color: #ef4444; flex-shrink: 0;">📌</span> <span>${fullAddress}</span>
             </div>
+            <div style="font-size: 0.74rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 3px;">
+              <span style="color: #38bdf8; font-weight: 700;">📍 ${lead.city}</span>
+              • <span class="google-rating-chip" style="font-size: 0.74rem;">⭐ ${lead.rating} (${(Number(lead.reviews) || 50).toLocaleString()} reviews)</span>
+              • <span class="badge-niche" style="font-size: 0.72rem; padding: 2px 7px;">${lead.nicheIcon} ${lead.nicheName.split(',')[0]}</span>
+            </div>
+          </div>
+        </td>
+
+        <!-- Col 2: Verified Decision Maker & Contacts -->
+        <td>
+          <div class="dm-cell">
+            <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+              <span>👤 <strong style="color: #f8fafc; font-size: 0.88rem;">${lead.decisionMaker}</strong> <span style="color: #94a3b8; font-size: 0.76rem;">(${lead.decisionMakerTitle})</span></span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 4px;">
+              <span style="font-size: 0.68rem; background: rgba(16, 185, 129, 0.14); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 2px 6px; border-radius: 4px; font-weight: 700;" title="Safe outreach greeting">
+                🛡️ Greet: "${lead.teamGreeting || 'Team ' + lead.businessName}"
+              </span>
+              <a href="${lead.decisionMakerSourceUrl || '#'}" target="_blank" rel="noopener noreferrer" style="font-size: 0.68rem; background: rgba(251, 191, 36, 0.12); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.38); padding: 2px 6px; border-radius: 4px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 3px;" title="Verify identity source">
+                <span>🏛️ ${lead.decisionMakerSource || 'Corporate Registry'} ↗</span>
+              </a>
+            </div>
+            <div class="contact-pills-row" style="margin-top: 6px;">
+              ${phonePill}
+              ${igPill}
+              ${emailPill}
+              ${webPill}
+            </div>
+          </div>
+        </td>
+
+        <!-- Col 3: Flaw Audit & Lost Revenue -->
+        <td>
+          <div class="flaw-box" onclick="App.openFlawModal('${lead.id}')" title="Click to view full flaw audit, proof links & client talking points">
+            <div style="font-size: 0.80rem; font-weight: 700; color: #fca5a5; display: flex; align-items: center; gap: 4px;">
+              <span>⚠️</span> <span>${lead.flawTitle}</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 4px;">
+              <span class="leak-badge">💰 ${lead.flawLeakRange}</span>
+              ${lead.niche === 'restaurants' || lead.niche === 'bakeries_sweets' ? `
+                <span class="delivery-app-badge">🛵 ${lead.regionDeliveryApps || PitchEngine.detectDeliveryPlatform(lead)}</span>
+              ` : ''}
+            </div>
+            <span style="font-size: 0.68rem; color: #fca5a5; display: inline-flex; align-items: center; gap: 3px; margin-top: 4px; font-weight: 700;">
+              <span>🔍</span> Masla & Proof Dekho ↗
+            </span>
+          </div>
+        </td>
+
+        <!-- Col 4: Best Channel -->
+        <td>
+          ${channelBadge}
+        </td>
+
+        <!-- Col 5: Outreach Status -->
+        <td>
+          ${statusBadge}
+        </td>
+
+        <!-- Col 6: 1-Tap Actions -->
+        <td>
+          <div style="display: flex; flex-direction: column; gap: 6px; min-width: 160px;">
+            ${dueNudgeBtn ? dueNudgeBtn : ''}
+            ${heroActionBtn}
+            <div style="display: flex; gap: 5px;">
+              <button class="btn-sec-action" style="flex: 1;" onclick="App.openPitchModal('${lead.id}')" title="Preview Pitch & Strategy">
+                👁️ Pitch
+              </button>
+              <button class="btn-sec-action" style="flex: 1;" onclick="App.openFlawModal('${lead.id}')" title="Masla & Proof Audit">
+                🔍 Masla
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    `;
+  },
+
+  renderLeadCard(lead, idx) {
+    const bestChannel = lead.recommendedPitchChannel || lead.channel || 'gmail';
+    const channelBadge = bestChannel === 'whatsapp'
+      ? `<span class="badge-channel whatsapp" style="font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
+           <span>⭐</span> <span>📲 WhatsApp</span>
+         </span>`
+      : bestChannel === 'instagram'
+      ? `<span class="badge-channel instagram" style="font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
+           <span>⭐</span> <span>📸 Insta DM</span>
+         </span>`
+      : `<span class="badge-channel gmail" style="font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
+           <span>⭐</span> <span>📧 Gmail</span>
+         </span>`;
+
+    const dObj = lead.dispatchedAt ? new Date(lead.dispatchedAt) : null;
+    const monthNamesShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const dispatchDateDisplay = dObj ? `${String(dObj.getDate()).padStart(2, '0')} ${monthNamesShort[dObj.getMonth()]}` : '';
+    const dispatchTimeStr = dObj ? dObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
+    const dispatchFullBadge = dObj ? `${dispatchDateDisplay} (${dispatchTimeStr})` : 'Dispatched';
+    const isDispatched = lead.status === 'dispatched' || lead.status === 'followup_due';
+    let isFollowupDue = false;
+    let isDay7 = false;
+    if (lead.status !== 'replied' && lead.followupStage !== 'day7_done') {
+      if (isDispatched && lead.dispatchedAt) {
+        const hoursPassed = (Date.now() - new Date(lead.dispatchedAt).getTime()) / (1000 * 3600);
+        isDay7 = hoursPassed >= 168 || lead.followupStage === 'day3_done';
+        if (lead.followupStage === 'day3_done') {
+          isFollowupDue = hoursPassed >= 168;
+        } else {
+          isFollowupDue = hoursPassed >= 48;
+        }
+      }
+    }
+
+    const statusBadge = lead.status === 'replied'
+      ? `<span class="status-pill replied">🔴 Replied</span>`
+      : isFollowupDue
+      ? `<span class="status-pill followup" style="background: rgba(245, 158, 11, 0.25); color: #fbbf24; border: 1px solid #f59e0b; font-weight: 800;">⏰ ${isDay7 ? 'Day-7 Nudge' : 'Day-3 Nudge'}</span>`
+      : lead.followupStage === 'day7_done'
+      ? `<span class="status-pill dispatched" style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border-color: rgba(16, 185, 129, 0.35);">✅ Sequence Done</span>`
+      : lead.followupStage === 'day3_done'
+      ? `<span class="status-pill dispatched" style="background: rgba(245, 158, 11, 0.12); color: #fde68a;">⏱️ Day-3 Sent</span>`
+      : lead.status === 'dispatched'
+      ? `<span class="status-pill dispatched" style="font-weight: 700;">🚀 ${dispatchFullBadge}</span>`
+      : lead.status === 'followup_due'
+      ? `<span class="status-pill followup">⏰ Follow-Up Due</span>`
+      : `<span class="status-pill ready">Ready to Pitch</span>`;
+
+    const cleanPhone = (lead.contactInfo && lead.contactInfo.phone ? lead.contactInfo.phone : '').replace(/[^0-9]/g, '');
+    const fullAddress = lead.address || `${lead.city}, ${lead.country}`;
+    const mapsPinUrl = this.getExactMapsUrl(lead);
+
+    const isPakMobile = lead.contactInfo && lead.contactInfo.phone && /^\+92\s*3\d{2}/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''));
+    const isUaeMobile = lead.contactInfo && lead.contactInfo.phone && /^\+971\s*5/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''));
+    const isMobileWA = (lead.phoneType === 'mobile_whatsapp') || (lead.contactInfo && lead.contactInfo.phoneType === 'mobile_whatsapp') || isPakMobile || isUaeMobile;
+    const igHandle = (lead.contactInfo && lead.contactInfo.instagramHandle ? lead.contactInfo.instagramHandle : '').replace('@', '').trim();
+    const emailAddr = (lead.contactInfo && lead.contactInfo.email) ? lead.contactInfo.email : (lead.email && lead.email.includes('@') ? lead.email : '');
+    const websiteUrl = lead.website || (lead.contactInfo && lead.contactInfo.website) || '';
+    const cleanWebDomain = websiteUrl ? websiteUrl.replace('https://', '').replace('http://', '').replace(/\/$/, '') : '';
+
+    const isWaBest = bestChannel === 'whatsapp';
+    const isIgBest = bestChannel === 'instagram';
+    const isSmallBiz = lead.businessScale === 'small_business';
+    const scaleBadge = isSmallBiz
+      ? `<span class="badge-scale small" title="Chota Local Business"><span>🏪</span> <span>Chota Business</span></span>`
+      : `<span class="badge-scale established" title="Established Brand"><span>🏢</span> <span>Established</span></span>`;
+
+    const phonePill = isMobileWA
+      ? `<a href="https://api.whatsapp.com/send?phone=${cleanPhone}" target="_blank" class="contact-pill wa" title="1-Tap WhatsApp Direct">
+           <span>📲</span> <span>${lead.contactInfo.phone}</span> <span style="font-size:0.62rem; opacity:0.85;">(WA Active)</span>
+         </a>`
+      : `<span class="contact-pill landline" title="Official Landline">
+           <span>📞</span> <span>${lead.contactInfo ? lead.contactInfo.phone : 'N/A'}</span>
+         </span>`;
+
+    const igPill = igHandle
+      ? `<a href="https://www.instagram.com/${igHandle}/" target="_blank" class="contact-pill ig" title="Instagram Profile">
+           <span>📸</span> <span>@${igHandle}</span>
+         </a>`
+      : '';
+
+    const emailPill = emailAddr
+      ? `<a href="mailto:${emailAddr}" class="contact-pill email" title="Direct Email">
+           <span>📧</span> <span>${emailAddr}</span>
+         </a>`
+      : '';
+
+    const webPill = cleanWebDomain
+      ? `<a href="${websiteUrl}" target="_blank" rel="noopener noreferrer" class="contact-pill web" title="Website">
+           <span>🌐</span> <span>${cleanWebDomain} ↗</span>
+         </a>`
+      : '';
+
+    return `
+      <div class="lead-mobile-card ${isSmallBiz ? 'small-biz' : 'est-biz'}" data-lead-id="${lead.id}">
+        <!-- Top Header: Business, Type & Maps Pin -->
+        <div class="card-head">
+          <div style="flex: 1; min-width: 0;">
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span class="biz-title" style="font-size: 1.05rem; font-weight: 800; color: #f8fafc;">${lead.businessName}</span>
+              ${scaleBadge}
+              <span class="badge-niche" style="font-size: 0.72rem; padding: 2px 7px;">${lead.nicheIcon} ${lead.nicheName.split(',')[0]}</span>
+            </div>
+            <div style="font-size: 0.78rem; color: #cbd5e1; margin-top: 4px; display: flex; align-items: flex-start; gap: 5px;">
+              <span style="color: #ef4444; flex-shrink: 0;">📍</span> <span>${fullAddress}</span>
+            </div>
+            <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 3px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span style="color: #38bdf8; font-weight: 700;">🏙️ ${lead.city}</span>
+              • <span class="google-rating-chip" style="font-size: 0.74rem;">⭐ ${lead.rating} (${(Number(lead.reviews) || 50).toLocaleString()} reviews)</span>
+            </div>
+          </div>
+          <div style="flex-shrink: 0;">
+            <a href="${mapsPinUrl}" target="_blank" rel="noopener noreferrer" class="btn-maps-pin">
+              <span>🗺️</span> <span>Maps Pin ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Flaw Alert Box -->
+        <div class="card-flaw-box" onclick="App.openFlawModal('${lead.id}')" title="Click to view full flaw audit, proof links & talking points">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 0.70rem; color: #f87171; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">⚠️ Diagnosed Flaw</span>
+            <span style="font-size: 0.68rem; color: #fca5a5; font-weight: 700;">Masla & Proof Dekho ↗</span>
+          </div>
+          <div style="font-size: 0.88rem; font-weight: 700; color: #fee2e2; margin: 4px 0 6px 0;">
+            ${lead.flawTitle}
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <span class="leak-badge-glow">💰 ${lead.flawLeakRange}</span>
             ${lead.niche === 'restaurants' || lead.niche === 'bakeries_sweets' ? `
-              <div style="font-size: 0.68rem; color: #38bdf8; margin-top: 4px; display: inline-flex; align-items: center; gap: 4px; background: rgba(56, 189, 248, 0.08); padding: 1px 7px; border-radius: 4px; border: 1px solid rgba(56, 189, 248, 0.28); font-weight: 600;" title="Auto-detected local food delivery aggregator in ${lead.city}, ${lead.country}">
-                <span>🛵 ${lead.regionDeliveryApps || PitchEngine.detectDeliveryPlatform(lead)}</span>
-              </div>
+              <span class="delivery-app-badge">🛵 ${lead.regionDeliveryApps || PitchEngine.detectDeliveryPlatform(lead)}</span>
             ` : ''}
-          </td>
-          <td>${channelBadge}</td>
-          <td>${statusBadge}</td>
-          <td>
-            <div class="table-row-actions" style="display: flex; gap: 5px; flex-wrap: wrap; align-items: center;">
-              <button class="btn-table-action" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(220, 38, 38, 0.35) 100%); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.6); font-weight: 800; box-shadow: 0 0 10px rgba(239, 68, 68, 0.25); white-space: nowrap;" onclick="App.openFlawModal('${lead.id}')" title="Masla Aur Proof Dekho: Kahan ghalti hai aur client ko kya bolna hai">
-                🔍 Masla Dekho
-              </button>
-              <button class="btn-table-action" onclick="App.openPitchModal('${lead.id}')" title="Preview Pitch, Verified Source & Strategy Details">
-                👁️ Pitch & Details
-              </button>
-              ${isFollowupDue
-                ? `<button class="btn-table-action" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #000; font-weight: 800; border: none; box-shadow: 0 0 12px rgba(245, 158, 11, 0.45); padding: 5px 10px; font-size: 0.74rem; white-space: nowrap;" onclick="App.dispatchFollowup('${lead.id}')" title="1-Tap Send ${isDay7 ? 'Day-7 Breakup' : 'Day-3'} Follow-Up Nudge">
-                    ⏰ 1-Tap Nudge (${isDay7 ? 'Day-7' : 'Day-3'})
-                  </button>`
-                : ''
-              }
-              ${Boolean(lead.email && lead.email.includes('@'))
-                ? `<button class="btn-table-action" style="${isGmailBest ? 'background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(37, 99, 235, 0.6)); color: #ffffff; border: 1px solid #60a5fa; box-shadow: 0 0 10px rgba(59, 130, 246, 0.35);' : 'background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.25)); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.35);'} padding: 5px 9px; font-size: 0.74rem; font-weight: 700; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'gmail')" title="1-Tap Open Gmail with Tailored Pitch${isGmailBest ? ' (⭐ Recommended Channel)' : ''}">
-                    ${isGmailBest ? '⭐ 📧 Gmail' : '📧 Gmail'}
-                  </button>`
-                : `<button class="btn-table-action" style="background: rgba(255, 255, 255, 0.04); color: #64748b; border: 1px dashed rgba(255, 255, 255, 0.18); padding: 5px 8px; font-size: 0.72rem; border-radius: 6px; cursor: pointer;" onclick="App.showNoEmailAdvice('${lead.id}')" title="Is chotay business ka corporate email nahi hai — direct Mobile WhatsApp (📲 WA) par 8x reply rate milta hai!">
-                    📧 No Email
-                  </button>`
-              }
-              <button class="btn-table-action" style="${isIgBest ? 'background: linear-gradient(135deg, rgba(225, 48, 108, 0.45), rgba(131, 58, 180, 0.6)); color: #ffffff; border: 1px solid #f472b6; box-shadow: 0 0 10px rgba(244, 114, 182, 0.35);' : 'background: linear-gradient(135deg, rgba(225, 48, 108, 0.15), rgba(131, 58, 180, 0.25)); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.35);'} padding: 5px 9px; font-size: 0.74rem; font-weight: 700; border-radius: 6px; cursor: pointer;" onclick="App.dispatchSingleLead('${lead.id}', null, 'instagram')" title="1-Tap Auto-Copy Pitch & Open Instagram DM${isIgBest ? ' (⭐ Recommended Channel)' : ''}">
-                ${isIgBest ? '⭐ 📸 Insta' : '📸 Insta'}
-              </button>
-              ${isMobileWA
-                ? `<button class="btn-table-action btn-table-wa" style="${isWaBest ? 'box-shadow: 0 0 12px rgba(74, 222, 128, 0.5); border: 1px solid #4ade80;' : ''} padding: 5px 9px; font-size: 0.74rem;" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')" title="1-Tap Direct WhatsApp Chat${isWaBest ? ' (⭐ Recommended Channel)' : ''}">${isWaBest ? '⭐ 📲 WA' : '📲 WA'}</button>`
-                : `<button class="btn-table-action" style="background: rgba(255,255,255,0.05); color: #94a3b8; border: 1px solid rgba(255,255,255,0.15); padding: 5px 8px; font-size: 0.72rem; border-radius: 6px; cursor: pointer;" onclick="App.dispatchLandlineWhatsApp('${lead.id}')" title="Official Landline: Click to learn why WhatsApp is disabled or test on your number">📲 WA</button>`
-              }
+          </div>
+        </div>
+
+        <!-- Meta Grid: Verified Decision Maker & Outreach Status -->
+        <div class="card-meta-grid">
+          <div class="meta-item">
+            <div class="meta-label">👤 Verified Decision Maker</div>
+            <div class="meta-value">${lead.decisionMaker} <span style="font-size: 0.72rem; color: #94a3b8; font-weight: normal;">(${lead.decisionMakerTitle})</span></div>
+            <div class="dm-greet">🛡️ Greet: "${lead.teamGreeting || 'Team ' + lead.businessName}"</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">🎯 Channel & Status</div>
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 2px;">
+              ${channelBadge}
+              ${statusBadge}
             </div>
-          </td>
-        </tr>
-      `;
-    }).join('');
+          </div>
+        </div>
+
+        <!-- Direct Contact Pills Bar -->
+        <div class="card-contacts-bar">
+          ${phonePill}
+          ${igPill}
+          ${emailPill}
+          ${webPill}
+        </div>
+
+        <!-- Touch Actions Row -->
+        <div class="card-actions-row">
+          ${isFollowupDue ? `
+            <button class="btn-mobile-hero nudge" onclick="App.dispatchFollowup('${lead.id}')">
+              <span>⏰</span> <span>1-Tap Follow-Up Nudge (${isDay7 ? 'Day-7 Breakup' : 'Day-3'})</span>
+            </button>
+          ` : ''}
+          ${isWaBest
+            ? (isMobileWA
+                ? `<button class="btn-mobile-hero wa" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')">
+                     <span>⚡</span> <span>Send Personalized WhatsApp Pitch</span>
+                   </button>`
+                : `<button class="btn-mobile-hero" style="background: rgba(255,255,255,0.08); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.2);" onclick="App.dispatchLandlineWhatsApp('${lead.id}')">
+                     <span>📞</span> <span>Official Landline (No WhatsApp)</span>
+                   </button>`)
+            : isIgBest
+            ? `<button class="btn-mobile-hero insta" onclick="App.dispatchSingleLead('${lead.id}', null, 'instagram')">
+                 <span>⚡</span> <span>Copy Pitch & Open Instagram DM</span>
+               </button>`
+            : (emailAddr
+                ? `<button class="btn-mobile-hero gmail" onclick="App.dispatchSingleLead('${lead.id}', null, 'gmail')">
+                     <span>⚡</span> <span>Send Personalized Gmail Pitch</span>
+                   </button>`
+                : `<button class="btn-mobile-hero" style="background: rgba(255,255,255,0.06); color: #64748b; border: 1px dashed rgba(255,255,255,0.18);" onclick="App.showNoEmailAdvice('${lead.id}')">
+                     <span>📧</span> <span>No Email Listed</span>
+                   </button>`)
+          }
+          <div class="card-secondary-btns">
+            <button class="btn-mobile-sec" onclick="App.openPitchModal('${lead.id}')">👁️ Pitch Preview & Copy</button>
+            <button class="btn-mobile-sec" onclick="App.openFlawModal('${lead.id}')">🔍 Masla & Proof Audit</button>
+          </div>
+        </div>
+      </div>
+    `;
   },
 
   updateMetrics() {
