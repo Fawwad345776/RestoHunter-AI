@@ -309,18 +309,33 @@ const App = {
       });
     });
 
-    // Dispatched Metric Card Click -> auto filter
+    // Dispatched Metric Card Click -> auto filter to Date-Wise Outbox Log
     const dispatchedCard = document.getElementById('card-metric-dispatched');
     if (dispatchedCard) {
       dispatchedCard.addEventListener('click', () => {
-        const tab = document.querySelector('.channel-tab-btn[data-filter="dispatched"]');
+        const tab = document.querySelector('.channel-tab-btn[data-filter="dispatch_dates"]');
         if (tab) {
           document.querySelectorAll('.channel-tab-btn').forEach(t => t.classList.remove('active'));
           tab.classList.add('active');
         }
-        this.applyFilter('dispatched');
+        this.filterByDispatchDate('all');
         const tableHeader = document.querySelector('.leads-section-header');
         if (tableHeader) tableHeader.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
+    // Date-Wise Dispatch Panel Buttons
+    const btnSimulateMultiDay = document.getElementById('btn-simulate-multi-day-dispatches');
+    if (btnSimulateMultiDay) {
+      btnSimulateMultiDay.addEventListener('click', () => {
+        this.simulateMultiDayDispatches();
+      });
+    }
+
+    const btnResetDispatches = document.getElementById('btn-reset-dispatches');
+    if (btnResetDispatches) {
+      btnResetDispatches.addEventListener('click', () => {
+        this.resetDispatches();
       });
     }
 
@@ -678,20 +693,32 @@ const App = {
       }
     }
 
-    if (filter === 'all') {
-      this.filteredLeads = base;
-    } else if (filter === 'dispatched') {
-      this.filteredLeads = base.filter(l => l.status === 'dispatched' || l.status === 'replied');
-    } else if (filter === 'whatsapp' || filter === 'gmail' || filter === 'linkedin' || filter === 'instagram') {
-      this.filteredLeads = base.filter(l => l.channel === filter);
-    } else if (filter === 'replied') {
-      this.filteredLeads = base.filter(l => l.status === 'replied');
-    } else if (filter === 'followup') {
-      let dues = AutopilotEngine.getDueFollowUps(base);
-      if (dues.length === 0 && AutopilotEngine.getDueFollowUps(this.leads).length > 0) {
-        dues = AutopilotEngine.getDueFollowUps(this.leads);
+    const dispatchPanel = document.getElementById('dispatch-dates-panel');
+    if (filter === 'dispatch_dates') {
+      if (dispatchPanel) dispatchPanel.style.display = 'block';
+      this.renderDispatchDatesPanel();
+      let dispatched = base.filter(l => l.status === 'dispatched' || l.status === 'replied');
+      if (this.selectedDispatchDate && this.selectedDispatchDate !== 'all') {
+        dispatched = dispatched.filter(l => l.dispatchedAt && this.getLeadDateKey(l.dispatchedAt) === this.selectedDispatchDate);
       }
-      this.filteredLeads = dues;
+      this.filteredLeads = dispatched;
+    } else {
+      if (dispatchPanel) dispatchPanel.style.display = 'none';
+      if (filter === 'all') {
+        this.filteredLeads = base;
+      } else if (filter === 'dispatched') {
+        this.filteredLeads = base.filter(l => l.status === 'dispatched' || l.status === 'replied');
+      } else if (filter === 'whatsapp' || filter === 'gmail' || filter === 'linkedin' || filter === 'instagram') {
+        this.filteredLeads = base.filter(l => l.channel === filter);
+      } else if (filter === 'replied') {
+        this.filteredLeads = base.filter(l => l.status === 'replied');
+      } else if (filter === 'followup') {
+        let dues = AutopilotEngine.getDueFollowUps(base);
+        if (dues.length === 0 && AutopilotEngine.getDueFollowUps(this.leads).length > 0) {
+          dues = AutopilotEngine.getDueFollowUps(this.leads);
+        }
+        this.filteredLeads = dues;
+      }
     }
     this.renderTable();
   },
@@ -784,7 +811,11 @@ const App = {
              <span style="font-size: 0.66rem; color: #93c5fd; font-weight: 600;" title="${lead.pitchChannelReason || ''}">Corporate RFP</span>
            </div>`;
 
-      const dispatchTimeStr = lead.dispatchedAt ? new Date(lead.dispatchedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
+      const dObj = lead.dispatchedAt ? new Date(lead.dispatchedAt) : null;
+      const monthNamesShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const dispatchDateDisplay = dObj ? `${String(dObj.getDate()).padStart(2, '0')} ${monthNamesShort[dObj.getMonth()]}` : '';
+      const dispatchTimeStr = dObj ? dObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
+      const dispatchFullBadge = dObj ? `${dispatchDateDisplay} (${dispatchTimeStr})` : 'Dispatched';
       const isDispatched = lead.status === 'dispatched' || lead.status === 'followup_due';
       let isFollowupDue = false;
       let isDay7 = false;
@@ -809,7 +840,7 @@ const App = {
         : lead.followupStage === 'day3_done'
         ? `<span class="status-pill dispatched" style="background: rgba(245, 158, 11, 0.12); color: #fde68a; border-color: rgba(245, 158, 11, 0.3);">⏱️ Day-3 Sent</span>`
         : lead.status === 'dispatched'
-        ? `<span class="status-pill dispatched" title="Dispatched: ${dispatchTimeStr || 'Recorded'}">🚀 Dispatched ${dispatchTimeStr ? `(${dispatchTimeStr})` : ''}</span>`
+        ? `<span class="status-pill dispatched" style="font-weight: 700; white-space: nowrap; display: inline-flex; align-items: center; gap: 4px;" title="Dispatched on ${lead.dispatchedAt || 'Recorded'}">🚀 ${dispatchFullBadge}</span>`
         : lead.status === 'followup_due'
         ? `<span class="status-pill followup">⏰ Follow-Up Due</span>`
         : `<span class="status-pill ready">Ready to Pitch</span>`;
@@ -988,10 +1019,16 @@ const App = {
 
     if (tabAll) tabAll.textContent = `All Leads (${totalLeads})`;
     if (tabDispatched) tabDispatched.innerHTML = `🚀 Dispatched (${dispatchedCount})`;
+    const tabDispatchDates = document.getElementById('tab-dispatch-dates-count');
+    if (tabDispatchDates) tabDispatchDates.textContent = dispatchedCount;
     if (tabWa) tabWa.textContent = `📲 WhatsApp (${waCount})`;
     if (tabGmail) tabGmail.textContent = `📧 Gmail (${gmailCount})`;
     if (tabLi) tabLi.textContent = `👔 LinkedIn (${liCount})`;
     if (tabIg) tabIg.textContent = `📸 Instagram (${igCount})`;
+
+    if (this.currentChannelFilter === 'dispatch_dates') {
+      this.renderDispatchDatesPanel();
+    }
 
     // Scale counts
     const smallCount = this.leads.filter(l => l.businessScale === 'small_business').length;
@@ -1528,6 +1565,278 @@ const App = {
     if (tableHeader) tableHeader.scrollIntoView({ behavior: 'smooth' });
 
     this.showToast(`🧪 Test Simulation Activated! ${demoCount} leads ko 48h/7-Day follow-up alert par set kar diya gaya hai.`, 'success');
+  },
+
+  getLeadDateKey(isoStr) {
+    if (!isoStr) return '';
+    try {
+      const d = new Date(isoStr);
+      if (isNaN(d.getTime())) return '';
+      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    } catch (e) {
+      return '';
+    }
+  },
+
+  getDispatchedDateGroups() {
+    const groups = {};
+    const now = new Date();
+    const todayKey = this.getLeadDateKey(now.toISOString());
+    const yesterday = new Date(now.getTime() - 24 * 3600 * 1000);
+    const yesterdayKey = this.getLeadDateKey(yesterday.toISOString());
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    const dispatchedLeads = this.leads.filter(l => (l.status === 'dispatched' || l.status === 'replied') && l.dispatchedAt);
+
+    dispatchedLeads.forEach(lead => {
+      const dateKey = this.getLeadDateKey(lead.dispatchedAt);
+      if (!dateKey) return;
+      const d = new Date(lead.dispatchedAt);
+
+      if (!groups[dateKey]) {
+        const formattedDate = `${String(d.getDate()).padStart(2, '0')} ${monthNames[d.getMonth()]} ${d.getFullYear()}`;
+        const dayName = d.toLocaleDateString('en-GB', { weekday: 'short' });
+        const isToday = dateKey === todayKey;
+        const isYesterday = dateKey === yesterdayKey;
+        const displayTitle = isToday ? `🌟 Aaj / Today (${formattedDate})` : isYesterday ? `Kal / Yesterday (${formattedDate})` : `${dayName}, ${formattedDate}`;
+
+        groups[dateKey] = {
+          dateKey,
+          displayTitle,
+          formattedDate,
+          dayName,
+          isToday,
+          isYesterday,
+          total: 0,
+          channels: { whatsapp: 0, gmail: 0, linkedin: 0, instagram: 0 },
+          replied: 0,
+          dueFollowups: 0,
+          leads: []
+        };
+      }
+
+      groups[dateKey].total++;
+      const ch = lead.channel || 'whatsapp';
+      groups[dateKey].channels[ch] = (groups[dateKey].channels[ch] || 0) + 1;
+      if (lead.status === 'replied') {
+        groups[dateKey].replied++;
+      }
+      const hours = (now.getTime() - d.getTime()) / (1000 * 3600);
+      if (hours >= 48 && lead.status !== 'replied' && lead.followupStage !== 'day7_done') {
+        groups[dateKey].dueFollowups++;
+      }
+      groups[dateKey].leads.push(lead);
+    });
+
+    return Object.values(groups).sort((a, b) => b.dateKey.localeCompare(a.dateKey));
+  },
+
+  renderDispatchDatesPanel() {
+    const groups = this.getDispatchedDateGroups();
+    const now = new Date();
+    const todayKey = this.getLeadDateKey(now.toISOString());
+    const yesterday = new Date(now.getTime() - 24 * 3600 * 1000);
+    const yesterdayKey = this.getLeadDateKey(yesterday.toISOString());
+
+    const todayGroup = groups.find(g => g.dateKey === todayKey);
+    const yesterdayGroup = groups.find(g => g.dateKey === yesterdayKey);
+
+    const totalDispatched = this.leads.filter(l => l.status === 'dispatched' || l.status === 'replied').length;
+
+    const sevenDaysAgo = now.getTime() - 7 * 24 * 3600 * 1000;
+    const weekCount = this.leads.filter(l => (l.status === 'dispatched' || l.status === 'replied') && l.dispatchedAt && new Date(l.dispatchedAt).getTime() >= sevenDaysAgo).length;
+
+    const elToday = document.getElementById('dispatch-kpi-today');
+    const elTodayCh = document.getElementById('dispatch-kpi-today-channels');
+    const elYest = document.getElementById('dispatch-kpi-yesterday');
+    const elYestCh = document.getElementById('dispatch-kpi-yesterday-channels');
+    const elWeek = document.getElementById('dispatch-kpi-week');
+    const elAvg = document.getElementById('dispatch-kpi-avg');
+    const elAllTime = document.getElementById('dispatch-kpi-all-time');
+    const elActiveDays = document.getElementById('badge-dispatch-active-days');
+
+    if (elToday) elToday.textContent = `${todayGroup ? todayGroup.total : 0} Leads`;
+    if (elTodayCh) elTodayCh.textContent = todayGroup
+      ? `${todayGroup.channels.whatsapp || 0} WA • ${todayGroup.channels.gmail || 0} Gmail • ${todayGroup.channels.instagram || 0} Insta`
+      : '0 WhatsApp • 0 Gmail';
+
+    if (elYest) elYest.textContent = `${yesterdayGroup ? yesterdayGroup.total : 0} Leads`;
+    if (elYestCh) elYestCh.textContent = yesterdayGroup
+      ? `${yesterdayGroup.channels.whatsapp || 0} WA • ${yesterdayGroup.channels.gmail || 0} Gmail • ${yesterdayGroup.channels.instagram || 0} Insta`
+      : '0 WhatsApp • 0 Gmail';
+
+    if (elWeek) elWeek.textContent = `${weekCount} Leads`;
+    if (elAvg) elAvg.textContent = `Avg ${(weekCount / 7).toFixed(1)} leads / day`;
+
+    if (elAllTime) elAllTime.textContent = `${totalDispatched} Leads`;
+    if (elActiveDays) elActiveDays.textContent = `${groups.length} Days Active`;
+
+    // Render Filter Chips
+    const chipsContainer = document.getElementById('dispatch-date-filter-chips');
+    if (chipsContainer) {
+      const selected = this.selectedDispatchDate || 'all';
+      let chipsHtml = `
+        <button class="date-chip-btn ${selected === 'all' ? 'active' : ''}" onclick="App.filterByDispatchDate('all')">
+          <span>🌐</span> All Dates (${totalDispatched})
+        </button>
+      `;
+      groups.forEach(g => {
+        const isSel = selected === g.dateKey;
+        chipsHtml += `
+          <button class="date-chip-btn ${isSel ? 'active' : ''}" onclick="App.filterByDispatchDate('${g.dateKey}')">
+            <span>📅</span> ${g.displayTitle.split('(')[0].trim()} (${g.total})
+          </button>
+        `;
+      });
+      chipsContainer.innerHTML = chipsHtml;
+    }
+
+    // Render Date Cards Grid
+    const gridContainer = document.getElementById('dispatch-dates-grid');
+    if (gridContainer) {
+      if (groups.length === 0) {
+        gridContainer.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 32px 20px; background: rgba(15, 23, 42, 0.5); border: 1px dashed rgba(56, 189, 248, 0.3); border-radius: 10px;">
+            <div style="font-size: 2.2rem; margin-bottom: 8px;">📭</div>
+            <div style="font-size: 1.05rem; font-weight: 700; color: #f1f5f9;">Abhi tak koi lead dispatch nahi hui</div>
+            <p style="font-size: 0.84rem; color: #94a3b8; max-width: 500px; margin: 6px auto 16px auto;">
+              Jab aap kisi bhi business ko 1-Tap WhatsApp, Gmail ya Instagram se outreach bhejenge, yahan automatically har date ka record aur count live update hoga.
+            </p>
+            <button class="btn-primary" style="background: linear-gradient(135deg, #38bdf8, #0284c7); color: #000; font-weight: 800; font-size: 0.84rem; padding: 9px 18px; border: none; box-shadow: 0 0 15px rgba(56, 189, 248, 0.35);" onclick="App.simulateMultiDayDispatches()">
+              🧪 Test Multi-Day Simulation (Try Today & Yesterday Counts)
+            </button>
+          </div>
+        `;
+      } else {
+        gridContainer.innerHTML = groups.map(g => {
+          const isSel = this.selectedDispatchDate === g.dateKey;
+          const wa = g.channels.whatsapp || 0;
+          const gm = g.channels.gmail || 0;
+          const ig = g.channels.instagram || 0;
+          const li = g.channels.linkedin || 0;
+
+          return `
+            <div class="dispatch-date-card ${isSel ? 'active' : ''}" onclick="App.filterByDispatchDate('${g.dateKey}')">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+                <div>
+                  <div style="font-size: 0.88rem; font-weight: 800; color: ${g.isToday ? '#38bdf8' : '#f1f5f9'}; display: flex; align-items: center; gap: 6px;">
+                    <span>📅</span> ${g.displayTitle}
+                  </div>
+                  <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 2px;">
+                    ${g.formattedDate} • ${g.dayName}
+                  </div>
+                </div>
+                <span style="font-size: 0.72rem; padding: 2px 7px; border-radius: 4px; font-weight: 800; ${g.isToday ? 'background: rgba(56, 189, 248, 0.25); color: #38bdf8; border: 1px solid #38bdf8;' : g.isYesterday ? 'background: rgba(148, 163, 184, 0.2); color: #cbd5e1; border: 1px solid #94a3b8;' : 'background: rgba(255, 255, 255, 0.05); color: #94a3b8;'}">
+                  ${g.isToday ? 'TODAY' : g.isYesterday ? 'YESTERDAY' : g.dayName.toUpperCase()}
+                </span>
+              </div>
+
+              <!-- Big Number -->
+              <div style="display: flex; align-items: baseline; gap: 8px; margin: 6px 0;">
+                <span style="font-size: 2.1rem; font-weight: 800; color: #38bdf8; line-height: 1;">${g.total}</span>
+                <span style="font-size: 0.84rem; color: #cbd5e1; font-weight: 700;">Leads Sent</span>
+              </div>
+
+              <!-- Channel Pills Breakdown -->
+              <div style="display: flex; gap: 6px; flex-wrap: wrap; font-size: 0.72rem;">
+                ${wa > 0 ? `<span style="background: rgba(37, 211, 102, 0.15); color: #4ade80; border: 1px solid rgba(37, 211, 102, 0.35); padding: 2px 6px; border-radius: 4px; font-weight: 700;">📲 ${wa} WA</span>` : ''}
+                ${gm > 0 ? `<span style="background: rgba(59, 130, 246, 0.15); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.35); padding: 2px 6px; border-radius: 4px; font-weight: 700;">📧 ${gm} Gmail</span>` : ''}
+                ${ig > 0 ? `<span style="background: rgba(244, 114, 182, 0.15); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.35); padding: 2px 6px; border-radius: 4px; font-weight: 700;">📸 ${ig} Insta</span>` : ''}
+                ${li > 0 ? `<span style="background: rgba(14, 118, 168, 0.15); color: #38bdf8; border: 1px solid rgba(14, 118, 168, 0.35); padding: 2px 6px; border-radius: 4px; font-weight: 700;">👔 ${li} LI</span>` : ''}
+              </div>
+
+              <!-- Follow-Up & Replies Mini Badge -->
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.08); margin-top: 4px;">
+                <span style="color: ${g.replied > 0 ? '#f87171' : '#94a3b8'};">
+                  ${g.replied > 0 ? `🔴 <strong>${g.replied} Replied</strong>` : '⚪ 0 Replies'}
+                </span>
+                <span style="color: ${g.dueFollowups > 0 ? '#fbbf24' : '#94a3b8'};">
+                  ${g.dueFollowups > 0 ? `⏰ <strong>${g.dueFollowups} Due Nudge</strong>` : '✅ All fresh'}
+                </span>
+              </div>
+
+              <!-- Action Button -->
+              <button class="btn-primary" style="width: 100%; font-size: 0.78rem; padding: 7px; font-weight: 800; background: ${isSel ? '#38bdf8' : 'linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(2, 132, 199, 0.4))'}; color: ${isSel ? '#000' : '#7dd3fc'}; border: 1px solid #38bdf8; margin-top: 6px;">
+                ${isSel ? '✓ Filter Active' : `👉 Table Mein Dekho (${g.total})`}
+              </button>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+  },
+
+  filterByDispatchDate(dateKey) {
+    this.selectedDispatchDate = dateKey;
+    const tab = document.querySelector('.channel-tab-btn[data-filter="dispatch_dates"]');
+    if (tab && tab.classList) {
+      document.querySelectorAll('.channel-tab-btn').forEach(t => {
+        if (t.classList) t.classList.remove('active');
+      });
+      tab.classList.add('active');
+    }
+    this.currentChannelFilter = 'dispatch_dates';
+    const dispatchPanel = document.getElementById('dispatch-dates-panel');
+    if (dispatchPanel) dispatchPanel.style.display = 'block';
+    this.renderDispatchDatesPanel();
+
+    let base = this.leads.filter(l => l.status === 'dispatched' || l.status === 'replied');
+    if (dateKey && dateKey !== 'all') {
+      base = base.filter(l => l.dispatchedAt && this.getLeadDateKey(l.dispatchedAt) === dateKey);
+    }
+    this.filteredLeads = base;
+    this.renderTable();
+
+    const countLabel = document.getElementById('leads-count-label');
+    if (countLabel) {
+      countLabel.textContent = dateKey === 'all'
+        ? `Showing all ${base.length} Dispatched Leads`
+        : `Showing ${base.length} Leads Dispatched on ${dateKey}`;
+    }
+
+    const tableHeader = document.querySelector('.leads-section-header');
+    if (tableHeader) tableHeader.scrollIntoView({ behavior: 'smooth' });
+  },
+
+  simulateMultiDayDispatches() {
+    const demoCount = Math.min(15, this.leads.length);
+    const now = Date.now();
+    for (let i = 0; i < demoCount; i++) {
+      const lead = this.leads[i];
+      lead.status = (i === 1 || i === 6) ? 'replied' : 'dispatched';
+      let hoursAgo;
+      if (i < 5) {
+        hoursAgo = 2 + (i * 0.8); // Today (2-5h ago)
+      } else if (i < 10) {
+        hoursAgo = 26 + ((i - 5) * 1.5); // Yesterday (26-32h ago)
+      } else if (i < 13) {
+        hoursAgo = 73 + ((i - 10) * 2); // 3 Days ago (73-77h ago)
+      } else {
+        hoursAgo = 170 + ((i - 13) * 5); // 7 Days ago (170-175h ago)
+      }
+      lead.dispatchedAt = new Date(now - hoursAgo * 3600 * 1000).toISOString();
+      lead.followupDueAt = new Date(now - 2 * 3600 * 1000).toISOString();
+      lead.followupStage = hoursAgo > 168 ? 'day3_done' : 'ready';
+    }
+    StorageService.saveLeads(this.leads);
+    this.updateMetrics();
+    this.filterByDispatchDate('all');
+    this.showToast(`🧪 Multi-Day Dispatch Simulation Activated! Today (5), Yesterday (5), Day-3 (3), Day-7 (2) leads logged.`, 'success');
+  },
+
+  resetDispatches() {
+    this.leads.forEach(l => {
+      l.status = 'ready';
+      l.dispatchedAt = null;
+      l.dispatchedMessage = null;
+      l.followupDueAt = null;
+      l.followupStage = null;
+    });
+    StorageService.saveLeads(this.leads);
+    this.selectedDispatchDate = 'all';
+    this.updateMetrics();
+    this.applyFilter(this.currentChannelFilter || 'all');
+    this.showToast(`🔄 Dispatches reset to fresh ready state!`, 'info');
   },
 
   handleSaveSettings() {
