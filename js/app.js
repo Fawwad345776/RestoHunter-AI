@@ -27,10 +27,14 @@ const App = {
 
     // 1. Instant Synchronous Initial Load: Show verified leads immediately without waiting for network
     const savedLeads = StorageService.getLeads();
-    const hasValidScale = savedLeads && savedLeads.length > 0 && savedLeads[0].businessScale;
-    const initialLeads = hasValidScale
-      ? savedLeads
-      : (window.DEFAULT_LEADS || window.INITIAL_LEADS || (typeof INITIAL_LEADS !== 'undefined' ? INITIAL_LEADS : []));
+    const freshInitial = (window.DEFAULT_LEADS || window.INITIAL_LEADS || (typeof INITIAL_LEADS !== 'undefined' ? INITIAL_LEADS : []));
+    let initialLeads = freshInitial;
+
+    // Only prefer savedLeads if it has valid data and AT LEAST as many leads as freshInitial
+    // (if savedLeads has fewer leads, upgrade to full 384+ dataset while preserving custom leads)
+    if (savedLeads && savedLeads.length >= freshInitial.length && savedLeads[0].businessScale) {
+      initialLeads = savedLeads;
+    }
 
     if (initialLeads && initialLeads.length > 0) {
       this.leads = initialLeads.map(l => {
@@ -52,6 +56,8 @@ const App = {
         if (!freshLeads || !freshLeads.length) return;
         const currentSaved = StorageService.getLeads() || [];
         const savedMap = {};
+        const customAdded = [];
+
         currentSaved.forEach(l => {
           savedMap[l.id] = {
             status: l.status,
@@ -59,9 +65,13 @@ const App = {
             dispatchedMessage: l.dispatchedMessage,
             followupDueAt: l.followupDueAt
           };
+          // Preserve any custom leads that user hunted which aren't in default dataset
+          if (l.id && (l.id.startsWith('hunt_') || !freshLeads.some(f => f.id === l.id))) {
+            customAdded.push(l);
+          }
         });
 
-        this.leads = freshLeads.map(l => {
+        const updatedLeads = freshLeads.map(l => {
           l.mapsUrl = this.getExactMapsUrl(l);
           if (savedMap[l.id]) {
             l.status = savedMap[l.id].status || l.status;
@@ -71,6 +81,9 @@ const App = {
           }
           return l;
         });
+
+        // Prepend custom leads so dynamically hunted cities are retained across refreshes
+        this.leads = [...customAdded, ...updatedLeads];
 
         StorageService.saveLeads(this.leads);
         this.applyFilter('all');
@@ -595,19 +608,26 @@ const App = {
       if (cityMatched.length > 0) {
         matched = cityMatched;
       } else {
-        // DYNAMIC CITY HUNT FOR ANY CITY!
+        // DYNAMIC CITY HUNT FOR ANY CITY IN THE WORLD!
         this.showToast(`🔍 Hunting verified leads in "${city}"...`, 'info');
-        const country = this.getSelectedCountry ? this.getSelectedCountry() : 'Worldwide';
+        const country = this.getCountryValue ? this.getCountryValue() : 'Worldwide';
         const huntedLeads = LeadGenerator.generateCityHunt(city, country, niche);
         if (huntedLeads && huntedLeads.length > 0) {
           // Prepend new city leads to this.leads so user has them immediately in session
           this.leads = [...huntedLeads, ...this.leads];
+          StorageService.saveLeads(this.leads);
           matched = huntedLeads;
           this.updateMetrics();
           this.showToast(`🎯 Found ${huntedLeads.length} fresh verified leads for ${city}! 1-Tap ready.`, 'success');
         }
       }
     }
+
+    // Reset channel filter so user immediately sees all hunted leads
+    this.currentChannelFilter = 'all';
+    document.querySelectorAll('.channel-tab-btn').forEach(t => t.classList.remove('active'));
+    const allTab = document.querySelector('.channel-tab-btn[data-filter="all"]');
+    if (allTab) allTab.classList.add('active');
 
     // 3. Filter by business scale if active
     if (this.currentScaleFilter && this.currentScaleFilter !== 'all') {
@@ -620,16 +640,6 @@ const App = {
         document.querySelectorAll('.scale-filter-btn').forEach(b => b.classList.remove('active'));
         const btnScaleAll = document.getElementById('btn-scale-all');
         if (btnScaleAll) btnScaleAll.classList.add('active');
-      }
-    }
-
-    // 4. Preserve active channel filter if user had one selected
-    if (this.currentChannelFilter && this.currentChannelFilter !== 'all') {
-      const ch = this.currentChannelFilter;
-      if (ch === 'dispatched') {
-        matched = matched.filter(l => l.status === 'dispatched' || l.status === 'replied');
-      } else if (['whatsapp', 'gmail', 'linkedin', 'instagram'].includes(ch)) {
-        matched = matched.filter(l => l.channel === ch);
       }
     }
 
@@ -705,13 +715,32 @@ const App = {
       this.applyFilter(this.currentChannelFilter);
       return;
     }
-    this.filteredLeads = this.leads.filter(l =>
-      l.businessName.toLowerCase().includes(q) ||
-      l.nicheName.toLowerCase().includes(q) ||
-      l.flawTitle.toLowerCase().includes(q) ||
-      l.decisionMaker.toLowerCase().includes(q) ||
-      l.channel.toLowerCase().includes(q)
+    let matched = this.leads.filter(l =>
+      (l.businessName && l.businessName.toLowerCase().includes(q)) ||
+      (l.city && l.city.toLowerCase().includes(q)) ||
+      (l.country && l.country.toLowerCase().includes(q)) ||
+      (l.address && l.address.toLowerCase().includes(q)) ||
+      (l.nicheName && l.nicheName.toLowerCase().includes(q)) ||
+      (l.flawTitle && l.flawTitle.toLowerCase().includes(q)) ||
+      (l.decisionMaker && l.decisionMaker.toLowerCase().includes(q)) ||
+      (l.channel && l.channel.toLowerCase().includes(q))
     );
+
+    // If no leads match and user typed 3+ characters (like a city name e.g. "Islamabad", "Abbottabad", "Berlin"),
+    // trigger dynamic city hunt on the fly so the user gets instant verified results!
+    if (matched.length === 0 && q.length >= 3) {
+      const country = this.getCountryValue ? this.getCountryValue() : 'Worldwide';
+      const hunted = LeadGenerator.generateCityHunt(query.trim(), country, 'all');
+      if (hunted && hunted.length > 0) {
+        this.leads = [...hunted, ...this.leads];
+        StorageService.saveLeads(this.leads);
+        matched = hunted;
+        this.updateMetrics();
+        this.showToast(`🎯 Auto-hunted ${hunted.length} fresh verified leads for "${query.trim()}"!`, 'success');
+      }
+    }
+
+    this.filteredLeads = matched;
     this.renderTable();
   },
 
