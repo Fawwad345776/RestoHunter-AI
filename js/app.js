@@ -327,13 +327,11 @@ const App = {
                 </div>
               </div>
               <div style="display: flex; gap: 8px; margin-top: auto;">
-                ${waLink ? `
-                  <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="flex: 1; text-align: center; font-size: 0.76rem; padding: 7px 10px; background: #25D366; color: #000; font-weight: 800; text-decoration: none; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 5px;">
-                    <span>💬</span> WhatsApp
-                  </a>
-                ` : ''}
-                <button class="btn-sec-action" style="flex: 1; font-size: 0.76rem; padding: 7px 10px;" onclick="App.openPitchStudioForLead('${lead.id}')">
-                  Studio ⚡
+                <button class="btn-primary" style="flex: 1; text-align: center; font-size: 0.78rem; padding: 8px 10px; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; cursor: pointer; box-shadow: 0 0 10px rgba(37, 211, 102, 0.35);" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')">
+                  <span>⚡</span> WhatsApp Bhejo
+                </button>
+                <button class="btn-sec-action" style="flex: 1; font-size: 0.78rem; padding: 8px 10px;" onclick="App.openPitchModal('${lead.id}')">
+                  👁️ Pitch Preview
                 </button>
               </div>
             </div>
@@ -939,6 +937,216 @@ const App = {
     }
   },
 
+  openPitchModal(leadId) {
+    const lead = this.leads.find(l => l.id === leadId);
+    if (!lead) return;
+    this.activeLeadForModal = lead;
+
+    const modal = document.getElementById('pitch-preview-modal');
+    if (!modal) return;
+
+    let currentGreetingMode = lead.businessScale === 'small_business' ? 'founder' : 'team';
+    const channel = lead.recommendedPitchChannel || lead.channel || 'whatsapp';
+    let pitch = window.PitchEngine ? window.PitchEngine.generatePitch(lead, channel, 'initial', 'English') : { subject: '', body: lead.dispatchedMessage || '' };
+
+    const modalTitle = document.getElementById('modal-pitch-title');
+    if (modalTitle) {
+      if (lead.status === 'dispatched' && lead.dispatchedAt) {
+        const sentTime = new Date(lead.dispatchedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        modalTitle.textContent = `${lead.businessName} — Pitch (🚀 Dispatched at ${sentTime})`;
+      } else {
+        modalTitle.textContent = `🎯 ${lead.businessName} — Pitch Preview`;
+      }
+    }
+
+    const scaleBadgeHtml = lead.businessScale === 'small_business'
+      ? `<span class="badge-scale small" style="font-size: 0.74rem; padding: 3px 8px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 4px; font-weight: 700;">🏪 Chota Business (Direct Mobile)</span>`
+      : `<span class="badge-scale established" style="font-size: 0.74rem; padding: 3px 8px; background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 4px; font-weight: 700;">🏢 Established Brand</span>`;
+
+    const channelBadgeHtml = channel === 'whatsapp'
+      ? `<span class="badge-channel whatsapp" style="font-size: 0.74rem; padding: 3px 8px; background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 4px; font-weight: 700;">📲 WhatsApp Direct Outreach</span>`
+      : channel === 'gmail'
+      ? `<span class="badge-channel gmail" style="font-size: 0.74rem; padding: 3px 8px; background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 4px; font-weight: 700;">📧 Gmail Pitch</span>`
+      : `<span class="badge-channel instagram" style="font-size: 0.74rem; padding: 3px 8px; background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); border-radius: 4px; font-weight: 700;">📸 Instagram Story / DM</span>`;
+
+    const channelBadgeContainer = document.getElementById('modal-pitch-channel-badge');
+    if (channelBadgeContainer) {
+      channelBadgeContainer.innerHTML = `<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">${scaleBadgeHtml} ${channelBadgeHtml}</div>`;
+    }
+
+    const flawTitleEl = document.getElementById('modal-pitch-flaw-title');
+    if (flawTitleEl) flawTitleEl.textContent = lead.flawTitle || 'Mobile Checkout Friction';
+
+    const flawLeakEl = document.getElementById('modal-pitch-flaw-leak');
+    if (flawLeakEl) flawLeakEl.textContent = lead.flawLeakRange || '$2,400 - $4,800/mo';
+
+    // Regional Delivery Platform
+    if (window.PitchEngine && window.PitchEngine.detectDeliveryPlatform) {
+      const deliveryApp = window.PitchEngine.detectDeliveryPlatform(lead);
+      const deliveryBadgeRow = document.getElementById('modal-pitch-delivery-badge-row');
+      const deliveryAppNameEl = document.getElementById('modal-pitch-delivery-app-name');
+      const regionLabelEl = document.getElementById('modal-pitch-region-label');
+
+      if (lead.niche === 'restaurants' || lead.niche === 'bakeries_sweets') {
+        if (deliveryBadgeRow) deliveryBadgeRow.style.display = 'flex';
+        if (deliveryAppNameEl) deliveryAppNameEl.textContent = `${deliveryApp} (30% Commission Cut)`;
+        if (regionLabelEl) regionLabelEl.textContent = `📍 ${lead.city || 'Local'} Detected`;
+      } else {
+        if (deliveryBadgeRow) deliveryBadgeRow.style.display = 'none';
+      }
+    }
+
+    const flawBtnFromPitch = document.getElementById('modal-btn-open-flaw-from-pitch');
+    if (flawBtnFromPitch) {
+      flawBtnFromPitch.onclick = () => {
+        this.openFlawModal(lead.id);
+      };
+    }
+
+    const dmNameEl = document.getElementById('modal-pitch-dm-name');
+    const dmTitleEl = document.getElementById('modal-pitch-dm-title');
+    const dmPhoneInput = document.getElementById('modal-pitch-dm-phone-input');
+
+    if (dmNameEl) dmNameEl.textContent = lead.decisionMaker || 'Owner';
+    if (dmTitleEl) dmTitleEl.textContent = lead.decisionMakerTitle ? ` (${lead.decisionMakerTitle})` : '';
+    if (dmPhoneInput) dmPhoneInput.value = lead.whatsappNumber || lead.phone || '';
+
+    const testWaBtn = document.getElementById('btn-set-my-wa-test');
+    if (testWaBtn) {
+      testWaBtn.onclick = () => {
+        if (dmPhoneInput) {
+          dmPhoneInput.value = '+923376568003';
+          this.showToast('Number set to +923376568003 for personal testing!', 'info');
+        }
+      };
+    }
+
+    // Recommended Pitch Channel Strategy
+    const bestChannelBadge = document.getElementById('modal-pitch-best-channel-badge');
+    const channelReasonEl = document.getElementById('modal-pitch-channel-reason');
+    if (bestChannelBadge) {
+      bestChannelBadge.innerHTML = channel === 'whatsapp'
+        ? `<span class="badge-channel whatsapp" style="font-weight: 800; font-size: 0.8rem; background: rgba(16, 185, 129, 0.2); color: #6ee7b7; padding: 2px 8px; border-radius: 4px;">⭐ Best: 📲 WhatsApp Direct</span>`
+        : channel === 'instagram'
+        ? `<span class="badge-channel instagram" style="font-weight: 800; font-size: 0.8rem; background: rgba(236, 72, 153, 0.2); color: #f472b6; padding: 2px 8px; border-radius: 4px;">⭐ Best: 📸 Instagram DM</span>`
+        : `<span class="badge-channel gmail" style="font-weight: 800; font-size: 0.8rem; background: rgba(239, 68, 68, 0.2); color: #fca5a5; padding: 2px 8px; border-radius: 4px;">⭐ Best: 📧 Gmail Proposal</span>`;
+    }
+
+    if (channelReasonEl) {
+      channelReasonEl.innerHTML = `<strong style="color: #60a5fa;">🎯 Kahan Pitch Karein Aur Kyun:</strong> ${lead.pitchChannelReason || 'Direct channel gives highest response rate for this business.'}`;
+    }
+
+    const subjectInput = document.getElementById('modal-pitch-subject');
+    const subjectRow = document.getElementById('modal-pitch-subject-row');
+    if (channel === 'gmail') {
+      if (subjectRow) subjectRow.style.display = 'block';
+      if (subjectInput) subjectInput.value = pitch.subject || '';
+    } else {
+      if (subjectRow) subjectRow.style.display = 'none';
+    }
+
+    const textarea = document.getElementById('modal-pitch-textarea');
+    if (textarea) textarea.value = lead.dispatchedMessage || pitch.body || '';
+
+    const counter = document.getElementById('modal-pitch-counter');
+    if (counter && textarea) {
+      counter.textContent = `${textarea.value.length} characters`;
+    }
+
+    // 1-Tap Greeting Mode Switcher (Team vs Founder)
+    const btnGreetingTeam = document.getElementById('btn-greeting-team');
+    const btnGreetingFounder = document.getElementById('btn-greeting-founder');
+    const labelGreetingTeam = document.getElementById('label-greeting-team');
+    const labelGreetingFounder = document.getElementById('label-greeting-founder');
+
+    const teamGreetName = lead.teamGreeting || (window.PitchEngine ? window.PitchEngine.getGreetingName(lead, 'team') : 'Team');
+    const founderGreetName = lead.founderGreeting || (window.PitchEngine ? window.PitchEngine.getGreetingName(lead, 'founder') : 'Owner');
+
+    if (labelGreetingTeam) labelGreetingTeam.textContent = `Team Greeting ("Hi ${teamGreetName},")`;
+    if (labelGreetingFounder) labelGreetingFounder.textContent = `Founder Name ("Hi ${founderGreetName},")`;
+
+    const updateGreetingMode = (mode) => {
+      currentGreetingMode = mode;
+      if (mode === 'team') {
+        if (btnGreetingTeam) btnGreetingTeam.classList.add('active');
+        if (btnGreetingFounder) btnGreetingFounder.classList.remove('active');
+      } else {
+        if (btnGreetingTeam) btnGreetingTeam.classList.remove('active');
+        if (btnGreetingFounder) btnGreetingFounder.classList.add('active');
+      }
+      pitch = window.PitchEngine ? window.PitchEngine.generatePitch(lead, channel, 'initial', 'English') : { subject: '', body: lead.dispatchedMessage || '' };
+      if (textarea) {
+        textarea.value = pitch.body;
+        if (counter) counter.textContent = `${textarea.value.length} characters`;
+      }
+      if (subjectInput && channel === 'gmail') {
+        subjectInput.value = pitch.subject || '';
+      }
+    };
+
+    if (btnGreetingTeam) {
+      btnGreetingTeam.classList.toggle('active', currentGreetingMode === 'team');
+      btnGreetingTeam.onclick = () => updateGreetingMode('team');
+    }
+    if (btnGreetingFounder) {
+      btnGreetingFounder.classList.toggle('active', currentGreetingMode === 'founder');
+      btnGreetingFounder.onclick = () => updateGreetingMode('founder');
+    }
+
+    if (textarea) {
+      textarea.oninput = () => {
+        if (counter) counter.textContent = `${textarea.value.length} characters`;
+      };
+    }
+
+    // Action buttons in modal footer
+    const btnCopy = document.getElementById('modal-btn-copy');
+    if (btnCopy) {
+      btnCopy.onclick = () => {
+        if (textarea) {
+          navigator.clipboard.writeText(textarea.value);
+          this.showToast('Pitch copied to clipboard!', 'success');
+        }
+      };
+    }
+
+    const sendWaBtn = document.getElementById('modal-btn-send-wa');
+    if (sendWaBtn) {
+      sendWaBtn.onclick = () => {
+        const phoneOverride = dmPhoneInput ? dmPhoneInput.value.trim() : null;
+        this.dispatchSingleLead(lead.id, phoneOverride, 'whatsapp', textarea ? textarea.value : null);
+        modal.classList.remove('open');
+      };
+    }
+
+    const sendInstaBtn = document.getElementById('modal-btn-send-insta');
+    if (sendInstaBtn) {
+      sendInstaBtn.onclick = () => {
+        this.dispatchSingleLead(lead.id, null, 'instagram', textarea ? textarea.value : null);
+        modal.classList.remove('open');
+      };
+    }
+
+    const sendGmailBtn = document.getElementById('modal-btn-send-gmail');
+    if (sendGmailBtn) {
+      sendGmailBtn.onclick = () => {
+        this.dispatchSingleLead(lead.id, null, 'gmail', textarea ? textarea.value : null);
+        modal.classList.remove('open');
+      };
+    }
+
+    const sendAnyBtn = document.getElementById('modal-btn-bhejdo');
+    if (sendAnyBtn) {
+      sendAnyBtn.onclick = () => {
+        const phoneOverride = dmPhoneInput ? dmPhoneInput.value.trim() : null;
+        this.dispatchSingleLead(lead.id, phoneOverride, channel, textarea ? textarea.value : null);
+        modal.classList.remove('open');
+      };
+    }
+
+    modal.classList.add('open');
+  },
+
   // ========================================================
   // 50-LEAD BATCH SYSTEM
   // ========================================================
@@ -1026,9 +1234,10 @@ const App = {
             }
           </td>
           <td>
-            <div style="display: flex; gap: 6px;">
-              <a href="${exactMaps}" target="_blank" rel="noopener noreferrer" class="btn-sec-action" style="font-size: 0.72rem;">Maps</a>
-              <button class="btn-primary" style="font-size: 0.72rem; padding: 4px 8px;" onclick="App.openPitchStudioForLead('${l.id}')">Pitch</button>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <button class="btn-primary" style="font-size: 0.72rem; padding: 5px 10px; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; border-radius: 4px;" onclick="App.dispatchSingleLead('${l.id}', null, 'whatsapp')">⚡ WhatsApp</button>
+              <button class="btn-sec-action" style="font-size: 0.72rem; padding: 5px 8px;" onclick="App.openPitchModal('${l.id}')">👁️ Pitch</button>
+              <a href="${exactMaps}" target="_blank" rel="noopener noreferrer" class="btn-sec-action" style="font-size: 0.72rem; padding: 5px 8px;">Maps ↗</a>
             </div>
           </td>
         </tr>
@@ -1816,6 +2025,27 @@ const App = {
     const isDispatched = lead.status === 'dispatched' || lead.crmStatus === 'sent' || lead.batchPitched;
     const replyMeta = this.calculateReplyScore(lead);
 
+    let heroActionBtn = '';
+    if (bestChannel === 'whatsapp') {
+      heroActionBtn = `
+        <button class="btn-hero-action wa" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.78rem; box-shadow: 0 0 12px rgba(37, 211, 102, 0.35); width: 100%;" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')" title="1-Tap Direct WhatsApp Chat">
+          <span>⚡</span> <span>WhatsApp</span>
+        </button>
+      `;
+    } else if (bestChannel === 'instagram') {
+      heroActionBtn = `
+        <button class="btn-hero-action insta" style="background: linear-gradient(135deg, rgba(225, 48, 108, 0.9), rgba(131, 58, 180, 0.9)); color: #fff; font-weight: 800; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.78rem; width: 100%;" onclick="App.dispatchSingleLead('${lead.id}', null, 'instagram')" title="1-Tap Copy Pitch & Open Instagram DM">
+          <span>⚡</span> <span>Insta DM</span>
+        </button>
+      `;
+    } else {
+      heroActionBtn = `
+        <button class="btn-hero-action gmail" style="background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); color: #fff; font-weight: 800; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.78rem; width: 100%;" onclick="App.dispatchSingleLead('${lead.id}', null, 'gmail')" title="1-Tap Open Gmail with Tailored Pitch">
+          <span>⚡</span> <span>Gmail</span>
+        </button>
+      `;
+    }
+
     return `
       <tr data-lead-id="${lead.id}">
         <td>
@@ -1855,13 +2085,19 @@ const App = {
           }
         </td>
         <td>
-          <div style="display: flex; flex-direction: column; gap: 5px;">
-            <button class="btn-primary" style="font-size: 0.75rem; padding: 5px 10px;" onclick="App.dispatchSingleLead('${lead.id}', null, '${bestChannel}')">
-              ⚡ Pitch (${bestChannel.toUpperCase()})
-            </button>
-            <button class="btn-sec-action" style="font-size: 0.70rem;" onclick="App.openProposalForLead('${lead.id}')">
-              📄 Proposal
-            </button>
+          <div style="display: flex; flex-direction: column; gap: 6px; min-width: 175px;">
+            ${heroActionBtn}
+            <div style="display: flex; gap: 4px;">
+              <button class="btn-sec-action" style="flex: 1; padding: 5px 6px; font-size: 0.74rem; text-align: center;" onclick="App.openPitchModal('${lead.id}')" title="Preview & Edit Pitch">
+                👁️ Pitch
+              </button>
+              <button class="btn-sec-action" style="flex: 1; padding: 5px 6px; font-size: 0.74rem; text-align: center;" onclick="App.openFlawModal('${lead.id}')" title="Masla & Proof Audit">
+                🔍 Masla
+              </button>
+              <button class="btn-sec-action" style="flex: 1; padding: 5px 6px; font-size: 0.74rem; text-align: center;" onclick="App.openProposalForLead('${lead.id}')" title="Software Proposal">
+                📄 Proposal
+              </button>
+            </div>
           </div>
         </td>
       </tr>
@@ -1876,6 +2112,27 @@ const App = {
     }
     const exactMaps = this.getExactMapsUrl(lead);
     const replyMeta = this.calculateReplyScore(lead);
+
+    let heroActionBtn = '';
+    if (bestChannel === 'whatsapp') {
+      heroActionBtn = `
+        <button class="btn-primary" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; padding: 9px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.82rem; box-shadow: 0 0 12px rgba(37, 211, 102, 0.35); width: 100%;" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')">
+          <span>⚡</span> <span>WhatsApp Bhejo</span>
+        </button>
+      `;
+    } else if (bestChannel === 'instagram') {
+      heroActionBtn = `
+        <button class="btn-primary" style="background: linear-gradient(135deg, rgba(225, 48, 108, 0.9), rgba(131, 58, 180, 0.9)); color: #fff; font-weight: 800; border: none; padding: 9px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.82rem; width: 100%;" onclick="App.dispatchSingleLead('${lead.id}', null, 'instagram')">
+          <span>⚡</span> <span>Insta DM Bhejo</span>
+        </button>
+      `;
+    } else {
+      heroActionBtn = `
+        <button class="btn-primary" style="background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); color: #fff; font-weight: 800; border: none; padding: 9px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.82rem; width: 100%;" onclick="App.dispatchSingleLead('${lead.id}', null, 'gmail')">
+          <span>⚡</span> <span>Gmail Bhejo</span>
+        </button>
+      `;
+    }
 
     return `
       <div class="lead-card glass-panel" style="padding: 16px; display: flex; flex-direction: column; gap: 10px;">
@@ -1895,10 +2152,19 @@ const App = {
         <div style="font-size: 0.80rem; color: #cbd5e1;">👤 <strong>${lead.decisionMaker || 'Owner'}</strong> <span style="font-size: 0.72rem; color: #94a3b8;">(${lead.decisionMakerTitle || 'Principal'})</span></div>
         <div style="font-size: 0.78rem; color: #fca5a5; font-weight: 700;">⚠️ ${lead.flawTitle || 'Mobile Checkout Bottleneck'}</div>
         <div style="font-size: 0.72rem; color: #f87171;">💸 Leak: ${lead.flawLeakRange || '$2,400/mo'}</div>
-        <div style="display: flex; gap: 8px; margin-top: auto;">
-          <a href="${exactMaps}" target="_blank" rel="noopener noreferrer" class="btn-sec-action" style="flex: 1; font-size: 0.74rem; text-align: center;">Maps ↗</a>
-          <button class="btn-primary" style="flex: 1; font-size: 0.74rem;" onclick="App.dispatchSingleLead('${lead.id}', null, '${bestChannel}')">⚡ Pitch</button>
-          <button class="btn-sec-action" style="font-size: 0.72rem; padding: 4px 8px;" onclick="App.openProposalForLead('${lead.id}')">📄 Proposal</button>
+        <div style="display: flex; flex-direction: column; gap: 6px; margin-top: auto;">
+          ${heroActionBtn}
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <button class="btn-sec-action" style="flex: 1; font-size: 0.76rem; padding: 7px 8px; text-align: center;" onclick="App.openPitchModal('${lead.id}')">
+              👁️ Pitch Preview
+            </button>
+            <button class="btn-sec-action" style="flex: 1; font-size: 0.76rem; padding: 7px 8px; text-align: center;" onclick="App.openFlawModal('${lead.id}')">
+              🔍 Masla
+            </button>
+            <button class="btn-sec-action" style="flex: 1; font-size: 0.76rem; padding: 7px 8px; text-align: center;" onclick="App.openProposalForLead('${lead.id}')">
+              📄 Proposal
+            </button>
+          </div>
         </div>
       </div>
     `;
@@ -2017,6 +2283,16 @@ const App = {
         document.getElementById('table-view-container').style.display = 'block';
         document.getElementById('cards-view-container').style.display = 'none';
       };
+    }
+
+    // Modal outside click close
+    const pitchModal = document.getElementById('pitch-preview-modal');
+    if (pitchModal) {
+      pitchModal.addEventListener('click', (e) => {
+        if (e.target === pitchModal) {
+          pitchModal.classList.remove('open');
+        }
+      });
     }
   },
 
