@@ -30,13 +30,19 @@ const App = {
     this.setViewMode(this.currentViewMode, false);
 
     // 1. Instant Synchronous Initial Load: Show verified leads immediately without waiting for network
-    const savedLeads = StorageService.getLeads();
+    let savedLeads = StorageService.getLeads();
+    // Auto-purge any stale cache containing old dummy Chicago/Toronto/Manchester/Sydney (400-1000) data
+    if (savedLeads && savedLeads.some(l => (l.phone && l.phone.includes('400-1000')) || (l.phone && l.phone.includes('2000000')) || ['Chicago', 'Toronto', 'Manchester', 'Sydney'].includes(l.city))) {
+      try {
+        localStorage.removeItem('restohunter_leads');
+      } catch (e) {}
+      savedLeads = null;
+    }
+
     const freshInitial = (window.DEFAULT_LEADS || window.INITIAL_LEADS || (typeof INITIAL_LEADS !== 'undefined' ? INITIAL_LEADS : []));
     let initialLeads = freshInitial;
 
-    // Only prefer savedLeads if it has valid data and AT LEAST as many leads as freshInitial
-    // (if savedLeads has fewer leads, upgrade to full 384+ dataset while preserving custom leads)
-    if (savedLeads && savedLeads.length >= freshInitial.length && savedLeads[0].businessScale) {
+    if (savedLeads && savedLeads.length > 0 && savedLeads[0].businessScale && !savedLeads.some(l => ['Chicago', 'Toronto', 'Manchester', 'Sydney'].includes(l.city))) {
       initialLeads = savedLeads;
     }
 
@@ -135,6 +141,25 @@ const App = {
       fullQuery = `${cleanBiz}, ${address}`;
     }
     return `https://maps.google.com/maps?q=${encodeURIComponent(fullQuery)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+  },
+
+  isRealMobileWhatsApp(lead) {
+    if (!lead) return false;
+    const phone = (lead.contactInfo && lead.contactInfo.phone ? lead.contactInfo.phone : (lead.phone || '')).trim();
+    const clean = phone.replace(/[^0-9]/g, '');
+    if (!clean) return false;
+
+    // Pakistani Mobile numbers: 923XX XXXXXXX or 03XX XXXXXXX
+    const isPakMobile = (clean.startsWith('923') && clean.length >= 11) || (clean.startsWith('03') && clean.length === 11);
+
+    // UAE Mobile numbers: 9715X XXXXXXX
+    const isUaeMobile = clean.startsWith('9715') && (clean.length === 11 || clean.length === 12);
+
+    // Saudi Mobile numbers: 9665X XXXXXXX
+    const isSaudiMobile = clean.startsWith('9665') && clean.length === 12;
+
+    // Western numbers (USA +1, UK +44, Canada +1, Australia +61) and Landlines NEVER have local business WhatsApp!
+    return isPakMobile || isUaeMobile || isSaudiMobile;
   },
 
   setupUI() {
@@ -870,7 +895,12 @@ const App = {
   },
 
   renderLeadTableRow(lead, idx) {
-    const bestChannel = lead.recommendedPitchChannel || lead.channel || 'gmail';
+    const isMobileWA = this.isRealMobileWhatsApp(lead);
+    let bestChannel = lead.recommendedPitchChannel || lead.channel || 'gmail';
+    if (bestChannel === 'whatsapp' && !isMobileWA) {
+      bestChannel = (lead.contactInfo && lead.contactInfo.instagramHandle) ? 'instagram' : 'gmail';
+    }
+
     const channelBadge = bestChannel === 'whatsapp'
       ? `<div style="display: flex; flex-direction: column; gap: 2px;">
            <span class="badge-channel whatsapp" style="font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
@@ -926,13 +956,14 @@ const App = {
       ? `<span class="status-pill followup">⏰ Follow-Up Due</span>`
       : `<span class="status-pill ready">Ready to Pitch</span>`;
 
-    const cleanPhone = (lead.contactInfo && lead.contactInfo.phone ? lead.contactInfo.phone : '').replace(/[^0-9]/g, '');
+    const cleanPhone = (lead.contactInfo && lead.contactInfo.phone ? lead.contactInfo.phone : (lead.phone || '')).replace(/[^0-9]/g, '');
+    const rawPhone = (lead.contactInfo && lead.contactInfo.phone ? lead.contactInfo.phone : (lead.phone || 'N/A')).trim();
     const fullAddress = lead.address || `${lead.city}, ${lead.country}`;
     const mapsPinUrl = this.getExactMapsUrl(lead);
 
-    const isPakMobile = lead.contactInfo && lead.contactInfo.phone && /^\+92\s*3\d{2}/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''));
-    const isUaeMobile = lead.contactInfo && lead.contactInfo.phone && /^\+971\s*5/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''));
-    const isMobileWA = (lead.phoneType === 'mobile_whatsapp') || (lead.contactInfo && lead.contactInfo.phoneType === 'mobile_whatsapp') || isPakMobile || isUaeMobile;
+    const isWestern = lead.country && /United States|USA|Canada|UK|United Kingdom|Australia/.test(lead.country);
+    const phoneLabel = isWestern ? 'US/International Line' : 'Landline / UAN';
+
     const igHandle = (lead.contactInfo && lead.contactInfo.instagramHandle ? lead.contactInfo.instagramHandle : '').replace('@', '').trim();
     const emailAddr = (lead.contactInfo && lead.contactInfo.email) ? lead.contactInfo.email : (lead.email && lead.email.includes('@') ? lead.email : '');
     const websiteUrl = lead.website || (lead.contactInfo && lead.contactInfo.website) || '';
@@ -953,10 +984,10 @@ const App = {
     // Contact Pills for Decision Maker Cell
     const phonePill = isMobileWA
       ? `<a href="https://api.whatsapp.com/send?phone=${cleanPhone}" target="_blank" class="contact-pill wa" title="Verified Mobile WhatsApp — 1-Tap to Chat">
-           <span>📲</span> <span>${lead.contactInfo.phone}</span> <span style="font-size:0.62rem; opacity:0.85;">(WA Active)</span>
+           <span>📲</span> <span>${rawPhone}</span> <span style="font-size:0.62rem; opacity:0.85;">(WA Active)</span>
          </a>`
-      : `<span class="contact-pill landline" title="Official Landline / UAN Helpline">
-           <span>📞</span> <span>${lead.contactInfo ? lead.contactInfo.phone : 'N/A'}</span>
+      : `<span class="contact-pill landline" title="Official Phone (${phoneLabel} — Not on WhatsApp)">
+           <span>📞</span> <span>${rawPhone}</span> <span style="font-size:0.60rem; opacity:0.75;">(${phoneLabel})</span>
          </span>`;
 
     const igPill = igHandle
@@ -979,15 +1010,11 @@ const App = {
 
     // Hero Action Button
     let heroActionBtn = '';
-    if (isWaBest) {
-      heroActionBtn = isMobileWA
-        ? `<button class="btn-hero-action wa" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')" title="1-Tap Direct WhatsApp Chat">
-             <span>⚡</span> <span>WhatsApp</span>
-           </button>`
-        : `<button class="btn-hero-action" style="background: rgba(255,255,255,0.06); color: #94a3b8; border: 1px solid rgba(255,255,255,0.18);" onclick="App.dispatchLandlineWhatsApp('${lead.id}')" title="Official Landline: Click to test or see alternative">
-             <span>📞</span> <span>Landline WA</span>
-           </button>`;
-    } else if (isIgBest) {
+    if (isWaBest && isMobileWA) {
+      heroActionBtn = `<button class="btn-hero-action wa" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')" title="1-Tap Direct WhatsApp Chat">
+           <span>⚡</span> <span>WhatsApp</span>
+         </button>`;
+    } else if (isIgBest || (isWaBest && !isMobileWA)) {
       heroActionBtn = `<button class="btn-hero-action insta" onclick="App.dispatchSingleLead('${lead.id}', null, 'instagram')" title="1-Tap Copy Pitch & Open Instagram DM">
            <span>⚡</span> <span>Insta DM</span>
          </button>`;
@@ -1103,7 +1130,12 @@ const App = {
   },
 
   renderLeadCard(lead, idx) {
-    const bestChannel = lead.recommendedPitchChannel || lead.channel || 'gmail';
+    const isMobileWA = this.isRealMobileWhatsApp(lead);
+    let bestChannel = lead.recommendedPitchChannel || lead.channel || 'gmail';
+    if (bestChannel === 'whatsapp' && !isMobileWA) {
+      bestChannel = (lead.contactInfo && lead.contactInfo.instagramHandle) ? 'instagram' : 'gmail';
+    }
+
     const channelBadge = bestChannel === 'whatsapp'
       ? `<span class="badge-channel whatsapp" style="font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
            <span>⭐</span> <span>📲 WhatsApp</span>
@@ -1150,13 +1182,14 @@ const App = {
       ? `<span class="status-pill followup">⏰ Follow-Up Due</span>`
       : `<span class="status-pill ready">Ready to Pitch</span>`;
 
-    const cleanPhone = (lead.contactInfo && lead.contactInfo.phone ? lead.contactInfo.phone : '').replace(/[^0-9]/g, '');
+    const cleanPhone = (lead.contactInfo && lead.contactInfo.phone ? lead.contactInfo.phone : (lead.phone || '')).replace(/[^0-9]/g, '');
+    const rawPhone = (lead.contactInfo && lead.contactInfo.phone ? lead.contactInfo.phone : (lead.phone || 'N/A')).trim();
     const fullAddress = lead.address || `${lead.city}, ${lead.country}`;
     const mapsPinUrl = this.getExactMapsUrl(lead);
 
-    const isPakMobile = lead.contactInfo && lead.contactInfo.phone && /^\+92\s*3\d{2}/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''));
-    const isUaeMobile = lead.contactInfo && lead.contactInfo.phone && /^\+971\s*5/.test(lead.contactInfo.phone.replace(/[^0-9+]/g, ''));
-    const isMobileWA = (lead.phoneType === 'mobile_whatsapp') || (lead.contactInfo && lead.contactInfo.phoneType === 'mobile_whatsapp') || isPakMobile || isUaeMobile;
+    const isWestern = lead.country && /United States|USA|Canada|UK|United Kingdom|Australia/.test(lead.country);
+    const phoneLabel = isWestern ? 'US/International Line' : 'Landline / UAN';
+
     const igHandle = (lead.contactInfo && lead.contactInfo.instagramHandle ? lead.contactInfo.instagramHandle : '').replace('@', '').trim();
     const emailAddr = (lead.contactInfo && lead.contactInfo.email) ? lead.contactInfo.email : (lead.email && lead.email.includes('@') ? lead.email : '');
     const websiteUrl = lead.website || (lead.contactInfo && lead.contactInfo.website) || '';
@@ -1171,10 +1204,10 @@ const App = {
 
     const phonePill = isMobileWA
       ? `<a href="https://api.whatsapp.com/send?phone=${cleanPhone}" target="_blank" class="contact-pill wa" title="1-Tap WhatsApp Direct">
-           <span>📲</span> <span>${lead.contactInfo.phone}</span> <span style="font-size:0.62rem; opacity:0.85;">(WA Active)</span>
+           <span>📲</span> <span>${rawPhone}</span> <span style="font-size:0.62rem; opacity:0.85;">(WA Active)</span>
          </a>`
-      : `<span class="contact-pill landline" title="Official Landline">
-           <span>📞</span> <span>${lead.contactInfo ? lead.contactInfo.phone : 'N/A'}</span>
+      : `<span class="contact-pill landline" title="Official Phone (${phoneLabel} — Not on WhatsApp)">
+           <span>📞</span> <span>${rawPhone}</span> <span style="font-size:0.60rem; opacity:0.75;">(${phoneLabel})</span>
          </span>`;
 
     const igPill = igHandle
@@ -1268,15 +1301,11 @@ const App = {
               <span>⏰</span> <span>1-Tap Follow-Up Nudge (${isDay7 ? 'Day-7 Breakup' : 'Day-3'})</span>
             </button>
           ` : ''}
-          ${isWaBest
-            ? (isMobileWA
-                ? `<button class="btn-mobile-hero wa" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')">
-                     <span>⚡</span> <span>Send Personalized WhatsApp Pitch</span>
-                   </button>`
-                : `<button class="btn-mobile-hero" style="background: rgba(255,255,255,0.08); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.2);" onclick="App.dispatchLandlineWhatsApp('${lead.id}')">
-                     <span>📞</span> <span>Official Landline (No WhatsApp)</span>
-                   </button>`)
-            : isIgBest
+          ${isWaBest && isMobileWA
+            ? `<button class="btn-mobile-hero wa" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')">
+                 <span>⚡</span> <span>Send Personalized WhatsApp Pitch</span>
+               </button>`
+            : isIgBest || (isWaBest && !isMobileWA)
             ? `<button class="btn-mobile-hero insta" onclick="App.dispatchSingleLead('${lead.id}', null, 'instagram')">
                  <span>⚡</span> <span>Copy Pitch & Open Instagram DM</span>
                </button>`
@@ -1724,6 +1753,11 @@ const App = {
     this.updateMetrics();
 
     if (activeChannel === 'whatsapp') {
+      const isRealWA = this.isRealMobileWhatsApp(lead);
+      if (!isRealWA && !targetPhoneOverride) {
+        this.dispatchLandlineWhatsApp(lead.id);
+        return;
+      }
       const phoneInput = document.getElementById('modal-pitch-dm-phone-input');
       const rawPhone = targetPhoneOverride || ((phoneInput && phoneInput.value && phoneInput.value.trim()) ? phoneInput.value.trim() : (lead.contactInfo.phone || '+923376568003'));
       lead.contactInfo.phone = rawPhone;
@@ -1766,12 +1800,15 @@ const App = {
   dispatchLandlineWhatsApp(leadId) {
     const lead = this.leads.find(l => l.id === leadId);
     if (!lead) return;
+    const phone = (lead.contactInfo && lead.contactInfo.phone) ? lead.contactInfo.phone : (lead.phone || 'N/A');
+    const isWestern = lead.country && /United States|USA|Canada|UK|United Kingdom|Australia/.test(lead.country);
     const choice = confirm(
-      `📞 ${lead.businessName} ka official phone number (${lead.contactInfo.phone}) Landline / UAN Helpline hai.\n\n` +
-      `Landlines par WhatsApp messaging activate nahi hoti. Owner aur Management tak direct pohnchne ke liye:\n` +
-      `• "📧 Gmail" button dabayein taake direct proposal email draft khul jaye.\n` +
-      `• "📸 Insta DM" button dabayein taake Instagram profile aur DM khul jaye.\n\n` +
-      `Agar aap is lead ki tailored pitch apne personal testing number (${this.settings.whatsapp_number || '+923376568003'}) par test bhejna chahte hain to OK dabayein.`
+      `📞 ${lead.businessName} (${phone}):\n\n` +
+      `Ye number ${isWestern ? 'US / International Line' : 'Landline / Central Helpline'} hai aur is par WhatsApp account active nahi hota (WhatsApp error: "isn't on WhatsApp").\n\n` +
+      `Is business tak direct pohnchne ke liye sahi channels:\n` +
+      `• "📸 Insta DM" dabayein — direct verified Instagram profile khul jayegi jahan 4x zyada replies aatay hain.\n` +
+      `• "📧 Gmail" dabayein — direct proposal email draft khul jayegi.\n\n` +
+      `Agar aap is pitch ko sirf test karne ke liye apne personal WhatsApp testing number (${this.settings.whatsapp_number || '+923376568003'}) par bhej kar check karna chahte hain to OK dabayein.`
     );
     if (choice) {
       this.dispatchSingleLead(lead.id, null, 'whatsapp', this.settings.whatsapp_number || '+923376568003');
