@@ -15,8 +15,11 @@
 const App = {
   leads: [],
   filteredLeads: [],
-  currentView: 'overview',
+  currentView: 'all-businesses',
   currentChannelFilter: 'all',
+  currentCountryFilter: 'ALL',
+  currentCityFilter: 'ALL',
+  currentSearchQuery: '',
   currentScaleFilter: 'all',
   currentOppCategoryFilter: 'all',
   currentDailyRange: 'today',
@@ -35,8 +38,12 @@ const App = {
     const freshInitial = (window.DEFAULT_LEADS || window.INITIAL_LEADS || (typeof INITIAL_LEADS !== 'undefined' ? INITIAL_LEADS : []));
     let initialLeads = freshInitial;
 
-    if (savedLeads && savedLeads.length > 0 && savedLeads[0].googlePlaceId) {
+    // Check if saved leads match the fresh 6-country dataset (length matches freshInitial and first ID matches)
+    if (savedLeads && savedLeads.length === freshInitial.length && freshInitial.length > 0 && savedLeads[0].id === freshInitial[0].id) {
       initialLeads = savedLeads;
+    } else {
+      initialLeads = freshInitial;
+      StorageService.saveLeads(initialLeads);
     }
 
     if (initialLeads && initialLeads.length > 0) {
@@ -52,7 +59,7 @@ const App = {
       if (window.BatchManager) {
         window.BatchManager.syncWithLeads(this.leads);
       }
-      this.applyFilter('all');
+      this.runTableFilters();
       this.updateAllMetricsAndBadges();
     }
 
@@ -63,7 +70,6 @@ const App = {
         if (!freshLeads || !freshLeads.length) return;
         const currentSaved = StorageService.getLeads() || [];
         const savedMap = {};
-        const customAdded = [];
 
         currentSaved.forEach(l => {
           savedMap[l.id] = {
@@ -73,12 +79,9 @@ const App = {
             dispatchedMessage: l.dispatchedMessage,
             batchPitched: l.batchPitched
           };
-          if (l.id && l.id.startsWith('places_')) {
-            customAdded.push(l);
-          }
         });
 
-        this.leads = [...customAdded, ...freshLeads.map(l => {
+        this.leads = freshLeads.map(l => {
           l.mapsUrl = this.getExactMapsUrl(l);
           if (savedMap[l.id]) {
             l.status = savedMap[l.id].status || l.status;
@@ -88,13 +91,13 @@ const App = {
             l.batchPitched = savedMap[l.id].batchPitched || false;
           }
           return l;
-        })];
+        });
         this.leads = this.sortLeads(this.leads, 'reply_chance');
         StorageService.saveLeads(this.leads);
         if (window.BatchManager) {
           window.BatchManager.syncWithLeads(this.leads);
         }
-        this.applyFilter(this.currentChannelFilter || 'all');
+        this.runTableFilters();
         this.updateAllMetricsAndBadges();
       })
       .catch(() => {});
@@ -124,12 +127,12 @@ const App = {
       }
     }
 
-    // Route to initial hash or default to overview
+    // Route to initial hash or default to all-businesses (the main verified leads view)
     const hash = window.location.hash.replace('#', '');
     if (hash && document.getElementById(`view-${hash}`)) {
       this.switchView(hash);
     } else {
-      this.switchView('overview');
+      this.switchView('all-businesses');
     }
   },
 
@@ -945,157 +948,86 @@ const App = {
     const modal = document.getElementById('pitch-preview-modal');
     if (!modal) return;
 
-    let currentGreetingMode = lead.businessScale === 'small_business' ? 'founder' : 'team';
-    const channel = lead.recommendedPitchChannel || lead.channel || 'whatsapp';
-    let pitch = window.PitchEngine ? window.PitchEngine.generatePitch(lead, channel, 'initial', 'English') : { subject: '', body: lead.dispatchedMessage || '' };
-
     const modalTitle = document.getElementById('modal-pitch-title');
     if (modalTitle) {
-      if (lead.status === 'dispatched' && lead.dispatchedAt) {
-        const sentTime = new Date(lead.dispatchedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        modalTitle.textContent = `${lead.businessName} — Pitch (🚀 Dispatched at ${sentTime})`;
-      } else {
-        modalTitle.textContent = `🎯 ${lead.businessName} — Pitch Preview`;
-      }
+      modalTitle.textContent = `🎯 ${lead.businessName} — Gmail Cold Pitch & Problem Audit`;
     }
 
-    const scaleBadgeHtml = lead.businessScale === 'small_business'
-      ? `<span class="badge-scale small" style="font-size: 0.74rem; padding: 3px 8px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 4px; font-weight: 700;">🏪 Chota Business (Direct Mobile)</span>`
-      : `<span class="badge-scale established" style="font-size: 0.74rem; padding: 3px 8px; background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 4px; font-weight: 700;">🏢 Established Brand</span>`;
+    // Business & Verified Info
+    const bizNameEl = document.getElementById('modal-pitch-biz-name');
+    if (bizNameEl) bizNameEl.textContent = lead.businessName;
 
-    const channelBadgeHtml = channel === 'whatsapp'
-      ? `<span class="badge-channel whatsapp" style="font-size: 0.74rem; padding: 3px 8px; background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 4px; font-weight: 700;">📲 WhatsApp Direct Outreach</span>`
-      : channel === 'gmail'
-      ? `<span class="badge-channel gmail" style="font-size: 0.74rem; padding: 3px 8px; background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 4px; font-weight: 700;">📧 Gmail Pitch</span>`
-      : `<span class="badge-channel instagram" style="font-size: 0.74rem; padding: 3px 8px; background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); border-radius: 4px; font-weight: 700;">📸 Instagram Story / DM</span>`;
-
-    const channelBadgeContainer = document.getElementById('modal-pitch-channel-badge');
-    if (channelBadgeContainer) {
-      channelBadgeContainer.innerHTML = `<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">${scaleBadgeHtml} ${channelBadgeHtml}</div>`;
-    }
-
-    const flawTitleEl = document.getElementById('modal-pitch-flaw-title');
-    if (flawTitleEl) flawTitleEl.textContent = lead.flawTitle || 'Mobile Checkout Friction';
-
-    const flawLeakEl = document.getElementById('modal-pitch-flaw-leak');
-    if (flawLeakEl) flawLeakEl.textContent = lead.flawLeakRange || '$2,400 - $4,800/mo';
-
-    // Regional Delivery Platform
-    if (window.PitchEngine && window.PitchEngine.detectDeliveryPlatform) {
-      const deliveryApp = window.PitchEngine.detectDeliveryPlatform(lead);
-      const deliveryBadgeRow = document.getElementById('modal-pitch-delivery-badge-row');
-      const deliveryAppNameEl = document.getElementById('modal-pitch-delivery-app-name');
-      const regionLabelEl = document.getElementById('modal-pitch-region-label');
-
-      if (lead.niche === 'restaurants' || lead.niche === 'bakeries_sweets') {
-        if (deliveryBadgeRow) deliveryBadgeRow.style.display = 'flex';
-        if (deliveryAppNameEl) deliveryAppNameEl.textContent = `${deliveryApp} (30% Commission Cut)`;
-        if (regionLabelEl) regionLabelEl.textContent = `📍 ${lead.city || 'Local'} Detected`;
-      } else {
-        if (deliveryBadgeRow) deliveryBadgeRow.style.display = 'none';
-      }
-    }
-
-    const flawBtnFromPitch = document.getElementById('modal-btn-open-flaw-from-pitch');
-    if (flawBtnFromPitch) {
-      flawBtnFromPitch.onclick = () => {
-        this.openFlawModal(lead.id);
-      };
-    }
+    const locEl = document.getElementById('modal-pitch-location');
+    if (locEl) locEl.textContent = `📍 ${lead.address || (lead.city + ', ' + lead.country)}`;
 
     const dmNameEl = document.getElementById('modal-pitch-dm-name');
+    if (dmNameEl) dmNameEl.textContent = lead.decisionMaker || 'Owner / Principal';
+
     const dmTitleEl = document.getElementById('modal-pitch-dm-title');
-    const dmPhoneInput = document.getElementById('modal-pitch-dm-phone-input');
+    if (dmTitleEl) dmTitleEl.textContent = lead.decisionMakerTitle ? `(${lead.decisionMakerTitle})` : '';
 
-    if (dmNameEl) dmNameEl.textContent = lead.decisionMaker || 'Owner';
-    if (dmTitleEl) dmTitleEl.textContent = lead.decisionMakerTitle ? ` (${lead.decisionMakerTitle})` : '';
-    if (dmPhoneInput) dmPhoneInput.value = lead.whatsappNumber || lead.phone || '';
+    const emailDispEl = document.getElementById('modal-pitch-email-display');
+    if (emailDispEl) emailDispEl.textContent = lead.email || 'Verified Google Maps Email';
 
-    const testWaBtn = document.getElementById('btn-set-my-wa-test');
-    if (testWaBtn) {
-      testWaBtn.onclick = () => {
-        if (dmPhoneInput) {
-          dmPhoneInput.value = '+923376568003';
-          this.showToast('Number set to +923376568003 for personal testing!', 'info');
-        }
-      };
+    const copyEmailBtn = document.getElementById('modal-btn-copy-email');
+    if (copyEmailBtn) {
+      copyEmailBtn.onclick = () => this.copyEmail(lead.id);
     }
 
-    // Recommended Pitch Channel Strategy
-    const bestChannelBadge = document.getElementById('modal-pitch-best-channel-badge');
-    const channelReasonEl = document.getElementById('modal-pitch-channel-reason');
-    if (bestChannelBadge) {
-      bestChannelBadge.innerHTML = channel === 'whatsapp'
-        ? `<span class="badge-channel whatsapp" style="font-weight: 800; font-size: 0.8rem; background: rgba(16, 185, 129, 0.2); color: #6ee7b7; padding: 2px 8px; border-radius: 4px;">⭐ Best: 📲 WhatsApp Direct</span>`
-        : channel === 'instagram'
-        ? `<span class="badge-channel instagram" style="font-weight: 800; font-size: 0.8rem; background: rgba(236, 72, 153, 0.2); color: #f472b6; padding: 2px 8px; border-radius: 4px;">⭐ Best: 📸 Instagram DM</span>`
-        : `<span class="badge-channel gmail" style="font-weight: 800; font-size: 0.8rem; background: rgba(239, 68, 68, 0.2); color: #fca5a5; padding: 2px 8px; border-radius: 4px;">⭐ Best: 📧 Gmail Proposal</span>`;
+    const mapsLink = document.getElementById('modal-pitch-maps-link');
+    if (mapsLink) mapsLink.href = this.getExactMapsUrl(lead);
+
+    const webLink = document.getElementById('modal-pitch-web-link');
+    if (webLink) {
+      webLink.href = lead.website || '#';
+      webLink.style.display = lead.website ? 'inline' : 'none';
     }
 
-    if (channelReasonEl) {
-      channelReasonEl.innerHTML = `<strong style="color: #60a5fa;">🎯 Kahan Pitch Karein Aur Kyun:</strong> ${lead.pitchChannelReason || 'Direct channel gives highest response rate for this business.'}`;
+    // 🚨 Solid Weak Point details
+    const solidWp = lead.solidWeakPoint || {
+      coreProblem: lead.flawTitle || 'Aggregator Commission Bleed',
+      financialLeak: lead.flawLeakRange || '$2,800 - $4,200/mo',
+      whySolid: lead.flawDescription || 'Paying 28-30% aggregator cut without a direct online portal.',
+      evidence: lead.flawEvidence || 'Google Maps profile directs users to aggregator portals without a direct 0% commission direct channel.',
+      solutionSoftware: lead.flawSolution || 'Direct White-Label Web App & Automated Ordering'
+    };
+
+    const flawLeakEl = document.getElementById('modal-pitch-flaw-leak');
+    if (flawLeakEl) flawLeakEl.textContent = solidWp.financialLeak || lead.flawLeakRange || '$3,000/mo';
+
+    const flawTitleEl = document.getElementById('modal-pitch-flaw-title');
+    if (flawTitleEl) flawTitleEl.textContent = solidWp.coreProblem;
+
+    const problemWhyEl = document.getElementById('modal-pitch-problem-why');
+    if (problemWhyEl) problemWhyEl.textContent = solidWp.whySolid;
+
+    const problemEvidenceEl = document.getElementById('modal-pitch-problem-evidence');
+    if (problemEvidenceEl) problemEvidenceEl.textContent = `🔍 Evidence: ${solidWp.evidence}`;
+
+    const solutionEl = document.getElementById('modal-pitch-solution');
+    if (solutionEl) solutionEl.textContent = solidWp.solutionSoftware;
+
+    // AI Verification Copy Button
+    const copyAiPromptBtn = document.getElementById('modal-btn-copy-ai-prompt');
+    if (copyAiPromptBtn) {
+      copyAiPromptBtn.onclick = () => this.copyProblemForAI(lead.id);
     }
+
+    // Tailored Gmail Pitch fields
+    const defaultSubject = (lead.gmailPitch && lead.gmailPitch.subject) || `Quick observation regarding ${lead.businessName}`;
+    const defaultBody = (lead.gmailPitch && lead.gmailPitch.body) || lead.dispatchedMessage || (window.PitchEngine ? window.PitchEngine.generatePitch(lead, 'gmail', 'initial', 'English').body : '');
 
     const subjectInput = document.getElementById('modal-pitch-subject');
-    const subjectRow = document.getElementById('modal-pitch-subject-row');
-    if (channel === 'gmail') {
-      if (subjectRow) subjectRow.style.display = 'block';
-      if (subjectInput) subjectInput.value = pitch.subject || '';
-    } else {
-      if (subjectRow) subjectRow.style.display = 'none';
-    }
+    if (subjectInput) subjectInput.value = defaultSubject;
 
     const textarea = document.getElementById('modal-pitch-textarea');
-    if (textarea) textarea.value = lead.dispatchedMessage || pitch.body || '';
+    if (textarea) textarea.value = defaultBody;
 
     const counter = document.getElementById('modal-pitch-counter');
     if (counter && textarea) {
       counter.textContent = `${textarea.value.length} characters`;
-    }
-
-    // 1-Tap Greeting Mode Switcher (Team vs Founder)
-    const btnGreetingTeam = document.getElementById('btn-greeting-team');
-    const btnGreetingFounder = document.getElementById('btn-greeting-founder');
-    const labelGreetingTeam = document.getElementById('label-greeting-team');
-    const labelGreetingFounder = document.getElementById('label-greeting-founder');
-
-    const teamGreetName = lead.teamGreeting || (window.PitchEngine ? window.PitchEngine.getGreetingName(lead, 'team') : 'Team');
-    const founderGreetName = lead.founderGreeting || (window.PitchEngine ? window.PitchEngine.getGreetingName(lead, 'founder') : 'Owner');
-
-    if (labelGreetingTeam) labelGreetingTeam.textContent = `Team Greeting ("Hi ${teamGreetName},")`;
-    if (labelGreetingFounder) labelGreetingFounder.textContent = `Founder Name ("Hi ${founderGreetName},")`;
-
-    const updateGreetingMode = (mode) => {
-      currentGreetingMode = mode;
-      if (mode === 'team') {
-        if (btnGreetingTeam) btnGreetingTeam.classList.add('active');
-        if (btnGreetingFounder) btnGreetingFounder.classList.remove('active');
-      } else {
-        if (btnGreetingTeam) btnGreetingTeam.classList.remove('active');
-        if (btnGreetingFounder) btnGreetingFounder.classList.add('active');
-      }
-      pitch = window.PitchEngine ? window.PitchEngine.generatePitch(lead, channel, 'initial', 'English') : { subject: '', body: lead.dispatchedMessage || '' };
-      if (textarea) {
-        textarea.value = pitch.body;
-        if (counter) counter.textContent = `${textarea.value.length} characters`;
-      }
-      if (subjectInput && channel === 'gmail') {
-        subjectInput.value = pitch.subject || '';
-      }
-    };
-
-    if (btnGreetingTeam) {
-      btnGreetingTeam.classList.toggle('active', currentGreetingMode === 'team');
-      btnGreetingTeam.onclick = () => updateGreetingMode('team');
-    }
-    if (btnGreetingFounder) {
-      btnGreetingFounder.classList.toggle('active', currentGreetingMode === 'founder');
-      btnGreetingFounder.onclick = () => updateGreetingMode('founder');
-    }
-
-    if (textarea) {
       textarea.oninput = () => {
-        if (counter) counter.textContent = `${textarea.value.length} characters`;
+        counter.textContent = `${textarea.value.length} characters`;
       };
     }
 
@@ -1103,48 +1035,161 @@ const App = {
     const btnCopy = document.getElementById('modal-btn-copy');
     if (btnCopy) {
       btnCopy.onclick = () => {
-        if (textarea) {
-          navigator.clipboard.writeText(textarea.value);
-          this.showToast('Pitch copied to clipboard!', 'success');
-        }
-      };
-    }
-
-    const sendWaBtn = document.getElementById('modal-btn-send-wa');
-    if (sendWaBtn) {
-      sendWaBtn.onclick = () => {
-        const phoneOverride = dmPhoneInput ? dmPhoneInput.value.trim() : null;
-        this.dispatchSingleLead(lead.id, phoneOverride, 'whatsapp', textarea ? textarea.value : null);
-        modal.classList.remove('open');
-      };
-    }
-
-    const sendInstaBtn = document.getElementById('modal-btn-send-insta');
-    if (sendInstaBtn) {
-      sendInstaBtn.onclick = () => {
-        this.dispatchSingleLead(lead.id, null, 'instagram', textarea ? textarea.value : null);
-        modal.classList.remove('open');
+        const fullPitch = `Subject: ${subjectInput ? subjectInput.value : defaultSubject}\n\n${textarea ? textarea.value : defaultBody}`;
+        navigator.clipboard.writeText(fullPitch).then(() => {
+          this.showToast('📋 Full Gmail pitch copied to clipboard!', 'success');
+        }).catch(() => {
+          this.copyToClipboardFallback(fullPitch);
+          this.showToast('📋 Full Gmail pitch copied to clipboard!', 'success');
+        });
       };
     }
 
     const sendGmailBtn = document.getElementById('modal-btn-send-gmail');
     if (sendGmailBtn) {
       sendGmailBtn.onclick = () => {
-        this.dispatchSingleLead(lead.id, null, 'gmail', textarea ? textarea.value : null);
+        const to = encodeURIComponent(lead.email || '');
+        const su = encodeURIComponent(subjectInput ? subjectInput.value : defaultSubject);
+        const body = encodeURIComponent(textarea ? textarea.value : defaultBody);
+        window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${su}&body=${body}`, '_blank');
+        this.dispatchSingleLead(lead.id, null, 'gmail', textarea ? textarea.value : defaultBody);
+        this.showToast(`🚀 Opening Gmail compose for ${lead.businessName}!`, 'success');
         modal.classList.remove('open');
       };
     }
 
-    const sendAnyBtn = document.getElementById('modal-btn-bhejdo');
-    if (sendAnyBtn) {
-      sendAnyBtn.onclick = () => {
-        const phoneOverride = dmPhoneInput ? dmPhoneInput.value.trim() : null;
-        this.dispatchSingleLead(lead.id, phoneOverride, channel, textarea ? textarea.value : null);
+    const markPitchedBtn = document.getElementById('modal-btn-mark-pitched');
+    if (markPitchedBtn) {
+      markPitchedBtn.onclick = () => {
+        this.dispatchSingleLead(lead.id, null, 'gmail', textarea ? textarea.value : defaultBody);
+        this.showToast(`✅ ${lead.businessName} marked as pitched!`, 'success');
         modal.classList.remove('open');
       };
     }
 
     modal.classList.add('open');
+  },
+
+  copyProblemForAI(leadId) {
+    const lead = this.leads.find(l => l.id === leadId);
+    if (!lead) return;
+    const prompt = lead.aiVerificationPrompt || `Please analyze this business weakness:\nBusiness: ${lead.businessName} (${lead.city}, ${lead.country})\nProblem: ${lead.solidWeakPoint?.coreProblem || lead.flawTitle}\nEvidence: ${lead.solidWeakPoint?.evidence || lead.flawDescription}\nFinancial Leak: ${lead.flawLeakRange}\nQuestion: Is this a genuine high-priority problem for this business?`;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(prompt).then(() => {
+        this.showToast('📋 Problem prompt copied! Paste into ChatGPT or Claude to verify.', 'success');
+      }).catch(() => {
+        this.copyToClipboardFallback(prompt);
+        this.showToast('📋 Problem prompt copied! Paste into ChatGPT or Claude to verify.', 'success');
+      });
+    } else {
+      this.copyToClipboardFallback(prompt);
+      this.showToast('📋 Problem prompt copied! Paste into ChatGPT or Claude to verify.', 'success');
+    }
+  },
+
+  copyPitch(leadId) {
+    const lead = this.leads.find(l => l.id === leadId);
+    if (!lead) return;
+    const subject = (lead.gmailPitch && lead.gmailPitch.subject) || `Software Opportunity for ${lead.businessName}`;
+    const body = (lead.gmailPitch && lead.gmailPitch.body) || lead.dispatchedMessage || '';
+    const fullText = `Subject: ${subject}\n\n${body}`;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(fullText).then(() => {
+        this.showToast('📋 Gmail pitch copied to clipboard!', 'success');
+      }).catch(() => {
+        this.copyToClipboardFallback(fullText);
+        this.showToast('📋 Gmail pitch copied to clipboard!', 'success');
+      });
+    } else {
+      this.copyToClipboardFallback(fullText);
+      this.showToast('📋 Gmail pitch copied to clipboard!', 'success');
+    }
+  },
+
+  copyEmail(leadId) {
+    const lead = this.leads.find(l => l.id === leadId);
+    if (!lead || !lead.email) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(lead.email).then(() => {
+        this.showToast(`📋 Copied email: ${lead.email}`, 'info');
+      }).catch(() => {
+        this.copyToClipboardFallback(lead.email);
+        this.showToast(`📋 Copied email: ${lead.email}`, 'info');
+      });
+    } else {
+      this.copyToClipboardFallback(lead.email);
+      this.showToast(`📋 Copied email: ${lead.email}`, 'info');
+    }
+  },
+
+  openInGmail(leadId) {
+    const lead = this.leads.find(l => l.id === leadId);
+    if (!lead) return;
+    const to = encodeURIComponent(lead.email || '');
+    const subject = encodeURIComponent((lead.gmailPitch && lead.gmailPitch.subject) || `Operational Opportunity for ${lead.businessName}`);
+    const body = encodeURIComponent((lead.gmailPitch && lead.gmailPitch.body) || lead.dispatchedMessage || '');
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${body}`;
+    window.open(gmailUrl, '_blank');
+    this.dispatchSingleLead(lead.id, null, 'gmail', lead.gmailPitch?.body);
+    this.showToast(`🚀 Opening Gmail compose for ${lead.businessName}!`, 'success');
+  },
+
+  copyToClipboardFallback(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+    } catch (e) {}
+    document.body.removeChild(ta);
+  },
+
+  filterByCountry(country) {
+    this.currentCountryFilter = country || 'ALL';
+    document.querySelectorAll('.country-tab-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.country === this.currentCountryFilter);
+    });
+    this.runTableFilters();
+  },
+
+  filterByCity(city) {
+    this.currentCityFilter = city || 'ALL';
+    document.querySelectorAll('.city-chip').forEach(chip => {
+      chip.classList.toggle('active', chip.dataset.city === this.currentCityFilter);
+    });
+    this.runTableFilters();
+  },
+
+  runTableFilters() {
+    let list = [...this.leads];
+    if (this.currentCountryFilter && this.currentCountryFilter !== 'ALL') {
+      const cf = this.currentCountryFilter.toLowerCase();
+      list = list.filter(l => (l.country && l.country.toLowerCase().includes(cf)) || (l.address && l.address.toLowerCase().includes(cf)));
+    }
+    if (this.currentCityFilter && this.currentCityFilter !== 'ALL') {
+      const ctf = this.currentCityFilter.toLowerCase();
+      list = list.filter(l => (l.city && l.city.toLowerCase().includes(ctf)) || (l.address && l.address.toLowerCase().includes(ctf)));
+    }
+    if (this.currentSearchQuery) {
+      const q = this.currentSearchQuery.toLowerCase();
+      list = list.filter(l => {
+        return (l.businessName && l.businessName.toLowerCase().includes(q)) ||
+               (l.city && l.city.toLowerCase().includes(q)) ||
+               (l.country && l.country.toLowerCase().includes(q)) ||
+               (l.email && l.email.toLowerCase().includes(q)) ||
+               (l.phone && l.phone.includes(q)) ||
+               (l.decisionMaker && l.decisionMaker.toLowerCase().includes(q)) ||
+               (l.flawTitle && l.flawTitle.toLowerCase().includes(q)) ||
+               (l.solidWeakPoint && l.solidWeakPoint.coreProblem && l.solidWeakPoint.coreProblem.toLowerCase().includes(q)) ||
+               (l.googlePlaceId && l.googlePlaceId.toLowerCase().includes(q));
+      });
+    }
+    const sortVal = document.getElementById('table-sort-filter')?.value || 'reply_chance';
+    this.filteredLeads = this.sortLeads(list, sortVal);
+    this.renderTable();
   },
 
   // ========================================================
@@ -1996,20 +2041,23 @@ const App = {
     const c = String(lead.country || '').toLowerCase();
     const city = String(lead.city || '').toLowerCase();
 
-    if (c.includes('usa') || c.includes('united states') || city.includes('austin') || city.includes('new york')) {
+    if (c.includes('usa') || c.includes('united states') || city.includes('austin') || city.includes('new york') || city.includes('miami') || city.includes('chicago')) {
       return 'USA';
     }
-    if (c.includes('emirates') || c.includes('uae') || city.includes('dubai') || city.includes('abu dhabi')) {
-      return 'UAE';
-    }
-    if (c.includes('united kingdom') || c.includes('uk') || city.includes('london')) {
+    if (c.includes('united kingdom') || c.includes('uk') || city.includes('london') || city.includes('manchester') || city.includes('edinburgh')) {
       return 'UK';
     }
-    if (c.includes('saudi') || c.includes('ksa') || city.includes('riyadh')) {
-      return 'Saudi';
+    if (c.includes('kuwait') || city.includes('kuwait city') || city.includes('salmiya') || city.includes('al ahmadi')) {
+      return 'Kuwait';
     }
-    if (c.includes('pakistan') || city.includes('karachi') || city.includes('lahore') || city.includes('islamabad')) {
-      return 'Pakistan';
+    if (c.includes('canada') || city.includes('toronto') || city.includes('vancouver') || city.includes('montreal') || city.includes('calgary')) {
+      return 'Canada';
+    }
+    if (c.includes('oman') || city.includes('muscat') || city.includes('salalah')) {
+      return 'Oman';
+    }
+    if (c.includes('bahrain') || city.includes('manama') || city.includes('muharraq')) {
+      return 'Bahrain';
     }
     return 'Other';
   },
@@ -2029,13 +2077,14 @@ const App = {
           });
         }
 
-        // Worldwide Multi-Region View: Interleave high-reply leads across global markets
+        // Worldwide Multi-Region View: Interleave high-reply leads across 6 countries
         const buckets = {
           'USA': [],
-          'UAE': [],
           'UK': [],
-          'Saudi': [],
-          'Pakistan': [],
+          'Kuwait': [],
+          'Canada': [],
+          'Oman': [],
+          'Bahrain': [],
           'Other': []
         };
 
@@ -2054,8 +2103,8 @@ const App = {
           });
         });
 
-        // Round-robin rotation: USA ➔ UAE ➔ UK ➔ Saudi ➔ Pakistan ➔ Other
-        const rotation = ['USA', 'UAE', 'UK', 'Saudi', 'Pakistan', 'Other'].filter(k => buckets[k].length > 0);
+        // Round-robin rotation across 6 countries: USA ➔ UK ➔ Kuwait ➔ Canada ➔ Oman ➔ Bahrain ➔ Other
+        const rotation = ['USA', 'UK', 'Kuwait', 'Canada', 'Oman', 'Bahrain', 'Other'].filter(k => buckets[k].length > 0);
         const result = [];
         const maxLen = Math.max(...rotation.map(k => buckets[k].length));
 
@@ -2093,43 +2142,21 @@ const App = {
 
     const list = this.filteredLeads && this.filteredLeads.length > 0 ? this.filteredLeads : this.leads;
 
-    tbody.innerHTML = list.slice(0, 50).map((lead, idx) => this.renderLeadTableRow(lead, idx)).join('');
+    tbody.innerHTML = list.map((lead, idx) => this.renderLeadTableRow(lead, idx)).join('');
     if (cardsContainer) {
-      cardsContainer.innerHTML = list.slice(0, 50).map((lead, idx) => this.renderLeadCard(lead, idx)).join('');
+      cardsContainer.innerHTML = list.map((lead, idx) => this.renderLeadCard(lead, idx)).join('');
     }
   },
 
   renderLeadTableRow(lead, idx) {
-    const isMobileWA = this.isRealMobileWhatsApp(lead);
-    let bestChannel = lead.recommendedPitchChannel || lead.channel || 'gmail';
-    if (bestChannel === 'whatsapp' && !isMobileWA) {
-      bestChannel = (lead.contactInfo && lead.contactInfo.instagramHandle) ? 'instagram' : 'gmail';
-    }
-
     const exactMaps = this.getExactMapsUrl(lead);
     const isDispatched = lead.status === 'dispatched' || lead.crmStatus === 'sent' || lead.batchPitched;
     const replyMeta = this.calculateReplyScore(lead);
-
-    let heroActionBtn = '';
-    if (bestChannel === 'whatsapp') {
-      heroActionBtn = `
-        <button class="btn-hero-action wa" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.78rem; box-shadow: 0 0 12px rgba(37, 211, 102, 0.35); width: 100%;" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')" title="1-Tap Direct WhatsApp Chat">
-          <span>⚡</span> <span>WhatsApp</span>
-        </button>
-      `;
-    } else if (bestChannel === 'instagram') {
-      heroActionBtn = `
-        <button class="btn-hero-action insta" style="background: linear-gradient(135deg, rgba(225, 48, 108, 0.9), rgba(131, 58, 180, 0.9)); color: #fff; font-weight: 800; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.78rem; width: 100%;" onclick="App.dispatchSingleLead('${lead.id}', null, 'instagram')" title="1-Tap Copy Pitch & Open Instagram DM">
-          <span>⚡</span> <span>Insta DM</span>
-        </button>
-      `;
-    } else {
-      heroActionBtn = `
-        <button class="btn-hero-action gmail" style="background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); color: #fff; font-weight: 800; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.78rem; width: 100%;" onclick="App.dispatchSingleLead('${lead.id}', null, 'gmail')" title="1-Tap Open Gmail with Tailored Pitch">
-          <span>⚡</span> <span>Gmail</span>
-        </button>
-      `;
-    }
+    const solidWp = lead.solidWeakPoint || {
+      coreProblem: lead.flawTitle || 'Aggregator Commission Bleed',
+      financialLeak: lead.flawLeakRange || '$2,800 - $4,200/mo',
+      whySolid: lead.flawDescription || 'Paying 28-30% aggregator cut without a direct online portal.'
+    };
 
     return `
       <tr data-lead-id="${lead.id}">
@@ -2142,45 +2169,49 @@ const App = {
           </div>
           <div style="font-weight: 800; color: #fff; font-size: 0.94rem;">${lead.businessName}</div>
           <div style="font-size: 0.74rem; color: #94a3b8; margin: 2px 0;">📍 ${lead.address || (lead.city + ', ' + lead.country)}</div>
-          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-            <span style="font-size: 0.70rem; color: #38bdf8; font-family: 'JetBrains Mono', monospace;">ID: ${lead.googlePlaceId ? lead.googlePlaceId.slice(0, 16) + '...' : 'Verified'}</span>
-            <a href="${exactMaps}" target="_blank" rel="noopener noreferrer" style="font-size: 0.70rem; color: #38bdf8; font-weight: 700; text-decoration: none;">🗺️ Open Google Maps ↗</a>
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 3px;">
+            <span style="font-size: 0.68rem; color: #38bdf8; font-family: 'JetBrains Mono', monospace;">ID: ${lead.googlePlaceId ? lead.googlePlaceId.slice(0, 16) + '...' : 'Verified'}</span>
+            <a href="${exactMaps}" target="_blank" rel="noopener noreferrer" style="font-size: 0.70rem; color: #38bdf8; font-weight: 700; text-decoration: none;">🗺️ Maps ↗</a>
+            ${lead.website ? `<a href="${lead.website}" target="_blank" rel="noopener noreferrer" style="font-size: 0.70rem; color: #94a3b8; text-decoration: none;">🌐 Web ↗</a>` : ''}
           </div>
         </td>
         <td>
           <div style="font-size: 0.82rem; color: #cbd5e1;">👤 <strong>${lead.decisionMaker || 'Owner'}</strong> <span style="font-size: 0.72rem; color: #94a3b8;">(${lead.decisionMakerTitle || 'Principal'})</span></div>
-          <div style="font-size: 0.76rem; color: #cbd5e1; margin-top: 3px;">📞 ${lead.phone || 'N/A'}</div>
-          ${lead.website ? `<div style="font-size: 0.72rem; color: #38bdf8;"><a href="${lead.website}" target="_blank" rel="noopener noreferrer">🌐 Website ↗</a></div>` : ''}
-        </td>
-        <td>
-          <div style="font-size: 0.82rem; font-weight: 700; color: #fca5a5; cursor: pointer;" onclick="App.openFlawModal('${lead.id}')">
-            ⚠️ ${lead.flawTitle || 'Mobile Checkout Bottleneck'}
+          <div style="display: flex; align-items: center; gap: 5px; margin-top: 5px;">
+            <a href="mailto:${lead.email}" style="font-size: 0.78rem; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-decoration: none;" title="Send Email">📧 ${lead.email}</a>
+            <button type="button" class="btn-copy-small" onclick="App.copyEmail('${lead.id}')" title="Copy Email" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; padding: 1px 5px; color: #cbd5e1; font-size: 0.68rem; cursor: pointer;">📋</button>
           </div>
-          <div style="font-size: 0.72rem; color: #f87171; margin-top: 2px;">💸 Leak: ${lead.flawLeakRange || '$2,400/mo'}</div>
+          <div style="font-size: 0.74rem; color: #94a3b8; margin-top: 3px;">📞 ${lead.phone || 'N/A'}</div>
         </td>
         <td>
-          <span class="nav-item-badge ${bestChannel === 'whatsapp' ? 'emerald' : bestChannel === 'instagram' ? 'cyan' : ''}">
-            ${bestChannel.toUpperCase()}
-          </span>
+          <div style="font-size: 0.82rem; font-weight: 700; color: #fca5a5; cursor: pointer;" onclick="App.openPitchModal('${lead.id}')" title="View Problem & Pitch">
+            ⚠️ ${solidWp.coreProblem}
+          </div>
+          <div style="font-size: 0.74rem; color: #f87171; font-weight: 700; margin-top: 2px;">💸 Leak: ${solidWp.financialLeak || lead.flawLeakRange || '$3,000/mo'}</div>
+          <div style="font-size: 0.70rem; color: #94a3b8; margin-top: 4px; line-height: 1.3;">
+            ${(solidWp.whySolid ? solidWp.whySolid.slice(0, 95) + '...' : '')}
+          </div>
         </td>
         <td>
           ${isDispatched
-            ? `<span style="background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 4px; font-size: 0.74rem; font-weight: 800;">🚀 PITCHED</span>`
-            : `<span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); padding: 3px 8px; border-radius: 4px; font-size: 0.74rem; font-weight: 700;">READY</span>`
+            ? `<span style="background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 4px 8px; border-radius: 4px; font-size: 0.74rem; font-weight: 800; display: inline-block;">🚀 PITCHED</span>`
+            : `<span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); padding: 4px 8px; border-radius: 4px; font-size: 0.74rem; font-weight: 700; display: inline-block;">READY</span>`
           }
         </td>
         <td>
-          <div style="display: flex; flex-direction: column; gap: 6px; min-width: 175px;">
-            ${heroActionBtn}
+          <div style="display: flex; flex-direction: column; gap: 6px; min-width: 190px;">
+            <button class="btn-hero-action gmail" style="background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); color: #fff; font-weight: 800; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.78rem; width: 100%; box-shadow: 0 0 10px rgba(239, 68, 68, 0.35);" onclick="App.openInGmail('${lead.id}')" title="1-Tap Open Gmail with Tailored Pitch">
+              <span>🚀</span> <span>Open in Gmail</span>
+            </button>
             <div style="display: flex; gap: 4px;">
-              <button class="btn-sec-action" style="flex: 1; padding: 5px 6px; font-size: 0.74rem; text-align: center;" onclick="App.openPitchModal('${lead.id}')" title="Preview & Edit Pitch">
+              <button class="btn-sec-action" style="flex: 1; padding: 5px 6px; font-size: 0.72rem; text-align: center;" onclick="App.openPitchModal('${lead.id}')" title="Inspect Pitch & Problem Details">
                 👁️ Pitch
               </button>
-              <button class="btn-sec-action" style="flex: 1; padding: 5px 6px; font-size: 0.74rem; text-align: center;" onclick="App.openFlawModal('${lead.id}')" title="Masla & Proof Audit">
-                🔍 Masla
+              <button class="btn-sec-action" style="flex: 1; padding: 5px 6px; font-size: 0.72rem; text-align: center;" onclick="App.copyPitch('${lead.id}')" title="Copy Full Cold Pitch">
+                📋 Pitch
               </button>
-              <button class="btn-sec-action" style="flex: 1; padding: 5px 6px; font-size: 0.74rem; text-align: center;" onclick="App.openProposalForLead('${lead.id}')" title="Software Proposal">
-                📄 Proposal
+              <button class="btn-sec-action" style="flex: 1; padding: 5px 6px; font-size: 0.72rem; text-align: center; color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);" onclick="App.copyProblemForAI('${lead.id}')" title="Copy problem prompt to verify in ChatGPT / Claude">
+                🤖 AI Audit
               </button>
             </div>
           </div>
@@ -2190,34 +2221,14 @@ const App = {
   },
 
   renderLeadCard(lead, idx) {
-    const isMobileWA = this.isRealMobileWhatsApp(lead);
-    let bestChannel = lead.recommendedPitchChannel || lead.channel || 'gmail';
-    if (bestChannel === 'whatsapp' && !isMobileWA) {
-      bestChannel = (lead.contactInfo && lead.contactInfo.instagramHandle) ? 'instagram' : 'gmail';
-    }
     const exactMaps = this.getExactMapsUrl(lead);
+    const isDispatched = lead.status === 'dispatched' || lead.crmStatus === 'sent' || lead.batchPitched;
     const replyMeta = this.calculateReplyScore(lead);
-
-    let heroActionBtn = '';
-    if (bestChannel === 'whatsapp') {
-      heroActionBtn = `
-        <button class="btn-primary" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; padding: 9px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.82rem; box-shadow: 0 0 12px rgba(37, 211, 102, 0.35); width: 100%;" onclick="App.dispatchSingleLead('${lead.id}', null, 'whatsapp')">
-          <span>⚡</span> <span>WhatsApp Bhejo</span>
-        </button>
-      `;
-    } else if (bestChannel === 'instagram') {
-      heroActionBtn = `
-        <button class="btn-primary" style="background: linear-gradient(135deg, rgba(225, 48, 108, 0.9), rgba(131, 58, 180, 0.9)); color: #fff; font-weight: 800; border: none; padding: 9px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.82rem; width: 100%;" onclick="App.dispatchSingleLead('${lead.id}', null, 'instagram')">
-          <span>⚡</span> <span>Insta DM Bhejo</span>
-        </button>
-      `;
-    } else {
-      heroActionBtn = `
-        <button class="btn-primary" style="background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); color: #fff; font-weight: 800; border: none; padding: 9px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.82rem; width: 100%;" onclick="App.dispatchSingleLead('${lead.id}', null, 'gmail')">
-          <span>⚡</span> <span>Gmail Bhejo</span>
-        </button>
-      `;
-    }
+    const solidWp = lead.solidWeakPoint || {
+      coreProblem: lead.flawTitle || 'Aggregator Commission Bleed',
+      financialLeak: lead.flawLeakRange || '$2,800 - $4,200/mo',
+      whySolid: lead.flawDescription || 'Paying 28-30% aggregator cut without a direct online portal.'
+    };
 
     return `
       <div class="lead-card glass-panel" style="padding: 16px; display: flex; flex-direction: column; gap: 10px;">
@@ -2232,22 +2243,39 @@ const App = {
             <div style="font-size: 0.96rem; font-weight: 800; color: #fff;">${lead.businessName}</div>
             <div style="font-size: 0.74rem; color: #94a3b8;">📍 ${lead.city}, ${lead.country}</div>
           </div>
-          <span class="nav-item-badge ${bestChannel === 'whatsapp' ? 'emerald' : ''}">${bestChannel.toUpperCase()}</span>
+          ${isDispatched
+            ? `<span style="background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 7px; border-radius: 4px; font-size: 0.70rem; font-weight: 800;">🚀 PITCHED</span>`
+            : `<span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); padding: 3px 7px; border-radius: 4px; font-size: 0.70rem; font-weight: 700;">READY</span>`
+          }
         </div>
-        <div style="font-size: 0.80rem; color: #cbd5e1;">👤 <strong>${lead.decisionMaker || 'Owner'}</strong> <span style="font-size: 0.72rem; color: #94a3b8;">(${lead.decisionMakerTitle || 'Principal'})</span></div>
-        <div style="font-size: 0.78rem; color: #fca5a5; font-weight: 700;">⚠️ ${lead.flawTitle || 'Mobile Checkout Bottleneck'}</div>
-        <div style="font-size: 0.72rem; color: #f87171;">💸 Leak: ${lead.flawLeakRange || '$2,400/mo'}</div>
+
+        <div style="font-size: 0.80rem; color: #cbd5e1;">
+          👤 <strong>${lead.decisionMaker || 'Owner'}</strong> <span style="font-size: 0.72rem; color: #94a3b8;">(${lead.decisionMakerTitle || 'Principal'})</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 6px; background: rgba(15, 23, 42, 0.5); padding: 6px 10px; border-radius: 6px;">
+          <a href="mailto:${lead.email}" style="font-size: 0.78rem; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-decoration: none;">📧 ${lead.email}</a>
+          <button type="button" class="btn-copy-small" onclick="App.copyEmail('${lead.id}')" title="Copy Email" style="margin-left: auto; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; padding: 1px 6px; color: #cbd5e1; font-size: 0.68rem; cursor: pointer;">📋</button>
+        </div>
+
+        <div style="border-left: 3px solid #f87171; padding-left: 8px; margin: 2px 0;">
+          <div style="font-size: 0.80rem; color: #fca5a5; font-weight: 700;">🚨 ${solidWp.coreProblem}</div>
+          <div style="font-size: 0.72rem; color: #f87171; font-weight: 700;">💸 Leak: ${solidWp.financialLeak || lead.flawLeakRange || '$3,000/mo'}</div>
+        </div>
+
         <div style="display: flex; flex-direction: column; gap: 6px; margin-top: auto;">
-          ${heroActionBtn}
-          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-            <button class="btn-sec-action" style="flex: 1; font-size: 0.76rem; padding: 7px 8px; text-align: center;" onclick="App.openPitchModal('${lead.id}')">
-              👁️ Pitch Preview
+          <button class="btn-primary" style="background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); color: #fff; font-weight: 800; border: none; padding: 9px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.82rem; width: 100%; box-shadow: 0 0 10px rgba(239, 68, 68, 0.35);" onclick="App.openInGmail('${lead.id}')">
+            <span>🚀</span> <span>Open in Gmail</span>
+          </button>
+          <div style="display: flex; gap: 4px;">
+            <button class="btn-sec-action" style="flex: 1; font-size: 0.74rem; padding: 6px 6px; text-align: center;" onclick="App.openPitchModal('${lead.id}')">
+              👁️ Pitch
             </button>
-            <button class="btn-sec-action" style="flex: 1; font-size: 0.76rem; padding: 7px 8px; text-align: center;" onclick="App.openFlawModal('${lead.id}')">
-              🔍 Masla
+            <button class="btn-sec-action" style="flex: 1; font-size: 0.74rem; padding: 6px 6px; text-align: center;" onclick="App.copyPitch('${lead.id}')">
+              📋 Pitch
             </button>
-            <button class="btn-sec-action" style="flex: 1; font-size: 0.76rem; padding: 7px 8px; text-align: center;" onclick="App.openProposalForLead('${lead.id}')">
-              📄 Proposal
+            <button class="btn-sec-action" style="flex: 1; font-size: 0.74rem; padding: 6px 6px; text-align: center; color: #38bdf8;" onclick="App.copyProblemForAI('${lead.id}')">
+              🤖 Copy for AI
             </button>
           </div>
         </div>
@@ -2258,89 +2286,41 @@ const App = {
   applyFilter(channel) {
     this.currentChannelFilter = channel;
     document.querySelectorAll('.channel-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === channel));
-
-    let base = [...this.leads];
-    if (channel === 'dispatched') {
-      base = base.filter(l => l.status === 'dispatched' || l.crmStatus === 'sent' || l.batchPitched);
-    } else if (channel === 'replied') {
-      base = base.filter(l => l.status === 'replied');
-    } else if (channel === 'followup') {
-      base = base.filter(l => l.status === 'followup_due' || (l.status === 'dispatched' && !l.followupPaused));
-    } else if (channel !== 'all') {
-      base = base.filter(l => (l.recommendedPitchChannel || l.channel) === channel);
-    }
-
-    const sortVal = document.getElementById('table-sort-filter')?.value || 'reply_chance';
-    this.filteredLeads = this.sortLeads(base, sortVal);
-    this.renderTable();
+    this.runTableFilters();
   },
 
   handleSearch(query) {
-    const sortVal = document.getElementById('table-sort-filter')?.value || 'reply_chance';
-    if (!query) {
-      this.filteredLeads = this.sortLeads([...this.leads], sortVal);
-    } else {
-      const q = query.toLowerCase();
-      const matched = this.leads.filter(l => {
-        return (l.businessName && l.businessName.toLowerCase().includes(q)) ||
-               (l.city && l.city.toLowerCase().includes(q)) ||
-               (l.phone && l.phone.includes(q)) ||
-               (l.decisionMaker && l.decisionMaker.toLowerCase().includes(q)) ||
-               (l.flawTitle && l.flawTitle.toLowerCase().includes(q)) ||
-               (l.googlePlaceId && l.googlePlaceId.toLowerCase().includes(q));
-      });
-      this.filteredLeads = this.sortLeads(matched, sortVal);
-    }
-    this.renderTable();
+    this.currentSearchQuery = query || '';
+    this.runTableFilters();
   },
 
   setupEventListeners() {
-    // City chips
-    document.querySelectorAll('.city-chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        document.querySelectorAll('.city-chip').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        const city = chip.dataset.city;
-        const sortVal = document.getElementById('table-sort-filter')?.value || 'reply_chance';
-        if (city === 'ALL') {
-          this.filteredLeads = this.sortLeads([...this.leads], sortVal);
-        } else {
-          const matched = this.leads.filter(l => l.city && l.city.toLowerCase().includes(city.toLowerCase()));
-          this.filteredLeads = this.sortLeads(matched, sortVal);
-        }
-        this.renderTable();
+    // 6 Country tabs
+    document.querySelectorAll('.country-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.filterByCountry(btn.dataset.country);
       });
     });
 
-    // Channel tabs
+    // City chips
+    document.querySelectorAll('.city-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        this.filterByCity(chip.dataset.city);
+      });
+    });
+
+    // Channel tabs (if present)
     document.querySelectorAll('.channel-tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         this.applyFilter(btn.dataset.filter);
       });
     });
 
-    // Table niche filter
-    const nicheFilter = document.getElementById('table-niche-filter');
-    if (nicheFilter) {
-      nicheFilter.addEventListener('change', (e) => {
-        const val = e.target.value;
-        if (val === 'all') {
-          this.filteredLeads = [...this.leads];
-        } else {
-          this.filteredLeads = this.leads.filter(l => l.niche === val);
-        }
-        this.renderTable();
-      });
-    }
-
     // Table sort filter
     const sortFilter = document.getElementById('table-sort-filter');
     if (sortFilter) {
-      sortFilter.addEventListener('change', (e) => {
-        const sortVal = e.target.value;
-        const currentList = (this.filteredLeads && this.filteredLeads.length > 0) ? this.filteredLeads : this.leads;
-        this.filteredLeads = this.sortLeads(currentList, sortVal);
-        this.renderTable();
+      sortFilter.addEventListener('change', () => {
+        this.runTableFilters();
       });
     }
 

@@ -386,21 +386,23 @@ class SoftHunterHandler(SimpleHTTPRequestHandler):
             )
 
             if is_global_multi_market:
-                # Interleave leads across global regions: USA ➔ UAE ➔ UK ➔ Saudi ➔ Pakistan
-                buckets = {'USA': [], 'UAE': [], 'UK': [], 'Saudi': [], 'Pakistan': [], 'Other': []}
+                # Interleave leads across 6 countries: USA ➔ UK ➔ Kuwait ➔ Canada ➔ Oman ➔ Bahrain
+                buckets = {'USA': [], 'UK': [], 'Kuwait': [], 'Canada': [], 'Oman': [], 'Bahrain': [], 'Other': []}
                 for item in filtered:
                     c = str(item.get('country') or '').lower()
                     ct = str(item.get('city') or '').lower()
-                    if 'usa' in c or 'united states' in c or 'austin' in ct or 'new york' in ct:
+                    if 'usa' in c or 'united states' in c or any(k in ct for k in ['austin', 'new york', 'miami', 'chicago']):
                         buckets['USA'].append(item)
-                    elif 'emirates' in c or 'uae' in c or 'dubai' in ct or 'abu dhabi' in ct:
-                        buckets['UAE'].append(item)
-                    elif 'united kingdom' in c or 'uk' in c or 'london' in ct:
+                    elif 'united kingdom' in c or 'uk' in c or any(k in ct for k in ['london', 'manchester', 'edinburgh']):
                         buckets['UK'].append(item)
-                    elif 'saudi' in c or 'ksa' in c or 'riyadh' in ct:
-                        buckets['Saudi'].append(item)
-                    elif 'pakistan' in c or any(k in ct for k in ['karachi', 'lahore', 'islamabad']):
-                        buckets['Pakistan'].append(item)
+                    elif 'kuwait' in c or any(k in ct for k in ['kuwait city', 'salmiya', 'al ahmadi']):
+                        buckets['Kuwait'].append(item)
+                    elif 'canada' in c or any(k in ct for k in ['toronto', 'vancouver', 'montreal', 'calgary']):
+                        buckets['Canada'].append(item)
+                    elif 'oman' in c or any(k in ct for k in ['muscat', 'salalah']):
+                        buckets['Oman'].append(item)
+                    elif 'bahrain' in c or any(k in ct for k in ['manama', 'muharraq']):
+                        buckets['Bahrain'].append(item)
                     else:
                         buckets['Other'].append(item)
 
@@ -408,7 +410,7 @@ class SoftHunterHandler(SimpleHTTPRequestHandler):
                     buckets[k].sort(key=lambda x: (x.get('replyProbabilityScore', 50), int(x.get('reviews') or 0)), reverse=True)
 
                 interleaved = []
-                rotation = [k for k in ['USA', 'UAE', 'UK', 'Saudi', 'Pakistan', 'Other'] if buckets[k]]
+                rotation = [k for k in ['USA', 'UK', 'Kuwait', 'Canada', 'Oman', 'Bahrain', 'Other'] if buckets[k]]
                 max_len = max(len(buckets[k]) for k in rotation) if rotation else 0
                 for i in range(max_len):
                     for r in rotation:
