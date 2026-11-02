@@ -396,6 +396,34 @@ const App = {
     if (kpiDispatched) kpiDispatched.textContent = uniquePitched;
     if (kpiReplies) kpiReplies.textContent = repliesCount;
 
+    // Top Pitch Button & Overview Action
+    const btnTopPitch = document.getElementById('btn-top-pitch-leads');
+    if (btnTopPitch) btnTopPitch.innerHTML = `<span>⚡</span> Pitch Leads (${total})`;
+
+    // Update 6-Country Tab Badges
+    const allCount = this.leads.length;
+    const usCount = this.leads.filter(l => this.getLeadRegion(l) === 'USA').length;
+    const ukCount = this.leads.filter(l => this.getLeadRegion(l) === 'UK').length;
+    const kwCount = this.leads.filter(l => this.getLeadRegion(l) === 'Kuwait').length;
+    const caCount = this.leads.filter(l => this.getLeadRegion(l) === 'Canada').length;
+    const omCount = this.leads.filter(l => this.getLeadRegion(l) === 'Oman').length;
+    const bhCount = this.leads.filter(l => this.getLeadRegion(l) === 'Bahrain').length;
+
+    const btnAll = document.querySelector('.country-tab-btn[data-country="ALL"]');
+    if (btnAll) btnAll.textContent = `🌐 All Leads (${allCount})`;
+    const btnUS = document.querySelector('.country-tab-btn[data-country="United States"]');
+    if (btnUS) btnUS.textContent = `🇺🇸 United States (${usCount})`;
+    const btnUK = document.querySelector('.country-tab-btn[data-country="United Kingdom"]');
+    if (btnUK) btnUK.textContent = `🇬🇧 United Kingdom (${ukCount})`;
+    const btnKW = document.querySelector('.country-tab-btn[data-country="Kuwait"]');
+    if (btnKW) btnKW.textContent = `🇰🇼 Kuwait (${kwCount})`;
+    const btnCA = document.querySelector('.country-tab-btn[data-country="Canada"]');
+    if (btnCA) btnCA.textContent = `🇨🇦 Canada (${caCount})`;
+    const btnOM = document.querySelector('.country-tab-btn[data-country="Oman"]');
+    if (btnOM) btnOM.textContent = `🇴🇲 Oman (${omCount})`;
+    const btnBH = document.querySelector('.country-tab-btn[data-country="Bahrain"]');
+    if (btnBH) btnBH.textContent = `🇧🇭 Bahrain (${bhCount})`;
+
     // Batch Hero updates
     if (window.BatchManager) {
       const activeBatch = window.BatchManager.getActiveBatch();
@@ -2039,24 +2067,25 @@ const App = {
   getLeadRegion(lead) {
     if (!lead) return 'Other';
     const c = String(lead.country || '').toLowerCase();
+    const code = String(lead.countryCode || '').toUpperCase();
     const city = String(lead.city || '').toLowerCase();
 
-    if (c.includes('usa') || c.includes('united states') || city.includes('austin') || city.includes('new york') || city.includes('miami') || city.includes('chicago')) {
+    if (code === 'US' || c.includes('usa') || c.includes('united states') || city.includes('austin') || city.includes('new york') || city.includes('miami') || city.includes('chicago') || city.includes('los angeles') || city.includes('houston') || city.includes('boston') || city.includes('seattle') || city.includes('san francisco') || city.includes('dallas')) {
       return 'USA';
     }
-    if (c.includes('united kingdom') || c.includes('uk') || city.includes('london') || city.includes('manchester') || city.includes('edinburgh')) {
+    if (code === 'GB' || code === 'UK' || c.includes('united kingdom') || c.includes('uk') || city.includes('london') || city.includes('manchester') || city.includes('birmingham') || city.includes('edinburgh') || city.includes('glasgow') || city.includes('liverpool') || city.includes('leeds') || city.includes('bristol')) {
       return 'UK';
     }
-    if (c.includes('kuwait') || city.includes('kuwait city') || city.includes('salmiya') || city.includes('al ahmadi')) {
+    if (code === 'KW' || c.includes('kuwait') || city.includes('kuwait city') || city.includes('salmiya') || city.includes('hawally') || city.includes('al ahmadi') || city.includes('shuwaikh') || city.includes('farwaniya') || city.includes('sabah al salem')) {
       return 'Kuwait';
     }
-    if (c.includes('canada') || city.includes('toronto') || city.includes('vancouver') || city.includes('montreal') || city.includes('calgary')) {
+    if (code === 'CA' || c.includes('canada') || city.includes('toronto') || city.includes('vancouver') || city.includes('montreal') || city.includes('calgary') || city.includes('ottawa') || city.includes('edmonton')) {
       return 'Canada';
     }
-    if (c.includes('oman') || city.includes('muscat') || city.includes('salalah')) {
+    if (code === 'OM' || c.includes('oman') || city.includes('muscat') || city.includes('salalah') || city.includes('sohar') || city.includes('nizwa') || city.includes('seeb')) {
       return 'Oman';
     }
-    if (c.includes('bahrain') || city.includes('manama') || city.includes('muharraq')) {
+    if (code === 'BH' || c.includes('bahrain') || city.includes('manama') || city.includes('muharraq') || city.includes('riffa') || city.includes('saar') || city.includes('seef')) {
       return 'Bahrain';
     }
     return 'Other';

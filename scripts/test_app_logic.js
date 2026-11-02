@@ -98,8 +98,8 @@ for (var i = 0; i < 6; i++) {
 App.currentCountryFilter = 'Kuwait';
 App.runTableFilters();
 print("Filtered for Kuwait: " + App.filteredLeads.length + " leads");
-if (App.filteredLeads.length !== 10) {
-  print("❌ FAIL: Expected 10 Kuwait leads, got " + App.filteredLeads.length);
+if (App.filteredLeads.length !== 45) {
+  print("❌ FAIL: Expected 45 Kuwait leads, got " + App.filteredLeads.length);
   quit(1);
 }
 
@@ -107,9 +107,17 @@ App.currentCountryFilter = 'ALL';
 App.currentCityFilter = 'London';
 App.runTableFilters();
 print("Filtered for London: " + App.filteredLeads.length + " leads");
-if (App.filteredLeads.length < 3) {
-  print("❌ FAIL: Expected London leads, got " + App.filteredLeads.length);
+if (App.filteredLeads.length !== 15) {
+  print("❌ FAIL: Expected 15 London leads, got " + App.filteredLeads.length);
   quit(1);
 }
 
-print("\n✅ APP LOGIC FULLY VERIFIED!");
+App.currentCityFilter = 'ALL';
+App.runTableFilters();
+print("Total unfiltered leads: " + App.filteredLeads.length);
+if (App.filteredLeads.length !== 305) {
+  print("❌ FAIL: Expected 305 leads, got " + App.filteredLeads.length);
+  quit(1);
+}
+
+print("\n✅ ALL 305 LEADS & APP LOGIC FULLY VERIFIED!");

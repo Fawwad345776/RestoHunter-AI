@@ -54,7 +54,7 @@
               <a href="#all-businesses" class="sidebar-nav-item active" data-view="all-businesses">
                 <span class="nav-item-icon">📧</span>
                 <span class="nav-item-label">Verified Leads (6 Countries)</span>
-                <span class="nav-item-badge emerald" id="sidebar-total-leads-badge">62</span>
+                <span class="nav-item-badge emerald" id="sidebar-total-leads-badge">305</span>
               </a>
             </li>
             <li>
@@ -230,8 +230,8 @@
           </div>
 
           <!-- Main Pitch Leads Button -->
-          <button id="btn-top-pitch-leads" class="btn-primary" style="height: 38px; padding: 0 16px; font-size: 0.82rem; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #000; font-weight: 800; border: none; box-shadow: 0 0 14px rgba(37, 211, 102, 0.4); display: inline-flex; align-items: center; gap: 6px;" onclick="App.switchView('all-businesses')" title="Open Leads & Start Pitching">
-            <span>⚡</span> Pitch Leads (324)
+          <button id="btn-top-pitch-leads" class="btn-primary" style="height: 38px; padding: 0 16px; font-size: 0.82rem; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #fff; font-weight: 800; border: none; box-shadow: 0 0 14px rgba(239, 68, 68, 0.4); display: inline-flex; align-items: center; gap: 6px;" onclick="App.switchView('all-businesses')" title="Open Leads & Start Pitching">
+            <span>⚡</span> Pitch Leads (305)
           </button>
 
           <!-- Add Real Lead Quick Action -->
@@ -266,7 +266,7 @@
             </div>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
               <button class="btn-primary" onclick="App.switchView('all-businesses')" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #fff; font-weight: 800; border: none; box-shadow: 0 0 16px rgba(239, 68, 68, 0.45); font-size: 0.88rem; padding: 10px 18px; display: inline-flex; align-items: center; gap: 7px;">
-                <span>📧</span> Pitch Leads (62 Verified Leads)
+                <span>📧</span> Pitch Leads (305 Verified Leads)
               </button>
               <button class="btn-secondary" onclick="App.switchView('dispatched-leads')">
                 <span>🚀</span> Pitched Emails
@@ -321,14 +321,14 @@
             <div class="metric-card glass-panel" onclick="App.switchView('all-businesses')" style="cursor: pointer;">
               <div class="metric-icon-box emerald">🎯</div>
               <div class="metric-details">
-                <span id="kpi-total-discovered" class="metric-value">324</span>
+                <span id="kpi-total-discovered" class="metric-value">305</span>
                 <span class="metric-label">Businesses in Database</span>
               </div>
             </div>
             <div class="metric-card glass-panel" onclick="App.switchView('verified-leads')" style="cursor: pointer;">
               <div class="metric-icon-box cyan">🛡️</div>
               <div class="metric-details">
-                <span id="kpi-verified-leads" class="metric-value">324</span>
+                <span id="kpi-verified-leads" class="metric-value">305</span>
                 <span class="metric-label">Google Maps Verified (100%)</span>
               </div>
             </div>
@@ -356,11 +356,11 @@
                   <span>🔥</span> Top Priority Outreach Queue (Highest Reply Likelihood)
                 </h3>
                 <p style="font-size: 0.78rem; color: #94a3b8; margin: 4px 0 0 0;">
-                  Worldwide Priority Queue: Agar koi specific city/country filter na ho, to system automatically all over the world (USA 🇺🇸, UAE 🇦🇪, UK 🇬🇧, Saudi Arabia 🇸🇦, Pakistan 🇵🇰) ke top high-reply businesses ko balanced sequence me dikhata hai.
+                  Worldwide Priority Queue: System automatically rotates high-reply businesses across all 6 countries (USA 🇺🇸, UK 🇬🇧, Kuwait 🇰🇼, Canada 🇨🇦, Oman 🇴🇲, Bahrain 🇧🇭) in balanced sequence.
                 </p>
               </div>
               <button class="btn-sec-action" onclick="App.switchView('all-businesses')" style="font-size: 0.80rem;">
-                View All Sequenced Leads (324) ➔
+                View All Sequenced Leads (305) ➔
               </button>
             </div>
             <div id="overview-priority-queue-cards" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px;">
@@ -569,28 +569,31 @@
 
           <!-- 6 Country Filter Tabs -->
           <div class="country-tabs-group" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">
-            <button class="country-tab-btn active" data-country="ALL" onclick="App.filterByCountry('ALL')">🌐 All Leads (62)</button>
-            <button class="country-tab-btn" data-country="United States" onclick="App.filterByCountry('United States')">🇺🇸 United States (15)</button>
-            <button class="country-tab-btn" data-country="United Kingdom" onclick="App.filterByCountry('United Kingdom')">🇬🇧 United Kingdom (10)</button>
-            <button class="country-tab-btn" data-country="Kuwait" onclick="App.filterByCountry('Kuwait')">🇰🇼 Kuwait (10)</button>
-            <button class="country-tab-btn" data-country="Canada" onclick="App.filterByCountry('Canada')">🇨🇦 Canada (10)</button>
-            <button class="country-tab-btn" data-country="Oman" onclick="App.filterByCountry('Oman')">🇴🇲 Oman (9)</button>
-            <button class="country-tab-btn" data-country="Bahrain" onclick="App.filterByCountry('Bahrain')">🇧🇭 Bahrain (8)</button>
+            <button class="country-tab-btn active" data-country="ALL" onclick="App.filterByCountry('ALL')">🌐 All Leads (305)</button>
+            <button class="country-tab-btn" data-country="United States" onclick="App.filterByCountry('United States')">🇺🇸 United States (70)</button>
+            <button class="country-tab-btn" data-country="United Kingdom" onclick="App.filterByCountry('United Kingdom')">🇬🇧 United Kingdom (60)</button>
+            <button class="country-tab-btn" data-country="Kuwait" onclick="App.filterByCountry('Kuwait')">🇰🇼 Kuwait (45)</button>
+            <button class="country-tab-btn" data-country="Canada" onclick="App.filterByCountry('Canada')">🇨🇦 Canada (55)</button>
+            <button class="country-tab-btn" data-country="Oman" onclick="App.filterByCountry('Oman')">🇴🇲 Oman (40)</button>
+            <button class="country-tab-btn" data-country="Bahrain" onclick="App.filterByCountry('Bahrain')">🇧🇭 Bahrain (35)</button>
           </div>
 
           <!-- Quick Cities Bar (6 Countries) -->
           <div class="quick-cities-bar" style="margin-bottom: 18px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
             <span class="quick-cities-label" style="font-size: 0.76rem; color: #94a3b8; font-weight: 700;">Filter City:</span>
             <button class="city-chip active" data-city="ALL" onclick="App.filterByCity('ALL')">All Cities 🌐</button>
-            <button class="city-chip" data-city="Austin" onclick="App.filterByCity('Austin')">Austin 🇺🇸</button>
             <button class="city-chip" data-city="New York" onclick="App.filterByCity('New York')">New York 🇺🇸</button>
-            <button class="city-chip" data-city="Miami" onclick="App.filterByCity('Miami')">Miami 🇺🇸</button>
+            <button class="city-chip" data-city="Los Angeles" onclick="App.filterByCity('Los Angeles')">Los Angeles 🇺🇸</button>
             <button class="city-chip" data-city="Chicago" onclick="App.filterByCity('Chicago')">Chicago 🇺🇸</button>
+            <button class="city-chip" data-city="Miami" onclick="App.filterByCity('Miami')">Miami 🇺🇸</button>
+            <button class="city-chip" data-city="Austin" onclick="App.filterByCity('Austin')">Austin 🇺🇸</button>
             <button class="city-chip" data-city="London" onclick="App.filterByCity('London')">London 🇬🇧</button>
             <button class="city-chip" data-city="Manchester" onclick="App.filterByCity('Manchester')">Manchester 🇬🇧</button>
+            <button class="city-chip" data-city="Birmingham" onclick="App.filterByCity('Birmingham')">Birmingham 🇬🇧</button>
             <button class="city-chip" data-city="Edinburgh" onclick="App.filterByCity('Edinburgh')">Edinburgh 🇬🇧</button>
             <button class="city-chip" data-city="Kuwait City" onclick="App.filterByCity('Kuwait City')">Kuwait City 🇰🇼</button>
             <button class="city-chip" data-city="Salmiya" onclick="App.filterByCity('Salmiya')">Salmiya 🇰🇼</button>
+            <button class="city-chip" data-city="Hawally" onclick="App.filterByCity('Hawally')">Hawally 🇰🇼</button>
             <button class="city-chip" data-city="Toronto" onclick="App.filterByCity('Toronto')">Toronto 🇨🇦</button>
             <button class="city-chip" data-city="Vancouver" onclick="App.filterByCity('Vancouver')">Vancouver 🇨🇦</button>
             <button class="city-chip" data-city="Montreal" onclick="App.filterByCity('Montreal')">Montreal 🇨🇦</button>
@@ -599,6 +602,8 @@
             <button class="city-chip" data-city="Salalah" onclick="App.filterByCity('Salalah')">Salalah 🇴🇲</button>
             <button class="city-chip" data-city="Manama" onclick="App.filterByCity('Manama')">Manama 🇧🇭</button>
             <button class="city-chip" data-city="Muharraq" onclick="App.filterByCity('Muharraq')">Muharraq 🇧🇭</button>
+            <button class="city-chip" data-city="Riffa" onclick="App.filterByCity('Riffa')">Riffa 🇧🇭</button>
+            <button class="city-chip" data-city="Saar" onclick="App.filterByCity('Saar')">Saar 🇧🇭</button>
           </div>
 
           <!-- Simple Toolbar: Search, Sort & View Mode -->
