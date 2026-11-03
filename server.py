@@ -27,10 +27,35 @@ from threading import Timer
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'scripts'))
 from outreach_engine import engine as outreach_engine
 
-PORT = 8765
+import base64
+import smtplib
+import shutil
+import hmac
+
+# Cloud (Railway) sets PORT; locally we keep 8765 on loopback only.
+IS_CLOUD = bool(os.environ.get('PORT'))
+PORT = int(os.environ.get('PORT', 8765))
+HOST = '0.0.0.0' if IS_CLOUD else '127.0.0.1'
+# Optional login for the public deployment (HTTP Basic Auth, any username).
+APP_PASSWORD = os.environ.get('APP_PASSWORD', '')
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(BASE_DIR, 'data')
+REPO_DATA_DIR = os.path.join(BASE_DIR, 'data')
+# DATA_DIR can point at a persistent volume (e.g. /data on Railway).
+DATA_DIR = os.environ.get('DATA_DIR') or REPO_DATA_DIR
 os.makedirs(DATA_DIR, exist_ok=True)
+if os.path.abspath(DATA_DIR) != os.path.abspath(REPO_DATA_DIR):
+    # Seed the volume with the repo's data files on first boot only (never overwrite).
+    for _name in os.listdir(REPO_DATA_DIR):
+        _src = os.path.join(REPO_DATA_DIR, _name)
+        _dst = os.path.join(DATA_DIR, _name)
+        if os.path.isfile(_src) and not os.path.exists(_dst):
+            shutil.copy2(_src, _dst)
+
+# Files that must never be served as static content.
+BLOCKED_STATIC = ('/config.json', '/server.py', '/scripts', '/.git', '/.env', '/.github',
+                  '/push_to_github.command', '/start.command', '/__pycache__', '/data/outreach_state.json')
+MASKED_PASSWORD = '••••••••••••••••'
 
 SETTINGS_FILE = os.path.join(DATA_DIR, 'settings.json')
 LEADS_FILE = os.path.join(DATA_DIR, 'leads.json')
@@ -89,6 +114,36 @@ class SoftHunterHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=BASE_DIR, **kwargs)
 
+    def _check_auth(self, path):
+        """Returns True if the request may proceed; otherwise sends 401/404."""
+        if any(path == b or path.startswith(b + '/') for b in BLOCKED_STATIC):
+            self.send_error(404, "Not found")
+            return False
+        # Email open-tracking pixel must stay public (loaded by recipients' mail apps).
+        if not APP_PASSWORD or path.startswith('/api/track/'):
+            return True
+        header = self.headers.get('Authorization', '')
+        if header.startswith('Basic '):
+            try:
+                _, _, pw = base64.b64decode(header[6:]).decode('utf-8').partition(':')
+                if hmac.compare_digest(pw, APP_PASSWORD):
+                    return True
+            except Exception:
+                pass
+        self.send_response(401)
+        self.send_header('WWW-Authenticate', 'Basic realm="RestoHunter AI"')
+        self.send_header('Content-Length', '0')
+        self.end_headers()
+        return False
+
+    def translate_path(self, path):
+        # Serve /data/* from DATA_DIR (persistent volume in the cloud).
+        clean = urllib.parse.urlparse(path).path
+        if clean.startswith('/data/'):
+            name = os.path.basename(urllib.parse.unquote(clean))
+            return os.path.join(DATA_DIR, name)
+        return super().translate_path(path)
+
     def _send_json(self, data, status=200):
         body = json.dumps(data, ensure_ascii=False).encode('utf-8')
         self.send_response(status)
@@ -109,6 +164,8 @@ class SoftHunterHandler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
+        if not self._check_auth(parsed.path):
+            return
         
         # 1. System Status
         if parsed.path == '/api/status':
@@ -189,7 +246,10 @@ class SoftHunterHandler(SimpleHTTPRequestHandler):
 
         # 8. Outreach Engine Config
         elif parsed.path == '/api/outreach/config':
-            return self._send_json(outreach_engine.load_config())
+            cfg = outreach_engine.load_config()
+            if cfg.get('gmail_app_password'):
+                cfg['gmail_app_password'] = MASKED_PASSWORD
+            return self._send_json(cfg)
 
         # 9. Email Open Tracking Pixel (1x1 transparent GIF)
         elif parsed.path == '/api/track/open':
@@ -222,6 +282,8 @@ class SoftHunterHandler(SimpleHTTPRequestHandler):
 
     def do_POST(self):
         parsed = urllib.parse.urlparse(self.path)
+        if not self._check_auth(parsed.path):
+            return
         content_length = int(self.headers.get('Content-Length', 0))
         raw_body = self.rfile.read(content_length)
         body = {}
@@ -722,15 +784,23 @@ Best regards,
         # 10. Update Outreach Config
         elif parsed.path == '/api/outreach/config':
             cfg = outreach_engine.load_config()
+            if body.get('gmail_app_password', '') in ('', MASKED_PASSWORD):
+                body.pop('gmail_app_password', None)  # keep existing secret
             cfg.update(body)
             outreach_engine.save_config(cfg)
-            return self._send_json({"success": True, "config": cfg})
+            safe = dict(cfg)
+            if safe.get('gmail_app_password'):
+                safe['gmail_app_password'] = MASKED_PASSWORD
+            return self._send_json({"success": True, "config": safe})
 
         # 11. Test Gmail SMTP Connection
         elif parsed.path == '/api/outreach/test_smtp':
             cfg = outreach_engine.load_config()
             gmail_user = body.get('gmail_address', cfg.get('gmail_address', '')).strip()
-            gmail_pass = body.get('gmail_app_password', cfg.get('gmail_app_password', '')).replace(' ', '').strip()
+            gmail_pass = body.get('gmail_app_password', '')
+            if gmail_pass in ('', MASKED_PASSWORD):
+                gmail_pass = cfg.get('gmail_app_password', '')
+            gmail_pass = gmail_pass.replace(' ', '').strip()
 
             if not gmail_user or not gmail_pass:
                 return self._send_json({"success": False, "message": "Please provide both Gmail address and 16-digit App Password."})
@@ -783,8 +853,11 @@ if __name__ == '__main__':
     if cfg.get('auto_sender_enabled', False):
         outreach_engine.start_worker()
 
-    server = ThreadingHTTPServer(('127.0.0.1', PORT), SoftHunterHandler)
-    Timer(1.0, open_browser).start()
+    server = ThreadingHTTPServer((HOST, PORT), SoftHunterHandler)
+    if IS_CLOUD:
+        print(f"[🚀] RestoHunter AI cloud server listening on {HOST}:{PORT} (login {'ON' if APP_PASSWORD else 'OFF'})")
+    else:
+        Timer(1.0, open_browser).start()
     try:
         server.serve_forever()
     except KeyboardInterrupt:

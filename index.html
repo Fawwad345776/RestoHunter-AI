@@ -236,6 +236,14 @@
             <span class="status-dot" id="dot-wa-status" title="WhatsApp Business Ready"></span> WhatsApp
           </div>
 
+          <!-- Engine Start / Stop Controls -->
+          <div id="top-engine-controls" style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 6px 4px 12px; border-radius: 10px; background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(148, 163, 184, 0.25);">
+            <span id="top-engine-dot" style="width: 9px; height: 9px; border-radius: 50%; background: #64748b; display: inline-block;"></span>
+            <span id="top-engine-label" style="font-size: 0.75rem; font-weight: 800; color: #94a3b8; letter-spacing: 0.03em; white-space: nowrap;">STOPPED</span>
+            <button id="btn-engine-start" onclick="App.setOutreachEngine(true)" style="height: 32px; padding: 0 14px; border: none; border-radius: 8px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #fff; font-weight: 800; font-size: 0.80rem; cursor: pointer;">▶ Start</button>
+            <button id="btn-engine-stop" onclick="App.setOutreachEngine(false)" style="height: 32px; padding: 0 14px; border: none; border-radius: 8px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #fff; font-weight: 800; font-size: 0.80rem; cursor: pointer;">■ Stop</button>
+          </div>
+
           <!-- Main Pitch Leads Button -->
           <button id="btn-top-pitch-leads" class="btn-primary" style="height: 38px; padding: 0 16px; font-size: 0.82rem; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #fff; font-weight: 800; border: none; box-shadow: 0 0 14px rgba(239, 68, 68, 0.4); display: inline-flex; align-items: center; gap: 6px;" onclick="App.switchView('all-businesses')" title="Open Leads & Start Pitching">
             <span>⚡</span> Pitch Leads (305)
@@ -1781,6 +1789,6 @@
   <script src="js/autopilot.js?v=6.0"></script>
   <script src="js/analytics.js?v=6.0"></script>
   <script src="data/leads.js?v=6.0"></script>
-  <script src="js/app.js?v=6.0"></script>
+  <script src="js/app.js?v=6.1"></script>
 </body>
 </html>

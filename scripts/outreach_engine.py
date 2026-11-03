@@ -23,8 +23,10 @@ from datetime import datetime, timezone, timedelta
 import threading
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(BASE_DIR, 'data')
-CONFIG_FILE = os.path.join(BASE_DIR, 'config.json')
+DATA_DIR = os.environ.get('DATA_DIR') or os.path.join(BASE_DIR, 'data')
+os.makedirs(DATA_DIR, exist_ok=True)
+# In the cloud the config lives on the persistent volume; locally it stays in the project root.
+CONFIG_FILE = os.path.join(DATA_DIR, 'config.json') if os.environ.get('DATA_DIR') else os.path.join(BASE_DIR, 'config.json')
 LEADS_FILE = os.path.join(DATA_DIR, 'leads.json')
 DISPATCHES_FILE = os.path.join(DATA_DIR, 'dispatches.json')
 REPLIES_FILE = os.path.join(DATA_DIR, 'replies.json')
@@ -96,6 +98,8 @@ class OutreachEngine:
                         cfg['gmail_address'] = os.environ['GMAIL_ADDRESS']
                     if os.environ.get('GMAIL_APP_PASSWORD'):
                         cfg['gmail_app_password'] = os.environ['GMAIL_APP_PASSWORD']
+                    if os.environ.get('RAILWAY_PUBLIC_DOMAIN'):
+                        cfg['tracking_base_url'] = 'https://' + os.environ['RAILWAY_PUBLIC_DOMAIN']
                     return cfg
             except Exception as e:
                 self.log(f"Error reading config.json: {e}", "error")
@@ -103,6 +107,9 @@ class OutreachEngine:
 
     def save_config(self, cfg):
         try:
+            cfg = dict(cfg)
+            if os.environ.get('GMAIL_APP_PASSWORD'):
+                cfg['gmail_app_password'] = ''  # secret comes from env, never written to disk
             with open(CONFIG_FILE, 'w', encoding='utf-8') as f:
                 json.dump(cfg, f, indent=2)
             return True

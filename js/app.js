@@ -2532,6 +2532,27 @@ const App = {
         }
       }
 
+      // Header Start / Stop controls
+      const topDot = document.getElementById('top-engine-dot');
+      const topLabel = document.getElementById('top-engine-label');
+      const topStart = document.getElementById('btn-engine-start');
+      const topStop = document.getElementById('btn-engine-stop');
+      if (topDot && topLabel) {
+        topDot.style.background = isRunning ? '#10b981' : '#64748b';
+        topDot.style.boxShadow = isRunning ? '0 0 10px #10b981' : 'none';
+        topLabel.textContent = isRunning ? 'RUNNING' : 'STOPPED';
+        topLabel.style.color = isRunning ? '#34d399' : '#94a3b8';
+        topLabel.title = data.current_action || '';
+      }
+      if (topStart && topStop) {
+        topStart.disabled = isRunning;
+        topStop.disabled = !isRunning;
+        topStart.style.opacity = isRunning ? '0.4' : '1';
+        topStop.style.opacity = isRunning ? '1' : '0.4';
+        topStart.style.cursor = isRunning ? 'not-allowed' : 'pointer';
+        topStop.style.cursor = isRunning ? 'pointer' : 'not-allowed';
+      }
+
       if (sidebarBadge) {
         sidebarBadge.textContent = isRunning ? 'ACTIVE' : 'READY';
         sidebarBadge.style.color = isRunning ? '#34d399' : '#94a3b8';
@@ -2629,6 +2650,26 @@ const App = {
       }
     } catch (e) {
       // Backend status poll error silent catch
+    }
+  },
+
+  async setOutreachEngine(enable) {
+    if (enable && this.outreachTelemetry && this.outreachTelemetry.smtp_configured === false) {
+      this.showToast('Gmail App Password missing — add it in Automated SMTP Engine settings first', 'error');
+      return;
+    }
+    try {
+      const res = await fetch('/api/outreach/toggle', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ enable: Boolean(enable) })
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      this.outreachTelemetry = await res.json();
+      this.fetchOutreachStatus();
+      this.showToast(enable ? '🚀 Outreach Engine Started' : '⏹️ Outreach Engine Stopped', enable ? undefined : 'warn');
+    } catch (e) {
+      this.showToast('Engine control failed (is the Python server running?): ' + e.message, 'error');
     }
   },
 
