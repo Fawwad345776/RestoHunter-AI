@@ -50,74 +50,36 @@ const PitchEngine = {
     let body = '';
 
     // ==========================================
-    // 1. GMAIL / EMAIL CHANNEL
+    // 1. GMAIL / EMAIL CHANNEL (100% Ban-Safe 3-Stage Threaded Copy)
     // ==========================================
     if (channel === 'gmail' || channel === 'email') {
+      const optOut = "\n\nPS: If you're not the right person or not interested, just reply 'stop' and I won't reach out again.";
+
       if (stage === 'initial') {
-        subject = `Quick observation regarding ${biz} mobile booking funnel`;
+        subject = `Quick observation regarding ${biz} direct revenue funnel`;
         body = `Hi ${founderGreeting || teamGreeting},
 
-While reviewing ${biz}'s Google Maps listing and digital presence, I noticed an issue where prospective mobile visitors encounter ${flaw.toLowerCase()}.
+While reviewing ${biz}'s Google Maps profile, I noticed an operational bottleneck regarding your ${flaw.toLowerCase()}.
 
-For a brand with strong reviews like yours, this typically causes an estimated ${leak} in lost direct customer inquiries to third-party competitors.
+For a high-volume venue with your strong reviews, this typically causes around ${leak} in lost profit margins every month.
 
-We build custom ${solution} that eliminate third-party commission bleed and give you 1-tap customer bookings.
+We build custom ${solution.toLowerCase()} systems that eliminate this commission bleed and capture customer revenue directly.
 
-Would you be open to a 2-minute video walkthrough showing how this recovers lost orders?
-
-Best regards,
-${senderCompany} Client Solutions Team`;
+Would you be open to a 2-minute video walkthrough showing how this works for your team?${optOut}`;
       } else if (stage === 'followup1') {
-        subject = `Re: Quick observation regarding ${biz} mobile booking funnel`;
+        subject = `Re: Quick observation regarding ${biz} direct revenue funnel`;
         body = `Hi ${founderGreeting || teamGreeting},
 
-Wanted to quickly follow up on my note from two days ago. 
+Wanted to float this back up in case it got buried under service prep.
 
-Did you have a chance to look at how ${biz}'s mobile checkout might be losing prospective clients on smartphones?
-
-Happy to share a 30-second visual preview whenever convenient.
-
-Best regards,
-${senderCompany}`;
-      } else if (stage === 'followup2') {
-        subject = `Recovering ${leak} for ${biz} (Value Breakdown)`;
+Were you open to taking a look at that 2-minute video walkthrough showing how to stop the ${leak} bottleneck for ${biz}?${optOut}`;
+      } else if (stage === 'followup2' || stage === 'final') {
+        subject = `Re: Quick observation regarding ${biz} direct revenue funnel`;
         body = `Hi ${founderGreeting || teamGreeting},
 
-Most business owners we speak with don't realize that over 65% of local searches happen on mobile devices after business hours.
+I know you're super focused on running operations, so I won't follow up again.
 
-Without a direct 1-tap ${solution}, those visitors bounce to other local options.
-
-We already mapped a preliminary implementation for ${biz}. Can I send the concept over?
-
-Best regards,
-${senderCompany}`;
-      } else if (stage === 'followup3') {
-        subject = `30-second prototype ready for ${biz}`;
-        body = `Hi ${founderGreeting || teamGreeting},
-
-Our engineering team put together a quick interactive prototype of a ${solution} tailored for ${biz}.
-
-Here is what it solves:
-- Eliminates ${flaw.toLowerCase()}
-- Instant direct WhatsApp & email confirmation slips
-- Zero commission deduction
-
-Would 3 PM Thursday or 11 AM Friday work for a 5-minute screen share?
-
-Best regards,
-${senderCompany}`;
-      } else if (stage === 'final') {
-        subject = `Closing file for ${biz}`;
-        body = `Hi ${founderGreeting || teamGreeting},
-
-I assume resolving the mobile booking friction at ${biz} isn't a top priority right now, which is completely understandable.
-
-I will close your file for now so I don't clutter your inbox. If you ever want to explore direct client acquisition software in the future, feel free to reach out.
-
-Wishing ${biz} continued success!
-
-Best regards,
-${senderCompany}`;
+If you ever want to revisit plugging the ${flaw.toLowerCase()} leakage down the road, feel free to reach out anytime. Wishing ${biz} continued success!${optOut}`;
       } else if (stage === 'demo') {
         subject = `Interactive Demo: ${biz} Custom Software`;
         body = `Hi ${founderGreeting || teamGreeting},
@@ -130,7 +92,7 @@ Let me know if you'd like me to send over the direct demo link.
 
 Best regards,
 ${senderCompany}`;
-      } else { // proposal
+      } else if (stage === 'proposal') {
         subject = `Project Proposal: ${biz} — ${solution}`;
         body = `Dear ${founderGreeting || teamGreeting},
 
@@ -142,6 +104,13 @@ Looking forward to your review and feedback.
 
 Sincerely,
 ${senderCompany} Executive Team`;
+      } else {
+        subject = `Re: Quick observation regarding ${biz} direct revenue funnel`;
+        body = `Hi ${founderGreeting || teamGreeting},
+
+Following up on my previous note regarding ${biz}'s digital ordering setup.
+
+Let me know if taking a quick look at the video makes sense for your team.${optOut}`;
       }
     }
 

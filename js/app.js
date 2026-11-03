@@ -27,6 +27,9 @@ const App = {
   activeLeadForModal: null,
   activeLeadForProposal: null,
   settings: {},
+  outreachTelemetry: null,
+  outreachConfig: null,
+  outreachStatusTimer: null,
 
   init() {
     this.settings = StorageService.getSettings();
@@ -125,6 +128,15 @@ const App = {
         if (tv) tv.style.display = 'none';
         if (cv) cv.style.display = 'grid';
       }
+    }
+
+    // Start Automated Outreach Engine Poller & Load Config
+    this.loadOutreachConfig();
+    this.fetchOutreachStatus();
+    if (!this.outreachStatusTimer) {
+      this.outreachStatusTimer = setInterval(() => {
+        this.fetchOutreachStatus();
+      }, 4000);
     }
 
     // Route to initial hash or default to all-businesses (the main verified leads view)
@@ -283,6 +295,10 @@ const App = {
         break;
       case 'settings':
         this.renderSettingsInputs();
+        break;
+      case 'outreach-engine':
+        this.loadOutreachConfig();
+        this.fetchOutreachStatus();
         break;
     }
   },
@@ -1073,6 +1089,14 @@ const App = {
       };
     }
 
+    const autoSmtpBtn = document.getElementById('modal-btn-auto-smtp');
+    if (autoSmtpBtn) {
+      autoSmtpBtn.onclick = () => {
+        modal.classList.remove('open');
+        this.triggerSingleOutreach(lead.id, 1);
+      };
+    }
+
     const sendGmailBtn = document.getElementById('modal-btn-send-gmail');
     if (sendGmailBtn) {
       sendGmailBtn.onclick = () => {
@@ -1095,7 +1119,25 @@ const App = {
       };
     }
 
+    const openVoiceCallerBtn = document.getElementById('modal-btn-open-voice-caller');
+    if (openVoiceCallerBtn) {
+      openVoiceCallerBtn.onclick = () => {
+        modal.classList.remove('open');
+        this.openVoiceCaller(lead.id);
+      };
+    }
+
     modal.classList.add('open');
+  },
+
+  openVoiceCaller(leadId) {
+    const lead = this.leads.find(l => l.id === leadId);
+    if (!lead) return;
+    if (window.VoiceCaller) {
+      window.VoiceCaller.openModal(lead);
+    } else {
+      this.showToast('Voice caller module loading...', 'warn');
+    }
   },
 
   copyProblemForAI(leadId) {
@@ -2222,10 +2264,23 @@ const App = {
           </div>
         </td>
         <td>
-          ${isDispatched
-            ? `<span style="background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 4px 8px; border-radius: 4px; font-size: 0.74rem; font-weight: 800; display: inline-block;">🚀 PITCHED</span>`
-            : `<span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); padding: 4px 8px; border-radius: 4px; font-size: 0.74rem; font-weight: 700; display: inline-block;">READY</span>`
-          }
+          ${(() => {
+            if (lead.outreach_status === 'STOP_REPLIED') {
+              return `<span style="background: rgba(239, 68, 68, 0.25); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.5); padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 800; display: inline-block;">🛑 STOP / REPLIED</span>`;
+            } else if (lead.outreach_status === 'stage1_sent') {
+              return `<span style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 800; display: inline-block;">✉️ STAGE 1 SENT</span>`;
+            } else if (lead.outreach_status === 'stage2_bump_sent') {
+              return `<span style="background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 800; display: inline-block;">🔄 BUMP SENT</span>`;
+            } else if (lead.outreach_status === 'FINISHED') {
+              return `<span style="background: rgba(100, 116, 139, 0.25); color: #cbd5e1; border: 1px solid rgba(100, 116, 139, 0.4); padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 800; display: inline-block;">🏁 COMPLETED</span>`;
+            } else if (lead.outreach_status === 'INVALID_DOMAIN') {
+              return `<span style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; display: inline-block;" title="${this.escapeHtml(lead.validation_error || 'Invalid domain/MX')}">⚠️ INVALID MX</span>`;
+            } else if (isDispatched) {
+              return `<span style="background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 4px 8px; border-radius: 4px; font-size: 0.74rem; font-weight: 800; display: inline-block;">🚀 PITCHED</span>`;
+            } else {
+              return `<span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); padding: 4px 8px; border-radius: 4px; font-size: 0.74rem; font-weight: 700; display: inline-block;">READY</span>`;
+            }
+          })()}
         </td>
         <td>
           <div style="display: flex; flex-direction: column; gap: 6px; min-width: 190px;">
@@ -2233,14 +2288,17 @@ const App = {
               <span>🚀</span> <span>Open in Gmail</span>
             </button>
             <div style="display: flex; gap: 4px;">
-              <button class="btn-sec-action" style="flex: 1; padding: 5px 6px; font-size: 0.72rem; text-align: center;" onclick="App.openPitchModal('${lead.id}')" title="Inspect Pitch & Problem Details">
+              <button class="btn-sec-action" style="flex: 1; padding: 5px 4px; font-size: 0.70rem; text-align: center;" onclick="App.openPitchModal('${lead.id}')" title="Inspect Pitch & Problem Details">
                 👁️ Pitch
               </button>
-              <button class="btn-sec-action" style="flex: 1; padding: 5px 6px; font-size: 0.72rem; text-align: center;" onclick="App.copyPitch('${lead.id}')" title="Copy Full Cold Pitch">
-                📋 Pitch
+              <button class="btn-sec-action" style="flex: 1; padding: 5px 4px; font-size: 0.70rem; text-align: center;" onclick="App.copyPitch('${lead.id}')" title="Copy Full Cold Pitch">
+                📋 Copy
               </button>
-              <button class="btn-sec-action" style="flex: 1; padding: 5px 6px; font-size: 0.72rem; text-align: center; color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);" onclick="App.copyProblemForAI('${lead.id}')" title="Copy problem prompt to verify in ChatGPT / Claude">
-                🤖 AI Audit
+              <button class="btn-sec-action" style="flex: 1; padding: 5px 4px; font-size: 0.70rem; text-align: center; color: #c4b5fd; border-color: rgba(139, 92, 246, 0.45);" onclick="App.openVoiceCaller('${lead.id}')" title="Launch Free AI Voice Call Simulator">
+                🎙️ Call AI
+              </button>
+              <button class="btn-sec-action" style="flex: 1; padding: 5px 4px; font-size: 0.70rem; text-align: center; color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);" onclick="App.copyProblemForAI('${lead.id}')" title="Copy problem prompt to verify in ChatGPT / Claude">
+                🤖 AI
               </button>
             </div>
           </div>
@@ -2272,10 +2330,23 @@ const App = {
             <div style="font-size: 0.96rem; font-weight: 800; color: #fff;">${lead.businessName}</div>
             <div style="font-size: 0.74rem; color: #94a3b8;">📍 ${lead.city}, ${lead.country}</div>
           </div>
-          ${isDispatched
-            ? `<span style="background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 7px; border-radius: 4px; font-size: 0.70rem; font-weight: 800;">🚀 PITCHED</span>`
-            : `<span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); padding: 3px 7px; border-radius: 4px; font-size: 0.70rem; font-weight: 700;">READY</span>`
-          }
+          ${(() => {
+            if (lead.outreach_status === 'STOP_REPLIED') {
+              return `<span style="background: rgba(239, 68, 68, 0.25); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.5); padding: 3px 7px; border-radius: 4px; font-size: 0.68rem; font-weight: 800;">🛑 STOP / REPLIED</span>`;
+            } else if (lead.outreach_status === 'stage1_sent') {
+              return `<span style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 7px; border-radius: 4px; font-size: 0.68rem; font-weight: 800;">✉️ STAGE 1 SENT</span>`;
+            } else if (lead.outreach_status === 'stage2_bump_sent') {
+              return `<span style="background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); padding: 3px 7px; border-radius: 4px; font-size: 0.68rem; font-weight: 800;">🔄 BUMP SENT</span>`;
+            } else if (lead.outreach_status === 'FINISHED') {
+              return `<span style="background: rgba(100, 116, 139, 0.25); color: #cbd5e1; border: 1px solid rgba(100, 116, 139, 0.4); padding: 3px 7px; border-radius: 4px; font-size: 0.68rem; font-weight: 800;">🏁 COMPLETED</span>`;
+            } else if (lead.outreach_status === 'INVALID_DOMAIN') {
+              return `<span style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); padding: 3px 7px; border-radius: 4px; font-size: 0.68rem; font-weight: 700;">⚠️ INVALID MX</span>`;
+            } else if (isDispatched) {
+              return `<span style="background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 7px; border-radius: 4px; font-size: 0.70rem; font-weight: 800;">🚀 PITCHED</span>`;
+            } else {
+              return `<span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); padding: 3px 7px; border-radius: 4px; font-size: 0.70rem; font-weight: 700;">READY</span>`;
+            }
+          })()}
         </div>
 
         <div style="font-size: 0.80rem; color: #cbd5e1;">
@@ -2297,14 +2368,17 @@ const App = {
             <span>🚀</span> <span>Open in Gmail</span>
           </button>
           <div style="display: flex; gap: 4px;">
-            <button class="btn-sec-action" style="flex: 1; font-size: 0.74rem; padding: 6px 6px; text-align: center;" onclick="App.openPitchModal('${lead.id}')">
+            <button class="btn-sec-action" style="flex: 1; font-size: 0.72rem; padding: 6px 4px; text-align: center;" onclick="App.openPitchModal('${lead.id}')">
               👁️ Pitch
             </button>
-            <button class="btn-sec-action" style="flex: 1; font-size: 0.74rem; padding: 6px 6px; text-align: center;" onclick="App.copyPitch('${lead.id}')">
-              📋 Pitch
+            <button class="btn-sec-action" style="flex: 1; font-size: 0.72rem; padding: 6px 4px; text-align: center;" onclick="App.copyPitch('${lead.id}')">
+              📋 Copy
             </button>
-            <button class="btn-sec-action" style="flex: 1; font-size: 0.74rem; padding: 6px 6px; text-align: center; color: #38bdf8;" onclick="App.copyProblemForAI('${lead.id}')">
-              🤖 Copy for AI
+            <button class="btn-sec-action" style="flex: 1; font-size: 0.72rem; padding: 6px 4px; text-align: center; color: #c4b5fd; border-color: rgba(139, 92, 246, 0.45);" onclick="App.openVoiceCaller('${lead.id}')" title="Launch Free AI Voice Call Simulator">
+              🎙️ Call AI
+            </button>
+            <button class="btn-sec-action" style="flex: 1; font-size: 0.72rem; padding: 6px 4px; text-align: center; color: #38bdf8;" onclick="App.copyProblemForAI('${lead.id}')">
+              🤖 AI
             </button>
           </div>
         </div>
@@ -2417,6 +2491,314 @@ const App = {
     link.download = `softhunter_dispatches_${Date.now()}.csv`;
     link.click();
     this.showToast('Exported dispatches CSV!');
+  },
+
+  // ========================================================
+  // AUTOMATED SMTP OUTREACH ENGINE COORDINATOR
+  // ========================================================
+  async fetchOutreachStatus() {
+    try {
+      const res = await fetch('/api/outreach/status');
+      if (!res.ok) return;
+      const data = await res.json();
+      this.outreachTelemetry = data;
+
+      // Update Engine Status Banner
+      const statusText = document.getElementById('engine-status-text');
+      const liveIndicator = document.getElementById('engine-live-indicator');
+      const btnToggle = document.getElementById('btn-toggle-engine');
+      const btnToggleText = document.getElementById('btn-toggle-engine-text');
+      const sidebarBadge = document.getElementById('sidebar-engine-badge');
+
+      const isRunning = Boolean(data.running || data.auto_sender_enabled);
+
+      if (statusText) {
+        statusText.textContent = isRunning ? 'ENGINE RUNNING (ACTIVE PACING)' : 'ENGINE IDLE / PAUSED';
+        statusText.style.color = isRunning ? '#34d399' : '#94a3b8';
+      }
+
+      if (liveIndicator) {
+        liveIndicator.style.background = isRunning ? '#10b981' : '#64748b';
+        liveIndicator.style.boxShadow = isRunning ? '0 0 12px #10b981' : 'none';
+      }
+
+      if (btnToggle && btnToggleText) {
+        if (isRunning) {
+          btnToggleText.textContent = 'Pause Auto-Engine';
+          btnToggle.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
+        } else {
+          btnToggleText.textContent = 'Start Auto-Engine';
+          btnToggle.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        }
+      }
+
+      if (sidebarBadge) {
+        sidebarBadge.textContent = isRunning ? 'ACTIVE' : 'READY';
+        sidebarBadge.style.color = isRunning ? '#34d399' : '#94a3b8';
+      }
+
+      // Clocks & Window Badges
+      const clock = document.getElementById('engine-pkt-clock');
+      if (clock && data.pkt_time) {
+        clock.textContent = `${data.pkt_time} PKT`;
+      }
+
+      const windowBadge = document.getElementById('engine-window-badge');
+      if (windowBadge) {
+        if (data.active_window && data.active_window.active) {
+          windowBadge.textContent = `🟢 ${data.active_window.window_name}`;
+          windowBadge.style.background = 'rgba(16, 185, 129, 0.15)';
+          windowBadge.style.color = '#6ee7b7';
+          windowBadge.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+        } else {
+          windowBadge.textContent = `⏳ ${data.next_window_info || 'Outside Active Window'}`;
+          windowBadge.style.background = 'rgba(245, 158, 11, 0.15)';
+          windowBadge.style.color = '#fbbf24';
+          windowBadge.style.borderColor = 'rgba(245, 158, 11, 0.35)';
+        }
+      }
+
+      // Hero Grid Metrics
+      const actionEl = document.getElementById('engine-current-action');
+      if (actionEl) {
+        actionEl.textContent = data.current_action || (isRunning ? 'Monitoring send windows...' : 'Engine Idle');
+      }
+
+      const dailyProgEl = document.getElementById('engine-daily-progress');
+      if (dailyProgEl) {
+        dailyProgEl.textContent = `${data.sent_today || 0} / ${data.daily_limit || 45} Sent Today`;
+      }
+
+      const breakdownEl = document.getElementById('engine-breakdown-progress');
+      if (breakdownEl) {
+        breakdownEl.textContent = `${data.new_leads_sent_today || 0} New | ${data.followups_sent_today || 0} Follow-ups`;
+      }
+
+      const windowHoursEl = document.getElementById('engine-window-hours');
+      if (windowHoursEl) {
+        if (data.active_window && data.active_window.active) {
+          windowHoursEl.textContent = `${data.active_window.hours_pkt}`;
+        } else {
+          windowHoursEl.textContent = data.next_window_info || 'Sending Paused';
+        }
+      }
+
+      // Special Schedule Name
+      const schedName = document.getElementById('engine-schedule-name');
+      if (schedName && data.quotas_today) {
+        schedName.textContent = data.quotas_today.special_name || 'Standard Schedule';
+        if (data.quotas_today.is_special_day) {
+          schedName.style.color = '#fbbf24';
+        } else {
+          schedName.style.color = '#38bdf8';
+        }
+      }
+
+      // Country Quotas
+      if (data.country_progress) {
+        const cp = data.country_progress;
+        const setQ = (id, c) => {
+          const el = document.getElementById(id);
+          if (el && cp[c]) {
+            el.textContent = `${cp[c].sent} / ${cp[c].target}`;
+          }
+        };
+        setQ('quota-kw', 'KW');
+        setQ('quota-bh', 'BH');
+        setQ('quota-om', 'OM');
+        setQ('quota-gb', 'GB');
+        setQ('quota-us', 'US');
+        setQ('quota-ca', 'CA');
+      }
+
+      // Real-Time Activity Logs Box
+      const logsBox = document.getElementById('engine-logs-box');
+      if (logsBox && data.recent_logs) {
+        if (data.recent_logs.length === 0) {
+          logsBox.innerHTML = `<div style="color: #64748b; font-style: italic;">Engine initialized. Waiting for active window or manual trigger...</div>`;
+        } else {
+          logsBox.innerHTML = data.recent_logs.slice(0, 30).map(l => {
+            let color = '#cbd5e1';
+            if (l.includes('[!]') || l.includes('❌') || l.includes('FAIL')) color = '#fca5a5';
+            else if (l.includes('[+]') || l.includes('SENT') || l.includes('SUCCESS') || l.includes('MATCHED')) color = '#6ee7b7';
+            else if (l.includes('[*]') || l.includes('WINDOW') || l.includes('PACING')) color = '#38bdf8';
+            else if (l.includes('PAUSE') || l.includes('WAITING') || l.includes('REPLY')) color = '#fbbf24';
+            return `<div style="color: ${color}; margin-bottom: 3px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;">${this.escapeHtml(l)}</div>`;
+          }).join('');
+        }
+      }
+    } catch (e) {
+      // Backend status poll error silent catch
+    }
+  },
+
+  async toggleOutreachEngine() {
+    const isCurrentlyRunning = this.outreachTelemetry && (this.outreachTelemetry.running || this.outreachTelemetry.auto_sender_enabled);
+    const targetState = !isCurrentlyRunning;
+
+    try {
+      const res = await fetch('/api/outreach/toggle', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ enable: targetState })
+      });
+      const data = await res.json();
+      this.outreachTelemetry = data;
+      this.fetchOutreachStatus();
+
+      if (targetState) {
+        this.showToast('🚀 Automated Outreach Engine Started (Human Pacing Active)');
+      } else {
+        this.showToast('⏸️ Automated Outreach Engine Paused', 'warn');
+      }
+    } catch (e) {
+      this.showToast('Error toggling outreach engine: ' + e.message, 'error');
+    }
+  },
+
+  async loadOutreachConfig() {
+    try {
+      const res = await fetch('/api/outreach/config');
+      if (!res.ok) return;
+      const cfg = await res.json();
+      this.outreachConfig = cfg;
+
+      const emailEl = document.getElementById('cfg-gmail-address');
+      const passEl = document.getElementById('cfg-gmail-password');
+      const nameEl = document.getElementById('cfg-sender-name');
+
+      if (emailEl && cfg.gmail_address) emailEl.value = cfg.gmail_address;
+      if (passEl && cfg.gmail_app_password) passEl.value = cfg.gmail_app_password;
+      if (nameEl && cfg.sender_name) nameEl.value = cfg.sender_name;
+    } catch (e) {
+      // ignore
+    }
+  },
+
+  async saveOutreachConfig() {
+    const emailEl = document.getElementById('cfg-gmail-address');
+    const passEl = document.getElementById('cfg-gmail-password');
+    const nameEl = document.getElementById('cfg-sender-name');
+
+    const gmailAddress = emailEl ? emailEl.value.trim() : '';
+    const gmailAppPassword = passEl ? passEl.value.trim() : '';
+    const senderName = nameEl ? nameEl.value.trim() : '';
+
+    try {
+      const res = await fetch('/api/outreach/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          gmail_address: gmailAddress,
+          gmail_app_password: gmailAppPassword,
+          sender_name: senderName,
+          reply_to: gmailAddress
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        this.showToast('Credentials and engine config saved!');
+        this.fetchOutreachStatus();
+      } else {
+        this.showToast('Failed to save config: ' + (data.message || 'Unknown error'), 'error');
+      }
+    } catch (e) {
+      this.showToast('Save error: ' + e.message, 'error');
+    }
+  },
+
+  async testSmtpConnection() {
+    const emailEl = document.getElementById('cfg-gmail-address');
+    const passEl = document.getElementById('cfg-gmail-password');
+    const resultEl = document.getElementById('smtp-test-result');
+
+    const gmailAddress = emailEl ? emailEl.value.trim() : '';
+    const gmailAppPassword = passEl ? passEl.value.trim() : '';
+
+    if (!gmailAddress || !gmailAppPassword) {
+      this.showToast('Please enter both Gmail address and 16-digit Google App Password first.', 'warn');
+      if (resultEl) {
+        resultEl.textContent = '⚠️ Missing Gmail address or 16-digit App Password';
+        resultEl.style.color = '#fbbf24';
+      }
+      return;
+    }
+
+    if (resultEl) {
+      resultEl.textContent = '⏳ Testing connection to smtp.gmail.com:587 (TLS)...';
+      resultEl.style.color = '#38bdf8';
+    }
+
+    try {
+      const res = await fetch('/api/outreach/test_smtp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          gmail_address: gmailAddress,
+          gmail_app_password: gmailAppPassword
+        })
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        if (resultEl) {
+          resultEl.textContent = '✅ ' + data.message;
+          resultEl.style.color = '#10b981';
+        }
+        this.showToast('Gmail SMTP credentials verified successfully!');
+      } else {
+        if (resultEl) {
+          resultEl.textContent = '❌ ' + data.message;
+          resultEl.style.color = '#f87171';
+        }
+        this.showToast(data.message, 'error');
+      }
+    } catch (e) {
+      if (resultEl) {
+        resultEl.textContent = '❌ Test failed: ' + e.message;
+        resultEl.style.color = '#f87171';
+      }
+      this.showToast('Test error: ' + e.message, 'error');
+    }
+  },
+
+  async triggerSingleOutreach(leadId, stage = 1) {
+    try {
+      const res = await fetch('/api/outreach/trigger_single', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ leadId, stage })
+      });
+      const data = await res.json();
+      if (data.success) {
+        this.showToast('⚡ Email dispatched successfully via Gmail SMTP!');
+        // Update lead local status
+        const lead = this.leads.find(l => l.id === leadId);
+        if (lead) {
+          lead.status = 'dispatched';
+          lead.crmStatus = 'sent';
+          lead.batchPitched = true;
+          lead.outreach_status = stage === 1 ? 'stage1_sent' : (stage === 2 ? 'stage2_bump_sent' : 'FINISHED');
+        }
+        this.renderTable();
+        this.updateAllMetricsAndBadges();
+        this.fetchOutreachStatus();
+      } else {
+        this.showToast(data.message || 'Dispatch failed', 'error');
+      }
+    } catch (e) {
+      this.showToast('Dispatch error: ' + e.message, 'error');
+    }
+  },
+
+  escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
   },
 
   showToast(message, type = 'success') {

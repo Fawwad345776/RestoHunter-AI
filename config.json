@@ -1,0 +1,13 @@
+{
+  "gmail_address": "info.mfsoft@gmail.com",
+  "gmail_app_password": "",
+  "sender_name": "Alex | MF Software Solutions",
+  "reply_to": "info.mfsoft@gmail.com",
+  "daily_limit": 45,
+  "min_delay_seconds": 180,
+  "max_delay_seconds": 420,
+  "auto_sender_enabled": false,
+  "tracking_enabled": true,
+  "tracking_base_url": "http://127.0.0.1:8765",
+  "imap_check_interval_seconds": 300
+}

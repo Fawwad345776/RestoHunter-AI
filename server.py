@@ -23,6 +23,10 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import webbrowser
 from threading import Timer
 
+# Import Outreach Engine
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'scripts'))
+from outreach_engine import engine as outreach_engine
+
 PORT = 8765
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, 'data')
@@ -178,6 +182,40 @@ class SoftHunterHandler(SimpleHTTPRequestHandler):
                 "activeBatch": next((b for b in batches.values() if b.get('status') == 'active'), None),
                 "timestamp": time.time()
             })
+
+        # 7. Outreach Engine Telemetry Status
+        elif parsed.path == '/api/outreach/status':
+            return self._send_json(outreach_engine.get_telemetry())
+
+        # 8. Outreach Engine Config
+        elif parsed.path == '/api/outreach/config':
+            return self._send_json(outreach_engine.load_config())
+
+        # 9. Email Open Tracking Pixel (1x1 transparent GIF)
+        elif parsed.path == '/api/track/open':
+            query = urllib.parse.parse_qs(parsed.query)
+            lead_id = query.get('lead', [''])[0]
+            stage = query.get('stage', ['1'])[0]
+            if lead_id and os.path.exists(LEADS_FILE):
+                try:
+                    leads = load_json(LEADS_FILE, [])
+                    for l in leads:
+                        if l.get('id') == lead_id:
+                            l[f'opened_stage_{stage}'] = True
+                            l['last_opened_at'] = time.strftime('%Y-%m-%d %H:%M:%S PKT')
+                            break
+                    save_json(LEADS_FILE, leads)
+                except Exception:
+                    pass
+
+            gif_bytes = b'GIF89a\x01\x00\x01\x00\x80\x00\x00\xff\xff\xff\x00\x00\x00!\xf9\x04\x01\x00\x00\x00\x00,\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x02D\x01\x00;'
+            self.send_response(200)
+            self.send_header('Content-Type', 'image/gif')
+            self.send_header('Content-Length', str(len(gif_bytes)))
+            self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+            self.end_headers()
+            self.wfile.write(gif_bytes)
+            return
 
         # Static file serving
         return super().do_GET()
@@ -672,6 +710,57 @@ Best regards,
                 "reply": reply_record
             })
 
+        # 9. Toggle Background Outreach Engine
+        elif parsed.path == '/api/outreach/toggle':
+            enable = body.get('enable', True)
+            if enable:
+                outreach_engine.start_worker()
+            else:
+                outreach_engine.pause_worker()
+            return self._send_json(outreach_engine.get_telemetry())
+
+        # 10. Update Outreach Config
+        elif parsed.path == '/api/outreach/config':
+            cfg = outreach_engine.load_config()
+            cfg.update(body)
+            outreach_engine.save_config(cfg)
+            return self._send_json({"success": True, "config": cfg})
+
+        # 11. Test Gmail SMTP Connection
+        elif parsed.path == '/api/outreach/test_smtp':
+            cfg = outreach_engine.load_config()
+            gmail_user = body.get('gmail_address', cfg.get('gmail_address', '')).strip()
+            gmail_pass = body.get('gmail_app_password', cfg.get('gmail_app_password', '')).replace(' ', '').strip()
+
+            if not gmail_user or not gmail_pass:
+                return self._send_json({"success": False, "message": "Please provide both Gmail address and 16-digit App Password."})
+
+            try:
+                with smtplib.SMTP('smtp.gmail.com', 587, timeout=12) as s:
+                    s.starttls()
+                    s.login(gmail_user, gmail_pass)
+                return self._send_json({"success": True, "message": f"Verified! Successfully connected to smtp.gmail.com as {gmail_user}"})
+            except smtplib.SMTPAuthenticationError:
+                return self._send_json({"success": False, "message": "Authentication failed: Please verify your 16-digit Google App Password."})
+            except Exception as e:
+                return self._send_json({"success": False, "message": f"Connection error: {str(e)}"})
+
+        # 12. Trigger Single Lead Send (Manual or Test Dispatch)
+        elif parsed.path == '/api/outreach/trigger_single':
+            lead_id = body.get('leadId')
+            stage = int(body.get('stage', 1))
+            leads = load_json(LEADS_FILE, [])
+            matched = next((l for l in leads if l.get('id') == lead_id), None)
+            if not matched:
+                return self._send_json({"success": False, "message": "Lead not found"}, 404)
+
+            success, msg = outreach_engine.dispatch_candidate(matched, stage)
+            return self._send_json({
+                "success": success,
+                "message": msg,
+                "telemetry": outreach_engine.get_telemetry()
+            })
+
         self.send_error(404, "Endpoint not found")
 
 def open_browser():
@@ -688,6 +777,11 @@ def open_browser():
 if __name__ == '__main__':
     if not os.path.exists(SETTINGS_FILE):
         save_json(SETTINGS_FILE, DEFAULT_SETTINGS)
+
+    # Initialize Outreach Engine if enabled in config
+    cfg = outreach_engine.load_config()
+    if cfg.get('auto_sender_enabled', False):
+        outreach_engine.start_worker()
 
     server = ThreadingHTTPServer(('127.0.0.1', PORT), SoftHunterHandler)
     Timer(1.0, open_browser).start()
