@@ -662,18 +662,8 @@ Tone: Professional, courteous, direct, zero buzzwords, clear 1-sentence call to 
             elif channel == 'linkedin':
                 text = f"Hi {dm}, noticed {biz_name} could recover significant lost monthly revenue by resolving {flaw.lower()}. We deploy custom {solution}. Open to a brief 2-minute review?"
             else: # Email / Gmail
-                text = f"""Subject: Quick observation regarding {biz_name} mobile checkout
-
-{greeting}
-
-While reviewing {biz_name}'s Google Maps listing and mobile presence, I noticed an issue where prospective clients encounter {flaw.lower()}.
-
-We develop custom {solution} for hospitality and service brands, enabling direct bookings without third-party commission deductions.
-
-Would you be open to a 2-minute video walk-through demonstrating how this recovers lost revenue?
-
-Best regards,
-{settings.get('company_name', 'MF Software Solutions')} Outreach Team"""
+                subject, email_body = outreach_engine.build_email_content(lead, 1)
+                text = f"Subject: {subject}\n\n{email_body}"
 
             return self._send_json({"success": True, "pitch": text, "source": "heuristic_engine"})
 

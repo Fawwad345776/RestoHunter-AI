@@ -61,6 +61,35 @@ DEFAULT_CONFIG = {
     "imap_check_interval_seconds": 300
 }
 
+def build_short_pitch(first, biz, city, problem, leak):
+    """Picks the sentence variants that bring the first email closest to 48 words (target: 45-50).
+    Keep in sync with buildShortPitch_ in apps-script/Code.gs and buildShortPitch in js/pitchEngine.js."""
+    name = re.sub(r'\s*\([^)]*\)', '', biz).strip() or biz
+    issue = str(problem).lower().rstrip('.')
+    cost = re.sub(r'\s*[–-]\s*', '–', str(leak).split('(')[0].strip())
+    opens = [
+        f"While reviewing {name}'s Google Maps profile in {city}, I noticed a possible issue: {issue}.",
+        f"Reviewing {name}'s Google Maps profile, I noticed a possible issue: {issue}.",
+        f"I noticed a possible issue at {name}: {issue}.",
+    ]
+    costs = [f"This typically costs venues like yours around {cost}.", f"This typically costs around {cost}."]
+    fixes = ["We build custom systems that fix this and keep revenue direct.", "We build systems that fix this directly.", "We fix this directly."]
+    asks = ["Would you be open to a 2-minute video walkthrough?", "Open to a 2-minute video walkthrough?"]
+    stops = ["If you're not interested, just reply 'stop'.", "Not interested? Reply 'stop'."]
+
+    best, best_score = '', float('inf')
+    for o in opens:
+        for c in costs:
+            for f in fixes:
+                for a in asks:
+                    for s in stops:
+                        body = f"Hi {first},\n\n{o} {c}\n\n{f} {a}\n\n{s}"
+                        score = abs(len(body.split()) - 48)
+                        if score < best_score:
+                            best, best_score = body, score
+    return best
+
+
 class OutreachEngine:
     def __init__(self):
         self.lock = threading.Lock()
@@ -368,25 +397,14 @@ class OutreachEngine:
 
         solid_wp = lead.get('solidWeakPoint') or {}
         problem = solid_wp.get('coreProblem') or lead.get('flawTitle') or 'ordering bottleneck'
-        leak = solid_wp.get('financialLeak') or lead.get('flawLeakRange') or 'substantial margin'
+        leak = solid_wp.get('financialLeak') or lead.get('flawLeakRange') or 'a noticeable share of monthly revenue'
         city = lead.get('city') or 'your city'
-        solution = solid_wp.get('solutionSoftware') or 'direct digital ordering'
-        cfg = self.load_config()
-        sender_name = cfg.get('sender_name', 'Alex | MF Software Solutions')
+        short_name = re.sub(r'\s*\([^)]*\)', '', biz_name).strip() or biz_name
 
-        opt_out_footer = "\n\n---\nPS: If you're not the right person or not interested, just reply 'stop' and I won't reach out again."
-
-        # Stage 1: Day 0 Initial Pitch (Short, 60-75 words, no links, soft CTA)
+        # Stage 1: Day 0 Initial Pitch (45-50 words, no links, soft CTA)
         if stage == 1:
             subject = f"Quick observation regarding {biz_name} direct revenue funnel"
-            body = (
-                f"Hi {first_name},\n\n"
-                f"While reviewing {biz_name}'s Google Maps profile in {city}, I noticed an operational bottleneck regarding your {problem.lower()}.\n\n"
-                f"For a high-volume venue with your strong reviews, this typically causes around {leak} in lost margin every month.\n\n"
-                f"We build custom {solution.lower()} systems that eliminate this commission bleed and capture customer revenue directly.\n\n"
-                f"Would you be open to a 2-minute video walkthrough showing how this works for your team?"
-                f"{opt_out_footer}"
-            )
+            body = build_short_pitch(first_name, biz_name, city, problem, leak)
             return subject, body
 
         # Stage 2: Day 2 / 48 hours later (Quick 2-line bump in SAME thread)
@@ -394,9 +412,9 @@ class OutreachEngine:
             subject = f"Re: {initial_subject or f'Quick observation regarding {biz_name} direct revenue funnel'}"
             body = (
                 f"Hi {first_name},\n\n"
-                f"Wanted to float this back up in case it got buried under service prep.\n\n"
-                f"Were you open to taking a look at that 2-minute video walkthrough showing how to stop the {leak} bottleneck for {biz_name}?"
-                f"{opt_out_footer}"
+                f"Floating this back up in case it got buried.\n\n"
+                f"Still open to a 2-minute video walkthrough on fixing this for {short_name}?\n\n"
+                f"Not interested? Reply 'stop'."
             )
             return subject, body
 
@@ -405,9 +423,8 @@ class OutreachEngine:
             subject = f"Re: {initial_subject or f'Quick observation regarding {biz_name} direct revenue funnel'}"
             body = (
                 f"Hi {first_name},\n\n"
-                f"I know you're super focused on running operations, so I won't follow up again.\n\n"
-                f"If you ever want to revisit plugging the {problem.lower()} leakage down the road, feel free to reach out anytime. Wishing {biz_name} continued success!"
-                f"{opt_out_footer}"
+                f"I won't follow up again. If {problem.lower()} ever becomes a priority, just reply here.\n\n"
+                f"Wishing {short_name} continued success!"
             )
             return subject, body
 

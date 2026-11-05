@@ -32,6 +32,34 @@ const PitchEngine = {
   },
 
   /**
+   * Picks the sentence variants that bring the first email closest to 48 words (target: 45-50).
+   * Keep in sync with buildShortPitch_ in apps-script/Code.gs and build_short_pitch in scripts/outreach_engine.py.
+   */
+  buildShortPitch(first, biz, city, problem, leak) {
+    const name = biz.replace(/\s*\([^)]*\)/g, '').trim() || biz;
+    const issue = String(problem).toLowerCase().replace(/\.+$/, '');
+    const cost = String(leak).split('(')[0].trim().replace(/\s*[–-]\s*/g, '–');
+    const opens = [
+      `While reviewing ${name}'s Google Maps profile in ${city}, I noticed a possible issue: ${issue}.`,
+      `Reviewing ${name}'s Google Maps profile, I noticed a possible issue: ${issue}.`,
+      `I noticed a possible issue at ${name}: ${issue}.`
+    ];
+    const costs = [`This typically costs venues like yours around ${cost}.`, `This typically costs around ${cost}.`];
+    const fixes = ['We build custom systems that fix this and keep revenue direct.', 'We build systems that fix this directly.', 'We fix this directly.'];
+    const asks = ['Would you be open to a 2-minute video walkthrough?', 'Open to a 2-minute video walkthrough?'];
+    const stops = ["If you're not interested, just reply 'stop'.", "Not interested? Reply 'stop'."];
+
+    let best = '';
+    let bestScore = Infinity;
+    opens.forEach(o => costs.forEach(c => fixes.forEach(f => asks.forEach(a => stops.forEach(s => {
+      const body = `Hi ${first},\n\n${o} ${c}\n\n${f} ${a}\n\n${s}`;
+      const score = Math.abs(body.trim().split(/\s+/).length - 48);
+      if (score < bestScore) { best = body; bestScore = score; }
+    })))));
+    return best;
+  },
+
+  /**
    * Generates a channel-specific and sequence-stage personalized pitch
    */
   generatePitch(lead, channel = 'whatsapp', stage = 'initial', language = 'English') {
@@ -53,33 +81,28 @@ const PitchEngine = {
     // 1. GMAIL / EMAIL CHANNEL (100% Ban-Safe 3-Stage Threaded Copy)
     // ==========================================
     if (channel === 'gmail' || channel === 'email') {
-      const optOut = "\n\nPS: If you're not the right person or not interested, just reply 'stop' and I won't reach out again.";
+      const optOut = "\n\nNot interested? Reply 'stop'.";
+      const shortName = biz.replace(/\s*\([^)]*\)/g, '').trim() || biz;
+      const emailProblem = (lead.solidWeakPoint && lead.solidWeakPoint.coreProblem) || flaw;
+      const emailLeak = (lead.solidWeakPoint && lead.solidWeakPoint.financialLeak) || leak;
 
       if (stage === 'initial') {
         subject = `Quick observation regarding ${biz} direct revenue funnel`;
-        body = `Hi ${founderGreeting || teamGreeting},
-
-While reviewing ${biz}'s Google Maps profile, I noticed an operational bottleneck regarding your ${flaw.toLowerCase()}.
-
-For a high-volume venue with your strong reviews, this typically causes around ${leak} in lost profit margins every month.
-
-We build custom ${solution.toLowerCase()} systems that eliminate this commission bleed and capture customer revenue directly.
-
-Would you be open to a 2-minute video walkthrough showing how this works for your team?${optOut}`;
+        body = this.buildShortPitch(founderGreeting || teamGreeting, biz, lead.city || 'your city', emailProblem, emailLeak);
       } else if (stage === 'followup1') {
         subject = `Re: Quick observation regarding ${biz} direct revenue funnel`;
         body = `Hi ${founderGreeting || teamGreeting},
 
-Wanted to float this back up in case it got buried under service prep.
+Floating this back up in case it got buried.
 
-Were you open to taking a look at that 2-minute video walkthrough showing how to stop the ${leak} bottleneck for ${biz}?${optOut}`;
+Still open to a 2-minute video walkthrough on fixing this for ${shortName}?${optOut}`;
       } else if (stage === 'followup2' || stage === 'final') {
         subject = `Re: Quick observation regarding ${biz} direct revenue funnel`;
         body = `Hi ${founderGreeting || teamGreeting},
 
-I know you're super focused on running operations, so I won't follow up again.
+I won't follow up again. If ${emailProblem.toLowerCase()} ever becomes a priority, just reply here.
 
-If you ever want to revisit plugging the ${flaw.toLowerCase()} leakage down the road, feel free to reach out anytime. Wishing ${biz} continued success!${optOut}`;
+Wishing ${shortName} continued success!`;
       } else if (stage === 'demo') {
         subject = `Interactive Demo: ${biz} Custom Software`;
         body = `Hi ${founderGreeting || teamGreeting},

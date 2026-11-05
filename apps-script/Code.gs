@@ -293,10 +293,35 @@ function rowToLead_(r) {
   return {
     id: r[COL.id], businessName: r[COL.businessName] || 'your business', decisionMaker: r[COL.decisionMaker] || '',
     email: String(r[COL.email] || '').trim(), city: r[COL.city] || 'your city', cc: countryCode_(r),
-    problem: r[COL.coreProblem] || 'ordering bottleneck', leak: r[COL.financialLeak] || 'substantial margin',
+    problem: r[COL.coreProblem] || 'ordering bottleneck', leak: r[COL.financialLeak] || 'a noticeable share of monthly revenue',
     solution: r[COL.solution] || 'direct digital ordering', threadId: r[COL.threadId], messageId: r[COL.messageId],
     subject: r[COL.subject]
   };
+}
+
+// Picks the sentence variants that bring the first email closest to 48 words (target: 45–50).
+// Keep in sync with build_short_pitch in scripts/outreach_engine.py and js/pitchEngine.js.
+function buildShortPitch_(first, biz, city, problem, leak) {
+  const name = biz.replace(/\s*\([^)]*\)/g, '').trim() || biz;
+  const issue = String(problem).toLowerCase().replace(/\.+$/, '');
+  const cost = String(leak).split('(')[0].trim().replace(/\s*[–-]\s*/g, '–');
+  const opens = [
+    `While reviewing ${name}'s Google Maps profile in ${city}, I noticed a possible issue: ${issue}.`,
+    `Reviewing ${name}'s Google Maps profile, I noticed a possible issue: ${issue}.`,
+    `I noticed a possible issue at ${name}: ${issue}.`
+  ];
+  const costs = [`This typically costs venues like yours around ${cost}.`, `This typically costs around ${cost}.`];
+  const fixes = ['We build custom systems that fix this and keep revenue direct.', 'We build systems that fix this directly.', 'We fix this directly.'];
+  const asks = ['Would you be open to a 2-minute video walkthrough?', 'Open to a 2-minute video walkthrough?'];
+  const stops = ["If you're not interested, just reply 'stop'.", "Not interested? Reply 'stop'."];
+
+  let best = '', bestScore = Infinity;
+  opens.forEach(o => costs.forEach(c => fixes.forEach(f => asks.forEach(a => stops.forEach(s => {
+    const body = `Hi ${first},\n\n${o} ${c}\n\n${f} ${a}\n\n${s}`;
+    const score = Math.abs(body.trim().split(/\s+/).length - 48);
+    if (score < bestScore) { best = body; bestScore = score; }
+  })))));
+  return best;
 }
 
 function buildEmail_(lead, stage) {
@@ -304,29 +329,23 @@ function buildEmail_(lead, stage) {
   let first = dm.split(/\s+/)[0].replace('&', '').trim();
   if (!first || ['The', 'Mr.', 'Dr.'].includes(first)) first = dm;
   const biz = lead.businessName;
-  const optOut = "\n\n---\nPS: If you're not the right person or not interested, just reply 'stop' and I won't reach out again.";
+  const name = biz.replace(/\s*\([^)]*\)/g, '').trim() || biz;
   const baseSubject = lead.subject || `Quick observation regarding ${biz} direct revenue funnel`;
 
   if (stage === 1) {
-    return {
-      subject: baseSubject,
-      body: `Hi ${first},\n\nWhile reviewing ${biz}'s Google Maps profile in ${lead.city}, I noticed an operational bottleneck regarding your ${String(lead.problem).toLowerCase()}.\n\n` +
-        `For a high-volume venue with your strong reviews, this typically causes around ${lead.leak} in lost margin every month.\n\n` +
-        `We build custom ${String(lead.solution).toLowerCase()} systems that eliminate this commission bleed and capture customer revenue directly.\n\n` +
-        `Would you be open to a 2-minute video walkthrough showing how this works for your team?${optOut}`
-    };
+    return { subject: baseSubject, body: buildShortPitch_(first, biz, lead.city, lead.problem, lead.leak) };
   }
   if (stage === 2) {
     return {
       subject: 'Re: ' + baseSubject,
-      body: `Hi ${first},\n\nWanted to float this back up in case it got buried under service prep.\n\n` +
-        `Were you open to taking a look at that 2-minute video walkthrough showing how to stop the ${lead.leak} bottleneck for ${biz}?${optOut}`
+      body: `Hi ${first},\n\nFloating this back up in case it got buried.\n\n` +
+        `Still open to a 2-minute video walkthrough on fixing this for ${name}?\n\nNot interested? Reply 'stop'.`
     };
   }
   return {
     subject: 'Re: ' + baseSubject,
-    body: `Hi ${first},\n\nI know you're super focused on running operations, so I won't follow up again.\n\n` +
-      `If you ever want to revisit plugging the ${String(lead.problem).toLowerCase()} leakage down the road, feel free to reach out anytime. Wishing ${biz} continued success!${optOut}`
+    body: `Hi ${first},\n\nI won't follow up again. If ${String(lead.problem).toLowerCase()} ever becomes a priority, just reply here.\n\n` +
+      `Wishing ${name} continued success!`
   };
 }
 
