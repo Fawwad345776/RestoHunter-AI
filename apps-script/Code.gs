@@ -7,15 +7,20 @@
  *   2. Select function "setup" at the top → Run → Allow.
  *   3. Go back to the Sheet → "Control" tab → tick the ENGINE checkbox to START, untick to STOP.
  *
- * Optional: Deploy → New deployment → Web app (Execute as: Me, Access: Only myself)
- *           gives you a mobile page with big Start / Stop buttons.
+ * Open tracking: Deploy → New deployment → Web app (Execute as: Me, Access: Anyone),
+ *           then paste the /exec URL into CFG.TRACKING_URL and Save.
+ *           The Control tab then shows open counts and a private mobile Start / Stop link.
  */
 
 // ============================== SETTINGS ==============================
 const CFG = {
   SENDER_NAME: 'Alex | MF Software Solutions',
   REPLY_TO: 'info.mfsoft@gmail.com',
-  DAILY_LIMIT: 45,                 // total emails per day (new + follow-ups)
+  TRACKING_URL: '',                // paste your Web App URL (ending in /exec) here to turn on open tracking
+  DAILY_LIMIT: 51,                 // total emails per day (17 new + 17 + 17 follow-ups)
+  DAILY_NEW: 17,                   // cold emails per day
+  DAILY_FOLLOWUP1: 17,             // stage 2 emails per day
+  DAILY_FOLLOWUP2: 17,             // stage 3 emails per day
   MIN_DELAY_SEC: 180,              // human pacing between emails: 3 min
   MAX_DELAY_SEC: 420,              // … to 7 min
   FOLLOWUP2_AFTER_HOURS: 48,       // stage 2 bump
@@ -29,9 +34,10 @@ const CFG = {
 
 const LEAD_HEADERS = ['id', 'businessName', 'decisionMaker', 'email', 'website', 'city', 'country', 'countryCode',
   'niche', 'coreProblem', 'financialLeak', 'solution', 'status', 'stage', 'lastSentAt', 'threadId',
-  'messageId', 'subject', 'repliedAt', 'notes'];
+  'messageId', 'subject', 'repliedAt', 'notes', 'openCount', 'firstOpenedAt', 'lastOpenedAt', 'lastOpenedStage'];
 const COL = LEAD_HEADERS.reduce((m, h, i) => (m[h] = i, m), {});
 const DONE_STATUSES = ['FINISHED', 'STOP_REPLIED', 'BOUNCED', 'INVALID'];
+const BLOCKING_STATUSES = ['STOP_REPLIED', 'BOUNCED', 'INVALID'];   // never email this address again
 
 const INVALID_DOMAIN_PATTERNS = [/\.(png|jpg|jpeg|svg|gif|webp|bmp|ico)$/i, /wordpress\.org$/i, /wix\.com$/i,
   /sentry\.io$/i, /example\.com$/i, /domain\.com$/i, /test\.com$/i, /localhost$/i];
@@ -122,6 +128,7 @@ function tick() {
   try {
     const ss = getSS_();
     const ctl = ss.getSheetByName('Control');
+    ensureLeadHeaders_(ss.getSheetByName('Leads'));
     const enabled = ctl.getRange('B1').getValue() === true;
     const props = PropertiesService.getScriptProperties();
     const state = loadState_();
@@ -140,6 +147,12 @@ function tick() {
     }
 
     const now = new Date();
+
+    // Replies land in REPLY_TO, so running from another account would hide every 'stop'.
+    if (!ownAddresses_().includes(CFG.REPLY_TO.toLowerCase())) {
+      updateControl_({ status: 'RUNNING', action: `Not sending: run this script from ${CFG.REPLY_TO} so 'stop' replies can be seen.`, state });
+      return;
+    }
 
     // Replies & bounces check
     const lastCheck = Number(props.getProperty('LAST_REPLY_CHECK') || 0);
@@ -179,8 +192,19 @@ function tick() {
 
     const { rowIdx, stage } = pick;
     const lead = rowToLead_(values[rowIdx]);
-    const result = sendStage_(lead, stage);
     const rowNum = rowIdx + 1;
+    if (!lead.id) lead.id = 'lead_' + rowNum;
+
+    // Last check right before sending: never email anyone who has already replied or bounced.
+    const response = findResponse_(lead);
+    if (response) {
+      blockAddress_(sheet, values, lead.email, response);
+      if (response.status === 'BOUNCED') { state.bounces++; saveState_(state); }
+      log_('warn', `🛑 Not sending to ${lead.businessName} <${lead.email}>: ${response.status}`);
+      return;
+    }
+
+    const result = sendStage_(lead, stage);
 
     if (result.ok) {
       const row = values[rowIdx];
@@ -197,7 +221,11 @@ function tick() {
 
       state.total++;
       if (stage === 1) { state.newSent++; state.cc[lead.cc] = (state.cc[lead.cc] || 0) + 1; }
-      else state.followups++;
+      else {
+        state.followups++;
+        if (stage === 2) state.followup1 = (state.followup1 || 0) + 1;
+        else state.followup2 = (state.followup2 || 0) + 1;
+      }
       saveState_(state);
       log_('success', `✅ Stage ${stage} sent to ${lead.businessName} <${lead.email}> (${lead.cc})${result.note ? ' — ' + result.note : ''}`);
     } else if (result.invalid) {
@@ -232,21 +260,20 @@ function pktParts_(d) {
 
 function getActiveWindow_(d) {
   const { wd, hm } = pktParts_(d);
-  if ([6, 0, 1, 2, 3].includes(wd) && hm >= '10:30' && hm <= '13:30')
+  if ([5, 6, 0, 1, 2, 3].includes(wd) && hm >= '10:30' && hm <= '13:30')
     return { active: true, name: 'Gulf Window', countries: ['KW', 'BH', 'OM'] };
-  if ([0, 1, 2, 3, 4].includes(wd) && hm >= '14:00' && hm <= '17:00')
+  if ([0, 1, 2, 3, 4, 5].includes(wd) && hm >= '14:00' && hm <= '17:00')
     return { active: true, name: 'UK Window', countries: ['GB'] };
-  if ([0, 1, 2, 3, 4].includes(wd) && hm >= '18:30' && hm <= '21:30')
+  if ([0, 1, 2, 3, 4, 5].includes(wd) && hm >= '18:30' && hm <= '21:30')
     return { active: true, name: 'North America Window', countries: ['US', 'CA'] };
   return { active: false, name: 'None', countries: [] };
 }
 
 function getQuotas_(d) {
   const { wd } = pktParts_(d);
-  if (wd === 6) return { KW: 5, BH: 5, OM: 5, GB: 0, US: 0, CA: 0 };   // Sunday: Gulf
-  if (wd === 4) return { KW: 0, BH: 0, OM: 0, GB: 5, US: 5, CA: 5 };   // Friday: West
-  if (wd === 5) return { KW: 0, BH: 0, OM: 0, GB: 0, US: 0, CA: 0 };   // Saturday: off
-  return { KW: 4, BH: 4, OM: 2, GB: 2, US: 3, CA: 2 };                 // Mon–Thu
+  if (wd === 6) return { KW: 6, BH: 6, OM: 5, GB: 0, US: 0, CA: 0 };   // Sunday: Gulf
+  if (wd === 4) return { KW: 0, BH: 0, OM: 0, GB: 6, US: 6, CA: 5 };   // Friday: West
+  return { KW: 4, BH: 4, OM: 2, GB: 2, US: 3, CA: 2 };                 // Mon–Thu and Saturday: all countries
 }
 
 function countryCode_(row) {
@@ -264,24 +291,36 @@ function countryCode_(row) {
 
 function selectCandidate_(values, win, state, now) {
   const quotas = getQuotas_(now);
+  const emailOf = r => String(r[COL.email] || '').trim().toLowerCase();
+
+  // Several rows can share one address, so blocks and first contact apply to the address, not the row.
+  const blocked = new Set(), contacted = new Set();
+  for (let i = 1; i < values.length; i++) {
+    const r = values[i];
+    if (BLOCKING_STATUSES.includes(r[COL.status])) blocked.add(emailOf(r));
+    if (Number(r[COL.stage] || 0) > 0) contacted.add(emailOf(r));
+  }
+
   // Priority 1: due follow-ups
   for (let i = 1; i < values.length; i++) {
     const r = values[i];
     if (!win.countries.includes(countryCode_(r))) continue;
-    if (DONE_STATUSES.includes(r[COL.status])) continue;
+    if (DONE_STATUSES.includes(r[COL.status]) || blocked.has(emailOf(r))) continue;
     const stage = Number(r[COL.stage] || 0);
     const last = r[COL.lastSentAt] instanceof Date ? r[COL.lastSentAt] : null;
     if (!last) continue;
     const hrs = (now - last) / 3600000;
-    if (stage === 1 && hrs >= CFG.FOLLOWUP2_AFTER_HOURS) return { rowIdx: i, stage: 2 };
-    if (stage === 2 && hrs >= CFG.FOLLOWUP3_AFTER_HOURS) return { rowIdx: i, stage: 3 };
+    if (stage === 1 && hrs >= CFG.FOLLOWUP2_AFTER_HOURS && (state.followup1 || 0) < CFG.DAILY_FOLLOWUP1) return { rowIdx: i, stage: 2 };
+    if (stage === 2 && hrs >= CFG.FOLLOWUP3_AFTER_HOURS && (state.followup2 || 0) < CFG.DAILY_FOLLOWUP2) return { rowIdx: i, stage: 3 };
   }
   // Priority 2: new leads within today's country quota
+  if ((state.newSent || 0) >= CFG.DAILY_NEW) return null;
   for (let i = 1; i < values.length; i++) {
     const r = values[i];
     const cc = countryCode_(r);
     if (!win.countries.includes(cc)) continue;
     if ((state.cc[cc] || 0) >= (quotas[cc] || 0)) continue;
+    if (blocked.has(emailOf(r)) || contacted.has(emailOf(r))) continue;
     const status = String(r[COL.status] || 'ready');
     if (Number(r[COL.stage] || 0) === 0 && (status === 'ready' || status === '') && r[COL.email]) return { rowIdx: i, stage: 1 };
   }
@@ -355,6 +394,12 @@ function toHtml_(text) {
     text.split('\n\n').map(p => `<p style="margin:0 0 12px 0">${esc(p).replace(/\n/g, '<br>')}</p>`).join('') + '</div>';
 }
 
+function trackingPixel_(lead, stage) {
+  if (!CFG.TRACKING_URL || !lead.id) return '';
+  const src = `${CFG.TRACKING_URL}?o=${encodeURIComponent(lead.id)}&s=${stage}`;
+  return `<img src="${src}" width="1" height="1" alt="" style="display:block;width:1px;height:1px;border:0">`;
+}
+
 function validateEmail_(email) {
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Invalid email format';
   const domain = email.split('@')[1].toLowerCase();
@@ -374,7 +419,7 @@ function sendStage_(lead, stage) {
   if (invalid) return { ok: false, invalid: true, error: invalid };
 
   const { subject, body } = buildEmail_(lead, stage);
-  const html = toHtml_(body);
+  const html = toHtml_(body) + trackingPixel_(lead, stage);
   try {
     if (stage === 1) {
       const msg = GmailApp.createDraft(lead.email, subject, body, { htmlBody: html, name: CFG.SENDER_NAME, replyTo: CFG.REPLY_TO }).send();
@@ -423,6 +468,42 @@ function sendThreadedReply_(to, subject, text, html, threadId, parentMsgId) {
 }
 
 // ============================== REPLIES, BOUNCES, ALERTS ==============================
+function ownAddresses_() {
+  return [Session.getEffectiveUser().getEmail()].concat(GmailApp.getAliases()).map(a => String(a).toLowerCase());
+}
+
+// Looks for any response from this lead, however old and whichever Gmail folder it landed in.
+function findResponse_(lead) {
+  const own = ownAddresses_();
+  const email = lead.email.toLowerCase();
+  if (!own.includes(email) && GmailApp.search(`in:anywhere from:${email}`, 0, 1).length) {
+    return { status: 'STOP_REPLIED', when: new Date() };
+  }
+  if (!lead.threadId) return null;
+  let messages = [];
+  try { messages = GmailApp.getThreadById(lead.threadId).getMessages(); } catch (e) { return null; }
+  for (const m of messages) {
+    const from = (m.getFrom().match(/<([^>]+)>/) || [null, m.getFrom()])[1].toLowerCase().trim();
+    if (own.includes(from)) continue;
+    return { status: /mailer-daemon|postmaster/.test(from) ? 'BOUNCED' : 'STOP_REPLIED', when: m.getDate() };
+  }
+  return null;
+}
+
+// Applies a stop or bounce to every row sharing this address.
+function blockAddress_(sheet, values, email, response) {
+  const target = String(email).trim().toLowerCase();
+  for (let i = 1; i < values.length; i++) {
+    const r = values[i];
+    if (String(r[COL.email] || '').trim().toLowerCase() !== target) continue;
+    if (BLOCKING_STATUSES.includes(r[COL.status])) continue;
+    r[COL.status] = response.status;
+    if (response.status === 'STOP_REPLIED') r[COL.repliedAt] = response.when;
+    else r[COL.notes] = 'Bounced ' + Utilities.formatDate(new Date(), CFG.TZ, 'yyyy-MM-dd HH:mm');
+    sheet.getRange(i + 1, 1, 1, LEAD_HEADERS.length).setValues([r]);
+  }
+}
+
 function checkRepliesAndBounces_(state) {
   const ss = getSS_();
   const sheet = ss.getSheetByName('Leads');
@@ -437,10 +518,10 @@ function checkRepliesAndBounces_(state) {
   if (!Object.keys(byEmail).length) return;
 
   const changed = new Set();
-  const me = Session.getEffectiveUser().getEmail().toLowerCase();
+  const own = ownAddresses_();
 
   // Bounces
-  GmailApp.search('from:(mailer-daemon OR postmaster) newer_than:3d', 0, 50).forEach(th => {
+  GmailApp.search('in:anywhere from:(mailer-daemon OR postmaster) newer_than:14d', 0, 50).forEach(th => {
     let idx = byThread[th.getId()];
     if (idx === undefined) {
       const txt = th.getMessages().map(m => (m.getHeader('X-Failed-Recipients') || '') + ' ' + m.getPlainBody()).join(' ').toLowerCase();
@@ -456,10 +537,10 @@ function checkRepliesAndBounces_(state) {
   });
 
   // Replies
-  GmailApp.search('in:inbox -from:me newer_than:3d', 0, 100).forEach(th => {
+  GmailApp.search('in:anywhere -from:me newer_than:14d', 0, 100).forEach(th => {
     th.getMessages().forEach(m => {
       const from = (m.getFrom().match(/<([^>]+)>/) || [null, m.getFrom()])[1].toLowerCase().trim();
-      if (from === me || /mailer-daemon|postmaster/.test(from)) return;
+      if (own.includes(from) || /mailer-daemon|postmaster/.test(from)) return;
       let idx = byEmail[from];
       if (idx === undefined) idx = byThread[th.getId()];
       if (idx !== undefined && !['STOP_REPLIED', 'BOUNCED'].includes(values[idx][COL.status])) {
@@ -472,6 +553,9 @@ function checkRepliesAndBounces_(state) {
   });
 
   changed.forEach(i => sheet.getRange(i + 1, 1, 1, LEAD_HEADERS.length).setValues([values[i]]));
+  // Other rows with the same address must stop too.
+  changed.forEach(i => blockAddress_(sheet, values, values[i][COL.email],
+    { status: values[i][COL.status], when: values[i][COL.repliedAt] }));
   saveState_(state);
 
   if (state.bounces >= CFG.MAX_BOUNCES_PER_DAY) {
@@ -529,23 +613,53 @@ function updateControl_(o) {
   const props = PropertiesService.getScriptProperties();
   const nextAt = o.nextAt || Number(props.getProperty('NEXT_SEND_AT') || 0);
   const leadsSheet = getSS_().getSheetByName('Leads');
-  let ready = '';
+  let ready = '', emailed = 0, opened = 0, totalOpens = 0;
   if (leadsSheet && leadsSheet.getLastRow() > 1) {
-    const st = leadsSheet.getRange(2, COL.status + 1, leadsSheet.getLastRow() - 1, 1).getValues();
-    ready = st.filter(r => r[0] === 'ready' || r[0] === '').length;
+    leadsSheet.getRange(2, 1, leadsSheet.getLastRow() - 1, LEAD_HEADERS.length).getValues().forEach(r => {
+      if (ready === '') ready = 0;
+      if (r[COL.status] === 'ready' || r[COL.status] === '') ready++;
+      if (Number(r[COL.stage] || 0) > 0) emailed++;
+      const count = Number(r[COL.openCount] || 0);
+      if (count > 0) { opened++; totalOpens += count; }
+    });
   }
   ctl.getRange('B3:B12').setValues([
     [o.status === 'RUNNING' ? '🟢 RUNNING' : '⚪ STOPPED'],
     [o.action || ''],
     [Utilities.formatDate(new Date(), CFG.TZ, 'EEE dd MMM, hh:mm a')],
     [`${s.total || 0} / ${CFG.DAILY_LIMIT}`],
-    [s.newSent || 0],
-    [s.followups || 0],
+    [`${s.newSent || 0} / ${CFG.DAILY_NEW}`],
+    [`1st: ${s.followup1 || 0} / ${CFG.DAILY_FOLLOWUP1}, 2nd: ${s.followup2 || 0} / ${CFG.DAILY_FOLLOWUP2}`],
     [ready],
     [nextAt > Date.now() ? Utilities.formatDate(new Date(nextAt), CFG.TZ, 'hh:mm:ss a') : '—'],
     [s.bounces || 0],
     [props.getProperty('LAST_ERROR') || '—']
   ]);
+  ctl.getRange('A13:B16').setValues([
+    ['Businesses emailed', emailed],
+    ['Businesses that opened', opened],
+    ['Total opens', totalOpens],
+    ['Mobile control link', CFG.TRACKING_URL ? `${CFG.TRACKING_URL}?key=${controlKey_()}` : 'Add TRACKING_URL first']
+  ]);
+  ctl.getRange('A13:A16').setFontWeight('bold');
+}
+
+function ensureLeadHeaders_(sheet) {
+  if (!sheet) return;
+  const have = sheet.getRange(1, 1, 1, Math.max(sheet.getLastColumn(), 1)).getValues()[0];
+  if (have[LEAD_HEADERS.length - 1] === LEAD_HEADERS[LEAD_HEADERS.length - 1]) return;
+  sheet.getRange(1, 1, 1, LEAD_HEADERS.length).setValues([LEAD_HEADERS]).setFontWeight('bold');
+}
+
+function controlKey_() {
+  const props = PropertiesService.getScriptProperties();
+  let key = props.getProperty('CONTROL_KEY');
+  if (!key) { key = Utilities.getUuid(); props.setProperty('CONTROL_KEY', key); }
+  return key;
+}
+
+function requireControlKey_(key) {
+  if (key !== controlKey_()) throw new Error('Not allowed');
 }
 
 function log_(level, msg) {
@@ -559,8 +673,41 @@ function log_(level, msg) {
   } catch (e) { console.log(level, msg); }
 }
 
-// ============================== OPTIONAL MOBILE WEB APP (Start / Stop) ==============================
-function doGet() {
+// ============================== OPEN TRACKING ==============================
+function recordOpen_(leadId, stageParam) {
+  const lock = LockService.getScriptLock();
+  if (!lock.tryLock(20000)) return;
+  try {
+    const sheet = getSS_().getSheetByName('Leads');
+    if (!sheet || sheet.getLastRow() < 2) return;
+    ensureLeadHeaders_(sheet);
+    const rows = sheet.getRange(2, 1, sheet.getLastRow() - 1, LEAD_HEADERS.length).getValues();
+    const idx = rows.findIndex(r => String(r[COL.id]) === String(leadId));
+    if (idx < 0) return;
+    const r = rows[idx];
+    const now = new Date();
+    if (!(r[COL.lastSentAt] instanceof Date)) return;                  // never emailed: not a real open
+    if (now - r[COL.lastSentAt] < 60000) return;                       // mail scanners load images on delivery
+    if (r[COL.lastOpenedAt] instanceof Date && now - r[COL.lastOpenedAt] < 60000) return;  // same view reloaded
+    const count = Number(r[COL.openCount] || 0);
+    const stage = ['1', '2', '3'].includes(String(stageParam)) ? Number(stageParam) : '';
+    sheet.getRange(idx + 2, COL.openCount + 1, 1, 4).setValues([[count + 1, r[COL.firstOpenedAt] || now, now, stage]]);
+    if (count === 0) log_('success', `👁 Opened: ${r[COL.businessName]} <${r[COL.email]}> (stage ${stage})`);
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+// ============================== WEB APP: open tracking + optional mobile Start / Stop ==============================
+function doGet(e) {
+  const params = (e && e.parameter) || {};
+  if (params.o) {
+    try { recordOpen_(params.o, params.s); } catch (err) { console.log(err); }
+    return HtmlService.createHtmlOutput('');
+  }
+  // Tracking needs public access, so the control page stays behind a private key.
+  if (params.key !== controlKey_()) return HtmlService.createHtmlOutput('Not found');
+  const key = JSON.stringify(controlKey_());
   return HtmlService.createHtmlOutput(`<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>RestoHunter Engine</title>
 <style>body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0f172a;color:#e2e8f0;margin:0;padding:24px 16px;text-align:center}
@@ -570,23 +717,26 @@ button{width:100%;max-width:340px;height:64px;font-size:20px;font-weight:800;bor
 <h1>⚡ RestoHunter Engine</h1><div id="st">Loading…</div>
 <button id="go" onclick="set(true)">▶ START</button><br><button id="stop" onclick="set(false)">■ STOP</button>
 <script>
+var KEY=${key};
 function show(s){document.getElementById('st').innerHTML='<b style="font-size:18px;color:'+(s.on?'#34d399':'#94a3b8')+'">'+(s.on?'🟢 RUNNING':'⚪ STOPPED')+'</b><br>'+s.action+'<br>Sent today: '+s.sent+'<br>Ready leads: '+s.ready;
 document.getElementById('go').disabled=s.on;document.getElementById('stop').disabled=!s.on;}
-function load(){google.script.run.withSuccessHandler(show).webStatus();}
-function set(on){google.script.run.withSuccessHandler(show).webSetEngine(on);}
+function load(){google.script.run.withSuccessHandler(show).webStatus(KEY);}
+function set(on){google.script.run.withSuccessHandler(show).webSetEngine(on,KEY);}
 load();setInterval(load,15000);
 </script></body></html>`).setTitle('RestoHunter Engine').addMetaTag('viewport', 'width=device-width, initial-scale=1');
 }
 
-function webStatus() {
+function webStatus(key) {
+  requireControlKey_(key);
   const ctl = getSS_().getSheetByName('Control');
   const v = ctl.getRange('B1:B12').getValues();
   return { on: v[0][0] === true, action: String(v[3][0] || ''), sent: String(v[5][0] || '0'), ready: String(v[8][0] || '') };
 }
 
-function webSetEngine(on) {
+function webSetEngine(on, key) {
+  requireControlKey_(key);
   getSS_().getSheetByName('Control').getRange('B1').setValue(Boolean(on));
   log_(on ? 'success' : 'warn', on ? '▶ Start pressed (web app)' : '■ Stop pressed (web app)');
   updateControl_({ status: on ? 'RUNNING' : 'STOPPED', action: on ? 'Starting… first check within 1 minute' : 'Engine is stopped' });
-  return webStatus();
+  return webStatus(key);
 }
