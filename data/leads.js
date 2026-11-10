@@ -1,5 +1,5 @@
 // RestoHunter AI - Leads whose email was found on the business website (checked 2026-11-10)
-// Countries: United Kingdom (34), United States (32), Canada (28), Kuwait (12), Bahrain (4), Oman (3)
+// Countries: United Kingdom (34), United States (32), Canada (28), Kuwait (15), Bahrain (4), Oman (3)
 
 const DEFAULT_LEADS = [
   {
@@ -5078,6 +5078,138 @@ const DEFAULT_LEADS = [
     "emailSource": "business website (shamiyacatering.com, labelled Business Enquiries)",
     "emailCheckedAt": "2026-11-10",
     "weaknessSource": "seen on https://dogmatickwt.com on 2026-11-10"
+  },
+  {
+    "id": "kw_050",
+    "name": "The Kitchen",
+    "businessName": "The Kitchen",
+    "city": "Mahboula",
+    "state": "Ahmadi Governorate",
+    "country": "Kuwait 🇰🇼",
+    "countryCode": "KW",
+    "address": "",
+    "phone": "1800050",
+    "email": "info@thekitchen.com.kw",
+    "website": "https://thekitchen.com.kw",
+    "googlePlaceId": "",
+    "rating": null,
+    "reviews": null,
+    "decisionMaker": "",
+    "decisionMakerTitle": "",
+    "niche": "restaurants",
+    "nicheName": "International Kitchen: soups, salads, grills, pasta (KLC Virtual Restaurants)",
+    "flawTitle": "A one-page website with no menu, address or opening hours, where the order now button sends every order to a delivery app",
+    "flawLeakRange": "15–35% commission on every app order (industry estimates; Talabat does not publish its rates)",
+    "flawDetails": "Visitors cannot see the menu or order directly, and every order through the app pays commission.",
+    "solidWeakPoint": {
+      "coreProblem": "a one-page website with no menu, address or opening hours, where the order now button sends every order to a delivery app",
+      "whyItHurts": "Visitors cannot see the menu or order directly, and every order through the app pays commission.",
+      "whySolid": "thekitchen.com.kw has a tagline, a hotline (1800050) and an Instagram icon. Its only \"Order Now\" button links to Talabat. No menu, prices, address or opening hours.",
+      "evidence": "thekitchen.com.kw has a tagline, a hotline (1800050) and an Instagram icon. Its only \"Order Now\" button links to Talabat. No menu, prices, address or opening hours.",
+      "solutionSoftware": "Full website with menu and direct online ordering",
+      "recommendedSoftware": "Full website with menu and direct online ordering",
+      "financialLeak": "15–35% commission on every app order (industry estimates; Talabat does not publish its rates)",
+      "roiEstimate": ""
+    },
+    "gmailPitch": {
+      "subject": "Quick question about The Kitchen's website",
+      "body": "Hi there,\n\nI noticed a possible issue at The Kitchen: a one-page website with no menu, address or opening hours, where the order now button sends every order to a delivery app. This typically costs around 15–35% commission on every app order.\n\nWe build systems that fix this directly. Open to a 2-minute video walkthrough?\n\nNot interested? Reply 'stop'."
+    },
+    "recommendedPitchChannel": "gmail",
+    "status": "ready_to_pitch",
+    "crmStatus": "new",
+    "emailSource": "daleeeel.com directory listing (not shown on the website); domain accepts mail (Google MX)",
+    "emailCheckedAt": "2026-11-10",
+    "weaknessSource": "seen on https://thekitchen.com.kw on 2026-11-10",
+    "offer": "new or rebuilt website with menu and direct ordering"
+  },
+  {
+    "id": "kw_051",
+    "name": "Ryoog",
+    "businessName": "Ryoog",
+    "city": "Shaab",
+    "state": "Hawalli Governorate",
+    "country": "Kuwait 🇰🇼",
+    "countryCode": "KW",
+    "address": "80 Street, Shaab, Hawally Governorate",
+    "phone": "+96596001610",
+    "email": "info@ryoog.com",
+    "website": "https://www.ryoog.com",
+    "googlePlaceId": "",
+    "rating": null,
+    "reviews": null,
+    "decisionMaker": "",
+    "decisionMakerTitle": "",
+    "niche": "restaurants",
+    "nicheName": "All-Day Breakfast Restaurant",
+    "flawTitle": "A website dated 2016 with no menu items, online ordering or table booking, and a sign-up link that goes nowhere",
+    "flawLeakRange": "",
+    "flawDetails": "The website shows a login and registration form but gives visitors no way to see dishes, order or book.",
+    "solidWeakPoint": {
+      "coreProblem": "a website dated 2016 with no menu items, online ordering or table booking, and a sign-up link that goes nowhere",
+      "whyItHurts": "The website shows a login and registration form but gives visitors no way to see dishes, order or book.",
+      "whySolid": "ryoog.com: footer \"Copyright 2016 © Ryoog Company\"; no menu items, ordering, booking or delivery links; the \"New user?\" link points to #. Header says \"Ryooq\", footer says \"Ryoog\".",
+      "evidence": "ryoog.com: footer \"Copyright 2016 © Ryoog Company\"; no menu items, ordering, booking or delivery links; the \"New user?\" link points to #. Header says \"Ryooq\", footer says \"Ryoog\".",
+      "solutionSoftware": "Rebuilt website with menu, direct ordering and table booking",
+      "recommendedSoftware": "Rebuilt website with menu, direct ordering and table booking",
+      "financialLeak": "",
+      "roiEstimate": ""
+    },
+    "gmailPitch": {
+      "subject": "Quick question about Ryoog's website",
+      "body": "Hi there,\n\nI noticed a possible issue at Ryoog: a website dated 2016 with no menu items, online ordering or table booking, and a sign-up link that goes nowhere.\n\nWe build systems that fix this directly. Open to a 2-minute video walkthrough?\n\nNot interested? Reply 'stop'."
+    },
+    "recommendedPitchChannel": "gmail",
+    "status": "ready_to_pitch",
+    "crmStatus": "new",
+    "emailSource": "daleeeel.com directory listing (not shown on the website); domain accepts mail (MX mail.ryoog.com)",
+    "emailCheckedAt": "2026-11-10",
+    "weaknessSource": "seen on https://www.ryoog.com on 2026-11-10",
+    "offer": "new or rebuilt website with menu and direct ordering"
+  },
+  {
+    "id": "kw_052",
+    "name": "The Breakfast Club",
+    "businessName": "The Breakfast Club",
+    "city": "Kuwait",
+    "state": "",
+    "country": "Kuwait 🇰🇼",
+    "countryCode": "KW",
+    "address": "",
+    "phone": "",
+    "email": "info@breakfastclub.net",
+    "website": "https://www.breakfastclub.net",
+    "googlePlaceId": "",
+    "rating": null,
+    "reviews": null,
+    "decisionMaker": "",
+    "decisionMakerTitle": "",
+    "niche": "restaurants",
+    "nicheName": "Breakfast Restaurant (Kuwait, Riyadh, Doha)",
+    "flawTitle": "The website showing code labels such as nav.menu and contact.kuwait instead of real text",
+    "flawLeakRange": "",
+    "flawDetails": "Visitors see broken labels instead of the menu, contact details and locations.",
+    "solidWeakPoint": {
+      "coreProblem": "the website showing code labels such as nav.menu and contact.kuwait instead of real text",
+      "whyItHurts": "Visitors see broken labels instead of the menu, contact details and locations.",
+      "whySolid": "breakfastclub.net shows untranslated keys in the menu and footer: \"nav.menu\", \"nav.story\", \"nav.contact\", \"nav.reserve\", \"footer.tagline\", \"contact.kuwait, contact.kuwaitCountry\". No menu items or ordering on the page.",
+      "evidence": "breakfastclub.net shows untranslated keys in the menu and footer: \"nav.menu\", \"nav.story\", \"nav.contact\", \"nav.reserve\", \"footer.tagline\", \"contact.kuwait, contact.kuwaitCountry\". No menu items or ordering on the page.",
+      "solutionSoftware": "Fixed website with working menu, locations and direct ordering",
+      "recommendedSoftware": "Fixed website with working menu, locations and direct ordering",
+      "financialLeak": "",
+      "roiEstimate": ""
+    },
+    "gmailPitch": {
+      "subject": "Quick question about The Breakfast Club's website",
+      "body": "Hi there,\n\nI noticed a possible issue at The Breakfast Club: the website showing code labels such as nav.menu and contact.kuwait instead of real text.\n\nWe build systems that fix this directly. Open to a 2-minute video walkthrough?\n\nNot interested? Reply 'stop'."
+    },
+    "recommendedPitchChannel": "gmail",
+    "status": "ready_to_pitch",
+    "crmStatus": "new",
+    "emailSource": "daleeeel.com directory listing (not shown on the website); domain accepts mail (Microsoft 365 MX)",
+    "emailCheckedAt": "2026-11-10",
+    "weaknessSource": "seen on https://www.breakfastclub.net on 2026-11-10",
+    "offer": "new or rebuilt website with menu and direct ordering"
   }
 ];
 
