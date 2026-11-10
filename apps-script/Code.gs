@@ -10,6 +10,10 @@
  * Open tracking: Deploy → New deployment → Web app (Execute as: Me, Access: Anyone),
  *           then paste the /exec URL into CFG.TRACKING_URL and Save.
  *           The Control tab then shows open counts and a private mobile Start / Stop link.
+ *
+ * Fetch new leads: add LeadFinder.gs as a second file in this project (setup steps are at its top).
+ * Its private page (run showAppLink) has engine Start / Stop, Fetch 5 leads by country and type,
+ * the newly added leads, and every business already emailed.
  */
 
 // ============================== SETTINGS ==============================
@@ -805,25 +809,9 @@ function doGet(e) {
     try { recordOpen_(params.o, params.s); } catch (err) { console.log(err); }
     return HtmlService.createHtmlOutput('');
   }
-  // Tracking needs public access, so the control page stays behind a private key.
+  // Tracking needs public access, so the app page stays behind a private key.
   if (params.key !== controlKey_()) return HtmlService.createHtmlOutput('Not found');
-  const key = JSON.stringify(controlKey_());
-  return HtmlService.createHtmlOutput(`<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RestoHunter Engine</title>
-<style>body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0f172a;color:#e2e8f0;margin:0;padding:24px 16px;text-align:center}
-h1{font-size:20px;margin:0 0 4px}#st{font-size:15px;margin:14px 0 22px;color:#94a3b8;line-height:1.6}
-button{width:100%;max-width:340px;height:64px;font-size:20px;font-weight:800;border:0;border-radius:14px;margin:8px 0;color:#fff;cursor:pointer}
-#go{background:#059669}#stop{background:#dc2626}button:disabled{opacity:.35}</style></head><body>
-<h1>⚡ RestoHunter Engine</h1><div id="st">Loading…</div>
-<button id="go" onclick="set(true)">▶ START</button><br><button id="stop" onclick="set(false)">■ STOP</button>
-<script>
-var KEY=${key};
-function show(s){document.getElementById('st').innerHTML='<b style="font-size:18px;color:'+(s.on?'#34d399':'#94a3b8')+'">'+(s.on?'🟢 RUNNING':'⚪ STOPPED')+'</b><br>'+s.action+'<br>Sent today: '+s.sent+'<br>Ready leads: '+s.ready;
-document.getElementById('go').disabled=s.on;document.getElementById('stop').disabled=!s.on;}
-function load(){google.script.run.withSuccessHandler(show).webStatus(KEY);}
-function set(on){google.script.run.withSuccessHandler(show).webSetEngine(on,KEY);}
-load();setInterval(load,15000);
-</script></body></html>`).setTitle('RestoHunter Engine').addMetaTag('viewport', 'width=device-width, initial-scale=1');
+  return renderAppPage_();   // LeadFinder.gs: engine Start/Stop + Fetch leads + emails sent
 }
 
 function webStatus(key) {
