@@ -169,6 +169,14 @@ function cleanLeads() {
   return counts;
 }
 
+// Run by hand once if old bounces were counted as today's. Safe: new bounces today are counted again.
+function resetTodayBounces() {
+  const s = loadState_();
+  s.bounces = 0;
+  saveState_(s);
+  log_('warn', '🔄 Today\'s bounce counter reset by hand');
+}
+
 // ============================== MAIN LOOP (every minute) ==============================
 function tick() {
   const lock = LockService.getScriptLock();
@@ -247,7 +255,7 @@ function tick() {
     const response = findResponse_(lead);
     if (response) {
       blockAddress_(sheet, values, lead.email, response);
-      if (response.status === 'BOUNCED') { state.bounces++; saveState_(state); }
+      if (response.status === 'BOUNCED' && pktParts_(response.when).date === state.date) { state.bounces++; saveState_(state); }
       log_('warn', `🛑 Not sending to ${lead.businessName} <${lead.email}>: ${response.status}`);
       return;
     }
@@ -578,8 +586,10 @@ function checkRepliesAndBounces_(state) {
       values[idx][COL.status] = 'BOUNCED';
       values[idx][COL.notes] = 'Bounced ' + Utilities.formatDate(new Date(), CFG.TZ, 'yyyy-MM-dd HH:mm');
       changed.add(idx);
-      state.bounces++;
-      log_('warn', `📭 Bounce: ${values[idx][COL.businessName]} <${values[idx][COL.email]}> — removed from sequence`);
+      // Only bounces that arrived today count toward the daily auto-stop; older ones just get marked.
+      const fresh = pktParts_(th.getLastMessageDate()).date === state.date;
+      if (fresh) state.bounces++;
+      log_('warn', `📭 Bounce${fresh ? '' : ' (old, not counted today)'}: ${values[idx][COL.businessName]} <${values[idx][COL.email]}> — removed from sequence`);
     }
   });
 
