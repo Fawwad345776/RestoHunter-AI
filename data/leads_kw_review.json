@@ -1,0 +1,101 @@
+[
+  {
+    "businessName": "Cantina (Shuwaikh)",
+    "email": "basmah@cantina-kw.com",
+    "website": "https://cantina-kw.com",
+    "emailSource": "business website",
+    "emailCheckedAt": "2026-11-10",
+    "weaknessFound": false,
+    "note": "Has booking (EatApp) and ordering (Ordable)."
+  },
+  {
+    "businessName": "PICK (KDI Trading)",
+    "email": "info@kdigtc.com",
+    "website": "https://pick.com.kw",
+    "emailSource": "business website",
+    "emailCheckedAt": "2026-11-10",
+    "weaknessFound": false,
+    "note": "Has its own ordering site (orderpick.com)."
+  },
+  {
+    "businessName": "HBR (Al Thiqa Food Group)",
+    "email": "info@althiqagroup.com",
+    "website": "https://althiqagroup.com",
+    "emailSource": "business website",
+    "emailCheckedAt": "2026-11-10",
+    "weaknessFound": false,
+    "note": "Corporate site; HBR link to the group comes from press coverage, not the site."
+  },
+  {
+    "businessName": "Hungry Bunny (Kout Food Group)",
+    "email": "info@koutfood.com",
+    "website": "https://www.koutfood.com",
+    "emailSource": "business website",
+    "emailCheckedAt": "2026-11-10",
+    "weaknessFound": false,
+    "note": "Large franchise operator (Burger King, Pizza Hut); general contact email."
+  },
+  {
+    "businessName": "Speak Coffee Roaster",
+    "email": "info@speakcoffeeroaster.com",
+    "website": "https://speakcoffeeroaster.com",
+    "emailSource": "business website",
+    "emailCheckedAt": "2026-11-10",
+    "weaknessFound": false,
+    "note": "Has its own online shop."
+  },
+  {
+    "businessName": "OLE Coffee",
+    "email": "info@theolecoffee.com",
+    "website": "https://theolecoffee.com",
+    "emailSource": "business website",
+    "emailCheckedAt": "2026-11-10",
+    "weaknessFound": false,
+    "note": "Has its own online shop."
+  },
+  {
+    "businessName": "ARK Specialty Coffee",
+    "email": "info@ark.com.kw",
+    "website": "https://ark.com.kw",
+    "emailSource": "business website",
+    "emailCheckedAt": "2026-11-10",
+    "weaknessFound": false,
+    "note": "Has its own online shop."
+  },
+  {
+    "businessName": "Mr Baker",
+    "email": "info@mrbaker.com.kw",
+    "website": "https://mrbaker.com.kw",
+    "emailSource": "business website",
+    "emailCheckedAt": "2026-11-10",
+    "weaknessFound": false,
+    "note": "Has its own ordering site (order.mrbaker.com.kw)."
+  },
+  {
+    "businessName": "Shawarma-Matic (Salmiya)",
+    "email": "info@shawarmamatic.com",
+    "website": "https://shawarmamatic.com",
+    "emailSource": "business website",
+    "emailCheckedAt": "2026-11-10",
+    "weaknessFound": false,
+    "note": "Has its own ordering site (order.shawarmamatic.com)."
+  },
+  {
+    "businessName": "Say Suco",
+    "email": "say@saysuco.com",
+    "website": "https://saysuco.com",
+    "emailSource": "business website",
+    "emailCheckedAt": "2026-11-10",
+    "weaknessFound": false,
+    "note": "Has its own order page and OpenTable booking."
+  },
+  {
+    "businessName": "48 East Coffee Roasters",
+    "email": "info@48e.co",
+    "website": "https://48e.co",
+    "emailSource": "business website",
+    "emailCheckedAt": "2026-11-10",
+    "weaknessFound": false,
+    "note": "Has its own online shop."
+  }
+]
