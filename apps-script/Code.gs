@@ -16,7 +16,8 @@
 const CFG = {
   SENDER_NAME: 'Alex | MF Software Solutions',
   REPLY_TO: 'info.mfsoft@gmail.com',
-  TRACKING_URL: '',                // paste your Web App URL (ending in /exec) here to turn on open tracking
+  PLAIN_TEXT: true,                // true = plain email like one typed in Gmail (no sender name, no HTML). Test showed HTML/name emails land in Spam.
+  TRACKING_URL: '',                // open tracking needs PLAIN_TEXT: false; paste your Web App URL (ending in /exec) here to use it
   DAILY_LIMIT: 51,                 // total emails per day (17 new + 17 + 17 follow-ups)
   DAILY_NEW: 17,                   // cold emails per day
   DAILY_FOLLOWUP1: 17,             // stage 2 emails per day
@@ -466,10 +467,11 @@ function sendStage_(lead, stage) {
   if (invalid) return { ok: false, invalid: true, error: invalid };
 
   const { subject, body } = buildEmail_(lead, stage);
-  const html = toHtml_(body) + trackingPixel_(lead, stage);
+  const html = CFG.PLAIN_TEXT ? '' : toHtml_(body) + trackingPixel_(lead, stage);
+  const opts = CFG.PLAIN_TEXT ? {} : { htmlBody: html, name: CFG.SENDER_NAME, replyTo: CFG.REPLY_TO };
   try {
     if (stage === 1) {
-      const msg = GmailApp.createDraft(lead.email, subject, body, { htmlBody: html, name: CFG.SENDER_NAME, replyTo: CFG.REPLY_TO }).send();
+      const msg = GmailApp.createDraft(lead.email, subject, body, opts).send();
       return { ok: true, threadId: msg.getThread().getId(), messageId: msg.getHeader('Message-ID') || '', subject };
     }
     // Follow-up: try a properly threaded reply via Gmail API, fall back to a "Re:" email.
@@ -477,7 +479,7 @@ function sendStage_(lead, stage) {
       const threaded = sendThreadedReply_(lead.email, subject, body, html, lead.threadId, lead.messageId);
       if (threaded === true) return { ok: true };
     }
-    GmailApp.sendEmail(lead.email, subject, body, { htmlBody: html, name: CFG.SENDER_NAME, replyTo: CFG.REPLY_TO });
+    GmailApp.sendEmail(lead.email, subject, body, opts);
     return { ok: true, note: 'sent as Re: (not threaded)' };
   } catch (e) {
     return { ok: false, error: String(e) };
@@ -489,20 +491,18 @@ function sendThreadedReply_(to, subject, text, html, threadId, parentMsgId) {
     const me = Session.getEffectiveUser().getEmail();
     const b64 = s => Utilities.base64Encode(Utilities.newBlob(s).getBytes());
     const boundary = 'rh_' + Utilities.getUuid().replace(/-/g, '');
-    const mime = [
-      `From: =?UTF-8?B?${b64(CFG.SENDER_NAME)}?= <${me}>`,
-      `To: ${to}`,
-      `Reply-To: ${CFG.REPLY_TO}`,
-      `Subject: =?UTF-8?B?${b64(subject)}?=`,
-      `In-Reply-To: ${parentMsgId}`,
-      `References: ${parentMsgId}`,
-      'MIME-Version: 1.0',
+    const threadHeaders = [`Subject: =?UTF-8?B?${b64(subject)}?=`, `In-Reply-To: ${parentMsgId}`, `References: ${parentMsgId}`, 'MIME-Version: 1.0'];
+    const mime = (CFG.PLAIN_TEXT ? [
+      `From: ${me}`, `To: ${to}`, ...threadHeaders,
+      'Content-Type: text/plain; charset=UTF-8', 'Content-Transfer-Encoding: base64', '', b64(text)
+    ] : [
+      `From: =?UTF-8?B?${b64(CFG.SENDER_NAME)}?= <${me}>`, `To: ${to}`, `Reply-To: ${CFG.REPLY_TO}`, ...threadHeaders,
       `Content-Type: multipart/alternative; boundary="${boundary}"`,
       '',
       `--${boundary}`, 'Content-Type: text/plain; charset=UTF-8', 'Content-Transfer-Encoding: base64', '', b64(text),
       `--${boundary}`, 'Content-Type: text/html; charset=UTF-8', 'Content-Transfer-Encoding: base64', '', b64(html),
       `--${boundary}--`
-    ].join('\r\n');
+    ]).join('\r\n');
     const res = UrlFetchApp.fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
       method: 'post', contentType: 'application/json', muteHttpExceptions: true,
       headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken() },
