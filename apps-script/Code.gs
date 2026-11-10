@@ -121,6 +121,53 @@ function importLeadsFromGitHub_(sheet) {
   return rows.length;
 }
 
+// ============================== ONE-TIME CLEANUP (run by hand) ==============================
+// Applies the checked lead list (emails confirmed on each business website) to the Leads sheet:
+// - leads not on the list are marked INVALID, so they are never emailed
+// - leads with a corrected email get it, and a bounced lead with a corrected email is queued again
+// Rows that were already emailed and did not bounce are left alone.
+const CLEAN_LEADS_URL = 'https://raw.githubusercontent.com/Fawwad345776/RestoHunter-AI/shorten-outreach-emails/data/leads.json';
+
+function cleanLeads() {
+  const res = UrlFetchApp.fetch(CLEAN_LEADS_URL, { muteHttpExceptions: true });
+  if (res.getResponseCode() !== 200) throw new Error('Could not download the checked leads: HTTP ' + res.getResponseCode());
+  const good = {};
+  JSON.parse(res.getContentText()).forEach(l => { good[l.id] = String(l.email || '').trim(); });
+
+  const sheet = getSS_().getSheetByName('Leads');
+  ensureLeadHeaders_(sheet);
+  const values = sheet.getDataRange().getValues();
+  const counts = { removed: 0, emailFixed: 0, bouncedRequeued: 0, untouched: 0 };
+  for (let i = 1; i < values.length; i++) {
+    const r = values[i];
+    const id = String(r[COL.id] || '');
+    if (!/^(us|uk|ca|kw|om|bh)_\d+$/.test(id)) { counts.untouched++; continue; }   // your own rows, e.g. test_1
+    const status = String(r[COL.status] || '');
+    const notSent = Number(r[COL.stage] || 0) === 0 && (status === 'ready' || status === '');
+    const bounced = status === 'BOUNCED';
+    if (!notSent && !bounced) { counts.untouched++; continue; }
+
+    if (!(id in good)) {
+      if (bounced) { counts.untouched++; continue; }
+      r[COL.status] = 'INVALID';
+      r[COL.notes] = 'Removed 2026-11-10: email not found on the business website';
+      counts.removed++;
+    } else if (good[id] && good[id].toLowerCase() !== String(r[COL.email]).trim().toLowerCase()) {
+      r[COL.notes] = `Email changed from ${r[COL.email]} (found on the business website)`;
+      r[COL.email] = good[id];
+      if (bounced) {
+        r[COL.status] = 'ready'; r[COL.stage] = 0;
+        r[COL.lastSentAt] = ''; r[COL.threadId] = ''; r[COL.messageId] = ''; r[COL.subject] = '';
+        counts.bouncedRequeued++;
+      } else counts.emailFixed++;
+    } else { counts.untouched++; continue; }
+    sheet.getRange(i + 1, 1, 1, LEAD_HEADERS.length).setValues([r]);
+  }
+  log_('info', `🧹 Leads cleaned: ${JSON.stringify(counts)}`);
+  console.log(JSON.stringify(counts));
+  return counts;
+}
+
 // ============================== MAIN LOOP (every minute) ==============================
 function tick() {
   const lock = LockService.getScriptLock();
