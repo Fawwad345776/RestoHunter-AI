@@ -30,7 +30,9 @@ const CFG = {
   MAX_BOUNCES_PER_DAY: 5,          // auto-STOP engine if exceeded (protects Gmail reputation)
   LOW_LEADS_ALERT_AT: 10,          // email you when fewer ready leads remain
   TZ: 'Asia/Karachi',
-  LEADS_SOURCE_URL: 'https://raw.githubusercontent.com/Fawwad345776/RestoHunter-AI/main/data/leads.json'
+  // Checked leads on GitHub. New leads added there are copied into the Leads tab automatically.
+  LEADS_SOURCE_URL: 'https://raw.githubusercontent.com/Fawwad345776/RestoHunter-AI/shorten-outreach-emails/data/leads.json',
+  LEAD_SYNC_EVERY_MIN: 60
 };
 
 const LEAD_HEADERS = ['id', 'businessName', 'decisionMaker', 'email', 'website', 'city', 'country', 'countryCode',
@@ -95,31 +97,75 @@ function createOwnSpreadsheet_() {
   return ss;
 }
 
-function importLeadsFromGitHub_(sheet) {
+function fetchSourceLeads_() {
   const res = UrlFetchApp.fetch(CFG.LEADS_SOURCE_URL, { muteHttpExceptions: true });
   if (res.getResponseCode() !== 200) throw new Error('Could not download leads: HTTP ' + res.getResponseCode());
-  const data = JSON.parse(res.getContentText());
-  const rows = data.filter(l => l.email).map(l => {
-    const wp = l.solidWeakPoint || {};
-    const r = new Array(LEAD_HEADERS.length).fill('');
-    r[COL.id] = l.id || '';
-    r[COL.businessName] = l.businessName || l.name || '';
-    r[COL.decisionMaker] = l.decisionMaker || '';
-    r[COL.email] = (l.email || '').trim();
-    r[COL.website] = l.website || '';
-    r[COL.city] = l.city || '';
-    r[COL.country] = (l.country || '').replace(/[\u{1F1E6}-\u{1F1FF}]/gu, '').trim();
-    r[COL.countryCode] = (l.countryCode || '').toUpperCase();
-    r[COL.niche] = l.nicheName || l.niche || '';
-    r[COL.coreProblem] = wp.coreProblem || l.flawTitle || '';
-    r[COL.financialLeak] = wp.financialLeak || l.flawLeakRange || '';
-    r[COL.solution] = wp.solutionSoftware || '';
-    r[COL.status] = 'ready';
-    r[COL.stage] = 0;
-    return r;
-  });
+  return JSON.parse(res.getContentText());
+}
+
+function leadToRow_(l) {
+  const wp = l.solidWeakPoint || {};
+  const r = new Array(LEAD_HEADERS.length).fill('');
+  r[COL.id] = l.id || '';
+  r[COL.businessName] = l.businessName || l.name || '';
+  r[COL.decisionMaker] = l.decisionMaker || '';
+  r[COL.email] = (l.email || '').trim();
+  r[COL.website] = l.website || '';
+  r[COL.city] = l.city || '';
+  r[COL.country] = (l.country || '').replace(/[\u{1F1E6}-\u{1F1FF}]/gu, '').trim();
+  r[COL.countryCode] = (l.countryCode || '').toUpperCase();
+  r[COL.niche] = l.nicheName || l.niche || '';
+  r[COL.coreProblem] = wp.coreProblem || l.flawTitle || '';
+  r[COL.financialLeak] = wp.financialLeak || l.flawLeakRange || '';
+  r[COL.solution] = wp.solutionSoftware || '';
+  r[COL.status] = 'ready';
+  r[COL.stage] = 0;
+  return r;
+}
+
+function importLeadsFromGitHub_(sheet) {
+  const rows = fetchSourceLeads_().filter(l => l.email).map(leadToRow_);
   if (rows.length) sheet.getRange(2, 1, rows.length, LEAD_HEADERS.length).setValues(rows);
   return rows.length;
+}
+
+// Appends leads from GitHub whose id and email are not in the sheet yet. Never changes existing rows.
+function syncNewLeads_(sheet) {
+  const values = sheet.getDataRange().getValues();
+  const ids = new Set(), emails = new Set();
+  for (let i = 1; i < values.length; i++) {
+    ids.add(String(values[i][COL.id] || ''));
+    emails.add(String(values[i][COL.email] || '').trim().toLowerCase());
+  }
+  const rows = [];
+  fetchSourceLeads_().forEach(l => {
+    const email = String(l.email || '').trim().toLowerCase();
+    if (!l.id || !email || ids.has(String(l.id)) || emails.has(email)) return;
+    ids.add(String(l.id)); emails.add(email);
+    rows.push(leadToRow_(l));
+  });
+  if (rows.length) {
+    sheet.getRange(sheet.getLastRow() + 1, 1, rows.length, LEAD_HEADERS.length).setValues(rows);
+    log_('success', `➕ Added ${rows.length} new lead(s) from GitHub`);
+  }
+  return rows.length;
+}
+
+function maybeSyncLeads_(sheet) {
+  const props = PropertiesService.getScriptProperties();
+  const last = Number(props.getProperty('LAST_LEAD_SYNC') || 0);
+  if (Date.now() - last < CFG.LEAD_SYNC_EVERY_MIN * 60000) return;
+  props.setProperty('LAST_LEAD_SYNC', String(Date.now()));
+  try { syncNewLeads_(sheet); } catch (e) { log_('warn', 'Lead sync skipped: ' + e); }
+}
+
+// Run by hand to pull new leads right away instead of waiting for the hourly check.
+function syncLeadsNow() {
+  const sheet = getSS_().getSheetByName('Leads');
+  ensureLeadHeaders_(sheet);
+  const n = syncNewLeads_(sheet);
+  console.log(`Added ${n} new lead(s)`);
+  return n;
 }
 
 // ============================== ONE-TIME CLEANUP (run by hand) ==============================
@@ -127,13 +173,9 @@ function importLeadsFromGitHub_(sheet) {
 // - leads not on the list are marked INVALID, so they are never emailed
 // - leads with a corrected email get it, and a bounced lead with a corrected email is queued again
 // Rows that were already emailed and did not bounce are left alone.
-const CLEAN_LEADS_URL = 'https://raw.githubusercontent.com/Fawwad345776/RestoHunter-AI/shorten-outreach-emails/data/leads.json';
-
 function cleanLeads() {
-  const res = UrlFetchApp.fetch(CLEAN_LEADS_URL, { muteHttpExceptions: true });
-  if (res.getResponseCode() !== 200) throw new Error('Could not download the checked leads: HTTP ' + res.getResponseCode());
   const good = {};
-  JSON.parse(res.getContentText()).forEach(l => { good[l.id] = String(l.email || '').trim(); });
+  fetchSourceLeads_().forEach(l => { good[l.id] = String(l.email || '').trim(); });
 
   const sheet = getSS_().getSheetByName('Leads');
   ensureLeadHeaders_(sheet);
@@ -185,6 +227,7 @@ function tick() {
     const ss = getSS_();
     const ctl = ss.getSheetByName('Control');
     ensureLeadHeaders_(ss.getSheetByName('Leads'));
+    maybeSyncLeads_(ss.getSheetByName('Leads'));
     const enabled = ctl.getRange('B1').getValue() === true;
     const props = PropertiesService.getScriptProperties();
     const state = loadState_();
