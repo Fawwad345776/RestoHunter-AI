@@ -1,0 +1,52 @@
+name: Find leads
+
+# Started by the RestoHunter page (Generate button). Finds up to 5 new leads and saves them to
+# finder/results/<request_id>.json; finder/history.json remembers every business ever checked.
+on:
+  workflow_dispatch:
+    inputs:
+      country:
+        description: 'Country code (US, GB, CA, KW, OM, BH)'
+        required: true
+      business_type:
+        description: 'Business type'
+        required: true
+        default: 'All businesses'
+      request_id:
+        description: 'Id the page uses to find the result'
+        required: true
+
+permissions:
+  contents: write
+
+# One run at a time, so two runs never give the same business.
+concurrency:
+  group: find-leads
+  cancel-in-progress: false
+
+jobs:
+  find:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Find leads
+        env:
+          COUNTRY: ${{ inputs.country }}
+          BUSINESS_TYPE: ${{ inputs.business_type }}
+          REQUEST_ID: ${{ inputs.request_id }}
+        run: |
+          case "$REQUEST_ID" in *[!A-Za-z0-9_-]*|'') echo "bad request id"; exit 1;; esac
+          node finder/finder.mjs "$COUNTRY" "$BUSINESS_TYPE" "$REQUEST_ID" || true
+      - name: Save results and history
+        env:
+          REQUEST_ID: ${{ inputs.request_id }}
+        run: |
+          git config user.name "restohunter-finder"
+          git config user.email "restohunter-finder@users.noreply.github.com"
+          git add finder/history.json "finder/results/$REQUEST_ID.json"
+          git commit -m "Find leads: $REQUEST_ID" || exit 0
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
