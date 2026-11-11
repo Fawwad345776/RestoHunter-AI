@@ -9,7 +9,7 @@ import { promises as dns } from 'node:dns';
 
 const [CC, TYPE, REQUEST_ID] = process.argv.slice(2);
 const WANT = 5;
-const MAX_CHECK = 250;                 // websites checked per request at most
+const MAX_CHECK = 250;                 // websites opened per request at most (businesses without a website do not count)
 const TIME_BUDGET_MS = 6 * 60 * 1000;
 const PARALLEL = 12;
 const HISTORY = 'finder/history.json';
@@ -60,7 +60,7 @@ const COMMISSION = '15–35% commission on every app order (industry estimates; 
 
 const LINK_IN_BIO = /^(linktr\.ee|beacons\.ai|taplink\.(cc|at)|lnk\.bio|bio\.link|linkin\.bio|campsite\.bio|solo\.to|linkr\.bio|msha\.ke|[a-z0-9-]*\.?carrd\.co|bio\.site|tap\.bio|allmylinks\.com|linkpop\.com|hoo\.be|snipfeed\.co|komi\.io|stan\.store)$/i;
 const SOCIAL_ONLY = /(^|\.)(instagram\.com|facebook\.com|fb\.com|fb\.me|tiktok\.com|twitter\.com|x\.com|snapchat\.com|wa\.me|whatsapp\.com|google\.com|goo\.gl|g\.page|tripadvisor\.[a-z.]+|yelp\.[a-z.]+|zomato\.com|talabat\.com|deliveroo\.[a-z.]+|ubereats\.com|doordash\.com)$/i;
-const BIG_BRAND = /(huawei|samsung|apple|microsoft|google|amazon|ikea|hsbc|barclays|lloyds|natwest|santander|tesco|sainsbury|asda|boots|nhs\.uk|\.gov|gov\.|mcdonalds|kfc|starbucks|costa|subway|greggs|x-?cite|ooredoo|omantel|zain\.com|the-avenues|walmart|target\.com|costco|homedepot|lowes|bestbuy|cvs\.com|walgreens|marriott|hilton|hyatt|ihg\.com|accor)/i;
+const BIG_BRAND = /(huawei|samsung|apple|microsoft|google|amazon|ikea|hsbc|barclays|lloyds|natwest|santander|tesco|sainsbury|asda|boots|nhs\.uk|\.gov|gov\.|mcdonalds|kfc|starbucks|costa|subway|greggs|x-?cite|ooredoo|omantel|zain\.com|the-avenues|walmart|target\.com|costco|homedepot|lowes|bestbuy|cvs\.com|walgreens|marriott|hilton|hyatt|ihg\.com|accor|alrifai|cityhyper|luluhypermarket|lulu|carrefour|sultan-?center|geant|alshaya|americana|jumbo|eureka|alghanim|savoy|panda\.com|danube|nesto|safari|ikea|centrepoint|maxfashion|homecentre|splash|babyshop)/i;
 const DELIVERY = [['Talabat', /talabat\./i], ['Deliveroo', /deliveroo\./i], ['Uber Eats', /ubereats\.com|uber\.com\/[^"'\s]*eats/i], ['DoorDash', /doordash\.com/i],
   ['Grubhub', /grubhub\.com/i], ['Jahez', /jahez\./i], ['Keeta', /keeta(food)?\./i], ['HungerStation', /hungerstation\./i], ['Careem', /careem\.com/i],
   ['Just Eat', /just-?eat\./i], ['SkipTheDishes', /skipthedishes\./i], ['Postmates', /postmates\./i], ['Seamless', /seamless\.com/i], ['Menulog', /menulog\./i],
@@ -76,6 +76,21 @@ const EMAIL_JUNK = /\.(png|jpe?g|gif|svg|webp|bmp|ico|css|js)$|@(example\.|sentr
 const BAD_LOCAL = /^(press|pr|media|careers?|jobs|recruit\w*|hr|privacy|gdpr|dpo|data\w*|accounts?|finance|invoices?|billing|marketing|webmaster|admin|legal|abuse|postmaster|hostmaster|security|support|x?support|investors?|wholesale|donations?|name|user|email|your\.?name|firstname\.?lastname)$/i;
 const FREE_MAIL = /^(gmail|googlemail|hotmail|outlook|live|yahoo|icloud|me|msn|aol|proton|protonmail)\.[a-z.]+$/i;
 const GENERIC = ['info', 'hello', 'contact', 'enquiries', 'enquiry', 'office', 'sales', 'orders', 'order', 'reservations', 'reservation', 'bookings', 'booking', 'catering', 'events', 'team', 'eat', 'mail', 'reception'];
+
+const PENDING = 'data/leads_pending.json';
+// Business types for leads in the checked list (their "niche" field).
+const PENDING_TYPE = {
+  'Restaurant': /restaurant/i, 'Cafe': /cafe|coffee|tea/i, 'Bakery': /bakery|pastry/i, 'Dessert shop': /confectionery|pastry|ice cream|chocolate/i, 'Catering': /cater/i,
+  'Salon & beauty': /hairdresser|beauty|cosmetics|nails|massage|spa|perfum/i, 'Clinic & dentist': /dentist|clinic|doctor|optician|physio|veterinary/i,
+  'Gym & fitness': /fitness|sports|dance/i, 'Hotel': /hotel|guest house|motel|apartment/i,
+  'Shop & retail': /clothes|shoes|jewel|furniture|electronics|books|toys|gift|florist|butcher|cheese|wine|bicycle|hardware|computer|paint|tailor|shop|retail|store|grocery|camping|video games|perfum/i,
+  'Office & services': /company|accountant|accounting|audit|lawyer|estate|architect|consult|it\b|advertis|insurance|travel|financial|business|translator|engineering|apps|communications|artificial/i
+};
+function pendingProblem(l) { return String((l.solidWeakPoint || {}).coreProblem || l.flawTitle || '').trim(); }
+function offerFor(p) {
+  return /mobile/i.test(p) ? 'mobile-friendly website' : /https/i.test(p) ? 'secure (HTTPS) website' : /outdated|updated/i.test(p) ? 'website refresh'
+    : /enquiry form/i.test(p) ? 'online enquiry or booking form' : /ordering/i.test(p) ? 'online ordering' : /booking/i.test(p) ? 'online booking' : 'website improvements';
+}
 
 const host = u => { const m = String(u || '').trim().match(/^(?:[a-z]+:\/\/)?([^\/?#:]+)/i); return m ? m[1].toLowerCase().replace(/^www\./, '') : ''; };
 const normUrl = u => { u = String(u || '').trim(); if (!u) return ''; if (!/^https?:\/\//i.test(u)) u = 'http://' + u; return /^https?:\/\/[^\s"'<>]+$/i.test(u) ? u : ''; };
@@ -202,7 +217,7 @@ async function main() {
   const started = Date.now();
   const history = fs.existsSync(HISTORY) ? JSON.parse(fs.readFileSync(HISTORY, 'utf8')) : { checked: {}, cityIndex: {} };
   const known = { emails: new Set(), hosts: new Set() };
-  for (const f of ['data/leads.json', 'data/leads_pending.json']) {
+  for (const f of ['data/leads.json']) {
     if (!fs.existsSync(f)) continue;
     for (const l of JSON.parse(fs.readFileSync(f, 'utf8'))) { if (l.email) known.emails.add(String(l.email).toLowerCase()); if (l.website) known.hosts.add(host(l.website)); }
   }
@@ -211,8 +226,32 @@ async function main() {
   const country = COUNTRIES[CC]; const cityKey = `${CC}|${TYPE}`;
   let cityIdx = history.cityIndex[cityKey] || 0;
   const leads = [], details = [];
-  let citiesTried = 0;
-  while (leads.length < WANT && citiesTried < country.cities.length && details.length < MAX_CHECK && Date.now() - started < TIME_BUDGET_MS) {
+  let citiesTried = 0, opened = 0;
+  const record = (c, city, r) => {
+    history.checked[c.id] = { name: c.name, country: CC, type: TYPE, city, website: c.website, result: r.result, email: r.email || '', at: NOW.toISOString() };
+    details.push({ name: c.name, result: r.result });
+  };
+  // 1) Leads already checked on 10 Nov (data/leads_pending.json: email shown on the business's website).
+  //    Only ones with a proven website issue; the MX record is checked again.
+  if (fs.existsSync(PENDING) && (TYPE === 'All businesses' || PENDING_TYPE[TYPE])) {
+    const pool = JSON.parse(fs.readFileSync(PENDING, 'utf8')).filter(l => l.countryCode === CC && !history.checked['pending:' + l.id]
+      && pendingProblem(l) && (TYPE === 'All businesses' || PENDING_TYPE[TYPE].test(String(l.niche || ''))));
+    for (const l of pool) {
+      if (leads.length >= WANT) break;
+      const email = String(l.email).toLowerCase(); const c = { id: 'pending:' + l.id, name: l.businessName, website: l.website };
+      if (known.emails.has(email)) { record(c, l.city || '', { result: 'already given', email }); continue; }
+      if (!(await hasMx(email.split('@')[1]))) { record(c, l.city || '', { result: 'email rejected', email }); continue; }
+      known.emails.add(email); known.hosts.add(host(l.website));
+      const problem = pendingProblem(l);
+      leads.push({ businessName: l.businessName, email, website: l.website, city: l.city || '', country: country.name, countryCode: CC, businessType: l.niche || 'business',
+        problem, financialLeak: '', offer: offerFor(problem), evidence: (l.solidWeakPoint || {}).evidence || l.flawDetails || '', emailFoundOn: l.emailFoundOn || l.website,
+        source: l.sourceRef ? (String(l.sourceRef).startsWith('http') ? l.sourceRef : `OpenStreetMap ${l.sourceRef.replace(/^osm:/, '')}`) : 'checked list' });
+      record(c, l.city || '', { result: 'added', email });
+    }
+  }
+
+  // 2) New businesses from OpenStreetMap, city by city.
+  while (leads.length < WANT && citiesTried < country.cities.length && opened < MAX_CHECK && Date.now() - started < TIME_BUDGET_MS) {
     const [city, lat, lon] = country.cities[cityIdx % country.cities.length];
     let els = [];
     try { els = await overpass(lat, lon); } catch (e) { console.error(city, e.message); }
@@ -221,8 +260,15 @@ async function main() {
       .filter(c => c.name && !history.checked[c.id])
       .sort((a, b) => (!!b.website) - (!!a.website));
     if (!cands.length) { cityIdx++; citiesTried++; continue; }   // this city is used up: next city
-    for (let i = 0; i < cands.length && leads.length < WANT && details.length < MAX_CHECK && Date.now() - started < TIME_BUDGET_MS; i += PARALLEL) {
-      const batch = cands.slice(i, i + PARALLEL);
+    // Businesses with no website (or only social media) are recorded straight away; they have no findable email.
+    const withSite = [];
+    for (const c of cands) {
+      const h = host(normUrl(c.website));
+      if (!h || SOCIAL_ONLY.test(h)) record(c, city, { result: 'no website' }); else withSite.push(c);
+    }
+    for (let i = 0; i < withSite.length && leads.length < WANT && opened < MAX_CHECK && Date.now() - started < TIME_BUDGET_MS; i += PARALLEL) {
+      const batch = withSite.slice(i, i + PARALLEL);
+      opened += batch.length;
       const res = await Promise.all(batch.map(c => checkOne(c, known)));
       batch.forEach((c, j) => {
         const r = res[j];
@@ -232,8 +278,7 @@ async function main() {
           leads.push({ businessName: c.name, email: r.email, website: r.lead.website, city, country: country.name, countryCode: CC, businessType: TYPE === 'All businesses' ? c.category.split('=')[1]?.replace(/_/g, ' ') || 'business' : TYPE,
             problem: r.lead.problem, financialLeak: r.lead.financialLeak, offer: r.lead.offer, evidence: r.lead.evidence, emailFoundOn: r.lead.emailFoundOn, source: `OpenStreetMap ${c.id.slice(4)}` });
         }
-        history.checked[c.id] = { name: c.name, country: CC, type: TYPE, city, website: c.website, result: r.result, email: r.email || '', at: NOW.toISOString() };
-        details.push({ name: c.name, result: r.result });
+        record(c, city, r);
       });
     }
     if (leads.length < WANT) { cityIdx++; citiesTried++; }
