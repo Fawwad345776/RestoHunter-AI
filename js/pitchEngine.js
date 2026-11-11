@@ -37,22 +37,31 @@ const PitchEngine = {
    */
   buildShortPitch(first, biz, city, problem, leak) {
     const name = biz.replace(/\s*\([^)]*\)/g, '').trim() || biz;
-    const issue = String(problem).toLowerCase().replace(/\.+$/, '');
-    const cost = String(leak).split('(')[0].trim().replace(/\s*[–-]\s*/g, '–');
-    const opens = [
-      `While reviewing ${name}'s Google Maps profile in ${city}, I noticed a possible issue: ${issue}.`,
-      `Reviewing ${name}'s Google Maps profile, I noticed a possible issue: ${issue}.`,
+    const issue = String(problem || '').split(' ').map(w => /^[A-Z0-9&]{2,}[a-z]?$/.test(w) ? w : w.toLowerCase()).join(' ').replace(/\.+$/, '');
+    const cost = String(leak || '').split('(')[0].trim().replace(/\s*[–-]\s*/g, '–');
+    // No issue found for a lead: ask a question instead of claiming one.
+    const opens = issue ? [
+      `While looking into ${name} online, I noticed a possible issue: ${issue}.`,
+      `Looking at ${name} online, I noticed a possible issue: ${issue}.`,
       `I noticed a possible issue at ${name}: ${issue}.`
+    ] : [
+      `I came across ${name} online and had a quick question: is your website bringing in as many enquiries as it could?`,
+      `Quick question about ${name}: is your website bringing in as many enquiries as it could?`
     ];
-    const costs = [`This typically costs venues like yours around ${cost}.`, `This typically costs around ${cost}.`];
-    const fixes = ['We build custom systems that fix this and keep revenue direct.', 'We build systems that fix this directly.', 'We fix this directly.'];
+    // No proven figure for a lead: say so in general terms instead of quoting a number.
+    const costs = !issue ? [''] : cost
+      ? [`This typically costs businesses like yours around ${cost}.`, `This typically costs around ${cost}.`]
+      : ['Issues like this usually cost businesses enquiries.', 'This usually costs enquiries.'];
+    const fixes = issue
+      ? ['We build custom systems that fix this and keep revenue direct.', 'We build systems that fix this directly.', 'We fix this directly.']
+      : ['We build websites and booking systems that turn more visitors into customers.', 'We help businesses get more enquiries from their website.', 'We help with exactly that.'];
     const asks = ['Would you be open to a 2-minute video walkthrough?', 'Open to a 2-minute video walkthrough?'];
     const stops = ["If you're not interested, just reply 'stop'.", "Not interested? Reply 'stop'."];
 
     let best = '';
     let bestScore = Infinity;
     opens.forEach(o => costs.forEach(c => fixes.forEach(f => asks.forEach(a => stops.forEach(s => {
-      const body = `Hi ${first},\n\n${o} ${c}\n\n${f} ${a}\n\n${s}`;
+      const body = `Hi ${first},\n\n${[o, c].filter(Boolean).join(' ')}\n\n${f} ${a}\n\n${s}`;
       const score = Math.abs(body.trim().split(/\s+/).length - 48);
       if (score < bestScore) { best = body; bestScore = score; }
     })))));
@@ -83,8 +92,8 @@ const PitchEngine = {
     if (channel === 'gmail' || channel === 'email') {
       const optOut = "\n\nNot interested? Reply 'stop'.";
       const shortName = biz.replace(/\s*\([^)]*\)/g, '').trim() || biz;
-      const emailProblem = (lead.solidWeakPoint && lead.solidWeakPoint.coreProblem) || flaw;
-      const emailLeak = (lead.solidWeakPoint && lead.solidWeakPoint.financialLeak) || leak;
+      const emailProblem = (lead.solidWeakPoint && lead.solidWeakPoint.coreProblem) || lead.flawTitle || '';
+      const emailLeak = (lead.solidWeakPoint && lead.solidWeakPoint.financialLeak) || lead.flawLeakRange || '';
 
       if (stage === 'initial') {
         subject = `Quick observation regarding ${biz} direct revenue funnel`;
@@ -95,12 +104,12 @@ const PitchEngine = {
 
 Floating this back up in case it got buried.
 
-Still open to a 2-minute video walkthrough on fixing this for ${shortName}?${optOut}`;
+Still open to a 2-minute video walkthrough on ${emailProblem ? 'fixing this' : 'getting more enquiries'} for ${shortName}?${optOut}`;
       } else if (stage === 'followup2' || stage === 'final') {
         subject = `Re: Quick observation regarding ${biz} direct revenue funnel`;
         body = `Hi ${founderGreeting || teamGreeting},
 
-I won't follow up again. If ${emailProblem.toLowerCase()} ever becomes a priority, just reply here.
+I won't follow up again. If ${emailProblem ? emailProblem.toLowerCase() : 'getting more from your website'} ever becomes a priority, just reply here.
 
 Wishing ${shortName} continued success!`;
       } else if (stage === 'demo') {

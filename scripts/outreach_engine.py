@@ -65,15 +65,23 @@ def build_short_pitch(first, biz, city, problem, leak):
     """Picks the sentence variants that bring the first email closest to 48 words (target: 45-50).
     Keep in sync with buildShortPitch_ in apps-script/Code.gs and buildShortPitch in js/pitchEngine.js."""
     name = re.sub(r'\s*\([^)]*\)', '', biz).strip() or biz
-    issue = str(problem).lower().rstrip('.')
-    cost = re.sub(r'\s*[–-]\s*', '–', str(leak).split('(')[0].strip())
+    issue = ' '.join(w if re.fullmatch(r'[A-Z0-9&]{2,}[a-z]?', w) else w.lower() for w in str(problem or '').split(' ')).rstrip('.')
+    cost = re.sub(r'\s*[–-]\s*', '–', str(leak or '').split('(')[0].strip())
+    # No issue found for a lead: ask a question instead of claiming one.
     opens = [
-        f"While reviewing {name}'s Google Maps profile in {city}, I noticed a possible issue: {issue}.",
-        f"Reviewing {name}'s Google Maps profile, I noticed a possible issue: {issue}.",
+        f"While looking into {name} online, I noticed a possible issue: {issue}.",
+        f"Looking at {name} online, I noticed a possible issue: {issue}.",
         f"I noticed a possible issue at {name}: {issue}.",
+    ] if issue else [
+        f"I came across {name} online and had a quick question: is your website bringing in as many enquiries as it could?",
+        f"Quick question about {name}: is your website bringing in as many enquiries as it could?",
     ]
-    costs = [f"This typically costs venues like yours around {cost}.", f"This typically costs around {cost}."]
-    fixes = ["We build custom systems that fix this and keep revenue direct.", "We build systems that fix this directly.", "We fix this directly."]
+    # No proven figure for a lead: say so in general terms instead of quoting a number.
+    costs = ([''] if not issue else
+             [f"This typically costs businesses like yours around {cost}.", f"This typically costs around {cost}."] if cost
+             else ["Issues like this usually cost businesses enquiries.", "This usually costs enquiries."])
+    fixes = (["We build custom systems that fix this and keep revenue direct.", "We build systems that fix this directly.", "We fix this directly."] if issue
+             else ["We build websites and booking systems that turn more visitors into customers.", "We help businesses get more enquiries from their website.", "We help with exactly that."])
     asks = ["Would you be open to a 2-minute video walkthrough?", "Open to a 2-minute video walkthrough?"]
     stops = ["If you're not interested, just reply 'stop'.", "Not interested? Reply 'stop'."]
 
@@ -83,7 +91,8 @@ def build_short_pitch(first, biz, city, problem, leak):
             for f in fixes:
                 for a in asks:
                     for s in stops:
-                        body = f"Hi {first},\n\n{o} {c}\n\n{f} {a}\n\n{s}"
+                        opening = ' '.join(x for x in (o, c) if x)
+                        body = f"Hi {first},\n\n{opening}\n\n{f} {a}\n\n{s}"
                         score = abs(len(body.split()) - 48)
                         if score < best_score:
                             best, best_score = body, score
@@ -396,8 +405,8 @@ class OutreachEngine:
             first_name = dm
 
         solid_wp = lead.get('solidWeakPoint') or {}
-        problem = solid_wp.get('coreProblem') or lead.get('flawTitle') or 'ordering bottleneck'
-        leak = solid_wp.get('financialLeak') or lead.get('flawLeakRange') or 'a noticeable share of monthly revenue'
+        problem = solid_wp.get('coreProblem') or lead.get('flawTitle') or ''
+        leak = solid_wp.get('financialLeak') or lead.get('flawLeakRange') or ''
         city = lead.get('city') or 'your city'
         short_name = re.sub(r'\s*\([^)]*\)', '', biz_name).strip() or biz_name
 
@@ -413,7 +422,7 @@ class OutreachEngine:
             body = (
                 f"Hi {first_name},\n\n"
                 f"Floating this back up in case it got buried.\n\n"
-                f"Still open to a 2-minute video walkthrough on fixing this for {short_name}?\n\n"
+                f"Still open to a 2-minute video walkthrough on {'fixing this' if problem else 'getting more enquiries'} for {short_name}?\n\n"
                 f"Not interested? Reply 'stop'."
             )
             return subject, body
@@ -423,7 +432,7 @@ class OutreachEngine:
             subject = f"Re: {initial_subject or f'Quick observation regarding {biz_name} direct revenue funnel'}"
             body = (
                 f"Hi {first_name},\n\n"
-                f"I won't follow up again. If {problem.lower()} ever becomes a priority, just reply here.\n\n"
+                f"I won't follow up again. If {problem.lower() if problem else 'getting more from your website'} ever becomes a priority, just reply here.\n\n"
                 f"Wishing {short_name} continued success!"
             )
             return subject, body
