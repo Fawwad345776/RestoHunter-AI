@@ -1,1447 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SoftHunter AI — Universal B2B Lead Generation & Software Sales Automation Platform</title>
-  <meta name="description" content="Autonomous B2B software sales & client acquisition platform. Google Places discovery, PageSpeed technical audits, Universal Software Opportunity Matching, 50-lead batch automation, multi-channel outreach, and CRM pipeline.">
-  <meta name="theme-color" content="#070c1e">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="assets/icon.jpg">
-  <link rel="apple-touch-icon" href="assets/icon.jpg">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=6.0">
-  <link rel="stylesheet" href="css/components.css?v=6.0">
-  <link rel="stylesheet" href="css/saas-dashboard.css?v=6.0">
-  <link rel="stylesheet" href="css/responsive.css?v=6.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RestoHunter Leads</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --ink:#111827; --muted:#6b7280; --line:#e5e7eb; --accent:#0f766e; --accent-ink:#fff; --bad:#b91c1c; --ok:#047857; --soft:#f0fdfa; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0b1220; --card:#111827; --ink:#e5e7eb; --muted:#9ca3af; --line:#1f2937; --accent:#14b8a6; --accent-ink:#04201d; --bad:#f87171; --ok:#34d399; --soft:#0f2a2a; } }
+  :root[data-theme="dark"] { --bg:#0b1220; --card:#111827; --ink:#e5e7eb; --muted:#9ca3af; --line:#1f2937; --accent:#14b8a6; --accent-ink:#04201d; --bad:#f87171; --ok:#34d399; --soft:#0f2a2a; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+  main { max-width: 980px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 20px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin: 0 0 16px; }
+  .controls { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: end; }
+  @media (max-width: 640px) { .controls { grid-template-columns: 1fr; } }
+  label { display: block; font-size: 13px; color: var(--muted); margin: 0 0 4px; }
+  select, input, button { font: inherit; width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--ink); }
+  button { cursor: pointer; font-weight: 600; width: auto; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); padding: 10px 22px; }
+  button:disabled { opacity: .55; cursor: default; }
+  .muted { color: var(--muted); } .bad { color: var(--bad); } .ok { color: var(--ok); }
+  .status { margin-top: 14px; padding: 12px 14px; border-radius: 10px; background: var(--soft); display: none; }
+  .lead { border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin: 10px 0 0; }
+  .lead h3 { margin: 0 0 6px; font-size: 16px; }
+  .lead .email { font-weight: 600; word-break: break-all; }
+  .lead a { color: var(--accent); word-break: break-all; }
+  .tag { display: inline-block; font-size: 12px; padding: 1px 8px; border: 1px solid var(--line); border-radius: 999px; margin-right: 4px; color: var(--muted); }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  details summary { cursor: pointer; color: var(--muted); }
+  .pill { display: inline-block; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line); font-size: 12px; margin: 2px 4px 2px 0; }
+  ol { padding-left: 20px; margin: 8px 0; } li { margin: 4px 0; }
+  code { font-family: ui-monospace, Menlo, monospace; font-size: 13px; background: var(--bg); padding: 1px 5px; border-radius: 5px; }
+</style>
 </head>
 <body>
-  <div class="saas-layout" id="saas-app">
-    <!-- ========================================================
-         SIDEBAR NAVIGATION
-         ======================================================== -->
-    <aside class="saas-sidebar" id="saas-sidebar">
-      <!-- Brand Header -->
-      <div class="sidebar-brand-header">
-        <a href="#overview" class="sidebar-brand-link" onclick="App.switchView('overview')">
-          <img src="assets/icon.jpg" alt="SoftHunter AI Logo" class="sidebar-logo-img">
-          <div class="sidebar-brand-text">
-            <span class="sidebar-brand-name">
-              SoftHunter <span style="color: #38bdf8;">AI</span>
-            </span>
-            <span class="sidebar-brand-tagline">B2B Software Sales SDR</span>
-          </div>
-        </a>
-        <button id="btn-sidebar-toggle" class="btn-sidebar-collapse" title="Collapse / Expand Sidebar (Ctrl+B)">
-          ◀
-        </button>
-      </div>
-
-      <!-- Nav Items Scrollable -->
-      <nav class="sidebar-nav-scroll">
-        <!-- GROUP 1: CORE PLATFORM -->
-        <div class="sidebar-nav-group">
-          <div class="nav-group-title">Gmail Outreach Engine</div>
-          <ul class="sidebar-nav-list">
-            <li>
-              <a href="#all-businesses" class="sidebar-nav-item active" data-view="all-businesses">
-                <span class="nav-item-icon">📧</span>
-                <span class="nav-item-label">Verified Leads (6 Countries)</span>
-                <span class="nav-item-badge emerald" id="sidebar-total-leads-badge">305</span>
-              </a>
-            </li>
-            <li>
-              <a href="#dispatched-leads" class="sidebar-nav-item" data-view="dispatched-leads">
-                <span class="nav-item-icon">🚀</span>
-                <span class="nav-item-label">Pitched Emails</span>
-                <span class="nav-item-badge" id="sidebar-dispatched-badge">0</span>
-              </a>
-            </li>
-            <li>
-              <a href="#overview" class="sidebar-nav-item" data-view="overview">
-                <span class="nav-item-icon">📊</span>
-                <span class="nav-item-label">Overview & Stats</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- GROUP 2: DIGITAL PRESENCE & AI AUDIT -->
-        <div class="sidebar-nav-group">
-          <div class="nav-group-title">Digital Presence & AI Audit</div>
-          <ul class="sidebar-nav-list">
-            <li>
-              <a href="#website-analyzer" class="sidebar-nav-item" data-view="website-analyzer">
-                <span class="nav-item-icon">🌐</span>
-                <span class="nav-item-label">Website Analyzer</span>
-              </a>
-            </li>
-            <li>
-              <a href="#weakness-detector" class="sidebar-nav-item" data-view="weakness-detector">
-                <span class="nav-item-icon">⚠️</span>
-                <span class="nav-item-label">AI Weakness Detector</span>
-              </a>
-            </li>
-            <li>
-              <a href="#software-opportunities" class="sidebar-nav-item" data-view="software-opportunities">
-                <span class="nav-item-icon">💡</span>
-                <span class="nav-item-label">Software Opportunities</span>
-                <span class="nav-item-badge cyan">6 TYPES</span>
-              </a>
-            </li>
-            <li>
-              <a href="#pitch-generator" class="sidebar-nav-item" data-view="pitch-generator">
-                <span class="nav-item-icon">✍️</span>
-                <span class="nav-item-label">AI Pitch Generator</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- GROUP 3: BATCH & DISPATCH AUTOMATION -->
-        <div class="sidebar-nav-group">
-          <div class="nav-group-title">Batch & Outreach Automation</div>
-          <ul class="sidebar-nav-list">
-            <li>
-              <a href="#lead-batch" class="sidebar-nav-item" data-view="lead-batch">
-                <span class="nav-item-icon">📦</span>
-                <span class="nav-item-label">Current Lead Batch</span>
-                <span class="nav-item-badge amber" id="sidebar-batch-badge">BATCH 01</span>
-              </a>
-            </li>
-            <li>
-              <a href="#daily-tracker" class="sidebar-nav-item" data-view="daily-tracker">
-                <span class="nav-item-icon">📈</span>
-                <span class="nav-item-label">Daily Pitch Tracker</span>
-              </a>
-            </li>
-            <li>
-              <a href="#dispatched-leads" class="sidebar-nav-item" data-view="dispatched-leads">
-                <span class="nav-item-icon">🚀</span>
-                <span class="nav-item-label">Dispatched Leads</span>
-                <span class="nav-item-badge" id="sidebar-dispatched-badge">0</span>
-              </a>
-            </li>
-            <li>
-              <a href="#date-history" class="sidebar-nav-item" data-view="date-history">
-                <span class="nav-item-icon">📅</span>
-                <span class="nav-item-label">Date-Wise History</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- GROUP 4: CRM & CLIENT CONVERSION -->
-        <div class="sidebar-nav-group">
-          <div class="nav-group-title">CRM & Client Conversion</div>
-          <ul class="sidebar-nav-list">
-            <li>
-              <a href="#followup-manager" class="sidebar-nav-item" data-view="followup-manager">
-                <span class="nav-item-icon">⏰</span>
-                <span class="nav-item-label">Follow-up Manager</span>
-                <span class="nav-item-badge amber" id="sidebar-followup-badge">0 DUE</span>
-              </a>
-            </li>
-            <li>
-              <a href="#reply-inbox" class="sidebar-nav-item" data-view="reply-inbox">
-                <span class="nav-item-icon">📥</span>
-                <span class="nav-item-label">Reply Inbox</span>
-                <span class="nav-item-badge" id="sidebar-reply-badge">0</span>
-              </a>
-            </li>
-            <li>
-              <a href="#crm" class="sidebar-nav-item" data-view="crm">
-                <span class="nav-item-icon">💼</span>
-                <span class="nav-item-label">CRM Pipeline</span>
-              </a>
-            </li>
-            <li>
-              <a href="#analytics" class="sidebar-nav-item" data-view="analytics">
-                <span class="nav-item-icon">📉</span>
-                <span class="nav-item-label">Analytics</span>
-              </a>
-            </li>
-            <li>
-              <a href="#settings" class="sidebar-nav-item" data-view="settings">
-                <span class="nav-item-icon">⚙️</span>
-                <span class="nav-item-label">Settings & APIs</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      <!-- Sidebar Footer -->
-      <div class="sidebar-footer">
-        <div class="sidebar-footer-info">
-          <span class="footer-user-name">Fawwad97 (Admin)</span>
-          <span class="footer-status-pill">
-            <span class="status-dot"></span> System Live & Connected
-          </span>
-        </div>
-        <button id="btn-sidebar-quick-settings" class="btn-nav-icon" title="Settings" onclick="App.switchView('settings')">
-          ⚙️
-        </button>
-      </div>
-    </aside>
-
-    <!-- Mobile Sidebar Backdrop Overlay -->
-    <div id="saas-sidebar-backdrop" class="sidebar-backdrop" onclick="App.closeMobileSidebar()"></div>
-
-    <!-- ========================================================
-         MAIN CONTENT AREA
-         ======================================================== -->
-    <main class="saas-main">
-      <!-- TOP NAVIGATION BAR -->
-      <header class="saas-top-navbar">
-        <div class="top-nav-left">
-          <button id="btn-mobile-sidebar" class="btn-mobile-menu" title="Open Menu">
-            ☰
-          </button>
-          <div class="top-nav-search-wrap">
-            <span class="top-nav-search-icon">🔍</span>
-            <input type="text" id="global-search-input" placeholder="Search businesses, cities, Place IDs..." autocomplete="off">
-          </div>
-        </div>
-
-        <div class="top-nav-right">
-          <!-- Active 50-Lead Batch Status Pill -->
-          <div id="top-nav-batch-pill" class="top-nav-batch-pill" onclick="App.switchView('lead-batch')" title="Click to view Active 50-Lead Batch">
-            <span>📦</span>
-            <span id="top-batch-label" class="batch-pill-label">Batch #01: 0/50</span>
-            <div class="batch-pill-bar">
-              <div id="top-batch-fill" class="batch-pill-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-
-          <!-- API Status Dots Group -->
-          <div class="api-status-group" title="API Integrations Status">
-            <span class="status-dot" id="dot-places-status" title="Google Places API Ready"></span> Places
-            <span class="status-dot" id="dot-pagespeed-status" title="PageSpeed Insights Ready"></span> PageSpeed
-            <span class="status-dot" id="dot-ai-status" title="AI Pitch Engine Ready"></span> AI
-            <span class="status-dot" id="dot-wa-status" title="WhatsApp Business Ready"></span> WhatsApp
-          </div>
-
-          <!-- Main Pitch Leads Button -->
-          <button id="btn-top-pitch-leads" class="btn-primary" style="height: 38px; padding: 0 16px; font-size: 0.82rem; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #fff; font-weight: 800; border: none; box-shadow: 0 0 14px rgba(239, 68, 68, 0.4); display: inline-flex; align-items: center; gap: 6px;" onclick="App.switchView('all-businesses')" title="Open Leads & Start Pitching">
-            <span>⚡</span> Pitch Leads (305)
-          </button>
-
-          <!-- Add Real Lead Quick Action -->
-          <button id="btn-top-add-lead" class="btn-primary" style="height: 38px; padding: 0 14px; font-size: 0.80rem;" onclick="App.openAddLeadModal()">
-            <span>➕</span> Add Lead
-          </button>
-
-          <!-- Notification Bell -->
-          <button id="btn-nav-notifications" class="btn-nav-icon" title="Notifications & Replies" onclick="App.switchView('reply-inbox')">
-            <span>🔔</span>
-            <span id="nav-notification-badge" class="nav-notification-badge" style="display: none;">0</span>
-          </button>
-
-          <!-- Settings Button -->
-          <button id="btn-top-settings" class="btn-nav-icon" title="Settings" onclick="App.switchView('settings')">
-            <span>⚙️</span>
-          </button>
-        </div>
-      </header>
-
-      <!-- CONTENT PANES -->
-      <div class="saas-content-area">
-
-        <!-- ====================================================
-             VIEW 1: OVERVIEW
-             ==================================================== -->
-        <section id="view-overview" class="saas-view-pane active">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">📊 Executive Sales Dashboard</h1>
-              <p class="view-header-desc">Autonomous B2B client acquisition, Google Maps verification, and universal software sales automation.</p>
-            </div>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-              <button class="btn-primary" onclick="App.switchView('all-businesses')" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #fff; font-weight: 800; border: none; box-shadow: 0 0 16px rgba(239, 68, 68, 0.45); font-size: 0.88rem; padding: 10px 18px; display: inline-flex; align-items: center; gap: 7px;">
-                <span>📧</span> Pitch Leads (305 Verified Leads)
-              </button>
-              <button class="btn-secondary" onclick="App.switchView('dispatched-leads')">
-                <span>🚀</span> Pitched Emails
-              </button>
-            </div>
-          </div>
-
-          <!-- Active Batch Progress Hero Card -->
-          <div class="batch-card-hero">
-            <div class="batch-hero-top">
-              <div class="batch-title-tag">
-                <span>📦</span> <span id="overview-batch-title">Batch #01</span>
-                <span class="batch-status-badge active" id="overview-batch-status-badge">Active Batch</span>
-              </div>
-              <div style="font-size: 0.82rem; color: #94a3b8;">
-                Rules: Only real dispatches count toward completion. Next batch unlocks at 100%.
-              </div>
-            </div>
-
-            <div class="batch-progress-container">
-              <div style="display: flex; justify-content: space-between; font-size: 0.84rem; margin-bottom: 6px;">
-                <span>Unique Businesses Pitched Progress:</span>
-                <span><strong id="overview-batch-progress-text" style="color: #38bdf8;">0 / 50 Pitched</strong> (<span id="overview-batch-progress-pct">0%</span>)</span>
-              </div>
-              <div class="batch-progress-bar-bg">
-                <div id="overview-batch-bar-fill" class="batch-progress-bar-fill" style="width: 0%;"></div>
-              </div>
-            </div>
-
-            <div class="batch-stats-grid">
-              <div class="batch-stat-box">
-                <div class="batch-stat-num" id="overview-batch-total">50</div>
-                <div class="batch-stat-label">Total Batch Leads</div>
-              </div>
-              <div class="batch-stat-box">
-                <div class="batch-stat-num" style="color: #38bdf8;" id="overview-batch-pitched">0</div>
-                <div class="batch-stat-label">Successfully Pitched</div>
-              </div>
-              <div class="batch-stat-box">
-                <div class="batch-stat-num" style="color: #fbbf24;" id="overview-batch-remaining">50</div>
-                <div class="batch-stat-label">Remaining to Pitch</div>
-              </div>
-              <div class="batch-stat-box">
-                <div class="batch-stat-num" style="color: #f87171;" id="overview-batch-lock-status">🔒 LOCKED</div>
-                <div class="batch-stat-label">Next Batch Status</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- KPI Metric Cards Grid -->
-          <div class="metrics-grid" style="margin-bottom: 24px;">
-            <div class="metric-card glass-panel" onclick="App.switchView('all-businesses')" style="cursor: pointer;">
-              <div class="metric-icon-box emerald">🎯</div>
-              <div class="metric-details">
-                <span id="kpi-total-discovered" class="metric-value">305</span>
-                <span class="metric-label">Businesses in Database</span>
-              </div>
-            </div>
-            <div class="metric-card glass-panel" onclick="App.switchView('verified-leads')" style="cursor: pointer;">
-              <div class="metric-icon-box cyan">🛡️</div>
-              <div class="metric-details">
-                <span id="kpi-verified-leads" class="metric-value">305</span>
-                <span class="metric-label">Google Maps Verified (100%)</span>
-              </div>
-            </div>
-            <div class="metric-card glass-panel" onclick="App.switchView('daily-tracker')" style="cursor: pointer;">
-              <div class="metric-icon-box amber">⚡</div>
-              <div class="metric-details">
-                <span id="kpi-dispatched-count" class="metric-value">0</span>
-                <span class="metric-label">Unique Pitched Businesses</span>
-              </div>
-            </div>
-            <div class="metric-card glass-panel" onclick="App.switchView('reply-inbox')" style="cursor: pointer;">
-              <div class="metric-icon-box rose">📥</div>
-              <div class="metric-details">
-                <span id="kpi-replies-count" class="metric-value">0</span>
-                <span class="metric-label">Incoming Client Replies</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Top Priority Outreach Queue (Highest Reply Likelihood) -->
-          <div class="glass-panel" style="padding: 20px; margin-bottom: 24px; border-left: 4px solid #f97316;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
-              <div>
-                <h3 style="font-size: 1.1rem; color: #fff; font-family: 'Outfit', sans-serif; display: flex; align-items: center; gap: 8px; margin: 0;">
-                  <span>🔥</span> Top Priority Outreach Queue (Highest Reply Likelihood)
-                </h3>
-                <p style="font-size: 0.78rem; color: #94a3b8; margin: 4px 0 0 0;">
-                  Worldwide Priority Queue: System automatically rotates high-reply businesses across all 6 countries (USA 🇺🇸, UK 🇬🇧, Kuwait 🇰🇼, Canada 🇨🇦, Oman 🇴🇲, Bahrain 🇧🇭) in balanced sequence.
-                </p>
-              </div>
-              <button class="btn-sec-action" onclick="App.switchView('all-businesses')" style="font-size: 0.80rem;">
-                View All Sequenced Leads (305) ➔
-              </button>
-            </div>
-            <div id="overview-priority-queue-cards" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px;">
-              <!-- Rendered dynamically by App.renderOverview() -->
-            </div>
-          </div>
-
-          <!-- Funnel & Recent Activity Grid -->
-          <div class="saas-grid-2col">
-            <!-- Conversion Funnel -->
-            <div class="glass-panel" style="padding: 20px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
-                <h3 style="font-size: 1.1rem; color: #fff; font-family: 'Outfit', sans-serif;">🎯 Sales Conversion Funnel</h3>
-                <span style="font-size: 0.74rem; color: #94a3b8;">Real Database Data</span>
-              </div>
-              <div id="analytics-funnel-container"></div>
-            </div>
-
-            <!-- Recent Outreach Activity Feed -->
-            <div class="glass-panel" style="padding: 20px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
-                <h3 style="font-size: 1.1rem; color: #fff; font-family: 'Outfit', sans-serif;">🚀 Recent Dispatch Events</h3>
-                <button class="btn-sec-action" onclick="App.switchView('dispatched-leads')">View All Dispatches ↗</button>
-              </div>
-              <div id="overview-recent-dispatches" style="display: flex; flex-direction: column; gap: 8px; max-height: 380px; overflow-y: auto;">
-                <p style="color: #94a3b8; font-size: 0.85rem; padding: 20px 0; text-align: center;">No messages dispatched yet today. Start pitching your active 50-lead batch!</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 2: FIND NEW LEADS (GOOGLE PLACES API NEW)
-             ==================================================== -->
-        <section id="view-find-leads" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">🔍 Google Places API (New) Business Discovery</h1>
-              <p class="view-header-desc">Search and discover real local businesses worldwide with exact Place IDs, verified phone numbers, and operational statuses.</p>
-            </div>
-            <div class="api-status-group">
-              <span class="status-dot"></span> Google Places API (New) Ready
-            </div>
-          </div>
-
-          <!-- Priority Pitch Mode Hint Banner -->
-          <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 1.5rem;">🔥</span>
-              <div>
-                <div style="font-size: 0.88rem; font-weight: 800; color: #fff;">Smart Worldwide Sequence: Highest Reply Probability (Pitch 1st)</div>
-                <div style="font-size: 0.76rem; color: #94a3b8;">Agar aap koi country ya city select nahi karein gay, to system automatically worldwide (USA 🇺🇸, UAE 🇦🇪, UK 🇬🇧, Saudi Arabia 🇸🇦, Pakistan 🇵🇰) ke top leads ko interleaved priority sequence me dikhata hai.</div>
-              </div>
-            </div>
-            <button type="button" class="btn-primary" style="height: 38px; font-size: 0.78rem;" onclick="App.handleQuickPrioritySearch()">
-              ⚡ Show Top High-Reply Leads
-            </button>
-          </div>
-
-          <!-- Discovery Search Form -->
-          <div class="glass-panel" style="padding: 22px; margin-bottom: 24px;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 14px;">
-              <div class="input-group">
-                <label class="input-label" for="search-country">Country *</label>
-                <select id="search-country" class="custom-select">
-                  <option value="Global" selected>🌐 Global (Highest Reply Probability Queue)</option>
-                  <option value="Pakistan">🇵🇰 Pakistan</option>
-                  <option value="United States">🇺🇸 United States</option>
-                  <option value="United Kingdom">🇬🇧 United Kingdom</option>
-                  <option value="United Arab Emirates">🇦🇪 United Arab Emirates</option>
-                  <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
-                  <option value="Canada">🇨🇦 Canada</option>
-                  <option value="Australia">🇦🇺 Australia</option>
-                </select>
-              </div>
-
-              <div class="input-group">
-                <label class="input-label" for="search-state">State / Province</label>
-                <input type="text" id="search-state" class="custom-input" placeholder="e.g. Leave blank or Sindh, Texas...">
-              </div>
-
-              <div class="input-group">
-                <label class="input-label" for="search-city">City / Metro</label>
-                <input type="text" id="search-city" class="custom-input" placeholder="e.g. Leave blank for Priority Queue, or enter Karachi, Austin..." value="">
-              </div>
-
-              <div class="input-group">
-                <label class="input-label" for="search-category">Business Category *</label>
-                <select id="search-category" class="custom-select">
-                  <option value="all">🎯 All Categories</option>
-                  <option value="restaurants" selected>🍽️ Restaurants & Cafes</option>
-                  <option value="bakeries_sweets">🧁 Bakeries & Sweets</option>
-                  <option value="dental_medical">🩺 Dental & Medical</option>
-                  <option value="salons_spas">✂️ Barber Shops & Salons</option>
-                  <option value="gyms_fitness">🏋️ Gyms & Fitness</option>
-                  <option value="auto_repair">🚗 Auto Repair & Detailing</option>
-                  <option value="real_estate">🏡 Real Estate & Brokers</option>
-                  <option value="home_services">🔨 Home Services (HVAC/Plumbing)</option>
-                  <option value="boutique_hotels">🏨 Boutique Hotels</option>
-                  <option value="event_planners">🎉 Event & Wedding Marquees</option>
-                  <option value="law_firms">⚖️ Law Firms & Legal</option>
-                  <option value="pet_care">🐕 Pet Care & Vet Clinics</option>
-                </select>
-              </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 18px;">
-              <div class="input-group">
-                <label class="input-label" for="search-keyword">Custom Keyword</label>
-                <input type="text" id="search-keyword" class="custom-input" placeholder="e.g. Rooftop, Pizzeria, Cosmetic, Orthopedic">
-              </div>
-
-              <div class="input-group">
-                <label class="input-label" for="search-count">Number of Leads</label>
-                <select id="search-count" class="custom-select">
-                  <option value="10">10 Leads</option>
-                  <option value="25" selected>25 Leads</option>
-                  <option value="50">50 Leads (1 Full Batch)</option>
-                  <option value="100">100 Leads</option>
-                </select>
-              </div>
-
-              <div class="input-group">
-                <label class="input-label" for="search-min-rating">Min Google Rating</label>
-                <select id="search-min-rating" class="custom-select">
-                  <option value="4.0" selected>⭐ 4.0+ Stars</option>
-                  <option value="4.3">⭐ 4.3+ Stars</option>
-                  <option value="4.5">⭐ 4.5+ Stars</option>
-                  <option value="3.5">⭐ 3.5+ Stars</option>
-                </select>
-              </div>
-
-              <div class="input-group">
-                <label class="input-label" for="search-min-reviews">Min Reviews</label>
-                <select id="search-min-reviews" class="custom-select">
-                  <option value="30" selected>30+ Reviews</option>
-                  <option value="50">50+ Reviews</option>
-                  <option value="100">100+ Reviews</option>
-                  <option value="10">10+ Reviews</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- Checkbox Filters & Launch Button -->
-            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px;">
-              <div style="display: flex; align-items: center; gap: 20px;">
-                <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; cursor: pointer;">
-                  <input type="checkbox" id="search-require-website"> Require Website Available
-                </label>
-                <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; cursor: pointer;">
-                  <input type="checkbox" id="search-require-phone" checked> Require Phone Number Available
-                </label>
-              </div>
-
-              <button id="btn-run-places-search" class="btn-primary" style="height: 44px; min-width: 220px;" onclick="App.handleRunPlacesSearch()">
-                <span>🚀</span> DISCOVER VERIFIED LEADS
-              </button>
-            </div>
-          </div>
-
-          <!-- Search Results Container -->
-          <div id="places-search-results-section" style="display: none;">
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
-              <h3 style="font-size: 1.1rem; color: #fff;" id="places-results-header">Search Results</h3>
-              <div style="display: flex; gap: 10px;">
-                <button class="btn-secondary" onclick="App.addAllSearchToBatch()">
-                  <span>📦</span> Add All to Active Batch
-                </button>
-                <button class="btn-secondary" onclick="App.exportCurrentSearchCSV()">
-                  <span>📥</span> Export CSV
-                </button>
-              </div>
-            </div>
-
-            <div class="table-responsive-wrapper glass-panel">
-              <table class="leads-table">
-                <thead>
-                  <tr>
-                    <th>Business Profile & Place ID</th>
-                    <th>Google Verification</th>
-                    <th>Contact & Operating Status</th>
-                    <th>Universal Software Opportunity</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="places-search-results-tbody"></tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 3: ALL BUSINESSES (6 COUNTRIES GMAIL OUTREACH)
-             ==================================================== -->
-        <section id="view-all-businesses" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">📧 Verified Leads (Gmail Outreach)</h1>
-              <p class="view-header-desc">Curated Google Maps verified businesses with correct domain emails across US, UK, Kuwait, Canada, Oman, and Bahrain with diagnosed solid weak points.</p>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-              <button class="btn-secondary" onclick="App.exportCSV()"><span>📥</span> Export CSV</button>
-              <button class="btn-primary" onclick="App.openAddLeadModal()"><span>➕</span> Add New Lead</button>
-            </div>
-          </div>
-
-          <!-- 6 Country Filter Tabs -->
-          <div class="country-tabs-group" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">
-            <button class="country-tab-btn active" data-country="ALL" onclick="App.filterByCountry('ALL')">🌐 All Leads (305)</button>
-            <button class="country-tab-btn" data-country="United States" onclick="App.filterByCountry('United States')">🇺🇸 United States (70)</button>
-            <button class="country-tab-btn" data-country="United Kingdom" onclick="App.filterByCountry('United Kingdom')">🇬🇧 United Kingdom (60)</button>
-            <button class="country-tab-btn" data-country="Kuwait" onclick="App.filterByCountry('Kuwait')">🇰🇼 Kuwait (45)</button>
-            <button class="country-tab-btn" data-country="Canada" onclick="App.filterByCountry('Canada')">🇨🇦 Canada (55)</button>
-            <button class="country-tab-btn" data-country="Oman" onclick="App.filterByCountry('Oman')">🇴🇲 Oman (40)</button>
-            <button class="country-tab-btn" data-country="Bahrain" onclick="App.filterByCountry('Bahrain')">🇧🇭 Bahrain (35)</button>
-          </div>
-
-          <!-- Quick Cities Bar (6 Countries) -->
-          <div class="quick-cities-bar" style="margin-bottom: 18px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-            <span class="quick-cities-label" style="font-size: 0.76rem; color: #94a3b8; font-weight: 700;">Filter City:</span>
-            <button class="city-chip active" data-city="ALL" onclick="App.filterByCity('ALL')">All Cities 🌐</button>
-            <button class="city-chip" data-city="New York" onclick="App.filterByCity('New York')">New York 🇺🇸</button>
-            <button class="city-chip" data-city="Los Angeles" onclick="App.filterByCity('Los Angeles')">Los Angeles 🇺🇸</button>
-            <button class="city-chip" data-city="Chicago" onclick="App.filterByCity('Chicago')">Chicago 🇺🇸</button>
-            <button class="city-chip" data-city="Miami" onclick="App.filterByCity('Miami')">Miami 🇺🇸</button>
-            <button class="city-chip" data-city="Austin" onclick="App.filterByCity('Austin')">Austin 🇺🇸</button>
-            <button class="city-chip" data-city="London" onclick="App.filterByCity('London')">London 🇬🇧</button>
-            <button class="city-chip" data-city="Manchester" onclick="App.filterByCity('Manchester')">Manchester 🇬🇧</button>
-            <button class="city-chip" data-city="Birmingham" onclick="App.filterByCity('Birmingham')">Birmingham 🇬🇧</button>
-            <button class="city-chip" data-city="Edinburgh" onclick="App.filterByCity('Edinburgh')">Edinburgh 🇬🇧</button>
-            <button class="city-chip" data-city="Kuwait City" onclick="App.filterByCity('Kuwait City')">Kuwait City 🇰🇼</button>
-            <button class="city-chip" data-city="Salmiya" onclick="App.filterByCity('Salmiya')">Salmiya 🇰🇼</button>
-            <button class="city-chip" data-city="Hawally" onclick="App.filterByCity('Hawally')">Hawally 🇰🇼</button>
-            <button class="city-chip" data-city="Toronto" onclick="App.filterByCity('Toronto')">Toronto 🇨🇦</button>
-            <button class="city-chip" data-city="Vancouver" onclick="App.filterByCity('Vancouver')">Vancouver 🇨🇦</button>
-            <button class="city-chip" data-city="Montreal" onclick="App.filterByCity('Montreal')">Montreal 🇨🇦</button>
-            <button class="city-chip" data-city="Calgary" onclick="App.filterByCity('Calgary')">Calgary 🇨🇦</button>
-            <button class="city-chip" data-city="Muscat" onclick="App.filterByCity('Muscat')">Muscat 🇴🇲</button>
-            <button class="city-chip" data-city="Salalah" onclick="App.filterByCity('Salalah')">Salalah 🇴🇲</button>
-            <button class="city-chip" data-city="Manama" onclick="App.filterByCity('Manama')">Manama 🇧🇭</button>
-            <button class="city-chip" data-city="Muharraq" onclick="App.filterByCity('Muharraq')">Muharraq 🇧🇭</button>
-            <button class="city-chip" data-city="Riffa" onclick="App.filterByCity('Riffa')">Riffa 🇧🇭</button>
-            <button class="city-chip" data-city="Saar" onclick="App.filterByCity('Saar')">Saar 🇧🇭</button>
-          </div>
-
-          <!-- Simple Toolbar: Search, Sort & View Mode -->
-          <div class="leads-dashboard-toolbar" style="margin-bottom: 18px;">
-            <div class="leads-filter-row">
-              <div style="flex: 1; min-width: 220px;">
-                <input type="text" id="table-search-input" class="custom-input" style="height: 40px;" placeholder="🔍 Filter by business name, city, decision maker, or problem..." oninput="App.handleSearch(this.value)">
-              </div>
-
-              <!-- Priority Sort Filter -->
-              <div style="min-width: 220px;">
-                <select id="table-sort-filter" class="custom-select" style="height: 40px; font-weight: 700; color: #38bdf8; border-color: rgba(56, 189, 248, 0.45); background: rgba(7, 12, 30, 0.9);">
-                  <option value="reply_chance" selected>🔥 Highest Reply Chance (Pitch 1st)</option>
-                  <option value="leak_amount">💸 Highest Financial Leakage</option>
-                  <option value="reviews">💬 Most Google Reviews</option>
-                  <option value="rating">⭐ Highest Google Rating</option>
-                  <option value="name_asc">🔤 Alphabetical (A-Z)</option>
-                </select>
-              </div>
-
-              <!-- View Mode Toggle -->
-              <div class="view-toggle-wrap">
-                <button id="btn-view-cards" class="view-toggle-btn" type="button" title="Cards View">
-                  <span>🗂️ Cards</span>
-                </button>
-                <button id="btn-view-table" class="view-toggle-btn active" type="button" title="Table View">
-                  <span>📋 Table</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Leads Data Table View -->
-          <div id="table-view-container" class="table-responsive-wrapper glass-panel">
-            <table class="leads-table">
-              <thead>
-                <tr>
-                  <th style="min-width: 190px;">Business Profile & Google Place ID</th>
-                  <th style="min-width: 170px;">Decision Maker & Verified Email</th>
-                  <th style="min-width: 210px;">🚨 Solid Weak Point (Problem Audit)</th>
-                  <th style="min-width: 80px;">Status</th>
-                  <th style="min-width: 170px;">⚡ Outreach & AI Audit Actions</th>
-                </tr>
-              </thead>
-              <tbody id="leads-tbody"></tbody>
-            </table>
-          </div>
-
-          <!-- Leads Card Grid View -->
-          <div id="cards-view-container" class="leads-cards-grid" style="display: none;"></div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 4: VERIFIED LEADS ONLY
-             ==================================================== -->
-        <section id="view-verified-leads" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">🛡️ Google Maps Verified Businesses</h1>
-              <p class="view-header-desc">Strictly verified listings with matched Google Place IDs, verified operating status, and exact Google Maps listing navigation.</p>
-            </div>
-            <div class="api-status-group">
-              <span class="status-dot"></span> 100% Verified Only
-            </div>
-          </div>
-
-          <div class="table-responsive-wrapper glass-panel">
-            <table class="leads-table">
-              <thead>
-                <tr>
-                  <th>Business & Verified Place ID</th>
-                  <th>Location & Operating Status</th>
-                  <th>Verification Score</th>
-                  <th>Exact Google Maps Link</th>
-                  <th>Outreach Action</th>
-                </tr>
-              </thead>
-              <tbody id="verified-leads-tbody"></tbody>
-            </table>
-          </div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 5: WEBSITE ANALYZER (PAGESPEED INSIGHTS)
-             ==================================================== -->
-        <section id="view-website-analyzer" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">🌐 Google PageSpeed Insights & Technical Presence Audit</h1>
-              <p class="view-header-desc">Inspect website speed, mobile responsiveness, broken checkout flows, and digital booking capabilities.</p>
-            </div>
-          </div>
-
-          <!-- URL Input Bar -->
-          <div class="glass-panel" style="padding: 20px; margin-bottom: 24px;">
-            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-              <div style="flex: 1; min-width: 260px;">
-                <input type="url" id="analyzer-url-input" class="custom-input" placeholder="Enter business website URL (e.g. https://example.com)">
-              </div>
-              <div style="min-width: 220px;">
-                <select id="analyzer-select-lead" class="custom-select">
-                  <option value="">Or Select Business from Database...</option>
-                </select>
-              </div>
-              <button class="btn-primary" style="min-width: 160px;" onclick="App.runWebsiteAudit()">
-                <span>⚡</span> Analyze Website
-              </button>
-            </div>
-          </div>
-
-          <!-- Audit Results Area -->
-          <div id="analyzer-results-area" class="glass-panel" style="padding: 24px;">
-            <div style="text-align: center; color: #94a3b8; padding: 40px 0;">
-              Enter a website URL above or select a business from the database to run a verified technical audit.
-            </div>
-          </div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 6: AI WEAKNESS DETECTOR
-             ==================================================== -->
-        <section id="view-weakness-detector" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">⚠️ AI Weakness & Evidence Detector</h1>
-              <p class="view-header-desc">Evidence-based digital friction detection: PDF menu bottlenecks, third-party commission drains, and missing mobile booking funnels.</p>
-            </div>
-          </div>
-
-          <div class="weakness-detector-grid" id="weakness-detector-grid"></div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 7: UNIVERSAL SOFTWARE OPPORTUNITIES
-             ==================================================== -->
-        <section id="view-software-opportunities" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">💡 Universal Software Opportunities</h1>
-              <p class="view-header-desc">AI-matched software development opportunities across all 6 core categories: Web, Mobile, Desktop, CRM/ERP, AI & Custom.</p>
-            </div>
-          </div>
-
-          <!-- 6 Category Filter Tabs -->
-          <div class="opportunities-category-tabs">
-            <button class="opp-category-tab active" data-opp-cat="all">🎯 All 6 Categories</button>
-            <button class="opp-category-tab" data-opp-cat="website_development">🌐 A. Website & Web Apps</button>
-            <button class="opp-category-tab" data-opp-cat="mobile_app_development">📱 B. Mobile Apps</button>
-            <button class="opp-category-tab" data-opp-cat="desktop_software">💻 C. Desktop & POS</button>
-            <button class="opp-category-tab" data-opp-cat="business_management">📊 D. CRM & ERP</button>
-            <button class="opp-category-tab" data-opp-cat="ai_automation">🤖 E. AI & Automation</button>
-            <button class="opp-category-tab" data-opp-cat="custom_software">⚖️ F. Custom Enterprise</button>
-          </div>
-
-          <!-- Opportunities Grid -->
-          <div class="opportunities-grid" id="software-opportunities-grid"></div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 8: AI PITCH GENERATOR
-             ==================================================== -->
-        <section id="view-pitch-generator" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">✍️ Multi-Channel AI Pitch Studio</h1>
-              <p class="view-header-desc">Generate tailored, high-converting outreach copy for Gmail, WhatsApp, Instagram DM, LinkedIn, and Facebook with multi-stage follow-ups.</p>
-            </div>
-          </div>
-
-          <div class="pitch-studio-grid">
-            <!-- Controls Panel -->
-            <div class="glass-panel" style="padding: 20px; display: flex; flex-direction: column; gap: 14px;">
-              <div class="input-group">
-                <label class="input-label" for="pitch-studio-select-lead">Target Business</label>
-                <select id="pitch-studio-select-lead" class="custom-select" onchange="App.handlePitchStudioChange()"></select>
-              </div>
-
-              <div class="input-group">
-                <label class="input-label" for="pitch-studio-channel">Outreach Channel</label>
-                <select id="pitch-studio-channel" class="custom-select" onchange="App.handlePitchStudioChange()">
-                  <option value="whatsapp" selected>📲 WhatsApp Direct</option>
-                  <option value="gmail">📧 Gmail / Email</option>
-                  <option value="instagram">📸 Instagram DM</option>
-                  <option value="linkedin">👔 LinkedIn InMail (<300 chars)</option>
-                  <option value="facebook">💬 Facebook Messenger</option>
-                </select>
-              </div>
-
-              <div class="input-group">
-                <label class="input-label" for="pitch-studio-stage">Sequence Stage</label>
-                <select id="pitch-studio-stage" class="custom-select" onchange="App.handlePitchStudioChange()">
-                  <option value="initial" selected>1. Initial Pitch</option>
-                  <option value="followup1">2. Follow-Up 1 (Day 2)</option>
-                  <option value="followup2">3. Follow-Up 2 (Day 4 - Value Drop)</option>
-                  <option value="followup3">4. Follow-Up 3 (Day 7 - Demo Offer)</option>
-                  <option value="final">5. Final Breakup (Day 10)</option>
-                  <option value="demo">6. Interactive Demo Invitation</option>
-                  <option value="proposal">7. Formal Proposal Intro</option>
-                </select>
-              </div>
-
-              <div class="input-group">
-                <label class="input-label" for="pitch-studio-language">Language</label>
-                <select id="pitch-studio-language" class="custom-select" onchange="App.handlePitchStudioChange()">
-                  <option value="English" selected>English</option>
-                  <option value="Urdu">Urdu (Roman / Courteous)</option>
-                  <option value="Spanish">Spanish</option>
-                  <option value="Arabic">Arabic</option>
-                  <option value="German">German</option>
-                  <option value="French">French</option>
-                </select>
-              </div>
-
-              <button class="btn-primary" style="margin-top: 10px;" onclick="App.generateAiPitchStudio()">
-                <span>✨</span> Regenerate with AI
-              </button>
-
-              <button class="btn-secondary" onclick="App.openFullProposalModal()">
-                <span>📄</span> View Full Software Proposal
-              </button>
-            </div>
-
-            <!-- Pitch Preview & Dispatch -->
-            <div class="glass-panel" style="padding: 24px; display: flex; flex-direction: column; gap: 16px;">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="font-size: 1.1rem; color: #fff;" id="pitch-studio-preview-title">Generated Pitch Preview</h3>
-                <span style="font-size: 0.76rem; color: #94a3b8;">* Generating or copying does not increase sent count</span>
-              </div>
-
-              <div id="pitch-studio-subject-wrap" style="display: none;">
-                <label class="input-label">Subject Line</label>
-                <input type="text" id="pitch-studio-subject" class="custom-input" style="font-weight: 700;">
-              </div>
-
-              <div>
-                <label class="input-label">Message Body (Editable)</label>
-                <textarea id="pitch-studio-textarea" class="custom-input" style="height: 220px; font-size: 0.88rem; line-height: 1.6; font-family: 'JetBrains Mono', monospace;"></textarea>
-              </div>
-
-              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-                <button class="btn-secondary" onclick="App.copyPitchStudioText()">
-                  <span>📋</span> Copy Message
-                </button>
-                <button id="btn-pitch-studio-dispatch" class="btn-primary" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #000; font-weight: 800; border: none; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);" onclick="App.dispatchFromPitchStudio()">
-                  <span>⚡</span> Approve & Open Channel Dispatch
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 9: CURRENT LEAD BATCH (50-LEAD SYSTEM)
-             ==================================================== -->
-        <section id="view-lead-batch" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">📦 50-Lead Batch Management System</h1>
-              <p class="view-header-desc">Mandatory batch sales workflow: Pitch 50 unique businesses to 100% completion before unlocking the next batch.</p>
-            </div>
-          </div>
-
-          <div id="batch-management-hero"></div>
-
-          <!-- Batch Leads Table -->
-          <div class="table-responsive-wrapper glass-panel" style="margin-top: 24px;">
-            <table class="leads-table">
-              <thead>
-                <tr>
-                  <th>Business Profile & Place ID</th>
-                  <th>Decision Maker & Contact</th>
-                  <th>Recommended Software</th>
-                  <th>Pitch Channel</th>
-                  <th>Pitch Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody id="batch-leads-tbody"></tbody>
-            </table>
-          </div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 10: DAILY PITCH TRACKER
-             ==================================================== -->
-        <section id="view-daily-tracker" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">📈 Daily Pitch Tracker & Performance</h1>
-              <p class="view-header-desc">Track unique businesses pitched, total successful dispatches, and channel breakdown for today and past dates.</p>
-            </div>
-            <!-- Date Filter Pills -->
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-              <button class="date-filter-pill active" data-range="today" onclick="App.setDailyTrackerRange('today')">Today</button>
-              <button class="date-filter-pill" data-range="yesterday" onclick="App.setDailyTrackerRange('yesterday')">Yesterday</button>
-              <button class="date-filter-pill" data-range="last7" onclick="App.setDailyTrackerRange('last7')">Last 7 Days</button>
-              <button class="date-filter-pill" data-range="last30" onclick="App.setDailyTrackerRange('last30')">Last 30 Days</button>
-            </div>
-          </div>
-
-          <!-- Tracker Metrics Grid -->
-          <div class="metrics-grid" style="margin-bottom: 24px;">
-            <div class="metric-card glass-panel">
-              <div class="metric-icon-box emerald">🎯</div>
-              <div class="metric-details">
-                <span id="tracker-unique-pitched" class="metric-value">0</span>
-                <span class="metric-label">Unique Businesses Pitched</span>
-              </div>
-            </div>
-            <div class="metric-card glass-panel">
-              <div class="metric-icon-box cyan">⚡</div>
-              <div class="metric-details">
-                <span id="tracker-total-dispatches" class="metric-value">0</span>
-                <span class="metric-label">Total Channel Dispatches</span>
-              </div>
-            </div>
-            <div class="metric-card glass-panel">
-              <div class="metric-icon-box amber">📦</div>
-              <div class="metric-details">
-                <span id="tracker-remaining-batch" class="metric-value">50</span>
-                <span class="metric-label">Remaining in Batch</span>
-              </div>
-            </div>
-            <div class="metric-card glass-panel">
-              <div class="metric-icon-box rose">🔴</div>
-              <div class="metric-details">
-                <span id="tracker-replied-count" class="metric-value">0</span>
-                <span class="metric-label">Direct Client Replies</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Channel Distribution Row -->
-          <div class="glass-panel" style="padding: 20px; margin-bottom: 24px;">
-            <h3 style="font-size: 1.05rem; color: #fff; margin-bottom: 14px;">Channel Performance Breakdown</h3>
-            <div id="analytics-channel-container"></div>
-          </div>
-
-          <!-- Dispatch Log Table -->
-          <div class="table-responsive-wrapper glass-panel">
-            <table class="leads-table">
-              <thead>
-                <tr>
-                  <th>Business Name & City</th>
-                  <th>Channel</th>
-                  <th>Dispatch Date & Time</th>
-                  <th>Batch</th>
-                  <th>Exact Message Sent</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody id="daily-tracker-tbody"></tbody>
-            </table>
-          </div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 11: DISPATCHED LEADS (PERMANENT NAVIGATION)
-             ==================================================== -->
-        <section id="view-dispatched-leads" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">🚀 Dispatched Leads Outbox</h1>
-              <p class="view-header-desc">Permanent audit log of every lead successfully contacted with timestamps, exact pitches, and follow-up states.</p>
-            </div>
-            <div style="display: flex; gap: 10px;">
-              <button class="btn-secondary" onclick="App.exportDispatchesCSV()"><span>📥</span> Export Dispatches</button>
-            </div>
-          </div>
-
-          <div class="table-responsive-wrapper glass-panel">
-            <table class="leads-table">
-              <thead>
-                <tr>
-                  <th>Business & Location</th>
-                  <th>Contact Info</th>
-                  <th>Pitch Channel</th>
-                  <th>Dispatch Timestamp</th>
-                  <th>Batch</th>
-                  <th>Exact Message Sent</th>
-                  <th>Follow-up State</th>
-                </tr>
-              </thead>
-              <tbody id="dispatched-leads-tbody"></tbody>
-            </table>
-          </div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 12: DATE-WISE HISTORY
-             ==================================================== -->
-        <section id="view-date-history" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">📅 Date-Wise Outreach History</h1>
-              <p class="view-header-desc">Accordion calendar view. Click any date to expand and inspect every business pitched on that exact day.</p>
-            </div>
-          </div>
-
-          <div id="date-history-accordion-container"></div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 13: FOLLOW-UP MANAGER
-             ==================================================== -->
-        <section id="view-followup-manager" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">⏰ Smart Follow-up Manager</h1>
-              <p class="view-header-desc">Automated sequence scheduling (Day 2, 4, 7, 10). Human approval required before dispatch. Stops immediately upon client reply.</p>
-            </div>
-          </div>
-
-          <!-- Schedule Settings Bar -->
-          <div class="glass-panel" style="padding: 18px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
-            <div style="font-size: 0.85rem; color: #cbd5e1;">
-              <strong>Active Follow-up Sequence:</strong> First Nudge (+2 Days) • Value Drop (+4 Days) • Demo Offer (+7 Days) • Final Breakup (+10 Days)
-            </div>
-            <button class="btn-secondary" onclick="App.switchView('settings')">
-              <span>⚙️</span> Edit Schedule Intervals
-            </button>
-          </div>
-
-          <div class="table-responsive-wrapper glass-panel">
-            <table class="leads-table">
-              <thead>
-                <tr>
-                  <th>Business & Contact</th>
-                  <th>Original Dispatch</th>
-                  <th>Next Follow-up Due</th>
-                  <th>Sequence Stage</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody id="followup-manager-tbody"></tbody>
-            </table>
-          </div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 14: REPLY INBOX & AUTO-PAUSE
-             ==================================================== -->
-        <section id="view-reply-inbox" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">📥 Live Reply Inbox & Auto-Pause Center</h1>
-              <p class="view-header-desc">Incoming client responses across WhatsApp, Gmail, LinkedIn, and Instagram. Pending follow-ups are automatically paused upon reply.</p>
-            </div>
-            <button class="btn-secondary" onclick="App.simulateIncomingReplyModal()">
-              <span>🧪</span> Simulate Incoming Reply (Test Webhook)
-            </button>
-          </div>
-
-          <!-- 4-Channel Radar Grid -->
-          <div class="reply-channels-grid" style="margin-bottom: 24px;">
-            <div class="reply-channel-card channel-whatsapp" data-channel="whatsapp">
-              <div class="card-top-row">
-                <div class="channel-name-badge"><span>📲</span> <span>WhatsApp Direct</span></div>
-                <span id="inbox-wa-badge" class="badge-unread-red">0 REPLIES</span>
-              </div>
-              <div class="card-stats-row"><span class="stat-total">Total WhatsApp Replies</span><span id="inbox-wa-total" class="stat-number">0</span></div>
-            </div>
-            <div class="reply-channel-card channel-gmail" data-channel="gmail">
-              <div class="card-top-row">
-                <div class="channel-name-badge"><span>📧</span> <span>Gmail / Email</span></div>
-                <span id="inbox-gmail-badge" class="badge-unread-red">0 REPLIES</span>
-              </div>
-              <div class="card-stats-row"><span class="stat-total">Total Email Replies</span><span id="inbox-gmail-total" class="stat-number">0</span></div>
-            </div>
-            <div class="reply-channel-card channel-instagram" data-channel="instagram">
-              <div class="card-top-row">
-                <div class="channel-name-badge"><span>📸</span> <span>Instagram DM</span></div>
-                <span id="inbox-insta-badge" class="badge-unread-red">0 REPLIES</span>
-              </div>
-              <div class="card-stats-row"><span class="stat-total">Total Instagram Replies</span><span id="inbox-insta-total" class="stat-number">0</span></div>
-            </div>
-            <div class="reply-channel-card channel-linkedin" data-channel="linkedin">
-              <div class="card-top-row">
-                <div class="channel-name-badge"><span>👔</span> <span>LinkedIn</span></div>
-                <span id="inbox-linkedin-badge" class="badge-unread-red">0 REPLIES</span>
-              </div>
-              <div class="card-stats-row"><span class="stat-total">Total LinkedIn Replies</span><span id="inbox-linkedin-total" class="stat-number">0</span></div>
-            </div>
-          </div>
-
-          <!-- Replies Conversation List -->
-          <div class="glass-panel" style="padding: 20px;">
-            <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 14px;">Recent Prospect Conversations</h3>
-            <div id="reply-conversations-list" style="display: flex; flex-direction: column; gap: 12px;"></div>
-          </div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 15: CRM PIPELINE
-             ==================================================== -->
-        <section id="view-crm" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">💼 CRM Client Lifecycle Pipeline</h1>
-              <p class="view-header-desc">Track client status from Discovery to Pitched, Replied, Meeting Scheduled, Proposal Sent, and Won Project.</p>
-            </div>
-          </div>
-
-          <!-- CRM Kanban / Stages Grid -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;" id="crm-stages-grid"></div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 16: ANALYTICS
-             ==================================================== -->
-        <section id="view-analytics" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">📉 Platform Analytics & Performance</h1>
-              <p class="view-header-desc">Real-time performance analytics calculated directly from database records.</p>
-            </div>
-          </div>
-
-          <div class="saas-grid-2col" style="margin-bottom: 24px;">
-            <div class="glass-panel" style="padding: 22px;">
-              <h3 style="font-size: 1.05rem; color: #fff; margin-bottom: 12px;">Universal Software Opportunities by Category</h3>
-              <div id="analytics-opportunities-container"></div>
-            </div>
-            <div class="glass-panel" style="padding: 22px;">
-              <h3 style="font-size: 1.05rem; color: #fff; margin-bottom: 12px;">Geographic Lead Distribution</h3>
-              <div id="analytics-geo-container"></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ====================================================
-             VIEW 17: SETTINGS & APIS
-             ==================================================== -->
-        <section id="view-settings" class="saas-view-pane">
-          <div class="view-header-strip">
-            <div>
-              <h1 class="view-header-title">⚙️ Platform Settings & API Configuration</h1>
-              <p class="view-header-desc">Configure authorized Google Places API, PageSpeed Insights API, AI engine keys, and outreach sender credentials.</p>
-            </div>
-            <button class="btn-primary" onclick="App.handleSaveAllSettings()">
-              <span>💾</span> Save All Settings
-            </button>
-          </div>
-
-          <div class="saas-grid-2col">
-            <!-- API Credentials -->
-            <div class="glass-panel" style="padding: 24px; display: flex; flex-direction: column; gap: 16px;">
-              <h3 style="font-size: 1.1rem; color: #38bdf8;">🔑 External API Credentials</h3>
-
-              <div class="input-group">
-                <label class="input-label" for="setting-google-places-key">Google Places API (New) Key</label>
-                <input type="password" id="setting-google-places-key" class="custom-input" placeholder="AIzaSy... (For live Google Maps global search)">
-                <span style="font-size: 0.74rem; color: #94a3b8;">Enables live discovery across 100% of global cities with Google Places API (New).</span>
-              </div>
-
-              <div class="input-group">
-                <label class="input-label" for="setting-pagespeed-key">Google PageSpeed Insights API Key</label>
-                <input type="password" id="setting-pagespeed-key" class="custom-input" placeholder="AIzaSy... (For verified website performance audits)">
-              </div>
-
-              <div class="input-group">
-                <label class="input-label" for="setting-openai-key">OpenAI API Key (GPT-4o / GPT-4o-mini)</label>
-                <input type="password" id="setting-openai-key" class="custom-input" placeholder="sk-proj-... (Optional AI pitch engine)">
-              </div>
-
-              <div class="input-group">
-                <label class="input-label" for="setting-gemini-key">Google Gemini API Key</label>
-                <input type="password" id="setting-gemini-key" class="custom-input" placeholder="AIzaSy... (Optional alternative AI generator)">
-              </div>
-            </div>
-
-            <!-- Company & Outreach Configuration -->
-            <div class="glass-panel" style="padding: 24px; display: flex; flex-direction: column; gap: 16px;">
-              <h3 style="font-size: 1.1rem; color: #10b981;">🏢 Software Company & Outreach Info</h3>
-
-              <div class="input-group">
-                <label class="input-label" for="setting-company-name">Your Software Agency / Company Name</label>
-                <input type="text" id="setting-company-name" class="custom-input" value="MF Software Solutions">
-              </div>
-
-              <div class="input-group">
-                <label class="input-label" for="setting-company-website">Official Website</label>
-                <input type="url" id="setting-company-website" class="custom-input" value="https://mfsoftware.com">
-              </div>
-
-              <div class="input-group">
-                <label class="input-label" for="setting-wa-number">Personal WhatsApp Alert Number</label>
-                <input type="text" id="setting-wa-number" class="custom-input" value="+923376568003">
-                <span style="font-size: 0.74rem; color: #94a3b8;">Incoming prospect replies immediately send a notification alert here.</span>
-              </div>
-
-              <div class="input-group">
-                <label class="input-label" for="setting-email-address">Outreach Sender Email Address</label>
-                <input type="email" id="setting-email-address" class="custom-input" value="info.mfsoft@gmail.com">
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </div>
-    </main>
-  </div>
-
-  <!-- ========================================================
-       MODALS
-       ======================================================== -->
-
-  <!-- 1. FULL SOFTWARE PROJECT PROPOSAL MODAL -->
-  <div id="modal-proposal" class="modal-overlay">
-    <div class="modal-card" style="max-width: 840px;">
-      <div class="modal-header" style="background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);">
-        <h3 style="color: #fff; display: flex; align-items: center; gap: 8px;">
-          <span>📄</span> Formal Software Project Proposal
-        </h3>
-        <button class="modal-close-btn" onclick="document.getElementById('modal-proposal').classList.remove('open')">&times;</button>
-      </div>
-      <div class="modal-body" id="modal-proposal-body" style="line-height: 1.6; font-size: 0.88rem; max-height: 70vh; overflow-y: auto;"></div>
-      <div class="modal-footer" style="justify-content: space-between;">
-        <button class="btn-secondary" onclick="App.copyProposalText()">📋 Copy Proposal</button>
-        <button class="btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
-      </div>
+<main>
+  <h1>RestoHunter Leads</h1>
+  <p class="sub">Pick a country and a business type, then Generate. You get up to 5 new leads, never one you have had before. Each email is printed on the business's own website and its domain accepts mail.</p>
+
+  <section class="card">
+    <div class="controls">
+      <div><label for="cc">Country</label>
+        <select id="cc">
+          <option value="US">United States</option><option value="GB">United Kingdom</option><option value="CA">Canada</option>
+          <option value="KW">Kuwait</option><option value="OM">Oman</option><option value="BH">Bahrain</option>
+        </select></div>
+      <div><label for="type">Business type</label>
+        <select id="type">
+          <option>All businesses</option>
+          <option>Restaurant</option><option>Cafe</option><option>Bakery</option><option>Fast food</option><option>Burger</option><option>Pizza</option>
+          <option>Seafood</option><option>Dessert shop</option><option>Juice bar</option><option>Catering</option>
+          <option>Salon &amp; beauty</option><option>Clinic &amp; dentist</option><option>Gym &amp; fitness</option><option>Hotel</option>
+          <option>Shop &amp; retail</option><option>Office &amp; services</option>
+        </select></div>
+      <div><button id="go" class="primary">Generate 5 leads</button></div>
     </div>
-  </div>
+    <div id="status" class="status"></div>
+  </section>
 
-  <!-- 2. FLAW AUDIT DETAILS MODAL -->
-  <div id="modal-flaw" class="modal-overlay">
-    <div class="modal-card" style="max-width: 780px;">
-      <div class="modal-header">
-        <h3 id="flaw-modal-biz-title">⚠️ Verified Business Weakness & Talking Points</h3>
-        <button class="modal-close-btn" onclick="document.getElementById('modal-flaw').classList.remove('open')">&times;</button>
-      </div>
-      <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px; max-height: 70vh; overflow-y: auto;">
-        <!-- Weakness Details -->
-        <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 8px; padding: 14px;">
-          <h4 id="flaw-modal-title" style="color: #fca5a5; font-size: 1rem; margin-bottom: 6px;"></h4>
-          <p id="flaw-modal-desc" style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5;"></p>
-        </div>
+  <section id="results"></section>
 
-        <!-- Evidence & Inspection -->
-        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 14px;">
-          <strong style="color: #fbbf24; font-size: 0.86rem;">📸 Verification Evidence:</strong>
-          <p id="flaw-modal-where" style="color: #cbd5e1; font-size: 0.82rem; margin: 6px 0 10px 0;"></p>
-          <div id="flaw-modal-proof-buttons" style="display: flex; gap: 8px; flex-wrap: wrap;"></div>
-        </div>
+  <section class="card">
+    <details id="setup">
+      <summary>Settings (one-time GitHub key)</summary>
+      <p class="muted">Generate runs on GitHub, so this page needs a GitHub key. It is saved only in this browser.</p>
+      <ol>
+        <li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub → New fine-grained token</a>.</li>
+        <li>Repository access: <b>Only select repositories</b> → <code>RestoHunter-AI</code>.</li>
+        <li>Permissions: <b>Actions: Read and write</b> and <b>Contents: Read-only</b>.</li>
+        <li>Generate, copy the key, paste it below and Save.</li>
+      </ol>
+      <div class="row"><input id="token" type="password" placeholder="github_pat_…" autocomplete="off" style="flex:1;min-width:220px">
+        <button id="save">Save</button><button id="forget">Remove</button></div>
+      <p id="tokenState" class="muted"></p>
+    </details>
+  </section>
+</main>
 
-        <!-- Financial Impact -->
-        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 14px;">
-          <strong style="color: #f87171; font-size: 0.86rem;">💸 Financial Leakage:</strong>
-          <p id="flaw-modal-why" style="color: #cbd5e1; font-size: 0.84rem; margin-top: 4px;"></p>
-        </div>
+<script>
+(function () {
+  var REPO = 'Fawwad345776/RestoHunter-AI', BRANCH = 'main', WORKFLOW = 'finder.yml';
+  var API = 'https://api.github.com/repos/' + REPO;
+  var $ = function (id) { return document.getElementById(id); };
+  var store = {
+    get: function (k) { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } },
+    set: function (k, v) { try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch (e) { } }
+  };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function token() { return store.get('rh_token'); }
+  function showTokenState() { $('tokenState').textContent = token() ? 'Key saved in this browser.' : 'No key saved yet.'; }
+  function status(html, cls) { var s = $('status'); s.style.display = 'block'; s.className = 'status ' + (cls || ''); s.innerHTML = html; }
 
-        <!-- Talking Points -->
-        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 14px;">
-          <strong style="color: #6ee7b7; font-size: 0.86rem;">🗣️ Outreach Talking Points:</strong>
-          <div id="flaw-modal-talking-points" style="margin-top: 6px; font-size: 0.82rem; color: #d1fae5; display: flex; flex-direction: column; gap: 6px;"></div>
-        </div>
-      </div>
-      <div class="modal-footer" style="justify-content: flex-end;">
-        <button class="btn-secondary" onclick="document.getElementById('modal-flaw').classList.remove('open')">Close</button>
-      </div>
-    </div>
-  </div>
+  ['cc', 'type'].forEach(function (id) { var v = store.get('rh_' + id); if (v) $(id).value = v; $(id).onchange = function () { store.set('rh_' + id, this.value); }; });
+  $('save').onclick = function () { var v = $('token').value.trim(); if (!v) return; store.set('rh_token', v); $('token').value = ''; showTokenState(); };
+  $('forget').onclick = function () { store.set('rh_token', ''); showTokenState(); };
+  showTokenState();
+  if (!token()) $('setup').open = true;
 
-  <!-- 3. ADD REAL LEAD MODAL -->
-  <div id="add-lead-modal" class="modal-overlay">
-    <div class="modal-card" style="max-width: 580px;">
-      <div class="modal-header">
-        <h3>➕ Add Real Business Lead</h3>
-        <button class="modal-close-btn" onclick="document.getElementById('add-lead-modal').classList.remove('open')">&times;</button>
-      </div>
-      <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px;">
-        <div class="saas-grid-2col" style="gap: 12px;">
-          <div class="input-group">
-            <label class="input-label" for="new-lead-business-name">Business Name *</label>
-            <input type="text" id="new-lead-business-name" class="custom-input" placeholder="e.g. Kolachi Restaurant" required>
-          </div>
-          <div class="input-group">
-            <label class="input-label" for="new-lead-owner-name">Owner / Decision Maker</label>
-            <input type="text" id="new-lead-owner-name" class="custom-input" placeholder="e.g. Tariq Mehmood">
-          </div>
-        </div>
-        <div class="saas-grid-2col" style="gap: 12px;">
-          <div class="input-group">
-            <label class="input-label" for="new-lead-phone">Phone Number *</label>
-            <input type="text" id="new-lead-phone" class="custom-input" placeholder="+92 300 1234567" required>
-          </div>
-          <div class="input-group">
-            <label class="input-label" for="new-lead-city">City & Country *</label>
-            <input type="text" id="new-lead-city" class="custom-input" placeholder="Karachi, Pakistan" required>
-          </div>
-        </div>
-        <div class="input-group">
-          <label class="input-label" for="new-lead-website">Website (Optional)</label>
-          <input type="url" id="new-lead-website" class="custom-input" placeholder="https://...">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn-secondary" onclick="document.getElementById('add-lead-modal').classList.remove('open')">Cancel</button>
-        <button class="btn-primary" onclick="App.handleSaveRealLead()">Save & Add to Batch</button>
-      </div>
-    </div>
-  </div>
+  function gh(path, opts) {
+    opts = opts || {}; opts.headers = Object.assign({ 'Authorization': 'Bearer ' + token(), 'X-GitHub-Api-Version': '2022-11-28' }, opts.headers || {});
+    return fetch(API + path, opts);
+  }
 
-  <!-- 4. PITCH PREVIEW & EDIT MODAL (PITCH GENERATOR) -->
-  <div id="pitch-preview-modal" class="modal-overlay">
-    <div class="modal-card" style="max-width: 760px;">
-      <div class="modal-header">
-        <h3 id="modal-pitch-title">🎯 Business Pitch Preview</h3>
-        <button id="modal-pitch-close" class="modal-close-btn" onclick="document.getElementById('pitch-preview-modal').classList.remove('open')">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-          <div id="modal-pitch-channel-badge"></div>
-          <span style="font-size: 0.78rem; color: #94a3b8;">Personalized Value-First B2B Outreach</span>
-        </div>
+  // Columns in the same order as the Leads tab, ready to paste into its first empty row.
+  function sheetRow(l) {
+    var id = 'f_' + l.countryCode.toLowerCase() + '_' + String(l.source || '').replace(/^OpenStreetMap\s+/, '').replace('/', '_');
+    var notes = l.evidence + ' | Email shown on ' + l.emailFoundOn + ' | Source: ' + l.source;
+    return [id, l.businessName, '', l.email, l.website, l.city, l.country, l.countryCode, l.businessType, l.problem, l.financialLeak, l.offer, 'ready', 0, '', '', '', '', '', notes]
+      .map(function (v) { return String(v == null ? '' : v).replace(/[\t\r\n]+/g, ' '); }).join('\t');
+  }
+  function copy(text, btn) {
+    var done = function () { var t = btn.textContent; btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = t; }, 1500); };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () { prompt('Copy:', text); });
+    else prompt('Copy:', text);
+  }
 
-        <!-- Business & Verified Contact Ribbon -->
-        <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 12px 16px; margin: 8px 0; font-size: 0.82rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-          <div>
-            <div style="font-weight: 800; color: #fff; font-size: 0.94rem;" id="modal-pitch-biz-name">Business Name</div>
-            <div style="color: #94a3b8; font-size: 0.76rem;" id="modal-pitch-location">📍 Location</div>
-            <div style="color: #cbd5e1; margin-top: 3px;">
-              👤 <strong id="modal-pitch-dm-name">Owner Name</strong> <span id="modal-pitch-dm-title" style="color: #94a3b8;">(Title)</span>
-            </div>
-          </div>
-          <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
-            <div style="display: flex; align-items: center; gap: 6px;">
-              <span style="color: #94a3b8; font-size: 0.76rem;">📧 Verified Email:</span>
-              <strong id="modal-pitch-email-display" style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">info@business.com</strong>
-              <button type="button" id="modal-btn-copy-email" class="btn-sec-action" style="padding: 2px 7px; font-size: 0.70rem;" title="Copy email address">📋 Copy</button>
-            </div>
-            <div style="display: flex; gap: 8px; font-size: 0.72rem;">
-              <a id="modal-pitch-maps-link" href="#" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">🗺️ Google Maps ↗</a>
-              <a id="modal-pitch-web-link" href="#" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">🌐 Website ↗</a>
-            </div>
-          </div>
-        </div>
+  function render(r) {
+    var box = $('results');
+    if (r.error) { status('Could not finish: ' + esc(r.error), 'bad'); return; }
+    var leads = r.leads || [];
+    var skipped = Object.keys(r.skipped || {}).map(function (k) { return '<span class="pill">' + esc(k) + ' ' + r.skipped[k] + '</span>'; }).join('');
+    status('<b>' + leads.length + ' new lead' + (leads.length === 1 ? '' : 's') + '</b> · ' + esc(r.type) + ' · ' + esc(r.country) + ' · ' + r.checked + ' businesses checked' +
+      (leads.length < 5 ? '<br><span class="muted">Fewer than 5 good leads were found this time. Generate again to search the next city.</span>' : ''), leads.length ? 'ok' : '');
+    var h = '<div class="card"><div class="row" style="margin-top:0;justify-content:space-between;align-items:center"><b>Results</b><span>' +
+      (leads.length ? '<button id="copySheet">Copy for Sheet</button> <button id="copyEmails">Copy emails</button>' : '') + '</span></div>';
+    leads.forEach(function (l) {
+      h += '<div class="lead"><h3>' + esc(l.businessName) + '</h3>' +
+        '<div class="email">' + esc(l.email) + '</div>' +
+        '<div><a href="' + esc(l.website) + '" target="_blank" rel="noopener">' + esc(l.website) + '</a></div>' +
+        '<div style="margin:6px 0"><span class="tag">' + esc(l.city) + '</span><span class="tag">' + esc(l.businessType) + '</span></div>' +
+        '<div><b>Website issue:</b> ' + esc(l.problem) + '</div>' +
+        '<div class="muted">' + esc(l.evidence) + '</div>' +
+        '<div class="muted">Email found on <a href="' + esc(l.emailFoundOn) + '" target="_blank" rel="noopener">' + esc(l.emailFoundOn) + '</a></div></div>';
+    });
+    if (skipped) h += '<details style="margin-top:12px"><summary>Why other businesses were skipped</summary><div style="margin-top:6px">' + skipped + '</div></details>';
+    box.innerHTML = h + '</div>';
+    if (leads.length) {
+      $('copySheet').onclick = function () { copy(leads.map(sheetRow).join('\n'), this); };
+      $('copyEmails').onclick = function () { copy(leads.map(function (l) { return l.email; }).join('\n'), this); };
+    }
+  }
 
-        <!-- 🚨 SOLID WEAK POINT & PROBLEM AUDIT CARD -->
-        <div class="solid-problem-audit-card">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 8px; flex-wrap: wrap;">
-            <div style="display: flex; align-items: center; gap: 6px;">
-              <span style="font-size: 1.15rem;">🚨</span>
-              <strong style="color: #fca5a5; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.5px;">The #1 Diagnosed Solid Weak Point</strong>
-            </div>
-            <span id="modal-pitch-flaw-leak" class="leak-badge" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); padding: 3px 9px; border-radius: 4px; font-weight: 800; font-size: 0.84rem;">$3,500/mo</span>
-          </div>
+  function poll(id, started) {
+    var secs = Math.round((Date.now() - started) / 1000);
+    if (secs > 15 * 60) { status('This is taking too long. Check the Actions page on GitHub.', 'bad'); $('go').disabled = false; return; }
+    gh('/contents/finder/results/' + id + '.json?ref=' + BRANCH, { headers: { 'Accept': 'application/vnd.github.raw+json' }, cache: 'no-store' })
+      .then(function (res) {
+        if (res.status === 404) { status('Searching websites… ' + Math.floor(secs / 60) + 'm ' + (secs % 60) + 's <span class="muted">(usually 2–5 minutes)</span>'); setTimeout(function () { poll(id, started); }, 10000); return null; }
+        if (!res.ok) throw new Error('GitHub said ' + res.status);
+        return res.json();
+      })
+      .then(function (r) { if (r) { $('go').disabled = false; render(r); } })
+      .catch(function (e) { $('go').disabled = false; status('Error: ' + esc(e.message), 'bad'); });
+  }
 
-          <div style="font-size: 0.94rem; font-weight: 800; color: #fff; margin-bottom: 4px;" id="modal-pitch-flaw-title">
-            30% Aggregator Commission Bleed
-          </div>
-
-          <p id="modal-pitch-problem-why" style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; margin: 4px 0 8px 0;">
-            Redirecting high-ticket repeat customer orders to third-party portals with 25-30% margin fee loss.
-          </p>
-
-          <div style="font-size: 0.76rem; color: #94a3b8; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 6px 10px; margin-bottom: 10px;" id="modal-pitch-problem-evidence">
-            🔍 Evidence: Google Maps Action button points to delivery aggregator with no direct 0% commission app.
-          </div>
-
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-            <div style="font-size: 0.78rem; color: #38bdf8;">
-              <strong>💡 Recommended Software:</strong> <span id="modal-pitch-solution">0% Commission Direct Mobile Web App</span>
-            </div>
-            <!-- BUTTON: COPY PROBLEM FOR AI VERIFICATION (CHATGPT / CLAUDE) -->
-            <button type="button" id="modal-btn-copy-ai-prompt" class="btn-copy-ai-prompt" title="Copy structured audit prompt to paste into ChatGPT or Claude">
-              <span>📋</span> Copy Problem for AI Verification (ChatGPT / Claude)
-            </button>
-          </div>
-        </div>
-
-        <!-- 📧 TAILORED GMAIL COLD EMAIL PITCH -->
-        <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 8px; padding: 14px; margin-top: 10px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
-            <strong style="color: #fff; font-size: 0.86rem; display: flex; align-items: center; gap: 6px;">
-              <span>📧</span> Tailored Cold Email Pitch (Ready for Gmail)
-            </strong>
-            <span style="font-size: 0.72rem; color: #4ade80; font-weight: 700;">✅ Personalized to Decision Maker & Weak Point</span>
-          </div>
-
-          <div class="input-group" style="margin-bottom: 8px;">
-            <label class="input-label" for="modal-pitch-subject">Subject Line</label>
-            <input type="text" id="modal-pitch-subject" class="custom-input" style="height: 38px; font-size: 0.86rem; font-weight: 600;">
-          </div>
-
-          <div class="input-group">
-            <label class="input-label" for="modal-pitch-textarea">Email Body</label>
-            <textarea id="modal-pitch-textarea" class="pitch-textarea" style="height: 190px; font-size: 0.84rem; line-height: 1.5;"></textarea>
-            <div id="modal-pitch-counter" class="char-counter">0 characters</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal-footer" style="flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center;">
-        <button id="modal-btn-copy" class="btn-secondary" style="font-weight: 700;">
-          <span>📋</span> Copy Full Pitch
-        </button>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <button id="modal-btn-send-gmail" class="btn-open-gmail-direct" title="Open Gmail with tailored pitch">
-            <span>🚀</span> Open Directly in Gmail
-          </button>
-          <button id="modal-btn-mark-pitched" class="btn-secondary" style="color: #6ee7b7; border-color: rgba(16, 185, 129, 0.4);" title="Mark as dispatched">
-            <span>✅</span> Mark as Pitched
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 5. LANDLINE / US NUMBER MODAL -->
-  <div id="modal-landline-wa" class="modal-overlay">
-    <div class="modal-card" style="max-width: 540px;">
-      <div class="modal-header" style="background: #1e293b;">
-        <h3 style="color: #fbbf24;">⚠️ Landline / US Line (No WhatsApp)</h3>
-        <button class="modal-close-btn" onclick="document.getElementById('modal-landline-wa').classList.remove('open')">&times;</button>
-      </div>
-      <div class="modal-body" id="modal-landline-wa-body" style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.6;"></div>
-      <div class="modal-footer" id="modal-landline-wa-footer"></div>
-    </div>
-  </div>
-
-  <!-- Toast Notification Container -->
-  <div id="toast-container" class="toast-container"></div>
-
-  <!-- Core JavaScript Modules -->
-  <script src="js/auth.js?v=6.0"></script>
-  <script src="js/storage.js?v=6.0"></script>
-  <script src="js/softwareCatalog.js?v=6.0"></script>
-  <script src="js/placesService.js?v=6.0"></script>
-  <script src="js/websiteAnalyzer.js?v=6.0"></script>
-  <script src="js/batchManager.js?v=6.0"></script>
-  <script src="js/pitchEngine.js?v=6.0"></script>
-  <script src="js/whatsappService.js?v=6.0"></script>
-  <script src="js/replyCenter.js?v=6.0"></script>
-  <script src="js/autopilot.js?v=6.0"></script>
-  <script src="js/analytics.js?v=6.0"></script>
-  <script src="data/leads.js?v=6.0"></script>
-  <script src="js/app.js?v=6.0"></script>
+  $('go').onclick = function () {
+    if (!token()) { $('setup').open = true; status('Add your GitHub key in Settings first.', 'bad'); return; }
+    var id = 'r' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+    $('go').disabled = true; $('results').innerHTML = '';
+    status('Starting…');
+    gh('/actions/workflows/' + WORKFLOW + '/dispatches', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ref: BRANCH, inputs: { country: $('cc').value, business_type: $('type').value, request_id: id } }) })
+      .then(function (res) {
+        if (res.status === 204) { poll(id, Date.now()); return; }
+        $('go').disabled = false;
+        if (res.status === 401 || res.status === 403) status('GitHub did not accept the key. Check it has Actions: Read and write for RestoHunter-AI.', 'bad');
+        else status('GitHub said ' + res.status + '. Try again in a minute.', 'bad');
+      })
+      .catch(function (e) { $('go').disabled = false; status('Error: ' + esc(e.message), 'bad'); });
+  };
+})();
+</script>
 </body>
 </html>
