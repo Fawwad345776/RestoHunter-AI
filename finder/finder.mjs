@@ -78,6 +78,7 @@ const FREE_MAIL = /^(gmail|googlemail|hotmail|outlook|live|yahoo|icloud|me|msn|a
 const GENERIC = ['info', 'hello', 'contact', 'enquiries', 'enquiry', 'office', 'sales', 'orders', 'order', 'reservations', 'reservation', 'bookings', 'booking', 'catering', 'events', 'team', 'eat', 'mail', 'reception'];
 
 const PENDING = 'data/leads_pending.json';
+const LEADS_FEED = 'data/leads.json';
 // Business types for leads in the checked list (their "niche" field).
 const PENDING_TYPE = {
   'Restaurant': /restaurant/i, 'Cafe': /cafe|coffee|tea/i, 'Bakery': /bakery|pastry/i, 'Dessert shop': /confectionery|pastry|ice cream|chocolate/i, 'Catering': /cater/i,
@@ -212,6 +213,33 @@ async function checkOne(c, known) {
   return { result: 'added', email: pick.email, lead: { website: home.url, emailFoundOn: pick.url, ...w } };
 }
 
+// Adds the new leads to data/leads.json: the Google Sheet reads this file every hour (syncLeadsNow) and
+// appends leads whose id and email it does not have yet. Field names match leadToRow_ in Code.gs.
+function addToFeed(leads, cc, requestId) {
+  if (leads.length) {
+    const raw = fs.readFileSync(LEADS_FEED, 'utf8');
+    const feed = JSON.parse(raw);
+    const have = new Set(feed.map(l => String(l.email || '').toLowerCase()));
+    const day = NOW.toISOString().slice(0, 10);
+    for (const l of leads) {
+      if (have.has(l.email)) continue;
+      const ref = String(l.source).replace(/^OpenStreetMap\s+/, '').replace(/[^A-Za-z0-9]+/g, '_');
+      l.id = l.pendingId || `f_${cc.toLowerCase()}_${ref}`;
+      feed.push({
+        // no known city: the country name keeps the Sheet's email from saying "in your city"
+        id: l.id, name: l.businessName, businessName: l.businessName, city: l.city || l.country, country: l.country, countryCode: cc, address: '', phone: '',
+        email: l.email, website: l.website, decisionMaker: '', decisionMakerTitle: '', niche: l.businessType, nicheName: l.businessType,
+        flawTitle: l.problem, flawLeakRange: l.financialLeak, flawDetails: l.evidence,
+        solidWeakPoint: { coreProblem: l.problem, financialLeak: l.financialLeak, evidence: l.evidence, solutionSoftware: l.offer },
+        status: 'ready_to_pitch', emailSource: 'business website', emailFoundOn: l.emailFoundOn, emailCheckedAt: day,
+        leadSource: l.source, generatedBy: requestId
+      });
+      have.add(l.email);
+    }
+    fs.writeFileSync(LEADS_FEED, JSON.stringify(feed, null, 2) + (raw.endsWith('\n') ? '\n' : ''));
+  }
+}
+
 async function main() {
   if (!COUNTRIES[CC] || !TYPES[TYPE]) throw new Error(`Unknown country "${CC}" or business type "${TYPE}"`);
   const started = Date.now();
@@ -243,7 +271,7 @@ async function main() {
       if (!(await hasMx(email.split('@')[1]))) { record(c, l.city || '', { result: 'email rejected', email }); continue; }
       known.emails.add(email); known.hosts.add(host(l.website));
       const problem = pendingProblem(l);
-      leads.push({ businessName: l.businessName, email, website: l.website, city: l.city || '', country: country.name, countryCode: CC, businessType: l.niche || 'business',
+      leads.push({ pendingId: l.id, businessName: l.businessName, email, website: l.website, city: l.city || '', country: country.name, countryCode: CC, businessType: l.niche || 'business',
         problem, financialLeak: '', offer: offerFor(problem), evidence: (l.solidWeakPoint || {}).evidence || l.flawDetails || '', emailFoundOn: l.emailFoundOn || l.website,
         source: l.sourceRef ? (String(l.sourceRef).startsWith('http') ? l.sourceRef : `OpenStreetMap ${l.sourceRef.replace(/^osm:/, '')}`) : 'checked list' });
       record(c, l.city || '', { result: 'added', email });
@@ -285,6 +313,8 @@ async function main() {
   }
   history.cityIndex[cityKey] = cityIdx;
   fs.writeFileSync(HISTORY, JSON.stringify(history));
+
+  addToFeed(leads, CC, REQUEST_ID);
   const skipped = {}; details.filter(d => d.result !== 'added').forEach(d => { skipped[d.result] = (skipped[d.result] || 0) + 1; });
   const out = { requestId: REQUEST_ID, country: country.name, type: TYPE, finishedAt: new Date().toISOString(), checked: details.length, skipped, leads };
   fs.mkdirSync(RESULTS_DIR, { recursive: true });
@@ -292,7 +322,7 @@ async function main() {
   console.log(JSON.stringify({ added: leads.length, checked: details.length, skipped }));
 }
 
-export { pickEmail, weakness, emailsIn, nameSimilarity };
+export { pickEmail, weakness, emailsIn, nameSimilarity, addToFeed };
 if (process.argv[1] && process.argv[1].endsWith('finder.mjs') && CC) main().catch(e => {
   fs.mkdirSync(RESULTS_DIR, { recursive: true });
   fs.writeFileSync(`${RESULTS_DIR}/${REQUEST_ID}.json`, JSON.stringify({ requestId: REQUEST_ID, error: e.message, leads: [] }));

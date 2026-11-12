@@ -1,7 +1,8 @@
 name: Find leads
 
-# Started by the RestoHunter page (Generate button). Finds up to 5 new leads and saves them to
-# finder/results/<request_id>.json; finder/history.json remembers every business ever checked.
+# Started by the RestoHunter page (Generate button). Finds up to 5 new leads, adds them to data/leads.json
+# (the Google Sheet picks them up within an hour) and saves the run to finder/results/<request_id>.json.
+# finder/history.json remembers every business ever checked.
 on:
   workflow_dispatch:
     inputs:
@@ -30,6 +31,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -47,6 +50,8 @@ jobs:
         run: |
           git config user.name "restohunter-finder"
           git config user.email "restohunter-finder@users.noreply.github.com"
-          git add finder/history.json "finder/results/$REQUEST_ID.json"
+          git add finder/history.json "finder/results/$REQUEST_ID.json" data/leads.json
           git commit -m "Find leads: $REQUEST_ID" || exit 0
-          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
+          # The Google Sheet reads data/leads.json from shorten-outreach-emails; keep main the same.
+          for i in 1 2 3; do git pull --rebase origin "$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME" && break; sleep 5; done
+          if [ "$GITHUB_REF_NAME" != "main" ]; then git push origin HEAD:main || echo "main has other commits; left as is"; fi
