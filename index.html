@@ -62,7 +62,7 @@
 
   <section id="results"></section>
 
-  <section class="card">
+  <section class="card" id="setupCard">
     <details id="setup">
       <summary>Settings (one-time GitHub key)</summary>
       <p class="muted">Generate runs on GitHub, so this page needs a GitHub key. It is saved only in this browser.</p>
@@ -90,14 +90,16 @@
   };
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function token() { return store.get('rh_token'); }
-  function showTokenState() { $('tokenState').textContent = token() ? 'Key saved in this browser.' : 'No key saved yet.'; }
+  // The key section shows only when no key is saved, or when GitHub rejects the saved key.
+  function showTokenState() { $('tokenState').textContent = token() ? 'Key saved in this browser.' : 'No key saved yet.'; $('setupCard').style.display = token() ? 'none' : ''; }
+  function askForKey() { $('setupCard').style.display = ''; $('setup').open = true; }
   function status(html, cls) { var s = $('status'); s.style.display = 'block'; s.className = 'status ' + (cls || ''); s.innerHTML = html; }
 
   ['cc', 'type'].forEach(function (id) { var v = store.get('rh_' + id); if (v) $(id).value = v; $(id).onchange = function () { store.set('rh_' + id, this.value); }; });
   $('save').onclick = function () { var v = $('token').value.trim(); if (!v) return; store.set('rh_token', v); $('token').value = ''; showTokenState(); };
   $('forget').onclick = function () { store.set('rh_token', ''); showTokenState(); };
   showTokenState();
-  if (!token()) $('setup').open = true;
+  if (!token()) askForKey();
 
   function gh(path, opts) {
     opts = opts || {}; opts.headers = Object.assign({ 'Authorization': 'Bearer ' + token(), 'X-GitHub-Api-Version': '2022-11-28' }, opts.headers || {});
@@ -150,7 +152,7 @@
   }
 
   $('go').onclick = function () {
-    if (!token()) { $('setup').open = true; status('Add your GitHub key in Settings first.', 'bad'); return; }
+    if (!token()) { askForKey(); status('Add your GitHub key below first.', 'bad'); return; }
     var id = 'r' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
     $('go').disabled = true; $('results').innerHTML = '';
     status('Starting…');
@@ -159,7 +161,7 @@
       .then(function (res) {
         if (res.status === 204) { poll(id, Date.now()); return; }
         $('go').disabled = false;
-        if (res.status === 401 || res.status === 403) status('GitHub did not accept the key. Check it has Actions: Read and write for RestoHunter-AI.', 'bad');
+        if (res.status === 401 || res.status === 403) { askForKey(); status('GitHub did not accept the saved key (it may have expired). Paste a new key below.', 'bad'); }
         else status('GitHub said ' + res.status + '. Try again in a minute.', 'bad');
       })
       .catch(function (e) { $('go').disabled = false; status('Error: ' + esc(e.message), 'bad'); });
