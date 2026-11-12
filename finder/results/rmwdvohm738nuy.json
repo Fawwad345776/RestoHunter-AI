@@ -1,0 +1,67 @@
+{
+ "requestId": "rmwdvohm738nuy",
+ "country": "Bahrain",
+ "type": "All businesses",
+ "finishedAt": "2026-11-12T18:30:35.211Z",
+ "checked": 1556,
+ "skipped": {
+  "no website": 1531,
+  "website not loading": 15,
+  "no email": 4,
+  "own ordering": 1,
+  "email rejected": 2
+ },
+ "leads": [
+  {
+   "pendingId": "bh_101",
+   "businessName": "Katana Torii",
+   "email": "info@katanatorii.com",
+   "website": "https://katanatorii.com/",
+   "city": "",
+   "country": "Bahrain",
+   "countryCode": "BH",
+   "businessType": "restaurant",
+   "problem": "no online enquiry form on the website",
+   "financialLeak": "",
+   "offer": "online enquiry or booking form",
+   "evidence": "Neither the homepage nor the contact pages have a form; visitors must call or email.",
+   "emailFoundOn": "https://katanatorii.com/",
+   "source": "OpenStreetMap way/1361432914",
+   "id": "bh_101"
+  },
+  {
+   "pendingId": "bh_102",
+   "businessName": "Zaakinova Technologies WLL - Manama, Bahrain",
+   "email": "contact@zaakinova.com",
+   "website": "https://zaakinova.com/",
+   "city": "Manama",
+   "country": "Bahrain",
+   "countryCode": "BH",
+   "businessType": "apps",
+   "problem": "no online enquiry form on the website",
+   "financialLeak": "",
+   "offer": "online enquiry or booking form",
+   "evidence": "Neither the homepage nor the contact pages have a form; visitors must call or email.",
+   "emailFoundOn": "https://zaakinova.com/",
+   "source": "https://www.bahrainyellow.com/company/23500/Zaakinova_Technologies_WLL",
+   "id": "bh_102"
+  },
+  {
+   "pendingId": "bh_103",
+   "businessName": "SRCO Consultants W.L.L - Manama, Bahrain",
+   "email": "info@srco.ca",
+   "website": "https://srco.ca/",
+   "city": "Manama",
+   "country": "Bahrain",
+   "countryCode": "BH",
+   "businessType": "audit and accounting",
+   "problem": "no online enquiry form on the website",
+   "financialLeak": "",
+   "offer": "online enquiry or booking form",
+   "evidence": "Neither the homepage nor the contact pages have a form; visitors must call or email.",
+   "emailFoundOn": "https://srco.ca/",
+   "source": "https://www.bahrainyellow.com/company/22503/SRCO_Consultants_WLL",
+   "id": "bh_103"
+  }
+ ]
+}
