@@ -38,7 +38,7 @@
 <body>
 <main>
   <h1>RestoHunter Leads</h1>
-  <p class="sub">Pick a country and a business type, then Generate. You get up to 5 new leads, never one you have had before. Each email is printed on the business's own website and its domain accepts mail.</p>
+  <p class="sub">Pick a country and a business type, then Generate. You get up to 5 new leads, never one you have had before. Each email is printed on the business's own website and its domain accepts mail. New leads are saved to your Google Sheet's lead list automatically and appear in the Leads tab within an hour.</p>
 
   <section class="card">
     <div class="controls">
@@ -81,7 +81,7 @@
 
 <script>
 (function () {
-  var REPO = 'Fawwad345776/RestoHunter-AI', BRANCH = 'main', WORKFLOW = 'finder.yml';
+  var REPO = 'Fawwad345776/RestoHunter-AI', BRANCH = 'shorten-outreach-emails', WORKFLOW = 'finder.yml';
   var API = 'https://api.github.com/repos/' + REPO;
   var $ = function (id) { return document.getElementById(id); };
   var store = {
@@ -104,13 +104,6 @@
     return fetch(API + path, opts);
   }
 
-  // Columns in the same order as the Leads tab, ready to paste into its first empty row.
-  function sheetRow(l) {
-    var id = 'f_' + l.countryCode.toLowerCase() + '_' + String(l.source || '').replace(/^OpenStreetMap\s+/, '').replace('/', '_');
-    var notes = l.evidence + ' | Email shown on ' + l.emailFoundOn + ' | Source: ' + l.source;
-    return [id, l.businessName, '', l.email, l.website, l.city, l.country, l.countryCode, l.businessType, l.problem, l.financialLeak, l.offer, 'ready', 0, '', '', '', '', '', notes]
-      .map(function (v) { return String(v == null ? '' : v).replace(/[\t\r\n]+/g, ' '); }).join('\t');
-  }
   function copy(text, btn) {
     var done = function () { var t = btn.textContent; btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = t; }, 1500); };
     if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () { prompt('Copy:', text); });
@@ -123,9 +116,10 @@
     var leads = r.leads || [];
     var skipped = Object.keys(r.skipped || {}).map(function (k) { return '<span class="pill">' + esc(k) + ' ' + r.skipped[k] + '</span>'; }).join('');
     status('<b>' + leads.length + ' new lead' + (leads.length === 1 ? '' : 's') + '</b> · ' + esc(r.type) + ' · ' + esc(r.country) + ' · ' + r.checked + ' businesses checked' +
+      (leads.length ? '<br>Saved to your Sheet\'s lead list. They appear in the Leads tab within an hour (or run syncLeadsNow in Apps Script).' : '') +
       (leads.length < 5 ? '<br><span class="muted">Fewer than 5 good leads were found this time. Generate again to search the next city.</span>' : ''), leads.length ? 'ok' : '');
     var h = '<div class="card"><div class="row" style="margin-top:0;justify-content:space-between;align-items:center"><b>Results</b><span>' +
-      (leads.length ? '<button id="copySheet">Copy for Sheet</button> <button id="copyEmails">Copy emails</button>' : '') + '</span></div>';
+      (leads.length ? '<button id="copyEmails">Copy emails</button>' : '') + '</span></div>';
     leads.forEach(function (l) {
       h += '<div class="lead"><h3>' + esc(l.businessName) + '</h3>' +
         '<div class="email">' + esc(l.email) + '</div>' +
@@ -138,7 +132,6 @@
     if (skipped) h += '<details style="margin-top:12px"><summary>Why other businesses were skipped</summary><div style="margin-top:6px">' + skipped + '</div></details>';
     box.innerHTML = h + '</div>';
     if (leads.length) {
-      $('copySheet').onclick = function () { copy(leads.map(sheetRow).join('\n'), this); };
       $('copyEmails').onclick = function () { copy(leads.map(function (l) { return l.email; }).join('\n'), this); };
     }
   }
