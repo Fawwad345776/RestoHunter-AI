@@ -1,0 +1,68 @@
+{
+ "requestId": "rmwduxnv0kbl6i",
+ "country": "Kuwait",
+ "type": "All businesses",
+ "finishedAt": "2026-11-12T18:10:46.507Z",
+ "checked": 648,
+ "skipped": {
+  "no website": 616,
+  "no email": 4,
+  "no visible weakness": 3,
+  "big brand": 5,
+  "website not loading": 16,
+  "email rejected": 1
+ },
+ "leads": [
+  {
+   "pendingId": "kw_106",
+   "businessName": "Asnan Tower",
+   "email": "info@asnan.com",
+   "website": "https://www.asnan.com/ar",
+   "city": "السالمية",
+   "country": "Kuwait",
+   "countryCode": "KW",
+   "businessType": "dentist",
+   "problem": "no online enquiry form on the website",
+   "financialLeak": "",
+   "offer": "online enquiry or booking form",
+   "evidence": "Neither the homepage nor the contact pages have a form; visitors must call or email.",
+   "emailFoundOn": "https://www.asnan.com/ar",
+   "source": "OpenStreetMap way/336963499",
+   "id": "kw_106"
+  },
+  {
+   "pendingId": "kw_107",
+   "businessName": "Anotio - Kuwait City, Kuwait",
+   "email": "anotioart@gmail.com",
+   "website": "https://www.anotio.com/",
+   "city": "Kuwait City",
+   "country": "Kuwait",
+   "countryCode": "KW",
+   "businessType": "advertising",
+   "problem": "no online enquiry form on the website",
+   "financialLeak": "",
+   "offer": "online enquiry or booking form",
+   "evidence": "Neither the homepage nor the contact pages have a form; visitors must call or email.",
+   "emailFoundOn": "https://www.anotio.com/",
+   "source": "https://www.kuwaityello.com/company/76030/Anotio",
+   "id": "kw_107"
+  },
+  {
+   "pendingId": "kw_108",
+   "businessName": "EASYEQUIP KITCHENS CO. - Al-Farwaniyah, Kuwait",
+   "email": "sales@easy-equipkitchen.com",
+   "website": "https://easy-equipkitchen.com/",
+   "city": "Al-Farwaniyah",
+   "country": "Kuwait",
+   "countryCode": "KW",
+   "businessType": "steel products",
+   "problem": "no online enquiry form on the website",
+   "financialLeak": "",
+   "offer": "online enquiry or booking form",
+   "evidence": "Neither the homepage nor the contact pages have a form; visitors must call or email.",
+   "emailFoundOn": "https://easy-equipkitchen.com/",
+   "source": "https://www.kuwaityello.com/company/76475/EASYEQUIP_KITCHENS_CO",
+   "id": "kw_108"
+  }
+ ]
+}
